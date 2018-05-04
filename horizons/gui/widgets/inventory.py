@@ -49,7 +49,7 @@ class Inventory(Container):
 
 	def __init__(self, uncached=False, display_legend=True, items_per_line=4, **kwargs):
 		# this inits the gui part of the inventory. @see init().
-		super(Inventory, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self._inventory = None
 		self._inited = False
 		self.uncached = uncached
@@ -140,7 +140,7 @@ class Inventory(Container):
 
 			button = ImageFillStatusButton.init_for_res(self.db, resid, amount,
 			                                            filled=filled, uncached=self.uncached)
-			button.button.name = "inventory_entry_%s" % index # required for gui tests
+			button.button.name = "inventory_entry_{}".format(index) # required for gui tests
 			current_hbox.addChild(button)
 
 			if index % self.items_per_line == self.items_per_line - 1:
@@ -150,7 +150,7 @@ class Inventory(Container):
 		if index <= self.items_per_line: # Hide/Remove second line
 			icons = self.parent.findChildren(name='slot')
 			if len(icons) > self.items_per_line:
-				self.parent.removeChildren(icons[self.items_per_line-1:])
+				self.parent.removeChildren(icons[self.items_per_line - 1:])
 		vbox.addChild(current_hbox)
 		self.addChild(vbox)
 		height = ImageFillStatusButton.CELL_SIZE[1] * len(self._res_order) // self.items_per_line

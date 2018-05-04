@@ -11,7 +11,7 @@ done
 
 if which xvfb-run >/dev/null 2>/dev/null ; then
 	echo "Running tests using xvfb-run"
-	xvfb-run python3 run_tests.py -a gui $TESTS --nologcapture $@
+	xvfb-run pytest --gui-tests $TESTS $@
 	exit $?
 fi
 
@@ -19,7 +19,7 @@ if which Xvfb >/dev/null 2>/dev/null ; then
 	echo "Running tests using Xvfb"
 	Xvfb :99 2>/dev/null &
 	PID=$!
-	DISPLAY=":99" python3 run_tests.py -a gui $TESTS --nologcapture $@
+	DISPLAY=":99" pytest --gui-tests $TESTS $@
 	RET=$?
 	kill -9 $PID
 	exit $RET
@@ -27,5 +27,5 @@ fi
 
 # just run in the normal x server
 echo "Unable to locate xvfb, running test in current X session"
-python3 run_tests.py -a gui $TESTS --nologcapture $@
+pytest --gui-tests $TESTS $@
 

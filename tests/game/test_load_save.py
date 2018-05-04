@@ -65,6 +65,7 @@ def test_load_inactive_production():
 
 	session.end()
 
+
 def create_lumberjack_production_session():
 	"""Create a saved game with a producing production and then load it."""
 	session, player = new_session()
@@ -142,7 +143,6 @@ def test_hunter_save_load():
 			session.run()
 		assert collector.state == new_state, "expected new state {}, got {}".format(new_state, collector.state)
 
-
 	sequence = [
 	  Collector.states.idle,
 	  Collector.states.waiting_for_animal_to_stop,
@@ -154,13 +154,13 @@ def test_hunter_save_load():
 
 	# do full run without saveload
 	collector = get_hunter_collector(session)
-	for i in range(len(sequence)-1):
-		await_transition(session, collector, sequence[i], sequence[i+1])
+	for i in range(len(sequence) - 1):
+		await_transition(session, collector, sequence[i], sequence[i + 1])
 
 	# do full run with saveload
-	for i in range(len(sequence)-1):
+	for i in range(len(sequence) - 1):
 		collector = get_hunter_collector(session)
-		await_transition(session, collector, sequence[i], sequence[i+1])
+		await_transition(session, collector, sequence[i], sequence[i + 1])
 		session = saveload(session)
 
 	# last state reached successfully 2 times -> finished

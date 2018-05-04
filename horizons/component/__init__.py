@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import List
 
-class Component(object):
+
+class Component:
 	"""
 	Base class for all components. Something like an interface.
 
@@ -44,7 +46,7 @@ class Component(object):
 		"""
 		Used for initialization code that does not require any other components.
 		This is always called first, on construction and on load."""
-		super(Component, self).__init__()
+		super().__init__()
 		self.instance = None # Has to be set by the componentholder
 
 	@property
@@ -92,7 +94,6 @@ class Component(object):
 		"""
 		arguments = arguments or {}
 		return cls(**arguments)
-
 
 	def __gt__(self, other):
 		return other.__class__ in self.DEPENDENCIES

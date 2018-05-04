@@ -23,12 +23,25 @@ SOFTWARE.
 # http://code.activestate.com/recipes/576447-dummy-object/
 # with some modifications
 
-class Dummy(object):
+
+class Dummy:
 	def __getattr__(self, attr):
 		try:
+			if attr == 'IKeyListener':
+				class A(Dummy):
+					pass
+				return A
+			elif attr == 'ICommandListener':
+				class B(Dummy):
+					pass
+				return B
+			elif attr == 'VBox' or  attr == 'HBox':
+				class C(Dummy):
+					ATTRIBUTES = Dummy()
+				return C
 			return super(self.__class__, self).__getattr__(attr)
 		except AttributeError:
-			if attr in ('__base__', '__bases__', '__basicsize__', '__cmp__',
+			if attr in ('__base__', '__bases__', '__basicsize__',
 				'__dictoffset__', '__flags__', '__itemsize__',
 				'__members__', '__methods__', '__mro__', '__name__',
 				'__subclasses__', '__weakrefoffset__',
@@ -36,21 +49,41 @@ class Dummy(object):
 				raise
 			else:
 				return self
+
 	def __next__(self):
 		raise StopIteration
+
 	def __repr__(self):
 		return 'Dummy()'
+
 	def __init__(self, *args, **kwargs):
 		pass
+
 	def __len__(self):
 		return 0
+
 	def __eq__(self, other):
 		return self is other
+
 	def __hash__(self):
 		return hash(None)
+
 	def __call__(self, *args, **kwargs):
 		return self
+
 	def __trunc__(self):
+		return 0
+
+	def __ge__(self, other):
+		return 0
+
+	def __gt__(self, other):
+		return 0
+
+	def __lt__(self, other):
+		return 0
+
+	def __le__(self, other):
 		return 0
 	__sub__ = __div__ = __mul__ = __floordiv__ = __mod__ = __and__ = __or__ = \
 	__xor__ = __rsub__ = __rdiv__ = __rmul__ = __rfloordiv__ = __rmod__ = \
@@ -59,6 +92,3 @@ class Dummy(object):
 	__rtruediv__ = __add__ = __getitem__ = __neg__ = __pos__ = __abs__ = \
 	__invert__ = __setattr__ = __delattr__ = __delitem__ = __setitem__ = \
 	__iter__ = __call__
-
-# see UH issue #2515
-Dummy = Dummy() # type: ignore

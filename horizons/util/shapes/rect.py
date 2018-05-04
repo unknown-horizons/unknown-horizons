@@ -136,7 +136,7 @@ class Rect(Shape):
 		borders[self.bottom + radius] = ( self.left, self.right )
 
 		# left, right
-		for y in range( self.top, self.bottom+1 ):
+		for y in range( self.top, self.bottom + 1 ):
 			borders[y] = ( self.left - radius, self.right + radius)
 
 		x = radius
@@ -157,18 +157,17 @@ class Rect(Shape):
 			self_coords = frozenset(self.get_coordinates())
 			for y, x_range in borders.items():
 				if self.top <= y <= self.bottom: # we have to sort out the self_coords here
-					for x in range(x_range[0], x_range[1]+1):
+					for x in range(x_range[0], x_range[1] + 1):
 						t = (x, y)
 						if t not in self_coords:
 							yield t
 				else: # coords of this rect cannot appear here
-					for x in range(x_range[0], x_range[1]+1):
+					for x in range(x_range[0], x_range[1] + 1):
 						yield (x, y)
 		else:
 			for y, x_range in borders.items():
-				for x in range(x_range[0], x_range[1]+1):
+				for x in range(x_range[0], x_range[1] + 1):
 					yield (x, y)
-
 
 	@property
 	def center(self):
@@ -266,8 +265,8 @@ class Rect(Shape):
 
 	def tuple_iter(self):
 		"""Generates an iterator, that returns tuples"""
-		for x in range(self.left, self.right+1):
-			for y in range(self.top, self.bottom+1):
+		for x in range(self.left, self.right + 1):
+			for y in range(self.top, self.bottom + 1):
 				yield x, y
 
 	def iter_without_border(self):
@@ -285,6 +284,7 @@ class Rect(Shape):
 	def get_surrounding_offsets(cls, size):
 		rect = cls.init_from_topleft_and_size_tuples((0, 0), size)
 		return list(rect.get_surrounding())
+
 
 class ConstRect(Const, Rect):
 	"""An immutable Rect.

@@ -70,39 +70,39 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nájdite dobre zalesnenú plochu pre drevorubača potom kliknite 'Drevorubačský stan' z listu budov a postavte ho do tejto plochy.
   - Neskôr v hre budete môcť vytvoriť zalesnenú plochu sadením stromov, ale keďže to stojí peanieze, mali by ste používať to čo vám príroda dá!
   - Hociaké budovy, ktoré zbierajú materiál alebo niečo produkujú potrebujú cestu, ktorá je pripojená ku skladisku. Inak nebudú produkty vyzdvihnuté.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Ak máš postavenú Drevorubačskú Chatrč. Musíš ju spojiť so skladom. Takže klikni na tlačidlo "cesty" následne klikni a ťahaj svoju cestu od Drevorubačskej Chatrče až po sklad.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - [BoldLabel, 'Úloha: Postav Drevorubačskú Chatrč a spoj ju so Skladom.']
+  - Ak je budova spojená so Skladom, uvidíš robotníka, ktorý vyzdvihne novo vyrobené produkty a pripravý ich pre obchod alebo stavbu.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
-  - [Headline, 'NEW TASK: FOOD SUPPLY']
+  - [Message, Postav Lovecký kemp a Rybársku chatrč a spoj ju so Skladom.]
+  - [Headline, 'NOVÁ ÚLOHA: ZÁSOBOVANIE JEDLOM']
   - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
-  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
-  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
+  - Ďalej budete musieť postaviť niektoré základné budovy, ktoré budú potrebovať jedlo, pretože ľudia sú veľmi hladný.
+  - Dostupné budovy pre prvú úroveň sú Lovecký Tábor a Rybárska Chatrč.
+  - Lovec loví zvierata v lese to znamená, že potrebuje les.
+  - Všimni si, že môžeš postaviť Lovecký kemp blízko Drevorubačskej Chatrče.
+  - Stáva sa, že zvieratá sa nemnožia rýchlo alebo sa nevedia dostatočne schovať.
+  - 'Záver: Lovecký kemp nie je spolahlivý v dlhodobom zásobovaní.'
   - [Pagebreak]
   - '
 
-    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
-  - He will build a small rowing vessel and catch some fish.
-  - This is a very constant supply at the cost of a slightly longer production time per unit of food.
-  - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
+    Rybár potrebuje pláž a ryby v dosahu.'
+  - On vyrobí malé loďky a bude chytať ryby.
+  - Jedná sa o nepretržitý zdroj potravy ale výrobá trvá dlhšie.
+  - Malá osada ako tvoja môže používať obe spoločnosti a tým môže dosiahnuť lepší pomer výhod a nevýhod.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
-  - Don't forget to connect them to your Warehouse with Trails!
+  - [BoldLabel, 'Úloha: Postav Lovecký Kemp a Rybársku Chatrč.']
+  - Nezabudni ich pripojiť so Skladom!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
   - [Message, Build a Main Square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Headline, 'NOVÁ ÚLOHA: POSTAV TRŽNICU']
   - [Image, content/gui/images/background/hr.png]
   - Your residents need a main square where they can fetch their goods from.
   - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
@@ -657,4 +657,4 @@ metadata:
   locale: sk
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 26 translated messages, 162 untranslated messages.
+  translation_status: 44 translated messages, 1 fuzzy translation, 143 untranslated messages.

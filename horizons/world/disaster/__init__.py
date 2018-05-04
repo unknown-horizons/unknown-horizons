@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,13 +20,14 @@
 # ###################################################
 
 import logging
-
 from typing import Optional
-from horizons.world.settlement import Settlement
-from horizons.util.worldobject import WorldObject
-from horizons.scheduler import Scheduler
-from horizons.constants import GAME_SPEED
+
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import GAME_SPEED
+from horizons.scheduler import Scheduler
+from horizons.util.worldobject import WorldObject
+from horizons.world.settlement import Settlement
+
 
 class Disaster(WorldObject):
 	"""Prototype class for disasters."""
@@ -51,7 +51,7 @@ class Disaster(WorldObject):
 		@param settlement: Settlement instance this disaster operates on
 		@param manager: The disaster manager that initiated this disaster
 		"""
-		super(Disaster, self).__init__()
+		super().__init__()
 		assert isinstance(settlement, Settlement), "Not a settlement!"
 		self._settlement = settlement
 		self._manager = manager
@@ -81,7 +81,7 @@ class Disaster(WorldObject):
 		building.disaster = self
 		if self.DISASTER_RES is not None and not load: # in load, storage save/load will kick in
 			remnant = building.get_component(StorageComponent).inventory.alter(self.DISASTER_RES, 1)
-			assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+			assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def recover(self, building):
 		"""Inverse of infect(). Is also called when buildings are torn down by the user."""
@@ -92,7 +92,7 @@ class Disaster(WorldObject):
 			inv = building.get_component(StorageComponent).inventory
 			if inv[self.DISASTER_RES] > 0:
 				remnant = inv.alter(self.DISASTER_RES, -inv[self.DISASTER_RES])
-				assert remnant == 0, 'remn: '+str(remnant)+" "+str(building)
+				assert remnant == 0, 'remn: ' + str(remnant) + " " + str(building)
 
 	def breakout(self):
 		"""Picks (a) object(s) to start a breakout."""

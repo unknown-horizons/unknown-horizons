@@ -77,7 +77,7 @@ class SettlementManager(WorldObject):
 	log = logging.getLogger("ai.aiplayer")
 
 	def __init__(self, owner, land_manager):
-		super(SettlementManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.resource_manager = ResourceManager(self)
 		self.trade_manager = TradeManager(self)
@@ -91,9 +91,9 @@ class SettlementManager(WorldObject):
 		self.__init_goals()
 
 		if not self.feeder_island:
-			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes,
-				self.personality.initial_citizen_taxes, self.personality.initial_settler_taxes, self.personality.initial_sailor_upgrades,
-				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades)
+			self._set_taxes_and_permissions(self.personality.initial_sailor_taxes, self.personality.initial_pioneer_taxes, self.personality.initial_settler_taxes,
+				self.personality.initial_citizen_taxes, self.personality.initial_merchants_taxes, self.personality.initial_sailor_upgrades,
+				self.personality.initial_pioneer_upgrades, self.personality.initial_settler_upgrades, self.personality.initial_citizen_upgrades)
 
 	def __init(self, land_manager):
 		self.owner = land_manager.owner
@@ -153,7 +153,7 @@ class SettlementManager(WorldObject):
 			self._goals.append(MedicalHerbsProductsGoal(self))
 
 	def save(self, db):
-		super(SettlementManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_settlement_manager(rowid, land_manager) VALUES(?, ?)",
 			self.worldid, self.land_manager.worldid)
 
@@ -170,7 +170,7 @@ class SettlementManager(WorldObject):
 
 	def _load(self, db, owner, worldid):
 		self.owner = owner
-		super(SettlementManager, self).load(db, worldid)
+		super().load(db, worldid)
 
 		# load the main part
 		land_manager_id = db("SELECT land_manager FROM ai_settlement_manager WHERE rowid = ?", worldid)[0][0]
@@ -198,7 +198,7 @@ class SettlementManager(WorldObject):
 		for building in self.settlement.buildings:
 			self.add_building(building)
 
-	def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, sailor_upgrades, pioneer_upgrades, settler_upgrades):
+	def _set_taxes_and_permissions(self, sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes, sailor_upgrades, pioneer_upgrades, settler_upgrades, citizen_upgrades):
 		"""Set new tax settings and building permissions."""
 		if abs(self.settlement.tax_settings[TIER.SAILORS] - sailor_taxes) > 1e-9:
 			self.log.info("%s set sailors' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.SAILORS], sailor_taxes)
@@ -212,6 +212,9 @@ class SettlementManager(WorldObject):
 		if abs(self.settlement.tax_settings[TIER.CITIZENS] - citizen_taxes) > 1e-9:
 			self.log.info("%s set citizens' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.CITIZENS], citizen_taxes)
 			SetTaxSetting(self.settlement, TIER.CITIZENS, citizen_taxes).execute(self.land_manager.session)
+		if abs(self.settlement.tax_settings[TIER.MERCHANTS] - merchants_taxes) > 1e-9:
+			self.log.info("%s set merchants' taxes from %.1f to %.1f", self, self.settlement.tax_settings[TIER.MERCHANTS], merchants_taxes)
+			SetTaxSetting(self.settlement, TIER.MERCHANTS, merchants_taxes).execute(self.land_manager.session)
 		if self.settlement.upgrade_permissions[TIER.SAILORS] != sailor_upgrades:
 			self.log.info('%s set sailor upgrade permissions to %s', self, sailor_upgrades)
 			SetSettlementUpgradePermissions(self.settlement, TIER.SAILORS, sailor_upgrades).execute(self.land_manager.session)
@@ -221,18 +224,23 @@ class SettlementManager(WorldObject):
 		if self.settlement.upgrade_permissions[TIER.SETTLERS] != settler_upgrades:
 			self.log.info('%s set settler upgrade permissions to %s', self, settler_upgrades)
 			SetSettlementUpgradePermissions(self.settlement, TIER.SETTLERS, settler_upgrades).execute(self.land_manager.session)
+		if self.settlement.upgrade_permissions[TIER.CITIZENS] != citizen_upgrades:
+			self.log.info('%s set citizen upgrade permissions to %s', self, citizen_upgrades)
+			SetSettlementUpgradePermissions(self.settlement, TIER.CITIZENS, citizen_upgrades).execute(self.land_manager.session)
 
 	def _set_taxes_and_permissions_prefix(self, prefix):
 		"""Set new tax settings and building permissions according to the prefix used in the personality file."""
-		sailor_taxes = getattr(self.personality, '%s_sailor_taxes' % prefix)
-		pioneer_taxes = getattr(self.personality, '%s_pioneer_taxes' % prefix)
-		settler_taxes = getattr(self.personality, '%s_settler_taxes' % prefix)
-		citizen_taxes = getattr(self.personality, '%s_citizen_taxes' % prefix)
-		sailor_upgrades = getattr(self.personality, '%s_sailor_upgrades' % prefix)
-		pioneer_upgrades = getattr(self.personality, '%s_pioneer_upgrades' % prefix)
-		settler_upgrades = getattr(self.personality, '%s_settler_upgrades' % prefix)
-		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes,
-			sailor_upgrades, pioneer_upgrades, settler_upgrades)
+		sailor_taxes = getattr(self.personality, '{}_sailor_taxes'.format(prefix))
+		pioneer_taxes = getattr(self.personality, '{}_pioneer_taxes'.format(prefix))
+		settler_taxes = getattr(self.personality, '{}_settler_taxes'.format(prefix))
+		citizen_taxes = getattr(self.personality, '{}_citizen_taxes'.format(prefix))
+		merchants_taxes = getattr(self.personality, '{}_merchants_taxes'.format(prefix))
+		sailor_upgrades = getattr(self.personality, '{}_sailor_upgrades'.format(prefix))
+		pioneer_upgrades = getattr(self.personality, '{}_pioneer_upgrades'.format(prefix))
+		settler_upgrades = getattr(self.personality, '{}_settler_upgrades'.format(prefix))
+		citizen_upgrades = getattr(self.personality, '{}_citizen_upgrades'.format(prefix))
+		self._set_taxes_and_permissions(sailor_taxes, pioneer_taxes, settler_taxes, citizen_taxes, merchants_taxes,
+			sailor_upgrades, pioneer_upgrades, settler_upgrades, citizen_upgrades)
 
 	def can_provide_resources(self):
 		"""Return a boolean showing whether this settlement is complete enough to concentrate on building a new settlement."""
@@ -471,4 +479,8 @@ class SettlementManager(WorldObject):
 			Tear(message.building).execute(self.session)
 
 	def __str__(self):
-		return '%s.SM(%s/%s)' % (self.owner, self.settlement.get_component(NamedComponent).name if hasattr(self, 'settlement') else 'unknown', self.worldid if hasattr(self, 'worldid') else 'none')
+		return '{}.SM({}/{})'.format(
+			self.owner,
+			self.settlement.get_component(NamedComponent).name if hasattr(
+				self, 'settlement') else 'unknown',
+			self.worldid if hasattr(self, 'worldid') else 'none')

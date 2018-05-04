@@ -19,4 +19,25 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-# this file is needed just to appease nose
+import pytest
+
+import horizons.globals
+import horizons.main
+
+
+@pytest.fixture
+def db():
+	"""
+	For each test, set up a new database.
+	"""
+	db = horizons.main._create_main_db()
+
+	# Truncate all tables. We don't want to rely on existing data.
+	for (table_name, ) in db("SELECT name FROM sqlite_master WHERE type = 'table'"):
+		db('DELETE FROM {}'.format(table_name))
+
+	horizons.globals.db = db
+
+	yield db
+
+	db.close()

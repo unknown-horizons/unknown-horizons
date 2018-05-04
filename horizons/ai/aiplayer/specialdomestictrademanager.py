@@ -23,10 +23,11 @@ import logging
 from collections import defaultdict
 
 from horizons.component.storagecomponent import StorageComponent
+
 from .mission.specialdomestictrade import SpecialDomesticTrade
 
 
-class SpecialDomesticTradeManager(object):
+class SpecialDomesticTradeManager:
 	"""
 	An object of this class manages the special domestic trade routes of one AI player.
 
@@ -41,7 +42,7 @@ class SpecialDomesticTradeManager(object):
 	log = logging.getLogger("ai.aiplayer.specialdomestictrade")
 
 	def __init__(self, owner):
-		super(SpecialDomesticTradeManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session
@@ -117,4 +118,4 @@ class SpecialDomesticTradeManager(object):
 		self._add_route()
 
 	def __str__(self):
-		return '%s.SpecialDomesticTradeManager' % self.owner
+		return '{}.SpecialDomesticTradeManager'.format(self.owner)

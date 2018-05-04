@@ -21,6 +21,7 @@
 
 import logging
 import os
+from typing import Dict
 
 import horizons.globals
 from horizons.constants import PATHS
@@ -28,7 +29,7 @@ from horizons.util.loaders.jsondecoder import JsonDecoder
 from horizons.util.loaders.loader import GeneralLoader
 
 
-class ActionSetLoader(object):
+class ActionSetLoader:
 	"""The ActionSetLoader loads action sets from a directory tree. The directories loaded
 	begin with 'as_' to tell tell the loader that they are an action set. directory
 	structure is as follows: <action_set>/<action>/<rotation>/<framenumber>.png

@@ -1,4 +1,3 @@
-# Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,7 +20,6 @@
 # ###################################################
 
 
-
 from fife import fife
 from fife.extensions.pychan.widgets import Button
 
@@ -33,10 +31,10 @@ from horizons.i18n import gettext as T
 from horizons.util.python.callback import Callback
 
 
-class HotkeyConfiguration(object):
+class HotkeyConfiguration:
 
 	def __init__(self):
-		super(HotkeyConfiguration, self).__init__()
+		super().__init__() # TODO: check whether this call is needed
 
 		self.widget = load_uh_widget('hotkeys.xml')
 		self.buttons = []
@@ -147,7 +145,7 @@ class HotkeyConfiguration(object):
 
 			message = T("{key} is already set to {action}.").format(key=key_name, action=oldaction)
 			message += " " + T("Would you like to overwrite it?")
-			confirmed = horizons.main._modules.gui.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True)
+			confirmed = horizons.main.gui.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True)
 			if confirmed:
 				horizons.globals.fife.replace_key_for_action(oldaction, key_name, "UNASSIGNED")
 			else:
@@ -222,7 +220,7 @@ class HotkeysListener(fife.IKeyListener):
 	"""HotkeysListener Class to process events of hotkeys binding interface"""
 
 	def __init__(self, detect_keypress):
-		super(HotkeysListener, self).__init__()
+		super().__init__()
 		fife.IKeyListener.__init__(self)
 
 		self.detect = detect_keypress
@@ -235,7 +233,7 @@ class HotkeysListener(fife.IKeyListener):
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
-		super(HotkeysListener, self).end()
+		super().end()
 
 	def keyPressed(self, evt):
 		self.detect(evt)

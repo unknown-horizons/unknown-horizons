@@ -70,11 +70,11 @@ class Point(Shape):
 
 	def __add__(self, other):
 		assert isinstance(other, Point)
-		return Point(self.x+other.x, self.y+other.y)
+		return Point(self.x + other.x, self.y + other.y)
 
 	def __sub__(self, other):
 		assert isinstance(other, Point)
-		return Point(self.x-other.x, self.y-other.y)
+		return Point(self.x - other.x, self.y - other.y)
 
 	def __hash__(self):
 		return hash((self.x, self.y))
@@ -84,6 +84,7 @@ class Point(Shape):
 
 	def iter_without_border(self):
 		yield self
+
 
 class ConstPoint(Const, Point):
 	"""An immutable Point"""

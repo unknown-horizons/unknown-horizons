@@ -24,8 +24,8 @@ from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship
 from tests.gui.scenarios.helper import assert_defeat, assert_goal_reached, assert_win
 
-
 # Example tests
+
 
 @gui_test(use_scenario='tests/gui/scenarios/win', timeout=20)
 def test_win(gui):

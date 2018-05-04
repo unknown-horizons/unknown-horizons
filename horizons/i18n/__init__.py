@@ -30,18 +30,18 @@ We will need to make gettext recognize namespaces some time, but hardcoded
 'unknown-horizons' works for now since we currently only use one namespace.
 """
 
-import platform
 import gettext as gettext_module
 import glob
-import os
-import logging
+import json
 import locale
-
-from typing import Optional, Text
+import logging
+import os
+import platform
+from contextlib import contextmanager
+from typing import Dict, Optional, Text
 
 import horizons.globals
-
-from horizons.constants import LANGUAGENAMES, FONTDEFS
+from horizons.constants import FONTDEFS, LANGUAGENAMES
 from horizons.ext.speaklater import make_lazy_gettext
 from horizons.messaging import LanguageChanged
 
@@ -52,8 +52,7 @@ log = logging.getLogger("i18n")
 _trans = None # type: Optional[gettext_module.NullTranslations]
 
 
-def gettext(message):
-	# type: (Text) -> Text
+def gettext(message: Text) -> Text:
 	if not _trans:
 		return message
 	return _trans.gettext(message)
@@ -62,12 +61,23 @@ def gettext(message):
 gettext_lazy = make_lazy_gettext(lambda: gettext)
 
 
-def ngettext(message1, message2, count):
-	# type: (Text, Text, int) -> Text
+def ngettext(message1: Text, message2: Text, count: int) -> Text:
 	return _trans.ngettext(message1, message2, count)
 
 
 LANGCACHE = {} # type: Dict[str, str]
+
+
+@contextmanager
+def disable_translations():
+	"""
+	Temporarily disables translations. Affects gettext and lazy gettext objects.
+	"""
+	global _trans
+	original_translation = _trans
+	_trans = None
+	yield
+	_trans = original_translation
 
 
 def reset_language():
@@ -93,20 +103,20 @@ def find_available_languages(domain='unknown-horizons', update=False):
 	                '/usr/local/share/locale',
 	                '/usr/local/share/games/locale')
 
-	LANGCACHE = languages = {}
+	LANGCACHE = {}
 
 	for i in alternatives:
 		for j in glob.glob('%s/*/*/%s.mo' % (i, domain)):
 			splited = j.split(os.sep)
 			key = splited[-3]
-			if key not in languages:
-				languages[key] = os.sep.join(splited[:-3])
+			if key not in LANGCACHE:
+				LANGCACHE[key] = os.sep.join(splited[:-3])
 
 	# there's always a default, which is english
-	languages[LANGUAGENAMES['']] = ''
-	languages['en'] = ''
+	LANGCACHE[LANGUAGENAMES['']] = ''
+	LANGCACHE['en'] = ''
 
-	return languages
+	return LANGCACHE
 
 
 def get_fontdef_for_locale(locale):
@@ -153,3 +163,18 @@ def change_language(language=None):
 	horizons.globals.fife.pychan.loadFonts(fontdef)
 
 	LanguageChanged.broadcast(None)
+
+
+def get_language_translation_stats(language_code: str) -> int:
+	"""
+	Return percentage of translated strings for given language.
+	"""
+	if language_code not in LANGCACHE:
+		raise Exception('Unknown language "{}"'.format(language_code))
+
+	try:
+		with open(os.path.join('content', 'lang', 'stats.json')) as f:
+			data = json.load(f)
+			return data[language_code]
+	except FileNotFoundError:
+		return

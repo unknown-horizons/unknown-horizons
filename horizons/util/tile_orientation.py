@@ -66,7 +66,7 @@ def get_tile_alignment_action(origin, is_similar_tile):
 			# direction.
 			fill_left = chr(ord(action_part) - 4) in action
 			# 'h' has the parents 'd' and 'a' (not 'e'), so we need a slight hack here.
-			fill_right = chr(ord(action_part) - 3 - 4*(action_part=='h')) in action
+			fill_right = chr(ord(action_part) - 3 - 4 * (action_part == 'h')) in action
 			if fill_left and fill_right:
 				action += action_part
 	if action == '':

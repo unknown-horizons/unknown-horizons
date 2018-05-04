@@ -44,10 +44,10 @@ from horizons.util.python.decorators import cachedmethod
 from horizons.world.player import Player
 
 
-class ResourceOverviewBar(object):
+class ResourceOverviewBar:
 	"""The thing on the top left.
 
-	http://wiki.unknown-horizons.org/w/HUD
+	https://github.com/unknown-horizons/unknown-horizons/wiki/HUD
 
 	Features:
 	- display contents of currently relevant inventory (settlement/ship)
@@ -89,10 +89,11 @@ class ResourceOverviewBar(object):
 
 	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = { # per inhabitant tier
-	  TIER.SAILORS:  [ RES.TOOLS, RES.BOARDS ],
-	  TIER.PIONEERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.SETTLERS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.CITIZENS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.SAILORS:   [ RES.TOOLS, RES.BOARDS ],
+	  TIER.PIONEERS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.SETTLERS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.CITIZENS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	  TIER.MERCHANTS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
 	}
 
 	def __init__(self, session):
@@ -221,18 +222,19 @@ class ResourceOverviewBar(object):
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
-			try: # get old slot
+			if i < len(self.gui): # get old slot
 				entry = self.gui[i]
 				if res == -1: # can't reuse dummy slot, need default data
 					self.gui[i] = entry = load_entry()
-			except IndexError: # need new one
+			else: # need new one
 				entry = load_entry()
 				self.gui.append(entry)
 
 			entry.findChild(name="entry").position = (self.INITIAL_X_OFFSET + i * self.ENTRY_X_OFFSET,
 			                                          self.ENTRY_Y_OFFSET)
 			background_icon = entry.findChild(name="entry")
-			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
+			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseClicked', 'resbar')
+			background_icon.capture(self._show_dummy_slot, 'mouseEntered', 'resbar')
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
@@ -284,7 +286,7 @@ class ResourceOverviewBar(object):
 		for res, amount in build_costs.items():
 			assert res in res_list or res == RES.GOLD
 
-			cost_label = Label(text="-"+str(amount))
+			cost_label = Label(text="-" + str(amount))
 			cost_label.stylize( self.__class__.STYLE )
 			# add icon below end of background icon
 			if res in res_list:
@@ -420,7 +422,6 @@ class ResourceOverviewBar(object):
 		height = self.ENTRY_Y_OFFSET + self.ENTRY_Y_HEIGHT
 		return (width, height)
 
-
 	###
 	# Resource slot selection
 
@@ -434,13 +435,10 @@ class ResourceOverviewBar(object):
 		if inv is None:
 			return
 
-		self._show_dummy_slot()
-
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):
 			self.session.ingame_gui.cursor = ResBarMouseTool(self.session, self.session.ingame_gui.cursor,
 			                                      self.close_resource_selection_mode)
-
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
@@ -590,8 +588,8 @@ class ResourceOverviewBar(object):
 			data.balance
 		]
 		for (i, numbers) in enumerate(figures):
-			label = self.stats_gui.child_finder("resbar_stats_entry_%s" % i)
-			label.text = "%+d" % numbers
+			label = self.stats_gui.child_finder("resbar_stats_entry_{}".format(i))
+			label.text = "{:+d}".format(numbers)
 
 	def _hide_stats(self):
 		"""Inverse of show_stats"""
@@ -622,15 +620,15 @@ class ResourceOverviewBar(object):
 			# Keep in sync with comment there until we can use that data:
 			# ./content/gui/xml/ingame/hud/resource_overview_bar_stats.xml
 			box = HBox(padding=0, min_size=(70, 0))
-			box.name = "resbar_stats_line_%s" % num
+			box.name = "resbar_stats_line_{}".format(num)
 			box.helptext = helptext
 			#TODO Fix icon size; looks like not 16x16 a surprising amount of times.
 			box.addChild(Icon(image=image))
 			box.addChild(Spacer())
-			box.addChild(Label(name="resbar_stats_entry_%s"%num))
+			box.addChild(Label(name="resbar_stats_entry_{}".format(num)))
 			#TODO This label is a workaround for some fife font bug,
 			# probably http://github.com/fifengine/fifengine/issues/666.
-			templabel = Label(name="resbar_stats_whatever_%s"%num)
+			templabel = Label(name="resbar_stats_whatever_{}".format(num))
 			box.addChild(templabel)
 			if num == len(images) - 1:
 				# The balance line (last one) gets bold font.
@@ -662,7 +660,7 @@ class ResBarMouseTool(NavigationTool):
 	"""Temporary mousetool for resource selection.
 	Terminates self on mousePressed and restores old tool"""
 	def __init__(self, session, old_tool, on_click):
-		super(ResBarMouseTool, self).__init__(session)
+		super().__init__(session)
 		if old_tool: # can be None in corner cases
 			old_tool.disable()
 		self.old_tool = old_tool

@@ -36,6 +36,7 @@ class AbstractWeaver(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.WEAVER] = cls
 
+
 class WeaverEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -67,5 +68,6 @@ class WeaverEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.WEAVER
+
 
 AbstractWeaver.register_buildings()

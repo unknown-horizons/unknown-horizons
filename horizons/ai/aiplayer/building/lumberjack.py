@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from typing import Tuple
+from typing import List, Set, Tuple
 
 from horizons.ai.aiplayer.basicbuilder import BasicBuilder
 from horizons.ai.aiplayer.building import AbstractBuilding
@@ -38,6 +38,7 @@ class AbstractLumberjack(AbstractBuilding):
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.LUMBERJACK] = cls
+
 
 class LumberjackEvaluator(BuildingEvaluator):
 	__template_outline = None # type: List[Set[Tuple[int, int]]]
@@ -100,7 +101,7 @@ class LumberjackEvaluator(BuildingEvaluator):
 	def execute(self):
 		# TODO Add a check that figures out if all trees that should be planted are in range of the settlement.
 		# If not, return range missing result
-		(result, building) = super(LumberjackEvaluator, self).execute()
+		(result, building) = super().execute()
 		if result != BUILD_RESULT.OK:
 			return (result, None)
 
@@ -123,5 +124,6 @@ class LumberjackEvaluator(BuildingEvaluator):
 		production_builder.register_change_list(forest_coords_list, BUILDING_PURPOSE.TREE, None)
 
 		return (BUILD_RESULT.OK, building)
+
 
 AbstractLumberjack.register_buildings()

@@ -25,17 +25,19 @@ but rather a generic enhancement of the programming language.
 """
 
 import collections
+from typing import Any, Set, Type
 
 from .decorators import *
 
-class Const(object):
+
+class Const:
 	"""An immutable type. Think C++-like const"""
 	def __setattr__(self, name, value):
 		"""Disallow changing an already set attribute.
 		An asymptote to const behavior, which is not supported by python"""
 		if name in self.__dict__:
 			raise Exception("Can't change a Const object")
-		super(Const, self).__setattr__(name, value)
+		super().__setattr__(name, value)
 
 
 def parse_port(port, allow_zero=True):
@@ -47,14 +49,16 @@ def parse_port(port, allow_zero=True):
 		raise ValueError('Requires a port between 1 and 65535.')
 	return port_int
 
+
 def get_all_subclasses(cls):
 	"""Recursivly find all subclasses of a given class."""
-	result = set()
+	result = set() # type: Set[type]
 	for subclass in cls.__class__.__subclasses__(cls):
 		if subclass not in result:
 			result.add(subclass)
 			result.update(get_all_subclasses(subclass))
 	return result
+
 
 def map_balance(value, n, m):
 	"""
@@ -73,9 +77,10 @@ def map_balance(value, n, m):
 	# normally we'd need to have special cases for value < 1.0 and value > 1.0
 	# but we turn cases of 1/n into n instead
 	if value < 1.0:
-		value = 1./value
+		value = 1. / value
 		m *= -1
 	return ((value - 1.0) / (n - 1.0)) * m
+
 
 def trim_value(value, min, max):
 	if value < min:
@@ -84,23 +89,3 @@ def trim_value(value, min, max):
 		return max
 	else:
 		return value
-
-
-# TODO Remove ignore once https://github.com/python/typeshed/pull/608 ships
-
-class ChainedContainer(collections.Container): # type: ignore
-	"""
-	Allows membership test in multiple containers.
-
-	>>> chain = ChainedContainer({1: 'foo'}, [2, 3], set([5, 6]))
-	>>> 2 in chain
-	True
-	>>> 0 in chain
-	False
-
-	"""
-	def __init__(self, *containers):
-		self.containers = containers
-
-	def __contains__(self, value):
-		return any(value in c for c in self.containers)

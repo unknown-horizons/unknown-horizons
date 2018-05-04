@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import pytest
 
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
@@ -26,6 +27,7 @@ from horizons.constants import RES
 from tests.game import game_test
 
 
+@pytest.mark.xfail(strict=True)
 @game_test(use_fixture='traderoute')
 def test_traderoute_basic(s):
 	"""

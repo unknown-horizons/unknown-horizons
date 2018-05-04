@@ -64,7 +64,7 @@ class TradeManager(WorldObject):
 	legal_resources = [RES.FOOD, RES.TEXTILE, RES.LIQUOR, RES.BRICKS, RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]
 
 	def __init__(self, settlement_manager):
-		super(TradeManager, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager)
 
 	def __init(self, settlement_manager):
@@ -74,7 +74,7 @@ class TradeManager(WorldObject):
 		self.ships_sent = defaultdict(int) # {settlement_manager_id: num_sent, ...}
 
 	def save(self, db):
-		super(TradeManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_trade_manager(rowid, settlement_manager) VALUES(?, ?)", self.worldid, self.settlement_manager.worldid)
 		for resource_manager in self.data.values():
 			resource_manager.save(db, self.worldid)
@@ -84,7 +84,7 @@ class TradeManager(WorldObject):
 		self.__init(settlement_manager)
 		for db_row in db("SELECT rowid, resource_id FROM ai_single_resource_trade_manager WHERE trade_manager = ?", worldid):
 			self.data[db_row[1]] = SingleResourceTradeManager.load(db, settlement_manager, db_row[0])
-		super(TradeManager, self).load(db, worldid)
+		super().load(db, worldid)
 
 	@classmethod
 	def load(cls, db, settlement_manager):
@@ -201,17 +201,20 @@ class TradeManager(WorldObject):
 		self.ships_sent[source_settlement_manager.worldid] += 1
 
 	def __str__(self):
-		result = 'TradeManager(%s, %s)' % (self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(self.settlement_manager, 'settlement') else 'unknown',
+		result = 'TradeManager({}, {})'.format(
+			self.settlement_manager.settlement.get_component(NamedComponent).name if hasattr(
+				self.settlement_manager, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
 		for resource_manager in self.data.values():
 			result += '\n' + resource_manager.__str__()
 		return result
 
+
 class SingleResourceTradeManager(WorldObject):
 	"""An object of this class keeps track of both parties of the resource import/export deal for one resource."""
 
 	def __init__(self, settlement_manager, resource_id):
-		super(SingleResourceTradeManager, self).__init__()
+		super().__init__()
 		self.__init(settlement_manager, resource_id)
 		self.available = 0.0 # unused resource production available per tick
 		self.total = 0.0 # total resource production imported per tick
@@ -221,14 +224,14 @@ class SingleResourceTradeManager(WorldObject):
 		self.resource_id = resource_id
 		self.quotas = {} # {quota_holder: amount, ...}
 		self.partners = {} # {settlement_manager_id: amount, ...}
-		self.identifier = '/%d,%d/trade' % (self.worldid, self.resource_id)
+		self.identifier = '/{:d},{:d}/trade'.format(self.worldid, self.resource_id)
 		self.building_ids = []
 		for abstract_building in AbstractBuilding.buildings.values():
 			if self.resource_id in abstract_building.lines:
 				self.building_ids.append(abstract_building.id)
 
 	def save(self, db, trade_manager_id):
-		super(SingleResourceTradeManager, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_single_resource_trade_manager(rowid, trade_manager, resource_id, available, total) VALUES(?, ?, ?, ?, ?)",
 			self.worldid, trade_manager_id, self.resource_id, self.available, self.total)
 		for identifier, quota in self.quotas.items():
@@ -239,7 +242,7 @@ class SingleResourceTradeManager(WorldObject):
 				self.worldid, settlement_manager_id, amount)
 
 	def _load(self, db, settlement_manager, worldid):
-		super(SingleResourceTradeManager, self).load(db, worldid)
+		super().load(db, worldid)
 		resource_id, self.available, self.total = \
 			db("SELECT resource_id, available, total FROM ai_single_resource_trade_manager WHERE rowid = ?", worldid)[0]
 		self.__init(settlement_manager, resource_id)
@@ -291,7 +294,7 @@ class SingleResourceTradeManager(WorldObject):
 				resource_manager = settlement_manager.resource_manager
 				amount = resource_manager.get_deep_quota(self.identifier, self.resource_id)
 				options.append((amount, resource_manager.worldid, resource_manager, settlement_manager))
-		options.sort(reverse = True)
+		options.sort(reverse=True)
 
 		self.partners = defaultdict(float)
 		needed_amount = self.total - self.available
@@ -340,14 +343,15 @@ class SingleResourceTradeManager(WorldObject):
 	def __str__(self):
 		if not hasattr(self, "resource_id"):
 			return "UninitializedSingleResourceTradeManager"
-		result = 'Resource %d import %.5f/%.5f' % (self.resource_id, self.available, self.total)
+		result = 'Resource {:d} import {:.5f}/{:.5f}'.format(
+			self.resource_id, self.available, self.total)
 		for quota_holder, quota in self.quotas.items():
-			result += '\n  quota assignment %.5f to %s' % (quota, quota_holder)
+			result += '\n  quota assignment {:.5f} to {}'.format(quota, quota_holder)
 		for settlement_manager_id, amount in self.partners.items():
 			try:
 				settlement = WorldObject.get_object_by_id(settlement_manager_id).settlement
 				settlement_name = settlement.get_component(NamedComponent).name
 			except WorldObjectNotFound:
 				settlement_name = 'unknown'
-			result += '\n  import %.5f from %s' % (amount, settlement_name)
+			result += '\n  import {:.5f} from {}'.format(amount, settlement_name)
 		return result

@@ -37,7 +37,7 @@ class SPManager(LivingObject):
 	over the network, and synchronization of network games."""
 
 	def __init__(self, session):
-		super(SPManager, self).__init__()
+		super().__init__()
 		self.session = session
 		self.commands = []
 
@@ -58,7 +58,8 @@ class SPManager(LivingObject):
 
 	def end(self):
 		self.commands = None
-		super(SPManager, self).end()
+		super().end()
+
 
 class MPManager(LivingObject):
 	"""Handler for commands.
@@ -72,7 +73,7 @@ class MPManager(LivingObject):
 
 	def __init__(self, session, networkinterface):
 		"""Initialize the Multiplayer Manager"""
-		super(MPManager, self).__init__()
+		super().__init__()
 		self.session = session
 		self.networkinterface = networkinterface
 		self.commandsmanager = MPCommandsManager(self)
@@ -120,7 +121,7 @@ class MPManager(LivingObject):
 					self.session.world.player.worldid, self.gamecommands)
 			self.gamecommands = []
 			self.commandsmanager.add_packet(commandpacket)
-			self.log.debug("sending command for tick %d" % (commandpacket.tick))
+			self.log.debug("sending command for tick %d", commandpacket.tick)
 			self.networkinterface.send_packet(commandpacket)
 
 			self.localcommandsmanager.add_packet(CommandPacket(self.calculate_execution_tick(tick),
@@ -134,7 +135,7 @@ class MPManager(LivingObject):
 				checkuphashpacket = CheckupHashPacket(self.calculate_hash_tick(tick),
 			                              self.session.world.player.worldid, hash_value)
 				self.checkuphashmanager.add_packet(checkuphashpacket)
-				self.log.debug("sending checkuphash for tick %d" % (checkuphashpacket.tick))
+				self.log.debug("sending checkuphash for tick %d", checkuphashpacket.tick)
 				self.networkinterface.send_packet(checkuphashpacket)
 
 		# decide if tick can be calculated
@@ -171,7 +172,8 @@ class MPManager(LivingObject):
 	def hash_value_check(self, tick):
 		if tick % self.HASH_EVAL_DISTANCE == 0:
 			if not self.checkuphashmanager.are_checkup_hash_values_equal(tick, self.hash_value_diff):
-				self.log.error("MPManager: Hash values generated in tick %s are not equal" % str(tick - self.HASHDELAY))
+				self.log.error("MPManager: Hash values generated in tick %s are not equal",
+							   str(tick - self.HASHDELAY))
 				# if this is reached, we are screwed. Something went wrong in the simulation,
 				# but we don't know what. Stop the game.
 				msg = T("The games have run out of sync. This indicates an unknown internal error, the game cannot continue.") + "\n" + \
@@ -180,7 +182,7 @@ class MPManager(LivingObject):
 
 	def hash_value_diff(self, player1, hash1, player2, hash2):
 		"""Called when a divergence has been detected"""
-		self.log.error("MPManager: Hash diff:\n%s hash1: %s\n%s hash2: %s" % (player1, hash1, player2, hash2))
+		self.log.error("MPManager: Hash diff:\n%s hash1: %s\n%s hash2: %s", player1, hash1, player2, hash2)
 		self.log.error("------------------")
 		self.log.error("Differences:")
 		if len(hash1) != len(hash2):
@@ -189,8 +191,8 @@ class MPManager(LivingObject):
 		items2 = sorted(hash2.items())
 		for i in range(min(len(hash1), len(hash2))):
 			if (items1[i] != items2[i]):
-				self.log.error(str(i)+": "+str(items1[i]))
-				self.log.error(str(i)+": "+str(items2[i]))
+				self.log.error(str(i) + ": " + str(items1[i]))
+				self.log.error(str(i) + ": " + str(items2[i]))
 		self.log.error("------------------")
 
 	def calculate_execution_tick(self, tick):
@@ -203,7 +205,7 @@ class MPManager(LivingObject):
 		"""Receive commands to be executed from local player
 		@param command: Command instance
 		@param local: commands that don't need to be sent over the wire"""
-		self.log.debug('MPManager: adding command (next tick: ' + str(self.session.timer.tick_next_id) + ')'+str(command))
+		self.log.debug('MPManager: adding command (next tick: %d) %s', self.session.timer.tick_next_id, str(command))
 		if local:
 			self.localcommands.append(command)
 		else:
@@ -232,8 +234,10 @@ class MPManager(LivingObject):
 # Packagemanagers storing Packages for later use
 ################################################
 
-class MPPacketmanager(object):
+
+class MPPacketmanager:
 	log = logging.getLogger("mpmanager")
+
 	def __init__(self, mpmanager):
 		self.mpmanager = mpmanager
 		self.command_packet_list = []
@@ -242,14 +246,14 @@ class MPPacketmanager(object):
 		"""Check if packets from all players have arrived (necessary for tick to begin)"""
 		ready = len(self.get_packets_for_tick(tick, remove_returned_commands=False)) == self.mpmanager.get_player_count()
 		if not ready:
-			self.log.debug("tick not ready, packets: " + str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
+			self.log.debug("tick not ready, packets: %s", str(list(str(x) for x in self.get_packets_for_tick(tick, remove_returned_commands=False))))
 		return ready
 
 	def get_packets_for_tick(self, tick, remove_returned_commands=True):
 		"""Returns packets that are to be executed at a certain tick"""
-		command_packets = [x for x in self.command_packet_list if x.tick==tick]
+		command_packets = [x for x in self.command_packet_list if x.tick == tick]
 		if remove_returned_commands:
-			self.command_packet_list = [x for x in self.command_packet_list if x.tick!=tick]
+			self.command_packet_list = [x for x in self.command_packet_list if x.tick != tick]
 		return command_packets
 
 	def get_packets_from_player(self, player_id):
@@ -257,14 +261,16 @@ class MPPacketmanager(object):
 		Returns all command this player has issued, that are not yet executed
 		@param player_id: worldid of player
 		"""
-		return [x for x in self.command_packet_list if x.player_id==player_id]
+		return [x for x in self.command_packet_list if x.player_id == player_id]
 
 	def add_packet(self, command_packet):
 		"""Receive a packet"""
 		self.command_packet_list.append(command_packet)
 
+
 class MPCommandsManager(MPPacketmanager):
 	pass
+
 
 class MPCheckupHashManager(MPPacketmanager):
 	def is_tick_ready(self, tick):
@@ -272,7 +278,7 @@ class MPCheckupHashManager(MPPacketmanager):
 		# if the current tick isn't checked we don't need any packets and are always ready
 		if tick % self.mpmanager.HASH_EVAL_DISTANCE != 0:
 			return True
-		return super(MPCheckupHashManager, self).is_tick_ready(tick)
+		return super().is_tick_ready(tick)
 
 	def are_checkup_hash_values_equal(self, tick, cb_diff=None):
 		"""
@@ -285,9 +291,9 @@ class MPCheckupHashManager(MPPacketmanager):
 			if pkges[0].checkup_hash != pkg.checkup_hash:
 				if cb_diff is not None:
 					localplayerid = self.mpmanager.session.world.player.worldid
-					cb_diff("local" if pkges[0].player_id==localplayerid else "pl#%02d" % (pkges[0].player_id),
+					cb_diff("local" if pkges[0].player_id == localplayerid else "pl#{:02d}".format(pkges[0].player_id),
 						pkges[0].checkup_hash,
-						"local" if pkg.player_id==localplayerid else "pl#%02d" % (pkg.player_id),
+						"local" if pkg.player_id == localplayerid else "pl#{:02d}".format(pkg.player_id),
 						pkg.checkup_hash)
 				return False
 		return True
@@ -295,7 +301,8 @@ class MPCheckupHashManager(MPPacketmanager):
 # Packages transmitted over the network
 #######################################
 
-class MPPacket(object):
+
+class MPPacket:
 	"""Packet to be sent from every player to every player"""
 	def __init__(self, tick, player_id):
 		"""
@@ -316,19 +323,23 @@ class MPPacket(object):
 	def __str__(self):
 		return "packet " + str(self.__class__)  + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
 
+
 class CommandPacket(MPPacket):
 	"""Packet to be sent from every player to every player every tick.
 	Contains list of packets to be executed as well as the designated execution time.
 	Also acts as ping (game will stop if a packet for a certain tick hasn't arrived)"""
 	def __init__(self, tick, player_id, commandlist):
-		super(CommandPacket, self).__init__(tick, player_id)
+		super().__init__(tick, player_id)
 		self.commandlist = commandlist
+
 
 MPPacket.allow_network(CommandPacket)
 
+
 class CheckupHashPacket(MPPacket):
 	def __init__(self, tick, player_id, checkup_hash):
-		super(CheckupHashPacket, self).__init__(tick, player_id)
+		super().__init__(tick, player_id)
 		self.checkup_hash = checkup_hash
+
 
 MPPacket.allow_network(CheckupHashPacket)

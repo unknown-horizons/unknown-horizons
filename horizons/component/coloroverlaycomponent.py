@@ -82,7 +82,7 @@ class ColorOverlayComponent(Component):
 	log = logging.getLogger('component.overlays')
 
 	def __init__(self, overlays=None):
-		super(ColorOverlayComponent, self).__init__()
+		super().__init__()
 		self.overlays = overlays or {}
 		self.current_overlays = defaultdict(dict)
 
@@ -101,7 +101,7 @@ class ColorOverlayComponent(Component):
 		return self.fife_instance.getCurrentAction().getId()
 
 	def initialize(self):
-		super(ColorOverlayComponent, self).initialize()
+		super().initialize()
 		ActionChanged.subscribe(self.update_overlay, self.instance)
 		ActionChanged.broadcast(self.instance, self.instance._action)
 
@@ -130,9 +130,9 @@ class ColorOverlayComponent(Component):
 				if isinstance(color, UtilColor) or isinstance(color, fife.Color):
 					fife_to = fife.Color(color.r, color.g, color.b, alpha)
 				else:
-					raise TypeError('Unknown color `%s` as attribute `%s`: '
+					raise TypeError('Unknown color `{}` as attribute `{}`: '
 						'Expected either fife.Color or horizons.util.Color.'
-						% (color, to_color))
+						.format(color, to_color))
 			self.change_color(z_order, fife_from, fife_to)
 
 	def add_overlay(self, overlay_name, z_order):
@@ -192,10 +192,10 @@ class ColorOverlayComponent(Component):
 				self.fife_instance.removeColorOverlay(self.identifier, rotation, z_order)
 
 	def load(self, db, worldid):
-		super(ColorOverlayComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
 
 	def remove(self):
 		"""Removes all color overlays from the fife instance. """
 		self.remove_overlay()
-		super(ColorOverlayComponent, self).remove()
+		super().remove()

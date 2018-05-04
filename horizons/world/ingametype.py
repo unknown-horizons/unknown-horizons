@@ -20,6 +20,7 @@
 # ###################################################
 
 import hashlib
+import importlib
 
 from horizons.constants import TIER
 from horizons.i18n import gettext_lazy as LazyT
@@ -55,7 +56,7 @@ class IngameType(type):
 			super(cls, self).load(db, worldid)
 			return self
 
-		module = __import__(str(self.basepackage+class_package), [], [], [str(class_name)])
+		module = importlib.import_module(str(self.basepackage + class_package))
 		return type.__new__(self, self.classstring.format(id=id),
 			(getattr(module, class_name),),
 			{'load': load, 'class_package': str(class_package), 'class_name': str(class_name)})
@@ -174,7 +175,6 @@ class IngameType(type):
 				new_data[new_key] = v
 
 			producer_data['productionlines'] = new_data
-
 
 	@property
 	def _fife_object(self):

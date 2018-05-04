@@ -27,7 +27,7 @@ from unittest import TestCase
 
 from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
-from run_uh import create_user_dirs
+from horizons.util import create_user_dirs
 
 
 class TestPaths(TestCase):
@@ -42,7 +42,7 @@ class TestPaths(TestCase):
 
 		outer = tempfile.mkdtemp( self.__class__.odd_characters )
 		inner = str(os.path.join(outer, self.__class__.odd_characters))
-		inner2 = str(os.path.join(outer, self.__class__.odd_characters+"2"))
+		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 
 		PATHS.USER_DIR = inner
 

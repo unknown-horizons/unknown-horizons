@@ -41,8 +41,7 @@ class UhDbAccessor(DbReader):
 	places, that are data access routines (e.g. unit/building class)."""
 
 	def __init__(self, dbfile):
-		super(UhDbAccessor, self).__init__(dbfile=dbfile)
-
+		super().__init__(dbfile=dbfile)
 
 	# ------------------------------------------------------------------
 	# Db Access Functions start here
@@ -230,7 +229,7 @@ class UhDbAccessor(DbReader):
 		"""Returns a random name compatible with the given locale. If there are
 		no unused names left, None is returned.
 		"""
-		used_names_placeholder = ', '.join(['?']*len(used_names))
+		used_names_placeholder = ', '.join(['?'] * len(used_names))
 		sql = "SELECT name FROM ainames \
 				WHERE name NOT IN ({0}) AND \
 					  (locale IS NULL OR locale = ?) \
@@ -264,7 +263,6 @@ class UhDbAccessor(DbReader):
 		"""Returns weapon's attack radius modifier."""
 		return self.cached_query("SELECT attack_radius FROM weapon WHERE id = ?", weapon_id)[0][0]
 
-
 	# Units
 
 	def get_unit_type_name(self, type_id):
@@ -297,5 +295,5 @@ class UhDbAccessor(DbReader):
 
 
 def read_savegame_template(db):
-	savegame_template = open(PATHS.SAVEGAME_TEMPLATE, "r")
-	db.execute_script(savegame_template.read())
+	with open(PATHS.SAVEGAME_TEMPLATE, "r") as f:
+		db.execute_script(f.read())

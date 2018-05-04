@@ -26,13 +26,13 @@ from horizons.constants import BUILDINGS, PRODUCTIONLINES
 from horizons.world.production.producer import Producer
 
 
-class UnitBuilder(object):
+class UnitBuilder:
 	"""An object of this class builds the units of one player."""
 
 	log = logging.getLogger("ai.aiplayer.unit_builder")
 
 	def __init__(self, owner):
-		super(UnitBuilder, self).__init__()
+		super().__init__() # TODO: is this call needed?
 		self.owner = owner
 
 	def _get_boat_builders(self):
@@ -69,4 +69,4 @@ class UnitBuilder(object):
 		return sum(len(boat_builder.get_component(Producer).get_production_lines()) for boat_builder in self._get_boat_builders())
 
 	def __str__(self):
-		return '%s UnitBuilder' % self.owner
+		return '{} UnitBuilder'.format(self.owner)

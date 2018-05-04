@@ -41,7 +41,7 @@ class MPSession(Session):
 		self.__network_interface = network_interface
 		self.__network_interface.subscribe("game_starts", self._start_game)
 		self.__network_interface.subscribe("error", self._on_error)
-		super(MPSession, self).__init__(db, **kwargs)
+		super().__init__(db, **kwargs)
 
 	def _start_game(self, game):
 		horizons.main.start_multiplayer(game)
@@ -60,7 +60,7 @@ class MPSession(Session):
 	def speed_set(self, ticks, suggestion=False):
 		"""Set game speed to ticks ticks per second"""
 		if not suggestion:
-			super(MPSession, self).speed_set(ticks, suggestion)
+			super().speed_set(ticks, suggestion)
 
 	def create_manager(self):
 		return MPManager(self, self.__network_interface)
@@ -75,7 +75,7 @@ class MPSession(Session):
 		self.__network_interface.unsubscribe("error", self._on_error)
 		self.__network_interface.unsubscribe("game_starts", self._start_game)
 		self.__network_interface.disconnect()
-		super(MPSession, self).end()
+		super().end()
 
 	def autosave(self):
 		self.ingame_gui.open_popup(T("Not possible"), T("Save/load for multiplayer games is not possible yet"))

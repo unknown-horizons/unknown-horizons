@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,29 +19,22 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import print_function
-import bz2
-import sys
+from pathlib import PurePath
 
-args = sys.argv[1:]
+from horizons.util.platform import get_user_game_directory
 
-if not args:
-	print('USAGE: ' + sys.argv[0] + ' map1.sqlite map2.sqlite ... mapx.sqlite')
-	print()
-	print('maps will be saved as "mapx.map"')
-	print('to convert all maps, use "' + sys.argv[0] + ' content/maps/*sqlite"')
-	sys.exit()
 
-for filename in args:
-	if not filename.endswith(".sqlite"):
-		print("Invalid filename:", filename)
-		continue
-	infile = None
-	try:
-		infile = open(filename, "r")
-	except IOError as e:
-		print("Error:", e.message)
-		continue
+def test_get_user_game_directory_windows(mocker, tmpdir):
+	mocker.patch('horizons.util.platform.get_home_directory',
+	             return_value=PurePath(str(tmpdir)))
+	mocker.patch('platform.system', return_value='Windows')
 
-	outfile = open(filename.replace('.sqlite','.map'), 'w')
-	outfile.write( bz2.compress( infile.read() ) )
+	assert str(get_user_game_directory()) == tmpdir.join('My Games', 'unknown-horizons')
+
+
+def test_get_user_game_directory_unix(mocker, tmpdir):
+	mocker.patch('horizons.util.platform.get_home_directory',
+	             return_value=PurePath(str(tmpdir)))
+	mocker.patch('platform.system', return_value='Linux')
+
+	assert str(get_user_game_directory()) == tmpdir.join('.unknown-horizons')

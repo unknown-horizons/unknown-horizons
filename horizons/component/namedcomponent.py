@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import List
+
 from horizons.component import Component
 from horizons.util.changelistener import ChangeListener
 
@@ -31,7 +33,7 @@ class NamedComponent(Component):
 	names_used = [] # type: List[str]
 
 	def __init__(self, name=None):
-		super(NamedComponent, self).__init__()
+		super().__init__()
 		self.name = name
 
 	def initialize(self):
@@ -49,7 +51,7 @@ class NamedComponent(Component):
 			self.instance._changed()
 
 	def _possible_names(self):
-		return ['object_%s' % self.instance.worldid]
+		return ['object_{}'.format(self.instance.worldid)]
 
 	def get_default_name(self):
 		available_names = [name for name in self._possible_names() if name not in NamedComponent.names_used]
@@ -64,11 +66,11 @@ class NamedComponent(Component):
 			return "{newname} {index}".format(newname=newname, index=index)
 
 	def save(self, db):
-		super(NamedComponent, self).save(db)
+		super().save(db)
 		db("INSERT INTO name (rowid, name) VALUES(?, ?)", self.instance.worldid, self.name)
 
 	def load(self, db, worldid):
-		super(NamedComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.name = None
 		name = db("SELECT name FROM name WHERE rowid = ?", worldid)[0][0]
 		# We need unicode strings as the name is displayed on screen.
@@ -78,11 +80,13 @@ class NamedComponent(Component):
 	def reset(cls):
 		cls.names_used = []
 
+
 class ShipNameComponent(NamedComponent):
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM shipnames WHERE for_player = 1")
 		return [x[0] for x in names]
+
 
 class PirateShipNameComponent(NamedComponent):
 
@@ -90,17 +94,20 @@ class PirateShipNameComponent(NamedComponent):
 		names = self.session.db("SELECT name FROM shipnames WHERE for_pirate = 1")
 		return [x[0] for x in names]
 
+
 class SettlementNameComponent(NamedComponent):
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM citynames WHERE for_player = 1")
 		return [x[0] for x in names]
 
+
 class SoldierNameComponent(NamedComponent):
 
 	def _possible_names(self):
 		names = self.session.db("SELECT name FROM groundunitnames WHERE for_soldier = 1")
 		return [x[0] for x in names]
+
 
 class InhabitantNameComponent(NamedComponent):
 

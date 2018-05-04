@@ -60,7 +60,7 @@ class Annulus(Shape):
 		return hash((self.center, self.min_radius, self.max_radius))
 
 	def tuple_iter(self):
-		for x in range(self.center.x-self.max_radius, self.center.x+self.max_radius+1):
-			for y in range(self.center.y-self.max_radius, self.center.y+self.max_radius+1):
+		for x in range(self.center.x - self.max_radius, self.center.x + self.max_radius + 1):
+			for y in range(self.center.y - self.max_radius, self.center.y + self.max_radius + 1):
 				if self.min_radius <= self.center.distance((x, y)) <= self.max_radius:
 					yield (x, y)

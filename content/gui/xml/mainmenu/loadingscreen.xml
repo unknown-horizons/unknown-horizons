@@ -1,15 +1,17 @@
 <?xml version="1.0"?>
-<Container size="1024,768" name="loadingscreen">
-	<Icon name="loading_image" image="content/gui/images/background/mainmenu/loading.png" position="387,316" />
-	<Icon name="quote_area" image="content/gui/images/background/mainmenu/quotearea.png" position="0,561" />
+<Container name="loadingscreen">
+	<Container name="loading_box" size="250,137">
+		<Icon image="content/gui/images/background/mainmenu/loading.png" />
+		<Label name="loading_label" text="Loading…" font="large_load"
+			max_size="250,50" min_size="150,50" position="25,50" />
+		<ProgressBar name="loading_box_progress" max_size="200,12" position="25,110" />
+	</Container>
 
-	<Label name="loading_label" position="400,360" text="Loading…" font="large_load"
-		max_size="250,50" min_size="150,50" />
-	<Label name="qotl_type_label" position="360,662" font="headline_light" />
-	<Label name="qotl_label" position="360,688" font="default_load"
-		max_size="315,75" min_size="315,75" wrap_text="1" />
-	<Label name="version_label" position="780,735" font="headline_light" />
-
-	<Label name="loading_stage" position="20,688" font="default_load" />
-	<ProgressBar name="loading_progress" position="410,420" max_size="200,12" />
+	<Container name="quote_area" size="1920,207">
+		<Icon image="content/gui/images/background/mainmenu/quotearea.png" />
+		<Label name="quote_type_label" font="headline_light" />
+		<Label name="quote_label" font="default_load"
+			max_size="315,75" min_size="315,75" wrap_text="1" />
+		<Label name="loading_stage" font="default_load" />
+	</Container>
 </Container>

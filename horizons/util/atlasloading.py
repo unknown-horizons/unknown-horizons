@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import os
 import subprocess
 import sys
@@ -61,15 +59,13 @@ def generate_atlases():
 		res_logo_image = ImageTk.PhotoImage(res_logo)
 		logo_label = tkinter.Label(window, image=res_logo_image)
 		logo_label.pack(side="left")
-		label = tkinter.Label(window, padx = 10, text = "Generating atlases!")
+		label = tkinter.Label(window, padx=10, text="Generating atlases!")
 		label.pack(side="right")
 
-		# wait a second to give the process time to check if a generation is necessary at all
-		time.sleep(1.0)
 		window.deiconify()
+		window.attributes("-topmost", 0)
 		while process.poll() is None:
 			if not window.state() == "iconic":
-				window.attributes("-topmost", 0)
 				window.update()
 			time.sleep(0.1)
 		window.destroy()

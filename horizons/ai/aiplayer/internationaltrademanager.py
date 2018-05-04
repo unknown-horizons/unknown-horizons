@@ -29,7 +29,7 @@ from horizons.constants import RES, TRADER
 from .mission.internationaltrade import InternationalTrade
 
 
-class InternationalTradeManager(object):
+class InternationalTradeManager:
 	"""
 	An object of this class manages the international trade routes of one AI player.
 
@@ -42,7 +42,7 @@ class InternationalTradeManager(object):
 	log = logging.getLogger("ai.aiplayer.internationaltrade")
 
 	def __init__(self, owner):
-		super(InternationalTradeManager, self).__init__()
+		super().__init__()
 		self.owner = owner
 		self.world = owner.world
 		self.session = owner.session

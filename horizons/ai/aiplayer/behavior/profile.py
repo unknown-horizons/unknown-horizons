@@ -33,22 +33,22 @@ from horizons.ai.aiplayer.strategy.condition import (
 	ConditionSharingSettlement)
 
 
-class BehaviorProfile(object):
+class BehaviorProfile:
 	def __init__(self):
 		"""
 		Init actions and strategies with required types.
 		e.g. self.strategies is a dict of Enum => {}, each of such items is later filled by concrete BehaviorProfile.
 		"""
-		super(BehaviorProfile, self).__init__()
-		self.actions = dict(((action_type, {}) for action_type in BehaviorManager.action_types))
-		self.strategies = dict(((strategy_type, {}) for strategy_type in BehaviorManager.strategy_types))
+		super().__init__() # TODO: check if this call is needed
+		self.actions = {action_type: {} for action_type in BehaviorManager.action_types}
+		self.strategies = {strategy_type: {} for strategy_type in BehaviorManager.strategy_types}
 		self.conditions = {}
 
 
 class BehaviorProfileAggressive(BehaviorProfile):
 
 	def __init__(self, player):
-		super(BehaviorProfileAggressive, self).__init__()
+		super().__init__()
 
 		self.conditions = {
 			ConditionHostile(player): 1.1,
@@ -71,7 +71,7 @@ class BehaviorProfileAggressive(BehaviorProfile):
 class BehaviorProfileBalanced(BehaviorProfile):
 
 	def __init__(self, player):
-		super(BehaviorProfileBalanced, self).__init__()
+		super().__init__()
 
 		self.conditions = {
 			ConditionHostile(player): 1.1,
@@ -90,10 +90,11 @@ class BehaviorProfileBalanced(BehaviorProfile):
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorNeutral(player)] = 0.9
 		self.strategies[BehaviorManager.strategy_types.diplomatic][BehaviorGood(player)] = 0.05
 
+
 class BehaviorProfileCautious(BehaviorProfile):
 
 	def __init__(self, player):
-		super(BehaviorProfileCautious, self).__init__()
+		super().__init__()
 
 		self.conditions = {
 			ConditionHostile(player): 0.9,
@@ -113,7 +114,7 @@ class BehaviorProfileCautious(BehaviorProfile):
 class BehaviorProfilePirateRegular(BehaviorProfile):
 
 	def __init__(self, player):
-		super(BehaviorProfilePirateRegular, self).__init__()
+		super().__init__()
 
 		self.conditions = {
 			ConditionPirateRoutinePossible(player): 1.0,
@@ -126,7 +127,7 @@ class BehaviorProfilePirateRegular(BehaviorProfile):
 		self.strategies[BehaviorManager.strategy_types.idle][BehaviorRegularPirate(player)] = 1.0
 
 
-class BehaviorProfileManager(object):
+class BehaviorProfileManager:
 	"""
 	BehaviorProfileManager is an object that defines the dictionary with BehaviorComponents for AIPlayer.
 	If it proves to be useful it will handle loading AI profiles from YAML.
@@ -170,7 +171,7 @@ class BehaviorProfileManager(object):
 class BehaviorProfileDebug(BehaviorProfile):
 
 	def __init__(self, player):
-		super(BehaviorProfileDebug, self).__init__()
+		super().__init__()
 
 		self.conditions = {
 			#ConditionHostile(player): 1.1,
@@ -199,6 +200,7 @@ def get_available_player_profiles():
 		(BehaviorProfileBalanced, 0.6),
 		#(BehaviorProfileDebug, 1.0),
 	)
+
 
 def get_available_pirate_profiles():
 	return (

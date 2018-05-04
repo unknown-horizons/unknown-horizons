@@ -23,7 +23,7 @@ from horizons.constants import PRODUCTION
 from horizons.scheduler import Scheduler
 
 
-class Utilization(object):
+class Utilization:
 	"""Basic utilization class used in producers"""
 
 	def capacity_utilization(self, instance):
@@ -52,6 +52,7 @@ class Utilization(object):
 			self._old_capacity_utilization = (cur_tick + interval, # expiration date
 						                      limit, capac < limit )
 		return self._old_capacity_utilization[2]
+
 
 class FullUtilization(Utilization):
 	"""Used for producers where no utilization calculation is necessary"""

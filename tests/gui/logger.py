@@ -28,6 +28,7 @@ The results are formatted as code that can be used for writing GUI tests.
 
 import logging
 from functools import wraps
+from typing import Any, Dict, List, Optional, Tuple
 
 from fife import fife
 from fife.extensions.pychan import tools, widgets
@@ -46,7 +47,7 @@ for keyname in [k for k in dir(fife.Key) if k.upper() == k]:
 	KEY_NAME_LOOKUP[getattr(fife.Key, keyname)] = keyname
 
 
-class GuiHooks(object):
+class GuiHooks:
 	"""
 	Install hooks for several events and pass events to a logger.
 	"""
@@ -165,7 +166,7 @@ class GuiHooks(object):
 			mousetools.TearingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
 			mousetools.PipetteTool: ('mousePressed', ),
 			mousetools.TileLayingTool: ('mousePressed', 'mouseReleased', 'mouseDragged', ),
-		}
+		} # type: dict[Any, Tuple[str, ...]]
 
 		for tool, events in targets.items():
 			for event in events:
@@ -190,27 +191,27 @@ class GuiHooks(object):
 		Dialog._execute = deco4(Dialog._execute)
 
 
-class TestCodeGenerator(object):
+class TestCodeGenerator:
 	"""
 	Receives events from GuiHooks and creates test code from it.
 	"""
 	def __init__(self):
 		# Keep a list of events to detect mouse clicks (pressed and released)
 		# Clicks are what we're interested in, we don't support mouseMoved
-		self._mousetool_events = []
+		self._mousetool_events = [] # type: List[Tuple[str, int, int, str]]
 
 		self._dialog_active = False
-		self._dialog_opener = []	# the code that triggered the dialog
+		self._dialog_opener = [] # type: List[str] # the code that triggered the dialog
 
 		# The generator will not print out new code immediately, because the event might
 		# have triggered a dialog (and we don't know yet). Therefore we need to store it
 		# until we either receive a new event or know that a dialog was opened.
-		self._last_command = []
+		self._last_command = [] # type: List[str]
 		self._handler_count = 1
 
 		# Keep track of the last slider event. When moving the slider, many events are
 		# emitted. We will generate code for the last value.
-		self._last_slider_event = None
+		self._last_slider_event = None # type: Optional[widgets.Slider]
 
 	def _add(self, code):
 		if self._dialog_active:

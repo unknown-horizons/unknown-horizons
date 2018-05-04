@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -29,7 +28,7 @@ from fife import fife
 from horizons.extscheduler import ExtScheduler
 
 
-class Sound(object):
+class Sound:
 	"""Stuff related to engine & sound"""
 
 	def __init__(self, engine):

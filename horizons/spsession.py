@@ -42,7 +42,7 @@ class SPSession(Session):
 		return Timer(freeze_protection=SINGLEPLAYER.FREEZE_PROTECTION)
 
 	def load(self, *args, **kwargs):
-		super(SPSession, self).load(*args, **kwargs)
+		super().load(*args, **kwargs)
 		# single player games start right away
 		self.start()
 

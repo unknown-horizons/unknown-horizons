@@ -31,10 +31,11 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 	"""KeyListener Class to process key presses ingame"""
 
 	def __init__(self, session):
-		super(IngameKeyListener, self).__init__()
+		super().__init__()
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
+		self.keyconfig = KeyConfig()
 		horizons.globals.fife.eventmanager.addKeyListenerFront(self)
 		# Used to sum up the keyboard autoscrolling
 		self.key_scroll = [0, 0]
@@ -43,11 +44,13 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 		self.left_key_pressed = False
 		self.right_key_pressed = False
 		self.key_scroll_speed = 25
+		# Last event (to avoid double-firing)
+		self.last_evt = {'type': None, 'value': None}
 
 	def end(self):
 		horizons.globals.fife.eventmanager.removeKeyListener(self)
 		self.session = None
-		super(IngameKeyListener, self).end()
+		super().end()
 
 	def updateAutoscroll(self):
 		self.key_scroll = [0, 0]
@@ -64,7 +67,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 	def keyPressed(self, evt):
 		keyval = evt.getKey().getValue()
-		action = KeyConfig().translate(evt)
+		action = self.keyconfig.translate(evt)
 
 		_Actions = KeyConfig._Actions
 
@@ -79,14 +82,23 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 
 		self.updateAutoscroll()
 
+		# if the current event is identical to the previous one, ignore it
+		if (evt.getType() == self.last_evt['type'] and
+				evt.getKey().getValue() == self.last_evt['value']):
+			evt.consume() # prevent other listeners from being called
+			return
+
 		if self.session.ingame_gui.on_key_press(action, evt):
 			evt.consume() # prevent other listeners from being called
+
+		# update last event
+		self.last_evt['type'] = evt.getType()
+		self.last_evt['value'] = evt.getKey().getValue()
 
 	def keyReleased(self, evt):
 		keyval = evt.getKey().getValue()
 		_Actions = KeyConfig._Actions
-		action = KeyConfig().translate(evt)
-
+		action = self.keyconfig.translate(evt)
 
 		if action == _Actions.UP:
 			self.up_key_pressed = False
@@ -98,3 +110,7 @@ class IngameKeyListener(fife.IKeyListener, LivingObject):
 			self.right_key_pressed = False
 
 		self.updateAutoscroll()
+
+		# update last event
+		self.last_evt['type'] = evt.getType()
+		self.last_evt['value'] = evt.getKey().getValue()

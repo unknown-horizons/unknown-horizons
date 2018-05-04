@@ -1,4 +1,3 @@
-# Encoding: utf-8
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -21,7 +20,6 @@
 # ###################################################
 
 
-
 import json
 import locale
 import logging
@@ -30,15 +28,14 @@ import re
 import subprocess
 import sys
 import tempfile
-
-from typing import Optional, Tuple
+from typing import List, Optional, Tuple
 
 import horizons.globals
 import horizons.main
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
-from horizons.gui.widgets.minimap import Minimap, iter_minimap_points
+from horizons.gui.widgets.minimap import Minimap, iter_minimap_points_colors
 from horizons.gui.windows import Window
 from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
@@ -56,7 +53,7 @@ from .playerdataselection import PlayerDataSelection
 class SingleplayerMenu(Window):
 
 	def __init__(self, windows):
-		super(SingleplayerMenu, self).__init__(windows)
+		super().__init__(windows)
 
 		self._mode = None
 
@@ -122,7 +119,7 @@ class SingleplayerMenu(Window):
 		self._mode.act(player_name, player_color)
 
 
-class GameSettingsWidget(object):
+class GameSettingsWidget:
 	"""Toggle trader/pirates/disasters and change resource density."""
 
 	def __init__(self):
@@ -182,7 +179,7 @@ class GameSettingsWidget(object):
 		return self._gui.findChild(name='disasters').marked
 
 
-class RandomMapWidget(object):
+class RandomMapWidget:
 	"""Create a random map, influence map generation with multiple sliders."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -363,7 +360,7 @@ class RandomMapWidget(object):
 		self._gui.findChild(name="map_preview_status_label").text = text
 
 
-class FreeMapsWidget(object):
+class FreeMapsWidget:
 	"""Start a game by selecting an existing map."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -445,7 +442,7 @@ class FreeMapsWidget(object):
 		self._map_preview.draw()
 
 
-class ScenarioMapWidget(object):
+class ScenarioMapWidget:
 	"""Start a scenario (with a specific language)."""
 
 	def __init__(self, windows, singleplayer_menu, aidata):
@@ -544,7 +541,8 @@ class ScenarioMapWidget(object):
 		lang_list.items = available_languages
 		lang_list.selected = available_languages.index(selected_language)
 
-		translated_scenario = self.find_map_filename(scenario, selected_language)
+		selected_language_code = LANGUAGENAMES.get_by_value(selected_language)
+		translated_scenario = self.find_map_filename(scenario, selected_language_code)
 		if translated_scenario is None:
 			return
 
@@ -607,7 +605,7 @@ class ScenarioMapWidget(object):
 	@staticmethod
 	def get_available_languages(scenario):
 		# type: (List[Tuple[str, str]]) -> List[str]
-		scenario_langs = list(set(language for language, filename in scenario))
+		scenario_langs = {language for language, filename in scenario}
 		return [LANGUAGENAMES[l] for l in sorted(scenario_langs)]
 
 	def _get_selected_map(self):
@@ -647,5 +645,5 @@ def generate_random_minimap(size, parameters):
 	# communicate via stdout. Sometimes the process seems to print more information, therefore
 	# we add markers around our data so it's easier for the caller to get to the data.
 	args = (location, world, Minimap.COLORS['island'], Minimap.COLORS['water'])
-	data = [(x, y, r, g, b) for (x, y), (r, g, b) in iter_minimap_points(*args)]
+	data = [(x, y, r, g, b) for (x, y), (r, g, b) in iter_minimap_points_colors(*args)]
 	print('DATA', json.dumps(data), 'ENDDATA')

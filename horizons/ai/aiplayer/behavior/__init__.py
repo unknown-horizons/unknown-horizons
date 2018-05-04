@@ -21,10 +21,11 @@
 
 
 import logging
+
 from horizons.ext.enum import Enum
 
 
-class BehaviorManager(object):
+class BehaviorManager:
 	"""
 	BehaviorManager holds BehaviorComponents.
 	Entities such as CombatManager or StrategyManager ask BehaviorManager to perform
@@ -37,7 +38,7 @@ class BehaviorManager(object):
 	log = logging.getLogger("ai.aiplayer.behavior.behaviormanager")
 
 	def __init__(self, owner):
-		super(BehaviorManager, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.__init(owner)
 
 		self.profile_token = self.get_profile_token()

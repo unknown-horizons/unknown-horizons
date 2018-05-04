@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -41,7 +40,7 @@ class ShipOverviewTab(OverviewTab):
 	helptext = LazyT("Ship overview")
 
 	def init_widget(self):
-		super(ShipOverviewTab, self).init_widget()
+		super().init_widget()
 		self.ship_inv = self.instance.get_component(StorageComponent).inventory
 		self.widget.child_finder('inventory').init(self.instance.session.db, self.ship_inv)
 
@@ -125,11 +124,11 @@ class ShipOverviewTab(OverviewTab):
 
 		self.widget.child_finder('inventory').update()
 		self._refresh_combat()
-		super(ShipOverviewTab, self).refresh()
+		super().refresh()
 
 	def hide(self):
 		self.route_menu.hide()
-		super(ShipOverviewTab, self).hide()
+		super().hide()
 
 
 class FightingShipOverviewTab(ShipOverviewTab):
@@ -140,7 +139,7 @@ class FightingShipOverviewTab(ShipOverviewTab):
 	has_stance = True
 
 	def init_widget(self):
-		super(FightingShipOverviewTab, self).init_widget()
+		super().init_widget()
 		# Create weapon inventory, needed only in gui for inventory widget.
 		self.weapon_inventory = self.instance.get_weapon_storage()
 		self.widget.findChild(name='weapon_inventory').init(self.instance.session.db, self.weapon_inventory)
@@ -171,7 +170,8 @@ class FightingShipOverviewTab(ShipOverviewTab):
 
 	def on_instance_removed(self):
 		self.weapon_inventory = None
-		super(FightingShipOverviewTab, self).on_instance_removed()
+		super().on_instance_removed()
+
 
 class TradeShipOverviewTab(ShipOverviewTab):
 	widget = 'overview_trade_ship.xml'
@@ -191,19 +191,21 @@ class TradeShipOverviewTab(ShipOverviewTab):
 		self.widget.child_finder('inventory').update()
 
 	def refresh(self):
-		super(TradeShipOverviewTab, self).refresh()
+		super().refresh()
 		events = {
 
 		        'discard_res/mouseClicked': Callback(self._discard_resources)
 		}
 		self.widget.mapEvents(events)
 		self._refresh_discard_resources()
-		super(TradeShipOverviewTab, self).refresh()
+		super().refresh()
+
 
 class TraderShipOverviewTab(OverviewTab):
 	widget = 'overview_tradership.xml'
 	icon_path = 'icons/tabwidget/ship/ship_inv'
 	helptext = LazyT("Ship overview")
+
 
 class EnemyShipOverviewTab(OverviewTab):
 	widget = 'overview_enemyunit.xml'
@@ -211,5 +213,5 @@ class EnemyShipOverviewTab(OverviewTab):
 	helptext = LazyT("Ship overview")
 
 	def init_widget(self):
-		super(EnemyShipOverviewTab, self).init_widget()
+		super().init_widget()
 		self.widget.findChild(name="headline").text = self.instance.owner.name

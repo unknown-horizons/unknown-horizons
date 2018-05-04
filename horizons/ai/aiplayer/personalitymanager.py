@@ -20,11 +20,12 @@
 # ###################################################
 
 import logging
+from typing import List
 
 from horizons.ai.aiplayer.personality import DefaultPersonality, OtherPersonality
 
 
-class PersonalityManager(object):
+class PersonalityManager:
 	"""This class handles the loading of personality data for the AI players."""
 
 	log = logging.getLogger("ai.aiplayer.personality_manager")
@@ -65,5 +66,6 @@ class PersonalityManager(object):
 	def prepare_personalities_list(cls):
 		cls.available_personalities.append(DefaultPersonality)
 		cls.available_personalities.append(OtherPersonality)
+
 
 PersonalityManager.prepare_personalities_list()

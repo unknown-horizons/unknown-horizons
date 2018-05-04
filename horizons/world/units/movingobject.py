@@ -20,14 +20,12 @@
 # ###################################################
 
 import logging
-
 from typing import TYPE_CHECKING, Type
 
 from fife import fife
 
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import GAME_SPEED
-from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python.weakmethodlist import WeakMethodList
@@ -67,7 +65,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 	pather_class = None # type: Type[AbstractPather]
 
 	def __init__(self, x, y, **kwargs):
-		super(MovingObject, self).__init__(x=x, y=y, **kwargs)
+		super().__init__(x=x, y=y, **kwargs)
 		self.__init(x, y)
 
 	def __init(self, x, y):
@@ -223,11 +221,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# TODO/HACK the *5 provides slightly less flickery behavior of the moving
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
-		location_list = fife.LocationList([self._fife_location2]*5)
-		# It exists for FIFE 0.3.4 compat. See #1993.
-		if Fife.getVersion() == (0,3,4):
-			location_list.thisown = 0
-			self._route.thisown = 0
+		location_list = fife.LocationList([self._fife_location2] * 5)
 		self._route.setPath(location_list)
 
 		self.act(self._move_action)
@@ -286,12 +280,12 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		return self.path.get_move_target()
 
 	def save(self, db):
-		super(MovingObject, self).save(db)
+		super().save(db)
 		# NOTE: _move_action is currently not yet saved and neither is blocked_callback.
 		self.path.save(db, self.worldid)
 
 	def load(self, db, worldid):
-		super(MovingObject, self).load(db, worldid)
+		super().load(db, worldid)
 		x, y = db("SELECT x, y FROM unit WHERE rowid = ?", worldid)[0]
 		self.__init(x, y)
 		path_loaded = self.path.load(db, worldid)

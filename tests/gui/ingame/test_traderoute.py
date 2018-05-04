@@ -19,8 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest.mock import Mock
+
 from fife import fife
-from mock import Mock
 
 from horizons.constants import RES
 from horizons.manager import MPManager
@@ -50,7 +51,7 @@ def test_traderoute(gui):
 	gui.trigger('buy_sell_goods/inventory_entry_3')
 
 	# Create the second settlement
-	found_settlement(gui, (14, 30), (15, 26))
+	found_settlement(gui, (14, 30), (18, 28))
 
 	# Open the configure trade route widget
 	# NOTE gui of traderoute is initialized with a delay, wait a bit, see `RouteConfig.__init__`
@@ -66,15 +67,13 @@ def test_traderoute(gui):
 	assert not ship.route.waypoints
 
 	# Select the first waypoint for the trade route
-	event = Mock()
+	event = Mock(map_coords=(38, 39))
 	event.getButton.return_value = fife.MouseEvent.LEFT
-	event.map_coords = 38, 39
 	route_widget.on_map_click(event, False)
 
 	# Select the other waypoint for the trade route
-	event = Mock()
+	event = Mock(map_coords=(18, 28))
 	event.getButton.return_value = fife.MouseEvent.LEFT
-	event.map_coords = 15, 26
 	route_widget.on_map_click(event, False)
 
 	# need to give control to the rest of the code, these clicks will trigger new gui widgets
@@ -83,7 +82,7 @@ def test_traderoute(gui):
 
 	# Set the resources to be loaded from settlement on the left and the amount
 	gui.trigger('configure_route/container_1/slot_0/button', mouse='left') # Select the second warehouse's first slot
-	gui.trigger('configure_route/traderoute_resources/resource_{:d}'.format(RES.FOOD))
+	gui.trigger('configure_route/resources/resource_{:d}'.format(RES.FOOD))
 	gui.find('configure_route/container_1/slot_0/slider').slide(120)
 
 	# Check if the ship obeys the state of "Wait at load" and "Wait at unload"
@@ -94,7 +93,7 @@ def test_traderoute(gui):
 	assert ship.route.wait_at_unload
 	assert len(ship.route.waypoints) == 2
 	assert Point(38, 39) in ship.route.waypoints[0]['warehouse'].position
-	assert Point(15, 26) in ship.route.waypoints[1]['warehouse'].position
+	assert Point(18, 28) in ship.route.waypoints[1]['warehouse'].position
 	assert ship.route.waypoints[1]['resource_list'] == {RES.FOOD: 120}
 
 	# Since this test is rather complex, we test bug #2525 as well

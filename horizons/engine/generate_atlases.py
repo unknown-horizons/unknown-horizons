@@ -21,8 +21,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 import glob
 import json
 import logging
@@ -30,9 +28,9 @@ import math
 import multiprocessing
 import os
 import os.path
+import pickle
 import sys
 import traceback
-import pickle
 
 # add paths for Mac Os X app container (Unknown Horizons.app)
 app_python_lib_path = os.path.join(os.getcwd(), 'lib', 'python3.4')
@@ -61,11 +59,12 @@ if not os.path.exists('content'):
 assert os.path.exists('content'), 'Content dir not found.'
 
 sys.path.append('.')
-from run_uh import init_environment # isort:skip
-init_environment(False)
+
 
 class DummyFife:
 	use_atlases = False
+
+
 import horizons.globals # isort:skip
 horizons.globals.fife = DummyFife() # type: ignore
 
@@ -75,7 +74,7 @@ from horizons.util.loaders.actionsetloader import ActionSetLoader # isort:skip
 from horizons.util.loaders.tilesetloader import TileSetLoader # isort:skip
 
 
-class AtlasEntry(object):
+class AtlasEntry:
 	def __init__(self, x, y, width, height, last_modified):
 		self.x = x
 		self.y = y
@@ -83,7 +82,8 @@ class AtlasEntry(object):
 		self.height = height
 		self.last_modified = last_modified
 
-class AtlasBook(object):
+
+class AtlasBook:
 	log = logging.getLogger("generate_atlases")
 
 	def __init__(self, id, max_size):
@@ -141,7 +141,7 @@ def save_atlas_book(book):
 	book.save()
 
 
-class ImageSetManager(object):
+class ImageSetManager:
 	def __init__(self, initial_data, path):
 		self._data = {}
 		self._path = path
@@ -184,7 +184,7 @@ class ImageSetManager(object):
 			json.dump(self._data, json_file, indent=1)
 
 
-class AtlasGenerator(object):
+class AtlasGenerator:
 	log = logging.getLogger("generate_atlases")
 	# increment this when the structure of the atlases changes
 	current_version = 1
@@ -348,9 +348,9 @@ class AtlasGenerator(object):
 	def check_files(cls):
 		"""Check that the required atlas files exist."""
 		paths = [
-			'content' + os.sep + 'actionsets.json',
-			'content' + os.sep + 'atlas.sql',
-			'content' + os.sep + 'tilesets.json',
+			PATHS.ACTION_SETS_JSON_FILE,
+			PATHS.ATLAS_DB_PATH,
+			PATHS.TILE_SETS_JSON_FILE,
 		]
 		for path in paths:
 			if not os.path.exists(path):
@@ -358,7 +358,7 @@ class AtlasGenerator(object):
 
 		# verify that the combined images exist
 		db = DbReader(':memory:')
-		with open('content' + os.sep + 'atlas.sql') as f:
+		with open(PATHS.ATLAS_DB_PATH) as f:
 			db.execute_script(f.read())
 		for db_row in db("SELECT atlas_path FROM atlas"):
 			if not os.path.exists(db_row[0]):
@@ -398,7 +398,7 @@ class AtlasGenerator(object):
 		paths.append(PATHS.ATLAS_DB_PATH)
 		paths.append(PATHS.ACTION_SETS_JSON_FILE)
 		paths.append(PATHS.TILE_SETS_JSON_FILE)
-		paths.extend(glob.glob('content/gfx/atlas/*.png'))
+		paths.extend(glob.glob(os.path.join(PATHS.ATLAS_FILES_DIR, '*.png')))
 
 		# delete everything
 		for path in paths:

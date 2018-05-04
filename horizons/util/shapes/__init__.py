@@ -21,7 +21,8 @@
 
 from horizons.util.shapes import distances
 
-class Shape(object):
+
+class Shape:
 
 	def get_coordinates(self):
 		"""Return all coordinates in the shape."""
@@ -74,8 +75,10 @@ class Shape(object):
 		raise TypeError("No distance defined between {} and {}".format(co1, co2))
 
 # Convenience methods so you can use 'from horizons.util.shapes import Circle, Rect'
-from horizons.util.shapes.point import ConstPoint, Point
-from horizons.util.shapes.rect import ConstRect, Rect
-from horizons.util.shapes.annulus import Annulus
-from horizons.util.shapes.circle import Circle
-from horizons.util.shapes.radiusshape import RadiusRect, RadiusShape
+
+
+from horizons.util.shapes.point import ConstPoint, Point # isort:skip
+from horizons.util.shapes.rect import ConstRect, Rect # isort:skip
+from horizons.util.shapes.annulus import Annulus # isort:skip
+from horizons.util.shapes.circle import Circle # isort:skip
+from horizons.util.shapes.radiusshape import RadiusRect, RadiusShape # isort:skip

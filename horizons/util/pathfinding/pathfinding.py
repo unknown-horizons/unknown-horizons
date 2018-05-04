@@ -28,7 +28,8 @@ called FindPath. You should never ever use this class directly, just through the
 interface.
 """
 
-class FindPath(object):
+
+class FindPath:
 	""" Finds best path from source to destination via a*-algo
 	"best path" means path with shortest travel time, which
 	is not necessarily the shortest path (cause roads have different speeds)
@@ -144,7 +145,7 @@ class FindPath(object):
 		if not self.make_target_walkable:
 			# restrict destination coords to walkable tiles, by default they are counted as walkable
 			# the manual set intersection is used because set.intersection(dict) doesn't take advantage of the fast lookup
-			dest_coords_set = set(coords for coords in dest_coords_set if coords in self.path_nodes)
+			dest_coords_set = {coords for coords in dest_coords_set if coords in self.path_nodes}
 		if not dest_coords_set:
 			return None
 
@@ -172,10 +173,10 @@ class FindPath(object):
 			# optimization TODO: use data structures more suitable for contains-check
 			if self.diagonal:
 				# all relevant adjacent neighbors
-				x_p1 = x+1
-				x_m1 = x-1
-				y_p1 = y+1
-				y_m1 = y-1
+				x_p1 = x + 1
+				x_m1 = x - 1
+				y_p1 = y + 1
+				y_m1 = y - 1
 				neighbors = (i for i in ((x_m1, y_m1), (x_m1, y),
 				                         (x_m1, y_p1), (x, y_m1),
 				                         (x, y_p1), (x_p1, y_m1),
@@ -188,8 +189,8 @@ class FindPath(object):
 				                 and i not in blocked_coords)
 			else:
 				# all relevant vertical and horizontal neighbors
-				neighbors = (i for i in ((x-1, y), (x+1, y),
-				                         (x, y-1), (x, y+1))
+				neighbors = (i for i in ((x - 1, y), (x + 1, y),
+				                         (x, y - 1), (x, y + 1))
 				             if (i in path_nodes
 				                 or i in source_coords
 				                 or i in dest_coords_set)
@@ -226,7 +227,6 @@ class FindPath(object):
 						neighbor = (cur_node_coords,
 						            distance_to_neighbor,
 						            distance_to_neighbor + (neighbor[2] - neighbor[1]))
-
 
 			# done processing cur_node
 			checked[cur_node_coords] = cur_node_data

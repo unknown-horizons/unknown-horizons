@@ -41,7 +41,7 @@ class TearingTool(NavigationTool):
 	nearby_objects_radius = 4
 
 	def __init__(self, session):
-		super(TearingTool, self).__init__(session)
+		super().__init__(session)
 		self._transparent_instances = set() # fife instances modified for transparency
 		self.coords = None
 		self.selected = WeakList()
@@ -58,7 +58,7 @@ class TearingTool(NavigationTool):
 		self.tear_tool_active = False
 		horizons.globals.fife.set_cursor_image("default")
 		WorldObjectDeleted.unsubscribe(self._on_object_deleted)
-		super(TearingTool, self).remove()
+		super().remove()
 
 	def mouseDragged(self, evt):
 		coords = self.get_world_location(evt).to_tuple()
@@ -68,7 +68,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def mouseMoved(self, evt):
-		super(TearingTool, self).mouseMoved(evt)
+		super().mouseMoved(evt)
 		coords = self.get_world_location(evt).to_tuple()
 		self._mark(coords)
 		evt.consume()
@@ -156,12 +156,12 @@ class TearingTool(NavigationTool):
 						if b not in self._hovering_over:
 							self._hovering_over.append(b)
 							self._make_surrounding_transparent(b)
-							self._remove_object_transparency(Point(x,y))
+							self._remove_object_transparency(Point(x, y))
 						if b.tearable and b.owner is not None and b.owner.is_local_player:
 							if b not in self.selected:
 								self._make_surrounding_transparent(b)
 								self.selected.append(b)
-								self._remove_object_transparency(Point(x,y))
+								self._remove_object_transparency(Point(x, y))
 			for i in self.selected:
 				self.session.view.renderer['InstanceRenderer'].addColored(i._instance,
 				                                                          *self.tear_selection_color)

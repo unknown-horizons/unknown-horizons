@@ -25,9 +25,9 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, RES
 from tests.game import game_test
 
-
 # FIXTURE is settlement with some food, main square and ~8 settlers
 # a lumberjack is placed somewhere, where a fire station would be useful
+
 
 @game_test(use_fixture='fire')
 def test_fire_destroy(s):

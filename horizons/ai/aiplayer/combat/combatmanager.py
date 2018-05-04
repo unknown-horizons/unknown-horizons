@@ -35,7 +35,7 @@ from horizons.util.python.defaultweakkeydictionary import DefaultWeakKeyDictiona
 from horizons.util.worldobject import WorldObject
 
 
-class CombatManager(object):
+class CombatManager:
 	"""
 	CombatManager object is responsible for handling close combat in game.
 	It scans the environment (lookout) and requests certain actions from behavior
@@ -49,7 +49,7 @@ class CombatManager(object):
 	combat_range = 18
 
 	def __init__(self, owner):
-		super(CombatManager, self).__init__()
+		super().__init__()	# TODO: check if this call is needed
 		self.__init(owner)
 
 	def __init(self, owner):
@@ -66,7 +66,7 @@ class CombatManager(object):
 		"""
 		Range used when wanting to get close to ships.
 		"""
-		return (2*ship._max_range + ship._min_range)/3 + 1
+		return (2 * ship._max_range + ship._min_range) / 3 + 1
 
 	@classmethod
 	def fallback_range(cls, ship):
@@ -173,8 +173,8 @@ class CombatManager(object):
 
 	def _highlight_circle(self, position, radius, color):
 		points = set(self.session.world.get_points_in_radius(position, radius))
-		points2 = set(self.session.world.get_points_in_radius(position, radius-1))
-		self._highlight_points(list(points-points2), color)
+		points2 = set(self.session.world.get_points_in_radius(position, radius - 1))
+		self._highlight_points(list(points - points2), color)
 
 	def display(self):
 		"""
@@ -354,7 +354,7 @@ class PirateCombatManager(CombatManager):
 	shipStates = Enum.get_extended(CombatManager.shipStates, 'chasing_ship', 'going_home')
 
 	def __init__(self, owner):
-		super(PirateCombatManager, self).__init__(owner)
+		super().__init__(owner)
 
 	def handle_mission_combat(self, mission):
 		"""

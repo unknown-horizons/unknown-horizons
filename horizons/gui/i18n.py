@@ -30,6 +30,7 @@ log = logging.getLogger("i18n")
 # save translated widgets
 translated_widgets = {}
 
+
 def translate_widget(untranslated, filename):
 	"""
 	Load widget translations from guitranslations.py file.

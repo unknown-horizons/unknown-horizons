@@ -24,6 +24,7 @@ import hashlib
 import random
 import re
 import string
+from typing import List
 
 from horizons.constants import GROUND
 from horizons.util.shapes import Circle, Point, Rect
@@ -279,7 +280,7 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled in [['s', 'se', 'sw'],['s']]:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.COAST_NORTH
 		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.COAST_WEST
@@ -333,7 +334,7 @@ def create_random_island(map_db, island_id, id_string):
 
 		tile = None
 		# straight coast or 1 tile U-shaped gulfs
-		if filled in [['s', 'se', 'sw'],['s']]:
+		if filled in [['s', 'se', 'sw'], ['s']]:
 			tile = GROUND.DEEP_WATER_NORTH
 		elif filled in [['e', 'ne', 'se'], ['e']]:
 			tile = GROUND.DEEP_WATER_WEST
@@ -376,6 +377,7 @@ def create_random_island(map_db, island_id, id_string):
 
 	map_db("COMMIT")
 
+
 def _simplify_seed(seed):
 	"""
 	Return the simplified seed value. The goal of this is to make it easier for users to convey the seeds orally.
@@ -390,6 +392,7 @@ def _simplify_seed(seed):
 	h = hashlib.md5(seed)
 	h.update(seed)
 	return int('0x' + h.hexdigest(), 16) % 1000000007
+
 
 def generate_random_map(seed, map_size, water_percent, max_island_size,
                         preferred_island_size, island_size_deviation):
@@ -410,7 +413,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 	min_island_separation = 3 + map_size // 100 # minimum distance between two islands
 	max_island_side_coefficient = 4 # maximum value of island's max(side length) / min(side length)
 
-	islands = []
+	islands = [] # type: List[Rect]
 	estimated_land = 0
 	max_land_amount = map_size * map_size * (100 - water_percent) // 100
 
@@ -471,6 +474,7 @@ def generate_random_map(seed, map_size, water_percent, max_island_size,
 		island_strings.append(island_string)
 	return island_strings
 
+
 def generate_random_seed(seed):
 	rand = random.Random(seed)
 	if rand.randint(0, 1) == 0:
@@ -496,6 +500,7 @@ def generate_random_seed(seed):
 				parts.append(str(rand.randint(10 ** power, 10 ** (power + 1) - 1)))
 			return '-'.join(parts)
 
+
 def generate_map_from_seed(seed):
 	"""
 	Generates a random map with the given seed and default parameters.
@@ -505,6 +510,7 @@ def generate_map_from_seed(seed):
 	"""
 
 	return generate_random_map(seed, 150, 50, 70, 70, 30)
+
 
 def generate_huge_map_from_seed(seed):
 	"""Same as generate_map_from_seed, but making it as big as it is still reasonable"""

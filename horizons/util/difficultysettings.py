@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict
 
-class DifficultySettings(object):
+
+class DifficultySettings:
 	EASY_LEVEL = 0
 	DEFAULT_LEVEL = 1
 
@@ -37,16 +39,20 @@ class DifficultySettings(object):
 		cls.levels[cls.EASY_LEVEL] = EasySettings
 		cls.levels[cls.DEFAULT_LEVEL] = DefaultSettings
 
-class DifficultyClass(object):
+
+class DifficultyClass:
 	def __init__(self, level):
 		self.level = level
+
 
 class DefaultSettings(DifficultyClass):
 	extra_happiness_constant = 0
 	happiness_multiplier = 1
-	tax_multiplier = 1
+	tax_multiplier = 1.0
+
 
 class EasySettings(DefaultSettings):
 	tax_multiplier = 1.5
+
 
 DifficultySettings.register_levels()

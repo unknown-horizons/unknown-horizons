@@ -21,6 +21,7 @@
 
 import logging
 import weakref
+from typing import List, Tuple
 
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
@@ -33,10 +34,12 @@ We just call this interface Pather. It is used by unit to hide implementation de
 of the pathfinding algorithm.
 """
 
-class AbstractPather(object):
+
+class AbstractPather:
 	"""Abstract Interface for pathfinding for use by Unit.
 	Use only subclasses!"""
 	log = logging.getLogger("world.pathfinding")
+
 	def __init__(self, unit, move_diagonal, session, make_target_walkable=True):
 		"""
 		@param unit: instance of unit, to which the pather belongs
@@ -53,8 +56,8 @@ class AbstractPather(object):
 		self.destination_in_building = False
 		self.source_in_building = False
 
-		self.path = None
-		self.cur = None
+		self.path = None # type: List[Tuple[int, int]]
+		self.cur = None # type: int
 
 	@property
 	def unit(self):
@@ -159,7 +162,7 @@ class AbstractPather(object):
 				raise PathBlockedError
 
 		# check if we have to change visibility because of entering or leaving a building
-		if self.destination_in_building and self.cur == len(self.path)-1:
+		if self.destination_in_building and self.cur == len(self.path) - 1:
 			self.destination_in_building = False
 			self.unit.hide()
 		elif self.source_in_building and self.cur == 2:
@@ -180,7 +183,7 @@ class AbstractPather(object):
 
 	def end_move(self):
 		"""Pretends that the path is finished in order to make the unit stop"""
-		del self.path[self.cur+1:]
+		del self.path[self.cur + 1:]
 
 	def save(self, db, unitid):
 		# just save each step of the path
@@ -210,7 +213,7 @@ class AbstractPather(object):
 class ShipPather(AbstractPather):
 	"""Pather for ships (units that move on water tiles)"""
 	def __init__(self, unit, *args, **kwargs):
-		super(ShipPather, self).__init__(unit, move_diagonal=True, make_target_walkable=False,
+		super().__init__(unit, move_diagonal=True, make_target_walkable=False,
 		                                 *args, **kwargs)
 
 	def _get_path_nodes(self):
@@ -234,7 +237,7 @@ class BuildingCollectorPather(AbstractPather):
 	"""Pather for collectors, that move freely (without depending on roads)
 	within the radius of their home building such as farm animals."""
 	def __init__(self, unit, *args, **kwargs):
-		super(BuildingCollectorPather, self).__init__(unit, move_diagonal=True, *args, **kwargs)
+		super().__init__(unit, move_diagonal=True, *args, **kwargs)
 
 	def _get_path_nodes(self):
 		from horizons.component.collectingcomponent import CollectingComponent
@@ -244,7 +247,7 @@ class BuildingCollectorPather(AbstractPather):
 class RoadPather(AbstractPather):
 	"""Pather for collectors, that depend on roads (e.g. the one used for the warehouse)"""
 	def __init__(self, unit, *args, **kwargs):
-		super(RoadPather, self).__init__(unit, move_diagonal=False, *args, **kwargs)
+		super().__init__(unit, move_diagonal=False, *args, **kwargs)
 		self.island = self.session.world.get_island(unit.position)
 
 	def _get_path_nodes(self):
@@ -255,7 +258,7 @@ class SoldierPather(AbstractPather):
 	"""Pather for units, that move absolutely freely (such as soldiers)
 	Their path list is maintained by IslandPathNodes"""
 	def __init__(self, unit, *args, **kwargs):
-		super(SoldierPather, self).__init__(unit, move_diagonal=True,
+		super().__init__(unit, move_diagonal=True,
 		                                    make_target_walkable=False, *args, **kwargs)
 
 	def _get_path_nodes(self):
@@ -278,10 +281,10 @@ class SoldierPather(AbstractPather):
 			return path_blocked
 		else:
 			# also check in super class
-			return super(SoldierPather, self)._check_for_obstacles(point)
+			return super()._check_for_obstacles(point)
 
 
-class StaticPather(object):
+class StaticPather:
 	"""Misc pathing routines not depending on units.
 	Does not use AbstractPather Interface"""
 	@classmethod

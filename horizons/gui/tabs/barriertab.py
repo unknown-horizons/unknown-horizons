@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -34,7 +33,7 @@ class BarrierOverviewTab(OverviewTab):
 	helptext = LazyT("Overview")
 
 	def init_widget(self):
-		super(BarrierOverviewTab, self).init_widget()
+		super().init_widget()
 		action_set = ActionSetLoader.get_sets()[self.instance._action_set_id]
 		action_gfx = action_set.get('single', 'abcd')
 		image = list(action_gfx[45].keys())[0]

@@ -29,4 +29,5 @@ class Chat(Command):
 	def __call__(self, issuer):
 		issuer.session.ingame_gui.message_widget.add_chat(player=issuer.name, messagetext=self.message)
 
+
 Command.allow_network(Chat)

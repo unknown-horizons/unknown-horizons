@@ -23,38 +23,25 @@ import contextlib
 import os
 import tempfile
 from functools import wraps
-
-import mock
+from unittest import mock
 
 import horizons.globals
 import horizons.main
-import horizons.world	# needs to be imported before session
+import horizons.world  # needs to be imported before session
 from horizons.extscheduler import ExtScheduler
 from horizons.scheduler import Scheduler
 from horizons.spsession import SPSession
+from horizons.util.color import Color
 from horizons.util.dbreader import DbReader
 from horizons.util.difficultysettings import DifficultySettings
 from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.startgameoptions import StartGameOptions
-from horizons.util.color import Color
-
 from tests import RANDOM_SEED
 from tests.dummy import Dummy
 from tests.utils import Timer
 
 # path where test savegames are stored (tests/game/fixtures/)
 TEST_FIXTURES_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'fixtures')
-
-
-db = None
-
-def setup_package():
-	"""
-	Setup read-only database. This might have to change in the future, tests should not
-	fail only because a production now takes 1 second more in the game.
-	"""
-	global db
-	db = horizons.main._create_main_db()
 
 
 @contextlib.contextmanager
@@ -72,11 +59,11 @@ def _dbreader_convert_dummy_objects():
 	def deco(func):
 		@wraps(func)
 		def wrapper(self, command, *args):
-			args = list(args)
-			for i in range(len(args)):
-				if args[i].__class__.__name__ == 'Dummy':
-					args[i] = 0
-			return func(self, command, *args)
+			mapped_args = [
+				arg if arg.__class__.__name__ != 'Dummy' else 0
+				for arg in args
+			]
+			return func(self, command, *mapped_args)
 		return wrapper
 
 	original = DbReader.__call__
@@ -90,7 +77,7 @@ class SPTestSession(SPSession):
 	@mock.patch('horizons.session.View', Dummy)
 	def __init__(self, rng_seed=None):
 		ExtScheduler.create_instance(mock.Mock())
-		super(SPTestSession, self).__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
+		super().__init__(horizons.globals.db, rng_seed, ingame_gui_class=Dummy)
 		self.reset_autosave = mock.Mock()
 
 	def save(self, *args, **kwargs):
@@ -103,7 +90,7 @@ class SPTestSession(SPSession):
 			# We need to covert Dummy() objects to a sensible value that can be stored
 			# in the database
 			with _dbreader_convert_dummy_objects():
-				return super(SPTestSession, self).save(*args, **kwargs)
+				return super().save(*args, **kwargs)
 
 	def load(self, savegame, players, is_ai_test, is_map):
 		# keep a reference on the savegame, so we can cleanup in `end`
@@ -116,13 +103,13 @@ class SPTestSession(SPSession):
 			# disable the above in usual game tests for simplicity.
 			options = StartGameOptions.create_game_test(savegame, players)
 			options.is_map = is_map
-		super(SPTestSession, self).load(options)
+		super().load(options)
 
 	def end(self, keep_map=False, remove_savegame=True):
 		"""
 		Clean up temporary files.
 		"""
-		super(SPTestSession, self).end()
+		super().end()
 
 		# remove the saved game
 		savegame_db = SavegameAccessor(self.savegame, self.started_from_map)
@@ -155,7 +142,7 @@ class SPTestSession(SPSession):
 
 
 # import helper functions here, so tests can import from tests.game directly
-from tests.game.utils import create_map, new_settlement, settle
+from tests.game.utils import create_map, new_settlement, settle # isort:skip
 
 
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):
@@ -220,7 +207,7 @@ def saveload(session):
 	return game_session
 
 
-def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
+def game_test(timeout=15 * 60, mapgen=create_map, human_player=True, ai_players=0,
               manual_session=False, use_fixture=False):
 	"""
 	Decorator that is needed for each test in this package. setup/teardown of function
@@ -235,9 +222,7 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 		raise Exception('Test run exceeded {:d}s time limit'.format(timeout))
 
 	def deco(func):
-		@wraps(func)
 		def wrapped(*args):
-			horizons.globals.db = db
 			if not manual_session and not use_fixture:
 				s, p = new_session(mapgen=mapgen, human_player=human_player, ai_players=ai_players)
 			elif use_fixture:
@@ -271,24 +256,6 @@ def game_test(timeout=15*60, mapgen=create_map, human_player=True, ai_players=0,
 				finally:
 					SPTestSession.cleanup()
 
-
 				timelimit.stop()
 		return wrapped
 	return deco
-
-game_test.__test__ = False
-
-
-def set_trace():
-	"""
-	Use this function instead of directly importing if from pdb. The test run
-	time limit will be disabled and stdout restored (so the debugger actually
-	works).
-	"""
-	Timer.stop()
-
-	from nose.tools import set_trace
-	set_trace()
-
-
-_multiprocess_can_split_ = True

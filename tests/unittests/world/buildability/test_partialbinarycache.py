@@ -24,11 +24,12 @@ from horizons.world.buildability.terraincache import TerrainBuildabilityCache
 from tests.unittests import TestCase
 
 
-class MockTerrainBuildabilityCache(object):
+class MockTerrainBuildabilityCache:
 	sizes = TerrainBuildabilityCache.sizes
 
 	def __init__(self, land_or_coast):
 		self.land_or_coast = land_or_coast
+
 
 class TestPartialBinaryBuildabilityCache(TestCase):
 	def setUp(self):

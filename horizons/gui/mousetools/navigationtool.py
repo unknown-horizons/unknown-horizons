@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -37,7 +36,6 @@ from horizons.util.worldobject import WorldObject
 class NavigationTool(CursorTool):
 	"""Navigation Class to process mouse actions ingame"""
 
-
 	last_event_pos = fife.ScreenPoint(0, 0) # last received mouse event position, fife.ScreenPoint
 
 	send_hover_instances_update = True
@@ -45,7 +43,7 @@ class NavigationTool(CursorTool):
 	last_hover_instances = WeakList()
 
 	def __init__(self, session):
-		super(NavigationTool, self).__init__(session)
+		super().__init__(session)
 		self._last_mmb_scroll_point = [0, 0]
 		# coordinates of last mouse positions
 		self.last_exact_world_location = fife.ExactModelCoordinate()
@@ -67,7 +65,7 @@ class NavigationTool(CursorTool):
 			self.session.view.add_change_listener(self._schedule_hover_instance_update)
 			self._schedule_hover_instance_update()
 
-		class CoordsTooltip(object):
+		class CoordsTooltip:
 			@classmethod
 			def get_instance(cls, cursor_tool):
 				if cursor_tool.session.ingame_gui.coordinates_tooltip is not None:
@@ -78,7 +76,7 @@ class NavigationTool(CursorTool):
 					return CoordsTooltip(cursor_tool)
 
 			def __init__(self, cursor_tool, **kwargs):
-				super(CoordsTooltip, self).__init__(**kwargs)
+				super().__init__(**kwargs)
 				cursor_tool.session.ingame_gui.coordinates_tooltip = self
 				self.cursor_tool = cursor_tool
 				self.enabled = False
@@ -93,7 +91,7 @@ class NavigationTool(CursorTool):
 			def show_evt(self, evt):
 				if self.enabled:
 					x, y = self.cursor_tool.get_world_location(evt).to_tuple()
-					self.icon.helptext = '%d, %d ' % (x, y) + T("Press H to remove this hint")
+					self.icon.helptext = '{:d}, {:d} '.format(x, y) + T("Press H to remove this hint")
 					self.icon.position_tooltip(evt)
 					self.icon.show_tooltip()
 
@@ -106,7 +104,7 @@ class NavigationTool(CursorTool):
 			ExtScheduler().rem_call(self, self._send_hover_instance_upate)
 
 		horizons.globals.fife.eventmanager.removeCommandListener(self.cmdlist)
-		super(NavigationTool, self).remove()
+		super().remove()
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
@@ -148,7 +146,7 @@ class NavigationTool(CursorTool):
 		# Status menu update
 		current = self.get_exact_world_location(evt)
 
-		distance_ge = lambda a, b, epsilon : abs((a.x-b.x)**2 + (a.y-b.y)**2) >= epsilon**2
+		distance_ge = lambda a, b, epsilon : abs((a.x - b.x) ** 2 + (a.y - b.y) ** 2) >= epsilon ** 2
 
 		if distance_ge(current, self.last_exact_world_location, 4): # update every 4 tiles for settlement info
 			self.last_exact_world_location = current
@@ -163,11 +161,11 @@ class NavigationTool(CursorTool):
 		x, y = 0, 0
 		if mousepoint.x < VIEW.AUTOSCROLL_WIDTH:
 			x -= VIEW.AUTOSCROLL_WIDTH - mousepoint.x
-		elif mousepoint.x > (self.session.view.cam.getViewPort().right()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.x > (self.session.view.cam.getViewPort().right() - VIEW.AUTOSCROLL_WIDTH):
 			x += VIEW.AUTOSCROLL_WIDTH + mousepoint.x - self.session.view.cam.getViewPort().right()
 		if mousepoint.y < VIEW.AUTOSCROLL_WIDTH:
 			y -= VIEW.AUTOSCROLL_WIDTH - mousepoint.y
-		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom()-VIEW.AUTOSCROLL_WIDTH):
+		elif mousepoint.y > (self.session.view.cam.getViewPort().bottom() - VIEW.AUTOSCROLL_WIDTH):
 			y += VIEW.AUTOSCROLL_WIDTH + mousepoint.y - self.session.view.cam.getViewPort().bottom()
 		x *= 10
 		y *= 10
@@ -245,7 +243,7 @@ class NavigationTool(CursorTool):
 		return hover_instances
 
 	def end(self):
-		super(NavigationTool, self).end()
+		super().end()
 		if self._hover_instances_update_scheduled:
 			ExtScheduler().rem_all_classinst_calls(self)
 		self.helptext = None

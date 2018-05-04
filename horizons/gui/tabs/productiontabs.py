@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -63,7 +62,7 @@ class ProductionOverviewTab(OverviewTab):
 
 	def  __init__(self, instance):
 		self._animations = []
-		super(ProductionOverviewTab, self).__init__(instance=instance)
+		super().__init__(instance=instance)
 
 	def get_displayed_productions(self):
 		"""List all possible productions of a buildings sorted by production line id.
@@ -118,7 +117,7 @@ class ProductionOverviewTab(OverviewTab):
 					centered_container.addChild(toggle_icon)
 					anim = PychanAnimation(toggle_icon, self.__class__.ACTIVE_PRODUCTION_ANIM_DIR)
 					centered_container.anim = anim
-					anim.start(1.0/12, -1) # always start anew, people won't notice
+					anim.start(1.0 / 12, -1) # always start anew, people won't notice
 					self._animations.append(weakref.ref(anim))
 
 			# fill it with input and output resources
@@ -134,7 +133,7 @@ class ProductionOverviewTab(OverviewTab):
 			})
 			# NOTE: this command causes a refresh, so we needn't change the toggle_active-button-image
 			parent_container.addChild(container)
-		super(ProductionOverviewTab, self).refresh()
+		super().refresh()
 
 	def _center_production_line(self, parent_container, production):
 		"""Centers in/out production line display for amount of resources each.
@@ -237,9 +236,10 @@ class ProductionOverviewTab(OverviewTab):
 		self.widget.child_finder('capacity_utilization').text = str(utilization) + '%'
 
 	def _add_resource_icons(self, container, resources, marker=False):
-		calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
 		for res in resources:
 			inventory = self.instance.get_component(StorageComponent).inventory
+			calculate_position = lambda amount: (amount * 100) // inventory.get_limit(res)
+
 			filled = calculate_position(inventory[res])
 			marker_level = calculate_position(-resources[res]) if marker else 0
 			image_button = ImageFillStatusButton.init_for_res(self.instance.session.db, res,
@@ -247,17 +247,17 @@ class ProductionOverviewTab(OverviewTab):
 			container.addChild(image_button)
 
 	def show(self):
-		super(ProductionOverviewTab, self).show()
+		super().show()
 		Scheduler().add_new_object(Callback(self._refresh_utilization),
 		                           self, run_in=GAME_SPEED.TICKS_PER_SECOND, loops=-1)
 
 	def hide(self):
-		super(ProductionOverviewTab, self).hide()
+		super().hide()
 		self._cleanup()
 
 	def on_instance_removed(self):
 		self._cleanup()
-		super(ProductionOverviewTab, self).on_instance_removed()
+		super().on_instance_removed()
 
 	def _cleanup(self):
 		Scheduler().rem_all_classinst_calls(self)
@@ -273,7 +273,7 @@ class LumberjackOverviewTab(ProductionOverviewTab):
 	"""Same as ProductionOverviewTab but add a button to fill range with trees.
 	"""
 	def init_widget(self):
-		super(LumberjackOverviewTab, self).init_widget()
+		super().init_widget()
 		container = ABox(position=(20, 210))
 		icon = Icon(name='build_all_bg')
 		button = ImageButton(name='build_all_button')
@@ -326,8 +326,9 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 	BUTTON_BACKGROUND = "content/gui/images/buttons/msg_button_small.png"
 
 	def get_displayed_productions(self):
-		possible_res = set(res for field in self.instance.get_providers()
-		                       for res in field.provided_resources)
+		possible_res = {res
+		                for field in self.instance.get_providers()
+		                for res in field.provided_resources}
 		all_farm_productions = self.instance.get_component(Producer).get_productions()
 		productions = {p for p in all_farm_productions for res in p.get_consumed_resources().keys() if res in possible_res}
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))

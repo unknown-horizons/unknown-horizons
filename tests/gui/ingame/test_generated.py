@@ -128,7 +128,7 @@ def test_buildingtool(gui):
 		OFFSETS = [ 0, 1, -1, 2, -2, 5, -5, 20, -20 ] # don't add more, takes long enough already
 		for off_x, off_y in itertools.product( OFFSETS, repeat=2 ):
 			# will trigger preview_build of BuildingTool
-			gui.cursor_move( target[0]+off_x, target[1]+off_y )
+			gui.cursor_move( target[0] + off_x, target[1] + off_y )
 		gui.cursor_click(target[0], target[1], 'left')
 
 	# Place warehouse
@@ -143,7 +143,6 @@ def test_buildingtool(gui):
 
 	# Place fisher
 	build_at( (52, 3) )
-
 
 	# Build lumberjack
 	gui.trigger('tab/button_03')

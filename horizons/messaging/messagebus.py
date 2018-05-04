@@ -21,8 +21,11 @@
 
 import logging
 from collections import defaultdict
+from typing import Any, Callable, DefaultDict, List, Tuple
 
 from horizons.util.python.singleton import Singleton
+
+BusCallback = Callable[[Any], None]
 
 
 class MessageBus(object, metaclass=Singleton):
@@ -32,37 +35,34 @@ class MessageBus(object, metaclass=Singleton):
 	log = logging.getLogger("messaging.messagebus")
 
 	def __init__(self):
-		# Register {MessageType: [list of receiver callbacks]}
-		self.global_receivers = defaultdict(list)
+		# Register for a specific messagetype
+		self.global_receivers = defaultdict(list) # type: DefaultDict[str, List[BusCallback]]
 		# Register for messages from a specific object
-		# {(MessageType, instance): [list of receiver callbacks]}
-		self.local_receivers = defaultdict(list)
+		self.local_receivers = defaultdict(list) # type: DefaultDict[Tuple[str, Any], List[BusCallback]]
 
-	def subscribe_globally(self, messagetype, callback):
-		"""Register for a certain message type.
-		@param callback: Callback methode, needs to take 1 parameter: the message"""
+	def subscribe_globally(self, messagetype, callback: BusCallback):
+		"""Register for a certain message type."""
 		self.global_receivers[messagetype].append(callback)
 
-	def subscribe_locally(self, messagetype, instance, callback):
-		"""Register for a certain message type from a specific instance.
-		@param callback: Callback methode, needs to take 1 parameter: the message"""
+	def subscribe_locally(self, messagetype, instance, callback: BusCallback):
+		"""Register for a certain message type from a specific instance."""
 		pair = (messagetype, instance)
 		self.local_receivers[pair].append(callback)
 
-	def unsubscribe_globally(self, messagetype, callback):
+	def unsubscribe_globally(self, messagetype, callback: BusCallback):
 		assert callback in self.global_receivers[messagetype]
 		self.global_receivers[messagetype].remove(callback)
 
-	def unsubscribe_locally(self, messagetype, instance, callback):
+	def unsubscribe_locally(self, messagetype, instance, callback: BusCallback):
 		pair = (messagetype, instance)
 		assert callback in self.local_receivers[pair]
 		self.local_receivers[pair].remove(callback)
 
-	def discard_globally(self, messagetype, callback):
+	def discard_globally(self, messagetype, callback: BusCallback):
 		if callback in self.global_receivers[messagetype]:
 			self.unsubscribe_globally(messagetype, callback)
 
-	def discard_locally(self, messagetype, instance, callback):
+	def discard_locally(self, messagetype, instance, callback: BusCallback):
 		pair = (messagetype, instance)
 		if pair in self.local_receivers and callback in self.local_receivers[pair]:
 			self.unsubscribe_locally(messagetype, instance, callback)

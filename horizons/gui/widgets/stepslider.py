@@ -34,13 +34,13 @@ class StepSlider(Slider):
 	def __init__(self, *args, **kwargs):
 		self._callbacks_by_group = {} # super init calls capture, so we need this here
 
-		super(StepSlider, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 
 		self._last_step_value = None # for recognizing new steps, self.value is overwritten in the base class sometimes
 		self._steps = None
 
-		super(StepSlider, self).capture(self._update, 'action', 'stepslider')
-		super(StepSlider, self).capture(self._mouse_released_snap, 'mouseReleased', 'stepslider')
+		super().capture(self._update, 'action', 'stepslider')
+		super().capture(self._mouse_released_snap, 'mouseReleased', 'stepslider')
 
 	def _mouse_released_snap(self):
 		"""
@@ -59,7 +59,7 @@ class StepSlider(Slider):
 		if event_name == 'action':
 			self._callbacks_by_group[group_name] = callback
 		else:
-			super(StepSlider, self).capture(callback, event_name, group_name)
+			super().capture(callback, event_name, group_name)
 
 	def _update(self):
 		"""

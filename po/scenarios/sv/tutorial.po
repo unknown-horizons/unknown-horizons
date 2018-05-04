@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-08-05 15:28+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/"
-">\n"
+"PO-Revision-Date: 2018-03-13 03:39+0000\n"
+"Last-Translator: Unlucky Luke <emil@nordicnode.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/>"
+"\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 2.20-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -31,15 +31,10 @@ msgstr ""
 "Bygg din första bosättning och lär dig hur man spelar!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid ""
-#| "Build a warehouse on the coast to allow trade ships to visit your "
-#| "settlement."
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
-"Bygg ett handelskontor vid kusten, så det blir lättillgängligt för andra "
-"fartyg exempelvis köpmän."
+"Bygg ett packhus vid kusten för att låta handelsfartyg besöka din koloni."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -53,6 +48,11 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"Detat är din journal där viktig information om det aktuella scenariot "
+"lagras. En sammanfattning av varje ny uppgift kommer också att visas här som "
+"en ”aviseringsknapp” nära vänsterkanen på skärmen. Du kan hovra din mus över "
+"dessa aviseringar för att läsa sammanfattningen eller klicka på knappen i "
+"sig för att öppna journalen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -61,6 +61,10 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Du kan också återöppna journalen när som helst genom att klicka på knappen "
+"under minikartan längst upp till höger på skärmen. Från och med nu kommer vi "
+"att referera till detta område som innehåller minikartan, diverse knappar "
+"och flikas som ”Översikten”."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -68,6 +72,9 @@ msgid ""
 "To see your first task, turn to the next page of the Journal using the "
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
+"\n"
+"För att se din första uppgift, bläddra till nästa sida i journalen med "
+"knappen längst ner på motstående sida - den ser ut så här:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -75,40 +82,49 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"Om du har några förslag om hur denna handledning kan förbättras eller om du "
+"anträffar några fel, berätta det för oss."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
+"\n"
+"Besök www.unknown-horizons.org för att ta reda på hur du kontaktar gruppen."
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
-msgstr ""
+msgstr "Låt oss nu börja spelet!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "NY UPPGIFT: BOSÄTTA SIG PÅ EN NY Ö"
+msgstr "NY UPPGIFT: SKAPA EN BOSÄTTNING"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Ditt skepp är förlorat till sjöss, lastat med de förnödenheter du behöver "
+"för att etablera en ny bosättning."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
+"För att flytta ditt skepp välj det med ett vänsterklick och högerklicka "
+"sedan på platsen du vill segla till."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
+"När du är nära kusen kommer knappen ”Bygg bosättning” i översikten att "
+"aktiveras."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -117,12 +133,19 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Om du klickar på den här knappen kommer en förhandsvisning av Packhuset att "
+"visas, den första byggnaden som behövs för en ny bosättning. När du flyttar "
+"runt markören kommer du att notera att förhandsvisningen är skuggad i rött "
+"när byggnaden är på ett olämpligt område."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Packhuset måste positioneras vid kusten för att tilllåta skepp att docka. Så "
+"hitta en bra plats och vänsterklicka sedan för att placera denna viktiga "
+"byggnad."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -237,18 +260,20 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
-msgstr ""
+msgstr "Jägare jagar djuren i skogen och behöver därför ha träd i närheten."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
-msgstr ""
+msgstr "Kom ihåg att du kan placera din Jägares tält nära skogshuggarens skog."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Det kan hända att djuren inte förökar sig tillräckligt snabbt eller bara "
+"gömmer sig bra."
 
 #. This is the text body of a logbook page.
 msgid ""

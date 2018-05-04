@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA	02110-1301	USA
 # ###################################################
 
-import pickle
+import importlib
 import inspect
+import pickle
 import sys
-
 from io import BytesIO
+from typing import Dict, Set
 
 from horizons.network import NetworkException, PacketTooLarge
 
@@ -36,7 +37,8 @@ PICKLE_SAFE = {
 	'server' : {},
 } # type: Dict[str, Dict[str, Set[str]]]
 
-class SafeUnpickler(object):
+
+class SafeUnpickler:
 	"""
 	NOTE: this is a security related method and may lead to
 	execution of arbritary code if used in a wrong way
@@ -86,8 +88,7 @@ class SafeUnpickler(object):
 			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe module "{0}" (class="{1}")'.
 				format(module, name))
-		__import__(module)
-		mod = sys.modules[module]
+		mod = importlib.import_module(module)
 		if name not in PICKLE_SAFE[PICKLE_RECIEVE_FROM][module]:
 			raise pickle.UnpicklingError(
 				'Attempting to unpickle unsafe class "{0}" (module="{1}")'.
@@ -106,7 +107,7 @@ class SafeUnpickler(object):
 
 #-------------------------------------------------------------------------------
 
-class packet(object):
+class packet:
 	maxpacketsize = 0
 
 	def __init__(self):
@@ -119,15 +120,16 @@ class packet(object):
 	def serialize(self):
 		return pickle.dumps(self, PICKLE_PROTOCOL)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_ok(packet):
 	"""simple ok message"""
 
+
 SafeUnpickler.add('common', cmd_ok)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_error(packet):
 	def __init__(self, errorstr, _type=0):
 		self.errorstr = errorstr
@@ -140,10 +142,11 @@ class cmd_error(packet):
 		if not isinstance(pkt.type, int):
 			raise NetworkException("Invalid datatype: type")
 
+
 SafeUnpickler.add('common', cmd_error)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 class cmd_fatalerror(packet):
 	def __init__(self, errorstr):
 		self.errorstr = errorstr
@@ -153,10 +156,11 @@ class cmd_fatalerror(packet):
 		if not isinstance(pkt.errorstr, str):
 			raise NetworkException("Invalid datatype: errorstr")
 
+
 SafeUnpickler.add('common', cmd_fatalerror)
 
-#-------------------------------------------------------------------------------
 
+#-------------------------------------------------------------------------------
 def unserialize(data, validate=False, protocol=0):
 	mypacket = SafeUnpickler.loads(data)
 	if validate:
@@ -169,5 +173,6 @@ def unserialize(data, validate=False, protocol=0):
 
 #-------------------------------------------------------------------------------
 
-import horizons.network.packets.server
-import horizons.network.packets.client
+
+import horizons.network.packets.server # isort:skip
+import horizons.network.packets.client # isort:skip

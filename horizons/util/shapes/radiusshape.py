@@ -22,7 +22,7 @@
 from .rect import Rect
 
 
-class RadiusShape(object):
+class RadiusShape:
 	"""Class for generic shapes with a radius.
 	The shape includes everything, that the center contains plus every point,
 	for which this holds: distance(point, center) <= radius
@@ -33,8 +33,9 @@ class RadiusShape(object):
 		self.center = center
 		self.radius = radius
 
+
 class RadiusRect(RadiusShape):
 	"""Specialization of RadiusShape with a Rect as center"""
 	def __init__(self, center, radius):
 		assert isinstance(center, Rect)
-		super(RadiusRect, self).__init__(center, radius)
+		super().__init__(center, radius)

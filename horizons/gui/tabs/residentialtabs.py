@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -37,7 +36,7 @@ class SettlerOverviewTab(OverviewTab):
 	helptext = LazyT("Settler overview")
 
 	def init_widget(self):
-		super(SettlerOverviewTab, self).init_widget()
+		super().init_widget()
 		name = self.instance.settlement.get_component(NamedComponent).name
 		self.widget.findChild(name="headline").text = name
 		setup_tax_slider(self.widget.child_finder('tax_slider'),
@@ -64,19 +63,19 @@ class SettlerOverviewTab(OverviewTab):
 		self.widget.findChild(name="building_image").image = list(imgs[45].keys())[0]
 
 	def show(self):
-		super(SettlerOverviewTab, self).show()
+		super().show()
 		SettlerUpdate.subscribe(self.on_settler_level_change, sender=self.instance)
 
 	def hide(self):
 		SettlerUpdate.discard(self.on_settler_level_change, sender=self.instance)
-		super(SettlerOverviewTab, self).hide()
+		super().hide()
 
 	def refresh(self):
 		image, helptext = get_happiness_icon_and_helptext(self.instance.happiness, self.instance.session)
 		self.widget.child_finder('happiness_label').image = image
 		self.widget.child_finder('happiness_label').helptext = helptext
 		self.widget.child_finder('happiness').progress = self.instance.happiness
-		self.widget.child_finder('inhabitants').text = "%s/%s" % (
+		self.widget.child_finder('inhabitants').text = "{}/{}".format(
 		                                               self.instance.inhabitants,
 		                                               self.instance.inhabitants_max)
 		self.widget.child_finder('taxes').text = str(self.instance.last_tax_payed)
@@ -88,7 +87,7 @@ class SettlerOverviewTab(OverviewTab):
 				                     self.instance.settlement)
 		         }
 		self.widget.mapEvents(events)
-		super(SettlerOverviewTab, self).refresh()
+		super().refresh()
 
 	def update_consumed_res(self):
 		"""Updates the container that displays the needed resources of the settler"""
@@ -104,6 +103,7 @@ class SettlerOverviewTab(OverviewTab):
 			container.addChild(icon)
 
 		container.adaptLayout()
+
 
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""

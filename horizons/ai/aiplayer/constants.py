@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict
+
 from horizons.constants import BUILDINGS
 
 
@@ -32,10 +34,12 @@ class BUILD_RESULT:
 	SKIP = 6
 	OUT_OF_SETTLEMENT = 7
 
+
 class GOAL_RESULT:
 	SKIP = 0 # just execute the next goal
 	BLOCK_SETTLEMENT_RESOURCE_USAGE = 1 # don't execute any goal that uses resources in this settlement
 	BLOCK_ALL_BUILDING_ACTIONS = 2 # no more building during this tick
+
 
 class BUILDING_PURPOSE:
 	NONE = 1
@@ -123,5 +127,6 @@ class BUILDING_PURPOSE:
 	@classmethod
 	def get_purpose(cls, building_id):
 		return cls.purpose_to_building[building_id]
+
 
 BUILDING_PURPOSE.init_translation()

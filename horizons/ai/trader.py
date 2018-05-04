@@ -50,7 +50,7 @@ class Trader(GenericAI):
 	regular_player = False
 
 	def __init__(self, session, id, name, color, **kwargs):
-		super(Trader, self).__init__(session, id, name, color, **kwargs)
+		super().__init__(session, id, name, color, **kwargs)
 		self.__init()
 		map_size = self.session.world.map_dimensions.width
 		while map_size > 0:
@@ -77,7 +77,7 @@ class Trader(GenericAI):
 			self.create_ship()
 
 	def save(self, db):
-		super(Trader, self).save(db)
+		super().save(db)
 
 		# mark self as a trader
 		db("UPDATE player SET is_trader = 1 WHERE rowid = ?", self.worldid)
@@ -95,7 +95,8 @@ class Trader(GenericAI):
 			if current_callback is not None:
 				# current state has a callback
 				calls = Scheduler().get_classinst_calls(self, current_callback)
-				assert len(calls) == 1, "got %s calls for saving %s: %s" %(len(calls), current_callback, calls)
+				assert len(calls) == 1, "got {} calls for saving {}: {}".format(
+					len(calls), current_callback, calls)
 				remaining_ticks = max(list(calls.values())[0], 1)
 
 			targeted_warehouse = None if ship.worldid not in self.warehouse else self.warehouse[ship.worldid].worldid
@@ -105,7 +106,7 @@ class Trader(GenericAI):
 			   VALUES(?, ?, ?, ?)", ship.worldid, ship_state.index, remaining_ticks, targeted_warehouse)
 
 	def _load(self, db, worldid):
-		super(Trader, self)._load(db, worldid)
+		super()._load(db, worldid)
 		self.__init()
 
 	def load_ship_states(self, db):
@@ -136,7 +137,7 @@ class Trader(GenericAI):
 	def send_ship_random(self, ship):
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
-		super(Trader, self).send_ship_random(ship)
+		super().send_ship_random(ship)
 		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship),
 		                              callback=Callback(self._ship_found_signal_fire, ship))
 
@@ -247,5 +248,5 @@ class Trader(GenericAI):
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)
 
 	def end(self):
-		super(Trader, self).end()
+		super().end()
 		NewSettlement.unsubscribe(self._on_new_settlement)

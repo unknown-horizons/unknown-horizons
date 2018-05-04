@@ -22,11 +22,12 @@
 # ###################################################
 
 from __future__ import print_function
+
+import getopt
+import glob
+import os
 import shutil
 import sys
-import getopt
-import os
-import glob
 
 verbose = False
 
@@ -157,6 +158,7 @@ def main(argv=None):
     setup(fife_dir)
     build(pyver)
     tearDown(run)
+
 
 if __name__ == "__main__":
     sys.exit(main())

@@ -20,9 +20,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest import mock
+
 import horizons.globals
 from horizons.constants import EDITOR, GROUND, VIEW
-from horizons.ext.dummy import Dummy
 from horizons.gui.keylisteners import IngameKeyListener, KeyConfig
 from horizons.gui.modules import HelpDialog, PauseMenu, SelectSavegameDialog
 from horizons.gui.mousetools import SelectionTool, TileLayingTool
@@ -54,10 +55,10 @@ class IngameGui(LivingObject):
 		LastActivePlayerSettlementManager.create_instance(self.session)
 
 		# Mocks needed to act like the real IngameGui
-		self.show_menu = Dummy
-		self.hide_menu = Dummy
-		# a logbook Dummy is necessary for message_widget to work
-		self.logbook = Dummy()
+		self.show_menu = mock.Mock()
+		self.hide_menu = mock.Mock()
+		# this is necessary for message_widget to work
+		self.logbook = mock.Mock()
 
 		self.mainhud = load_uh_widget('minimap.xml')
 		self.mainhud.position_technique = "right+0:top+0"
@@ -72,8 +73,8 @@ class IngameGui(LivingObject):
 		self.mainhud.mapEvents({
 			'zoomIn': self.session.view.zoom_in,
 			'zoomOut': self.session.view.zoom_out,
-			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.update_rotation),
+			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.update_rotation),
 			'gameMenuButton': self.toggle_pause,
 		})
 
@@ -114,7 +115,7 @@ class IngameGui(LivingObject):
 			self.cursor.end()
 			self.cursor = None
 
-		super(IngameGui, self).end()
+		super().end()
 
 	def handle_selection_group(self, num, ctrl_pressed):
 		# Someday, maybe cool stuff will be possible here.
@@ -204,7 +205,7 @@ class SettingsTab(TabInterface):
 	lazy_loading = False
 
 	def __init__(self, world_editor, ingame_gui):
-		super(SettingsTab, self).__init__(widget=self.widget)
+		super().__init__(widget=self.widget)
 
 		self._world_editor = world_editor
 		self._current_tile = 'sand'
@@ -212,7 +213,7 @@ class SettingsTab(TabInterface):
 
 		# Brush size
 		for i in range(EDITOR.MIN_BRUSH_SIZE, EDITOR.MAX_BRUSH_SIZE + 1):
-			b = self.widget.findChild(name='size_%d' % i)
+			b = self.widget.findChild(name='size_{:d}'.format(i))
 			b.capture(Callback(self._change_brush_size, i))
 
 		# Activate radio button for default brush size
@@ -227,13 +228,13 @@ class SettingsTab(TabInterface):
 			image.capture(Callback(self._set_cursor_tile, tile))
 
 		self.widget.mapEvents({
-			self.widget.name+'/mouseEntered/cursor': self._cursor_inside,
-			self.widget.name+'/mouseExited/cursor': self._cursor_outside,
+			self.widget.name + '/mouseEntered/cursor': self._cursor_inside,
+			self.widget.name + '/mouseExited/cursor': self._cursor_outside,
 		})
 
 		self._ingame_gui.mainhud.mapEvents({
-			self._ingame_gui.mainhud.name+'/mouseEntered/cursor': self._cursor_inside,
-			self._ingame_gui.mainhud.name+'/mouseExited/cursor': self._cursor_outside,
+			self._ingame_gui.mainhud.name + '/mouseEntered/cursor': self._cursor_inside,
+			self._ingame_gui.mainhud.name + '/mouseExited/cursor': self._cursor_outside,
 		})
 
 	def _set_cursor_tile(self, tile):
@@ -261,9 +262,9 @@ class SettingsTab(TabInterface):
 		  'box': 'content/gui/icons/ship/smallbutton.png',
 		}
 
-		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b = self.widget.findChild(name='size_{:d}'.format(self._world_editor.brush_size))
 		b.up_image = images['box']
 
 		self._world_editor.brush_size = size
-		b = self.widget.findChild(name='size_%d' % self._world_editor.brush_size)
+		b = self.widget.findChild(name='size_{:d}'.format(self._world_editor.brush_size))
 		b.up_image = images['box_highlighted']

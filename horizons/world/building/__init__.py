@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -38,7 +37,7 @@ class BuildingClass(IngameType):
 	classstring = 'Building[{id}]'
 
 	def __new__(self, db, id, yaml_data):
-		return super(BuildingClass, self).__new__(self, id, yaml_data)
+		return super().__new__(self, id, yaml_data)
 
 	def __init__(self, db, id, yaml_data):
 		"""
@@ -46,7 +45,7 @@ class BuildingClass(IngameType):
 		@param id: building id.
 		@param db: DbReader
 		"""
-		super(BuildingClass, self).__init__(id, yaml_data)
+		super().__init__(id, yaml_data)
 
 		self.settler_level = yaml_data['tier']
 		self.tooltip_text = self._strip_translation_marks(yaml_data['tooltip_text'])
@@ -95,19 +94,73 @@ class BuildingClass(IngameType):
 		fife.ActionVisual.create(action)
 		for rotation in all_action_sets[action_set][action_id]:
 			params['rot'] = rotation
-			# Issue #1379: Make the offset system more dynamic or re-render object images better
+			# hacks to solve issue #1379
 			if rotation == 45:
-				params['left'] = 32
+				# default values
 				params['botm'] = 16 * cls.size[0]
+				params['left'] = 32
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
+					params["botm"] = 66
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 55
+					params["left"] = 25
+				elif cls.size[0] == 2:
+					params["botm"] = 40
+				elif cls.size[0] == 1:
+					params["botm"] = 29
 			elif rotation == 135:
+				# default values
+				params['botm'] = 30
 				params['left'] = 32 * cls.size[1]
-				params['botm'] = 16
+				# hack for charcoal_burning
+				if cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 35
+					params["left"] = 65
 			elif rotation == 225:
-				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
+				# default values
 				params['botm'] = 16 * cls.size[1]
+				params['left'] = 32 * (cls.size[0] + cls.size[1] - 1)
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 75
+				elif cls.size[0] == 3:
+					params["botm"] = 60
+				# hack for brickyard
+				elif cls.size[0] == 2 and cls.size[1] == 4:
+					params["botm"] = 73
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 42
+					params["left"] = 130
+				elif cls.size[0] == 2:
+					params["botm"] = 40
+				elif cls.size[0] == 1:
+					params["botm"] = 29
 			elif rotation == 315:
+				# default values
 				params['left'] = 32 * cls.size[0]
 				params['botm'] = 16 * (cls.size[0] + cls.size[1] - 1)
+				# hack for smeltery
+				if cls.size[0] == 4 and cls.size[1] == 4:
+					params["botm"] = 125
+					params["left"] = 135
+				elif cls.size[0] == 3:
+					params["botm"] = 96
+				# hack for brickyard
+				elif cls.size[0] == 2 and cls.size[1] == 4:
+					params["botm"] = 92
+				# hack for charcoal_burning
+				elif cls.size[0] == 2 and cls.size[1] == 3:
+					params["botm"] = 75
+					params["left"] = 100
+				elif cls.size[0] == 2:
+					params["botm"] = 56
+				elif cls.size[0] == 1:
+					params["botm"] = 30
 			else:
 				assert False, "Bad rotation for action_set {id}: {rot} for action: {action}".format(**params)
 			path = '{id}+{action}+{rot}:shift:left-{left},bottom+{botm}'.format(**params)

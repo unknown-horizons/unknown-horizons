@@ -32,7 +32,7 @@ from horizons.util.python.callback import Callback
 
 
 @metaChangeListenerDecorator('remove')
-class TabWidget(object):
+class TabWidget:
 	"""The TabWidget class handles widgets which consist of many
 	different tabs(subpanels, switchable via buttons(TabButtons).
 	"""
@@ -45,7 +45,7 @@ class TabWidget(object):
 		@param name: optional name for the tabwidget
 		@param active_tab: int id of tab, 0 <= active_tab < len(tabs)
 		"""
-		super(TabWidget, self).__init__()
+		super().__init__() #TODO: check if this call is needed
 		self.name = name
 		self.ingame_gui = ingame_gui
 		self._tabs = [] if not tabs else tabs
@@ -84,11 +84,11 @@ class TabWidget(object):
 			button.capture(Callback(self.show_tab, index))
 			if hasattr(tab, 'helptext') and tab.helptext:
 				button.helptext = tab.helptext
-			container.size = (50,52)
+			container.size = (50, 52)
 			container.addChild(background)
 			container.addChild(button)
 			self.content.addChild(container)
-		self.widget.size = (54, 55*len(self._tabs))
+		self.widget.size = (54, 55 * len(self._tabs))
 		self.widget.adaptLayout()
 
 		self._apply_layout_hack()
@@ -105,13 +105,13 @@ class TabWidget(object):
 		if self.current_tab.is_visible():
 			self.current_tab.hide()
 		new_tab = self._tabs[number]
-		old_bg = self.content.findChild(name = "bg_{}".format(self._tabs.index(self.current_tab)))
+		old_bg = self.content.findChild(name="bg_{}".format(self._tabs.index(self.current_tab)))
 		old_bg.image = self.current_tab.button_background_image
 		name = str(self._tabs.index(self.current_tab))
 		old_button = self.content.findChild(name=name)
 		old_button.path = self.current_tab.path
 
-		new_bg = self.content.findChild(name = "bg_{}".format(number))
+		new_bg = self.content.findChild(name="bg_{}".format(number))
 		new_bg.image = self.current_tab.button_background_image_active
 		new_button = self.content.findChild(name=str(number))
 		new_button.path = new_tab.path_active

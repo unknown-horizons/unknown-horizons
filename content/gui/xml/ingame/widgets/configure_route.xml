@@ -3,9 +3,13 @@
 	background_image="content/gui/images/background/book.png">
 
 	<!-- left side -->
+	
+	<Label name="warehouse_name_label" text="Island Name:" position="80,40" />
+	<Label name="player_name_label" text="Player Name:" position="180,40" />
 
-	<VBox name="left_vbox" fixed_size="350,508" position="75,40" />
-	<VBox position="250,495" name="wait_options">
+	<VBox name="left_vbox" fixed_size="350,508" position="75,55" />
+
+	<VBox position="250,505" name="wait_options">
 		<HBox>
 			<Label name="lbl_wait_at_load" text="Wait at load:"
 				comment="Trade route setting: Whether to wait until all goods could be loaded." />
@@ -25,7 +29,10 @@
 
 		<!-- this box is only displayed on resource selection. -->
 		<!-- res selection box, filled with icons -->
-		<VBox name="traderoute_resources" fixed_size="330,100" />
+		<Label name='select_res_label'  text='Select a resource:' />
+
+		<!-- Displays list of resources to select one which is displayed in this slot. -->
+		<ScrollArea fixed_size="290,130" name="resources_scrollarea" />
 
 		<HBox fixed_size="310,30">
 			<Label name="lbl_route_activity" text="Route activity:" position="0,5" />

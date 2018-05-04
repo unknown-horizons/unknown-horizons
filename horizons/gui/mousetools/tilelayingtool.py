@@ -19,11 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Dict, Tuple
+
 from fife import fife
 
 import horizons.globals
 from horizons.constants import GROUND
-from typing import Tuple
 from horizons.util.loaders.tilesetloader import TileSetLoader
 from horizons.util.shapes import Circle, Point
 
@@ -37,7 +38,7 @@ class TileLayingTool(NavigationTool):
 	tile_images = {} # type: Dict[Tuple[int, str, int], fife.SharedImagePointer]
 
 	def __init__(self, session, tile_details):
-		super(TileLayingTool, self).__init__(session)
+		super().__init__(session)
 		self.renderer = session.view.renderer['InstanceRenderer']
 		self._tile_details = (None, None, None)
 		if tile_details[0] in [0, 2]:
@@ -73,7 +74,7 @@ class TileLayingTool(NavigationTool):
 	def remove(self):
 		self._remove_coloring()
 		horizons.globals.fife.set_cursor_image('default')
-		super(TileLayingTool, self).remove()
+		super().remove()
 
 	def on_escape(self):
 		self.session.ingame_gui.set_cursor()
@@ -99,7 +100,7 @@ class TileLayingTool(NavigationTool):
 			self.on_escape()
 			evt.consume()
 		else:
-			super(TileLayingTool, self).mouseClicked(evt)
+			super().mouseClicked(evt)
 
 	def mouseDragged(self, evt):
 		"""Allow placing tiles continusly while moving the mouse."""

@@ -20,7 +20,7 @@
 # ###################################################
 
 
-class BuildingIndexer(object):
+class BuildingIndexer:
 	"""
 	Indexes a subset of the buildings on an island to improve nearby building
 	lookup performance.
@@ -124,8 +124,7 @@ class BuildingIndexer(object):
 			return self._map[coords].get_num_buildings_in_range()
 
 
-
-class BuildingIndex(object):
+class BuildingIndex:
 	"""
 	Indexes buildings around a tile to improve nearby building lookup speed.
 	The code isn't particularly pretty for performance reasons.

@@ -33,7 +33,7 @@ from horizons.util.python import map_balance, trim_value
 from horizons.util.worldobject import WorldObject
 
 
-class StrategyManager(object):
+class StrategyManager:
 	"""
 	StrategyManager object is responsible for handling major decisions in game such as
 	sending fleets to battle, keeping track of diplomacy between players, declare wars.
@@ -42,7 +42,7 @@ class StrategyManager(object):
 
 	# Redundant use of super()?
 	def __init__(self, owner):
-		super(StrategyManager, self).__init__()
+		super().__init__() # TODO: figure out whether this is needed
 		self.__init(owner)
 
 	def __init(self, owner):
@@ -178,12 +178,12 @@ class StrategyManager(object):
 		power_balance = self.owner.strategy_manager.calculate_player_power_balance(player)
 		terrain_balance = self.owner.strategy_manager.calculate_player_terrain_balance(player)
 		balance = {
-			'wealth':wealth_balance,
-			'power':power_balance,
-			'terrain':terrain_balance,
+			'wealth': wealth_balance,
+			'power': power_balance,
+			'terrain': terrain_balance,
 		}
-		balance = dict(( (key, trim_value(value, 1./trimming_factor, trimming_factor)) for key, value in balance.items()))
-		balance = dict(( (key, map_balance(value, trimming_factor, linear_boundary)) for key, value in balance.items()))
+		balance = {key: trim_value(value, 1. / trimming_factor, trimming_factor) for key, value in balance.items()}
+		balance = {key: map_balance(value, trimming_factor, linear_boundary) for key, value in balance.items()}
 
 		return collections.namedtuple('Balance', 'wealth, power, terrain')(**balance)
 
@@ -196,15 +196,16 @@ class StrategyManager(object):
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean up below super() call; it is a hack
 		self = cls.__new__(cls)
-		super(StrategyManager, self).__init__()		# redundant use of super()?
+		super(StrategyManager, self).__init__()
 		self.__init(owner)
 		self._load(db)
 		return self
 
 	def _load(self, db):
 		for class_name, db_table in self.missions_to_load.items():
-			db_result = db("SELECT m.rowid FROM %s m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid" % db_table, self.owner.worldid)
+			db_result = db("SELECT m.rowid FROM {} m, ai_fleet_mission f WHERE f.owner_id = ? and m.rowid = f.rowid".format(db_table), self.owner.worldid)
 			for (mission_id,) in db_result:
 				self.missions.add(class_name.load(mission_id, self.owner, db, self.report_success, self.report_failure))
 
@@ -338,10 +339,11 @@ class StrategyManager(object):
 		for mission in self.missions:
 			mission.end()
 
+
 class PirateStrategyManager(StrategyManager):
 
 	def __init__(self, owner):
-		super(PirateStrategyManager, self).__init__(owner)
+		super().__init__(owner)
 		self.__init(owner)
 
 	def get_ships_for_mission(self):
@@ -352,6 +354,7 @@ class PirateStrategyManager(StrategyManager):
 
 	@classmethod
 	def load(cls, db, owner):
+		# TODO: clean below code; it is a _very_ dirty hack
 		self = cls.__new__(cls)
 		super(PirateStrategyManager, self).__init__(owner)
 		self.__init(owner)

@@ -25,7 +25,7 @@ import sqlite3
 from horizons.util.python import decorators
 
 
-class DbReader(object):
+class DbReader:
 	"""Class that handles connections to sqlite databases
 	@param file: str containing the database file."""
 	def __init__(self, dbfile):

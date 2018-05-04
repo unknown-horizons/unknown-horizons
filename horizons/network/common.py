@@ -21,11 +21,12 @@
 
 import uuid
 from gettext import NullTranslations
+from typing import Optional
 
 from horizons.network import enet, packets
 
 
-class Address(object):
+class Address:
 	def __init__(self, address, port=None):
 		if isinstance(address, enet.Address):
 			self.host = address.host
@@ -54,8 +55,11 @@ class Address(object):
 
 #-----------------------------------------------------------------------------
 
+
 nulltranslation = NullTranslations()
-class Player(object):
+
+
+class Player:
 	def __init__(self, peer, sid, protocol=0):
 		# pickle doesn't use all of these attributes
 		# for more detail check __getstate__()
@@ -77,7 +81,7 @@ class Player(object):
 		self.ready    = False
 		self.prepared = False
 		self.fetch    = False
-		self.gettext  = nulltranslation
+		self.gettext  = nulltranslation.gettext
 
 	# for pickle: return only relevant data to the player
 	def __getstate__(self):
@@ -130,12 +134,13 @@ class Player(object):
 		self.ready = not self.ready
 		return self.ready
 
+
 packets.SafeUnpickler.add('server', Player)
 
-#-----------------------------------------------------------------------------
 
-class Game(object):
-	class State(object):
+#-----------------------------------------------------------------------------
+class Game:
+	class State:
 		Open      = 0
 		Prepare   = 1
 		Running   = 2
@@ -207,6 +212,11 @@ class Game(object):
 		player.game = None
 		return player
 
+	def find_player_by_sid(self, sid: str) -> Optional[Player]:
+		for player in self.players:
+			if player.sid == packet.kicksid:
+				return player
+
 	def is_full(self):
 		return (self.playercnt == self.maxplayers)
 
@@ -236,13 +246,14 @@ class Game(object):
 		return "Game(uuid={};maxpl={:d};plcnt={:d};pw={:d};state={})" \
 			.format(self.uuid, self.maxplayers, self.playercnt, self.has_password(), Game.State(self.state))
 
+
 packets.SafeUnpickler.add('server', Game)
 
-#-----------------------------------------------------------------------------
 
+#-----------------------------------------------------------------------------
 # types of soft errors used by cmd_error
 # this way we don't have to create a new packet for every type of error
-class ErrorType(object):
+class ErrorType:
 	NotSet = 0
 	TerminateGame = 1
 
@@ -252,5 +263,6 @@ class ErrorType(object):
 	def __str__(self):
 		strvals = ["NotSet", "TerminateGame"]
 		return strvals[self.state]
+
 
 packets.SafeUnpickler.add('common', ErrorType)

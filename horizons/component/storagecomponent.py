@@ -45,7 +45,7 @@ class StorageComponent(Component):
 	    }
 
 	def __init__(self, inventory):
-		super(StorageComponent, self).__init__()
+		super().__init__()
 		self.inventory = inventory
 
 		# SettlementStorage is used as flag to signal using another inventory
@@ -58,7 +58,7 @@ class StorageComponent(Component):
 		self.inventory.add_change_listener(self.something_changed)
 
 	def remove(self):
-		super(StorageComponent, self).remove()
+		super().remove()
 		if self.has_own_inventory:
 			# no changelister calls on remove
 			self.inventory.clear_change_listeners()
@@ -66,12 +66,12 @@ class StorageComponent(Component):
 			self.inventory.reset_all()
 
 	def save(self, db):
-		super(StorageComponent, self).save(db)
+		super().save(db)
 		if self.has_own_inventory:
 			self.inventory.save(db, self.instance.worldid)
 
 	def load(self, db, worldid):
-		super(StorageComponent, self).load(db, worldid)
+		super().load(db, worldid)
 		self.initialize()
 		if self.has_own_inventory:
 			self.inventory.load(db, worldid)

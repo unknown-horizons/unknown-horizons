@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-04-18 06:56+0000\n"
-"Last-Translator: Lukáš Doktor <ldoktor@redhat.com>\n"
+"PO-Revision-Date: 2017-05-22 12:25+0000\n"
+"Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/uh/tutorial/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 2.14.1-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -256,12 +256,10 @@ msgstr ""
 "jídlo, protože všichni lidé (a námořníci obzvláště) jsou velmi hladoví."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Available companies in the first tier are the Hunter and Fisher."
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
-msgstr "Dostupné budovy pro první úroveň jsou Lovec a Rybář."
+msgstr "Dostupné budovy pro první úroveň jsou lovec a rybář."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -551,8 +549,6 @@ msgid "Note that you can also change the global tax settings here, too."
 msgstr "Všimněte si, že i zde můžete změnit nastavení celkové daně."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build at least three additional tents."
 msgid "Task: Build at least three additional Tents."
 msgstr "Úkol: Postavte alespoň tři další stany."
 
@@ -567,8 +563,6 @@ msgstr ""
 "stejného druhu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a signal fire at the coast close to your warehouse."
 msgid "Build a Signal Fire at the coast close to your Warehouse."
 msgstr "Postavte signální oheň na pobřeží v blízkosti obchodního přístavu."
 
@@ -593,10 +587,6 @@ msgstr ""
 "sami produkovat."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You can also sell surpluses of your production, but in general consuming "
-#| "them (by building more tents) instead of selling them yields more profit."
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
@@ -606,10 +596,6 @@ msgstr ""
 "vyšší než by byl příjem z prodeje."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Normally the trader ships just sail around and look for deals, but you "
-#| "can speed things up a bit."
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
@@ -618,10 +604,6 @@ msgstr ""
 "příležitosti, ale my můžeme věci trochu urychlit."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "For this purpose, build a signal fire at the coast near your warehouse. "
-#| "It will show ships the way to your settlement."
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."

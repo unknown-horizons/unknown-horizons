@@ -26,21 +26,23 @@ Warning:
 	Please make sure that this is really the best solution before using this code!
 '''
 
+from typing import Any, Optional
+
 
 class Singleton(type):
 	"""Traditional Singleton design pattern.
 
 	USAGE:
-	class MyClass(object):
+	class MyClass:
 		__metaclass__ = Singleton
 	"""
 	def __init__(self, name, bases, dict):
-		super(Singleton, self).__init__(name, bases, dict)
-		self.instance = None
+		super().__init__(name, bases, dict)
+		self.instance = None # type: Optional[Any]
 
 	def __call__(self, *args, **kwargs):
 		if self.instance is None:
-			self.instance = super(Singleton, self).__call__(*args, **kwargs)
+			self.instance = super().__call__(*args, **kwargs)
 		return self.instance
 
 	def destroy_instance(self):
@@ -54,4 +56,4 @@ class ManualConstructionSingleton(Singleton):
 		return self.instance
 
 	def create_instance(self, *args, **kwargs):
-		self.instance = super(ManualConstructionSingleton, self).__call__(*args, **kwargs)
+		self.instance = super().__call__(*args, **kwargs)

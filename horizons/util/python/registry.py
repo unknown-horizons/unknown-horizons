@@ -19,8 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from typing import Callable, Dict
 
-class Registry(object):
+
+class Registry:
 	"""Simple implementation of the registry pattern.
 
 	Example
@@ -41,7 +43,7 @@ class Registry(object):
 	See the Scenario system or the unit tests for further usage examples.
 	"""
 	def __init__(self):
-		self.registry = {}
+		self.registry = {} # type: Dict[str, Callable]
 
 	def register(self, **kwargs):
 		"""Returns a decorator to register functions, all arguments are passed through
@@ -53,7 +55,7 @@ class Registry(object):
 			return func
 		return deco
 
-	def register_function(self, func, **kwargs):
+	def register_function(self, func: Callable, **kwargs):
 		"""Function that actually handles the registration. You need to implement this
 		yourself.
 
@@ -62,6 +64,6 @@ class Registry(object):
 		"""
 		raise NotImplementedError
 
-	def get(self, name):
+	def get(self, name: str) -> Callable:
 		"""Retrieve a function given by `name` from the registry."""
 		return self.registry[name]

@@ -21,6 +21,7 @@
 
 import logging
 import os
+from io import BytesIO
 
 from fife import fife
 from fife.extensions.pychan import loadXML
@@ -31,8 +32,6 @@ from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.i18n import gettext as T
 from horizons.util.python import decorators
 from horizons.util.python.callback import Callback
-
-from io import BytesIO
 
 
 @decorators.cachedfunction
@@ -51,6 +50,7 @@ def get_gui_files_map():
 			xml_files[f] = os.path.join(root, f)
 	return xml_files
 
+
 def get_happiness_icon_and_helptext(value, session):
 	happiness_icon_path = "content/gui/icons/templates/happiness/"
 	sad = session.db.get_lower_happiness_limit()
@@ -67,6 +67,7 @@ def get_happiness_icon_and_helptext(value, session):
 
 	return happiness_icon_path, happiness_helptext
 
+
 @decorators.cachedfunction
 def get_widget_xml(filename):
 	"""
@@ -75,6 +76,7 @@ def get_widget_xml(filename):
 	"""
 	with open(get_gui_files_map()[filename], 'rb') as open_file:
 		return open_file.read()
+
 
 def load_uh_widget(filename, style=None, center_widget=False):
 	"""Loads a pychan widget from an xml file and applies uh-specific modifications
@@ -105,6 +107,7 @@ def load_uh_widget(filename, style=None, center_widget=False):
 
 	return widget
 
+
 @decorators.cachedfunction
 def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 	"""Returns path of a resource icon or placeholder path, if icon does not exist.
@@ -134,6 +137,7 @@ def get_res_icon_path(res, size=32, greyscale=False, full_path=True):
 	else:
 		# remove 'content/gui/' and '.png'
 		return icon_path[12:][:-4]
+
 
 def create_resource_icon(res_id, db):
 	"""Creates a pychan Icon for a resource. Helptext is set to name of *res_id*.
@@ -190,21 +194,21 @@ def create_resource_selection_dialog(on_click, inventory, db,
 			# capture a mouse click on the container. It's possible to click on the
 			# image itself or into the empty area (below or to the right of the image)
 			button.capture(cb, event_name="mouseClicked")
-			button.name = "resource_%d" % res_id
+			button.name = "resource_{:d}".format(res_id)
 		else:
 			amount = inventory[res_id]
 			filled = int(inventory[res_id] / inventory.get_limit(res_id) * 100)
 			button = ImageFillStatusButton.init_for_res(db, res_id,
 						                                amount=amount, filled=filled, uncached=True,
 						                                use_inactive_icon=False, showprice=True)
-			button.button.capture(cb)
-			button.button.name = "resource_%d" % res_id
+			button.capture(cb, event_name="mouseClicked")
+			button.name = "resource_{:d}".format(res_id)
 
 		current_hbox.addChild(button)
 		if index % amount_per_line == 0:
 			vbox.addChild(current_hbox)
 			box_id = index // amount_per_line
-			current_hbox = HBox(name="hbox_%s" % box_id, padding=0)
+			current_hbox = HBox(name="hbox_{}".format(box_id), padding=0)
 		index += 1
 	vbox.addChild(current_hbox)
 	vbox.adaptLayout()

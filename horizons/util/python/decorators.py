@@ -23,16 +23,20 @@
 
 import functools
 import time
+from typing import Any, Dict, Tuple
+
+FuncArgs = Tuple[Any, ...]
+FuncKwargsTuple = Tuple[Tuple[str, Any]]
 
 
-class cachedfunction(object):
+class cachedfunction:
 	"""Decorator that caches a function's return value each time it is called.
 	If called later with the same arguments, the cached value is returned, and
 	not re-evaluated.
 	"""
 	def __init__(self, func):
 		self.func = func
-		self.cache = {}
+		self.cache = {} # type: Dict[Tuple[FuncArgs, FuncKwargsTuple], Any]
 
 	def __call__(self, *args, **kwargs):
 		# dicts are not hashable, convert kwargs to a tuple
@@ -47,10 +51,10 @@ class cachedfunction(object):
 			assert False, "Supplied invalid argument to cache decorator"
 
 
-class cachedmethod(object):
+class cachedmethod:
 	"""Same as cachedfunction, but works also for methods. Results are saved per instance"""
 	def __init__(self, func):
-		self.cache = {}
+		self.cache = {} # type: Dict[Tuple[Any, FuncArgs, FuncKwargsTuple], Any]
 		self.func = func
 
 	def __get__(self, instance, cls=None):
@@ -79,9 +83,9 @@ def temporary_cachedmethod(timeout):
 	"""
 	class _temporary_cachedmethod(cachedmethod):
 		def __init__(self, func, timeout):
-			super(_temporary_cachedmethod, self).__init__(func)
+			super().__init__(func)
 			self.timeout = timeout
-			self.cache_dates = {}
+			self.cache_dates = {} # type: Dict[Tuple[Any, FuncArgs, FuncKwargsTuple], Any]
 
 		def __call__(self, *args, **kwargs):
 			key = self.instance, args, tuple(sorted(kwargs.items()))
@@ -96,7 +100,7 @@ def temporary_cachedmethod(timeout):
 			else:
 				self.cache_dates[key] = time.time() # new entry
 
-			return super(_temporary_cachedmethod, self).__call__(*args, **kwargs)
+			return super().__call__(*args, **kwargs)
 
 	return functools.partial(_temporary_cachedmethod, timeout=timeout)
 
@@ -104,6 +108,7 @@ def temporary_cachedmethod(timeout):
 # Licensed under MIT
 # A cached property is a read-only property that is calculated on demand and automatically cached.
 # If the value has already been calculated, the cached value is returned.
+
 
 def cachedproperty(f):
 	"""returns a cached property that is calculated by function f"""

@@ -22,10 +22,9 @@
 import logging
 import os
 import threading
+from typing import Optional
 
 import yaml
-
-from typing import Optional
 
 from horizons.constants import BUILDINGS, PATHS, RES, TIER, UNITS
 from horizons.util.yamlcachestorage import YamlCacheStorage
@@ -35,9 +34,12 @@ try:
 except ImportError:
 	from yaml import SafeLoader # type: ignore
 
+
 # make SafeLoader allow unicode
 def construct_yaml_str(self, node):
 	return self.construct_scalar(node)
+
+
 SafeLoader.add_constructor('tag:yaml.org,2002:python/unicode', construct_yaml_str)
 SafeLoader.add_constructor('tag:yaml.org,2002:str', construct_yaml_str)
 
@@ -62,7 +64,7 @@ def parse_token(token, token_klass):
 		err = ("This means that you either have to add an entry in horizons/constants.py "
 		       "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".
 		       format(token_klass, token, token))
-		raise Exception( str(e) + "\n\n" + err +"\n" )
+		raise Exception( str(e) + "\n\n" + err + "\n" )
 
 
 def convert_game_data(data):
@@ -79,7 +81,7 @@ def convert_game_data(data):
 		return data
 
 
-class YamlCache(object):
+class YamlCache:
 	"""Loads and caches YAML files in a persistent cache.
 	Threadsafe.
 

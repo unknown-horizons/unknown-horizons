@@ -37,12 +37,12 @@ from horizons.util.python import parse_port
 from horizons.util.python.singleton import ManualConstructionSingleton
 
 
-class ClientMode(object):
+class ClientMode:
 	Server = 0
 	Game = 1
 
 
-class ClientData(object):
+class ClientData:
 	def __init__(self):
 		self.name = horizons.globals.fife.get_uh_setting("Nickname")
 		self.color = horizons.globals.fife.get_uh_setting("ColorID")
@@ -313,7 +313,6 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 		self.log.debug("[KICK]")
 		self.send_packet(packets.client.cmd_kickplayer(player_sid))
 
-
 	# Client
 
 	def get_client_name(self):
@@ -502,7 +501,7 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 			raise network.NotInGameLobby("We are not in a game lobby")
 
 
-class MPGame(object):
+class MPGame:
 	def __init__(self, game, netif):
 		self.uuid       = game.uuid
 		self.creator    = game.creator

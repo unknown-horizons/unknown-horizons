@@ -41,12 +41,13 @@
 #
 ###############################################################################
 
-from typing import Tuple
+from typing import Dict, Tuple
 
 from horizons.constants import VERSION
 from horizons.i18n import gettext as T
 
 text_translations = {} # type: Dict[str, Dict[Tuple[str, str], str]]
+
 
 def set_translations():
 	global text_translations
@@ -407,11 +408,10 @@ def set_translations():
 		('move_up'                      , 'helptext'): T("Move up"),
 		},
 
-	'trade_history_item.xml' : {
+	'scrollbar_resource_selection.xml' : {
 		},
 
-	'traderoute_resource_selection.xml' : {
-		('select_res_label'             , 'text'    ): T("Select a resource:"),
+	'trade_history_item.xml' : {
 		},
 
 	'captains_log.xml' : {
@@ -433,6 +433,9 @@ def set_translations():
 		('lbl_route_activity'           , 'text'    ): T("Route activity:"),
 		('lbl_wait_at_load'             , 'text'    ): T("Wait at load:"),
 		('lbl_wait_at_unload'           , 'text'    ): T("Wait at unload:"),
+		('player_name_label'            , 'text'    ): T("Player Name:"),
+		('select_res_label'             , 'text'    ): T("Select a resource:"),
+		('warehouse_name_label'         , 'text'    ): T("Island Name:"),
 		('okButton'                     , 'helptext'): T("Exit"),
 		('start_route'                  , 'helptext'): T("Start route"),
 		},

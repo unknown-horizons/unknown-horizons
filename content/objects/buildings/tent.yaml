@@ -50,7 +50,7 @@ components:
         produces:
         - [RES.HAPPINESS, 3]
         changes_animation: false
-        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -77,7 +77,7 @@ components:
         produces:
         - [RES.HAPPINESS, 12]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 75
         consumes:
@@ -95,7 +95,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -104,7 +104,7 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.PIONEERS, TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 180
         consumes:
@@ -113,7 +113,7 @@ components:
         produces:
         - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -122,7 +122,7 @@ components:
         produces:
         - [RES.HAPPINESS, 4]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 90
         consumes:
@@ -131,11 +131,20 @@ components:
         produces:
         - [RES.HAPPINESS, 5]
         changes_animation: false
-        level: [TIER.SETTLERS, TIER.CITIZENS]
+        level: [TIER.SETTLERS, TIER.CITIZENS, TIER.MERCHANTS]
         enabled_by_default: false
         time: 180
         consumes:
         - [RES.TOBACCO_PRODUCTS, -1]
+      HYGIENE:
+        produces:
+        - [RES.HAPPINESS, 5]
+        changes_animation: false
+        level: [TIER.MERCHANTS]
+        enabled_by_default: false
+        time: 90
+        consumes:
+        - [RES.HYGIENE, -1]
     settler_upgrade_lines:
       TIER.PIONEERS:
         - [RES.BOARDS, -3]
@@ -156,7 +165,7 @@ components:
         slot_sizes: {RES.TOBACCO_PRODUCTS: 1, RES.TEXTILE: 1, RES.FOOD: 1,
                      RES.FAITH: 1, RES.HAPPINESS: 100, RES.EDUCATION: 1,
                      RES.COMMUNITY: 1, RES.GET_TOGETHER: 1, RES.SALT: 1,
-                     RES.FIRE: 1, RES.BLACKDEATH: 1}
+                     RES.FIRE: 1, RES.BLACKDEATH: 1, RES.HYGIENE: 1}
 - CollectingComponent:
     collectors:
       UNITS.SETTLER_COLLECTOR: 1
@@ -181,3 +190,6 @@ actionsets:
     as_stonehouse1:
     as_stonehouse2:
     as_stonehouse3:
+  TIER.MERCHANTS:
+    as_estate0:
+    as_estate1:

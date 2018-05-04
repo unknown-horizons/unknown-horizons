@@ -23,7 +23,7 @@ import types
 import weakref
 
 
-class WeakMethod(object):
+class WeakMethod:
 	def __init__(self, function):
 		assert callable(function)
 

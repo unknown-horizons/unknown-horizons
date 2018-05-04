@@ -36,6 +36,7 @@ class AbstractSmeltery(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SMELTERY] = cls
 
+
 class SmelteryEvaluator(BuildingEvaluator):
 	@classmethod
 	def create(cls, area_builder, x, y, orientation):
@@ -59,5 +60,6 @@ class SmelteryEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.SMELTERY
+
 
 AbstractSmeltery.register_buildings()

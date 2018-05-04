@@ -22,7 +22,6 @@
 import random
 
 from horizons.constants import ACTION_SETS
-from horizons.engine import Fife
 from horizons.messaging import ActionChanged
 from horizons.scheduler import Scheduler
 from horizons.util.loaders.actionsetloader import ActionSetLoader
@@ -47,7 +46,7 @@ class ConcreteObject(WorldObject):
 		"""
 		@param session: Session instance this obj belongs to
 		"""
-		super(ConcreteObject, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		from horizons.session import Session
 		assert isinstance(session, Session)
 		self.session = session
@@ -71,12 +70,12 @@ class ConcreteObject(WorldObject):
 		return self._instance
 
 	def save(self, db):
-		super(ConcreteObject, self).save(db)
+		super().save(db)
 		db("INSERT INTO concrete_object(id, action_runtime, action_set_id) VALUES(?, ?, ?)", self.worldid,
 			 self._instance.getActionRuntime(), self._action_set_id)
 
 	def load(self, db, worldid):
-		super(ConcreteObject, self).load(db, worldid)
+		super().load(db, worldid)
 		runtime, action_set_id = db.get_concrete_object_data(worldid)
 		# action_set_id should never be None in regular games,
 		# but this information was lacking in savegames before rev 59.
@@ -112,14 +111,10 @@ class ConcreteObject(WorldObject):
 		if facing_loc is None:
 			facing_loc = self._instance.getFacingLocation()
 		UnitClass.ensure_action_loaded(self._action_set_id, action) # lazy
-		if (Fife.getVersion() >= (0, 3, 6)):
-			if repeating:
-				self._instance.actRepeat(action+"_"+str(self._action_set_id), facing_loc)
-			else:
-				self._instance.actOnce(action+"_"+str(self._action_set_id), facing_loc)
+		if repeating:
+			self._instance.actRepeat(action + "_" + str(self._action_set_id), facing_loc)
 		else:
-			self._instance.act(action+"_"+str(self._action_set_id), facing_loc, repeating)
-		ActionChanged.broadcast(self, action)
+			self._instance.actOnce(action + "_" + str(self._action_set_id), facing_loc)
 
 	def has_action(self, action):
 		"""Checks if this unit has a certain action.
@@ -130,7 +125,7 @@ class ConcreteObject(WorldObject):
 		self._instance.getLocationRef().getLayer().deleteInstance(self._instance)
 		self._instance = None
 		Scheduler().rem_all_classinst_calls(self)
-		super(ConcreteObject, self).remove()
+		super().remove()
 
 	@classmethod
 	def weighted_choice(cls, weighted_dict):
@@ -161,7 +156,7 @@ class ConcreteObject(WorldObject):
 				action_set = cls.weighted_choice(action_sets[level])
 			# if there isn't one, stick with None
 		else: # search all levels for an action set, starting with highest one
-			for possible_level in reversed(range(level+1)):
+			for possible_level in reversed(range(level + 1)):
 				if possible_level in (action_sets.keys()):
 					action_set = cls.weighted_choice(action_sets[possible_level])
 					break

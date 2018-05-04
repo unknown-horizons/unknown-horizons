@@ -81,12 +81,12 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		@param deposit_class: class num of deposit for later reconstruction (collected by get_prebuild_data())
 		"""
 		# needs to be inited before super(), since that will call the _on_production_changed hook
-		super(Mine, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs)
 		self.__inventory = inventory
 		self.__deposit_class = deposit_class
 
 	def initialize(self, deposit_class, inventory, **kwargs):
-		super(Mine, self).initialize(**kwargs)
+		super().initialize(**kwargs)
 		self.__init(deposit_class=deposit_class)
 		for res, amount in inventory.items():
 			# bury resources from mountain in mine
@@ -100,7 +100,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 			elif rotation == 135:
 				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y + pos.height - 1, 3, 1)
 			elif rotation == 225:
-				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width -1, pos.origin.y + 1, 1, 3)
+				return Rect.init_from_topleft_and_size(pos.origin.x + pos.width - 1, pos.origin.y + 1, 1, 3)
 			elif rotation == 315:
 				return Rect.init_from_topleft_and_size(pos.origin.x + 1, pos.origin.y, 3, 1)
 			assert False
@@ -131,14 +131,14 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		                  self.island, rotation=self.rotation, ownerless=True, data=deposit_build_data)
 		Scheduler().add_new_object(build_cmd, build_cmd, run_in=0)
 
-		super(Mine, self).remove()
+		super().remove()
 
 	def save(self, db):
-		super(Mine, self).save(db)
+		super().save(db)
 		db("INSERT INTO mine(rowid, deposit_class) VALUES(?, ?)",
 		   self.worldid, self.__deposit_class)
 
 	def load(self, db, worldid):
-		super(Mine, self).load(db, worldid)
+		super().load(db, worldid)
 		deposit_class = db("SELECT deposit_class FROM mine WHERE rowid = ?", worldid)[0][0]
 		self.__init(deposit_class)

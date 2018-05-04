@@ -22,7 +22,7 @@
 from horizons.world.buildability.binarycache import BinaryBuildabilityCache
 
 
-class FreeIslandBuildabilityCache(object):
+class FreeIslandBuildabilityCache:
 	"""
 	An instance of this class is used to keep track of the unclaimed area on an island.
 

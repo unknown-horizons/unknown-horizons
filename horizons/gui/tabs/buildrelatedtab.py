@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -71,7 +70,7 @@ class BuildRelatedTab(OverviewTab):
 			container.findChild(name="build_button_bg_container").addChild(button_bg)
 		# Still need to add last container
 		parent_container.addChild(container)
-		super(BuildRelatedTab, self).refresh()
+		super().refresh()
 
 	def __get_new_container(self):
 		"""

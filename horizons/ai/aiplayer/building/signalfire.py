@@ -47,6 +47,7 @@ class AbstractSignalFire(AbstractBuilding):
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.SIGNAL_FIRE] = cls
 
+
 class SignalFireEvaluator(BuildingEvaluator):
 	need_collector_connection = False
 
@@ -67,5 +68,6 @@ class SignalFireEvaluator(BuildingEvaluator):
 	@property
 	def purpose(self):
 		return BUILDING_PURPOSE.SIGNAL_FIRE
+
 
 AbstractSignalFire.register_buildings()

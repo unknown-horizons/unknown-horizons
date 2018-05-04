@@ -20,6 +20,7 @@
 # ###################################################
 
 
+from typing import Optional
 from unittest import TestCase
 
 from horizons.component.tradepostcomponent import TradePostComponent
@@ -37,11 +38,12 @@ class TestTradePostComponent(TestCase):
 		self.inventory = GenericStorage()
 		self.owner_inventory = GenericStorage()
 
-		class Instance(object):
+		class Instance:
 			def __init__(self, comp):
 				self.comp = comp
+				self.owner = None # type: Optional[Instance]
 			def get_component(self, x):
-				class Comp(object):
+				class Comp:
 					inventory = self.comp
 				return Comp()
 
@@ -50,7 +52,7 @@ class TestTradePostComponent(TestCase):
 		self.tradepost.instance.owner = Instance(self.owner_inventory)
 		self.tradepost.initialize()
 
-		class Timer(object):
+		class Timer:
 			def add_call(self, x):
 				pass
 			def get_ticks(self, x):
@@ -105,7 +107,6 @@ class TestTradePostComponent(TestCase):
 
 		self.inventory.alter(1, 1)
 		self.assertTrue(self.tradepost.sell(1, 1, 1, 100))
-
 
 		self.tradepost.clear_slot(0, True)
 		# not selling any more

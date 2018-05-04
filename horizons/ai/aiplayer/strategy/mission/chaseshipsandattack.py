@@ -43,7 +43,7 @@ class ChaseShipsAndAttack(FleetMission):
 	target_range = 5
 
 	def __init__(self, success_callback, failure_callback, ships, target_ship):
-		super(ChaseShipsAndAttack, self).__init__(success_callback, failure_callback, ships)
+		super().__init__(success_callback, failure_callback, ships)
 		self.__init(target_ship)
 
 	def __init(self, target_ship):
@@ -63,11 +63,11 @@ class ChaseShipsAndAttack(FleetMission):
 		ShipDestroyed.subscribe(self._on_ship_destroyed)
 
 	def save(self, db):
-		super(ChaseShipsAndAttack, self).save(db)
+		super().save(db)
 		db("INSERT INTO ai_mission_chase_ships_and_attack (rowid, target_ship_id) VALUES(?, ?)", self.worldid, self.target_ship.worldid)
 
 	def _load(self, worldid, owner, db, success_callback, failure_callback):
-		super(ChaseShipsAndAttack, self)._load(db, worldid, success_callback, failure_callback, owner)
+		super()._load(db, worldid, success_callback, failure_callback, owner)
 		(target_ship_id,) = db("SELECT target_ship_id FROM ai_mission_chase_ships_and_attack WHERE rowid = ?", worldid)[0]
 
 		target_ship = WorldObject.get_object_by_id(target_ship_id)
@@ -139,4 +139,4 @@ class ChaseShipsAndAttack(FleetMission):
 	def end(self):
 		if self.target_ship.in_ship_map:
 			ShipDestroyed.unsubscribe(self._on_ship_destroyed)
-		super(ChaseShipsAndAttack, self).end()
+		super().end()

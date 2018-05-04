@@ -28,6 +28,8 @@
 
 import os
 
+from setuptools import setup
+
 # Sets what directory to crawl for files to include
 # Relative to location of setup.py; leave off trailing slash
 includes_dir = 'content'
@@ -44,15 +46,12 @@ for root, dirs, filenames in os.walk(includes_dir):
     if root is includes_dir:
         final = includes_target
     else:
-        final = includes_target + root[len(includes_dir)+1:] + '/'
+        final = includes_target + root[len(includes_dir) + 1:] + '/'
     files = []
     for file in filenames:
         if (file[0] != '.'):
             files.append(os.path.join(root, file))
     data_includes.append((final, files))
-
-
-from setuptools import setup
 
 packages = []
 packages.append('horizons')
@@ -71,7 +70,7 @@ plist = {"CFBundleIconFile": "content/gui/icons/Icon.icns",
 		}
 
 APP = ['run_uh.py']
-OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist':plist}
+OPTIONS = {'argv_emulation': True, 'packages': packages, 'plist': plist}
 
 setup(
     app=APP,

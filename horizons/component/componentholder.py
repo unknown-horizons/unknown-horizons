@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-
-
 from horizons.component import Component
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent
@@ -41,7 +39,7 @@ from horizons.world.production.producer import (
 	GroundUnitProducer, Producer, QueueProducer, ShipProducer)
 
 
-class ComponentHolder(object):
+class ComponentHolder:
 	"""
 	Class that manages Component plug-ins
 	It can be inherited by all objects that can hold components
@@ -92,7 +90,7 @@ class ComponentHolder(object):
 	}
 
 	def __init__(self, *args, **kwargs):
-		super(ComponentHolder, self).__init__(*args, **kwargs)
+		super().__init__(*args, **kwargs) # TODO: check if this line is needed
 		self.components = {}
 
 	def initialize(self, **kwargs):
@@ -126,10 +124,10 @@ class ComponentHolder(object):
 	def remove(self):
 		for component in list(self.components.values()):
 			component.remove()
-		super(ComponentHolder, self).remove()
+		super().remove()
 
 	def load(self, db, worldid):
-		super(ComponentHolder, self).load(db, worldid)
+		super().load(db, worldid)
 		self.components = {}
 		for component in self.__create_components():
 			component.instance = self
@@ -137,7 +135,7 @@ class ComponentHolder(object):
 			self.components[component.NAME] = component
 
 	def save(self, db):
-		super(ComponentHolder, self).save(db)
+		super().save(db)
 		for component in self.components.values():
 			component.save(db)
 

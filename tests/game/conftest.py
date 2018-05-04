@@ -19,18 +19,36 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from horizons.util.python import ChainedContainer
+import pytest
+
+import horizons.globals
+import horizons.main
 
 
-def test_chained_container():
-	chain = ChainedContainer()
-	assert 0 not in chain
+@pytest.fixture
+def s():
+	# FIXME For now this is necessary for the game_test decorator to work with pytest.
+	# Otherwise it complains about unknown fixtures `s` and `p` (the arguments injected by the
+	# decorator).
+	pass
 
-	chain = ChainedContainer([1, 2])
-	assert 1 in chain
 
-	chain = ChainedContainer([1, 2], {3}, {5: 'foo'})
-	assert 1 in chain
-	assert 3 in chain
-	assert 5 in chain
-	assert 7 not in chain
+@pytest.fixture
+def p():
+	# FIXME For now this is necessary for the game_test decorator to work with pytest.
+	# Otherwise it complains about unknown fixtures `s` and `p` (the arguments injected by the
+	# decorator).
+	pass
+
+
+@pytest.fixture(autouse=True)
+def database(request):
+	"""
+	Provide each tests with a fresh database automatically.
+	"""
+	db = horizons.main._create_main_db()
+	horizons.globals.db = db
+
+	yield db
+
+	db.close()

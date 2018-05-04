@@ -19,7 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import mock
+from unittest import mock
 
 from horizons.command.building import Build
 from horizons.command.production import ToggleActive

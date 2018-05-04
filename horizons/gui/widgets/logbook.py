@@ -57,7 +57,7 @@ class LogBook(PickBeltWidget, Window):
 		self.statistics_index = [i for i, sec in self.sections].index('statistics')
 		self.logbook_index = [i for i, sec in self.sections].index('logbook')
 		self._page_ids = {} # dict mapping self._cur_entry to message.msgcount
-		super(LogBook, self).__init__()
+		super().__init__()
 		self.session = session
 		self._windows = windows
 		self._parameters = [] # list of lists of all parameters added to a logbook page
@@ -114,7 +114,7 @@ class LogBook(PickBeltWidget, Window):
 			self._hide_statswidgets()
 		if self.statistics_index == number:
 			self.show_statswidget(self.last_stats_widget)
-		super(LogBook, self).update_view(number)
+		super().update_view(number)
 
 	def save(self, db):
 		db("INSERT INTO logbook(widgets) VALUES(?)", json.dumps(self._parameters))
@@ -181,8 +181,8 @@ class LogBook(PickBeltWidget, Window):
 		"""Redraws gui. Necessary when current message has changed."""
 		if self._parameters: # there is something to display if this has items
 			self._display_parameters_on_page(self._parameters[self._cur_entry], 'left')
-			if self._cur_entry+1 < len(self._parameters): # check for content on right page
-				self._display_parameters_on_page(self._parameters[self._cur_entry+1], 'right')
+			if self._cur_entry + 1 < len(self._parameters): # check for content on right page
+				self._display_parameters_on_page(self._parameters[self._cur_entry + 1], 'right')
 			else:
 				self._display_parameters_on_page([], 'right') # display empty page
 		else:
@@ -413,7 +413,6 @@ class LogBook(PickBeltWidget, Window):
 			# we don't care which one is shown currently (if any), just hide all of them
 			statswidget.hide()
 		self.stats_visible = None
-
 
 
 ########

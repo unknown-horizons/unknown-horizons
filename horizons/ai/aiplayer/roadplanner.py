@@ -22,7 +22,7 @@
 import heapq
 
 
-class RoadPlanner(object):
+class RoadPlanner:
 	"""
 	Finds the most reasonable road between two areas.
 

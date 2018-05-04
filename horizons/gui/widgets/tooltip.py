@@ -21,6 +21,7 @@
 
 import re
 import textwrap
+import time
 
 from fife import fife
 from fife.extensions.pychan.widgets import ABox, HBox, Icon, Label
@@ -29,9 +30,10 @@ import horizons.globals
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import get_res_icon_path
 from horizons.gui.widgets.icongroup import TooltipBG
+from horizons.gui.widgets.imagebutton import ImageButton
 
 
-class _Tooltip(object):
+class _Tooltip:
 	"""Base class for pychan widgets overloaded with tooltip functionality"""
 
 	# Character count after which we start new line.
@@ -48,7 +50,9 @@ class _Tooltip(object):
 		self.mapEvents({
 			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
 			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
-			self.name + '/mouseMoved/tooltip' : self.position_tooltip,
+			# Below causes frequent Segmentation Faults due to too many
+			# self.position_tooltip() calls.
+			# self.name + '/mouseMoved/tooltip' : self.position_tooltip,
 
 			# TIP: the mousePressed event is especially useful when such as click
 			# will trigger this tooltip's parent widget to be hidden (or destroyed),
@@ -58,9 +62,10 @@ class _Tooltip(object):
 
 			# TODO: not sure if below are useful or not
 			# self.name + '/mouseReleased/tooltip' : self.position_tooltip,
-			# self.name + '/mouseDragged/tooltip' : self.hide_tooltip
+			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
 			})
 		self.tooltip_shown = False
+		self.cooldown = time.time()		# initial timer value
 
 	def __init_gui(self):
 		self.gui = ABox()
@@ -69,11 +74,12 @@ class _Tooltip(object):
 		self.gui.addChildren(self.bg, self.label)
 
 	def position_tooltip(self, event):
-		if not self.helptext:
-			return
 		"""Calculates a nice position for the tooltip.
 		@param event: mouse event from fife or tuple screenpoint
 		"""
+		if not self.helptext:
+			return
+
 		# TODO: think about nicer way of handling the polymorphism here,
 		# e.g. a position_tooltip_event and a position_tooltip_tuple
 		where = event # fife forces this to be called event, but here it can also be a tuple
@@ -102,23 +108,57 @@ class _Tooltip(object):
 		if top_pos == (0, 0):
 			return
 
-		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
-		self.gui.y = widget_position[1] + y + 5
-		offset = x + 10
-		if (widget_position[0] + self.gui.size[0] + offset) > screen_width:
-			# right screen edge, position to the left of cursor instead
-			offset = x - self.gui.size[0] - 5
-		self.gui.x = widget_position[0] + offset
 		if not self.tooltip_shown:
 			self.show_tooltip()
 			#ExtScheduler().add_new_object(self.show_tooltip, self, run_in=0.3, loops=0)
 			self.tooltip_shown = True
+
+		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
+
+		if not isinstance(self, Icon):
+			# exclude building statusicons (eg low productivity) and minimap
+
+			# If the a button spawn a tooltip and the cursor hovers over that
+			# tooltip the tooltip will disappear and the button becomes
+			# unclickable. (see issue #2776: https://git.io/vxRrn)
+			# This is a workaround for that problem, by making tooltips for
+			# buttons always display below the button.
+			# There is a small chance that it still happens if you move the
+			# cursor very fast, but that seems unlikely to be such a major
+			# problem as it used to be.
+			# The underlying problem is that the cursor can not be repositioned
+			# on every mousemove because that causes frequent segfaults.
+			# If that problem would be fixed this workaround wouldn't be
+			# neccessary anymore.
+
+			ypos = widget_position[1] + self.height + 10
+
+			xpos = int(widget_position[0])
+			xpos = min(xpos, screen_width - self.gui.size[0] - 5)
+
+		else:
+
+			ypos = widget_position[1] + y + 5
+			offset = x + 10
+			if (widget_position[0] + self.gui.size[0] + offset) > screen_width:
+				# right screen edge, position to the left of cursor instead
+				offset = x - self.gui.size[0] - 5
+			xpos = widget_position[0] + offset
+
+		self.gui.x = xpos
+		self.gui.y = ypos
 
 	def show_tooltip(self):
 		if not self.helptext:
 			return
 		if self.gui is None:
 			self.__init_gui()
+
+		# Compare and reset timer value if difference from current time shorter than X sec.
+		if (time.time() - self.cooldown) < .1:
+			return
+		else:
+			self.cooldown = time.time()
 
 		#HACK: support icons in build menu
 		# Code below exists for the sole purpose of build menu tooltips showing
@@ -127,17 +167,15 @@ class _Tooltip(object):
 		# [These unicode() calls brought to you by status icon tooltip code.]
 		buildmenu_icons = self.icon_regexp.findall(str(self.helptext))
 		# Remove the weird stuff before displaying text.
-		replaced = self.icon_regexp.sub('', (str(self.helptext)))
+		replaced = self.icon_regexp.sub('', str(self.helptext))
 		# Specification looks like [[Buildmenu 1:250 4:2 6:2]]
 		if buildmenu_icons:
-			hbox = HBox(position=(7, 5), padding=0)
+			hbox = HBox(position=(7, 5))
 			for spec in buildmenu_icons[0].split():
 				(res_id, amount) = spec.split(':')
-				label = Label(text=amount+'  ')
+				label = Label(text=amount + '  ')
 				icon = Icon(image=get_res_icon_path(int(res_id)), size=(16, 16),
 				            scale=True)
-				# For compatibility with FIFE 0.3.5 and older, also set min/max.
-				icon.max_size = icon.min_size = (16, 16)
 				hbox.addChildren(icon, label)
 			hbox.adaptLayout()
 			# Now display the 16x16px "required resources" icons in the last line.

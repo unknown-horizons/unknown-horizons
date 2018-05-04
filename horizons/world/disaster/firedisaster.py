@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -50,5 +49,5 @@ class FireDisaster(BuildingInfluencingDisaster):
 	RESCUE_BUILDING_TYPE = BUILDINGS.FIRE_STATION
 
 	def wreak_havoc(self, building):
-		super(FireDisaster, self).wreak_havoc(building)
+		super().wreak_havoc(building)
 		building.make_ruin()

@@ -33,7 +33,7 @@ class FPSDisplay(ABox):
 	"""
 
 	def __init__(self):
-		super(FPSDisplay, self).__init__()
+		super().__init__()
 
 		self._label = Label(text="- - -")
 		self.addChild(self._label)
@@ -44,27 +44,21 @@ class FPSDisplay(ABox):
 
 	def _update(self):
 		fps = 1000 / self._timemanager.getAverageFrameTime()
-		self._label.text = "FPS: %.1f" % fps
+		self._label.text = "FPS: {:.1f}".format(fps)
 		self.resizeToContent()
 		self.toggle()  # hide and show again to fix position (pychan...)
 		self.toggle()
 
 	def show(self):
 		ExtScheduler().add_new_object(self._update, self, loops=-1)
-		return super(FPSDisplay, self).show()
+		return super().show()
 
 	def hide(self):
 		ExtScheduler().rem_call(self, self._update)
-		return super(FPSDisplay, self).hide()
+		return super().hide()
 
 	def toggle(self):
-		if (Fife.getVersion() <= (0, 3, 5)):
-			if self._visible:
-				self.hide()
-			else:
-				self.show()
+		if self.isSetVisible():
+			self.hide()
 		else:
-			if self.isSetVisible():
-				self.hide()
-			else:
-				self.show()
+			self.show()

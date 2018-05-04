@@ -60,10 +60,12 @@ def show_message(session, type=None, *messages):
 	return [session.ingame_gui.message_widget.add_custom(msg, msg_type=type, visible_for=visible_ticks)
 	        for msg in messages]
 
+
 @register(name='db_message')
 def show_db_message(session, database_message_id):
 	"""Shows a message with predefined text in the messagewidget."""
 	session.ingame_gui.message_widget.add(database_message_id)
+
 
 @register(name='logbook')
 def show_logbook_entry_delayed(session, *parameters):
@@ -81,6 +83,7 @@ def show_logbook_entry_delayed(session, *parameters):
 	callback = Callback(write_logbook_entry, session, parameters)
 	Scheduler().add_new_object(callback, session.scenario_eventhandler, run_in=Scheduler().get_ticks(delay))
 
+
 @register(name='win')
 def do_win(session):
 	"""The player wins the current scenario."""
@@ -97,11 +100,13 @@ def do_win(session):
 	else:
 		UnPauseCommand().execute(session)
 
+
 @register(name='goal_reached')
 def goal_reached(session, goal_number):
 	"""The player reaches a certain goal in the current scenario."""
 	# This method is kept to make some tests happy.
 	pass
+
 
 @register(name='lose')
 def do_lose(session):
@@ -110,6 +115,7 @@ def do_lose(session):
 	horizons.globals.fife.play_sound('effects', 'content/audio/sounds/events/scenario/lose.ogg')
 	# drop events after this event
 	Scheduler().add_new_object(session.scenario_eventhandler.drop_events, session.scenario_eventhandler)
+
 
 @register()
 def set_var(session, variable, value):
@@ -122,11 +128,13 @@ def set_var(session, variable, value):
 	)
 	Scheduler().add_new_object(check_callbacks, session.scenario_eventhandler, run_in=0)
 
+
 @register()
 def wait(session, seconds):
 	"""Postpones any other scenario events for a certain amount of seconds."""
 	delay = Scheduler().get_ticks(seconds)
 	session.scenario_eventhandler.sleep(delay)
+
 
 @register()
 def alter_inventory(session, resource, amount):
@@ -138,6 +146,7 @@ def alter_inventory(session, resource, amount):
 			settlement.warehouse.get_component(StorageComponent).inventory.alter(
 					resource, amount)
 
+
 @register()
 def highlight_position(session, where, play_sound=False, color=(0, 0, 0)):
 	"""Highlights a position on the minimap.
@@ -147,6 +156,7 @@ def highlight_position(session, where, play_sound=False, color=(0, 0, 0)):
 	if play_sound:
 		horizons.globals.fife.play_sound('effects', 'content/audio/sounds/ships_bell.ogg')
 
+
 @register(name='change_increment')
 def change_tier(session, tier):
 	""" Changes the tier of the settlements. """
@@ -154,6 +164,7 @@ def change_tier(session, tier):
 		if settlement.owner == session.world.player:
 			# Settler levels are zero-based!
 			SettlerUpdate.broadcast(settlement.warehouse, tier - 1, tier - 1)
+
 
 @register()
 def spawn_ships(session, owner_id, ship_id, number, *position):

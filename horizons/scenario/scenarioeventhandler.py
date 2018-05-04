@@ -38,7 +38,7 @@ class InvalidScenarioFileFormat(Exception):
 	def __init__(self, msg=None):
 		if msg is None:
 			msg = "Invalid scenario file."
-		super(InvalidScenarioFileFormat, self).__init__(msg)
+		super().__init__(msg)
 
 
 class ScenarioEventHandler(LivingObject):
@@ -82,7 +82,6 @@ class ScenarioEventHandler(LivingObject):
 			self._apply_data(self._parse_yaml_file(scenariofile))
 
 		self.sleep_ticks_remaining = 0
-
 
 	def start(self):
 		# Add the check_events method to the scheduler to be checked every few seconds
@@ -227,7 +226,7 @@ class ScenarioEventHandler(LivingObject):
 		yaml_code = dump_dict_to_yaml(data)
 		# remove last } so we can add stuff
 		yaml_code = yaml_code.rsplit('}\n', 1)[0]
-		yaml_code += ', events: [ %s ] }' % ', '.join(event.to_yaml() for event in self._events)
+		yaml_code += ", events: [ {} ] }}".format(', '.join(event.to_yaml() for event in self._events))
 		return yaml_code
 
 
@@ -236,11 +235,11 @@ class ScenarioEventHandler(LivingObject):
 
 def assert_type(var, expected_type, name):
 	if not isinstance(var, expected_type):
-		raise InvalidScenarioFileFormat('%s should be a %s, but is: %s' % (
+		raise InvalidScenarioFileFormat('{} should be a {}, but is: {}'.format(
 			name, expected_type.__name__, str(var)))
 
 
-class _Event(object):
+class _Event:
 	"""Internal data structure representing an event."""
 	def __init__(self, session, event_dict):
 		self.session = session
@@ -263,12 +262,12 @@ class _Event(object):
 
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
-		return '{ actions: [ %s ] , conditions: [ %s ]  }' % \
-			   (', '.join(action.to_yaml() for action in self.actions),
-				', '.join(cond.to_yaml() for cond in self.conditions))
+		return  '{{ actions: [ {} ] , conditions: [ {} ]  }}'.format(
+			', '.join(action.to_yaml() for action in self.actions),
+			', '.join(cond.to_yaml() for cond in self.conditions))
 
 
-class _Action(object):
+class _Action:
 	"""Internal data structure representing an ingame scenario action"""
 	def __init__(self, action_dict):
 		assert_type(action_dict, dict, "action specification")
@@ -276,11 +275,11 @@ class _Action(object):
 		try:
 			self.action_type = action_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat('Encountered action without type\n'+str(action_dict))
+			raise InvalidScenarioFileFormat('Encountered action without type\n{}'.format(str(action_dict)))
 		try:
 			self.callback = ACTIONS.get(self.action_type)
 		except KeyError:
-			raise InvalidScenarioFileFormat('Found invalid action type: %s' % self.action_type)
+			raise InvalidScenarioFileFormat('Found invalid action type: {}'.format(self.action_type))
 
 		self.arguments = action_dict.get('arguments', [])
 
@@ -291,10 +290,10 @@ class _Action(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		arguments_yaml = dump_dict_to_yaml(self.arguments)
-		return "{arguments: %s, type: %s}" % (arguments_yaml, self.action_type)
+		return "{{ arguments: {}, type: {}}}".format(arguments_yaml, self.action_type)
 
 
-class _Condition(object):
+class _Condition:
 	"""Internal data structure representing a condition"""
 
 	def __init__(self, session, cond_dict):
@@ -304,11 +303,11 @@ class _Condition(object):
 		try:
 			self.cond_type = cond_dict['type']
 		except KeyError:
-			raise InvalidScenarioFileFormat("Encountered condition without type\n"+str(cond_dict))
+			raise InvalidScenarioFileFormat("Encountered condition without type\n{}".format(str(cond_dict)))
 		try:
 			self.callback = CONDITIONS.get(self.cond_type)
 		except KeyError:
-			raise InvalidScenarioFileFormat('Found invalid condition type: %s' % self.cond_type)
+			raise InvalidScenarioFileFormat('Found invalid condition type: {}'.format(self.cond_type))
 
 		self.arguments = cond_dict.get('arguments', [])
 
@@ -320,7 +319,7 @@ class _Condition(object):
 	def to_yaml(self):
 		"""Returns yaml representation of self"""
 		arguments_yaml = dump_dict_to_yaml(self.arguments)
-		return '{arguments: %s, type: "%s"}' % (arguments_yaml, self.cond_type)
+		return '{{arguments: {}, type: "{}"}}'.format(arguments_yaml, self.cond_type)
 
 
 def dump_dict_to_yaml(data):

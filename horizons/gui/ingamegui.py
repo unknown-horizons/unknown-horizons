@@ -67,7 +67,7 @@ class IngameGui(LivingObject):
 	keylistener = livingProperty()
 
 	def __init__(self, session):
-		super(IngameGui, self).__init__()
+		super().__init__()
 		self.session = session
 		assert isinstance(self.session, horizons.session.Session)
 		self.settlement = None
@@ -129,8 +129,8 @@ class IngameGui(LivingObject):
 		self.mainhud.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.update_rotation),
+			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.update_rotation),
 			'speedUp' : speed_up,
 			'speedDown' : speed_down,
 			'destroy_tool' : self.toggle_destroy_tool,
@@ -209,7 +209,7 @@ class IngameGui(LivingObject):
 		self.status_icon_manager.end()
 		self.status_icon_manager = None
 
-		super(IngameGui, self).end()
+		super().end()
 
 	def show_select_savegame(self, mode):
 		window = SelectSavegameDialog(mode, self.windows)
@@ -434,7 +434,7 @@ class IngameGui(LivingObject):
 			down_icon.set_inactive()
 		else:
 			if tps != GAME_SPEED.TICKS_PER_SECOND:
-				text = "{0:1g}x".format(tps * 1.0/GAME_SPEED.TICKS_PER_SECOND)
+				text = "{0:1g}x".format(tps * 1.0 / GAME_SPEED.TICKS_PER_SECOND)
 				#%1g: displays 0.5x, but 2x instead of 2.0x
 			index = GAME_SPEED.TICK_RATES.index(tps)
 			if index + 1 >= len(GAME_SPEED.TICK_RATES):
@@ -508,13 +508,13 @@ class IngameGui(LivingObject):
 				self.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()
-				self.minimap.rotate_right()
+				self.minimap.update_rotation()
 		elif action == _Actions.ROTATE_LEFT:
 			if hasattr(self.cursor, "rotate_left"):
 				self.cursor.rotate_left()
 			else:
 				self.session.view.rotate_left()
-				self.minimap.rotate_left()
+				self.minimap.update_rotation()
 		elif action == _Actions.CHAT:
 			self.windows.open(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:
@@ -558,8 +558,8 @@ class IngameGui(LivingObject):
 		"""
 		if ctrl_pressed:
 			# Only consider units owned by the player.
-			units = set(u for u in self.session.selected_instances
-			            if u.owner.is_local_player)
+			units = {u for u in self.session.selected_instances
+			         if u.owner.is_local_player}
 			self.session.selection_groups[num] = units
 			# Drop units of the new group from all other groups.
 			for group in self.session.selection_groups:

@@ -21,6 +21,7 @@
 
 import logging
 import os
+from typing import Dict, List
 
 import horizons.globals
 from horizons.constants import PATHS
@@ -28,7 +29,7 @@ from horizons.util.loaders.jsondecoder import JsonDecoder
 from horizons.util.loaders.loader import GeneralLoader
 
 
-class TileSetLoader(object):
+class TileSetLoader:
 	"""The TileSetLoader loads tile sets from a directory tree. The directories loaded
 	begin with 'ts_' to tell tell the loader that they are an action set. directory
 	structure is as follows: <tile_set>/<rotation>/<framenumber>.png
