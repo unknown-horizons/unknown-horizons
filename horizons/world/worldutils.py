@@ -248,6 +248,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 	Tree = Entities.buildings[BUILDINGS.TREE]
 	FishDeposit = Entities.buildings[BUILDINGS.FISH_DEPOSIT]
 	fish_directions = [(i, j) for i in range(-1, 2) for j in range(-1, 2)]
+	Ambient = Entities.buildings[BUILDINGS.AMBIENT]
 
 	# TODO HACK BAD THING hack the component template to make trees start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = True
@@ -275,6 +276,11 @@ def add_nature_objects(world, natural_resource_multiplier):
 					CreateUnit(island.worldid, UNITS.WILD_ANIMAL, x, y)(issuer=None)
 				if world.session.random.random() > WILD_ANIMAL.FOOD_AVAILABLE_ON_START:
 					building.get_component(StorageComponent).inventory.alter(RES.WILDANIMALFOOD, -1)
+			
+			if world.session.random.randint(0, 20) == 0 and \
+				Ambient.check_build(world.session, tile, check_settlement=False):
+				building = Build(Ambient, x, y, island, 45 + world.session.random.randint(0, 3) * 90,
+				                 ownerless=True)(issuer=None)
 
 			if 'coastline' in tile.classes and world.session.random.random() < natural_resource_multiplier / 4.0:
 				# try to place fish: from the current position go to a random directions twice

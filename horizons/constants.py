@@ -205,7 +205,9 @@ class BUILDINGS:
 	VINEYARD         = 61
 	ALVEARIES        = 62
 	PASTRY_SHOP      = 63
-
+	
+	AMBIENT          = 64
+	
 	WINERY           = 65
 
 	WEAPONSMITH      = 66
