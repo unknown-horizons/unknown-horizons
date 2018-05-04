@@ -31,6 +31,7 @@ from horizons.command.unit import CreateRoute
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
+from horizons.constants import STORAGE
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.minimap import Minimap
@@ -328,7 +329,9 @@ class RouteConfig(Window):
 
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
-			slider.scale_end = float(self.instance.get_component(StorageComponent).inventory.limit)
+			slider.scale_end = float(
+				min(self.instance.get_component(StorageComponent).inventory.limit,
+					STORAGE.ITEMS_PER_TRADE_SLOT))
 
 			slot.findChild(name="buysell").capture(Callback(self.toggle_load_unload, slot, entry))
 
