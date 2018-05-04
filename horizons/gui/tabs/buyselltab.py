@@ -26,7 +26,7 @@ from fife import fife
 
 from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.constants import TRADER
+from horizons.constants import TRADER, STORAGE
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
@@ -152,8 +152,8 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='button').path = self.dummy_icon_path
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
-			slider.scale_end = float(self.trade_post.get_inventory().limit)
-			# Set scale according to the settlement inventory size
+			slider.scale_end = float(min(self.trade_post.get_inventory().limit, STORAGE.ITEMS_PER_TRADE_SLOT))
+			# Set scale according to the settlement inventory size, with a cap
 			slot.findChild(name="buysell").capture(Callback(self.toggle_buysell, i))
 			fillbar = slot.findChild(name="fillbar")
 			# hide fillbar by setting position
