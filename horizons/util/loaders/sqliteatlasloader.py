@@ -55,8 +55,9 @@ class SQLiteAtlasLoader:
 
 	def loadResource(self, anim_id):
 		"""
-		@param anim_id: String with the location.
+		@param anim_id: String identifier for the image, eg "as_hunter0+idle+135"
 		"""
+		print(anim_id)
 		if not self.inited:
 			self.init()
 		actionset, action, rotation = anim_id.split('+')
