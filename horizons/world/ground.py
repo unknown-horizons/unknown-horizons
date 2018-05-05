@@ -50,8 +50,11 @@ class SurfaceTile:
 		self._tile_set_id = horizons.globals.db.get_random_tile_set(self.id)
 
 		layer = session.view.layers[self.layer]
+		# actualy this should be x + 0.5, y + 0.5, since that's the center of the tile area
+		# however, other code depends on the current alignment.
+		# it this is changed, it should also be changed for buildings and units
 		self._instance = layer.createInstance(self._fife_objects[self._tile_set_id],
-		                                      fife.ModelCoordinate(int(x), int(y), 0),
+		                                      fife.ExactModelCoordinate(x, y, 0),
 		                                      "")
 		fife.InstanceVisual.create(self._instance)
 
@@ -61,18 +64,6 @@ class SurfaceTile:
 
 	def act(self, rotation):
 		self._instance.setRotation(rotation)
-
-		x, y = self.x, self.y
-		layer_coords = {
-			45:  (x + 3, y,     0),
-			135: (x,     y - 3, 0),
-			225: (x - 3, y,     0),
-			315: (x,     y + 3, 0),
-		}[rotation]
-
-		facing_loc = fife.Location(self.session.view.layers[self.layer])
-		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
-		self._instance.setFacingLocation(facing_loc)
 
 	@property
 	def rotation(self):
@@ -166,6 +157,9 @@ class GroundClass(type):
 						'Found this data for tile set `{}` in rotation `{}`: '
 						'{}'.format(tile_set_id, rotation, data))
 				img = load_image(list(data.keys())[0], tile_set_id, cls.shape, str(rotation))
+				# make the drawing origin correspond with the center of the groundpart of the image
+				# (instead of the center of the image)
+				img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2 ))
 				visual.addStaticImage(rotation, img.getHandle())
 
 			# Save the object
