@@ -262,8 +262,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			else:
 				# set first action
 				action = list(action_set.keys())[0]
-
-		instance.actRepeat("{}_{:d}".format(action, action_set_id), rotation)
+		instance.actRepeat("{}_{}".format(action, action_set_id), rotation)
 		return (instance, action_set_id)
 
 	@classmethod
