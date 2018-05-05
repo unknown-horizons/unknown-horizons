@@ -76,4 +76,5 @@ class SQLiteAnimationLoader:
 			img = horizons.globals.fife.imagemanager.get(f)
 		else:
 			img = horizons.globals.fife.imagemanager.create(f)
+			img.forceLoadInternal() # make sure width and height can be read
 		return img
