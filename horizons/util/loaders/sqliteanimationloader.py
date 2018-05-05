@@ -35,7 +35,6 @@ class SQLiteAnimationLoader:
 		@param anim_id: String with the location
 		"""
 
-		anim_id = location
 		actionset, action, rotation = anim_id.split('+')
 
 		animationmanager = horizons.globals.fife.animationmanager

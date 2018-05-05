@@ -53,21 +53,21 @@ class SQLiteAtlasLoader:
 			self.atlaslib.append(img)
 		self.inited = True
 
-	def loadResource(self, id):
+	def loadResource(self, anim_id):
 		"""
-		@param id: String with the location.
+		@param anim_id: String with the location.
 		"""
 		if not self.inited:
 			self.init()
-		actionset, action, rotation = id.split('+')
+		actionset, action, rotation = anim_id.split('+')
 
 		animationmanager = horizons.globals.fife.animationmanager
 
 		# if we've loaded that animation before, we can finish early
-		if animationmanager.exists(id):
-			return animationmanager.getPtr(id)
+		if animationmanager.exists(anim_id):
+			return animationmanager.getPtr(anim_id)
 
-		ani = animationmanager.create(id)
+		ani = animationmanager.create(anim_id)
 
 		# Set the correct loader based on the actionset
 		loader = self._get_loader(actionset)
