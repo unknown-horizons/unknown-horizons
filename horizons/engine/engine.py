@@ -153,6 +153,18 @@ class Fife:
 
 		# Init stuff.
 		self.eventmanager = self.engine.getEventManager()
+
+		class MouseMoveFilter(fife.IMouseFilter):
+			# by default no mousemove events are fired when the mouse moves over a widget
+			# this is problematic since it is not possible to tell when the mouse enters a widget
+			# see issue #2778 and #1413
+			# to fix this, mousemove events are fired even when over a widget
+			def isFiltered(self, event):
+				return bool(event.getType() == fife.MouseEvent.MOVED)
+		# storing it as a member is important to prevent segfaults
+		# this is probably because otherwise it will be garbage collected
+		self._mouseFilter = MouseMoveFilter()
+		self.eventmanager.setMouseFilter(self._mouseFilter)
 		self.sound = Sound(self)
 		self.imagemanager = self.engine.getImageManager()
 		self.animationmanager = self.engine.getAnimationManager()

@@ -133,6 +133,8 @@ class NavigationTool(CursorTool):
 
 	# return new mouse position after moving
 	def mouseMoved(self, evt):
+		#print(dir(evt))
+		print(evt.getType(), evt.getName(), evt.getSource(), evt.isConsumed(), evt.isConsumedByWidgets())
 		if not self.session.world.inited:
 			return
 
