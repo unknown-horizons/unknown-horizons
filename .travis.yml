@@ -26,6 +26,8 @@ script:
   - "cp -a /usr/lib/python3/dist-packages/future/ /usr/lib/python3/dist-packages/past/ /usr/lib/python3/dist-packages/libfuturize/ /usr/lib/python3/dist-packages/libpasteurize/ $VIRTUAL_ENV/lib/python3.5/site-packages/"
   - "prename 's/\\.cpython-35m-x86_64-linux-gnu/.cpython-35m/' $VIRTUAL_ENV/lib/python3.5/site-packages/enet*.so"
   - "prename 's/\\.cpython-35m-x86_64-linux-gnu/.cpython-35m/' $VIRTUAL_ENV/lib/python3.5/site-packages/fife/*.so"
+  - mv $VIRTUAL_ENV/lib/python3.5/site-packages/fife/_fife.cpython-34m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.5/site-packages/fife/_fife.so
+  - mv $VIRTUAL_ENV/lib/python3.5/site-packages/fife/_fifechan.cpython-34m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.5/site-packages/fife/_fifechan.so
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - isort -c -rc horizons tests *.py
   - pycodestyle horizons tests *.py development
