@@ -352,7 +352,7 @@ class BuildableMountain(BuildableSingle):
 			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[0], cls.size[1])
 		else:
 			position = Rect.init_from_topleft_and_size(point.x, point.y, cls.size[1], cls.size[0])
-			
+
 		island = session.world.get_island(position.center)
 		buildable = True
 		for tile in island.get_tiles_tuple(position.tuple_iter()):
@@ -363,7 +363,7 @@ class BuildableMountain(BuildableSingle):
 
 		tearset = []
 		return _BuildPosition(position, rotation, tearset, buildable)
-	
+
 class BuildableRect(Buildable):
 	"""Buildings one can build as a Rectangle, such as Trees"""
 	@classmethod
@@ -629,10 +629,10 @@ class BuildableSingleOnMountain(BuildableSingle):
 		return mountain.rotation
 
 
-decorators.bind_all(Buildable)
-decorators.bind_all(BuildableSingle)
-decorators.bind_all(BuildableRect)
-decorators.bind_all(BuildableSingleFromShip)
-decorators.bind_all(BuildableSingleOnCoast)
-decorators.bind_all(BuildableSingleOnClayDeposit)
-decorators.bind_all(BuildableSingleOnMountain)
+#decorators.bind_all(Buildable)
+#decorators.bind_all(BuildableSingle)
+#decorators.bind_all(BuildableRect)
+#decorators.bind_all(BuildableSingleFromShip)
+#decorators.bind_all(BuildableSingleOnCoast)
+#decorators.bind_all(BuildableSingleOnClayDeposit)
+#decorators.bind_all(BuildableSingleOnMountain)

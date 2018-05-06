@@ -70,12 +70,12 @@ class TerrainBuildabilityCache:
 		self._land = land
 		self._coast = coast
 		self.land_or_coast = land.union(coast)
-	
+
 	def _init_land_and_mountainside(self):
 		land = set()
 		mountainside = set()
 
-		for coords, tile in self._island.ground_map.iteritems():
+		for coords, tile in self._island.ground_map.items():
 			if 'constructible' in tile.classes:
 				land.add(coords)
 			elif 'mountainside' in tile.classes:
@@ -84,7 +84,7 @@ class TerrainBuildabilityCache:
 		self._land = land
 		self._mountainside = mountainside
 		self.land_or_mountainside = land.union(mountainside)
-		
+
 	def _init_rows(self):
 		# these dicts show whether there is a constructible and/or coastline tile in a row
 		# of 2 or 3 tiles starting from the coords and going right
@@ -95,7 +95,7 @@ class TerrainBuildabilityCache:
 		land = self._land
 		coast = self._coast
 		land_or_coast = self.land_or_coast
-		
+
 
 		for (x, y) in self.land_or_coast:
 			if (x + 1, y) not in land_or_coast:
@@ -113,7 +113,7 @@ class TerrainBuildabilityCache:
 
 		self.row2 = row2
 		self.row3 = row3
-		
+
 	def _init_mountain_rows(self):
 		# these dicts show whether there is a constructible and/or coastline tile in a row
 		# of 2 or 3 tiles starting from the coords and going right
@@ -124,7 +124,7 @@ class TerrainBuildabilityCache:
 		land = self._land
 		mountainside = self._mountainside
 		land_or_mountainside = self.land_or_mountainside
-		
+
 
 		for (x, y) in self.land_or_mountainside:
 			if (x + 1, y) not in land_or_mountainside:
@@ -157,7 +157,7 @@ class TerrainBuildabilityCache:
 				has_land = row2[coords][0] or row2[coords2][0]
 				has_coast = row2[coords][1] or row2[coords2][1]
 				sq2[coords] = (has_land, has_coast)
-				
+
 		sq2mount = {}
 		for coords in row2mount:
 			coords2 = (coords[0], coords[1] + 1)
@@ -196,7 +196,7 @@ class TerrainBuildabilityCache:
 
 		for size in [(2, 2), (3, 3)]:
 			land_and_coast[size] = set()
-			
+
 		for size in [(2, 2), (3, 3)]:
 			land_and_mountainside[size] = set()
 
@@ -223,9 +223,9 @@ class TerrainBuildabilityCache:
 					land[(2, 4)].add(coords)
 				elif (x, y + 1) in sq2 and not sq2[(x, y + 1)][1]:
 					land[(2, 3)].add(coords)
-					
+
 		sq2mount = self.sq2mount
-		for coords, (has_land, has_mountainside) in sq2.iteritems():
+		for coords, (has_land, has_mountainside) in sq2.items():
 			x, y = coords
 			if has_land and has_mountainside:
 				# handle 2x2 coastal buildings

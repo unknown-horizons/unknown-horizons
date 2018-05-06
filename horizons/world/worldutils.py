@@ -109,7 +109,7 @@ def add_mountains(world, resource_multiplier):
 	deposit_locations = []
 
 	for island in world.islands:
-		tiles = sorted(island.ground_map.iteritems())
+		tiles = sorted(island.ground_map.items())
 		for (x, y), tile in tiles:
 			top_left_constructible = (1, 1)
 			top_left_corner = (0, 0)
@@ -267,10 +267,6 @@ def add_clay_deposits(world, resource_multiplier):
 	num_extra_stone_deposits = int(round(max(1, resource_multiplier * min(7, len(world.islands) * 1.0 + 2, extra_stone_base + abs(world.session.random.gauss(0, 1))))))
 	place_objects(stone_deposit_locations, num_extra_stone_deposits, StoneDeposit)
 
-	# place some extra mountains
-	extra_mountains_base = len(mountain_locations) ** 0.8 / 700.0
-	num_extra_mountains = int(round(max(1, resource_multiplier * min(4, len(world.islands) * 0.5 + 2, extra_mountains_base + abs(world.session.random.gauss(0, 0.7))))))
-	place_objects(mountain_locations, num_extra_mountains, Mountain)
 
 def add_nature_objects(world, natural_resource_multiplier):
 	"""

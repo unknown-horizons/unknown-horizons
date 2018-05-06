@@ -96,9 +96,10 @@ def create_random_island(map_db, island_id, id_string):
 	mountain_range = []
 	neighbors = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 	all_neighbors = [(-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)]
-	
+
 	# checks for edge of map
-	def dist_to_edge((x, y)):
+	def dist_to_edge(location):
+		x, y = location
 		dist = 1
 		real_dist = 1
 		dist_found = False
@@ -117,9 +118,10 @@ def create_random_island(map_db, island_id, id_string):
 					dist_found = True
 			dist += 1
 		return real_dist
-	
+
 	# checks for edge of map and mountain
-	def dist_to_not_grass((x, y)):
+	def dist_to_not_grass(location):
+		x, y = location
 		dist = 1
 		real_dist = 1
 		dist_found = False
@@ -140,7 +142,7 @@ def create_random_island(map_db, island_id, id_string):
 					break
 			dist += 1
 		return real_dist
-	
+
 	# find the tile with the largest distance to the edge of the map
 	def largest_dist_to_edge(set):
 		largest_dist = 0
@@ -151,7 +153,7 @@ def create_random_island(map_db, island_id, id_string):
 				largest_dist = edge_dist
 				largest_dist_tile = (x, y)
 		return largest_dist_tile
-		
+
 	# find the tile with the largest distance to the edge of the map or a mountain tile
 	def largest_dist_to_not_grass(set):
 		largest_dist = 0
@@ -162,7 +164,7 @@ def create_random_island(map_db, island_id, id_string):
 				largest_dist = edge_dist
 				largest_dist_tile = (x, y)
 		return largest_dist_tile
-	
+
 	# for a direction ('n') find the 2 adjacent directions ('nw', 'ne')
 	def directions(centre_dir):
 		new_dir = []
@@ -177,7 +179,7 @@ def create_random_island(map_db, island_id, id_string):
 			new_dir.append((0, centre_dir[1]))
 			new_dir.append((centre_dir[0], 0))
 		return new_dir
-	
+
 	mountain_ratio = 0.1
 	min_dist = 6
 	while True:
@@ -187,7 +189,7 @@ def create_random_island(map_db, island_id, id_string):
 			mountain_range.append(start_tile)
 		else:
 			break
-	
+
 		# grow mountain ranges
 		for tile_dir in all_neighbors:
 			previous_tile = mountain_range[0]
@@ -195,7 +197,7 @@ def create_random_island(map_db, island_id, id_string):
 			dirs = directions(tile_dir)
 			# initiate movement direction
 			mountain_range.append((start_tile[0]+tile_dir[0], start_tile[1]+tile_dir[1]))
-		
+
 			while dist_to_edge(mountain_range[len(mountain_range)-1]) > min_dist and \
 			 len(mountain_range) < (mountain_ratio*all_neighbors.index(tile_dir)*len(map_set))/8:
 				positions = []
@@ -208,17 +210,17 @@ def create_random_island(map_db, island_id, id_string):
 				next_tile = largest_dist_to_edge(positions)
 				mountain_range.append(next_tile)
 				previous_tile = next_tile
-	
+
 	mountain_outline = []
 	for x, y in mountain_range:
 		for dx, dy in all_neighbors:
 			coords = (x+dx, y+dy)
 			if coords not in mountain_outline:
 				mountain_outline.append(coords)
-	
+
 	# combine the central range with its outline
 	mountain_tiles = list(set().union(*[mountain_range, mountain_outline]))
-	
+
 	# make some corrections to the mountain locations
 	# by removing points that are missing certain neighbors
 	consecutive_neighbor_corners = [
@@ -227,7 +229,7 @@ def create_random_island(map_db, island_id, id_string):
 	[(1, 0), (1, -1), (0, -1)],
 	[(0, -1), (-1, -1), (-1, 0)]
 	]
-	
+
 	while True:
 		still_corrections = False
 		for x, y in mountain_tiles:
@@ -256,12 +258,12 @@ def create_random_island(map_db, island_id, id_string):
 				break
 		if still_corrections == False:
 			break
-	
+
 	# add grass tiles around mountain locations
 	for x, y in map_set:
 		if (x, y) not in mountain_tiles:
 			map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *GROUND.DEFAULT_LAND)
-			
+
 	all_moves = {
 		'sw' : (-1, -1),
 		'w'  : (-1, 0),
@@ -272,7 +274,7 @@ def create_random_island(map_db, island_id, id_string):
 		'e'  : (1, 0),
 		'ne' : (1, 1)
 		}
-	
+
 	# get mountainsides
 	def get_mountain_outline():
 		"""
@@ -285,7 +287,7 @@ def create_random_island(map_db, island_id, id_string):
 				if coords not in mountain_tiles:
 					result.add((x, y))
 		return result
-	
+
 	# get mountain top
 	def get_inner_mountain():
 		result = set()
@@ -294,7 +296,7 @@ def create_random_island(map_db, island_id, id_string):
 			if (x, y) not in mountain_edge:
 				result.add((x, y))
 		return result
-	
+
 	# add mountain tiles to previously set locations
 	mountain_edge = get_mountain_outline()
 	inner_mountain = get_inner_mountain()
@@ -304,7 +306,7 @@ def create_random_island(map_db, island_id, id_string):
 			coords = (x + all_moves[dir][0], y + all_moves[dir][1])
 			if coords not in mountain_tiles:
 				filled.append(dir)
-		
+
 		tile = None
 		mountain_set = set(filled)
 		if len(filled) == 0:
@@ -345,14 +347,12 @@ def create_random_island(map_db, island_id, id_string):
 		 'e' not in mountain_set and 'ne' not in mountain_set and 'n' not in mountain_set:
 			tile = GROUND.MOUNTAIN_SOUTHWEST3
 		else:
-			print 'pew'
-			print filled
 			tile = GROUND.SAND
 
 		assert tile
 		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 	map_set = map_set.union(mountain_edge)
-	
+
 	# add mountain tops
 	for x, y in inner_mountain:
 		filled = []
@@ -360,7 +360,7 @@ def create_random_island(map_db, island_id, id_string):
 			coords = (x + all_moves[dir][0], y + all_moves[dir][1])
 			if coords in mountain_edge:
 				filled.append(dir)
-		
+
 		tile = None
 		mountain_set = set(filled)
 		if len(filled) == 0:
@@ -374,7 +374,7 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_SOUTH
 		elif filled == ['nw', 'sw', 'w'] or filled == ['w'] or filled == ['nw', 'w'] or filled == ['sw', 'w']:
 			tile = GROUND.MOUNTAIN_TOP_EAST
-		
+
 		# inner corner
 		elif filled == ['se']:
 			tile = GROUND.MOUNTAIN_TOP_NORTHWEST1
@@ -384,7 +384,7 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_SOUTHEAST1
 		elif filled == ['sw']:
 			tile = GROUND.MOUNTAIN_TOP_NORTHEAST1
-			
+
 		# outer corner
 		elif 'n' in mountain_set and 'e' in mountain_set and 's' not in mountain_set and 'w' not in mountain_set and 'sw' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_SOUTHEAST3
@@ -394,7 +394,7 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_NORTHWEST3
 		elif 'w' in mountain_set and 'n' in mountain_set and 'e' not in mountain_set and 's' not in mountain_set and 'se' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_SOUTHWEST3
-			
+
 		# T into peak
 		elif filled == ['ne', 'nw']:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_T_NORTH
@@ -404,19 +404,19 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_PEAK_T_SOUTH
 		elif filled == ['ne', 'se']:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_T_EAST
-		
+
 		# diagonal
 		elif filled == ['ne', 'sw']:
 			tile = GROUND.MOUNTAIN_TOP_NORTHEAST_SOUTHWEST
 		elif filled == ['nw', 'se']:
 			tile = GROUND.MOUNTAIN_TOP_NORTHWEST_SOUTHEAST
-		
+
 		# peak straights
 		elif 'e' in mountain_set and 'w' in mountain_set and 'n' not in mountain_set and 's' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_STRAIGHT_EAST
 		elif 'n' in mountain_set and 's' in mountain_set and 'e' not in mountain_set and 'w' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_STRAIGHT_NORTH
-			
+
 		# peak ends
 		elif 'n' in mountain_set and 'e' in mountain_set and 's' in mountain_set and 'w' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_END_SOUTH
@@ -426,7 +426,7 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_PEAK_END_NORTH
 		elif 'w' in mountain_set and 'n' in mountain_set and 'e' in mountain_set and 's' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_END_EAST
-		
+
 		# peak corners
 		elif 'nw' in mountain_set and 'e' in mountain_set and 's' in mountain_set and 'n' not in mountain_set and 'w' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_NORTH
@@ -436,7 +436,7 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_SOUTH
 		elif 'sw' in mountain_set and 'n' in mountain_set and 'e' in mountain_set and 'w' not in mountain_set and 's' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_CORNER_WEST
-			
+
 		# L into peak (right)
 		elif 'ne' in mountain_set and 'w' in mountain_set and 'n' not in mountain_set and 'e' not in mountain_set and 's' not in mountain_set and 'se' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_NORTH
@@ -446,7 +446,7 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_SOUTH
 		elif 'nw' in mountain_set and 's' in mountain_set and 'w' not in mountain_set and 'n' not in mountain_set and 'e' not in mountain_set and 'ne' not in mountain_set:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_L_RIGHT_WEST
-		
+
 		# (left) and T_straight
 		elif 'nw' in mountain_set and 'e' in mountain_set and 'n' not in mountain_set and 'w' not in mountain_set and 's' not in mountain_set:
 			if 'sw' in mountain_set:
@@ -468,11 +468,11 @@ def create_random_island(map_db, island_id, id_string):
 				tile = GROUND.MOUNTAIN_TOP_PEAK_T_STRAIGHT_WEST
 			else:
 				tile = GROUND.MOUNTAIN_TOP_PEAK_L_LEFT_WEST
-				
+
 		# single peak
 		elif 'n' in mountain_set and 'e' in mountain_set and 's' in mountain_set and 'w' in mountain_set:
 				tile = GROUND.MOUNTAIN_TOP_PEAK
-		
+
 		# into 2 peaks
 		elif filled == ['ne', 'se', 'sw']:
 			tile = GROUND.MOUNTAIN_TOP_NORTHEAST_SOUTHEAST_SOUTHWEST
@@ -482,21 +482,19 @@ def create_random_island(map_db, island_id, id_string):
 			tile = GROUND.MOUNTAIN_TOP_SOUTHWEST_NORTHWEST_NORTHEAST
 		elif filled == ['nw', 'se', 'sw']:
 			tile = GROUND.MOUNTAIN_TOP_SOUTHEAST_SOUTHWEST_NORTHWEST
-		
+
 		elif filled == ['ne', 'nw', 'se', 'sw']:
 			tile = GROUND.MOUNTAIN_TOP_PEAK_ALL
-		
-		
+
+
 		else:
-			print 'dewd'
-			print filled
 			tile = GROUND.SAND
-				
-		
+
+
 		assert tile
 		map_db("INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)", island_id, island_x + x, island_y + y, *tile)
 	map_set = map_set.union(inner_mountain)
-				
+
 
 	def fill_tiny_spaces(tile):
 		"""Fills 1 tile gulfs and straits with the specified tile
@@ -515,7 +513,7 @@ def create_random_island(map_db, island_id, id_string):
 		while True:
 			to_fill = set()
 			to_ignore = set()
-			
+
 			for x, y in edge_set:
 				# ignore the tiles with no empty neighbors
 				if reduce_edge_set:

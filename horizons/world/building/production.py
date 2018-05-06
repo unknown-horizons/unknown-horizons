@@ -30,11 +30,6 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import RadiusRect, Rect
-from horizons.world.building.buildable import (
-	BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean)
-from horizons.world.building.building import BasicBuilding
-from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
-from horizons.world.building.nature import Field
 from horizons.world.production.producer import Producer
 
 
@@ -162,7 +157,7 @@ class MountainMine(BuildingResourceHandler, BuildableSingleOnMountain, BasicBuil
 	def initialize(self, deposit_class, inventory, **kwargs):
 		super(MountainMine, self).initialize(**kwargs)
 		self.__init(deposit_class=deposit_class)
-		for res, amount in inventory.iteritems():
+		for res, amount in inventory.items():
 			# bury resources from mountain in mine
 			self.get_component(StorageComponent).inventory.alter(res, amount)
 
