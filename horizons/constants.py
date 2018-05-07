@@ -570,7 +570,7 @@ class STORAGE:
 class LAYERS:
 	WATER = 0
 	GROUND = 1
-	FIELDS = 2
+	FIELDS = 2 # ironically doesn't apply to fields anymore...
 	OBJECTS = 3
 
 	NUM = 4 # number of layers
