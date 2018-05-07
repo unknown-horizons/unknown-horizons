@@ -232,7 +232,7 @@ class View(ChangeListener):
 
 		points = []
 		for screen_x, screen_y in [
-				(0,0),
+				(0, 0),
 				(screen_width, 0),
 				(screen_width, screen_height),
 				(0, screen_height)]:

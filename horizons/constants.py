@@ -558,7 +558,6 @@ class STORAGE:
 	SHIP_TOTAL_STORAGE = 120
 	SHIP_TOTAL_SLOTS_NUMBER = 4
 
-
 	# The maximum number of items you can set in a trade route slot or warehouse trade slot
 	# This was actually only added to make sure the number wouldn't overflow the amount slider
 	# If more items can be traded than pixels in the slider it is impossible to accurately select an amount
