@@ -23,16 +23,13 @@ import math
 import time
 
 from fife import fife
-from fife.fife import AudioSpaceCoordinate
-from fife.fife import Point3D
+from fife.fife import AudioSpaceCoordinate, Point3D
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
-
-
 
 
 class View(ChangeListener):

@@ -25,7 +25,6 @@ import struct
 import sys
 import textwrap
 
-
 # the default encoding to use when encoding cannot be detected
 default_encoding = 'utf-8'
 

@@ -795,4 +795,3 @@ class _MinimapImage:
 		"""Always call this."""
 		targetname = self.rendertarget.getTarget().getName()
 		self.targetrenderer.setRenderTarget(targetname, False, 0)
-
