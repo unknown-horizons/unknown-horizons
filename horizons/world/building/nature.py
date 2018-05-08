@@ -40,7 +40,7 @@ class NatureBuildingResourceHandler(BuildingResourceHandler, NatureBuilding):
 
 class Field(NatureBuildingResourceHandler):
 	walkable = False
-	layer = LAYERS.FIELDS
+	layer = LAYERS.OBJECTS
 
 	def initialize(self, **kwargs):
 		super().initialize(**kwargs)
