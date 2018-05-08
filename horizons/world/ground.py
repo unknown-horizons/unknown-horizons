@@ -31,6 +31,7 @@ from horizons.util.loaders.tilesetloader import TileSetLoader
 class SurfaceTile:
 	is_water = False
 	layer = LAYERS.GROUND
+	elevation = 0
 
 	__slots__ = ('x', 'y', 'settlement', 'blocked', 'object', 'session', '_instance', '_tile_set_id')
 
@@ -73,7 +74,7 @@ class SurfaceTile:
 
 class Ground(SurfaceTile):
 	"""Default land surface"""
-	pass
+	elevation = 1 # temp value to test if elevation works
 
 
 class Water(SurfaceTile):

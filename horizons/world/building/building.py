@@ -242,7 +242,8 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		# the 0.5 isn't really necessary, but other code is aligned with the 0.5 shift
 		# this is at least for the gridoverlay, and the location of a build preview relative to the mouse
 		# it this is changed, it should also be changed for ground tiles (world/ground.py) and units
-		instance_coords = [x + width / 2 - 0.5, y + length / 2 - 0.5, 0]
+		z = session.world.get_tile(Point(x, y)).elevation
+		instance_coords = [x + width / 2 - 0.5, y + length / 2 - 0.5, z]
 
 		instance = session.view.layers[cls.layer].createInstance(
 			cls._fife_object,
