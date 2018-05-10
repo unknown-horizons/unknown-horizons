@@ -478,6 +478,8 @@ class BuildingTool(NavigationTool):
 	def mouseMoved(self, evt):
 		self.log.debug("BuildingTool mouseMoved")
 		super().mouseMoved(evt)
+		if evt.isConsumedByWidgets():
+			return
 		point = self.get_world_location(evt)
 		if self.start_point != point:
 			self.start_point = point
@@ -501,6 +503,8 @@ class BuildingTool(NavigationTool):
 	def mouseDragged(self, evt):
 		self.log.debug("BuildingTool mouseDragged")
 		super().mouseDragged(evt)
+		if evt.isConsumedByWidgets():
+			return
 		point = self.get_world_location(evt)
 		if self.start_point is not None:
 			self._check_update_preview(point)

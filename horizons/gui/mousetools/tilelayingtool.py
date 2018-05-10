@@ -112,7 +112,8 @@ class TileLayingTool(NavigationTool):
 
 	def update_coloring(self, evt):
 		self._remove_coloring()
-		self._add_coloring(self.get_world_location(evt).to_tuple())
+		if not evt.isConsumedByWidgets():
+			self._add_coloring(self.get_world_location(evt).to_tuple())
 
 	def _add_coloring(self, pos):
 		brush = Circle(Point(*pos), self.session.world_editor.brush_size - 1)
