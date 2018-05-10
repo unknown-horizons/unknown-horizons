@@ -83,6 +83,7 @@ class TestRunner:
 	def _custom_setup(self):
 		"""Change build menu to 'per tier' for tests."""
 		import horizons.globals
+		from horizons.gui.tabs import BuildTab
 		horizons.globals.fife.set_uh_setting("Buildstyle", BuildTab.layer_per_tier_index)
 
 	def _filter_traceback(self):
