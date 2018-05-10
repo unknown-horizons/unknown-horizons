@@ -160,7 +160,8 @@ class Fife:
 			# see issue #2778 and #1413
 			# to fix this, mousemove events are fired even when over a widget
 			def isFiltered(self, event):
-				return bool(event.getType() == fife.MouseEvent.MOVED)
+				return event.getType() == fife.MouseEvent.MOVED or \
+					event.getType() == fife.MouseEvent.RELEASED
 		# storing it as a member is important to prevent segfaults
 		# this is probably because otherwise it will be garbage collected
 		self._mouseFilter = MouseMoveFilter()

@@ -42,6 +42,9 @@ class NavigationTool(CursorTool):
 	HOVER_INSTANCES_UPDATE_DELAY = 1 # sec
 	last_hover_instances = WeakList()
 
+	consumed_by_widgets = False
+
+
 	def __init__(self, session):
 		super().__init__(session)
 		self._last_mmb_scroll_point = [0, 0]
@@ -90,6 +93,10 @@ class NavigationTool(CursorTool):
 
 			def show_evt(self, evt):
 				if self.enabled:
+					if evt.isConsumedByWidgets():
+						if self.icon.tooltip_shown:
+							self.icon.hide_tooltip()
+						return
 					x, y = self.cursor_tool.get_world_location(evt).to_tuple()
 					self.icon.helptext = '{:d}, {:d} '.format(x, y) + T("Press H to remove this hint")
 					self.icon.position_tooltip(evt)
@@ -133,12 +140,14 @@ class NavigationTool(CursorTool):
 
 	# return new mouse position after moving
 	def mouseMoved(self, evt):
-		#print(dir(evt))
-		print(evt.getType(), evt.getName(), evt.getSource(), evt.isConsumed(), evt.isConsumedByWidgets())
 		if not self.session.world.inited:
 			return
 
+		self.consumed_by_widgets = evt.isConsumedByWidgets()
+
 		self.tooltip.show_evt(evt)
+
+
 		# don't overwrite this last_event_pos instance. Due to class
 		# hierarchy, it would write to the lowest class (e.g. SelectionTool)
 		# and the attribute in NavigationTool would be left unchanged.
@@ -211,6 +220,10 @@ class NavigationTool(CursorTool):
 		@param where: anything supporting getX/getY
 		@param layers: list of layer ids to search for. Default to OBJECTS
 		"""
+
+		if self.consumed_by_widgets:
+			return []
+
 		if layers is None:
 			layers = [LAYERS.OBJECTS]
 

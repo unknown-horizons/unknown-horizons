@@ -50,7 +50,8 @@ class PipetteTool(NavigationTool):
 		self.session.ingame_gui.set_cursor()
 
 	def mouseMoved(self, evt):
-		self.update_coloring(evt)
+		if not evt.isConsumedByWidgets():
+			self.update_coloring(evt)
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.LEFT:

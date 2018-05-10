@@ -64,7 +64,7 @@ class AttackingTool(SelectionTool):
 	def mouseMoved(self, evt):
 		super().mouseMoved(evt)
 		target = self._get_attackable_instance(evt)
-		if target:
+		if target and not evt.isConsumedByWidgets():
 			horizons.globals.fife.set_cursor_image("attacking")
 		else:
 			horizons.globals.fife.set_cursor_image("default")

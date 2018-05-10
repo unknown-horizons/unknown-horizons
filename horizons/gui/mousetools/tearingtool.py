@@ -70,7 +70,9 @@ class TearingTool(NavigationTool):
 	def mouseMoved(self, evt):
 		super().mouseMoved(evt)
 		coords = self.get_world_location(evt).to_tuple()
-		self._mark(coords)
+		self._restore_transparent_instances()
+		if not evt.isConsumedByWidgets():
+			self._mark(coords)
 		evt.consume()
 
 	def on_escape(self):
@@ -133,7 +135,6 @@ class TearingTool(NavigationTool):
 
 	def _mark(self, *edges):
 		"""Highights building instances and keeps self.selected up to date."""
-		self._restore_transparent_instances()
 		self.log.debug("TearingTool: mark")
 		if len(edges) == 1:
 			edges = (edges[0], edges[0])
