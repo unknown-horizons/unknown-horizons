@@ -79,7 +79,7 @@ class TearingTool(NavigationTool):
 	def mouseReleased(self, evt):
 		"""Tear selected instances and set selection tool as cursor"""
 		self.log.debug("TearingTool: mouseReleased")
-		if evt.getButton() == fife.MouseEvent.LEFT:
+		if evt.getButton() == fife.MouseEvent.LEFT and not evt.isConsumedByWidgets():
 			coords = self.get_world_location(evt).to_tuple()
 			if self.coords is None:
 				self.coords = coords
@@ -123,7 +123,7 @@ class TearingTool(NavigationTool):
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
 			self.on_escape()
-		elif evt.getButton() == fife.MouseEvent.LEFT:
+		elif evt.getButton() == fife.MouseEvent.LEFT and not evt.isConsumedByWidgets():
 			self.coords = self.get_world_location(evt).to_tuple()
 			self._mark(self.coords)
 		else:

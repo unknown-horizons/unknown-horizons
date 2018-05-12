@@ -53,7 +53,7 @@ class PipetteTool(NavigationTool):
 		self.update_coloring(evt)
 
 	def mousePressed(self, evt):
-		if evt.getButton() == fife.MouseEvent.LEFT:
+		if evt.getButton() == fife.MouseEvent.LEFT and not evt.isConsumedByWidgets():
 			obj = self._get_object(evt)
 			if obj and self._is_buildable(obj.id):
 				self.session.ingame_gui.set_cursor('building', Entities.buildings[obj.id])
