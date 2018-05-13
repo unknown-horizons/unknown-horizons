@@ -136,7 +136,7 @@ class Minimap:
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 
 	def __init__(self, position, session, view, targetrenderer, imagemanager, renderer=None, world=None,
-	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None):
+	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None, mousearea=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param world: World object or fake thereof
@@ -158,7 +158,9 @@ class Minimap:
 		else: # assume icon
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
-			self.use_overlay_icon(self.icon)
+			if mousearea is None:
+				mousearea = self.icon
+			self.use_overlay_icon(mousearea)
 
 		# FIXME PY3 width / height of icon is sometimes zero. Why?
 		if self.location.height == 0 or self.location.width == 0:
@@ -247,7 +249,6 @@ class Minimap:
 
 		self.update_cam()
 		self._recalculate()
-		self.draw_border()
 		if not self.preview:
 			self._timed_update(force=True)
 			ExtScheduler().rem_all_classinst_calls(self)
@@ -282,63 +283,19 @@ class Minimap:
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 
-		def drawLine(p1, p2):
-			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
-			                                        p1,
-			                                        p2,
-			                                        *self.COLORS["cam"])
-
-		# draw rect for current screen
+		## draw rect for current screen
 		displayed_area = self.view.get_displayed_area()
 
-		xmin, ymin = self.transform.world_to_minimap(displayed_area[0])
-		xmax, ymax = self.transform.world_to_minimap(displayed_area[2])
+		minimap_corners_as_point = []
+		for (x, y) in displayed_area:
+			coords = self.transform.world_to_minimap((x, y))
+			minimap_corners_as_point.append(fife.Point(coords[0], coords[1]))
 
-		# draw horizontal lines
-		for y in [ymin, ymax]:
-			x1 = max(xmin, self.transform.get_min_x(y))
-			x2 = min(xmax, self.transform.get_max_x(y))
-			if x2 > x1:
-				drawLine(fife.Point(x1, y), fife.Point(x2, y))
-
-		# draw vertical lines
-		for x in [xmin, xmax]:
-			y1 = max(ymin, self.transform.get_min_y(x))
-			y2 = min(ymax, self.transform.get_max_y(x))
-			if y2 > y1:
-				drawLine(fife.Point(x, y1), fife.Point(x, y2))
-
-		#minimap_corners_as_point = []
-		#for (x, y) in displayed_area:
-			#coords = self.transform.world_to_minimap((x, y))
-			#minimap_corners_as_point.append(fife.Point(coords[0], coords[1]))
-
-		#for i in range(0, 4):
-			#self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
-			                                        #minimap_corners_as_point[i],
-			                                        #minimap_corners_as_point[(i + 1) % 4],
-			                                                         #*self.COLORS["cam"])
-
-	def draw_border(self):
-		"""Redraw minimap border."""
-		if not self.cam_border or self.view is None: # needs view
-			return
-		if self.world is None or not self.world.inited:
-			return # don't draw while loading
-		self.minimap_image.set_drawing_enabled()
-		self.minimap_image.rendertarget.removeAll(self._get_render_name("border"))
-
-		points = [
-			fife.Point(self.location.center.x, self.location.top),
-			fife.Point(self.location.right, self.location.center.y),
-			fife.Point(self.location.center.x, self.location.bottom),
-			fife.Point(self.location.left, self.location.center.y)]
-
-		for i in range(4):
-			self.minimap_image.rendertarget.addLine(self._get_render_name("border"),
-			                                        points[i],
-			                                        points[(i + 1) % 4],
-			                                         *self.COLORS["cam"])
+		for i in range(0, 4):
+			self.minimap_image.rendertarget.addLine(self._get_render_name("cam"),
+			                                        minimap_corners_as_point[i],
+			                                        minimap_corners_as_point[(i + 1) % 4],
+			                                                         *self.COLORS["cam"])
 
 	@classmethod
 	def update(cls, tup):
