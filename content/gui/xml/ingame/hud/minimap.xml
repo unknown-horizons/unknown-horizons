@@ -11,7 +11,7 @@ In case you change the size of this Container, also adapt the ingamegui position
 <Icon name="minimap_overlay_image" position="0,0"
 	image="content/gui/images/background/widgets/map_bg.png" />
 
-<Container name="buttons" position="-32,-2" size="240,240">
+<Container name="buttons" position="0,0" size="240,240">
 	
 	<!-- The area that is used for minimap mouse events.
 	This should always cover the same area as the actual minimap
@@ -19,23 +19,23 @@ In case you change the size of this Container, also adapt the ingamegui position
 	This is distinct for ordering purposes:
 	The draw minimap should be behind the background so it doesn't overflow,
 	but the mousetext must be in front of it so it can catch the mouse events -->
-	<Icon name="minimapMouse" fixed_size="160,120" position="54,44" />
+	<Icon name="minimapMouse" fixed_size="160,120" position="22,42" />
 	
-	<Label name="speed_text" position="50,90" font="default_bold" />
+	<Label name="speed_text" position="46,57" font="default_bold" />
 
-	<ImageButton name="speedUp" position="48,63"
+	<ImageButton name="speedUp" position="35,33"
 		path="icons/widgets/minimap/speed_up" helptext="Increase game speed ({key})" />
-	<ImageButton name="speedDown" position="48,105"
+	<ImageButton name="speedDown" position="17,60"
 		path="icons/widgets/minimap/speed_down" helptext="Decrease game speed ({key})" />
 
-	<ImageButton name="rotateLeft" position="106,19"
+	<ImageButton name="rotateLeft" position="73,16"
 		path="icons/widgets/minimap/rotate_left" helptext="Rotate map counterclockwise ({key})" />
-	<ImageButton name="rotateRight" position="140,19"
+	<ImageButton name="rotateRight" position="105,16"
 		path="icons/widgets/minimap/rotate_right" helptext="Rotate map clockwise ({key})" />
 
-	<ImageButton name="zoomIn" position="195,63"
+	<ImageButton name="zoomIn" position="140,33"
 		path="icons/widgets/minimap/zoom_in" helptext="Zoom in" />
-	<ImageButton name="zoomOut" position="195,105"
+	<ImageButton name="zoomOut" position="158,60"
 		path="icons/widgets/minimap/zoom_out" helptext="Zoom out" />
 </Container>
 
