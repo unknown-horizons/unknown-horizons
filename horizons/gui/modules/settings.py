@@ -109,7 +109,6 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH, 'Language', 'uni_language', language_names,
 				callback=self._apply_Language, on_change=self._on_Language_changed),
 
-			Setting(UH, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
 			Setting(UH, 'AutoUnload', 'auto_unload'),
 			Setting(UH, 'DebugLog', 'debug_log', callback=self._apply_DebugLog),

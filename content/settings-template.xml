@@ -43,7 +43,6 @@
 		<Setting name="ClientID" type="str"></Setting>
 		<Setting name="ColorID" type="int">1</Setting>
 		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
-		<Setting name="MinimapRotation" type="bool">True</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
 		<Setting name="UninterruptedBuilding" type="bool">False</Setting>
 		<Setting name="NetworkPort" type="unicode">0</Setting>

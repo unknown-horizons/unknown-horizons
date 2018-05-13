@@ -30,7 +30,6 @@ import horizons.globals
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettingChanged
 from horizons.util.shapes import Circle, Point, Rect
 
 
@@ -144,7 +143,7 @@ class Minimap:
 		@param targetrenderer: fife target renderer for drawing on icons
 		@param imagemanager: fife imagemanager for drawing on icons
 		@param cam_border: boolean, whether to draw the cam border
-		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
+		@param use_rotation: boolean, whether to use rotation
 		@param on_click: function taking 1 argument or None for scrolling
 		@param preview: flag, whether to only show the map as preview
 		@param tooltip: always show this tooltip when cursor hovers over minimap
@@ -186,10 +185,6 @@ class Minimap:
 
 		self.minimap_image = _MinimapImage(self, targetrenderer)
 
-		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
-		if self.use_rotation:
-			SettingChanged.subscribe(self._on_setting_changed)
-
 		self.transform = None
 
 
@@ -198,8 +193,6 @@ class Minimap:
 		self.world = None
 		self.session = None
 		self.renderer = None
-		if self.use_rotation:
-			SettingChanged.unsubscribe(self._on_setting_changed)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
@@ -222,9 +215,9 @@ class Minimap:
 			return # don't draw while loading
 		if self.transform is None:
 			self.transform = _MinimapTransform(self.world.map_dimensions,
-									  self.location,
-									  0,
-									  self._get_rotation_setting())
+			                                   self.location,
+			                                   0,
+			                                   self.use_rotation)
 			self.update_rotation()
 
 		self.__class__._instances.append(self)
@@ -631,16 +624,6 @@ class Minimap:
 			return
 		self.transform.set_rotation(self.view.cam.getRotation())
 		self.draw()
-
-	def _get_rotation_setting(self):
-		return self.use_rotation and self._rotation_setting
-
-
-	def _on_setting_changed(self, message):
-		if message.setting_name == "MinimapRotation":
-			self._rotation_setting = message.new_value
-			self.transform.set_use_rotation(self._get_rotation_setting())
-			self.draw()
 
 	def get_size(self):
 		return (self.location.width, self.location.height)
