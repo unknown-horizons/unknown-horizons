@@ -305,9 +305,10 @@ class Minimap:
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		minimap_point = self.transform.world_to_minimap(tup)
+		if tup is not None:
+			tup = self.transform.world_to_minimap(tup)
 
-		self._recalculate(minimap_point)
+		self._recalculate(tup)
 
 	def use_overlay_icon(self, icon):
 		"""Configures icon so that clicks get mapped here.
