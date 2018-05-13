@@ -124,8 +124,7 @@ class Minimap:
 	  "ship" : "f",
 	  "cam" : "g",
 	  "ship_route" : "h",
-	  "highlight" : "l",
-	  "border" : "r"
+	  "highlight" : "l"
 	  }
 
 	__minimap_id_counter = itertools.count()
@@ -282,8 +281,7 @@ class Minimap:
 			return # don't draw while loading
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
-
-		## draw rect for current screen
+		# draw rect for current screen
 		displayed_area = self.view.get_displayed_area()
 
 		minimap_corners_as_point = []
