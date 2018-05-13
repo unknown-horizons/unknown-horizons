@@ -624,18 +624,6 @@ class Minimap:
 		self.transform.set_rotation(self.view.cam.getRotation())
 		self.draw()
 
-<<<<<<< HEAD
-=======
-	def _get_rotation_setting(self):
-		return self.use_rotation and self._rotation_setting
-
-	def _on_setting_changed(self, message):
-		if message.setting_name == "MinimapRotation":
-			self._rotation_setting = message.new_value
-			self.transform.set_use_rotation(self._get_rotation_setting())
-			self.draw()
-
->>>>>>> fixed whitespace to correspond to standards
 	def get_size(self):
 		return (self.location.width, self.location.height)
 
