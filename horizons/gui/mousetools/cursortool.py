@@ -74,6 +74,12 @@ class CursorTool(fife.IMouseListener):
 	def mouseWheelMovedDown(self, evt):
 		pass
 
+	def mouseWheelMovedLeft(self, evt):
+		pass
+
+	def mouseWheelMovedRight(self, evt):
+		pass
+
 	def mouseMoved(self, evt):
 		pass
 
