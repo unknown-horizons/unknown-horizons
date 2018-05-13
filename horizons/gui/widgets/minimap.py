@@ -756,8 +756,6 @@ class _MinimapTransform:
 		if self.use_rotation:
 			for x_i in range(0, location.width):
 				x = x_i + location.left
-				# TODO: better name
-				asdf = int(abs(x / location.width - 0.5) * location.height)
 				for y_i in range(self.get_min_y(x), self.get_max_y(x)):
 					y = y_i + location.top
 					yield (x, y)
