@@ -622,6 +622,8 @@ class Minimap:
 
 	def update_rotation(self):
 		# ensure the minimap rotation matches the main view rotation
+		if not self.view:
+			return
 		self.transform.set_rotation(self.view.cam.getRotation())
 		self.draw()
 
