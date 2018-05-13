@@ -124,7 +124,7 @@ class Minimap:
 	  "ship" : "f",
 	  "cam" : "g",
 	  "ship_route" : "h",
-	  "highlight" : "l",
+	  "highlight" : "l"
 	  }
 
 	__minimap_id_counter = itertools.count()
@@ -135,7 +135,7 @@ class Minimap:
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 
 	def __init__(self, position, session, view, targetrenderer, imagemanager, renderer=None, world=None,
-	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None):
+	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None, mousearea=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param world: World object or fake thereof
@@ -157,7 +157,9 @@ class Minimap:
 		else: # assume icon
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
-			self.use_overlay_icon(self.icon)
+			if mousearea is None:
+				mousearea = self.icon
+			self.use_overlay_icon(mousearea)
 
 		# FIXME PY3 width / height of icon is sometimes zero. Why?
 		if self.location.height == 0 or self.location.width == 0:
@@ -281,6 +283,7 @@ class Minimap:
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 		# draw rect for current screen
 		displayed_area = self.view.get_displayed_area()
+
 		minimap_corners_as_point = []
 		for (x, y) in displayed_area:
 			coords = self.transform.world_to_minimap((x, y))
@@ -364,7 +367,9 @@ class Minimap:
 			if not self.location.contains(abs_mouse_position):
 				# mouse click was on icon but not actually on minimap
 				return None
-		return self.transform.minimap_to_world((event.getX(), event.getY()))
+		world_position = self.transform.minimap_to_world((event.getX(), event.getY()))
+		if self.world.map_dimensions.contains_tuple(world_position):
+			return world_position
 
 	def _mouse_entered(self, event):
 		self._show_tooltip(event)
@@ -638,7 +643,7 @@ class Minimap:
 			self.draw()
 
 	def get_size(self):
-		return (self.location.height, self.location.width)
+		return (self.location.width, self.location.height)
 
 
 class _MinimapTransform:
@@ -751,15 +756,31 @@ class _MinimapTransform:
 		if self.use_rotation:
 			for x_i in range(0, location.width):
 				x = x_i + location.left
-				# TODO: better name
-				asdf = int(abs(x / location.width - 0.5) * location.height)
-				for y_i in range(asdf, location.height - asdf):
+				for y_i in range(self.get_min_y(x), self.get_max_y(x)):
 					y = y_i + location.top
 					yield (x, y)
 		else:
 			for x in range(location.left, location.width + location.left):
 				for y in range(location.top, location.height + location.top):
 					yield (x, y)
+
+	def get_min_y(self, x):
+		if self.use_rotation:
+			return int(abs(x / self.location.width - 0.5) * self.location.height)
+		else:
+			return 0
+
+	def get_max_y(self, x):
+		return self.location.height - self.get_min_y(x)
+
+	def get_min_x(self, y):
+		if self.use_rotation:
+			return int(abs(y / self.location.height - 0.5) * self.location.width)
+		else:
+			return 0
+
+	def get_max_x(self, y):
+		return self.location.height - self.get_min_x(y)
 
 
 class _MinimapImage:

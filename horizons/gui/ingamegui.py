@@ -118,7 +118,8 @@ class IngameGui(LivingObject):
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       session=self.session,
-		                       view=self.session.view)
+		                       view=self.session.view,
+		                       mousearea=self.mainhud.findChild(name="minimapMouse"))
 
 		def speed_up():
 			SpeedUpCommand().execute(self.session)
