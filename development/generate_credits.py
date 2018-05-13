@@ -27,17 +27,17 @@ from collections import OrderedDict
 sections = ['UH-Team_New', 'UH-Team_Old', 'Patchers', 'Translators', 'Packagers', 'Special Thanks']
 section_widgets = {s: 'credits_' + s.lower() for s in sections}
 section_widgets.update({
-	'UH-Team-2016/2017': 'credits_team_2016',
+	'UH-Team-2016-2018': 'credits_team_2016',
 	'UH-Team-2015': 'credits_team_2015',
 	'Special Thanks': 'credits_thanks'})
 
 # Whether to add ScrollAreas around the page
-huge_pages = ['UH-Team-2016/2017', 'UH-Team-2015', 'Patchers', 'Translators']
+huge_pages = ['UH-Team-2016-2018', 'UH-Team-2015', 'Patchers', 'Translators']
 
 INPUT = 'doc/AUTHORS.md'
 OUTPUT = 'content/gui/xml/mainmenu/credits.xml'
 
-HEADER = ur'''<?xml version="1.0"?>
+HEADER = r'''<?xml version="1.0"?>
 
 <!--  /!\ WARNING /!\
 This document was auto-generated from {}.
@@ -48,7 +48,7 @@ afterwards run {} to refresh this file.
 <Container name="credits_window" size="1000,580">
 	<Icon image="content/gui/images/background/book.png" position="100,0" />
 	<Container name="left_pickbelts" size="170,580" position="30,0" />'''.format(INPUT, INPUT, __file__)
-FOOTER = ur'''
+FOOTER = r'''
 <OkButton position="800,500" helptext="Exit to main menu" />
 
 <Container name="right_pickbelts" position="835,0" size="170,580" />
@@ -61,14 +61,14 @@ XML_MESS = [  # (search, replace) list of stuff we need to replace before writin
 
 
 def write(f, level, text, newline=True):
-	wtext = u'\n' * newline + u'\t' * level + text
+	wtext = '\n' * newline + '\t' * level + text
 	for search, replace in XML_MESS:
 		wtext = wtext.replace(search, replace)
-	f.write(wtext.encode('utf8'))
+	f.write(wtext)
 
 
 def close_box(box, level):
-	write(f, level, u'</{}Box>'.format(box))
+	write(f, level, '</{}Box>'.format(box))
 
 
 def close_vbox(level):
@@ -122,24 +122,24 @@ def parse_markdown(infile):
 def write_page(heading, content):
 	def write_page_header():
 		if heading in huge_pages:
-			write(f, 1, u'<ScrollArea name="{}" '
-					  u'max_size="310,500" min_size="310,500">'.format(heading.lower()))
+			write(f, 1, '<ScrollArea name="{}" '
+					  'max_size="310,500" min_size="310,500">'.format(heading.lower()))
 			# Make sure there is no max_size set in this case!
-			write(f, 1, u'<VBox min_size="310,500">')
+			write(f, 1, '<VBox min_size="310,500">')
 		else:
-			write(f, 1, u'<VBox max_size="310,500" min_size="310,500">')
+			write(f, 1, '<VBox max_size="310,500" min_size="310,500">')
 
 	def write_page_footer():
 		close_vbox(1)
 		if heading in huge_pages:
-			write(f, 1, u'</ScrollArea>')
+			write(f, 1, '</ScrollArea>')
 
-	write(f, 0, u'\n<HBox name="{}" position="185,45">'.format(section_widgets[heading]))
+	write(f, 0, '\n<HBox name="{}" position="185,45">'.format(section_widgets[heading]))
 
 	write_page_header()
 
-	write(f, 2, u'<Label text="{}" name="headline" />'.format(heading))
-	write(f, 2, u'<hr />')
+	write(f, 2, '<Label text="{}" name="headline" />'.format(heading))
+	write(f, 2, '<hr />')
 
 	for h3, lines in content.items():
 		try:
@@ -154,15 +154,15 @@ def write_page(heading, content):
 
 
 def write_subsection(subheading, subcontent):
-	write(f, 2, u'<VBox> <Label text="{}" name="headline" />'.format(subheading))
-	write(f, 3, u'<VBox name="box">')
+	write(f, 2, '<VBox> <Label text="{}" name="headline" />'.format(subheading))
+	write(f, 3, '<VBox name="box">')
 	for line in subcontent['items']:  # finally, names
 		if set(line) == set('- '):
 			close_vbox(3)
 			close_vbox(2)
 			raise PageBreak
 		else:
-			write(f, 4, u'<Label text="{}" />'.format(unicode(line, 'utf-8')))
+			write(f, 4, '<Label text="{}" />'.format(line))
 	close_vbox(3)
 	close_vbox(2)
 
