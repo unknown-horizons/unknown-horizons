@@ -26,7 +26,7 @@ from fife import fife
 
 from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.constants import TRADER, STORAGE
+from horizons.constants import STORAGE, TRADER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
