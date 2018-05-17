@@ -220,13 +220,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 	def _tick(self):
 		"""Here we collect the functions, that are called regularly (every "month")."""
-		print("> happiness", self.happiness)
 		self.pay_tax()
-		print("  tax happiness", self.happiness)
 		self.inhabitant_check()
-		print("  inhabitant happiness", self.happiness)
 		self.level_check()
-		print("< happiness", self.happiness)
 
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
@@ -313,7 +309,6 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# just level up later that tick, it could disturb other code higher in the call stack
 
 		def _do_level_up():
-			print("Levelup", self.level, self.level+1)
 			self.level += 1
 			self.log.debug("%s: Levelling up to %s", self, self.level)
 			self._update_level_data()
