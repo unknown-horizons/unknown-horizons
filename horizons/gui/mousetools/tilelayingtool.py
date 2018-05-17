@@ -95,7 +95,7 @@ class TileLayingTool(NavigationTool):
 		return self._round_map_coords(mapcoords.x + 0.5, mapcoords.y + 0.5)
 
 	def mousePressed(self, evt):
-		if evt.getButton() == fife.MouseEvent.LEFT and not evt.isConsumeByWidgets():
+		if evt.getButton() == fife.MouseEvent.LEFT and not evt.isConsumedByWidgets():
 			coords = self.get_world_location(evt).to_tuple()
 			self._place_tile(coords)
 			evt.consume()
