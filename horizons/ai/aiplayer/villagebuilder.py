@@ -857,4 +857,3 @@ class VillageBuilder(AreaBuilder):
 			self.settlement_manager,
 			self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(VillageBuilder, builtin_only=True)

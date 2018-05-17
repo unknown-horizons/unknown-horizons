@@ -327,6 +327,5 @@ class LandManager(WorldObject):
 	def __str__(self):
 		return '{} LandManager({})'.format(
 			getattr(self, 'owner', 'unknown player'),
-			getattr(self, 'worldid', 'none')
+			getattr(self, 'worldid', 'none'))
 
-decorators.bind_all(LandManager, builtin_only=True)

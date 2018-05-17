@@ -360,7 +360,7 @@ class ProductionBuilder(AreaBuilder):
 		removed_list = []
 		for coords, (purpose, _) in self.plan.items():
 			if purpose in [BUILDING_PURPOSE.POTATO_FIELD, BUILDING_PURPOSE.PASTURE, BUILDING_PURPOSE.SUGARCANE_FIELD, BUILDING_PURPOSE.TOBACCO_FIELD, BUILDING_PURPOSE.HERBARY,
-					BUILDINGS.ALVEARIES, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD, BUILDINGS.HOP_FIELD, BUILDINGS.SPICE_FIELD, BUILDINGS.VINEYARD, BUILDINGS.CATTLE_RUN]:\
+					BUILDINGS.ALVEARIES, BUILDINGS.COCOA_FIELD, BUILDINGS.CORN_FIELD, BUILDINGS.HOP_FIELD, BUILDINGS.SPICE_FIELD, BUILDINGS.VINEYARD, BUILDINGS.CATTLE_RUN]:
 				rect = Rect.init_from_topleft_and_size_tuples(coords, field_size)
 				for field_coords in rect.tuple_iter():
 					if field_coords not in self.land_manager.production:
@@ -525,4 +525,3 @@ class ProductionBuilder(AreaBuilder):
 				self, 'settlement') else 'unknown',
 			self.worldid if hasattr(self, 'worldid') else 'none')
 
-decorators.bind_all(ProductionBuilder, builtin_only=True)

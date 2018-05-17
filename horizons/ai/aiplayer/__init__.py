@@ -93,7 +93,7 @@ from .personalitymanager import PersonalityManager
 from .settlementfounder import SettlementFounder
 from .settlementmanager import SettlementManager
 from .specialdomestictrademanager import SpecialDomesticTradeManager
-from .unitbuilder import UnitBuilder=
+from .unitbuilder import UnitBuilder
 
 
 class AIPlayer(GenericAI):
