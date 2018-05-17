@@ -32,6 +32,11 @@ class AbstractWoodenTower(AbstractBuilding):
 	def evaluator_class(self):
 		return WoodenTowerEvaluator
 
+	@property
+	def producer_building(self):
+		""" Wooden towers don't produce any resources """
+		return False
+
 	@classmethod
 	def register_buildings(cls):
 		cls._available_buildings[BUILDINGS.WOODEN_TOWER] = cls
