@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2015-12-02 23:34+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2018-03-04 09:36+0000\n"
+"Last-Translator: Przemysław Wierzbowski <pwierzbowski@gmail.com>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/uh/uh/eo/>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.20-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -41,12 +42,12 @@ msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Reiri al redaktilo"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:55
 msgid "Save map"
-msgstr ""
+msgstr "Konservi mapon"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -57,18 +58,18 @@ msgstr ""
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr ""
+msgstr "Agordoj"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
 #: content/gui/xml/mainmenu/ingamemenu.xml:18
 #: content/gui/xml/mainmenu/mainmenu.xml:24
 msgid "Help"
-msgstr ""
+msgstr "Helpo"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr ""
+msgstr "Eliri redaktilon"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
@@ -76,7 +77,7 @@ msgstr ""
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr ""
+msgstr "Elekti terenon:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
@@ -100,7 +101,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
-msgstr ""
+msgstr "Konstrui"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
@@ -113,7 +114,7 @@ msgstr ""
 #: content/gui/xml/ingame/hud/city_info.xml:9
 #: content/gui/xml/ingame/widgets/players_settlements.xml:12
 msgid "Inhabitants"
-msgstr ""
+msgstr "Loĝantoj"
 
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
@@ -162,7 +163,7 @@ msgstr ""
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
-msgstr ""
+msgstr "Diplomatio"
 
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
@@ -171,11 +172,11 @@ msgstr ""
 
 #: content/gui/xml/ingame/popups/change_name.xml:6
 msgid "Change name"
-msgstr ""
+msgstr "Ŝanĝi nomon"
 
 #: content/gui/xml/ingame/popups/change_name.xml:9
 msgid "Old name:"
-msgstr ""
+msgstr "Malnova nomo:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
@@ -189,7 +190,7 @@ msgstr ""
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr ""
+msgstr "Babilejo"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
@@ -4199,4 +4200,4 @@ msgstr ""
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
-msgstr ""
+msgstr "Aristokratoj"

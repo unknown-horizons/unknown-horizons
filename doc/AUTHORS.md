@@ -1,4 +1,4 @@
-## UH-Team-2016/2017 ##
+## UH-Team-2016-2018 ##
 
 #### Project Coordination
 * LinuxDonald (Thomas Kowaliczek)
@@ -9,6 +9,7 @@
 * MasterofJOKers ()
 * Kilian] (Kilian Köppchen)
 * squiddy (Reiner Gerecke)
+* Troido (J.M. de Jong)
 
 #### Sound and Music Artists
 * Ollo123 ()

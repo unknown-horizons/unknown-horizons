@@ -9,5 +9,7 @@
 
 	<!-- icon to show how much is in the inventory. size and position are set at runtime -->
 	<Icon name="fillbar" image="content/gui/images/tabwidget/green_line.png" size="0,0" />
-	<Slider name="slider" orientation="1" size="10,50" position="45,10" scale_start="1" is_focusable="0" />
+	
+	<!-- slider.height must always be at least constants.STORAGE.ITEMS_PER_SLOT + marker_length + 1 -->
+	<Slider name="slider" orientation="1" size="10,55" position="45,1" scale_start="1" is_focusable="0" marker_length="4"/>
 </Container>

@@ -58,13 +58,7 @@ class FPSDisplay(ABox):
 		return super().hide()
 
 	def toggle(self):
-		if (Fife.getVersion() <= (0, 3, 5)):
-			if self._visible:
-				self.hide()
-			else:
-				self.show()
+		if self.isSetVisible():
+			self.hide()
 		else:
-			if self.isSetVisible():
-				self.hide()
-			else:
-				self.show()
+			self.show()

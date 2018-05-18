@@ -118,7 +118,8 @@ class IngameGui(LivingObject):
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       session=self.session,
-		                       view=self.session.view)
+		                       view=self.session.view,
+		                       mousearea=self.mainhud.findChild(name="minimapMouse"))
 
 		def speed_up():
 			SpeedUpCommand().execute(self.session)
@@ -129,8 +130,8 @@ class IngameGui(LivingObject):
 		self.mainhud.mapEvents({
 			'zoomIn' : self.session.view.zoom_in,
 			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
+			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.update_rotation),
+			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.update_rotation),
 			'speedUp' : speed_up,
 			'speedDown' : speed_down,
 			'destroy_tool' : self.toggle_destroy_tool,
@@ -508,13 +509,13 @@ class IngameGui(LivingObject):
 				self.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()
-				self.minimap.rotate_right()
+				self.minimap.update_rotation()
 		elif action == _Actions.ROTATE_LEFT:
 			if hasattr(self.cursor, "rotate_left"):
 				self.cursor.rotate_left()
 			else:
 				self.session.view.rotate_left()
-				self.minimap.rotate_left()
+				self.minimap.update_rotation()
 		elif action == _Actions.CHAT:
 			self.windows.open(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:

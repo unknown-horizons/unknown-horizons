@@ -28,7 +28,6 @@ from fife.extensions.pychan.widgets import Container, HBox, Icon, Label
 
 from horizons.command.production import AddProduction, CancelCurrentProduction, RemoveFromQueue
 from horizons.constants import GAME_SPEED, PRODUCTIONLINES, RES, UNITS
-from horizons.engine import Fife
 from horizons.gui.util import create_resource_icon
 from horizons.gui.widgets.imagebutton import CancelButton, OkButton
 from horizons.i18n import gettext as T, gettext_lazy as LazyT
@@ -82,11 +81,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 	def show_production_is_active_container(self, container_active, container_inactive, progress_container, cancel_container, production_lines):
 		"""Show the container containing the active production."""
 		container_active.parent.showChild(container_active)
-		if (Fife.getVersion() >= (0, 4, 0)):
-			container_inactive.parent.hideChild(container_inactive)
-		else:
-			if container_inactive not in container_inactive.parent.hidden_children:
-				container_inactive.parent.hideChild(container_inactive)
+		container_inactive.parent.hideChild(container_inactive)
 
 		self.update_production_is_active_container(progress_container, container_active, cancel_container, production_lines)
 
@@ -115,11 +110,7 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 		"""Hides all information on progress etc, and displays something to signal that the production is inactive."""
 		container_inactive.parent.showChild(container_inactive)
 		for w in (container_active, progress_container, cancel_container):
-			if (Fife.getVersion() >= (0, 4, 0)):
-				w.parent.hideChild(w)
-			else:
-				if w not in w.parent.hidden_children:
-					w.parent.hideChild(w)
+			w.parent.hideChild(w)
 
 	def update_buttons(self, container_active, cancel_container):
 		"""Show the correct active and inactive buttons, update cancel button"""
@@ -129,11 +120,8 @@ class UnitbuilderTabBase(ProducerOverviewTabBase):
 
 		if not to_active: # swap what we want to show and hide
 			button_active, button_inactive = button_inactive, button_active
-		if (Fife.getVersion() >= (0, 4, 0)):
 			button_active.parent.hideChild(button_active)
-		else:
-			if button_active not in button_active.parent.hidden_children:
-				button_active.parent.hideChild(button_active)
+
 		button_inactive.parent.showChild(button_inactive)
 
 		set_active_cb = Callback(self.producer.set_active, active=to_active)
@@ -292,9 +280,9 @@ class BoatbuilderFisherTab(BoatbuilderSelectTab):
 
 	ships = [
 		#(UNITS.FISHER_BOAT, PRODUCTIONLINES.FISHING_BOAT),
-		#(UNITS.CUTTER, PRODUCTIONLINES.xxx),
-		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.xxx),
-		#(UNITS.WHALER, PRODUCTIONLINES.xxx),
+		#(UNITS.CUTTER, PRODUCTIONLINES.CUTTER),
+		#(UNITS.HERRING_FISHER, PRODUCTIONLINES.HERRING_FISHER),
+		#(UNITS.WHALER, PRODUCTIONLINES.WHALER),
 	] # type: List[Tuple[int, int]]
 
 
@@ -304,9 +292,9 @@ class BoatbuilderTradeTab(BoatbuilderSelectTab):
 
 	ships = [
 		(UNITS.HUKER_SHIP, PRODUCTIONLINES.HUKER),
-		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.xxx),
-		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.xxx),
-		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.xxx),
+		#(UNITS.COURIER_BOAT, PRODUCTIONLINES.COURIER_BOAT),
+		#(UNITS.SMALL_MERCHANT, PRODUCTIONLINES.SMALL_MERCHANT),
+		#(UNITS.BIG_MERCHANT, PRODUCTIONLINES.BIG_MERCHANT),
 	]
 
 

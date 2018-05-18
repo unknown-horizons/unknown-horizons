@@ -80,7 +80,10 @@ class TileLayingTool(NavigationTool):
 		self.session.ingame_gui.set_cursor()
 
 	def mouseMoved(self, evt):
-		self.update_coloring(evt)
+		if evt.isConsumedByWidgets():
+			self._remove_coloring()
+		else:
+			self.update_coloring(evt)
 
 	def _place_tile(self, coords):
 		brush = Circle(Point(*coords), self.session.world_editor.brush_size - 1)
@@ -92,7 +95,7 @@ class TileLayingTool(NavigationTool):
 		return self._round_map_coords(mapcoords.x + 0.5, mapcoords.y + 0.5)
 
 	def mousePressed(self, evt):
-		if evt.getButton() == fife.MouseEvent.LEFT:
+		if evt.getButton() == fife.MouseEvent.LEFT and not evt.isConsumedByWidgets():
 			coords = self.get_world_location(evt).to_tuple()
 			self._place_tile(coords)
 			evt.consume()

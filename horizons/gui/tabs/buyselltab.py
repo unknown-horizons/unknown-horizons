@@ -26,12 +26,12 @@ from fife import fife
 
 from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.constants import TRADER
+from horizons.constants import STORAGE, TRADER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
 from horizons.gui.widgets.tradehistoryitem import TradeHistoryItem
-from horizons.i18n import gettext as T
+from horizons.i18n import gettext as T, gettext_lazy as LazyT
 from horizons.util.python.callback import Callback
 from horizons.util.worldobject import WorldObject
 
@@ -51,6 +51,8 @@ class BuySellTab(TabInterface):
 	sell_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"
 
 	dummy_icon_path = "icons/resources/none_gray"
+
+	helptext = LazyT('Trade')
 
 	def __init__(self, instance):
 		"""Set up the GUI and game logic for the buyselltab."""
@@ -86,7 +88,6 @@ class BuySellTab(TabInterface):
 		self.trade_history_widget_cache = {} # {(tick, player_id, resource_id, amount, gold): widget, ...}
 
 		self.hide()
-		self.helptext = T("Trade")
 		self.inited = True
 
 	def hide(self):
@@ -151,8 +152,8 @@ class BuySellTab(TabInterface):
 			slot.findChild(name='button').path = self.dummy_icon_path
 			slider = slot.findChild(name="slider")
 			slider.scale_start = 0.0
-			slider.scale_end = float(self.trade_post.get_inventory().limit)
-			# Set scale according to the settlement inventory size
+			slider.scale_end = float(min(self.trade_post.get_inventory().limit, STORAGE.ITEMS_PER_TRADE_SLOT))
+			# Set scale according to the settlement inventory size, with a cap
 			slot.findChild(name="buysell").capture(Callback(self.toggle_buysell, i))
 			fillbar = slot.findChild(name="fillbar")
 			# hide fillbar by setting position

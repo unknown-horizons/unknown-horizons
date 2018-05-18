@@ -11,9 +11,9 @@ afterwards run development/generate_credits.py to refresh this file.
 	<Container name="left_pickbelts" size="170,580" position="30,0" />
 
 <HBox name="credits_team_2016" position="185,45">
-	<ScrollArea name="uh-team-2016/2017" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team-2016-2018" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
-		<Label text="UH-Team-2016/2017" name="headline" />
+		<Label text="UH-Team-2016-2018" name="headline" />
 		<hr />
 		<VBox> <Label text="Project Coordination" name="headline" />
 			<VBox name="box">
@@ -23,9 +23,11 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 		<VBox> <Label text="Programming" name="headline" />
 			<VBox name="box">
+				<Label text="AndyMender ()" />
 				<Label text="MasterofJOKers ()" />
 				<Label text="Kilian] (Kilian Köppchen)" />
 				<Label text="squiddy (Reiner Gerecke)" />
+				<Label text="Troido (J.M. de Jong)" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Sound and Music Artists" name="headline" />
@@ -41,6 +43,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		<VBox> <Label text="Windows Installer" name="headline" />
 			<VBox name="box">
 				<Label text="jakoch (Jens A. Koch)" />
+				<Label text="LinuxDonald (Thomas Kowaliczek)" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="Web Coder" name="headline" />
@@ -50,7 +53,7 @@ afterwards run development/generate_credits.py to refresh this file.
 		</VBox>
 	</VBox>
 	</ScrollArea>
-	<ScrollArea name="uh-team-2016/2017" max_size="310,500" min_size="310,500">
+	<ScrollArea name="uh-team-2016-2018" max_size="310,500" min_size="310,500">
 	<VBox min_size="310,500">
 	</VBox>
 	</ScrollArea>
@@ -638,6 +641,11 @@ afterwards run development/generate_credits.py to refresh this file.
 			<VBox name="box">
 				<Label text="nmarques (Nelson Marques)" />
 				<Label text="gryffus (Lukáš Krejza)" />
+			</VBox>
+		</VBox>
+		<VBox> <Label text="Slackware" name="headline" />
+			<VBox name="box">
+				<Label text="dslackw (Dimitris Zlatanidis)" />
 			</VBox>
 		</VBox>
 		<VBox> <Label text="OS X" name="headline" />

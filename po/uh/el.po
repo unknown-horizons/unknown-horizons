@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-11-17 12:46+0000\n"
-"Last-Translator: anonymous <>\n"
+"PO-Revision-Date: 2018-02-28 17:50+0000\n"
+"Last-Translator: Antonopoulos Athanasios <ath_antonopoulos@ymail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/uh/uh/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18-dev\n"
+"X-Generator: Weblate 2.20-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Ευχαριστούμε που χρησιμοποιήσατε το Unknown Horizons!"
+msgstr "Σας ευχαριστούμε που χρησιμοποιήσατε το Unknown Horizons!"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
@@ -45,7 +45,7 @@ msgstr ""
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr ""
+msgstr "Επιστροφή στο κείμενο"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:55
@@ -216,16 +216,13 @@ msgid "Running costs"
 msgstr "Τρέχοντα κόστη"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Για να κατασκευάσετε σκάφος, click on one of the class tabs, επιλεξτε το "
-"επιθυμητο πλοιο και οριστικοποιηστε την διαταγη."
+"Για να κατασκευάσετε μία μονάδα ξηράς, επιλέξτε μία από τις καρτέλες "
+"κατάταξης, επιλέξτε την επιθυμιτή μονάδα ξηράς και επιβεβαιώστε την "
+"παραγγελεία σας."
 
 #. Information about the ship currently under construction at the boat
 #. builder

@@ -47,7 +47,7 @@ from horizons.world.player import Player
 class ResourceOverviewBar:
 	"""The thing on the top left.
 
-	http://wiki.unknown-horizons.org/w/HUD
+	https://github.com/unknown-horizons/unknown-horizons/wiki/HUD
 
 	Features:
 	- display contents of currently relevant inventory (settlement/ship)
@@ -222,18 +222,19 @@ class ResourceOverviewBar:
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
 		for i, res in enumerate( resources + addition ):
-			try: # get old slot
+			if i < len(self.gui): # get old slot
 				entry = self.gui[i]
 				if res == -1: # can't reuse dummy slot, need default data
 					self.gui[i] = entry = load_entry()
-			except IndexError: # need new one
+			else: # need new one
 				entry = load_entry()
 				self.gui.append(entry)
 
 			entry.findChild(name="entry").position = (self.INITIAL_X_OFFSET + i * self.ENTRY_X_OFFSET,
 			                                          self.ENTRY_Y_OFFSET)
 			background_icon = entry.findChild(name="entry")
-			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseEntered', 'resbar')
+			background_icon.capture(Callback(self._show_resource_selection_dialog, i), 'mouseClicked', 'resbar')
+			background_icon.capture(self._show_dummy_slot, 'mouseEntered', 'resbar')
 
 			if res != -1:
 				helptext = self.session.db.get_res_name(res)
@@ -433,8 +434,6 @@ class ResourceOverviewBar:
 		inv = self._get_current_inventory()
 		if inv is None:
 			return
-
-		self._show_dummy_slot()
 
 		# set mousetool to get notified on clicks outside the resbar area
 		if not isinstance(self.session.ingame_gui.cursor, ResBarMouseTool):

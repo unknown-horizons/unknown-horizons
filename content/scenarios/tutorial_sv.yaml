@@ -83,9 +83,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
   - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
-  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
-  - It can happen that the animals don't reproduce fast enough or simply hide well.
+  - Jägare jagar djuren i skogen och behöver därför ha träd i närheten.
+  - Kom ihåg att du kan placera din Jägares tält nära skogshuggarens skog.
+  - Det kan hända att djuren inte förökar sig tillräckligt snabbt eller bara gömmer sig bra.
   - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
@@ -657,4 +657,4 @@ metadata:
   locale: sv
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 26 translated messages, 17 fuzzy translations, 145 untranslated messages.
+  translation_status: 29 translated messages, 17 fuzzy translations, 142 untranslated messages.

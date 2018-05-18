@@ -99,7 +99,7 @@ class VERSION:
 
 	REQUIRED_FIFE_MAJOR_VERSION = 0
 	REQUIRED_FIFE_MINOR_VERSION = 4
-	REQUIRED_FIFE_PATCH_VERSION = 0
+	REQUIRED_FIFE_PATCH_VERSION = 1
 
 	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
@@ -235,7 +235,7 @@ class BUILDINGS:
 	UNIVERSITY       = 83
 	CATHEDRAL        = 84
 	TEA_GARDEN       = 85
-
+  
 	SALINE           = 86
 	PUBLIC_BATH      = 87
 
@@ -245,6 +245,8 @@ class BUILDINGS:
 	BRINE_DEPOSIT    = 90
 	GOLD_DEPOSIT     = 91
 	GEM_DEPOSIT      = 92
+
+  AMBIENT          = 72
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
@@ -618,12 +620,18 @@ class STORAGE:
 	SHIP_TOTAL_STORAGE = 120
 	SHIP_TOTAL_SLOTS_NUMBER = 4
 
+	# The maximum number of items you can set in a trade route slot or warehouse trade slot
+	# This was actually only added to make sure the number wouldn't overflow the amount slider
+	# If more items can be traded than pixels in the slider it is impossible to accurately select an amount
+	# See https://github.com/unknown-horizons/unknown-horizons/issues/1095
+	ITEMS_PER_TRADE_SLOT = 50
+
 
 ## ENGINE
 class LAYERS:
 	WATER = 0
 	GROUND = 1
-	FIELDS = 2
+	FIELDS = 2 # ironically doesn't apply to fields anymore...
 	OBJECTS = 3
 
 	NUM = 4 # number of layers
@@ -683,13 +691,13 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
-	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", d)
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content", "gfx", d)
 	                                 for d in (
-	                                 "/base",
-	                                 "/buildings",
-	                                 "/misc",
-	                                 "/terrain",
-	                                 "/units",
+	                                 "base",
+	                                 "buildings",
+	                                 "misc",
+	                                 "terrain",
+	                                 "units",
 	                                ))
 
 	#voice paths

@@ -30,22 +30,12 @@ class SQLiteAnimationLoader:
 	def __init__(self):
 		pass
 
-	def loadResource(self, location):
+	def loadResource(self, anim_id):
 		"""
-		@param location: String with the location. See below for details:
-		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
-		Available commands:
-		- shift:
-		Shift the image using the params left, right, center, middle for x shifting and
-		y-shifting with the params: top, bottom, center, middle.
-		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
-		- cut:
-		#TODO: complete documentation
+		@param anim_id: String identifier for the image, eg "as_hunter0+idle+135"
 		"""
-		commands = location.split(':')
-		anim_id = commands.pop(0)
+
 		actionset, action, rotation = anim_id.split('+')
-		commands = list(zip(commands[0::2], commands[1::2]))
 
 		animationmanager = horizons.globals.fife.animationmanager
 
@@ -61,30 +51,7 @@ class SQLiteAnimationLoader:
 		for f in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
 			frame_end = loader.get_sets()[actionset][action][int(rotation)][f]
 			img = horizons.globals.fife.imagemanager.load(f)
-			for command, arg in commands:
-				if command == 'shift':
-					x, y = arg.split(',')
-					if x.startswith('left'):
-						x = int(x[4:]) + int(img.getWidth() // 2)
-					elif x.startswith('right'):
-						x = int(x[5:]) - int(img.getWidth() // 2)
-					elif x.startswith(('center', 'middle')):
-						x = int(x[6:])
-					else:
-						x = int(x)
-
-					if y.startswith('top'):
-						y = int(y[3:]) + int(img.getHeight() // 2)
-					elif y.startswith('bottom'):
-						y = int(y[6:]) - int(img.getHeight() // 2)
-					elif y.startswith(('center', 'middle')):
-						y = int(y[6:])
-					else:
-						y = int(y)
-
-					img.setXShift(x)
-					img.setYShift(y)
-
+			img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2))
 			ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
 			frame_start = float(frame_end)
 		# currently unused. would trigger onInstanceActionFrame of
@@ -109,4 +76,5 @@ class SQLiteAnimationLoader:
 			img = horizons.globals.fife.imagemanager.get(f)
 		else:
 			img = horizons.globals.fife.imagemanager.create(f)
+			img.forceLoadInternal() # make sure width and height can be read
 		return img

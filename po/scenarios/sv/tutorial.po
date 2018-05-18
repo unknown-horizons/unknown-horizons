@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2018-01-18 00:27+0000\n"
-"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"PO-Revision-Date: 2018-03-13 03:39+0000\n"
+"Last-Translator: Unlucky Luke <emil@nordicnode.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/>"
 "\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 2.20-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -260,18 +260,20 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
-msgstr ""
+msgstr "Jägare jagar djuren i skogen och behöver därför ha träd i närheten."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
-msgstr ""
+msgstr "Kom ihåg att du kan placera din Jägares tält nära skogshuggarens skog."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Det kan hända att djuren inte förökar sig tillräckligt snabbt eller bara "
+"gömmer sig bra."
 
 #. This is the text body of a logbook page.
 msgid ""

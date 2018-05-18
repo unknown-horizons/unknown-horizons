@@ -53,32 +53,22 @@ class SQLiteAtlasLoader:
 			self.atlaslib.append(img)
 		self.inited = True
 
-	def loadResource(self, location):
+	def loadResource(self, anim_id):
 		"""
-		@param location: String with the location. See below for details:
-		Location format: <animation_id>:<command>:<params> (e.g.: "123:shift:left-16, bottom-8)
-		Available commands:
-		- shift:
-		Shift the image using the params left, right, center, middle for x shifting and
-		y-shifting with the params: top, bottom, center, middle.
-		A param looks like this: "param_x(+/-)value, param_y(+/-)value" (e.g.: left-16, bottom+8)
-		- cut:
-		#TODO: complete documentation
+		@param anim_id: String identifier for the image, eg "as_hunter0+idle+135"
 		"""
+
 		if not self.inited:
 			self.init()
-		commands = location.split(':')
-		id = commands.pop(0)
-		actionset, action, rotation = id.split('+')
-		commands = list(zip(commands[0::2], commands[1::2]))
+		actionset, action, rotation = anim_id.split('+')
 
 		animationmanager = horizons.globals.fife.animationmanager
 
 		# if we've loaded that animation before, we can finish early
-		if animationmanager.exists(id):
-			return animationmanager.getPtr(id)
+		if animationmanager.exists(anim_id):
+			return animationmanager.getPtr(anim_id)
 
-		ani = animationmanager.create(id)
+		ani = animationmanager.create(anim_id)
 
 		# Set the correct loader based on the actionset
 		loader = self._get_loader(actionset)
@@ -97,30 +87,7 @@ class SQLiteAtlasLoader:
 				region = fife.Rect(xpos, ypos, width, height)
 				img.useSharedImage(self.atlaslib[entry[1]], region)
 
-			for command, arg in commands:
-				if command == 'shift':
-					x, y = arg.split(',')
-					if x.startswith('left'):
-						x = int(x[4:]) + (width // 2)
-					elif x.startswith('right'):
-						x = int(x[5:]) - (width // 2)
-					elif x.startswith(('center', 'middle')):
-						x = int(x[6:])
-					else:
-						x = int(x)
-
-					if y.startswith('top'):
-						y = int(y[3:]) + (height // 2)
-					elif y.startswith('bottom'):
-						y = int(y[6:]) - (height // 2)
-					elif y.startswith(('center', 'middle')):
-						y = int(y[6:])
-					else:
-						y = int(y)
-
-					img.setXShift(x)
-					img.setYShift(y)
-
+			img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2))
 			frame_end = entry[0]
 			ani.addFrame(img, max(1, int((frame_end - frame_start) * 1000)))
 			frame_start = frame_end

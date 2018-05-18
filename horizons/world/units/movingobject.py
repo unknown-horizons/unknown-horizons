@@ -26,7 +26,6 @@ from fife import fife
 
 from horizons.component.componentholder import ComponentHolder
 from horizons.constants import GAME_SPEED
-from horizons.engine import Fife
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding import PathBlockedError
 from horizons.util.python.weakmethodlist import WeakMethodList
@@ -223,10 +222,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		# objects. This should be fixed properly by using the fife pathfinder for
 		# the entire route and task
 		location_list = fife.LocationList([self._fife_location2] * 5)
-		# It exists for FIFE 0.3.4 compat. See #1993.
-		if Fife.getVersion() == (0, 3, 4):
-			location_list.thisown = 0
-			self._route.thisown = 0
 		self._route.setPath(location_list)
 
 		self.act(self._move_action)

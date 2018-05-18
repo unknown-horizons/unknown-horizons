@@ -40,7 +40,7 @@ class AttackingTool(SelectionTool):
 		super().__init__(session)
 
 	def mousePressed(self, evt):
-		if evt.getButton() == fife.MouseEvent.RIGHT:
+		if evt.getButton() == fife.MouseEvent.RIGHT and not evt.isConsumedByWidgets():
 			target_mapcoord = self.session.view.cam.toMapCoordinates(
 				fife.ScreenPoint(evt.getX(), evt.getY()), False)
 
