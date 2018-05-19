@@ -63,8 +63,8 @@ class AbstractBuilding:
 		production_lines = self._get_producer_building().get_component_template(Producer)['productionlines']
 		for key, value in production_lines.items():
 			production_line = ProductionLine(key, value)
-			assert len(production_line.produced_res) == 1
-			self.lines[list(production_line.produced_res.keys())[0]] = production_line
+			for produced_res, _ in production_line.produced_res.items():
+				self.lines[produced_res] = production_line
 
 	def _get_producer_building(self):
 		return Entities.buildings[self.id]

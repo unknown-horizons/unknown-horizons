@@ -40,7 +40,7 @@ tab2:
   - BUILDINGS.VILLAGE_SCHOOL
   - BUILDINGS.FIRE_STATION
   - BUILDINGS.BOAT_BUILDER
-#  - BUILDINGS.WOODEN_TOWER # not implemented yet
+  - BUILDINGS.WOODEN_TOWER
 
 tab3:
 - icon: icons/tabwidget/buildmenu/tier/tier3

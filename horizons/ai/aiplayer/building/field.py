@@ -59,6 +59,13 @@ class AbstractField(AbstractBuilding):
 			RES.RAW_SUGAR:      BUILDING_PURPOSE.SUGARCANE_FIELD,
 			RES.TOBACCO_PLANTS: BUILDING_PURPOSE.TOBACCO_FIELD,
 			RES.HERBS:          BUILDING_PURPOSE.HERBARY,
+			RES.ALVEARIES:      BUILDING_PURPOSE.ALVEARIES,
+			RES.COCOA_BEANS:    BUILDING_PURPOSE.COCOA_FIELD,
+			RES.GRAIN:          BUILDING_PURPOSE.CORN_FIELD,
+			RES.HOP_PLANTS:     BUILDING_PURPOSE.HOP_FIELD,
+			RES.SPICE_PLANTS:   BUILDING_PURPOSE.SPICE_FIELD,
+			RES.VINES:          BUILDING_PURPOSE.VINEYARD,
+			RES.CATTLE:         BUILDING_PURPOSE.CATTLE_RUN,
 		}.get(resource_id)
 
 	@classmethod
@@ -69,6 +76,13 @@ class AbstractField(AbstractBuilding):
 			RES.RAW_SUGAR:      RES.SUGAR,
 			RES.TOBACCO_PLANTS: RES.TOBACCO_LEAVES,
 			RES.HERBS:          RES.MEDICAL_HERBS,
+			RES.ALVEARIES:      RES.HONEYCOMBS,
+			RES.COCOA_BEANS:    RES.COCOA,
+			RES.GRAIN:          RES.CORN,
+			RES.HOP_PLANTS:     RES.HOPS,
+			RES.SPICE_PLANTS:   RES.SPICES,
+			RES.VINES:          RES.GRAPES,
+			RES.CATTLE:         RES.CATTLE_SLAUGHTER,
 		}.get(resource_id)
 
 	def build(self, settlement_manager, resource_id):
@@ -95,6 +109,13 @@ class AbstractField(AbstractBuilding):
 		cls._available_buildings[BUILDINGS.SUGARCANE_FIELD] = cls
 		cls._available_buildings[BUILDINGS.TOBACCO_FIELD] = cls
 		cls._available_buildings[BUILDINGS.HERBARY] = cls
+		cls._available_buildings[BUILDINGS.ALVEARIES] = cls
+		cls._available_buildings[BUILDINGS.COCOA_FIELD] = cls
+		cls._available_buildings[BUILDINGS.CORN_FIELD] = cls
+		cls._available_buildings[BUILDINGS.HOP_FIELD] = cls
+		cls._available_buildings[BUILDINGS.SPICE_FIELD] = cls
+		cls._available_buildings[BUILDINGS.VINEYARD] = cls
+		cls._available_buildings[BUILDINGS.CATTLE_RUN] = cls
 
 
 AbstractField.register_buildings()

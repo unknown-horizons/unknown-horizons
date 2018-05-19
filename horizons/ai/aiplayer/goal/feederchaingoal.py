@@ -82,6 +82,14 @@ class FeederLiquorGoal(FeederChainGoal):
 		return super().can_be_activated and self.settlement_manager.get_resource_production(RES.BRICKS) > 0
 
 
+class FeederBeerGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederBeerGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
+
+	def get_personality_name(self):
+		return 'BeerGoal'
+
+
 class FeederTobaccoProductsGoal(FeederChainGoal):
 	def __init__(self, settlement_manager):
 		super().__init__(settlement_manager, RES.TOBACCO_PRODUCTS, 'tobacco products producer')
@@ -112,3 +120,43 @@ class FeederSaltGoal(FeederChainGoal):
 
 	def get_personality_name(self):
 		return 'FeederSaltGoal'
+
+
+class FeederCannonGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederCannonGoal, self).__init__(settlement_manager, RES.CANNON, 'cannon producer')
+
+	def get_personality_name(self):
+		return 'FeederCannonGoal'
+
+
+class FeederFlourGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederFlourGoal, self).__init__(settlement_manager, RES.FLOUR, 'flour producer')
+
+	def get_personality_name(self):
+		return 'FeederFlourGoal'
+
+
+class FeederCondimentsGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederCondimentsGoal, self).__init__(settlement_manager, RES.CONDIMENTS, 'condiments producer')
+
+	def get_personality_name(self):
+		return 'FeederCondimentsGoal'
+
+
+class FeederConfectioneryGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederConfectioneryGoal, self).__init__(settlement_manager, RES.CONFECTIONERY, 'confectionery producer')
+
+	def get_personality_name(self):
+		return 'FeederConfectioneryGoal'
+
+
+class FeederCandlesGoal(FeederChainGoal):
+	def __init__(self, settlement_manager):
+		super(FeederCandlesGoal, self).__init__(settlement_manager, RES.CANDLES, 'candles producer')
+
+	def get_personality_name(self):
+		return 'FeederCandlesGoal'

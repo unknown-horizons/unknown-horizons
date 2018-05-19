@@ -28,13 +28,15 @@ from horizons.ai.aiplayer.goal.depositcoverage import (
 from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import (
-	FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal, FeederTextileGoal,
-	FeederTobaccoProductsGoal)
+	FeederBeerGoal, FeederCandlesGoal, FeederCannonGoal, FeederCondimentsGoal, FeederConfectioneryGoal,
+	FeederFlourGoal, FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal,
+	FeederTextileGoal, FeederTobaccoProductsGoal)
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import (
-	BoardsGoal, BricksGoal, CommunityGoal, EducationGoal, FaithGoal, FoodGoal, GetTogetherGoal,
+	BeerGoal, BoardsGoal, BricksGoal, CandlesGoal, CannonGoal, CommunityGoal, CondimentsGoal,
+	ConfectioneryGoal, EducationGoal, FaithGoal, FlourGoal, FoodGoal, GetTogetherGoal, HygieneGoal,
 	MedicalHerbsProductsGoal, SaltGoal, TextileGoal, TobaccoProductsGoal, ToolsGoal)
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
@@ -106,9 +108,10 @@ class SettlementManager(WorldObject):
 
 		# create a production chain for every building material, settler consumed resource, and resources that have to be imported from feeder islands
 		self.production_chain = {}
-		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH,
+		for resource_id in [RES.COMMUNITY, RES.BOARDS, RES.FOOD, RES.TEXTILE, RES.FAITH, RES.HYGIENE,
 						RES.EDUCATION, RES.GET_TOGETHER, RES.BRICKS, RES.TOOLS, RES.LIQUOR,
-						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS]:
+						RES.TOBACCO_PRODUCTS, RES.SALT, RES.MEDICAL_HERBS, RES.BEER, RES.CANNON,
+						RES.FLOUR, RES.CONDIMENTS, RES.CONFECTIONERY, RES.CANDLES]:
 			self.production_chain[resource_id] = ProductionChain.create(self, resource_id)
 
 		# initialize caches
@@ -127,9 +130,15 @@ class SettlementManager(WorldObject):
 			self._goals.append(FeederFoodGoal(self))
 			self._goals.append(FeederTextileGoal(self))
 			self._goals.append(FeederLiquorGoal(self))
+			self._goals.append(FeederBeerGoal(self))
 			self._goals.append(FeederSaltGoal(self))
 			self._goals.append(FeederTobaccoProductsGoal(self))
 			self._goals.append(FeederMedicalProductsGoal(self))
+			self._goals.append(FeederCannonGoal(self))
+			self._goals.append(FeederFlourGoal(self))
+			self._goals.append(FeederCondimentsGoal(self))
+			self._goals.append(FeederConfectioneryGoal(self))
+			self._goals.append(FeederCandlesGoal(self))
 		else:
 			self._goals.append(BoatBuilderGoal(self))
 			self._goals.append(ClayDepositCoverageGoal(self))
@@ -151,6 +160,13 @@ class SettlementManager(WorldObject):
 			self._goals.append(FireStationGoal(self))
 			self._goals.append(DoctorGoal(self))
 			self._goals.append(MedicalHerbsProductsGoal(self))
+			self._goals.append(BeerGoal(self))
+			self._goals.append(CannonGoal(self))
+			self._goals.append(FlourGoal(self))
+			self._goals.append(CondimentsGoal(self))
+			self._goals.append(ConfectioneryGoal(self))
+			self._goals.append(CandlesGoal(self))
+			self._goals.append(HygieneGoal(self))
 
 	def save(self, db):
 		super().save(db)
@@ -342,9 +358,17 @@ class SettlementManager(WorldObject):
 		self.log.info('%s food requirement %.5f', self, self.get_ideal_production_level(RES.FOOD))
 		self.log.info('%s textile requirement %.5f', self, self.get_ideal_production_level(RES.TEXTILE))
 		self.log.info('%s liquor requirement %.5f', self, self.get_ideal_production_level(RES.LIQUOR))
+		self.log.info('%s beer requirement %.5f', self, self.get_ideal_production_level(RES.BEER))
 		self.log.info('%s salt requirement %.5f', self, self.get_ideal_production_level(RES.SALT))
 		self.log.info('%s tobacco products requirement %.5f', self, self.get_ideal_production_level(RES.TOBACCO_PRODUCTS))
 		self.log.info('%s medical herbs requirement %.5f', self, self.get_ideal_production_level(RES.MEDICAL_HERBS))
+		self.log.info('%s beer requirement %.5f', self, self.get_ideal_production_level(RES.BEER))
+		self.log.info('%s cannon requirement %.5f', self, self.get_ideal_production_level(RES.CANNON))
+		self.log.info('%s flour requirement %.5f', self, self.get_ideal_production_level(RES.FLOUR))
+		self.log.info('%s condiments requirement %.5f', self, self.get_ideal_production_level(RES.CONDIMENTS))
+		self.log.info('%s confectionery requirement %.5f', self, self.get_ideal_production_level(RES.CONFECTIONERY))
+		self.log.info('%s candles requirement %.5f', self, self.get_ideal_production_level(RES.CANDLES))
+		self.log.info('%s hygiene requirement %.5f', self, self.get_ideal_production_level(RES.HYGIENE))
 		self.production_builder.manage_production()
 		self.resource_manager.refresh()
 
@@ -367,6 +391,20 @@ class SettlementManager(WorldObject):
 			self.get_resource_production_requirement(RES.TOBACCO_PRODUCTS))
 		self.log.info('%s medical herbs production %.5f / %.5f', self, self.get_resource_production(RES.MEDICAL_HERBS),
 			self.get_resource_production_requirement(RES.MEDICAL_HERBS))
+		self.log.info('%s beer production %.5f / %.5f', self, self.get_resource_production(RES.BEER),
+			self.get_resource_production_requirement(RES.BEER))
+		self.log.info('%s cannon production %.5f / %.5f', self, self.get_resource_production(RES.CANNON),
+			self.get_resource_production_requirement(RES.CANNON))
+		self.log.info('%s flour production %.5f / %.5f', self, self.get_resource_production(RES.FLOUR),
+			self.get_resource_production_requirement(RES.FLOUR))
+		self.log.info('%s condiments production %.5f / %.5f', self, self.get_resource_production(RES.CONDIMENTS),
+			self.get_resource_production_requirement(RES.CONDIMENTS))
+		self.log.info('%s confectionery production %.5f / %.5f', self, self.get_resource_production(RES.CONFECTIONERY),
+			self.get_resource_production_requirement(RES.CONFECTIONERY))
+		self.log.info('%s candles production %.5f / %.5f', self, self.get_resource_production(RES.CANDLES),
+			self.get_resource_production_requirement(RES.CANDLES))
+		self.log.info('%s hygiene production %.5f / %.5f', self, self.get_resource_production(RES.HYGIENE),
+			self.get_resource_production_requirement(RES.HYGIENE))
 		self.production_builder.manage_production()
 		self.trade_manager.refresh()
 		self.resource_manager.refresh()

@@ -163,3 +163,59 @@ class SaltGoal(ProductionChainGoal):
 
 	def get_personality_name(self):
 		return 'SaltGoal'
+
+
+class BeerGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(BeerGoal, self).__init__(settlement_manager, RES.BEER, 'beer producer')
+
+	def get_personality_name(self):
+		return 'BeerGoal'
+
+
+class CannonGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(CannonGoal, self).__init__(settlement_manager, RES.CANNON, 'cannon producer')
+
+	def get_personality_name(self):
+		return 'CannonGoal'
+
+
+class FlourGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(FlourGoal, self).__init__(settlement_manager, RES.FLOUR, 'flour producer')
+
+	def get_personality_name(self):
+		return 'FlourGoal'
+
+
+class CondimentsGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(CondimentsGoal, self).__init__(settlement_manager, RES.CONDIMENTS, 'condiments producer')
+
+	def get_personality_name(self):
+		return 'CondimentsGoal'
+
+
+class ConfectioneryGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(ConfectioneryGoal, self).__init__(settlement_manager, RES.CONFECTIONERY, 'confectionery producer')
+
+	def get_personality_name(self):
+		return 'ConfectioneryGoal'
+
+
+class CandlesGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(CandlesGoal, self).__init__(settlement_manager, RES.CANDLES, 'candles producer')
+
+	def get_personality_name(self):
+		return 'CandlesGoal'
+
+
+class HygieneGoal(ProductionChainGoal):
+	def __init__(self, settlement_manager):
+		super(HygieneGoal, self).__init__(settlement_manager, RES.HYGIENE, 'hygiene producer')
+
+	def get_personality_name(self):
+		return 'HygieneGoal'
