@@ -44,7 +44,7 @@ class TestPaths(TestCase):
 		inner = str(os.path.join(outer, self.__class__.odd_characters))
 		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 
-		PATHS.USER_DIR = inner
+		PATHS.USER_DATA_DIR = inner
 
 		create_user_dirs()
 
