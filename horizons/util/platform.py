@@ -62,8 +62,8 @@ def get_old_user_game_directory():
 def _try_directories(paths, default=None):
 	# takes a list of lists of strings as first argument
 	# returns the joined path for the first list where all strings exist and are nonempty
-	# or the second argument there is no such list
-	# (lists coul also be tuples of course)
+	# or the second argument if there is no such list
+	# (lists could also be tuples of course)
 	for parts in paths:
 		if all(parts):
 			return os.path.join(parts)
