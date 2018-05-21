@@ -89,7 +89,7 @@ class YamlCache:
 	"""
 
 	cache = None # type: Optional[YamlCacheStorage]
-	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
+	cache_filename = os.path.join(PATHS.CACHE_DIR, 'yamldata.cache')
 
 	sync_scheduled = False
 

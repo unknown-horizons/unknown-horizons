@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from horizons.ext.enum import Enum
-from horizons.util.platform import get_user_game_directory
+from horizons.util.platform import get_old_user_game_directory, get_user_game_directories
 
 
 """This file keeps track of the constants that are used in Unknown Horizons.
@@ -576,19 +576,6 @@ class LAYERS:
 
 	NUM = 4 # number of layers
 
-## PATHS
-# workaround, so it can be used to create paths within PATHS
-
-
-if 'UH_USER_DIR' in os.environ:
-	# Prefer the value from the environment. Used to override user dir when
-	# running GUI tests.
-	_user_dir = os.environ['UH_USER_DIR']
-else:
-	_user_dir = str(get_user_game_directory())
-	if not os.path.exists(_user_dir):
-		os.makedirs(_user_dir)
-
 
 class GFX:
 	BUILDING_OUTLINE_THRESHOLD = 96
@@ -604,18 +591,26 @@ class GFX:
 	USE_ATLASES = False
 
 
+## PATHS
+
+_config_dir, _data_dir, _cache_dir = get_user_game_directories()
+
+
 class PATHS:
-	# paths in user dir
-	USER_DIR = _user_dir
-	LOG_DIR = os.path.join(USER_DIR, "log")
-	USER_MAPS_DIR = os.path.join(USER_DIR, "maps")
-	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
-	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
-	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
-	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
-	ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
+	# paths in user directories
+	USER_CONFIG_FILE = os.path.join(_config_dir, "settings.xml")
+	USER_DATA_DIR = _data_dir
+	LOG_DIR = os.path.join(USER_DATA_DIR, "log")
+	USER_MAPS_DIR = os.path.join(USER_DATA_DIR, "maps")
+	SCREENSHOT_DIR = os.path.join(USER_DATA_DIR, "screenshots")
+	SAVEGAME_DIR = os.path.join(USER_DATA_DIR, "save")
+	CACHE_DIR = _cache_dir
+	ATLAS_METADATA_PATH = os.path.join(CACHE_DIR, "atlas-metadata.cache")
 
 	# paths relative to uh dir
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
+
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
@@ -643,6 +638,15 @@ class PATHS:
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 	UH_LOGO_FILE = os.path.join("content", "gfx", "uh.png")
+
+
+_old_user_dir = get_old_user_game_directory()
+
+
+class OLDPATHS:
+	USER_DATA_DIR = _old_user_dir
+	USER_CONFIG_FILE = os.path.join(_old_user_dir, "settings.xml")
+	CACHE_DIR = _old_user_dir
 
 
 class SETTINGS:
