@@ -67,13 +67,19 @@ def leave_note():
 In the latest version of unknown-horizons the user data directories have been moved.
 This has been done automatically, and symlinks have been created to minimize inconvenience.
 
+The data is now in the following directories:
+
+settings.xml: {configfile}
+screenshots, saves, maps and logs: {datadir}
+cache: {cachedir}
+
 It is safe to remove these symlinks and this readme file.
 
 If you ever downgrade the UH version you might need more care.
 
 For more information, see the wiki:
 https://github.com/unknown-horizons/unknown-horizons/wiki/2018-user-data-migration
-"""
+""".format(configfile=PATHS.USER_CONFIG_FILE, datadir=PATHS.USER_DATA_DIR, cachedir=PATHS.CACHE_DIR)
 	print(notetext)
 	with open(notefile, 'w') as f:
 		f.write(notetext)
