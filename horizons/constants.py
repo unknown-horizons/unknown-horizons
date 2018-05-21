@@ -235,7 +235,7 @@ class BUILDINGS:
 	UNIVERSITY       = 83
 	CATHEDRAL        = 84
 	TEA_GARDEN       = 85
-  
+
 	SALINE           = 86
 	PUBLIC_BATH      = 87
 
@@ -246,7 +246,7 @@ class BUILDINGS:
 	GOLD_DEPOSIT     = 91
 	GEM_DEPOSIT      = 92
 
-  AMBIENT          = 72
+	AMBIENT          = 72
 
 	EXPAND_RANGE = (WAREHOUSE, STORAGE, LOOKOUT)
 
