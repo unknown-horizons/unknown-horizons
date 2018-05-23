@@ -21,7 +21,7 @@
 
 from pathlib import PurePath
 
-from horizons.util.platform import get_user_game_directory
+from horizons.util.platform import get_user_game_directories
 
 
 def test_get_user_game_directory_windows(mocker, tmpdir):
@@ -29,7 +29,7 @@ def test_get_user_game_directory_windows(mocker, tmpdir):
 	             return_value=PurePath(str(tmpdir)))
 	mocker.patch('platform.system', return_value='Windows')
 
-	assert str(get_user_game_directory()) == tmpdir.join('My Games', 'unknown-horizons')
+	assert str(get_user_game_directories()) == tmpdir.join('My Games', 'unknown-horizons')
 
 
 def test_get_user_game_directory_unix(mocker, tmpdir):
@@ -37,4 +37,4 @@ def test_get_user_game_directory_unix(mocker, tmpdir):
 	             return_value=PurePath(str(tmpdir)))
 	mocker.patch('platform.system', return_value='Linux')
 
-	assert str(get_user_game_directory()) == tmpdir.join('.unknown-horizons')
+	assert str(get_user_game_directories()) == tmpdir.join('.unknown-horizons')
