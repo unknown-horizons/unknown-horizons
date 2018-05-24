@@ -19,14 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from pathlib import PurePath
-
 from horizons.util.platform import get_user_game_directories
 
 
 def test_get_user_game_directory_windows(mocker, tmpdir):
 	mocker.patch('horizons.util.platform.get_home_directory',
-	             return_value=PurePath(str(tmpdir)))
+	             return_value=tmpdir)
 	mocker.patch('platform.system', return_value='Windows')
 
 	assert get_user_game_directories()[0] == tmpdir.join(
@@ -39,7 +37,7 @@ def test_get_user_game_directory_windows(mocker, tmpdir):
 
 def test_get_user_game_directory_unix(mocker, tmpdir):
 	mocker.patch('horizons.util.platform.get_home_directory',
-	             return_value=PurePath(str(tmpdir)))
+	             return_value=tmpdir)
 	mocker.patch('platform.system', return_value='Linux')
 
 	assert get_user_game_directories()[0] == tmpdir.join(
