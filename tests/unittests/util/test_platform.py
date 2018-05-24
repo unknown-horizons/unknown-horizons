@@ -29,7 +29,12 @@ def test_get_user_game_directory_windows(mocker, tmpdir):
 	             return_value=PurePath(str(tmpdir)))
 	mocker.patch('platform.system', return_value='Windows')
 
-	assert str(get_user_game_directories()) == tmpdir.join('My Games', 'unknown-horizons')
+	assert get_user_game_directories()[0] == tmpdir.join(
+		'My Games', 'unknown-horizons')
+	assert get_user_game_directories()[1] == tmpdir.join(
+		'My Games', 'unknown-horizons')
+	assert get_user_game_directories()[2] == tmpdir.join(
+		'My Games', 'unknown-horizons', 'cache')
 
 
 def test_get_user_game_directory_unix(mocker, tmpdir):
@@ -37,4 +42,9 @@ def test_get_user_game_directory_unix(mocker, tmpdir):
 	             return_value=PurePath(str(tmpdir)))
 	mocker.patch('platform.system', return_value='Linux')
 
-	assert str(get_user_game_directories()) == tmpdir.join('.unknown-horizons')
+	assert get_user_game_directories()[0] == tmpdir.join(
+		'.config', 'unknown-horizons')
+	assert get_user_game_directories()[1] == tmpdir.join(
+		'.local', 'share', 'unknown-horizons')
+	assert get_user_game_directories()[2] == tmpdir.join(
+		'.cache', 'unknown-horizons')
