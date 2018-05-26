@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import os
+
 from horizons.util.platform import get_user_game_directories
 
 
@@ -26,23 +28,21 @@ def test_get_user_game_directory_windows(mocker, tmpdir):
 	mocker.patch('horizons.util.platform.get_home_directory',
 	             return_value=tmpdir)
 	mocker.patch('platform.system', return_value='Windows')
+	_config_dir, _data_dir, _cache_dir = get_user_game_directories()
 
-	assert get_user_game_directories()[0] == tmpdir.join(
-		'My Games', 'unknown-horizons')
-	assert get_user_game_directories()[1] == tmpdir.join(
-		'My Games', 'unknown-horizons')
-	assert get_user_game_directories()[2] == tmpdir.join(
-		'My Games', 'unknown-horizons', 'cache')
+	assert _config_dir == os.path.join(tmpdir, 'My Games', 'unknown-horizons')
+	assert _data_dir == os.path.join(tmpdir, 'My Games', 'unknown-horizons')
+	assert _cache_dir == os.path.join(tmpdir, 'My Games',
+									  'unknown-horizons', 'cache')
 
 
 def test_get_user_game_directory_unix(mocker, tmpdir):
 	mocker.patch('horizons.util.platform.get_home_directory',
 	             return_value=tmpdir)
 	mocker.patch('platform.system', return_value='Linux')
+	_config_dir, _data_dir, _cache_dir = get_user_game_directories()
 
-	assert get_user_game_directories()[0] == tmpdir.join(
-		'.config', 'unknown-horizons')
-	assert get_user_game_directories()[1] == tmpdir.join(
-		'.local', 'share', 'unknown-horizons')
-	assert get_user_game_directories()[2] == tmpdir.join(
-		'.cache', 'unknown-horizons')
+	assert _config_dir == os.path.join(tmpdir, '.config', 'unknown-horizons')
+	assert _data_dir == os.path.join(tmpdir, '.local', 'share',
+									 'unknown-horizons')
+	assert _cache_dir == os.path.join(tmpdir, '.cache', 'unknown-horizons')
