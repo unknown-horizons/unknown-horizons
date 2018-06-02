@@ -80,7 +80,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		if happiness is not None:
 			self.get_component(StorageComponent).inventory.alter(RES.HAPPINESS, happiness)
 		if self.has_status_icon:
-			self.get_component(StorageComponent).inventory.add_change_listener( self._update_status_icon )
+			self.get_component(StorageComponent).inventory.add_change_listener(self._update_status_icon)
 		# give the user a month (about 30 seconds) to build a main square in range
 		if self.owner.is_local_player:
 			Scheduler().add_new_object(self._check_main_square_in_range, self, Scheduler().get_ticks_of_month(), loops=-1)
@@ -135,7 +135,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		When the production finishes, it calls upgrade_materials_collected.
 		"""
 		upgrade_material_prodline = SettlerUpgradeData.get_production_line_id(self.level + 1)
-		self._upgrade_production = self.get_component(Producer).add_production_by_id( upgrade_material_prodline )
+		self._upgrade_production = self.get_component(
+			Producer).add_production_by_id(upgrade_material_prodline)
 		self._upgrade_production.add_production_finished_listener(self.level_up)
 
 		# drive the car out of the garage to make space for the building material
@@ -266,7 +267,8 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		if change != 0:
 			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
-			self.get_component(Producer).alter_production_time( 6.0 / 7.0 * math.log( 1.5 * (self.inhabitants + 1.2) ) )
+			self.get_component(Producer).alter_production_time(
+				6.0 / 7.0 * math.log(1.5 * (self.inhabitants + 1.2)))
 			self.inhabitants += change
 			SettlerInhabitantsChanged.broadcast(self, change)
 			self._changed()
@@ -426,7 +428,7 @@ class SettlerUpgradeData:
 	# basically, this is arbitrary as long as it's not the same as any of the regular
 	# production lines of the settler. We reuse data that has arbitrarily been set earlier
 	# to preserve savegame compatibility.
-	production_line_ids = { 1 : 24, 2 : 35, 3: 23451, 4: 34512, 5: 45123 }
+	production_line_ids = {1: 24, 2: 35, 3: 23451, 4: 34512, 5: 45123}
 
 	def __init__(self, producer_component, upgrade_material_data):
 		self.upgrade_material_data = upgrade_material_data
@@ -439,13 +441,11 @@ class SettlerUpgradeData:
 
 	def get_production_line_data(self, level):
 		"""Returns production line data for the upgrade to this level"""
-		prod_line_data = {
-		  'time': 1,
-		  'changes_animation' : 0,
-		  'enabled_by_default' : False,
-		  'save_statistics' : False,
-		  'consumes' : self.upgrade_material_data[level]
-		}
+		prod_line_data = {'time': 1,
+						  'changes_animation': 0,
+						  'enabled_by_default': False,
+						  'save_statistics': False,
+						  'consumes': self.upgrade_material_data[level]}
 		return prod_line_data
 
 	@classmethod

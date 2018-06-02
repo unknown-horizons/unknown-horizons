@@ -237,7 +237,7 @@ def setup_debugging(options):
 			                           format(time.strftime("%Y-%m-%d_%H-%M-%S")))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
-			fife=os.path.join(os.getcwd(), 'fife.log')) )
+			fife=os.path.join(os.getcwd(), 'fife.log')))
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
