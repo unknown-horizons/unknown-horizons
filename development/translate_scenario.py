@@ -111,7 +111,7 @@ def compile_scenario_po(output_mo):
 			'-o', output_mo,
 		], stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
-		#TODO handle
+		# TODO handle
 		print('Error while compiling translation `{}`, probably malformed `.po`. '
 		      'Exiting.'.format(input_po))
 		sys.exit(1)

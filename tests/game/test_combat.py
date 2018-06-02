@@ -91,30 +91,30 @@ def test_equip(s, p):
 
 	(p0, s0), (p1, s1) = setup_combat(s, UNITS.FRIGATE)
 
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
-	assert s0.get_weapon_storage()[ WEAPONS.CANNON ] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
+	assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 0
+	assert s0.get_weapon_storage()[WEAPONS.CANNON] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 
 	# we don't have swords
 	not_equip = EquipWeaponFromInventory(s0, WEAPONS.SWORD, 1).execute(s)
 	assert not_equip == 1
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.SWORD ] == 0
-	assert s0.get_weapon_storage()[ WEAPONS.SWORD ] == 0
+	assert s0.get_component(StorageComponent).inventory[WEAPONS.SWORD] == 0
+	assert s0.get_weapon_storage()[WEAPONS.SWORD] == 0
 
 	# test equip
-	s0.get_component(StorageComponent).inventory.alter( WEAPONS.CANNON, 2 )
+	s0.get_component(StorageComponent).inventory.alter(WEAPONS.CANNON, 2)
 
 	# this has to work
 	not_equip = EquipWeaponFromInventory(s0, WEAPONS.CANNON, 1).execute(s)
 	assert not_equip == 0
 
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 1
+	assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 1
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 1
 
 	# too many
 	not_equip = EquipWeaponFromInventory(s0, WEAPONS.CANNON, 2).execute(s)
 
 	assert not_equip == 1
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 0
+	assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 0
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM + 2
 
 	# no swords
@@ -123,13 +123,13 @@ def test_equip(s, p):
 
 	not_equip = UnequipWeaponToInventory(s0, WEAPONS.CANNON, 2).execute(s)
 	assert not_equip == 0
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 2
+	assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 2
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 
 	not_equip = UnequipWeaponToInventory(s0, WEAPONS.CANNON, WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM).execute(s)
 	assert not_equip == 0
 
-	assert s0.get_component(StorageComponent).inventory[ WEAPONS.CANNON ] == 2 + WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
+	assert s0.get_component(StorageComponent).inventory[WEAPONS.CANNON] == 2 + WEAPONS.DEFAULT_FIGHTING_SHIP_WEAPONS_NUM
 	assert s0.get_weapon_storage()[WEAPONS.CANNON] == 0
 
 
