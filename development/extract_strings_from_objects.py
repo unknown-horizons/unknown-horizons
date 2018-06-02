@@ -124,7 +124,7 @@ def parse_token(token, token_klass):
 	if not token.startswith(token_klass):
 		return token
 	try:
-		return getattr( classes[token_klass], token.split(".", 2)[1])
+		return getattr(classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = "This means that you either have to add an entry in horizons/constants.py "\
 		      "in the class {} for {},\nor {} is actually a typo." \

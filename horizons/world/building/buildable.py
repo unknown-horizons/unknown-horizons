@@ -39,18 +39,18 @@ class BuildableErrorTypes:
 	NO_FLAT_LAND = range(13)
 
 	text = {
-	  NO_ISLAND : LazyT("This building must be built on an island."),
-	  UNFIT_TILE : LazyT("This ground is not suitable for this building."),
-	  NO_SETTLEMENT : LazyT("This building has to be built within your settlement."),
-	  OTHER_PLAYERS_SETTLEMENT : LazyT("This area is already occupied by another player."),
-	  OTHER_BUILDING_THERE : LazyT("This area is already occupied by another building."),
-	  UNIT_THERE : LazyT("This area is already occupied by a unit."),
-	  NO_COAST : LazyT("This building must be built on the coastline."),
-	  NO_OCEAN_NEARBY : LazyT("This building has to be placed at the ocean."),
-	  ONLY_NEAR_SHIP : LazyT("This spot is too far away from your ship."),
-	  NEED_RES_SOURCE : LazyT("This building can only be built on a resource source."),
-	  ISLAND_ALREADY_SETTLED : LazyT("You have already settled this island."),
-	  NO_FLAT_LAND : LazyT("This building must be partly on flat land.")
+	  NO_ISLAND: LazyT("This building must be built on an island."),
+	  UNFIT_TILE: LazyT("This ground is not suitable for this building."),
+	  NO_SETTLEMENT: LazyT("This building has to be built within your settlement."),
+	  OTHER_PLAYERS_SETTLEMENT: LazyT("This area is already occupied by another player."),
+	  OTHER_BUILDING_THERE: LazyT("This area is already occupied by another building."),
+	  UNIT_THERE: LazyT("This area is already occupied by a unit."),
+	  NO_COAST: LazyT("This building must be built on the coastline."),
+	  NO_OCEAN_NEARBY: LazyT("This building has to be placed at the ocean."),
+	  ONLY_NEAR_SHIP: LazyT("This spot is too far away from your ship."),
+	  NEED_RES_SOURCE: LazyT("This building can only be built on a resource source."),
+	  ISLAND_ALREADY_SETTLED: LazyT("You have already settled this island."),
+	  NO_FLAT_LAND: LazyT("This building must be partly on flat land.")
 	}
 	# TODO: say res source which one we need, maybe even highlight those
 
@@ -181,7 +181,7 @@ class Buildable:
 			# area of the buildings is (x, y) + width/height, therefore all build positions that
 			# include (x, y) are (x, y) - ( [0..width], [0..height] )
 			return any(cls.check_build(session, Point(tile.x - x_off, tile.y - y_off), ship=ship)
-			           for x_off, y_off in itertools.product(range(cls.size[0]), range(cls.size[1])) )
+			           for x_off, y_off in itertools.product(range(cls.size[0]), range(cls.size[1])))
 		else:
 			return True
 
@@ -193,12 +193,12 @@ class Buildable:
 
 		# this is some kind of case study of applied functional programming
 
-		def filter_duplicates(gen, transform=lambda x : x):
+		def filter_duplicates(gen, transform=lambda x: x):
 			"""
 			@param transform: transforms elements to hashable equivalent
 			"""
 			checked = set()
-			for elem in itertools.filterfalse(lambda e : transform(e) in checked, gen):
+			for elem in itertools.filterfalse(lambda e: transform(e) in checked, gen):
 				checked.add(transform(elem))
 				yield elem
 
@@ -208,9 +208,9 @@ class Buildable:
 			return itertools.chain.from_iterable(iters)
 
 		# generate positions and check for matches
-		check_pos = lambda pos : cls.check_build(session, pos, *args, **kwargs)
+		check_pos = lambda pos: cls.check_build(session, pos, *args, **kwargs)
 		checked = map(check_pos,
-		                         filter_duplicates(get_positions(), transform=lambda p : p.to_tuple()))
+		              filter_duplicates(get_positions(), transform=lambda p: p.to_tuple()))
 
 		# filter positive solutions
 		result_generator = filter(lambda buildpos: buildpos.buildable, checked)
@@ -318,7 +318,7 @@ class BuildableSingle(Buildable):
 		point2 = point2.copy() # only change copy
 		point2.x -= (cls.size[0] - 1) // 2
 		point2.y -= (cls.size[1] - 1) // 2
-		return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
+		return [cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship)]
 
 
 class BuildableSingleEverywhere(BuildableSingle):
@@ -380,7 +380,7 @@ class BuildableLine(Buildable):
 
 		# Pathfinding currently only supports buildingsize 1x1, so don't use it in this case
 		if cls.size != (1, 1):
-			return [ cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship) ]
+			return [cls.check_build_fuzzy(session, point2, rotation=rotation, ship=ship)]
 
 		# use pathfinding to get a path, then try to build along it
 		island = session.world.get_island(point1)
@@ -484,10 +484,10 @@ class BuildableSingleOnCoast(BuildableSingle):
 		   225
 		"""
 		coast_line_points_per_side = {
-			45: sum(coastline[(x, 0)] for x in range(0, cls.size[0]) ),
-			135: sum(coastline[(0, y)] for y in range(0, cls.size[1]) ),
-			225: sum(coastline[(x, cls.size[1] - 1)] for x in range(0, cls.size[0]) ),
-			315: sum(coastline[(cls.size[0] - 1, y)] for y in range(0, cls.size[1]) ),
+			45: sum(coastline[(x, 0)] for x in range(0, cls.size[0])),
+			135: sum(coastline[(0, y)] for y in range(0, cls.size[1])),
+			225: sum(coastline[(x, cls.size[1] - 1)] for x in range(0, cls.size[0])),
+			315: sum(coastline[(cls.size[0] - 1, y)] for y in range(0, cls.size[1])),
 		}
 
 		# return rotation with biggest value

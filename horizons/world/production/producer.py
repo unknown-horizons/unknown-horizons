@@ -163,7 +163,7 @@ class Producer(Component):
 		@param production_line_id: Production line from db
 		"""
 		production = self.create_production(production_line_id)
-		self.add_production( production )
+		self.add_production(production)
 		return production
 
 	def update_capacity_utilization(self):
@@ -237,7 +237,7 @@ class Producer(Component):
 
 	def has_production_line(self, prod_line_id):
 		"""Checks if this instance has a production with a certain production line id"""
-		return bool( self._get_production(prod_line_id) )
+		return bool(self._get_production(prod_line_id))
 
 	def remove_production(self, production):
 		"""Removes a production instance.
@@ -259,7 +259,7 @@ class Producer(Component):
 		Convenience method. Assumes, that this production line id has been added to this instance.
 		@param prod_line_id: production line id to remove
 		"""
-		self.remove_production( self._get_production(prod_line_id) )
+		self.remove_production(self._get_production(prod_line_id))
 
 	def alter_production_time(self, modifier, prod_line_id=None):
 		"""Multiplies the original production time of all production lines by modifier
@@ -394,7 +394,7 @@ class Producer(Component):
 			if full and not hasattr(self, "_producer_status_icon"):
 				affected_res = set() # find them:
 				for prod in self.get_productions():
-					affected_res = affected_res.union( prod.get_unstorable_produced_res() )
+					affected_res = affected_res.union(prod.get_unstorable_produced_res())
 				self._producer_status_icon = InventoryFullStatus(self.instance, affected_res)
 				self._add_status_icon(self._producer_status_icon)
 
@@ -405,7 +405,7 @@ class Producer(Component):
 	def get_status_icons(self):
 		l = super().get_status_icons()
 		if self.capacity_utilization_below(ProductivityLowStatus.threshold):
-			l.append( ProductivityLowStatus() )
+			l.append(ProductivityLowStatus())
 		return l
 
 	def __str__(self):
@@ -522,7 +522,7 @@ class QueueProducer(Producer):
 			production_line_id = self.production_queue.pop(0)
 			prod = self.create_production(production_line_id)
 			prod.add_production_finished_listener(self.on_queue_element_finished)
-			self.add_production( prod )
+			self.add_production(prod)
 			self.set_active(production=prod, active=True)
 		else:
 			self.set_active(active=False)
@@ -597,7 +597,7 @@ class ShipProducer(QueueProducer):
 					# Fire a message indicating that the ship has been created
 					name = u.get_component(NamedComponent).name
 					self.session.ingame_gui.message_widget.add(string_id='NEW_SHIP', point=point,
-					                                           message_dict={'name' : name})
+					                                           message_dict={'name': name})
 					found_tile = True
 					break
 			radius += 1
@@ -620,7 +620,7 @@ class GroundUnitProducer(ShipProducer):
 					# Fire a message indicating that the ship has been created
 					name = u.get_component(NamedComponent).name
 					self.session.ingame_gui.message_widget.add(string_id='NEW_SOLDIER', point=point,
-						                                   message_dict={'name' : name})
+						                                   message_dict={'name': name})
 					found_tile = True
 					break
 			radius += 1

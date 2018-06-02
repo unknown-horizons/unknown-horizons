@@ -40,7 +40,7 @@ class TestPaths(TestCase):
 	def test_special_character(self):
 		"""Make paths have special characters and check some basic operations"""
 
-		outer = tempfile.mkdtemp( self.__class__.odd_characters )
+		outer = tempfile.mkdtemp(self.__class__.odd_characters)
 		inner = str(os.path.join(outer, self.__class__.odd_characters))
 		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 

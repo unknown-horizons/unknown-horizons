@@ -129,7 +129,7 @@ class BuildingCollector(Collector):
 
 	def decouple_from_home_building(self):
 		"""Makes collector survive deletion of home building."""
-		self.cancel(continue_action=lambda : 42) # don't continue
+		self.cancel(continue_action=lambda: 42) # don't continue
 		self.stop()
 		self.register_at_home_building(unregister=True)
 		self.home_building = None
@@ -141,7 +141,7 @@ class BuildingCollector(Collector):
 
 	def get_colleague_collectors(self):
 		colls = self.home_building.get_component(CollectingComponent).get_local_collectors()
-		return ( coll for coll in colls if coll is not self )
+		return (coll for coll in colls if coll is not self)
 
 	def get_job(self):
 		"""Returns the next job or None"""
@@ -163,11 +163,12 @@ class BuildingCollector(Collector):
 
 			if target_possible:
 				# check for res here
-				reslist = ( self.check_possible_job_target_for(building, res) for res in collectable_res )
+				reslist = (self.check_possible_job_target_for(
+					building, res) for res in collectable_res)
 				reslist = [i for i in reslist if i]
 
 				if reslist: # we can do something here
-					jobs.append( Job(building, reslist) )
+					jobs.append(Job(building, reslist))
 
 		# TODO: find out why order of  self.get_buildings_in_range(..) and therefore order of jobs differs from client to client
 		# TODO: find out why WildAnimal.get_job(..) doesn't have this problem
@@ -380,7 +381,7 @@ class DisasterRecoveryCollector(StorageCollector):
 
 	def get_job(self):
 		if self.home_building is not None and \
-		   not self.session.world.disaster_manager.is_affected( self.home_building.settlement ):
+		   not self.session.world.disaster_manager.is_affected(self.home_building.settlement):
 			return None # not one disaster active, bail out
 
 		return super().get_job()

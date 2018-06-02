@@ -29,7 +29,7 @@ from horizons.world.units.weaponholder import StationaryWeaponHolder
 
 class Tower(BuildableSingle, StationaryWeaponHolder, BasicBuilding):
 
-	POSSIBLE_WEAPONS = [ WEAPONS.CANNON ]
+	POSSIBLE_WEAPONS = [WEAPONS.CANNON]
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)

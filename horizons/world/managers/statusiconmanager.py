@@ -80,7 +80,7 @@ class StatusIconManager:
 		self.__render_status(icon_instance, self.icons[icon_instance][0])
 
 		if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
-			self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
+			self.on_hover_instances_changed(HoverInstancesChanged(self, [self.tooltip_instance]))
 
 	def on_worldobject_deleted_message(self, message):
 		assert isinstance(message, WorldObjectDeleted)
@@ -90,7 +90,7 @@ class StatusIconManager:
 			del self.icons[message.worldobject]
 		# remove icon tooltip
 		if message.worldobject is self.tooltip_instance:
-			self.on_hover_instances_changed( HoverInstancesChanged(self, []) )
+			self.on_hover_instances_changed(HoverInstancesChanged(self, []))
 
 	def on_remove_icon_message(self, message):
 		"""Called by the MessageBus with RemoveStatusIcon messages."""
@@ -110,7 +110,7 @@ class StatusIconManager:
 					break
 
 			if self.tooltip_instance is not None and self.tooltip_instance is icon_instance: # possibly have to update tooltip
-				self.on_hover_instances_changed( HoverInstancesChanged(self, [self.tooltip_instance]) )
+				self.on_hover_instances_changed(HoverInstancesChanged(self, [self.tooltip_instance]))
 
 	def __render_status(self, instance, status):
 		status_string = self.get_status_string(instance)
@@ -151,7 +151,7 @@ class StatusIconManager:
 		instances = (i for i in instances if i in self.icons)
 		# and belong to the player
 		instances = [i for i in instances if
-		             hasattr(i, "owner" ) and
+		             hasattr(i, "owner") and
 		             hasattr(i.owner, "is_local_player") and
 		             i.owner.is_local_player]
 
@@ -169,5 +169,5 @@ class StatusIconManager:
 			self.tooltip_icon.helptext = icon.helptext
 
 			pos = NavigationTool.last_event_pos
-			self.tooltip_icon.position_tooltip( (pos.x, pos.y) )
+			self.tooltip_icon.position_tooltip((pos.x, pos.y))
 			self.tooltip_icon.show_tooltip()

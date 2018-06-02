@@ -297,8 +297,8 @@ class TradeRoute(ChangeListener):
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
-				'warehouse' : warehouse,
-				'resource_list' : resource_list
+				'warehouse': warehouse,
+				'resource_list': resource_list
 			})
 
 		waiting = False
