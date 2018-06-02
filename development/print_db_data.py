@@ -65,8 +65,8 @@ ExtScheduler.create_instance(Dummy()) # sometimes needed by entities in subseque
 Entities.load_buildings(db, load_now=True)
 Entities.load_units(load_now=True)
 
-building_name_mapping = dict( (b.id, b.name) for b in Entities.buildings.itervalues() )
-unit_name_mapping = dict( (u.id, u.name) for u in Entities.units.itervalues() )
+building_name_mapping = dict((b.id, b.name) for b in Entities.buildings.itervalues())
+unit_name_mapping = dict((u.id, u.name) for u in Entities.units.itervalues())
 
 
 def get_obj_name(obj):
@@ -186,7 +186,7 @@ def print_unit():
 def print_storage():
 	for b in Entities.buildings.itervalues():
 		try:
-			stor = b.get_component_template( StorageComponent )
+			stor = b.get_component_template(StorageComponent)
 		except KeyError:
 			continue
 		if not stor:
@@ -302,14 +302,14 @@ def print_names():
 
 
 def print_settler_needs():
-	klass = Entities.buildings[ BUILDINGS.RESIDENTIAL ]
-	comp = [ i for i in klass.component_templates if i.keys()[0] == u'ProducerComponent' ][0]
+	klass = Entities.buildings[BUILDINGS.RESIDENTIAL]
+	comp = [i for i in klass.component_templates if i.keys()[0] == u'ProducerComponent'][0]
 	lines = comp.values()[0][u'productionlines']
 	per_level = defaultdict(list)
 	for line_data in lines.itervalues():
 		level = line_data.get("level", [-1])
 		for l in level:
-			per_level[l].extend( [ res for (res, num) in line_data[u'consumes'] ] )
+			per_level[l].extend([res for (res, num) in line_data[u'consumes']])
 	data = dict((k, sorted(db.get_res_name(i) for i in v)) for k, v in per_level.iteritems())
 	print("Needed resources per tier")
 	pprint.pprint(data)
@@ -326,34 +326,34 @@ def print_settler_needs():
 
 
 functions = {
-		'actions' : print_scenario_actions,
-		'buildings' : print_building,
-		'building_costs' : print_building_costs,
-		'colors' : print_colors,
-		'collectors' : print_collectors,
+		'actions': print_scenario_actions,
+		'buildings': print_building,
+		'building_costs': print_building_costs,
+		'colors': print_colors,
+		'collectors': print_collectors,
 		'collector_restrictions': print_collector_restrictions,
-		'conditions' : print_scenario_conditions,
-		'tiers' : print_tier_data,
-		'lines' : print_production_lines,
-		'names' : print_names,
-		'resources' : print_res,
-		'settler_needs' : print_settler_needs,
-		'storage' : print_storage,
-		'units' : print_unit,
-		'verbose_lines' : print_production_lines,
+		'conditions': print_scenario_conditions,
+		'tiers': print_tier_data,
+		'lines': print_production_lines,
+		'names': print_names,
+		'resources': print_res,
+		'settler_needs': print_settler_needs,
+		'storage': print_storage,
+		'units': print_unit,
+		'verbose_lines': print_production_lines,
 		}
 abbrevs = {
-		'b' : 'buildings',
+		'b': 'buildings',
 		'bc': 'building_costs',
-		'building' : 'buildings',
-		'c' : 'collectors',
-		'cl' : 'colors',
+		'building': 'buildings',
+		'c': 'collectors',
+		'cl': 'colors',
 		'cr': 'collector_restrictions',
-		'i' : 'tiers',
-		'tier' : 'tiers',
-		'n' : 'names',
-		'pl' : 'lines',
-		'res' : 'resources',
+		'i': 'tiers',
+		'tier': 'tiers',
+		'n': 'names',
+		'pl': 'lines',
+		'res': 'resources',
 		'settler_lines': 'tiers',
 		'sl': 'tiers',
 		'sn': 'settler_needs',

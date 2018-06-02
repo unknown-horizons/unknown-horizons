@@ -138,7 +138,7 @@ def main():
 	sort_order = lambda e: LANGUAGENAMES.get_by_value(e[0], english=True)
 	for language, authors in sorted(language_authors.items(), key=sort_order):
 		print('\n####', language)
-		#TODO
+		# TODO
 		# The sorted() below will not correctly sort names containing non-ascii.
 		# You'll need to rely on manual copy/paste and ordering anyways, so just
 		# keep your eyes open a bit more than usual.

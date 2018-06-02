@@ -32,23 +32,23 @@ def test_settlement_decrease(s):
 	Check if destroying a lookout destroys surrounding buildings but not trees.
 	"""
 	settlement = s.world.player.settlements[0]
-	lo = settlement.buildings_by_id[ BUILDINGS.LOOKOUT ][0]
+	lo = settlement.buildings_by_id[BUILDINGS.LOOKOUT][0]
 	pos = lo.position.origin
 	owner = lo.owner
 	island = lo.island
 
-	starting_tents = settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
+	starting_tents = settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 	old_tents = len(starting_tents)
 
-	old_trees_owned = len(settlement.buildings_by_id[ BUILDINGS.TREE ])
+	old_trees_owned = len(settlement.buildings_by_id[BUILDINGS.TREE])
 	old_trees = island.num_trees
 
 	Tear(lo)(owner)
 
-	cur_tents = settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
+	cur_tents = settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 	new_tents = len(cur_tents)
 
-	new_trees_owned = len(settlement.buildings_by_id[ BUILDINGS.TREE ])
+	new_trees_owned = len(settlement.buildings_by_id[BUILDINGS.TREE])
 	new_trees = island.num_trees
 
 	assert new_trees == old_trees

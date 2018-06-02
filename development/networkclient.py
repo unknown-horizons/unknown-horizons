@@ -280,7 +280,7 @@ if host is None or port is None or port <= 0:
 	usage()
 	sys.exit(1)
 
-logging.config.fileConfig( os.path.join('content', 'logging.conf'))
+logging.config.fileConfig(os.path.join('content', 'logging.conf'))
 logging.getLogger().addHandler(logging.StreamHandler(sys.stderr))
 logging.getLogger("network").setLevel(logging.DEBUG)
 
