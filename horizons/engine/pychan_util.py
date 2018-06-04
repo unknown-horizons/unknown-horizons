@@ -168,14 +168,14 @@ def setup_cursor_change_on_hover():
 		# this can't be a regular class since vanilla TextFields should have it by default
 		def disable_cursor_change_on_hover(self):
 			self.mapEvents({
-				self.name + '/mouseEntered/cursor' : None,
-				self.name + '/mouseExited/cursor' : None,
+				self.name + '/mouseEntered/cursor': None,
+				self.name + '/mouseExited/cursor': None,
 				})
 
 		def enable_cursor_change_on_hover(self):
 			self.mapEvents({
-				self.name + '/mouseEntered/cursor' : set_cursor,
-				self.name + '/mouseExited/cursor' : unset_cursor,
+				self.name + '/mouseEntered/cursor': set_cursor,
+				self.name + '/mouseExited/cursor': unset_cursor,
 				# this changes the cursor if the widget is hidden while the
 				# cursor is still above the textfield
 				self.name + '/ancestorHidden/cursor': unset_cursor

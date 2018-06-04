@@ -33,8 +33,8 @@ __version__ = '0.1'
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
-	'client' : {},
-	'server' : {},
+	'client': {},
+	'server': {},
 } # type: Dict[str, Dict[str, Set[str]]]
 
 
