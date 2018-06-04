@@ -80,20 +80,20 @@ class ResourceOverviewBar:
 
 	STYLE = "resource_bar"
 
-	DEFAULT_RESOURCES = [ RES.TOOLS,
-	                      RES.BOARDS,
-	                      RES.BRICKS,
-	                      RES.FOOD,
-	                      RES.TEXTILE,
-	                      RES.SALT]
+	DEFAULT_RESOURCES = [RES.TOOLS,
+	                     RES.BOARDS,
+	                     RES.BRICKS,
+	                     RES.FOOD,
+	                     RES.TEXTILE,
+	                     RES.SALT]
 
 	# order should match the above, else confuses players when in build mode
 	CONSTRUCTION_RESOURCES = { # per inhabitant tier
-	  TIER.SAILORS:   [ RES.TOOLS, RES.BOARDS ],
-	  TIER.PIONEERS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.SETTLERS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.CITIZENS:  [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
-	  TIER.MERCHANTS: [ RES.TOOLS, RES.BOARDS, RES.BRICKS ],
+	    TIER.SAILORS:   [RES.TOOLS, RES.BOARDS],
+	    TIER.PIONEERS:  [RES.TOOLS, RES.BOARDS, RES.BRICKS],
+	    TIER.SETTLERS:  [RES.TOOLS, RES.BOARDS, RES.BRICKS],
+	    TIER.CITIZENS:  [RES.TOOLS, RES.BOARDS, RES.BRICKS],
+	    TIER.MERCHANTS: [RES.TOOLS, RES.BOARDS, RES.BRICKS],
 	}
 
 	def __init__(self, session):
@@ -109,7 +109,7 @@ class ResourceOverviewBar:
 		gold_icon.image = get_res_icon_path(RES.GOLD)
 		gold_icon.max_size = gold_icon.min_size = gold_icon.size = (32, 32)
 		self.gold_gui.mapEvents({
-		  "resbar_gold_container/mouseClicked/stats" : self._toggle_stats,
+		  "resbar_gold_container/mouseClicked/stats": self._toggle_stats,
 		  })
 		self.gold_gui.helptext = T("Click to show statistics")
 		self.stats_gui = None
@@ -138,7 +138,7 @@ class ResourceOverviewBar:
 			self.stats_gui.hide()
 
 	def end(self):
-		self.set_inventory_instance( None, force_update=True )
+		self.set_inventory_instance(None, force_update=True)
 		self.current_instance = weakref.ref(self)
 		ExtScheduler().rem_all_classinst_calls(self)
 		self.resource_configurations.clear()
@@ -171,9 +171,9 @@ class ResourceOverviewBar:
 			obj = obj[0]
 			l = []
 			for pos, res in db("SELECT position, resource FROM resource_overview_bar where object=?", obj):
-				l.append( (pos, res) )
+				l.append((pos, res))
 			obj = WorldObject.get_object_by_id(obj)
-			self.resource_configurations[obj] = [ i[1] for i in sorted(l) ]
+			self.resource_configurations[obj] = [i[1] for i in sorted(l)]
 
 		# called when any game (also new ones) start
 		# register at player inventory for gold updates
@@ -218,10 +218,10 @@ class ResourceOverviewBar:
 		self.current_instance = weakref.ref(instance)
 
 		# construct new slots (fill values later)
-		load_entry = lambda : load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
+		load_entry = lambda: load_uh_widget(self.ENTRY_GUI_FILE, style=self.__class__.STYLE)
 		resources = self._get_current_resources()
 		addition = [-1] if self._do_show_dummy or not resources else [] # add dummy at end for adding stuff
-		for i, res in enumerate( resources + addition ):
+		for i, res in enumerate(resources + addition):
 			if i < len(self.gui): # get old slot
 				entry = self.gui[i]
 				if res == -1: # can't reuse dummy slot, need default data
@@ -287,11 +287,11 @@ class ResourceOverviewBar:
 			assert res in res_list or res == RES.GOLD
 
 			cost_label = Label(text="-" + str(amount))
-			cost_label.stylize( self.__class__.STYLE )
+			cost_label.stylize(self.__class__.STYLE)
 			# add icon below end of background icon
 			if res in res_list:
 				entry = res_list.index(res)
-				cur_gui = self.gui[ entry ]
+				cur_gui = self.gui[entry]
 				reference_icon = cur_gui.findChild(name="background_icon")
 				below = reference_icon.size[1]
 				cost_icon = Icon(image=cost_icon_res, position=(0, below))
@@ -325,7 +325,7 @@ class ResourceOverviewBar:
 		self._update_gold(force=True)
 
 		# reshow last settlement
-		self.set_inventory_instance( LastActivePlayerSettlementManager().get(get_current_pos=True) )
+		self.set_inventory_instance(LastActivePlayerSettlementManager().get(get_current_pos=True))
 
 	def _drop_cost_labels(self):
 		"""Removes all labels below the slots indicating building costs"""
@@ -381,7 +381,7 @@ class ResourceOverviewBar:
 
 			# set amount
 			label = cur_gui.findChild(name="res_available")
-			label.text = str( inv[res] )
+			label.text = str(inv[res])
 
 			# reposition according to magic formula passed down from the elders in order to support centering
 			cur_gui.adaptLayout() # update size values (e.g. if amount of digits changed)
@@ -394,8 +394,8 @@ class ResourceOverviewBar:
 			tier = self.session.world.player.settler_level
 			res_list = self.__class__.CONSTRUCTION_RESOURCES[tier]
 			# also add additional res that might be needed
-			res_list += [ res for res in self._last_build_costs if
-			              res not in res_list and res != RES.GOLD ]
+			res_list += [res for res in self._last_build_costs if
+			             res not in res_list and res != RES.GOLD]
 			return res_list
 		# prefer user defaults over general defaults
 		default = self._custom_default_resources if self._custom_default_resources else self.__class__.DEFAULT_RESOURCES
@@ -442,7 +442,7 @@ class ResourceOverviewBar:
 
 		on_click = functools.partial(self._set_resource_slot, slot_num)
 		cur_res = self._get_current_resources()
-		res_filter = lambda res_id : res_id not in cur_res
+		res_filter = lambda res_id: res_id not in cur_res
 		dlg = create_resource_selection_dialog(on_click, inv, self.session.db,
 		                                       widget='resbar_resource_selection.xml',
 		                                       res_filter=res_filter)
@@ -451,7 +451,7 @@ class ResourceOverviewBar:
 		cur_gui = self.gui[slot_num]
 		background_icon = cur_gui.findChild(name="background_icon")
 		dlg.position = (cur_gui.position[0] + background_icon.position[0],
-		                cur_gui.position[1] + background_icon.position[1] + background_icon.size[1] )
+		                cur_gui.position[1] + background_icon.position[1] + background_icon.size[1])
 		dlg.findChild(name="make_default_btn").capture(self._make_configuration_default)
 		reset_default_btn = dlg.findChild(name="reset_default_btn")
 		# this is a quadruple-use button.
@@ -475,7 +475,7 @@ class ResourceOverviewBar:
 			  self._drop_settlement_resource_configuration, # remove specific config
 			  Callback(self._make_configuration_default, reset=True) # remove global config
 			)
-			reset_default_btn.capture( cb )
+			reset_default_btn.capture(cb)
 
 		dlg.show()
 		self._res_selection_dialog = dlg
@@ -644,14 +644,14 @@ class ResourceOverviewBar:
 		# currently unused since always 0
 		# can be used for relative positioning of labels
 		# old formula: label.position = (icon.position[0] - label.size[0]/2 + xoffset, yoffset)
-		gui = load_uh_widget( self.__class__.ENTRY_GUI_FILE )
+		gui = load_uh_widget(self.__class__.ENTRY_GUI_FILE)
 		icon = gui.findChild(name="background_icon")
 		return icon.position
 
 	@cachedmethod
 	def _get_gold_background_icon_position(self):
 		# see above
-		gui = load_uh_widget( self.__class__.GOLD_ENTRY_GUI_FILE )
+		gui = load_uh_widget(self.__class__.GOLD_ENTRY_GUI_FILE)
 		icon = gui.findChild(name="background_icon")
 		return icon.position
 

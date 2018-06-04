@@ -58,7 +58,7 @@ class DiplomacySettings:
 
 		parameters_neutral = {
 			'ally': {'root': 4.0, },
-			'enemy': {'root': -6.7, 'peek': 0.4 },
+			'enemy': {'root': -6.7, 'peek': 0.4},
 		}
 
 		parameters_allied = {

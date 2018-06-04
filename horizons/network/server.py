@@ -109,12 +109,12 @@ class Server:
 			'interval':  1 * 60 * 1000,
 		}
 		self.capabilities = {
-			'minplayers'    : 2,
-			'maxplayers'    : 8,
+			'minplayers': 2,
+			'maxplayers': 8,
 			# NOTE: this defines the global packet size maximum.
 			# there's still a per packet maximum defined in the
 			# individual packet classes
-			'maxpacketsize' : 2 * 1024 * 1024,
+			'maxpacketsize': 2 * 1024 * 1024,
 		}
 		self.events = SimpleMessageBus(EVENTS)
 

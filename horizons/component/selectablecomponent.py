@@ -51,10 +51,10 @@ class SelectableComponent(Component):
 	def get_instance(cls, arguments):
 		# this can't be class variable because the classes aren't defined when
 		# it would be parsed
-		TYPES = { 'building' : SelectableBuildingComponent,
-		          'unit'     : SelectableUnitComponent,
-		          'ship'     : SelectableShipComponent,
-		          'fisher'   : SelectableFisherComponent, }
+		TYPES = { 'building': SelectableBuildingComponent,
+		          'unit': SelectableUnitComponent,
+		          'ship': SelectableShipComponent,
+		          'fisher': SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
 		return TYPES[t](**arguments)
@@ -227,7 +227,8 @@ class SelectableBuildingComponent(SelectableComponent):
 		# group buildings per settlement and treat them separately
 		# they cannot share tiles, and we can then just access the settlements ground map
 		buildings_sorted = sorted(buildings, key=operator.attrgetter('settlement'))
-		for settlement, buildings in itertools.groupby( buildings_sorted, operator.attrgetter('settlement') ):
+		for settlement, buildings in itertools.groupby(
+				buildings_sorted, operator.attrgetter('settlement')):
 			# resolve operator
 			buildings = list(buildings)
 
@@ -241,7 +242,7 @@ class SelectableBuildingComponent(SelectableComponent):
 			for coord in coords:
 				tile = settlement.ground_map.get(coord)
 				if tile:
-					if ( 'constructible' in tile.classes or 'coastline' in tile.classes ):
+					if ('constructible' in tile.classes or 'coastline' in tile.classes):
 						cls._add_selected_tile(tile, renderer)
 						selected_tiles.append(tile)
 		return selected_tiles
