@@ -59,10 +59,10 @@ class SingleplayerMenu(Window):
 
 		self._gui = load_uh_widget('singleplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel'   : self._windows.close,
-			'okay'     : self.act,
-			'scenario' : Callback(self._select_mode, 'scenario'),
-			'random'   : Callback(self._select_mode, 'random'),
+			'cancel': self._windows.close,
+			'okay': self.act,
+			'scenario': Callback(self._select_mode, 'scenario'),
+			'random': Callback(self._select_mode, 'random'),
 			'free_maps': Callback(self._select_mode, 'free_maps')
 		})
 
@@ -484,7 +484,7 @@ class ScenarioMapWidget:
 		prefer_tutorial = lambda x: ('tutorial' not in x, x)
 		self.maps_display.sort(key=prefer_tutorial)
 
-		self._gui.distributeInitialData({'maplist' : self.maps_display})
+		self._gui.distributeInitialData({'maplist': self.maps_display})
 		self._gui.distributeData({'maplist': 0})
 		self._gui.mapEvents({
 			'maplist/action': self._on_map_change,

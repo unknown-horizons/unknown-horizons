@@ -83,12 +83,12 @@ class LogBook(PickBeltWidget, Window):
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
 		  OkButton.DEFAULT_NAME : self._windows.close,
-		  'backwardButton' : Callback(self._scroll, -2),
-		  'forwardButton' : Callback(self._scroll, 2),
-		  'stats_players' : Callback(self.show_statswidget, widget='players'),
-		  'stats_settlements' : Callback(self.show_statswidget, widget='settlements'),
-		  'stats_ships' : Callback(self.show_statswidget, widget='ships'),
-		  'chatTextField' : self._send_chat_message,
+		  'backwardButton': Callback(self._scroll, -2),
+		  'forwardButton': Callback(self._scroll, 2),
+		  'stats_players': Callback(self.show_statswidget, widget='players'),
+		  'stats_settlements': Callback(self.show_statswidget, widget='settlements'),
+		  'stats_ships': Callback(self.show_statswidget, widget='ships'),
+		  'chatTextField': self._send_chat_message,
 		  })
 
 		# stuff in the game message / chat history subwidget
