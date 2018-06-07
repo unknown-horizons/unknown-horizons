@@ -129,9 +129,9 @@ class NavigationTool(CursorTool):
 		if evt.getButton() == fife.MouseEvent.MIDDLE:
 			if horizons.globals.fife.get_uh_setting("MiddleMousePan"):
 				if self.middle_scroll_active:
-					scroll_by = ( self._last_mmb_scroll_point[0] - evt.getX(),
-					              self._last_mmb_scroll_point[1] - evt.getY() )
-					self.session.view.scroll( *scroll_by )
+					scroll_by = (self._last_mmb_scroll_point[0] - evt.getX(),
+					             self._last_mmb_scroll_point[1] - evt.getY())
+					self.session.view.scroll(*scroll_by)
 					self._last_mmb_scroll_point = (evt.getX(), evt.getY())
 		else:
 			# Else the event will mistakenly be delegated if the left mouse button is hit while
@@ -156,7 +156,7 @@ class NavigationTool(CursorTool):
 		# Status menu update
 		current = self.get_exact_world_location(evt)
 
-		distance_ge = lambda a, b, epsilon : abs((a.x - b.x) ** 2 + (a.y - b.y) ** 2) >= epsilon ** 2
+		distance_ge = lambda a, b, epsilon: abs((a.x - b.x) ** 2 + (a.y - b.y) ** 2) >= epsilon ** 2
 
 		if distance_ge(current, self.last_exact_world_location, 4): # update every 4 tiles for settlement info
 			self.last_exact_world_location = current

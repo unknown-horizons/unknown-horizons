@@ -183,7 +183,7 @@ class MessageWidget(LivingObject):
 				callback = Callback.ChainedCallbacks(
 					   callback, # this makes it so the order of callback assignment doesn't matter
 					   Callback(self.session.view.center, message.x, message.y),
-					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y) )
+					   Callback(self.session.ingame_gui.minimap.highlight, (message.x, message.y))
 				   )
 			if message.msg_type == "logbook":
 				# open logbook to relevant page
