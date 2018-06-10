@@ -192,14 +192,14 @@ def create_random_island(map_db, island_id, id_string):
 
 	# possible movement directions
 	all_moves = {
-		'sw' : (-1, -1),
-		'w'  : (-1, 0),
-		'nw' : (-1, 1),
-		's'  : (0, -1),
-		'n'  : (0, 1),
-		'se' : (1, -1),
-		'e'  : (1, 0),
-		'ne' : (1, 1)
+		'sw': (-1, -1),
+		'w': (-1, 0),
+		'nw': (-1, 1),
+		's': (0, -1),
+		'n': (0, 1),
+		'se': (1, -1),
+		'e': (1, 0),
+		'ne': (1, 1)
 		}
 
 	def get_island_outline():

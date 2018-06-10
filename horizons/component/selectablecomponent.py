@@ -51,10 +51,10 @@ class SelectableComponent(Component):
 	def get_instance(cls, arguments):
 		# this can't be class variable because the classes aren't defined when
 		# it would be parsed
-		TYPES = { 'building': SelectableBuildingComponent,
-		          'unit': SelectableUnitComponent,
-		          'ship': SelectableShipComponent,
-		          'fisher': SelectableFisherComponent, }
+		TYPES = {'building': SelectableBuildingComponent,
+		         'unit': SelectableUnitComponent,
+		         'ship': SelectableShipComponent,
+		         'fisher': SelectableFisherComponent, }
 		arguments = copy.copy(arguments)
 		t = arguments.pop('type')
 		return TYPES[t](**arguments)

@@ -103,10 +103,10 @@ class Minimap:
 	** Handle clicks, remove overlay icon
 	"""
 	COLORS = {
-		"island":    (137, 117,  87),
-		"cam":       (  1,   1,   1),
-		"water":     (198, 188, 165),
-		"highlight": (255,   0,   0),  # for events
+		"island": (137, 117, 87),
+		"cam": (1, 1, 1),
+		"water": (198, 188, 165),
+		"highlight": (255, 0, 0),  # for events
 	}
 
 	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
