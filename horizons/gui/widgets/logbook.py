@@ -82,7 +82,7 @@ class LogBook(PickBeltWidget, Window):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
-		  OkButton.DEFAULT_NAME : self._windows.close,
+		  OkButton.DEFAULT_NAME: self._windows.close,
 		  'backwardButton': Callback(self._scroll, -2),
 		  'forwardButton': Callback(self._scroll, 2),
 		  'stats_players': Callback(self.show_statswidget, widget='players'),

@@ -125,7 +125,7 @@ class BuildingTool(NavigationTool):
 		if self.ship is not None:
 			self._build_logic = ShipBuildingToolLogic(ship)
 		elif build_related is not None:
-			self._build_logic = BuildRelatedBuildingToolLogic(self, weakref.ref(build_related) )
+			self._build_logic = BuildRelatedBuildingToolLogic(self, weakref.ref(build_related))
 		else:
 			self._build_logic = SettlementBuildingToolLogic(self)
 
