@@ -44,8 +44,8 @@ class TradeTab(TabInterface):
 
 	# map the size buttons in the gui to an amount
 	exchange_size_buttons = {
-	  1 : 'size_1',
-	  5 : 'size_2',
+	  1: 'size_1',
+	  5: 'size_2',
 	  10: 'size_3',
 	  20: 'size_4',
 	  50: 'size_5',

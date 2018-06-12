@@ -297,7 +297,7 @@ class BuySellTab(TabInterface):
 		buy_list = self.trade_post.buy_list
 		sell_list = self.trade_post.sell_list
 
-		res_filter = lambda res_id : res_id not in buy_list and res_id not in sell_list
+		res_filter = lambda res_id: res_id not in buy_list and res_id not in sell_list
 		on_click = functools.partial(self.add_resource, slot_id=slot_id)
 		inventory = self.trade_post.get_inventory()
 
