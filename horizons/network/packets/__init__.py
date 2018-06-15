@@ -63,7 +63,7 @@ class SafeUnpickler:
 		"""Adding SafeUnpickler to the pickle whitelist"""
 		global PICKLE_SAFE
 		module = klass.__module__
-		name  = klass.__name__
+		name = klass.__name__
 		if (module == cls.__module__ and name == cls.__name__):
 			raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
 		types = ['client', 'server'] if origin == 'common' else [origin]
