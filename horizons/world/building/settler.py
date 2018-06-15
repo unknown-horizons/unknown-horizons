@@ -233,7 +233,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
 		happiness_tax_modifier = 0.5 + (float(self.happiness) / 70.0)
 		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
-		taxes = self.tax_base * self.settlement.tax_settings[self.level] *  happiness_tax_modifier * inhabitants_tax_modifier
+		taxes = self.tax_base * self.settlement.tax_settings[self.level] * happiness_tax_modifier * inhabitants_tax_modifier
 		real_taxes = int(round(taxes * self.owner.difficulty.tax_multiplier))
 
 		self.settlement.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, real_taxes)

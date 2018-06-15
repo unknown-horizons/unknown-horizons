@@ -686,7 +686,7 @@ class _MinimapTransform:
 		y = (y - self.location.center.y) / self._world_minimap_ratio_y
 
 		# rotate
-		x_ =  x * self._cos_rotation + y * self._sin_rotation
+		x_ = x * self._cos_rotation + y * self._sin_rotation
 		y_ = -x * self._sin_rotation + y * self._cos_rotation
 
 		# undo centering and translate to correct position

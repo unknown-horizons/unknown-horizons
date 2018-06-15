@@ -321,7 +321,7 @@ class MPPacket:
 		packets.SafeUnpickler.add('server', klass)
 
 	def __str__(self):
-		return "packet " + str(self.__class__)  + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
+		return "packet " + str(self.__class__) + " from player " + str(WorldObject.get_object_by_id(self.player_id)) + " for tick " + str(self.tick)
 
 
 class CommandPacket(MPPacket):
