@@ -156,6 +156,7 @@ class Ship(Unit):
 		session = self.session # this has to happen here,
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
+
 		def tmp():
 			session.view.renderer['GenericRenderer'].removeAll("buoy_" + str(ship_id))
 		tmp() # also remove now

@@ -441,6 +441,7 @@ class World(BuildingOwner, WorldObject):
 			if player is self.player:
 				ret_coords = point.to_tuple()
 				# HACK: Store starting ship as first unit group, and select it
+
 				def _preselect_player_ship(player_ship):
 					sel_comp = player_ship.get_component(SelectableComponent)
 					sel_comp.select(reset_cam=True)

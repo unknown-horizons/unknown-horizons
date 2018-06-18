@@ -144,6 +144,7 @@ class TabInterface:
 		This saves a lot of CPU time, if you have a huge island, or play on high speed."""
 		if not self._refresh_scheduled:
 			self._refresh_scheduled = True
+
 			def unset_flag():
 				# set the flag here and not in refresh() since we can't be sure whether
 				# refresh() of this class will be reached or a subclass will not call super()

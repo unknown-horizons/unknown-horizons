@@ -327,6 +327,7 @@ class CreateGame(Window):
 		})
 
 		gamenametextfield = self._gui.findChild(name='gamename')
+
 		def gamename_clicked():
 			if gamenametextfield.text == 'Unnamed Game':
 				gamenametextfield.text = ""
@@ -442,6 +443,7 @@ class GameLobby(Window):
 		textfield = self._gui.findChild(name="chatTextField")
 		textfield.capture(self._send_chat_message)
 		welcome_string = T("Enter your message")
+
 		def chatfield_clicked():
 			if textfield.text == welcome_string:
 				textfield.text = ""

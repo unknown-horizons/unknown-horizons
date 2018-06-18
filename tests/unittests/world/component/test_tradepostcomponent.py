@@ -42,6 +42,7 @@ class TestTradePostComponent(TestCase):
 			def __init__(self, comp):
 				self.comp = comp
 				self.owner = None # type: Optional[Instance]
+
 			def get_component(self, x):
 				class Comp:
 					inventory = self.comp
@@ -55,6 +56,7 @@ class TestTradePostComponent(TestCase):
 		class Timer:
 			def add_call(self, x):
 				pass
+
 			def get_ticks(self, x):
 				return 100
 		Scheduler.create_instance(timer=Timer())

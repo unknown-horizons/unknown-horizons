@@ -161,6 +161,7 @@ def setup_cursor_change_on_hover():
 	# set cursor to rename on hover for certain widgets
 	def set_cursor():
 		horizons.globals.fife.set_cursor_image("rename")
+
 	def unset_cursor():
 		horizons.globals.fife.set_cursor_image("default")
 

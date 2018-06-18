@@ -53,6 +53,7 @@ def test_selectmultitab(gui):
 	assert gui.find('tab_base') is None
 
 	player = gui.session.world.player
+
 	def create_ship(type):
 		position = gui.session.world.get_random_possible_ship_position()
 		unit = CreateUnit(player.worldid, type, *position.to_tuple())(issuer=player)

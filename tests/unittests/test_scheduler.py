@@ -116,6 +116,7 @@ class TestScheduler(TestCase):
 	def test_within_callback_add_new_callback_for_same_tick(self):
 		self.scheduler.before_ticking()
 		callback2 = Mock()
+
 		def add_callback():
 			self.scheduler.add_new_object(callback2, None, run_in=0)
 		self.callback.side_effect = add_callback
@@ -127,6 +128,7 @@ class TestScheduler(TestCase):
 	def test_within_callback_add_new_callback_for_future_tick(self):
 		self.scheduler.before_ticking()
 		callback2 = Mock()
+
 		def add_callback():
 			self.scheduler.add_new_object(callback2, None, run_in=1)
 		self.callback.side_effect = add_callback

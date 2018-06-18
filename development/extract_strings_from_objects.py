@@ -148,6 +148,7 @@ def content_from_file(filename):
 	object_strings = []
 	if not parsed:
 		return ''
+
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
 			text = 'T("{value}")'.format(value=value[2:])

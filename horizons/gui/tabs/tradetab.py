@@ -227,6 +227,7 @@ class TradeTab(TabInterface):
 	def get_widgets_by_class(self, parent_widget, widget_class):
 		"""Gets all widget of a certain widget class from the tab. (e.g. pychan.widgets.Label for all labels)"""
 		children = []
+
 		def _find_widget(widget):
 			if isinstance(widget, widget_class):
 				children.append(widget)

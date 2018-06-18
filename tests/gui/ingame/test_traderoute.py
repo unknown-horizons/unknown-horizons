@@ -100,6 +100,7 @@ def test_traderoute(gui):
 
 	# open pause menu and quit
 	gui.trigger('mainhud/gameMenuButton')
+
 	def func1():
 		gui.trigger('popup_window/okButton')
 

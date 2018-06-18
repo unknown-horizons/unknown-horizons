@@ -100,6 +100,7 @@ class SavegameManager:
 		@return: list of names to be displayed for each file.
 		"""
 		displaynames = []
+
 		def get_timestamp_string(savegameinfo):
 			if savegameinfo['timestamp'] == -1:
 				return ""
