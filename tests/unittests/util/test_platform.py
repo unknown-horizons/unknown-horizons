@@ -25,6 +25,7 @@ from horizons.util.platform import get_user_game_directories
 
 
 def test_get_user_game_directory_windows(mocker, tmpdir):
+	tmpdir = str(tmpdir)
 	mocker.patch('horizons.util.platform.get_home_directory',
 	             return_value=tmpdir)
 	mocker.patch('platform.system', return_value='Windows')
@@ -37,6 +38,7 @@ def test_get_user_game_directory_windows(mocker, tmpdir):
 
 
 def test_get_user_game_directory_unix(mocker, tmpdir):
+	tmpdir = str(tmpdir)
 	mocker.patch('horizons.util.platform.get_home_directory',
 	             return_value=tmpdir)
 	mocker.patch('platform.system', return_value='Linux')
