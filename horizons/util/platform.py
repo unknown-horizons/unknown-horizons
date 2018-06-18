@@ -66,7 +66,7 @@ def _try_directories(paths, default=None):
 	# (lists could also be tuples of course)
 	for parts in paths:
 		if all(parts):
-			return os.path.join(parts)
+			return os.path.join(*parts)
 	return default
 
 
