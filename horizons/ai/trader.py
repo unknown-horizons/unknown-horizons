@@ -163,8 +163,8 @@ class Trader(GenericAI):
 			   house.owner == signal_fire.owner:
 				self.log.debug("Trader %s moving to house %s", self.worldid, house)
 				self.allured_by_signal_fire[ship] = True
-				# HACK: remove allured flag in a few ticks
 
+				# HACK: remove allured flag in a few ticks
 				def rem_allured(self, ship):
 					self.allured_by_signal_fire[ship] = False
 				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))

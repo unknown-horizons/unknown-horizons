@@ -466,14 +466,12 @@ class RouteConfig(Window):
 
 		wait_at_unload_box = self._gui.findChild(name="wait_at_unload")
 		wait_at_unload_box.marked = self.instance.route.wait_at_unload
-
 		def toggle_wait_at_unload():
 			self._route_cmd("set_wait_at_unload", not self.instance.route.wait_at_unload)
 		wait_at_unload_box.capture(toggle_wait_at_unload)
 
 		wait_at_load_box = self._gui.findChild(name="wait_at_load")
 		wait_at_load_box.marked = self.instance.route.wait_at_load
-
 		def toggle_wait_at_load():
 			self._route_cmd("set_wait_at_load", not self.instance.route.wait_at_load)
 		wait_at_load_box.capture(toggle_wait_at_load)

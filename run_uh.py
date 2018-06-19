@@ -254,7 +254,6 @@ def setup_debugging(options):
 				line = str(line)
 				sys.__stdout__.write(line)
 				logfile.write(line)
-
 			def flush(self):
 				sys.__stdout__.flush()
 				logfile.flush()

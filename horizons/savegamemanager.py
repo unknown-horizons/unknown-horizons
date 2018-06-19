@@ -102,6 +102,7 @@ class SavegameManager:
 		displaynames = []
 
 		def get_timestamp_string(savegameinfo):
+
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			timestamp = time.localtime(savegameinfo['timestamp'])

@@ -126,7 +126,6 @@ class TabWidget:
 		# pychan layouting depends on time, it's usually in a better mood later.
 		# this introduces some flickering, but fixes #916
 		from horizons.extscheduler import ExtScheduler
-
 		def do_apply_hack():
 			# just query widget when executing, since if lazy loading is used, the widget
 			# does not exist yet in the outer function

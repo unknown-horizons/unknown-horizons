@@ -61,7 +61,6 @@ class PlayerDataSelection:
 			self.colors.addChild(hbox)
 
 		playertextfield = self.gui.findChild(name='playername')
-
 		def playertextfield_clicked():
 			if playertextfield.text == 'Unnamed Traveler':
 				playertextfield.text = ""

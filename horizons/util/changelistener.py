@@ -164,8 +164,8 @@ def metaChangeListenerDecorator(event_name):
 		list_name = "__" + event_name + "_listeners"
 		event_call_number = "__" + event_name + "call_number"
 		hard_remove_event = "__hard_remove" + event_name
-		# trivial changelistener operations
 
+		# trivial changelistener operations
 		def add(self, listener):
 			assert callable(listener)
 			getattr(self, list_name).append(listener)

@@ -111,7 +111,6 @@ def setup_tax_slider(slider, val_label, settlement, level):
 	slider.steps = [SETTLER.TAX_SETTINGS_MIN + SETTLER.TAX_SETTINGS_STEP * i for i in
 			range(step_count)]
 	slider.value = settlement.tax_settings[level]
-
 	def on_slider_change():
 		val_label.text = str(slider.value)
 		if settlement.tax_settings[level] != slider.value:
