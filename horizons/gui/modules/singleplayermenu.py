@@ -135,6 +135,7 @@ class GameSettingsWidget:
 		              ('disasters', 'MapSettingsDisastersEnabled')]
 
 		for (setting, setting_save_name) in checkboxes:
+
 			def on_box_toggle(setting, setting_save_name):
 				"""Called whenever the checkbox is toggled"""
 				box = self._gui.findChild(name=setting)
