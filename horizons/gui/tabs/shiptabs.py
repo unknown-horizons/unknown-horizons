@@ -125,7 +125,7 @@ class ShipOverviewTab(OverviewTab):
 
 		events['configure_route'] = None
 		self.widget.findChild(name='configure_route').set_inactive()
-		self.widget.findChild(name='configure_route').helptext = T("No available destination for a trade route")
+		self.widget.findChild(name='configure_route').helptext = T("No available destinations for a trade route")
 
 	def refresh(self):
 		events = {
