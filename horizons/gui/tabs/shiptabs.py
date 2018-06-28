@@ -111,15 +111,31 @@ class ShipOverviewTab(OverviewTab):
 			))
 		self.widget.findChild(name='inventory').apply_to_buttons(click_on_cannons, lambda b: b.res_id == WEAPONS.CANNON)
 
+	def _refresh_traderoute_config_button(self, events):
+		#verify if there are possible destination for a traderoute
+		warehouses = self.instance.session.world.settlements
+
+		if len(warehouses) > 1 :
+			for warehouse in warehouses:
+				if self.instance.session.world.diplomacy.can_trade(self.instance.session.world.player, warehouse.owner):
+					events['configure_route'] = Callback(self._configure_route)
+					self.widget.findChild(name='configure_route').set_active()
+					self.widget.findChild(name='configure_route').helptext = T("Configure traderoute")
+					return
+
+		events['configure_route'] = None
+		self.widget.findChild(name='configure_route').set_inactive()
+		self.widget.findChild(name='configure_route').helptext = T("No available destination for a trade route")
+
 	def refresh(self):
 		events = {
 			# show rename when you click on name
 			'name': Callback(self.instance.session.ingame_gui.show_change_name_dialog, self.instance),
-			'configure_route/mouseClicked': Callback(self._configure_route),
 		}
 
 		self._refresh_found_settlement_button(events)
 		self._refresh_trade_button(events)
+		self._refresh_traderoute_config_button(events)
 		self.widget.mapEvents(events)
 
 		self.widget.child_finder('inventory').update()
