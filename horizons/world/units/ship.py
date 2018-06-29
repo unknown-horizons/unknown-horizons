@@ -154,7 +154,6 @@ class Ship(Unit):
 
 		ship_id = self.worldid
 		session = self.session # this has to happen here,
-
 		# cause a reference to self in a temporary function is implemented
 		# as a hard reference, which causes a memory leak
 		def tmp():
