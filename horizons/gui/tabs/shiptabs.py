@@ -115,7 +115,7 @@ class ShipOverviewTab(OverviewTab):
 		#verify if there are possible destinations for a traderoute
 		warehouses = self.instance.session.world.settlements
 
-		possible_warehouses = [warehouse in warehouses if self.instance.session.world.diplomacy.can_trade(self.instance.session.world.player, warehouse.owner)]
+		possible_warehouses = [warehouse for warehouse in warehouses if self.instance.session.world.diplomacy.can_trade(self.instance.session.world.player, warehouse.owner)]
 
 		if len(possible_warehouses) > 1:
 			events['configure_route'] = Callback(self._configure_route)
