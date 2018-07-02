@@ -120,12 +120,11 @@ class ShipOverviewTab(OverviewTab):
 		if len(possible_warehouses) > 1:
 			events['configure_route'] = Callback(self._configure_route)
 			self.widget.findChild(name='configure_route').set_active()
-			self.widget.findChild(name='configure_route').helptext = T("Configure traderoute")
-			return
-
-		events['configure_route'] = None
-		self.widget.findChild(name='configure_route').set_inactive()
-		self.widget.findChild(name='configure_route').helptext = T("No available destinations for a trade route")
+			self.widget.findChild(name='configure_route').helptext = T("Configure trade route")
+		else:
+			events['configure_route'] = None
+			self.widget.findChild(name='configure_route').set_inactive()
+			self.widget.findChild(name='configure_route').helptext = T("No available destinations for a trade route")
 
 	def refresh(self):
 		events = {
