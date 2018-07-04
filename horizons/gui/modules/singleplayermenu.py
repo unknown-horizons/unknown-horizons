@@ -135,11 +135,13 @@ class GameSettingsWidget:
 		              ('disasters', 'MapSettingsDisastersEnabled')]
 
 		for (setting, setting_save_name) in checkboxes:
+
 			def on_box_toggle(setting, setting_save_name):
 				"""Called whenever the checkbox is toggled"""
 				box = self._gui.findChild(name=setting)
 				horizons.globals.fife.set_uh_setting(setting_save_name, box.marked)
 				horizons.globals.fife.save_settings()
+
 			def toggle(setting, setting_save_name):
 				"""Called by the label to toggle the checkbox"""
 				box = self._gui.findChild(name=setting)

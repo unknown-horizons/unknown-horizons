@@ -440,6 +440,7 @@ class World(BuildingOwner, WorldObject):
 				ship.get_component(StorageComponent).inventory.alter(res, amount)
 			if player is self.player:
 				ret_coords = point.to_tuple()
+
 				# HACK: Store starting ship as first unit group, and select it
 				def _preselect_player_ship(player_ship):
 					sel_comp = player_ship.get_component(SelectableComponent)

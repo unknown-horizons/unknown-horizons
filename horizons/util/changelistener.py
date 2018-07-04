@@ -164,6 +164,7 @@ def metaChangeListenerDecorator(event_name):
 		list_name = "__" + event_name + "_listeners"
 		event_call_number = "__" + event_name + "call_number"
 		hard_remove_event = "__hard_remove" + event_name
+
 		# trivial changelistener operations
 		def add(self, listener):
 			assert callable(listener)
@@ -206,6 +207,7 @@ def metaChangeListenerDecorator(event_name):
 		# use black __new__ magic to add the methods to the instances
 		# think of it as being executed in __init__
 		old_new = clas.__new__
+
 		def new(cls, *args, **kwargs):
 			# this is a proposed way of calling the "old" new:
 			#obj = super(cls, cls).__new__(cls)

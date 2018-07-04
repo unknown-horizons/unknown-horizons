@@ -34,6 +34,7 @@ class PychanAnimation:
 		files = [os.path.join(directory, filename)
 		         for filename in os.listdir(directory)
 		         if filename.endswith('.png')]
+
 		def find_int(f):
 			return int(re.search(r'\d+', os.path.basename(f)).group())
 		self.files = sorted(files, key=find_int)

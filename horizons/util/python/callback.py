@@ -38,6 +38,7 @@ class Callback:
 		It is guaranteed that the callbacks are executed in order.
 		@param args: callables"""
 		callbacks = [Callback(i) for i in args]
+
 		def tmp():
 			for i in callbacks:
 				i()

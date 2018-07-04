@@ -403,6 +403,7 @@ def test_ticket_2500(gui):
 
 	# Quit game via pause menu
 	gui.press_key(gui.Key.P)
+
 	def dialog():
 		gui.trigger('popup_window/okButton')
 

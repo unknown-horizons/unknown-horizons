@@ -50,6 +50,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 
 	def __init(self, x, y, owner):
 		self.owner = owner
+
 		class Tmp(fife.InstanceActionListener):
 			pass
 		self.InstanceActionListener = Tmp()

@@ -129,6 +129,7 @@ def print_production_lines():
 def print_verbose_lines():
 	print('Data has been moved, this view is unavailable for now')
 	return
+
 	def _output_helper_prodlines(string, list):
 			if len(list) == 1:
 					for res, amount in list:
