@@ -154,11 +154,11 @@ def print_verbose_lines():
 
 def print_res():
 	print('Resources\n{:2s}: {:-15s} {:5s} {:10s} {19s}'
-		  .format('id', 'resource', 'value', 'tradeable', 'shown_in_inventory'))
+	      .format('id', 'resource', 'value', 'tradeable', 'shown_in_inventory'))
 	print('=' * 56)
 	for id, name, value, trade, inventory in db("SELECT id, name, value, tradeable, shown_in_inventory FROM resource"):
 		print("{:2s}: {:-16s} {:4s} {:6s} {:13s} "
-			  .format(id, name[0:16], value or '-', trade or '-', inventory or '-'))
+		      .format(id, name[0:16], value or '-', trade or '-', inventory or '-'))
 
 
 def print_building():
@@ -169,19 +169,19 @@ def print_building():
 	print('\n' + '=' * 23 + 'R===P' + '=' * 50)
 	for b in Entities.buildings.itervalues():
 		print("{:2s}: {:-16s} {:3s} / {:2s} {:5s}x{:1s} {:4s}   {}"
-			  .format(b.id, b.name, b.running_costs or '--',
-					  b.running_costs_inactive or '--', b.size[0], b.size[1],
-					  b.radius, b.baseclass))
+		      .format(b.id, b.name, b.running_costs or '--',
+		              b.running_costs_inactive or '--', b.size[0], b.size[1],
+		              b.radius, b.baseclass))
 
 
 def print_unit():
 	print("Units (id: name (radius) from class)")
 	for u in Entities.units.itervalues():
 		print("{:2s}: {:-22s} ({:2s}) from {}"
-			  .format((u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID),
-					  u.name, u.radius, u.baseclass))
+		      .format((u.id - UNITS.DIFFERENCE_BUILDING_UNIT_ID),
+		              u.name, u.radius, u.baseclass))
 	print("Add {} to each ID if you want to use them."
-		  .format(UNITS.DIFFERENCE_BUILDING_UNIT_ID))
+	      .format(UNITS.DIFFERENCE_BUILDING_UNIT_ID))
 
 
 def print_storage():
@@ -215,7 +215,7 @@ def print_collectors():
 					continue
 				for id, amount in data.get('collectors').iteritems():
 					print("{:2s}: {:-18s} {} {} ({})"
-						  .format(b.id, b.name, amount, get_obj_name(id), id))
+					      .format(b.id, b.name, amount, get_obj_name(id), id))
 
 
 def print_building_costs():
@@ -267,11 +267,11 @@ def print_tier_data():
 
 def print_colors():
 	print('Colors\n{:2s}: {:12s}  {:3s}  {:3s}  {:3s}  {:3s}  #{:6s}'
-		  .format('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   '))
+	      .format('id', 'name', 'R ', 'G ', 'B ', 'A ', 'HEX   '))
 	print('=' * 45)
 	for id_, name, R, G, B, alpha in db("SELECT id, name, red, green, blue, alpha FROM colors"):
 		print('{:2s}: {:12s}  {:3s}  {:3s}  {:3s}  {:3s}  #'
-			  .format(id_, name, R, G, B, alpha) + 3 * '{:02x}'.format(R, G, B))
+		      .format(id_, name, R, G, B, alpha) + 3 * '{:02x}'.format(R, G, B))
 
 
 def print_scenario_actions():
@@ -327,40 +327,40 @@ def print_settler_needs():
 
 
 functions = {
-		'actions': print_scenario_actions,
-		'buildings': print_building,
-		'building_costs': print_building_costs,
-		'colors': print_colors,
-		'collectors': print_collectors,
-		'collector_restrictions': print_collector_restrictions,
-		'conditions': print_scenario_conditions,
-		'tiers': print_tier_data,
-		'lines': print_production_lines,
-		'names': print_names,
-		'resources': print_res,
-		'settler_needs': print_settler_needs,
-		'storage': print_storage,
-		'units': print_unit,
-		'verbose_lines': print_production_lines,
-		}
+	'actions': print_scenario_actions,
+	'buildings': print_building,
+	'building_costs': print_building_costs,
+	'colors': print_colors,
+	'collectors': print_collectors,
+	'collector_restrictions': print_collector_restrictions,
+	'conditions': print_scenario_conditions,
+	'tiers': print_tier_data,
+	'lines': print_production_lines,
+	'names': print_names,
+	'resources': print_res,
+	'settler_needs': print_settler_needs,
+	'storage': print_storage,
+	'units': print_unit,
+	'verbose_lines': print_production_lines,
+}
 abbrevs = {
-		'b': 'buildings',
-		'bc': 'building_costs',
-		'building': 'buildings',
-		'c': 'collectors',
-		'cl': 'colors',
-		'cr': 'collector_restrictions',
-		'i': 'tiers',
-		'tier': 'tiers',
-		'n': 'names',
-		'pl': 'lines',
-		'res': 'resources',
-		'settler_lines': 'tiers',
-		'sl': 'tiers',
-		'sn': 'settler_needs',
-		'unit': 'units',
-		'vl': 'verbose_lines',
-		}
+	'b': 'buildings',
+	'bc': 'building_costs',
+	'building': 'buildings',
+	'c': 'collectors',
+	'cl': 'colors',
+	'cr': 'collector_restrictions',
+	'i': 'tiers',
+	'tier': 'tiers',
+	'n': 'names',
+	'pl': 'lines',
+	'res': 'resources',
+	'settler_lines': 'tiers',
+	'sl': 'tiers',
+	'sn': 'settler_needs',
+	'unit': 'units',
+	'vl': 'verbose_lines',
+}
 
 flags = dict(functions)
 for (x, y) in abbrevs.iteritems(): # add convenience abbreviations to possible flags
@@ -370,11 +370,11 @@ args = sys.argv
 
 if len(args) == 1:
 	print('Start with one of those args: {} \nSupported abbreviations: {}'
-		  .format(sorted(functions.keys()), sorted(abbrevs.keys())))
+	      .format(sorted(functions.keys()), sorted(abbrevs.keys())))
 else:
 	for i in flags.iteritems():
 		if i[0].startswith(args[1]):
 			i[1]()
 			sys.exit(0)
 	print('Start with one of those args: {} \nSupported abbreviations: {}'
-		  .format(functions.keys(), abbrevs.keys()))
+	      .format(functions.keys(), abbrevs.keys()))
