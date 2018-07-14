@@ -139,6 +139,7 @@ class BuildTab(TabInterface):
 	def set_content(self):
 		"""Parses self.row_definitions and sets the content accordingly"""
 		settlement = LastActivePlayerSettlementManager().get()
+
 		def _set_entry(button, icon, building_id):
 			"""Configure a single build menu button"""
 			if self.unlocking_strategy == self.__class__.unlocking_strategies.single_per_tier and \
@@ -161,8 +162,8 @@ class BuildTab(TabInterface):
 				res_overview = self.session.ingame_gui.resource_overview
 				show_costs = Callback(res_overview.set_construction_mode, settlement, building.costs)
 				button.mapEvents({
-				  button.name + "/mouseEntered/buildtab" : show_costs,
-				  button.name + "/mouseExited/buildtab" : res_overview.close_construction_mode
+				  button.name + "/mouseEntered/buildtab": show_costs,
+				  button.name + "/mouseExited/buildtab": res_overview.close_construction_mode
 				  })
 
 				(enough_res, missing_res) = Build.check_resources({}, building.costs, settlement.owner, [settlement])

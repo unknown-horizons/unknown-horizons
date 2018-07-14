@@ -112,5 +112,5 @@ def diplomacy_graph():
 		pylab.show()
 
 
-if __name__ == "__main__" :
+if __name__ == "__main__":
 	diplomacy_graph()

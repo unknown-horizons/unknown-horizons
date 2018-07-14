@@ -71,14 +71,14 @@ def toggle_translucency(world):
 		for b in world.get_all_buildings():
 			if b.id in building_types:
 				fife_instance = b._instance
-				add( create_weakref(fife_instance) )
+				add(create_weakref(fife_instance))
 				fife_instance.keep_translucency = True
-				fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+				fife_instance.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
 
 	else: # undo translucency
 		for inst in world._translucent_buildings:
 			try:
-				inst().get2dGfxVisual().setTransparency( 0 )
+				inst().get2dGfxVisual().setTransparency(0)
 				inst().keep_translucency = False
 			except AttributeError:
 				pass # obj has been deleted, inst() returned None
@@ -351,7 +351,7 @@ def get_random_possible_ship_position(world):
 		position_possible = True
 		for first_sign in (-1, 0, 1):
 			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + offset * first_sign, y + offset * second_sign )
+				point_to_check = Point(x + offset * first_sign, y + offset * second_sign)
 				if world.get_island(point_to_check) is not None:
 					position_possible = False
 					break
@@ -384,6 +384,6 @@ def get_random_possible_coastal_ship_position(world):
 		# check if there is an island nearby (check only important coords)
 		for first_sign in (-1, 0, 1):
 			for second_sign in (-1, 0, 1):
-				point_to_check = Point( x + first_sign, y + second_sign )
+				point_to_check = Point(x + first_sign, y + second_sign)
 				if world.get_island(point_to_check) is not None:
 					return result

@@ -84,7 +84,7 @@ class PipetteTool(NavigationTool):
 	def _is_buildable(self, building_id):
 		building_tiers = BuildTab.get_building_tiers()
 		return building_id in building_tiers and \
-		       building_tiers[ building_id ] <= self.session.world.player.settler_level
+		       building_tiers[building_id] <= self.session.world.player.settler_level
 
 	def _add_coloring(self, obj):
 		if self._is_buildable(obj.id):

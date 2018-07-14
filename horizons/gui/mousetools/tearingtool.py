@@ -92,12 +92,12 @@ class TearingTool(NavigationTool):
 						Tear(building).execute(self.session)
 			elif self._hovering_over:
 				# we're hovering over a building, but none is selected, so this tear action isn't allowed
-				warehouses = [ b for b in self._hovering_over if
+				warehouses = [b for b in self._hovering_over if
 					       b.id == BUILDINGS.WAREHOUSE and b.owner.is_local_player]
 				if warehouses:
 					# tried to tear a warehouse, this is especially non-tearable
 					pos = warehouses[0].position.origin
-					self.session.ingame_gui.message_widget.add(point=pos, string_id="WAREHOUSE_NOT_TEARABLE" )
+					self.session.ingame_gui.message_widget.add(point=pos, string_id="WAREHOUSE_NOT_TEARABLE")
 
 			self.selected = WeakList()
 			self._hovering_over = WeakList()
@@ -198,7 +198,7 @@ class TearingTool(NavigationTool):
 					fife_instance.get2dGfxVisual().setTransparency(0)
 				else:
 					# restore regular translucency value, can also be different
-					fife_instance.get2dGfxVisual().setTransparency( BUILDINGS.TRANSPARENCY_VALUE )
+					fife_instance.get2dGfxVisual().setTransparency(BUILDINGS.TRANSPARENCY_VALUE)
 		self._transparent_instances.clear()
 
 	def _on_object_deleted(self, message):

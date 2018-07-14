@@ -46,29 +46,29 @@ class PauseMenu(Window):
 		self._gui.position_technique = 'center:center'
 
 		events = {
-			'load' : self._load_game,
-			'save' : self._save_game,
-			'sett' : lambda: self._windows.open(self.settings_dialog),
-			'help' : ingame_gui.toggle_help,
+			'load': self._load_game,
+			'save': self._save_game,
+			'sett': lambda: self._windows.open(self.settings_dialog),
+			'help': ingame_gui.toggle_help,
 			'start': self._windows.close,
-			'quit' : self._do_quit,
+			'quit': self._do_quit,
 		}
 
 		self._gui.mapEvents({
 			# icons
 			'loadgameButton': events['load'],
 			'savegameButton': events['save'],
-			'settingsLink'  : events['sett'],
-			'helpLink'      : events['help'],
-			'startGame'     : events['start'],
-			'closeButton'   : events['quit'],
+			'settingsLink': events['sett'],
+			'helpLink': events['help'],
+			'startGame': events['start'],
+			'closeButton': events['quit'],
 			# labels
 			'loadgame': events['load'],
 			'savegame': events['save'],
 			'settings': events['sett'],
-			'help'    : events['help'],
-			'start'   : events['start'],
-			'quit'    : events['quit'],
+			'help': events['help'],
+			'start': events['start'],
+			'quit': events['quit'],
 		})
 
 	def open(self):

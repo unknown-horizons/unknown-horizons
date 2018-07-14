@@ -68,7 +68,7 @@ class SavegameUpgrader:
 		metadata = SavegameManager.get_metadata(self.original_path)
 		rev = metadata['savegamerev']
 
-		if rev < VERSION.SAVEGAMEREVISION :
+		if rev < VERSION.SAVEGAMEREVISION:
 			if not SavegameUpgrader.can_upgrade(rev):
 				raise SavegameTooOld(revision=rev)
 

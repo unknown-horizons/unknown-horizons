@@ -100,21 +100,21 @@ def print_statistic(players, games, output_file):
 class Server:
 	def __init__(self, hostname, port, statistic_file=None):
 		packets.SafeUnpickler.set_mode(client=False)
-		self.host     = None # type: Optional[enet.Host]
+		self.host = None # type: Optional[enet.Host]
 		self.hostname = hostname
-		self.port     = port
+		self.port = port
 		self.statistic = {
 			'file':      statistic_file,
 			'timestamp': 0,
 			'interval':  1 * 60 * 1000,
 		}
 		self.capabilities = {
-			'minplayers'    : 2,
-			'maxplayers'    : 8,
+			'minplayers': 2,
+			'maxplayers': 8,
 			# NOTE: this defines the global packet size maximum.
 			# there's still a per packet maximum defined in the
 			# individual packet classes
-			'maxpacketsize' : 2 * 1024 * 1024,
+			'maxpacketsize': 2 * 1024 * 1024,
 		}
 		self.events = SimpleMessageBus(EVENTS)
 
@@ -148,9 +148,9 @@ class Server:
 		for event_name, callback in callbacks.items():
 			self.events.subscribe(event_name, callback)
 
-		self.games   = [] # type: List[Game]
+		self.games = [] # type: List[Game]
 		self.players = {} # type: Dict[bytes, Player]
-		self.i18n    = {} # type: Dict[str, gettext.GNUTranslations]
+		self.i18n = {} # type: Dict[str, gettext.GNUTranslations]
 		self.setup_i18n()
 
 	def setup_i18n(self):

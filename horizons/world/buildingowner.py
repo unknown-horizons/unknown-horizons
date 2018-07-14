@@ -73,7 +73,7 @@ class BuildingOwner:
 		for point in rect:
 			try:
 				if player is None or self.get_tile(point).settlement.owner == player:
-					settlements.add( self.get_tile(point).settlement )
+					settlements.add(self.get_tile(point).settlement)
 			except AttributeError:
 				# some tiles don't have settlements, we don't explicitly check for them cause
 				# its faster this way.

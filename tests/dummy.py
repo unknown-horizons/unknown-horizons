@@ -35,7 +35,7 @@ class Dummy:
 				class B(Dummy):
 					pass
 				return B
-			elif attr == 'VBox' or  attr == 'HBox':
+			elif attr == 'VBox' or attr == 'HBox':
 				class C(Dummy):
 					ATTRIBUTES = Dummy()
 				return C

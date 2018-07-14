@@ -107,6 +107,7 @@ class VersionHint(Popup):
 
 		dl_btn = Button(name="dl", text=T("Click to download"))
 		dl_btn.position = (48, 138) # i've tried, this button cannot be placed in a sane way
+
 		def do_dl():
 			webbrowser.open(self.data['download_url'])
 			dl_btn.text = T("A page has been opened in your browser.")
@@ -125,6 +126,7 @@ def setup_async_update_check():
 	# Store result from thread in a variable of the main thread. If we were to access FIFE
 	# from another thread, it tends to fail.
 	result = None
+
 	def wrapper():
 		nonlocal result
 		result = check_for_updates()

@@ -57,7 +57,7 @@ SafeUnpickler.add('server', data_gamestate)
 class cmd_chatmsg(packet):
 	def __init__(self, playername, msg):
 		self.playername = playername
-		self.chatmsg    = msg
+		self.chatmsg = msg
 
 
 SafeUnpickler.add('server', cmd_chatmsg)

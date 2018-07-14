@@ -32,6 +32,7 @@ class DbReader:
 		self.db_path = dbfile
 		self.connection = sqlite3.connect(dbfile)
 		self.connection.isolation_level = None
+
 		def regexp(expr, item):
 			r = re.compile(expr)
 			return r.match(item) is not None

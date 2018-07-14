@@ -235,7 +235,7 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 					self.log.debug("NetworkInterface: failed to join")
 					e = str(e)
 					if 'name' in e:
-						self.change_name(self._client_data.name + str(i), save=False )
+						self.change_name(self._client_data.name + str(i), save=False)
 					elif 'color' in e:
 						self.change_color(self._client_data.color + i, save=False)
 					else:
@@ -503,17 +503,17 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 
 class MPGame:
 	def __init__(self, game, netif):
-		self.uuid       = game.uuid
-		self.creator    = game.creator
-		self.map_name    = game.mapname
-		self.map_hash    = game.maphash
+		self.uuid = game.uuid
+		self.creator = game.creator
+		self.map_name = game.mapname
+		self.map_hash = game.maphash
 		self.player_limit = game.maxplayers
 		self.player_count = game.playercnt
-		self.players    = game.players
-		self.version    = game.clientversion
-		self.name       = game.name
-		self.password   = game.password
-		self.netif      = netif
+		self.players = game.players
+		self.version = game.clientversion
+		self.name = game.name
+		self.password = game.password
+		self.netif = netif
 
 	@property
 	def is_savegame(self):

@@ -87,11 +87,11 @@ class Rect(Shape):
 	def init_from_corners(cls, point1, point2):
 		"""Init rect with 2 points interpreted as 2 corner points"""
 		self = cls.__new__(cls)
-		x_coords = [ int(round(point1.x)), int(round(point2.x)) ]
+		x_coords = [int(round(point1.x)), int(round(point2.x))]
 		x_coords.sort()
 		self.left = x_coords[0]
 		self.right = x_coords[1]
-		y_coords = [ int(round(point1.y)), int(round(point2.y)) ]
+		y_coords = [int(round(point1.y)), int(round(point2.y))]
 		y_coords.sort()
 		self.top = y_coords[0]
 		self.bottom = y_coords[1]
@@ -132,17 +132,17 @@ class Rect(Shape):
 		# start with special case
 
 		# above, below
-		borders[self.top - radius] = ( self.left, self.right )
-		borders[self.bottom + radius] = ( self.left, self.right )
+		borders[self.top - radius] = (self.left, self.right)
+		borders[self.bottom + radius] = (self.left, self.right)
 
 		# left, right
-		for y in range( self.top, self.bottom + 1 ):
-			borders[y] = ( self.left - radius, self.right + radius)
+		for y in range(self.top, self.bottom + 1):
+			borders[y] = (self.left - radius, self.right + radius)
 
 		x = radius
 		radius_squared = radius ** 2
 		# calculate border for line y (y = 0 and y = radius are special cases handled above)
-		for y in range( 1, radius ):
+		for y in range(1, radius):
 			test_val = radius_squared - y ** 2
 			# TODO: check if it's possible if x is decreased more than once here.
 			#       if not, change the while to an if
@@ -214,8 +214,8 @@ class Rect(Shape):
 	def get_corners(self):
 		"""Returns corners of rect in this order: topleft topright bottomright bottomleft
 		@return: tuple of coord-tuples"""
-		return ( (self.left, self.top), (self.right, self.top),
-		         (self.right, self.bottom), (self.left, self.bottom) )
+		return ((self.left, self.top), (self.right, self.top),
+		        (self.right, self.bottom), (self.left, self.bottom))
 
 	def get_surrounding(self, include_corners=True):
 		"""Returns neighboring coords of the rect.

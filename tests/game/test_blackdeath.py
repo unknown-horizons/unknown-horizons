@@ -38,10 +38,10 @@ def test_blackdeath_destroy(s):
 	# need this so that disaster can break out
 	s.world.player.settler_level = 4
 
-	assert settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ]
+	assert settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 	inhabitants_before = settlement.inhabitants
 
-	residential_buildings = len(settlement.buildings_by_id[ BUILDINGS.RESIDENTIAL ])
+	residential_buildings = len(settlement.buildings_by_id[BUILDINGS.RESIDENTIAL])
 	assert residential_buildings > BlackDeathDisaster.MIN_INHABITANTS_FOR_BREAKOUT
 
 	while not dis_man._active_disaster:

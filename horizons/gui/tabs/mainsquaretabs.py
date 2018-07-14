@@ -185,7 +185,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def refresh(self):
 		self.widget.mapEvents({
-			'allow_upgrades/mouseClicked' : self.toggle_upgrades,
+			'allow_upgrades/mouseClicked': self.toggle_upgrades,
 		})
 
 		# refresh taxes

@@ -57,8 +57,8 @@ class Field(NatureBuildingResourceHandler):
 
 	def _check_covered_by_farm(self):
 		"""Warn in case there is no farm nearby to cultivate the field"""
-		farm_in_range = any( (farm.position.distance( self.position ) <= farm.radius) for farm in
-		                     self.settlement.buildings_by_id[BUILDINGS.FARM] )
+		farm_in_range = any((farm.position.distance(self.position) <= farm.radius) for farm in
+		                     self.settlement.buildings_by_id[BUILDINGS.FARM])
 		if not farm_in_range and self.owner.is_local_player:
 			pos = self.position.origin
 			self.session.ingame_gui.message_widget.add(point=pos, string_id="FIELD_NEEDS_FARM",

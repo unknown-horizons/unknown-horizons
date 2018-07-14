@@ -60,7 +60,7 @@ class HotkeyConfiguration:
 		self.listener = HotkeysListener(self._detect_keypress)
 
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self.save_settings)
-		self.widget.mapEvents({OkButton.DEFAULT_NAME : self.save_settings})
+		self.widget.mapEvents({OkButton.DEFAULT_NAME: self.save_settings})
 		self.widget.findChild(name="reset_to_default").capture(self.reset_to_default)
 
 	def _build_interface(self):
@@ -69,8 +69,8 @@ class HotkeyConfiguration:
 		for i, action in enumerate(self.actions):
 			button = self._create_button(action, i)
 			sec_button = self._create_button(action, i)
-			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button, 1)})
-			sec_button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, sec_button, 2)})
+			button.mapEvents({button.name + '/mouseClicked': Callback(self._detect_click_on_button, button, 1)})
+			sec_button.mapEvents({button.name + '/mouseClicked': Callback(self._detect_click_on_button, sec_button, 2)})
 			button_container.addChild(button)
 			sec_button_container.addChild(sec_button)
 			self.buttons.append(button)

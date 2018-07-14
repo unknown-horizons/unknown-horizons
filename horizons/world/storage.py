@@ -161,7 +161,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 			storeable_amount = self.get_free_space_for(res)
 			if amount > storeable_amount: # tried to store more than limit allows
 				ret = super().alter(res, storeable_amount)
-				return (amount - storeable_amount ) + ret
+				return (amount - storeable_amount) + ret
 
 		# no limit breach, just propagate call
 		return super().alter(res, amount)
@@ -242,7 +242,7 @@ class PositiveStorage(GenericStorage):
 	"""The positive storage doesn't allow to have negative values for resources."""
 	def alter(self, res, amount):
 		subtractable_amount = amount
-		if amount < 0 and ( amount + self[res] < 0 ): # tried to subtract more than we have
+		if amount < 0 and (amount + self[res] < 0): # tried to subtract more than we have
 			subtractable_amount = - self[res] # only amount where we keep a positive value
 		ret = super().alter(res, subtractable_amount)
 		return (amount - subtractable_amount) + ret

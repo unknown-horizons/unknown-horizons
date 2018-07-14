@@ -57,7 +57,7 @@ filename = tempfile.mkstemp(text=True)[1]
 conn = sqlite3.connect(filename)
 
 for db_file in PATHS.DB_FILES:
-	conn.executescript( open(db_file, "r").read())
+	conn.executescript(open(db_file, "r").read())
 
 conn.commit()
 
