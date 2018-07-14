@@ -49,8 +49,7 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 				{'PositiveSizedSlotStorage':
 					{'limit': 0}
 				}
-		}
-		,
+		},
 		'TradePostComponent',
 		'SettlementNameComponent',
 	)

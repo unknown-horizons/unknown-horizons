@@ -389,7 +389,7 @@ def prepare_multiplayer(game, trader_enabled=True, pirate_enabled=True, natural_
 	from horizons.mpsession import MPSession
 	# get random seed for game
 	uuid = game.uuid
-	random = sum([int(uuid[i : i + 2], 16) for i in range(0, len(uuid), 2)])
+	random = sum([int(uuid[i: i + 2], 16) for i in range(0, len(uuid), 2)])
 	session = MPSession(horizons.globals.db, NetworkInterface(), rng_seed=random)
 
 	# NOTE: this data passing is only temporary, maybe use a player class/struct

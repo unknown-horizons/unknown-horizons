@@ -88,11 +88,11 @@ locations_to_translate = [
 	OBJECT_PATH + 'buildings/',
 	OBJECT_PATH + 'units/ships/',
 	OBJECT_PATH + 'gui_buildmenu/',
-	]
+]
 
 files_to_skip = [
 	'usablefisher.yaml',
-	]
+]
 
 import os
 import sys
@@ -124,7 +124,7 @@ def parse_token(token, token_klass):
 	if not token.startswith(token_klass):
 		return token
 	try:
-		return getattr( classes[token_klass], token.split(".", 2)[1])
+		return getattr(classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = "This means that you either have to add an entry in horizons/constants.py "\
 		      "in the class {} for {},\nor {} is actually a typo." \
@@ -148,6 +148,7 @@ def content_from_file(filename):
 	object_strings = []
 	if not parsed:
 		return ''
+
 	def add_line(value, component, sep, key, filename):
 		if value.startswith('_ '):
 			text = 'T("{value}")'.format(value=value[2:])

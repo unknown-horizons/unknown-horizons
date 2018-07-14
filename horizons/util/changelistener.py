@@ -82,7 +82,7 @@ class ChangeListener:
 
 		if self.__event_call_number == 0:
 			self.__hard_remove = True
-			listener_list[:] = [ l for l in listener_list if l ]
+			listener_list[:] = [l for l in listener_list if l]
 
 	## Normal change listener
 	def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
@@ -164,6 +164,7 @@ def metaChangeListenerDecorator(event_name):
 		list_name = "__" + event_name + "_listeners"
 		event_call_number = "__" + event_name + "call_number"
 		hard_remove_event = "__hard_remove" + event_name
+
 		# trivial changelistener operations
 		def add(self, listener):
 			assert callable(listener)
@@ -195,7 +196,7 @@ def metaChangeListenerDecorator(event_name):
 			setattr(self, event_call_number, call_number)
 			if getattr(self, event_call_number) == 0:
 				setattr(self, hard_remove_event, True)
-				setattr(self, list_name, [ l for l in getattr(self, list_name) if l ])
+				setattr(self, list_name, [l for l in getattr(self, list_name) if l])
 
 		# add methods to class
 		setattr(clas, "add_" + event_name + "_listener", add)
@@ -206,6 +207,7 @@ def metaChangeListenerDecorator(event_name):
 		# use black __new__ magic to add the methods to the instances
 		# think of it as being executed in __init__
 		old_new = clas.__new__
+
 		def new(cls, *args, **kwargs):
 			# this is a proposed way of calling the "old" new:
 			#obj = super(cls, cls).__new__(cls)

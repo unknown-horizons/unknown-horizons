@@ -52,9 +52,9 @@ class MultiplayerMenu(Window):
 		self._mainmenu = mainmenu
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel' : self._windows.close,
-			'join'   : self._join_game,
-			'create' : self._create_game,
+			'cancel': self._windows.close,
+			'join': self._join_game,
+			'create': self._create_game,
 			'refresh': Callback(self._refresh, play_sound=True)
 		})
 
@@ -167,7 +167,7 @@ class MultiplayerMenu(Window):
 		else:
 			self._windows.open_popup(T("Fatal Network Error"),
 		                             T("Something went wrong with the network:") + '\n' +
-		                             str(exception) )
+		                             str(exception))
 			# FIXME: this shouldn't be necessary, the main menu window is still somewhere
 			# in the stack and we just need to get rid of all MP related windows
 			self._mainmenu.show_main()

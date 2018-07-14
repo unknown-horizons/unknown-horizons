@@ -48,8 +48,8 @@ class _Tooltip:
 		self.bg = None
 		self.label = None
 		self.mapEvents({
-			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
-			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
+			self.name + '/mouseEntered/tooltip': self.position_tooltip,
+			self.name + '/mouseExited/tooltip': self.hide_tooltip,
 			# Below causes frequent Segmentation Faults due to too many
 			# self.position_tooltip() calls.
 			# self.name + '/mouseMoved/tooltip' : self.position_tooltip,
@@ -58,11 +58,11 @@ class _Tooltip:
 			# will trigger this tooltip's parent widget to be hidden (or destroyed),
 			# which hides this tooltip first before hides the parent widget.
 			# Otherwise the tooltip will show forever.
-			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
+			self.name + '/mousePressed/tooltip': self.hide_tooltip,
 
 			# TODO: not sure if below are useful or not
 			# self.name + '/mouseReleased/tooltip' : self.position_tooltip,
-			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
+			self.name + '/mouseDragged/tooltip': self.hide_tooltip
 			})
 		self.tooltip_shown = False
 		self.cooldown = time.time()		# initial timer value

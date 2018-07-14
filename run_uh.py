@@ -237,7 +237,7 @@ def setup_debugging(options):
 			                           format(time.strftime("%Y-%m-%d_%H-%M-%S")))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
-			fife=os.path.join(os.getcwd(), 'fife.log')) )
+			fife=os.path.join(os.getcwd(), 'fife.log')))
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
@@ -248,6 +248,7 @@ def setup_debugging(options):
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
 		# FIFE python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
+
 		class StdOutDuplicator:
 			def write(self, line):
 				line = str(line)

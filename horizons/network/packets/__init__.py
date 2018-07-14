@@ -33,8 +33,8 @@ __version__ = '0.1'
 PICKLE_PROTOCOL = 2
 PICKLE_RECIEVE_FROM = 'server'
 PICKLE_SAFE = {
-	'client' : {},
-	'server' : {},
+	'client': {},
+	'server': {},
 } # type: Dict[str, Dict[str, Set[str]]]
 
 
@@ -63,7 +63,7 @@ class SafeUnpickler:
 		"""Adding SafeUnpickler to the pickle whitelist"""
 		global PICKLE_SAFE
 		module = klass.__module__
-		name  = klass.__name__
+		name = klass.__name__
 		if (module == cls.__module__ and name == cls.__name__):
 			raise RuntimeError("Adding SafeUnpickler to the pickle whitelist is not allowed")
 		types = ['client', 'server'] if origin == 'common' else [origin]

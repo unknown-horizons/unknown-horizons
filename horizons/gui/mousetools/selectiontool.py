@@ -40,7 +40,7 @@ class SelectionTool(NavigationTool):
 	def remove(self):
 		# Deselect if needed while exiting
 		if self.deselect_at_end:
-			selectables = self.filter_selectable( self.session.selected_instances )
+			selectables = self.filter_selectable(self.session.selected_instances)
 			for i in self.filter_component(SelectableComponent, selectables):
 				i.deselect()
 		super().remove()
@@ -65,7 +65,7 @@ class SelectionTool(NavigationTool):
 
 	def filter_owner(self, instances):
 		"""Only keep instances belonging to the user. This is used for multiselection"""
-		return [ i for i in instances if self.is_owned_by_player(i) ]
+		return [i for i in instances if self.is_owned_by_player(i)]
 
 	def fife_instance_to_uh_instance(self, instance):
 		"""Visual fife instance to uh game logic object or None"""
@@ -81,7 +81,7 @@ class SelectionTool(NavigationTool):
 		if evt.getButton() == fife.MouseEvent.LEFT and hasattr(self, 'select_begin'):
 			x, y = self.select_begin
 			xx, yy = evt.getX(), evt.getY()
-			do_multi = ( (x - xx) ** 2 + (y - yy) ** 2 ) >= 10 # from 3px (3*3 + 1)
+			do_multi = ((x - xx) ** 2 + (y - yy) ** 2) >= 10 # from 3px (3*3 + 1)
 			self.session.view.renderer['GenericRenderer'].removeAll(self.__class__._SELECTION_RECTANGLE_NAME)
 			if do_multi:
 				# draw a rectangle
@@ -104,8 +104,8 @@ class SelectionTool(NavigationTool):
 				False) # False for accurate
 
 			# get selection components
-			instances = ( self.fife_instance_to_uh_instance(i) for i in instances )
-			instances = [ i for i in instances if i is not None ]
+			instances = (self.fife_instance_to_uh_instance(i) for i in instances)
+			instances = [i for i in instances if i is not None]
 
 			# We only consider selectable items when dragging a selection box.
 			instances = self.filter_selectable(instances)
@@ -115,7 +115,7 @@ class SelectionTool(NavigationTool):
 			if any((self.is_owned_by_player(instance) for instance in instances)):
 				instances = self.filter_owner(instances)
 
-			self._update_selection( instances, do_multi )
+			self._update_selection(instances, do_multi)
 
 		elif evt.getButton() == fife.MouseEvent.RIGHT:
 			pass
@@ -227,7 +227,7 @@ class SelectionTool(NavigationTool):
 				instances = user_instances
 			else:
 				instances = [next(iter(instances))]
-		selectable = frozenset( self.filter_component(SelectableComponent, instances))
+		selectable = frozenset(self.filter_component(SelectableComponent, instances))
 
 		# apply changes
 		selected_components = set(self.filter_component(SelectableComponent,

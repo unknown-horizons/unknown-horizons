@@ -33,7 +33,7 @@ from horizons.world.buildability.terraincache import TerrainRequirement
 class FarmOptionCache:
 	def __init__(self, settlement_manager):
 		self.settlement_manager = settlement_manager
-		abstract_farm =  AbstractBuilding.buildings[BUILDINGS.FARM]
+		abstract_farm = AbstractBuilding.buildings[BUILDINGS.FARM]
 		self.field_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (3, 3), TerrainRequirement.LAND, False)
 		self.farm_spots_set = self.field_spots_set.intersection(settlement_manager.production_builder.simple_collector_area_cache.cache[(3, 3)])
 		self.road_spots_set = abstract_farm._get_buildability_intersection(settlement_manager, (1, 1), TerrainRequirement.LAND, False).union(settlement_manager.land_manager.roads)

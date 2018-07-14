@@ -70,7 +70,7 @@ class TestProductionLine(TestBase):
 		super().setUp()
 
 	def test_alter_production_time(self):
-		data = { 'time': 10 }
+		data = {'time': 10}
 		line = ProductionLine(1, data)
 
 		self.assertEqual(line.time, 10)

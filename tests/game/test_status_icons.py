@@ -112,7 +112,7 @@ def test_inventory_full(session, player):
 
 	inv = lj.get_component(StorageComponent).inventory
 	res = RES.BOARDS
-	inv.alter(res, inv.get_free_space_for( res ) )
+	inv.alter(res, inv.get_free_space_for(res))
 
 	session.run(seconds=1)
 

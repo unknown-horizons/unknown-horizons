@@ -240,6 +240,7 @@ class Session(LivingObject):
 
 		if savegame_data.get('rng_state', None):
 			rng_state_list = json.loads(savegame_data['rng_state'])
+
 			# json treats tuples as lists, but we need tuples here, so convert back
 			def rec_list_to_tuple(x):
 				if isinstance(x, list):

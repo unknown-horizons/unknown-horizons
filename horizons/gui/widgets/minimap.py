@@ -103,10 +103,10 @@ class Minimap:
 	** Handle clicks, remove overlay icon
 	"""
 	COLORS = {
-		"island":    (137, 117,  87),
-		"cam":       (  1,   1,   1),
-		"water":     (198, 188, 165),
-		"highlight": (255,   0,   0),  # for events
+		"island": (137, 117, 87),
+		"cam": (1, 1, 1),
+		"water": (198, 188, 165),
+		"highlight": (255, 0, 0),  # for events
 	}
 
 	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
@@ -118,14 +118,14 @@ class Minimap:
 
 	# Alpha-ordering determines the order:
 	RENDER_NAMES = {
-	  "background" : "c",
-	  "base" : "d",  # islands, etc.
-	  "warehouse" : "e",
-	  "ship" : "f",
-	  "cam" : "g",
-	  "ship_route" : "h",
-	  "highlight" : "l"
-	  }
+	    "background": "c",
+	    "base": "d",  # islands, etc.
+	    "warehouse": "e",
+	    "ship": "f",
+	    "cam": "g",
+	    "ship_route": "h",
+	    "highlight": "l"
+	    }
 
 	__minimap_id_counter = itertools.count()
 	__ship_route_counter = itertools.count()
@@ -308,11 +308,11 @@ class Minimap:
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({
-			icon.name + '/mousePressed' : self._on_click,
-			icon.name + '/mouseDragged' : self._on_drag,
-			icon.name + '/mouseEntered' : self._mouse_entered,
-			icon.name + '/mouseMoved' : self._mouse_moved,
-			icon.name + '/mouseExited' : self._mouse_exited,
+			icon.name + '/mousePressed': self._on_click,
+			icon.name + '/mouseDragged': self._on_drag,
+			icon.name + '/mouseEntered': self._mouse_entered,
+			icon.name + '/mouseMoved': self._mouse_moved,
+			icon.name + '/mouseExited': self._mouse_exited,
 		})
 
 	def default_on_click(self, event, drag):
@@ -413,7 +413,7 @@ class Minimap:
 
 		# grow the circle from MIN_RAD to MAX_RAD and back with STEPS steps, where the
 		# interval between steps is INTERVAL seconds
-		MIN_RAD = int( 3 * factor) # pixel
+		MIN_RAD = int(3 * factor) # pixel
 		MAX_RAD = int(12 * factor) # pixel
 		STEPS = int(20 * factor)
 		INTERVAL = (math.pi / 16) * factor
@@ -437,7 +437,7 @@ class Minimap:
 			for x, y in Circle(Point(*tup), radius=radius).get_border_coordinates():
 				draw_point(render_name, fife.Point(x, y), *color)
 
-			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
+			ExtScheduler().add_new_object(lambda: high(i), self, INTERVAL, loops=1)
 
 		high()
 		return STEPS * INTERVAL
@@ -578,10 +578,7 @@ class Minimap:
 			draw_point = self.minimap_image.rendertarget.addPoint
 			if ship in self.session.selected_instances:
 				draw_point(render_name, dummy_point0, *Minimap.COLORS["water"])
-				for x_off, y_off in ((-2,  0),
-				                     (+2,  0),
-				                     ( 0, -2),
-				                     ( 0, +2)):
+				for x_off, y_off in ((-2, 0), (+2, 0), (0, -2), (0, +2)):
 					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
 					draw_point(render_name, dummy_point1, *color)
 
@@ -689,7 +686,7 @@ class _MinimapTransform:
 		y = (y - self.location.center.y) / self._world_minimap_ratio_y
 
 		# rotate
-		x_ =  x * self._cos_rotation + y * self._sin_rotation
+		x_ = x * self._cos_rotation + y * self._sin_rotation
 		y_ = -x * self._sin_rotation + y * self._cos_rotation
 
 		# undo centering and translate to correct position

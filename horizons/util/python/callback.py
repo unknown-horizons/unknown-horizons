@@ -37,7 +37,8 @@ class Callback:
 		Use Callback objects to pass arguments to the callbacks.
 		It is guaranteed that the callbacks are executed in order.
 		@param args: callables"""
-		callbacks = [ Callback(i) for i in args ]
+		callbacks = [Callback(i) for i in args]
+
 		def tmp():
 			for i in callbacks:
 				i()

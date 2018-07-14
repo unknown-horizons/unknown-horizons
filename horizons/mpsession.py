@@ -52,7 +52,7 @@ class MPSession(Session):
 			self.timer.ticks_per_second = 0
 			self.ingame_gui.windows.open_popup(T("Fatal Network Error"),
 		                                       T("Something went wrong with the network:") + '\n' +
-		                                       str(exception) )
+		                                       str(exception))
 			self.quit()
 		else:
 			self.ingame_gui.open_popup(T("Error"), str(exception))

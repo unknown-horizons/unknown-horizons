@@ -83,7 +83,7 @@ def test_ticket_1369(gui):
 	world = gui.session.world
 	for player in world.players:
 		if player is not ship.owner:
-			world.diplomacy.add_ally_pair( ship.owner, player )
+			world.diplomacy.add_ally_pair(ship.owner, player)
 
 	# move ship near foreign warehouse and wait for it to arrive
 	move_ship(gui, ship, (68, 23))
@@ -227,7 +227,7 @@ def test_ticket_1520(gui):
 	gui.cursor_press_button(13, 11, 'left')
 
 	# remove tent
-	Tear( ground_map[(7, 9)].object ).execute(gui.session)
+	Tear(ground_map[(7, 9)].object).execute(gui.session)
 
 	# release mouse button, finish build
 	gui.cursor_release_button(13, 11, 'left')
@@ -403,6 +403,7 @@ def test_ticket_2500(gui):
 
 	# Quit game via pause menu
 	gui.press_key(gui.Key.P)
+
 	def dialog():
 		gui.trigger('popup_window/okButton')
 
