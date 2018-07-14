@@ -88,11 +88,11 @@ locations_to_translate = [
 	OBJECT_PATH + 'buildings/',
 	OBJECT_PATH + 'units/ships/',
 	OBJECT_PATH + 'gui_buildmenu/',
-	]
+]
 
 files_to_skip = [
 	'usablefisher.yaml',
-	]
+]
 
 import os
 import sys
