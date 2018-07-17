@@ -124,3 +124,14 @@ class GroundUnitOverviewTab(OverviewTab):
 class GenericOverviewTab(OverviewTab):
 	"""Name and running costs."""
 	widget = 'overview_generic.xml'
+
+class StatusOverviewTab(OverviewTab):
+	"""Number of building in effect. """
+	widget = 'overview_status.xml'
+
+	def init_widget(self):
+		super().init_widget()
+		number_affected_buildings = self.widget.child_finder(name='number_affected_buildings')
+		all_building_range = ''
+		affected_range = ''
+		number_affected_buildings.text = affected_range + '/' + all_building_range
