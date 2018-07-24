@@ -35,6 +35,7 @@ from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
+from horizons.component.settlement import SettlementComponent
 from horizons.world.production.producer import (
 	GroundUnitProducer, Producer, QueueProducer, ShipProducer)
 
@@ -78,6 +79,7 @@ class ComponentHolder:
 	    'SoldierNameComponent': SoldierNameComponent,
 	    'InhabitantNameComponent': InhabitantNameComponent,
 	    'ProducerComponent': Producer,
+		'SettlementComponent': SettlementComponent,
 	    'SettlementNameComponent': SettlementNameComponent,
 	    'ShipNameComponent': ShipNameComponent,
 	    'StorageComponent': StorageComponent,

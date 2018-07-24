@@ -37,7 +37,7 @@ from .mainsquaretabs import (
 	AccountTab, MainSquareCitizensTab, MainSquareMerchantsTab, MainSquareOverviewTab,
 	MainSquarePioneersTab, MainSquareSailorsTab, MainSquareSettlersTab)
 from .overviewtab import GenericOverviewTab, GroundUnitOverviewTab, OverviewTab
-from .productiontabs import LumberjackOverviewTab, ProductionOverviewTab, SmallProductionOverviewTab, DoctorOverviewTab, FireStationOverviewTab
+from .productiontabs import LumberjackOverviewTab, ProductionOverviewTab, SmallProductionOverviewTab, SocialOverviewTab
 from .residentialtabs import SettlerOverviewTab
 from .selectmultitab import SelectMultiTab
 from .shiptabs import (

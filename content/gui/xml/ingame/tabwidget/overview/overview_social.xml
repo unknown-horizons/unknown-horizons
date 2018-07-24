@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Overview tab for buildings -->
+<!-- Overview tab for buildings like Fire Station, Doctor to show number of effected buildings  -->
 <Container size="250,450">
 <TabBG amount="6" />
 
@@ -28,8 +28,9 @@
 	<!-- Filled with a (python-modified) production line template specified in
 		content/gui/xml/ingame/templates/overview_productionline.xml -->
 
-    <HBox name="information" min_size="125,30" max_size="225,30" position="25,180">
-		<Label name="affected_buildings" helptext="Number of affected buildings" />
+	<HBox position="20, 200">
+		<Label name="effected_buildings" helptext="Number of effected buildings" />
 	</HBox>
+
 </Container>
 </Container>

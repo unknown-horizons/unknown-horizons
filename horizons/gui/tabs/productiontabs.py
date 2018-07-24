@@ -333,30 +333,17 @@ class SmallProductionOverviewTab(ProductionOverviewTab):
 		productions = {p for p in all_farm_productions for res in p.get_consumed_resources().keys() if res in possible_res}
 		return sorted(productions, key=operator.methodcaller('get_production_line_id'))
 
-class DoctorOverviewTab(ProductionOverviewTab):
-	"""Same but with extra number of effected buildings"""
-	widget = 'overview_doctor.xml'
+
+class SocialOverviewTab(ProductionOverviewTab):
+	"""Same as ProductionOverviewTab but with extra number of effected buildings"""
+	widget = 'overview_social.xml'
 
 	def init_widget(self):
 		super().init_widget()
 		self.update_data()
 
 	def update_data(self):
-		field_comp = self.instance.get_component(FieldBuilder)
+		#field_comp = self.instance.get_component(FieldBuilder)
 		label = self.widget.child_finder('affected_buildings')
 
-		label.text = 'niggerFaggot'
-
-class FireStationOverviewTab(ProductionOverviewTab):
-	"""Same only with number of burning buildings."""
-	widget = 'overview_firestation.xml'
-
-	def init_widget(self):
-		super().init_widget()
-		self.update_data()
-
-	def update_data(self):
-		field_comp = self.instance.get_component(FieldBuilder)
-		label = self.widget.child_finder('affected_buildings')
-
-		label.text = 'sample_text'
+		label.text = 'Effected: 0'

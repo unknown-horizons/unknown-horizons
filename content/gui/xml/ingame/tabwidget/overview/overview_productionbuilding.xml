@@ -28,8 +28,5 @@
 	<!-- Filled with a (python-modified) production line template specified in
 		content/gui/xml/ingame/templates/overview_productionline.xml -->
 
-	<HBox name="information" min_size="125,30" max_size="225,30" position="25,180">
-		<Label name="affected_buildings" helptext="Number of affected buildings" />
-	</HBox>
 </Container>
 </Container>
