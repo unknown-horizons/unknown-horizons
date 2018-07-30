@@ -241,7 +241,7 @@ class SettingsTab(TabInterface):
 		})
 
 	def _set_cursor_tile(self, tile):
-		self._tile_selected = 1;
+		self._tile_selected = 1
 		self._current_tile = tile
 		self._ingame_gui.set_cursor('tile_layer', self._current_tile)
 
@@ -250,7 +250,7 @@ class SettingsTab(TabInterface):
 
 	def _cursor_outside(self):
 		if (self._tile_selected == 1 or self._ingame_gui.which == 'tile_layer'):
-			self._tile_selected = 0;
+			self._tile_selected = 0
 			self._ingame_gui.set_cursor('tile_layer', self._current_tile)
 		else:
 			self._ingame_gui.set_cursor('default')
