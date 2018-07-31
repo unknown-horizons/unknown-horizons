@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9e3f16e\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-09-20 22:49+0000\n"
+"PO-Revision-Date: 2018-07-16 21:43+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/tutorial/sk/>\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 3.1-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -324,9 +324,9 @@ msgid "Don't forget to connect them to your Warehouse with Trails!"
 msgstr "Nezabudni ich pripojiť so Skladom!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
 msgid "Build a Main Square. Choose an area without many economy buildings."
-msgstr "Postav Tržnicu. Vyber si oblasť, ktorá nie je ekonomicky silná."
+msgstr ""
+"Postav Tržnicu. Vyber oblasť, ktorá nie je obsadená ekonomickými budovami."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
@@ -335,7 +335,7 @@ msgstr "NOVÁ ÚLOHA: POSTAV TRŽNICU"
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "Vaši obyvatelia potrebujú tržnicu odkiaľ budú zberať tovar."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -343,6 +343,8 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
+"To znamená, že budú potrebovať cestu medzi ich domom a tržnicou. Taktiež "
+"tržnica sama o sebe sa správa ako cesta, okolité domy nepotrebujú cestu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -350,6 +352,8 @@ msgid ""
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
+"Všetok tovar v tvojom skladisku je dostupný v tomto tržisku, aby obyvatelia "
+"nemuseli chodiť k rybárovi alebo dokonca do skladiska."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -357,6 +361,8 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Mali by ste sa vyhnúť stavaniu osadenstva blízko svojich drevorubačských "
+"chatŕč keďže stany zmenšia zalesnenú plochu."
 
 #. This is the text body of a logbook page.
 msgid ""
