@@ -32,7 +32,6 @@ If you want to dig into the game, continue to horizons/main.py. """
 
 
 import functools
-import imp
 import locale
 import logging
 import logging.config
