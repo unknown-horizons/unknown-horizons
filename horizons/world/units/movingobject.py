@@ -209,7 +209,6 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		else:
 			self.__is_moving = True
 
-
 		# HACK: 2 different pathfinding systems are being used here and they
 		# might not always match.
 		# If the graphical location is too far away from the actual location,
