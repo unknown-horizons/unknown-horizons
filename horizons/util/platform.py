@@ -100,16 +100,25 @@ def get_user_game_directories():
 		(os.environ.get("XDG_CONFIG_HOME"), UH)],
 		config_dir)
 
+	if not os.path.exists(config_dir):
+		os.mkdir(config_dir)
+
 	data_dir = _try_directories([
 		(os.environ.get("UH_USER_DATA_DIR"),),
 		(os.environ.get("UH_USER_DIR"),),
 		(os.environ.get("XDG_DATA_HOME"), UH)],
 		data_dir)
 
+	if not os.path.exists(data_dir):
+		os.mkdir(data_dir)
+
 	cache_dir = _try_directories([
 		(os.environ.get("UH_USER_CACHE_DIR"),),
 		(os.environ.get("UH_USER_DIR"), "cache"),
 		(os.environ.get("XDG_CACHE_HOME"), UH)],
 		cache_dir)
+
+	if not os.path.exists(cache_dir):
+		os.mkdir(cache_dir)
 
 	return config_dir, data_dir, cache_dir
