@@ -27,9 +27,9 @@ script:
   - "cp -a /usr/lib/python3/dist-packages/fife/ $VIRTUAL_ENV/lib/python3.6/site-packages/"
   - "cp -a /usr/lib/python3/dist-packages/enet* $VIRTUAL_ENV/lib/python3.6/site-packages/"
   - "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/enet*.so"
-  - "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/fife/*.so"
-  #- mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.cpython-36m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.so
-  #- mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.cpython-36m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.so
+  #- "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/fife/*.so"
+  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.cpython-36m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.so
+  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.cpython-36m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.so
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - isort -c -rc horizons tests *.py
   - pycodestyle horizons tests *.py development
