@@ -101,36 +101,36 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
+  - [Message, 'Postav Tržnicu. Vyber oblasť, ktorá nie je obsadená ekonomickými budovami.']
   - [Headline, 'NOVÁ ÚLOHA: POSTAV TRŽNICU']
   - [Image, content/gui/images/background/hr.png]
-  - Your residents need a main square where they can fetch their goods from.
-  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
-  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
+  - Vaši obyvatelia potrebujú tržnicu odkiaľ budú zberať tovar.
+  - To znamená, že budú potrebovať cestu medzi ich domom a tržnicou. Taktiež tržnica sama o sebe sa správa ako cesta, okolité domy nepotrebujú cestu.
+  - Všetok tovar v tvojom skladisku je dostupný v tomto tržisku, aby obyvatelia nemuseli chodiť k rybárovi alebo dokonca do skladiska.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Mali by ste sa vyhnúť stavaniu osadenstva blízko svojich drevorubačských chatŕč keďže stany zmenšia zalesnenú plochu.
+  - Spoločnosti nepotrebujú prístup k stanom, preto nepotrebujete vybudovať cestu medzi tržiskom a napr. drevorubackým stanom.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Úloha: Postav tržnicu.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Teraz sa bližšie pozrime na tržnicu.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - V záložke "Účet" môžete vidieť prehľad financí vášho ostrova, ktorý zahrňuje všetky platby, ktoré platíte a všetky dane, ktoré dostávate.
+  - Položky "Nákup" a "Predaj" ukazujú Vašu obchodnú bilanciu a budú vysvetlené neskôr.
+  - Pokiaľ je vaša bilancia kladná, ste v zisku.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - ďalej sú tu záložky odpovedajúce jednotlivým úrovňam. Tu môžete sledovať štatistiky o vašich obyvateľoch. Tu môžete nastaviť celkovú daň pre každú úroveň a povoliť alebo zakázať obyvateľom na danej úrovni postúpiť do vyššej úrovne.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Message, Postavte stan a prepojte ho s jeho tržiskom ak je to potrebné.]
+  - [Headline, 'NOVÁ ÚLOHA: OBYTNÉ BUDOVY']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - Osadníci chcú mať strechu nad hlavou, inak ich nenapadne usadiť sa vo vašom meste! Potrebujete im zaobstarať stany.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
   - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
@@ -657,4 +657,4 @@ metadata:
   locale: sk
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 44 translated messages, 1 fuzzy translation, 143 untranslated messages.
+  translation_status: 59 translated messages, 129 untranslated messages.

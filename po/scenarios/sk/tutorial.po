@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9e3f16e\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2018-07-16 21:43+0000\n"
+"PO-Revision-Date: 2018-09-25 17:36+0000\n"
 "Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/tutorial/sk/>\n"
 "Language: sk\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.1-dev\n"
+"X-Generator: Weblate 3.2-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -369,32 +369,40 @@ msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the Main Square and e.g. your Lumberjack's Tent."
 msgstr ""
+"Spoločnosti nepotrebujú prístup k stanom, preto nepotrebujete vybudovať "
+"cestu medzi tržiskom a napr. drevorubackým stanom."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Main Square."
-msgstr ""
+msgstr "Úloha: Postav tržnicu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
 msgstr ""
+"\n"
+"Teraz sa bližšie pozrime na tržnicu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"V záložke \"Účet\" môžete vidieť prehľad financí vášho ostrova, ktorý "
+"zahrňuje všetky platby, ktoré platíte a všetky dane, ktoré dostávate."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Položky \"Nákup\" a \"Predaj\" ukazujú Vašu obchodnú bilanciu a budú "
+"vysvetlené neskôr."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Pokiaľ je vaša bilancia kladná, ste v zisku."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -402,20 +410,26 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"ďalej sú tu záložky odpovedajúce jednotlivým úrovňam. Tu môžete sledovať "
+"štatistiky o vašich obyvateľoch. Tu môžete nastaviť celkovú daň pre každú "
+"úroveň a povoliť alebo zakázať obyvateľom na danej úrovni postúpiť do vyššej "
+"úrovne."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Tent and connect it to the Main Square if necessary."
-msgstr ""
+msgstr "Postavte stan a prepojte ho s jeho tržiskom ak je to potrebné."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NOVÁ ÚLOHA: OBYTNÉ BUDOVY"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Osadníci chcú mať strechu nad hlavou, inak ich nenapadne usadiť sa vo vašom "
+"meste! Potrebujete im zaobstarať stany."
 
 #. This is the text body of a logbook page.
 msgid ""
