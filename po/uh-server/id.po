@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2018-12-05 11:10+0000\n"
+"PO-Revision-Date: 2018-12-06 13:09+0000\n"
 "Last-Translator: Adnan Habib Laode <habib.laode@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/uh-server/"
 "id/>\n"
@@ -20,11 +20,10 @@ msgstr ""
 "X-Generator: Weblate 3.4-dev\n"
 
 #: horizons/network/server.py:249
-#, fuzzy
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Protokol permainan berdua tua atau tidak didukung. Mohon cek versi permainan "
-"anda"
+"Protokol permainan bersama sudah tua atau tidak didukung lagi. Mohon cek "
+"versi permainan anda"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
