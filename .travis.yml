@@ -1,4 +1,5 @@
-language: cpp
+language: python
+cache: pip
 sudo: required
 dist: xenial
 python:
@@ -15,21 +16,6 @@ before_install:
   - "export DISPLAY=:99.0"
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   - sleep 3 # give xvfb some time to start
-  # Linux Build
-  # change gcc to version 7
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 20; sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 20; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --config gcc; sudo update-alternatives --config g++; fi
-  # change clang to version 5.0
-  #- if [ $TRAVIS_OS_NAME == linux ]; then sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-5.0 20; sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-5.0 20; fi
-  #- if [ $TRAVIS_OS_NAME == linux ]; then sudo rm -f /usr/local/clang-3.9.0/bin/clang; sudo rm -f /usr/local/clang-3.9.0/bin/clang++; sudo update-alternatives --config clang; sudo update-alternatives --config clang++; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get -qq update && sudo apt-get install -y libgle3-dev libvorbis-dev libalut-dev cppcheck; fi
-  # update swig to version 3.x
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo sh -c 'echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" >> /etc/apt/sources.list'; sudo apt-get update -qq; sudo apt-get install -yqq swig3.0/trusty-backports; fi
-  # install newer version of pylint, the one fetched with apt-get is broken
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo pip install pylint; fi
-  # MacOS Build
-  - if [ $TRAVIS_OS_NAME == osx ]; then HOMEBREW_NO_AUTO_UPDATE=1 brew install boost swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew upgrade boost swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis python3 python || brew outdated boost swig sdl2 sdl2_image sdl2_ttf freetype openal-soft tinyxml glew libvorbis  python3 python; fi
-  - cmake --version
 
 install:
   - sudo apt-get install python3-fife python3-enet libfifechan0.1.4
