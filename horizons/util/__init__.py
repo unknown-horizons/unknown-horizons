@@ -22,12 +22,13 @@
 import os
 
 
-def create_user_dirs():
+def create_user_dirs(migrate=True):
 	"""Creates the userdir and subdirs. Includes from horizons."""
 	from horizons.constants import PATHS
 	from horizons.util.migratepaths import migrate_paths
 
-	migrate_paths()
+	if migrate:
+		migrate_paths()
 
 	for directory in (PATHS.LOG_DIR, PATHS.USER_MAPS_DIR, PATHS.SCREENSHOT_DIR):
 		if not os.path.isdir(directory):
