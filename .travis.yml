@@ -28,8 +28,8 @@ script:
   - "cp -a /usr/lib/python3/dist-packages/enet* $VIRTUAL_ENV/lib/python3.6/site-packages/"
   - "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/enet*.so"
   #- "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/fife/*.so"
-  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.cpython-37m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.so
-  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.cpython-37m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.so
+  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.cpython-*-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.so
+  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.cpython-*-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.so
   - python3 -c 'import sys; print(sys.path)'
   - ls -al '/home/travis/virtualenv/python3.6.7/lib/python3.6/site-packages/fife/'
   - python3 -c 'from fife import fife; print(fife.getVersion())'
