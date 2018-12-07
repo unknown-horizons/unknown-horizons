@@ -109,7 +109,6 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH, 'Language', 'uni_language', language_names,
 				callback=self._apply_Language, on_change=self._on_Language_changed),
 
-			Setting(UH, 'MinimapRotation', 'minimaprotation'),
 			Setting(UH, 'UninterruptedBuilding', 'uninterrupted_building'),
 			Setting(UH, 'AutoUnload', 'auto_unload'),
 			Setting(UH, 'DebugLog', 'debug_log', callback=self._apply_DebugLog),
@@ -228,13 +227,13 @@ class SettingsDialog(PickBeltWidget, Window):
 		a '%' suffix."""
 		value_label = self.widget.findChild(name=widget.name + '_value')
 		value = {
-			'volume_music':      lambda x: '{:d}%'.format(int(500 * x)),
-			'volume_effects':    lambda x: '{:d}%'.format(int(200 * x)),
-			'mousesensitivity':  lambda x: '{:.1f}x'.format(10 * x),
-			'autosaveinterval':  lambda x: '{:.1f}'.format(x),
-			'autosavemaxcount':  lambda x: '{:d}'.format(int(x)),
+			'volume_music': lambda x: '{:d}%'.format(int(500 * x)),
+			'volume_effects': lambda x: '{:d}%'.format(int(200 * x)),
+			'mousesensitivity': lambda x: '{:.1f}x'.format(10 * x),
+			'autosaveinterval': lambda x: '{:.1f}'.format(x),
+			'autosavemaxcount': lambda x: '{:d}'.format(int(x)),
 			'quicksavemaxcount': lambda x: '{:d}'.format(int(x)),
-			'scrollspeed':       lambda x: '{:.1f}'.format(x),
+			'scrollspeed': lambda x: '{:.1f}'.format(x),
 		}[widget.name](widget.value)
 		value_label.text = value
 

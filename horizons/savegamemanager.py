@@ -53,7 +53,7 @@ class SavegameManager:
 	"""
 	log = logging.getLogger("savegamemanager")
 
-	savegame_dir = os.path.join(PATHS.USER_DIR, "save")
+	savegame_dir = PATHS.SAVEGAME_DIR
 	autosave_dir = os.path.join(savegame_dir, "autosave")
 	multiplayersave_dir = os.path.join(savegame_dir, "multiplayer_save")
 	quicksave_dir = os.path.join(savegame_dir, "quicksave")
@@ -100,7 +100,9 @@ class SavegameManager:
 		@return: list of names to be displayed for each file.
 		"""
 		displaynames = []
+
 		def get_timestamp_string(savegameinfo):
+
 			if savegameinfo['timestamp'] == -1:
 				return ""
 			timestamp = time.localtime(savegameinfo['timestamp'])

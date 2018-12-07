@@ -46,12 +46,12 @@ class StanceComponent(Component):
 		super().__init__()
 		self.state = 'idle'
 		self.action = {
-		    'idle' : self.act_idle,
-		    'user_attack' : self.act_user_attack,
-		    'user_move' : self.act_user_move,
-		    'move_back' : self.act_move_back,
-		    'auto_attack' : self.act_auto_attack,
-		    'flee' : self.act_flee,
+		    'idle': self.act_idle,
+		    'user_attack': self.act_user_attack,
+		    'user_move': self.act_user_move,
+		    'move_back': self.act_move_back,
+		    'auto_attack': self.act_auto_attack,
+		    'flee': self.act_flee,
 		}
 
 	def initialize(self):
@@ -306,4 +306,4 @@ class FleeStance(StanceComponent):
 		return min(enemies, key=sort_order)
 
 
-DEFAULT_STANCES = [ HoldGroundStance, AggressiveStance, NoneStance, FleeStance ]
+DEFAULT_STANCES = [HoldGroundStance, AggressiveStance, NoneStance, FleeStance]

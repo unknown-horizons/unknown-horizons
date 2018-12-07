@@ -30,7 +30,6 @@ import horizons.globals
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettingChanged
 from horizons.util.shapes import Circle, Point, Rect
 
 
@@ -66,6 +65,7 @@ def get_minimap_color(world_coords, world, island_color, water_color):
 	else:
 		color = water_color
 	return color
+
 
 def iter_minimap_points_colors(location, world, island_color, water_color):
 	"""Return an iterator over the pixels of a minimap of the given world.
@@ -103,10 +103,10 @@ class Minimap:
 	** Handle clicks, remove overlay icon
 	"""
 	COLORS = {
-		"island":    (137, 117,  87),
-		"cam":       (  1,   1,   1),
-		"water":     (198, 188, 165),
-		"highlight": (255,   0,   0),  # for events
+		"island": (137, 117, 87),
+		"cam": (1, 1, 1),
+		"water": (198, 188, 165),
+		"highlight": (255, 0, 0),  # for events
 	}
 
 	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
@@ -118,14 +118,14 @@ class Minimap:
 
 	# Alpha-ordering determines the order:
 	RENDER_NAMES = {
-	  "background" : "c",
-	  "base" : "d",  # islands, etc.
-	  "warehouse" : "e",
-	  "ship" : "f",
-	  "cam" : "g",
-	  "ship_route" : "h",
-	  "highlight" : "l",
-	  }
+	    "background": "c",
+	    "base": "d",  # islands, etc.
+	    "warehouse": "e",
+	    "ship": "f",
+	    "cam": "g",
+	    "ship_route": "h",
+	    "highlight": "l"
+	    }
 
 	__minimap_id_counter = itertools.count()
 	__ship_route_counter = itertools.count()
@@ -135,7 +135,7 @@ class Minimap:
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 
 	def __init__(self, position, session, view, targetrenderer, imagemanager, renderer=None, world=None,
-	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None):
+	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None, mousearea=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param world: World object or fake thereof
@@ -144,7 +144,7 @@ class Minimap:
 		@param targetrenderer: fife target renderer for drawing on icons
 		@param imagemanager: fife imagemanager for drawing on icons
 		@param cam_border: boolean, whether to draw the cam border
-		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
+		@param use_rotation: boolean, whether to use rotation
 		@param on_click: function taking 1 argument or None for scrolling
 		@param preview: flag, whether to only show the map as preview
 		@param tooltip: always show this tooltip when cursor hovers over minimap
@@ -157,7 +157,9 @@ class Minimap:
 		else: # assume icon
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
-			self.use_overlay_icon(self.icon)
+			if mousearea is None:
+				mousearea = self.icon
+			self.use_overlay_icon(mousearea)
 
 		# FIXME PY3 width / height of icon is sometimes zero. Why?
 		if self.location.height == 0 or self.location.width == 0:
@@ -184,20 +186,13 @@ class Minimap:
 
 		self.minimap_image = _MinimapImage(self, targetrenderer)
 
-		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
-		if self.use_rotation:
-			SettingChanged.subscribe(self._on_setting_changed)
-
 		self.transform = None
-
 
 	def end(self):
 		self.disable()
 		self.world = None
 		self.session = None
 		self.renderer = None
-		if self.use_rotation:
-			SettingChanged.unsubscribe(self._on_setting_changed)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
@@ -220,9 +215,9 @@ class Minimap:
 			return # don't draw while loading
 		if self.transform is None:
 			self.transform = _MinimapTransform(self.world.map_dimensions,
-									  self.location,
-									  0,
-									  self._get_rotation_setting())
+			                                   self.location,
+			                                   0,
+			                                   self.use_rotation)
 			self.update_rotation()
 
 		self.__class__._instances.append(self)
@@ -281,6 +276,7 @@ class Minimap:
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 		# draw rect for current screen
 		displayed_area = self.view.get_displayed_area()
+
 		minimap_corners_as_point = []
 		for (x, y) in displayed_area:
 			coords = self.transform.world_to_minimap((x, y))
@@ -302,20 +298,21 @@ class Minimap:
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		minimap_point = self.transform.world_to_minimap(tup)
+		if tup is not None:
+			tup = self.transform.world_to_minimap(tup)
 
-		self._recalculate(minimap_point)
+		self._recalculate(tup)
 
 	def use_overlay_icon(self, icon):
 		"""Configures icon so that clicks get mapped here.
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({
-			icon.name + '/mousePressed' : self._on_click,
-			icon.name + '/mouseDragged' : self._on_drag,
-			icon.name + '/mouseEntered' : self._mouse_entered,
-			icon.name + '/mouseMoved' : self._mouse_moved,
-			icon.name + '/mouseExited' : self._mouse_exited,
+			icon.name + '/mousePressed': self._on_click,
+			icon.name + '/mouseDragged': self._on_drag,
+			icon.name + '/mouseEntered': self._mouse_entered,
+			icon.name + '/mouseMoved': self._mouse_moved,
+			icon.name + '/mouseExited': self._mouse_exited,
 		})
 
 	def default_on_click(self, event, drag):
@@ -364,7 +361,9 @@ class Minimap:
 			if not self.location.contains(abs_mouse_position):
 				# mouse click was on icon but not actually on minimap
 				return None
-		return self.transform.minimap_to_world((event.getX(), event.getY()))
+		world_position = self.transform.minimap_to_world((event.getX(), event.getY()))
+		if self.world.map_dimensions.contains_tuple(world_position):
+			return world_position
 
 	def _mouse_entered(self, event):
 		self._show_tooltip(event)
@@ -414,7 +413,7 @@ class Minimap:
 
 		# grow the circle from MIN_RAD to MAX_RAD and back with STEPS steps, where the
 		# interval between steps is INTERVAL seconds
-		MIN_RAD = int( 3 * factor) # pixel
+		MIN_RAD = int(3 * factor) # pixel
 		MAX_RAD = int(12 * factor) # pixel
 		STEPS = int(20 * factor)
 		INTERVAL = (math.pi / 16) * factor
@@ -438,7 +437,7 @@ class Minimap:
 			for x, y in Circle(Point(*tup), radius=radius).get_border_coordinates():
 				draw_point(render_name, fife.Point(x, y), *color)
 
-			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
+			ExtScheduler().add_new_object(lambda: high(i), self, INTERVAL, loops=1)
 
 		high()
 		return STEPS * INTERVAL
@@ -579,10 +578,7 @@ class Minimap:
 			draw_point = self.minimap_image.rendertarget.addPoint
 			if ship in self.session.selected_instances:
 				draw_point(render_name, dummy_point0, *Minimap.COLORS["water"])
-				for x_off, y_off in ((-2,  0),
-				                     (+2,  0),
-				                     ( 0, -2),
-				                     ( 0, +2)):
+				for x_off, y_off in ((-2, 0), (+2, 0), (0, -2), (0, +2)):
 					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
 					draw_point(render_name, dummy_point1, *color)
 
@@ -619,24 +615,15 @@ class Minimap:
 		# resizeImage also means draw
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
-
 	def update_rotation(self):
 		# ensure the minimap rotation matches the main view rotation
+		if self.view is None:
+			return
 		self.transform.set_rotation(self.view.cam.getRotation())
 		self.draw()
 
-	def _get_rotation_setting(self):
-		return self.use_rotation and self._rotation_setting
-
-
-	def _on_setting_changed(self, message):
-		if message.setting_name == "MinimapRotation":
-			self._rotation_setting = message.new_value
-			self.transform.set_use_rotation(self._get_rotation_setting())
-			self.draw()
-
 	def get_size(self):
-		return (self.location.height, self.location.width)
+		return (self.location.width, self.location.height)
 
 
 class _MinimapTransform:
@@ -699,16 +686,14 @@ class _MinimapTransform:
 		y = (y - self.location.center.y) / self._world_minimap_ratio_y
 
 		# rotate
-		x_ =  x * self._cos_rotation + y * self._sin_rotation
+		x_ = x * self._cos_rotation + y * self._sin_rotation
 		y_ = -x * self._sin_rotation + y * self._cos_rotation
 
 		# undo centering and translate to correct position
 		x = x_ + self.world_dimensions.center.x
 		y = y_ + self.world_dimensions.center.y
 
-
 		return (int(x), int(y))
-
 
 	def _update_parameters(self):
 		""" Update the transformation parameters.
@@ -723,9 +708,6 @@ class _MinimapTransform:
 		self._world_minimap_ratio_x = self.location.width / self.world_dimensions.width * self._scale_correction
 		self._world_minimap_ratio_y = self.location.height / self.world_dimensions.height * self._scale_correction
 		self.world_to_minimap_ratio = (self._world_minimap_ratio_x, self._world_minimap_ratio_y)
-
-
-
 
 	def _get_rotation(self):
 		# keep track of rotation at any time, but only apply
@@ -749,15 +731,31 @@ class _MinimapTransform:
 		if self.use_rotation:
 			for x_i in range(0, location.width):
 				x = x_i + location.left
-				# TODO: better name
-				asdf = int(abs(x / location.width - 0.5) * location.height)
-				for y_i in range(asdf, location.height - asdf):
+				for y_i in range(self.get_min_y(x), self.get_max_y(x)):
 					y = y_i + location.top
 					yield (x, y)
 		else:
 			for x in range(location.left, location.width + location.left):
 				for y in range(location.top, location.height + location.top):
 					yield (x, y)
+
+	def get_min_y(self, x):
+		if self.use_rotation:
+			return int(abs(x / self.location.width - 0.5) * self.location.height)
+		else:
+			return 0
+
+	def get_max_y(self, x):
+		return self.location.height - self.get_min_y(x)
+
+	def get_min_x(self, y):
+		if self.use_rotation:
+			return int(abs(y / self.location.height - 0.5) * self.location.width)
+		else:
+			return 0
+
+	def get_max_x(self, y):
+		return self.location.height - self.get_min_x(y)
 
 
 class _MinimapImage:
@@ -789,4 +787,3 @@ class _MinimapImage:
 		"""Always call this."""
 		targetname = self.rendertarget.getTarget().getName()
 		self.targetrenderer.setRenderTarget(targetname, False, 0)
-

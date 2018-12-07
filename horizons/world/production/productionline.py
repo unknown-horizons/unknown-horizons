@@ -104,10 +104,10 @@ class ProductionLine:
 			if t == "TIME":
 				self.time = res
 			else:
-				{ "NORMAL"   : self.production,
-				  "CONSUMED" : self.consumed_res,
-				  "PRODUCED" : self.produced_res,
-				  "UNIT"     : self.unit_production }[t][res] = amount
+				{"NORMAL": self.production,
+				 "CONSUMED": self.consumed_res,
+				 "PRODUCED": self.produced_res,
+				 "UNIT": self.unit_production}[t][res] = amount
 
 	def get_original_copy(self):
 		"""Returns a copy of this production, in its original state, no changes

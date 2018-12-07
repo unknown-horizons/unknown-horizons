@@ -159,7 +159,7 @@ class GroundClass(type):
 				img = load_image(list(data.keys())[0], tile_set_id, cls.shape, str(rotation))
 				# make the drawing origin correspond with the center of the groundpart of the image
 				# (instead of the center of the image)
-				img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2 ))
+				img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2))
 				visual.addStaticImage(rotation, img.getHandle())
 
 			# Save the object

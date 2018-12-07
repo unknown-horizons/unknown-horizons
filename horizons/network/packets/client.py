@@ -27,26 +27,26 @@ from horizons.network.packets import SafeUnpickler, packet
 
 class cmd_creategame(packet):
 	clientversion = None # type: str
-	clientid      = None # type: str
-	playername    = None # type: str
-	playercolor   = None # type: int
-	gamename      = "Unnamed Game"
-	mapname       = None # type: str
-	maxplayers    = None # type: int
-	maphash       = ""
-	password      = ""
+	clientid = None # type: str
+	playername = None # type: str
+	playercolor = None # type: int
+	gamename = "Unnamed Game"
+	mapname = None # type: str
+	maxplayers = None # type: int
+	maphash = ""
+	password = ""
 
 	def __init__(self, clientver, clientid, playername, playercolor,
 			gamename, mapname, maxplayers, maphash="", password=""):
 		self.clientversion = clientver
-		self.clientid      = clientid
-		self.playername    = playername
-		self.playercolor   = playercolor
-		self.name          = gamename
-		self.mapname       = mapname
-		self.maxplayers    = maxplayers
-		self.maphash       = maphash
-		self.password      = password
+		self.clientid = clientid
+		self.playername = playername
+		self.playercolor = playercolor
+		self.name = gamename
+		self.mapname = mapname
+		self.maxplayers = maxplayers
+		self.maphash = maphash
+		self.password = password
 
 	@staticmethod
 	def validate(pkt, protocol):
@@ -107,13 +107,13 @@ SafeUnpickler.add('client', cmd_creategame)
 #-------------------------------------------------------------------------------
 class cmd_listgames(packet):
 	clientversion = 0
-	mapname       = None # type: str
-	maxplayers    = None # type: int
+	mapname = None # type: str
+	maxplayers = None # type: int
 
 	def __init__(self, clientver, mapname=None, maxplayers=None):
 		self.clientversion = clientver
-		self.mapname       = mapname
-		self.maxplayers    = maxplayers
+		self.mapname = mapname
+		self.maxplayers = maxplayers
 
 	@staticmethod
 	def validate(pkt, protocol):
@@ -130,22 +130,22 @@ SafeUnpickler.add('client', cmd_listgames)
 
 #-------------------------------------------------------------------------------
 class cmd_joingame(packet):
-	uuid          = None # type: str
-	clientid      = None # type: str
+	uuid = None # type: str
+	clientid = None # type: str
 	clientversion = None # type: str
-	playername    = None # type: str
-	playercolor   = None # type: int
-	password      = ""
-	fetch         = False
+	playername = None # type: str
+	playercolor = None # type: int
+	password = ""
+	fetch = False
 
 	def __init__(self, uuid, clientver, clientid, playername, playercolor, password="", fetch=False):
-		self.uuid          = uuid
+		self.uuid = uuid
 		self.clientversion = clientver
-		self.clientid      = clientid
-		self.playername    = playername
-		self.playercolor   = playercolor
-		self.password      = password
-		self.fetch         = fetch
+		self.clientid = clientid
+		self.playername = playername
+		self.playercolor = playercolor
+		self.password = password
+		self.fetch = fetch
 
 	@staticmethod
 	def validate(pkt, protocol):

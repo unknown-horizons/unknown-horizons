@@ -149,7 +149,7 @@ class TradePostComponent(ChangeListener, Component):
 			remnant = self.get_inventory().alter(res, amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
-			self.buy_history[ Scheduler().cur_tick ] = (res, amount, price)
+			self.buy_history[Scheduler().cur_tick] = (res, amount, price)
 			self.total_expenses += amount * price
 			self._changed()
 			return True
@@ -176,7 +176,7 @@ class TradePostComponent(ChangeListener, Component):
 			remnant = self.get_inventory().alter(res, -amount)
 			assert remnant == 0
 			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
-			self.sell_history[ Scheduler().cur_tick ] = (res, amount, price)
+			self.sell_history[Scheduler().cur_tick] = (res, amount, price)
 			self.total_income += amount * price
 			self._changed()
 			return True

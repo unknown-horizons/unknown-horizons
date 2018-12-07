@@ -1,39 +1,14 @@
 language: cpp
 sudo: required
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      compiler: gcc
-      python: "3.5"
+dist: xenial
+python:
+  - "3.6"
 
 addons:
   apt:
     sources:
-    # add PPAs with more up-to-date toolchains
-    - ubuntu-toolchain-r-test
-    #- llvm-toolchain-trusty-5.0
-    packages:
-    - gcc-7
-    - g++-7
-    #- clang-5.0
-    #- llvm-5.0-dev
-    #- libclang-5.0-dev
-    - mesa-common-dev
-    - libsdl2-dev
-    - libsdl2-image-dev
-    - libsdl2-ttf-dev
-    - libfreetype6-dev
-    - libopenal-dev
-    - libasound2-dev
-    - zlib1g-dev
-    - libboost-dev
-    - libboost-system-dev
-    - libboost-filesystem-dev
-    - libboost-test-dev
-    - libtinyxml-dev
-    - libc6
-    - libglew-dev
+     #- sourceline: 'deb [trusted=yes] https://debian.unknown-horizons.org/travis/ /'
+     - sourceline: 'deb [trusted=yes] http://ftp.debian.org/debian/ unstable main non-free contrib'
 
 before_install:
   - "sudo apt-get update"
@@ -57,27 +32,19 @@ before_install:
   - cmake --version
 
 install:
-  - "sudo apt-get install python3-enet
-  - "pip3 install -r requirements.txt"
-  - git clone --quiet --depth 1 git://github.com/fifengine/fifechan.git
-  - if [ $TRAVIS_OS_NAME == linux ]; then mkdir build_fifechan; cd build_fifechan; cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../fifechan; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build_fifechan; cd build_fifechan; cmake ../fifechan; fi
-  - make -j3
-  - sudo make install
-  - cd ..
-  - dir
-  - git clone --quiet --depth 1 git://github.com/fifengine/fifengine.git
-  - if [ $TRAVIS_OS_NAME == linux ]; then mkdir build; cd build; cmake -DPYTHON_EXECUTABLE=/usr/bin/python3 -DCMAKE_INSTALL_PREFIX:PATH=/usr -Dcegui=OFF ../fifengine; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then mkdir build; cd build; cmake -Dbuild-library=ON -DPYTHON_EXECUTABLE=/usr/local/bin/python3 -Dcegui=OFF ../fifengine; fi
-  - ls -alh .
-  - make -j3
-  - sudo make install
-  - cd ..
+  - sudo apt-get install python3-fife python3-enet libfifechan0.1.4
+  # libfifechan0.1.4 is version 0.1.4+git20180904-1 on the repo
+  # python3-fife is version 0.4.1+git20180904-2 on the repo
+  - pip3 install -r requirements.txt
 
 script:
-  - "cp -a /usr/lib/python3/dist-packages/enet* $VIRTUAL_ENV/lib/python3.5/site-packages/"
-  - "cp -a /usr/lib/python3/dist-packages/future/ /usr/lib/python3/dist-packages/past/ /usr/lib/python3/dist-packages/libfuturize/ /usr/lib/python3/dist-packages/libpasteurize/ $VIRTUAL_ENV/lib/python3.5/site-packages/"
-  - "prename 's/\\.cpython-35m-x86_64-linux-gnu/.cpython-35m/' $VIRTUAL_ENV/lib/python3.5/site-packages/enet*.so"
+  - "cp -a /usr/lib/python3/dist-packages/fife/ $VIRTUAL_ENV/lib/python3.6/site-packages/"
+  - "cp -a /usr/lib/python3/dist-packages/enet* $VIRTUAL_ENV/lib/python3.6/site-packages/"
+  - "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/enet*.so"
+  #- "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/fife/*.so"
+  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.cpython-36m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fife.so
+  - mv $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.cpython-36m-x86_64-linux-gnu.so $VIRTUAL_ENV/lib/python3.6/site-packages/fife/_fifechan.so
+  - python3 -c 'import sys; print(sys.path)'
   - python3 -c 'from fife import fife; print(fife.getVersion())'
   - isort -c -rc horizons tests *.py
   - pycodestyle horizons tests *.py development

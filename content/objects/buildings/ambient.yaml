@@ -1,0 +1,33 @@
+id: BUILDINGS.AMBIENT
+name: _ Ambient
+baseclass: nature.Ambient
+radius: 0
+cost: 0
+cost_inactive: 0
+size_x: 1
+size_y: 1
+inhabitants: 0
+tooltip_text: _ Lookin fine dandelion.
+tier: TIER.NATURE
+buildingcosts: {RES.GOLD: 50}
+show_status_icons: false
+translucent: true
+components:
+- HealthComponent: {maxhealth: 10}
+actionsets:
+  TIER.NATURE:
+    as_rock0:
+    as_rock1:
+    as_rock2:
+    as_rock3:
+    as_rock4:
+    as_mushroom0:
+    as_mushroom1:
+    as_mushroom2:
+    as_mushroom3:
+    as_mushroom4:
+    as_mushroom5:
+    as_treestumps0:
+    as_treestumps1:
+    as_treestumps2:
+    as_treestumps3:

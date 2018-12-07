@@ -85,8 +85,8 @@ class Warehouse(StorageBuilding, BuildableSingleFromShip):
 
 	def get_status_icons(self):
 		banned_classes = (InventoryFullStatus,)
-		return [ i for i in super().get_status_icons() if
-		         i.__class__ not in banned_classes ]
+		return [i for i in super().get_status_icons() if
+		        i.__class__ not in banned_classes]
 
 
 class MainSquare(Path, StorageBuilding, ProductionBuilding):

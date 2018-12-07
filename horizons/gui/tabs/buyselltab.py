@@ -26,7 +26,7 @@ from fife import fife
 
 from horizons.command.uioptions import ClearTradeSlot, SetTradeSlot
 from horizons.component.tradepostcomponent import TradePostComponent
-from horizons.constants import TRADER, STORAGE
+from horizons.constants import STORAGE, TRADER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.tabs.tabinterface import TabInterface
 from horizons.gui.util import create_resource_selection_dialog, get_res_icon_path, load_uh_widget
@@ -297,7 +297,7 @@ class BuySellTab(TabInterface):
 		buy_list = self.trade_post.buy_list
 		sell_list = self.trade_post.sell_list
 
-		res_filter = lambda res_id : res_id not in buy_list and res_id not in sell_list
+		res_filter = lambda res_id: res_id not in buy_list and res_id not in sell_list
 		on_click = functools.partial(self.add_resource, slot_id=slot_id)
 		inventory = self.trade_post.get_inventory()
 

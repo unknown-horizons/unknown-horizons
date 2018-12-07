@@ -287,7 +287,7 @@ class SavegameAccessor(DbReader):
 		return self._storage_global_limit[int(worldid)]
 
 	def _load_health(self):
-		self._health = dict( self("SELECT owner_id, health FROM unit_health") )
+		self._health = dict(self("SELECT owner_id, health FROM unit_health"))
 
 	def get_health(self, owner):
 		return self._health[owner]

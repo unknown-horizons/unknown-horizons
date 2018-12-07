@@ -128,8 +128,9 @@ def main(argv=None):
         argv = sys.argv
     try:
         try:
-            opts, args = getopt.getopt(argv[1:], "hfp:rv", ["help",
-                "fife-dir=", "python-bin=", "run", "--verbose"])
+            opts, args = getopt.getopt(argv[1:], "hfp:rv", [
+                                       "help", "fife-dir=", "python-bin=",
+                                       "run", "--verbose"])
         except getopt.error, msg:
             raise Usage(msg)
 

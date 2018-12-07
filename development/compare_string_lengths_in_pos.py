@@ -66,7 +66,7 @@ for line in readfile:
 
 
 for t in translations:
-	orig  = translations[t][0]
+	orig = translations[t][0]
 	trans = translations[t][1]
 
 	if orig.startswith("#") or trans.startswith("#"):

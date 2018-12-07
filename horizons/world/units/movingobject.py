@@ -209,6 +209,17 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		else:
 			self.__is_moving = True
 
+		# HACK: 2 different pathfinding systems are being used here and they
+		# might not always match.
+		# If the graphical location is too far away from the actual location,
+		# then forcefully synchronize the locations.
+		# This fixes the symptoms from issue #2859
+		# https://github.com/unknown-horizons/unknown-horizons/issues/2859
+		pos = fife.ExactModelCoordinate(self.position.x, self.position.y, 0)
+		fpos = self.fife_instance.getLocationRef().getExactLayerCoordinates()
+		if (pos - fpos).length() > 1.5:
+			self.fife_instance.getLocationRef().setExactLayerCoordinates(pos)
+
 		#setup movement
 		move_time = self.get_unit_velocity()
 		UnitClass.ensure_action_loaded(self._action_set_id, self._move_action) # lazy load move action
