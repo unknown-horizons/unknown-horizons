@@ -143,7 +143,7 @@ def pytest_runtest_makereport(item, call):
 	When a gui test fails, we replace the internal traceback with the one from the subprocess
 	stderr.
 	"""
-	report = (yield).result
+	report = (yield).get_result()
 	if report.when != 'call' or report.outcome != 'failed':
 		return report
 
