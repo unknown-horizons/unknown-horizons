@@ -35,7 +35,7 @@ class TestPaths(TestCase):
 
 	def test_normal(self):
 
-		create_user_dirs()
+		create_user_dirs(migrate=False)
 
 	def test_special_character(self):
 		"""Make paths have special characters and check some basic operations"""
@@ -45,8 +45,12 @@ class TestPaths(TestCase):
 		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 
 		PATHS.USER_DATA_DIR = inner
+		PATHS.LOG_DIR = os.path.join(inner, "log")
+		PATHS.USER_MAPS_DIR = os.path.join(inner, "maps")
+		PATHS.SCREENSHOT_DIR = os.path.join(inner, "screenshots")
+		PATHS.SAVEGAME_DIR = os.path.join(inner, "save")
 
-		create_user_dirs()
+		create_user_dirs(migrate=False)
 
 		scenario_file = os.listdir(SavegameManager.scenarios_dir)[0]
 		shutil.copy(os.path.join(SavegameManager.scenarios_dir, scenario_file),
@@ -63,6 +67,7 @@ class TestPaths(TestCase):
 
 		SavegameManager.create_autosave_filename()
 
-		os.rmdir(inner)
+		for dirpath, _dirnames, _filenames in os.walk(inner, topdown=False):
+			os.rmdir(dirpath)
 		os.rmdir(inner2)
 		os.rmdir(outer)

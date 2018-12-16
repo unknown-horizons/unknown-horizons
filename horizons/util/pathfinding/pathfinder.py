@@ -46,7 +46,7 @@ def a_star_find_path(source, destination, nodes, clockwise=True):
 	@param nodes: object that provides __contains__ (dict, list) with items (x, y)
 	@param clockwise: bool; whether to try finding the path clockwise or counterclockwise
 	"""
-	assert isinstance(nodes, collections.Container)
+	assert isinstance(nodes, collections.abc.Container)
 
 	if source not in nodes or destination not in nodes:
 		return None
