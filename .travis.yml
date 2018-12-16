@@ -24,6 +24,7 @@ install:
   - pip3 install -r requirements.txt
 
 script:
+  - pytest --version
   - "cp -a /usr/lib/python3/dist-packages/fife/ $VIRTUAL_ENV/lib/python3.6/site-packages/"
   - "cp -a /usr/lib/python3/dist-packages/enet* $VIRTUAL_ENV/lib/python3.6/site-packages/"
   - "prename 's/\\.cpython-36m-x86_64-linux-gnu/.cpython-36m/' $VIRTUAL_ENV/lib/python3.6/site-packages/enet*.so"
