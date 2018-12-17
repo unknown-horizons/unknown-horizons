@@ -48,10 +48,6 @@ except ImportError:
 	      ' is needed to run the atlas generator.')
 	sys.exit(1)
 
-# TODO We can probably remove the type ignore in the next release of typeshed/mypy
-#      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
-# make sure os.path.getmtime returns ints
-os.stat_float_times(False) # type: ignore
 
 # make this script work both when started inside development and in the uh root dir
 if not os.path.exists('content'):
@@ -64,6 +60,8 @@ sys.path.append('.')
 class DummyFife:
 	use_atlases = False
 
+# TODO We can probably remove the type ignore in the next release of typeshed/mypy
+#      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
 
 import horizons.globals # isort:skip
 horizons.globals.fife = DummyFife() # type: ignore
@@ -102,7 +100,7 @@ class AtlasBook:
 		"""Return true if and only if the image was added."""
 		if self.cur_x + w <= self.max_size and self.cur_y + h <= self.max_size:
 			# add to the end of the current row
-			self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h, os.path.getmtime(path))
+			self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h, int(os.path.getmtime(path)))
 			self.cur_x += w
 			self.cur_h = max(self.cur_h, h)
 			return True
@@ -112,7 +110,7 @@ class AtlasBook:
 			self.cur_x = w
 			self.cur_y += self.cur_h
 			self.cur_h = h
-			self.location[path] = AtlasEntry(0, self.cur_y, w, h, os.path.getmtime(path))
+			self.location[path] = AtlasEntry(0, self.cur_y, w, h, int(os.path.getmtime(path)))
 			return True
 
 		# unable to fit in the given space with the current algorithm
@@ -295,7 +293,7 @@ class AtlasGenerator:
 					recreate_all = True
 					break
 
-				last_modified = os.path.getmtime(path)
+				last_modified = int(os.path.getmtime(path))
 				book = self.atlas_book_lookup[path]
 				entry = book.location[path]
 				if last_modified == entry.last_modified:
