@@ -101,7 +101,7 @@ def get_user_game_directories():
 		config_dir)
 
 	if not os.path.exists(config_dir):
-		os.mkdir(config_dir)
+		os.makedirs(config_dir)
 
 	data_dir = _try_directories([
 		(os.environ.get("UH_USER_DATA_DIR"),),
@@ -110,7 +110,7 @@ def get_user_game_directories():
 		data_dir)
 
 	if not os.path.exists(data_dir):
-		os.mkdir(data_dir)
+		os.makedirs(data_dir)
 
 	cache_dir = _try_directories([
 		(os.environ.get("UH_USER_CACHE_DIR"),),
@@ -119,6 +119,6 @@ def get_user_game_directories():
 		cache_dir)
 
 	if not os.path.exists(cache_dir):
-		os.mkdir(cache_dir)
+		os.makedirs(cache_dir)
 
 	return config_dir, data_dir, cache_dir
