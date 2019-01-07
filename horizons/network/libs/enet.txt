@@ -1,13 +1,18 @@
-Pyenet libs that needed to rebuild with py3 support:
-We need builds for python versions: 3.4/3.5/3.6
+If your Linux Distro or Windows dont have an python3-enet installed.
+You must compile it by your self:
+Follow the instructions from: https://github.com/aresch/pyenet use enet 1.3.13
+We will add later an script that makes it easier for you to install it.
+More information will you find than here: https://github.com/unknown-horizons/unknown-horizons/wiki
 
-darwin-x86-34/enet.so
-darwin-x64-34/enet.so
-freebsd-x86-34/enet.so
-windows-x64-34/enet.pyd
-windows-x86-34/enet.pyd
+The compiled enet.so or enet.pyd file must be placed in this folder (OS-xARCH-Py3Version) for Example:
 
-Pyenet libs that already are rebuilt:
+linux-x86-34/enet.so
+linux-x86-36/enet.so
 linux-x64-34/enet.so
 linux-x64-36/enet.so
+freebsd-x86-34/enet.so
 freebsd-x64-34/enet.so
+darwin-x86-34/enet.so
+darwin-x64-34/enet.so
+windows-x64-34/enet.pyd
+windows-x86-34/enet.pyd
