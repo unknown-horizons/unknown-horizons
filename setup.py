@@ -227,7 +227,7 @@ class _build_i18n(distutils.cmd.Command):
 				rmtree(os.path.join("content", "lang"))
 			copytree(os.path.join("build", "mo"), os.path.join("content", "lang"))
 
-		generate_atlases(2048)
+		self.generate_atlases(2048)
 
 
 
