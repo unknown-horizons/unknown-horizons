@@ -231,8 +231,6 @@ class _build_i18n(distutils.cmd.Command):
 		self.generate_atlases(2048)
 
 
-
-
 build.sub_commands.append(('build_i18n', None))
 
 cmdclass = {
