@@ -45,6 +45,7 @@ Technology     | Component
 **YAML**       | Object files storing component based information, easily scriptable
 **[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings
 **[fifechan](https://github.com/fifengine/fifechan)**   | GUI library
+**[pyenet](https://github.com/aresch/pyenet)** | The multiplayer library. Can be ignored if you don't want to play multiplayer
 
 ## Community
 
