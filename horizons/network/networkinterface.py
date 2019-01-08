@@ -201,7 +201,7 @@ class NetworkInterface(object, metaclass=ManualConstructionSingleton):
 		return True
 
 	def creategame(self, mapname, maxplayers, gamename, maphash="", password=""):
-		self.log.debug("[CREATEGAME] %s(h=%s), %s, %s, %s", mapname, maphash, maxplayers, gamename)
+		self.log.debug("[CREATEGAME] %s(h=%s), %s, %s", mapname, maphash, maxplayers, gamename)
 		try:
 			self._assert_connection()
 			self.log.debug("[CREATE] mapname=%s maxplayers=%d", mapname, maxplayers)
