@@ -63,6 +63,7 @@ class DummyFife:
 # TODO We can probably remove the type ignore in the next release of typeshed/mypy
 #      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
 
+
 import horizons.globals # isort:skip
 horizons.globals.fife = DummyFife() # type: ignore
 
