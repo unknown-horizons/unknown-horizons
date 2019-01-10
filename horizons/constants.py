@@ -672,7 +672,7 @@ class MULTIPLAYER:
 
 
 class NETWORK:
-	SERVER_ADDRESS = "master.unknown-horizons.org"
+	SERVER_ADDRESS = "207.180.251.79"
 	# change port to 2022 for development server updated after UH commits
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None # type: Optional[str]
