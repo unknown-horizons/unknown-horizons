@@ -3,7 +3,6 @@
 
 [![Build Status](https://travis-ci.org/unknown-horizons/unknown-horizons.svg?branch=master)](https://travis-ci.org/unknown-horizons/unknown-horizons)
 [![Coverage Status](https://coveralls.io/repos/github/unknown-horizons/unknown-horizons/badge.svg?branch=master)](https://coveralls.io/github/unknown-horizons/unknown-horizons?branch=master)
-[![Bountysource](https://www.bountysource.com/badge/team?team_id=9261&style=bounties_received)](https://www.bountysource.com/teams/unknown-horizons/issues?utm_source=unknown-horizons&utm_medium=shield&utm_campaign=bounties_received)
 [![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)](https://hosted.weblate.org/engage/uh/?utm_source=widget)
 [![#unknown-horizons on Freenode](https://img.shields.io/badge/freenode-%23unknown--horizons-green.svg)](https://webchat.freenode.net/?channels=unknown-horizons)
 
