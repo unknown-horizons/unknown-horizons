@@ -22,8 +22,6 @@ Find more information about Unknown Horizons on [our website](http://unknown-hor
 For installation instructions check the "Downloads" section on
 [our website](http://unknown-horizons.org/downloads/).
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/unknown-horizons.svg)](https://repology.org/metapackage/unknown-horizons)
-
 ## Building from source
 
 To get the latest version of the game, you have to build it from source:
