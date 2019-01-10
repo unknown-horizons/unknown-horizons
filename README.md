@@ -54,6 +54,7 @@ Type         | Where?
 Forum        | http://forum.unknown-horizons.org/
 Bug Tracker  | https://github.com/unknown-horizons/unknown-horizons/issues
 IRC Channel  | irc://irc.freenode.net/unknown-horizons
+Discord      | https://discord.gg/VX6m2ZX
 
 More support info [here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos).
 
