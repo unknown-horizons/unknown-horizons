@@ -94,8 +94,8 @@ class VERSION:
 	RELEASE_NAME    = "Unknown Horizons %s"
 	RELEASE_VERSION = get_git_version()
 	# change for release:
-	IS_DEV_VERSION = False
-	RELEASE_VERSION = u'2019.1'
+	IS_DEV_VERSION = True
+	#RELEASE_VERSION = u'2019.1'
 
 	REQUIRED_FIFE_MAJOR_VERSION = 0
 	REQUIRED_FIFE_MINOR_VERSION = 4
