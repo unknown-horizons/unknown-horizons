@@ -20,7 +20,7 @@ CHANGELOG Unknown Horizons
 | 2010.1 | 8 |
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-2019-01-XX: Milestone 2019.1
+2019-01-11: Milestone 2019.1
 ----------------------------
 changelog date: 9th Jan 2019
 
