@@ -92,7 +92,7 @@ def get_git_version():
 ##Versioning
 class VERSION:
 	RELEASE_NAME    = "Unknown Horizons %s"
-	RELEASE_VERSION = get_git_version()
+	#RELEASE_VERSION = get_git_version()
 	# change for release:
 	IS_DEV_VERSION = False
 	RELEASE_VERSION = u'2019.1'
