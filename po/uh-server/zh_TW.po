@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Server e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2015-12-02 23:34+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2019-01-13 17:08+0000\n"
+"Last-Translator: Louies <louies0623@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/uh/"
+"uh-server/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -22,44 +25,44 @@ msgstr ""
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "您已超過全域數据包大小。"
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "這不應該發生。請聯繫我們或提交錯誤報告。"
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "您已經超過了每個包的大小。"
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "未知或格式錯誤的數据包。請檢查你的遊戲版本"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "無效/未知會話"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "在比賽中你不能參加另一場比賽"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "未知遊戲或運行的遊戲版本不同"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "遊戲已經開始。不再加入"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
-msgstr ""
+msgstr "遊戲滿了"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
-msgstr ""
+msgstr "密碼錯誤"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
@@ -67,7 +70,7 @@ msgstr ""
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr ""
+msgstr "請改變您的名稱。"
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
@@ -75,7 +78,7 @@ msgstr ""
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr ""
+msgstr "請更換顏色。"
 
 #: horizons/network/server.py:442
 msgid ""
@@ -85,7 +88,7 @@ msgstr ""
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
-msgstr ""
+msgstr "你不在遊戲裏"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
@@ -99,11 +102,11 @@ msgstr ""
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr ""
+msgstr "無法更改您的名稱。"
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr ""
+msgstr "無法更改顏色。"
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
