@@ -29,7 +29,7 @@ try:
 	import greenlet
 except ImportError:
 	print('The greenlet package is needed to run the UH gui tests.')
-sys.exit(1)
+	sys.exit(1)
 
 
 _scheduled = deque() # type: deque[Tuple[Tasklet, Tuple[Any, ...], Dict[str, Any]]]
