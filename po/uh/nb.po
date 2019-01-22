@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
 "PO-Revision-Date: 2019-01-22 20:22+0000\n"
-"Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/uh/"
 "nb_NO/>\n"
 "Language: nb\n"
@@ -194,7 +194,7 @@ msgstr "Utfør navneendring"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Lynmeldinger"
+msgstr "Sludring"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
