@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-01-22 20:22+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2019-01-24 21:06+0000\n"
+"Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/uh/"
 "nb_NO/>\n"
 "Language: nb\n"
@@ -194,7 +194,7 @@ msgstr "Utfør navneendring"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Sludring"
+msgstr "Lynmelding"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
@@ -2445,7 +2445,7 @@ msgstr "Enhetsoversikt"
 #: horizons/gui/tabs/productiontabs.py:46
 #: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
-msgstr "Produksjonsoverskit"
+msgstr "Produksjonsoversikt"
 
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
@@ -2520,7 +2520,7 @@ msgstr "{stored}/{limit}"
 #: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr "Grense: {amount}t per spor"
+msgstr "Grense: {amount}t per felt"
 
 #: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
@@ -2564,7 +2564,7 @@ msgstr "Klikk for å vise statistikk"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr "Klikk for å legge til nytt spor"
+msgstr "Klikk for å legge til nytt felt"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
