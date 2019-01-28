@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2016-12-27 05:55+0000\n"
-"Last-Translator: Lari Oesch <lari@oesch.me>\n"
+"PO-Revision-Date: 2019-01-29 20:10+0000\n"
+"Last-Translator: Ammuu5 <ammuu5@tutanota.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/voices/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 3.5-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -68,7 +68,7 @@ msgstr "Liittolaisemme asetuu toiselle saarelle."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr "Yks liittolaisistamme kehittää saarta."
+msgstr "Yksi liittolaisistamme kehittää saarta."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
