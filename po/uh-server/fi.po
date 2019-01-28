@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2016-12-26 09:55+0000\n"
-"Last-Translator: Lari Oesch <lari@oesch.me>\n"
+"PO-Revision-Date: 2019-01-29 20:10+0000\n"
+"Last-Translator: Ammuu5 <ammuu5@tutanota.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh-server/fi/>"
 "\n"
 "Language: fi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 3.5-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -109,11 +109,11 @@ msgstr ""
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr "Nimimerkin vaihtaminen epäonnistui."
+msgstr "Nimeäsi ei voi muuttaa."
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr "Pelivärin vaihtaminen epäonnistui."
+msgstr "Väriäsi ei voi muuttaa."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
