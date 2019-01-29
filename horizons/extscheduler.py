@@ -43,6 +43,12 @@ class _ExtCallbackObject:
 	def __str__(self):
 		return "ExtSchedCb(%s on %s)" % (self.callback, self.class_instance)
 
+	def __lt__(self, other):
+		# make sure that there is always some ordering
+		if self.run_in < other.run_in:
+			return True
+		return id(self) < id(other)
+
 
 class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	"""The ExtScheduler is used for time based events that are not part of the simulation(gui, menu, scrolling).
