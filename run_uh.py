@@ -184,7 +184,7 @@ def excepthook_creator(outfilename):
 		print(T('We are very sorry for this and want to fix the underlying error.'))
 		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
-		print(T('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
+		print(T('Please give it to us via Github bug tracker, Discord or IRC; see http://unknown-horizons.org/support/'))
 	return excepthook
 
 
