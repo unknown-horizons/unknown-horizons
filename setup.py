@@ -96,7 +96,7 @@ class _build_i18n(distutils.cmd.Command):
 	def generate_mo_files(self, domain, po_dir):
 		if not os.path.isdir(po_dir):
 			return []
-		po_files = glob.glob("{}/*.po".format(po_dir))
+		po_files = sorted(glob.glob("{}/*.po".format(po_dir)))
 		if po_files and not find_executable('msgfmt'):
 			raise RuntimeError(
 				"Can't generate language files, needs msgfmt. "
