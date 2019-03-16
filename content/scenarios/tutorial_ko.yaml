@@ -394,10 +394,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    자습서를 플레이 해주셔서 고맙습니다!
+    자습서를 이용해주셔서 고맙습니다!
 
 
-    여러분의 UH 팀 입니다'
+    여러분의 UH 팀'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
