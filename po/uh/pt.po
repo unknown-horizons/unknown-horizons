@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2018-11-19 22:08+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
+"PO-Revision-Date: 2019-03-29 16:13+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.3-dev\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -48,7 +48,7 @@ msgstr "Voltar ao editor"
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:55
 msgid "Save map"
-msgstr "Mapa guardado"
+msgstr "Guardar mapa"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -59,7 +59,7 @@ msgstr "Carregar mapa"
 #: content/gui/xml/mainmenu/ingamemenu.xml:17
 #: content/gui/xml/mainmenu/mainmenu.xml:20
 msgid "Settings"
-msgstr "Definições"
+msgstr "Configurações"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:18
@@ -90,16 +90,16 @@ msgstr "Início do jogo"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "É necessário fundar uma povoação antes de construir edifícios!"
+msgstr "Tens de fundar uma povoação antes de poderes construir edifícios!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Seleccione o seu navio e aproxime-o da costa usando o botão direito do rato."
+"Seleciona o teu navio e aproxima-o da costa usando o botão direito do rato."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:21
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Depois, pressione o botão grande no separador de relatório do navio."
+msgstr "Depois, pressiona o botão grande no separador de relatório do navio."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -121,17 +121,17 @@ msgstr "Habitantes"
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Aumentar a velocidade de jogo ({key})"
+msgstr "Aumentar a velocidade do jogo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Diminuir a velocidade de jogo ({key})"
+msgstr "Diminuir a velocidade do jogo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Rodar o mapa no sentido antihorário ({key})"
+msgstr "Rodar o mapa no sentido anti-horário ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
@@ -170,7 +170,7 @@ msgstr "Diplomacia"
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
 msgid "Game menu ({key})"
-msgstr "Menu de jogo ({key})"
+msgstr "Menu do jogo ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:6
 msgid "Change name"
@@ -182,7 +182,7 @@ msgstr "Nome antigo:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
-msgstr "Introduza um nome novo:"
+msgstr "Introduz o novo nome:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:18
 msgid "Apply the new name"
@@ -192,11 +192,11 @@ msgstr "Aplicar o novo nome"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Chat"
+msgstr "Conversa"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Introduza a sua mensagem:"
+msgstr "Escreve a tua mensagem:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -219,8 +219,8 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Para construir groundunit, pressione num dos separadores de classe, "
-"selecione groundunit desejada e confirme a ordem."
+"Para construir uma unidade terrestre, clica num dos separadores de classe, "
+"seleciona a unidade terrestre desejada e confirma a ordem."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -285,7 +285,7 @@ msgstr "Cancelar todas as construções em progresso"
 #: horizons/gui/tabs/barrackstabs.py:130
 #: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
-msgstr "Confirme a ordem"
+msgstr "Confirma a ordem"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
@@ -336,12 +336,12 @@ msgstr "Chalupa canhoneira"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
 msgstr ""
-"Mais comum barco de guerra de três mastros, com um único canhão no convés."
+"O mais comum barco de guerra de três mastros, com um único canhão no convés."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
 msgid "Buy Upgrades"
-msgstr "Comprar Melhorias"
+msgstr "Comprar melhorias"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -377,20 +377,20 @@ msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
-msgstr "Construir groundunit:"
+msgstr "Construir unidade terrestre:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
 msgid "Build this groundunit!"
-msgstr "Construir este groundunit!"
+msgstr "Construir esta unidade terrestre!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Para construir um barco, pressione num dos separadores de classe, seleccione "
-"o barco desejado e confirme a ordem."
+"Para construir um barco, clica num dos separadores de classe, seleciona o "
+"barco desejado e confirma a ordem."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -430,17 +430,17 @@ msgstr "Capacidade de utilização"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr "Clique para mudar o nome deste navio"
+msgstr "Clica para alterar o nome desta unidade terrestre"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
 msgid "Settlement inventory"
-msgstr "Inventário da colónia"
+msgstr "Inventário da povoação"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr "Relatório dos povoadores"
+msgstr "Vista geral dos povoadores"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
@@ -514,7 +514,7 @@ msgstr "residentes"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
-msgstr "Providencia segurança para a tua povoação."
+msgstr "Proporciona segurança para a tua povoação."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -546,7 +546,7 @@ msgstr "Depósito de recursos"
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Isto é um depósito de recursos, onde poderá construir uma mina para minar "
+"Isto é um depósito de recursos, onde poderás construir uma mina para minar "
 "recursos."
 
 #. It == The resource deposit
@@ -560,7 +560,7 @@ msgstr "Contém estes recursos:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "Clique para alterar o nome da sua povoação"
+msgstr "Clica para alterar o nome da tua povoação"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -581,15 +581,15 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"O sinal de fogo mostra ao mercador livre como chegar à sua povoação case "
-"deseje comprar ou vender mercadorias."
+"O sinal de fogo mostra ao mercador livre como chegar à tua povoação caso "
+"queiras comprar ou vender mercadorias."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Este é o navio do mercador livre. Ele irá visitá-lo de tempo a tempo para "
+"Este é o navio do mercador livre. Ele irá visitar-te de tempos a tempos para "
 "comprar ou vender mercadorias."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
@@ -597,7 +597,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
-msgstr "Clique para mudar o nome deste navio"
+msgstr "Clica para mudar o nome deste navio"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -605,7 +605,7 @@ msgstr "Clique para mudar o nome deste navio"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:89 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr "Troca"
+msgstr "Comércio"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
@@ -646,7 +646,7 @@ msgstr "Historial de comércio"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr "Seleccione os recursos:"
+msgstr "Seleciona os recursos:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
