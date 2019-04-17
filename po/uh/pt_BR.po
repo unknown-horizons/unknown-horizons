@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-07-26 12:23+0000\n"
-"Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
+"PO-Revision-Date: 2019-04-19 11:34+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/uh/"
 "uh/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -473,7 +473,7 @@ msgstr "Taxa de imposto"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
-msgstr "Atualizar permissões:"
+msgstr "Permissões de melhorias:"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:49
 msgid "Happiness per house"
@@ -648,7 +648,7 @@ msgstr "Parceiro comercial:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr "Comprar ou vender recursos"
+msgstr "Comprar ou vender"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:18
 msgid "Trade history"
@@ -1107,7 +1107,7 @@ msgstr "Alternar visibilidade dos edifícios"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Highlight tile ownership"
-msgstr "Destacar dono do assentamento."
+msgstr "Destacar dono da quadrícula"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
 msgid "Toggle health bars"
@@ -1127,7 +1127,7 @@ msgstr "Mostrar ajuda"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Screenshot"
-msgstr "Screenshot"
+msgstr "Captura de tela"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Toggle showing FPS on/off"
@@ -1278,7 +1278,7 @@ msgstr "Pronto:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "Definir seu estado como pronto( necessário para iniciar o jogo)"
+msgstr "Definir seu estado como pronto (necessário para iniciar o jogo)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1366,7 +1366,7 @@ msgstr "Mouse"
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid "Scroll at map edge:"
-msgstr "Rolar até a borda do mapa:"
+msgstr "Deslocar na borda do mapa:"
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid ""
@@ -1713,7 +1713,7 @@ msgstr "Apagar"
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr "{size}x{size} assentamentos"
+msgstr "{size}x{size} quadrículas"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
@@ -2058,7 +2058,7 @@ msgstr "{player} está pronto agora"
 #: horizons/gui/modules/multiplayermenu.py:612
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr "{player} não esta pronto"
+msgstr "{player} não está pronto"
 
 #: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
@@ -2449,7 +2449,7 @@ msgstr "Visão geral da praça principal"
 
 #: horizons/gui/tabs/mainsquaretabs.py:150
 msgid "Upgrade not possible:"
-msgstr "Aprimoramento impossível:"
+msgstr "Não é possível melhorar:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:153
 msgid "This is the highest playable tier for now!"
@@ -3337,7 +3337,7 @@ msgstr "Mineração"
 #: horizons/i18n/objecttranslations.py:439
 #: horizons/i18n/objecttranslations.py:489
 msgid "Residents and infrastructure"
-msgstr "Moradores e infra-estrutura"
+msgstr "Moradores e infraestruturas"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
@@ -3369,7 +3369,7 @@ msgstr "Fortificações"
 #: horizons/i18n/objecttranslations.py:457
 #: horizons/i18n/objecttranslations.py:459
 msgid "Infrastructure"
-msgstr "Infra-estrutura"
+msgstr "Infraestrutura"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:461
@@ -3400,7 +3400,7 @@ msgstr "Mar"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Wood"
-msgstr "madeira"
+msgstr "Madeira"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
@@ -3712,7 +3712,7 @@ msgstr "Este edifício deve ser construido na costa."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building has to be placed at the ocean."
-msgstr "Este edifício tem que ser construido no oceano."
+msgstr "Este edifício tem que ser construído no oceano."
 
 #: horizons/world/building/buildable.py:50
 msgid "This spot is too far away from your ship."
@@ -3748,7 +3748,7 @@ msgstr "Os habitantes estão sem acesso à praça principal."
 
 #: horizons/world/status.py:98
 msgid "The inventory of this building is full."
-msgstr "O inventario deste edifício está cheio."
+msgstr "O inventário deste edifício está cheio."
 
 #: horizons/world/status.py:113
 msgid "This building has a very low productivity."
@@ -3928,7 +3928,7 @@ msgstr "Seu jogo foi salvo."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr "Screenshot foi salvo para {file}."
+msgstr "Captura de tela foi salva para {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3985,7 +3985,7 @@ msgstr "tijolos"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr "Arvores"
+msgstr "árvores"
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -4268,7 +4268,7 @@ msgstr "baleias"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr "âmbar-cinzento"
+msgstr "âmbar de baleia"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
@@ -4308,7 +4308,7 @@ msgstr "lúpulo"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr "Cerveja"
+msgstr "cerveja"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
@@ -4320,7 +4320,7 @@ msgstr "recreação"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr "Peste negra"
+msgstr "peste negra"
 
 #. This is a database entry: the name of a resource
 msgid "fire"
