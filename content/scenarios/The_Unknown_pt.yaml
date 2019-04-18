@@ -22,21 +22,21 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 de Novembro de 1740]
+  - [Headline, 20 de novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
   - Após quatro dias, a tempestade finalmente acalmou e podemos descansar. Mas temos pouca comida e o nosso barco está em mau estado. Os instrumentos de navegação e as cartas marítimas estão perdidos.
-  - Temos de chegar à costa cedo. Um dos meus jacks viu alguns pássaros a caçar peixe, logo a terra não pode estar longe. Felizmente temos sempre algumas ferramentas e tábuas a bordo, para que possamos construir um abrigo básico.
-  - 'Tarefa
+  - Temos de chegar à costa cedo. Um dos meus homens viu alguns pássaros a caçarem peixe, logo a terra não pode estar longe. Felizmente temos sempre algumas ferramentas e tábuas a bordo, para que possamos construir um abrigo básico.
+  - 'Tarefa:
 
-    Encontra terra e constrói um porto.'
+    Encontra terra e constrói um porto marítimo.'
   - [Pagebreak]
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22 de Novembro 1740]
+  - [Headline, 22 de novembro 1740]
   - [Image, content/gui/images/background/hr.png]
-  - O porto está construido e ergue-se uma nova esperança. Ainda estou preocupado com os próximos dias... estamos a ficar sem comida e temos falta de materiais básicos de construção.
-  - Precisamos de assegurar as nossas necessidades básicas para nos mantermos vivos. É tempo de enviar pessoas para recolher comida e madeira para que possamos sobreviver e construir algum abrigo.
+  - O porto está construído e ergue-se uma nova esperança. Ainda estou preocupado com os próximos dias… estamos a ficar sem comida e faltam-nos materiais básicos de construção.
+  - Temos de proteger as nossas necessidades básicas para nos mantermos vivos. É hora de enviar algumas pessoas para coletar alimento e madeira para podermos sobreviver e construir um abrigo.
   - 'Tarefa:
 
     Constrói pelo menos um de cada:
@@ -52,10 +52,10 @@ logbook-data:
   - ''
 
 - &TENTS
-  - [Headline, 25 de Novembro 1740]
+  - [Headline, 25 de novembro 1740]
   - [Image, content/gui/images/background/hr.png]
   - Asseguramos as nossas necessidades básicas de comida e recolhemos alguma madeira para continuar a expandir a nossa povoação. As pessoas exigem um lugar para viver e trocar bens necessários ao seu dia-a-dia.
-  - É tempo de construir algumas tendas para habitação e uma pequena praça principal para fornecer os nossos cidadãos com bens.
+  - É tempo de construir algumas tendas para habitação e uma pequena praça principal para fornecer bens aos nossos cidadãos.
   - 'Tarefa:
 
     Constrói uma Praça Principal e pelo menos 10 Tendas.'
@@ -63,12 +63,12 @@ logbook-data:
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1 de Dezembro 1740]
+  - [Headline, 1 de dezembro 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Finalmente temos suficiente para comer e um lugar para viver novamente. A minha tenda não é muito confortável mas mantem-me seco e tenho o sentimento de ter um telhado por cima da minha cabeça à noite.
+  - Finalmente temos o suficiente para comer e um lugar para viver novamente. A minha tenda não é muito confortável mas mantém-me seco e tenho o sentimento de ter um telhado por cima da minha cabeça à noite.
   - 'Tenho andado a pesquisar as estrelas à noite, mas sem as minhas cartas marítimas e instrumentos o seu significado permanece desconhecido. Tenho a sensação de que iremos ficar presos aqui por um tempo, logo temos de tirar o melhor partido da situação.
 
-    Só podemos tentar construir uma civilização e encontrar um caminho para casa…'
+    Tudo o que podemos fazer por agora é construir uma civilização e encontrar um caminho para casa…'
   - 'Tarefa:
 
     Expande a aldeia até teres pelo menos 250 habitantes e um saldo positivo.'
@@ -76,13 +76,13 @@ logbook-data:
   - ''
 
 - &WON
-  - [Headline, 27 de Agosto 1745]
+  - [Headline, 27 de agosto 1745]
   - [Image, content/gui/images/background/hr.png]
-  - A nossa aldeia está a dar-se bem, a cidade expandiu para além dos 250 habitantes. Já comecei a habituar-me à minha nova casa, mas esta ilha é demasiado pequena para ficar aqui para sempre.
-  - Devíamos carregar o nosso navio e ir em busca de uma ilha maior, capaz de oferecer espaço e recursos para a minha gente. Criei outra vez um mapa de navegação básico, usando as estrelas que vejo de noite. Não é perfeito, mas espero que seja suficiente para voltar aqui.
+  - A nossa aldeia está a dar-se bem, a cidade expandiu-se para além dos 250 habitantes. Já comecei a habituar-me à minha nova casa, mas esta ilha é demasiado pequena para ficar aqui para sempre.
+  - Devíamos carregar o nosso navio e procurar uma ilha maior, capaz de oferecer espaço e recursos para o meu povo. Criei outra vez um mapa de navegação básico, usando as estrelas que vejo de noite. Não é perfeito, mas espero que seja suficiente para voltar aqui.
   - 'Tarefa:
 
-    Contacta a equipa da Unknown Horizons (www.unknown-horizons.org) e descobre como contribuir para tornar este cenário mais longo e melhor!'
+    Contacta a equipa da Unknown Horizons (www.unknown-horizons.org) e descobre como colaborar para tornar este cenário mais longo e melhor!'
   - [Pagebreak]
   - ''
 

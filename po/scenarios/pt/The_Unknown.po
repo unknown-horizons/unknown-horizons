@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2017-06-09 12:38+0000\n"
-"Last-Translator: Richard Luso <aleixogames@gmail.com>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/the-"
-"unknown/pt/>\n"
+"PO-Revision-Date: 2019-04-18 11:51+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/"
+"the-unknown/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #. scenario difficulty
 msgid "easy"
@@ -36,7 +36,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr "20 de Novembro de 1740"
+msgstr "20 de novembro de 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -54,30 +54,31 @@ msgid ""
 "fish, so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
 msgstr ""
-"Temos de chegar à costa cedo. Um dos meus jacks viu alguns pássaros a caçar "
-"peixe, logo a terra não pode estar longe. Felizmente temos sempre algumas "
-"ferramentas e tábuas a bordo, para que possamos construir um abrigo básico."
+"Temos de chegar à costa cedo. Um dos meus homens viu alguns pássaros a "
+"caçarem peixe, logo a terra não pode estar longe. Felizmente temos sempre "
+"algumas ferramentas e tábuas a bordo, para que possamos construir um abrigo "
+"básico."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
-"Tarefa\n"
-"Encontra terra e constrói um porto."
+"Tarefa:\n"
+"Encontra terra e constrói um porto marítimo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr "22 de Novembro 1740"
+msgstr "22 de novembro 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
-"O porto está construido e ergue-se uma nova esperança. Ainda estou "
-"preocupado com os próximos dias... estamos a ficar sem comida e temos falta "
-"de materiais básicos de construção."
+"O porto está construído e ergue-se uma nova esperança. Ainda estou "
+"preocupado com os próximos dias… estamos a ficar sem comida e faltam-nos "
+"materiais básicos de construção."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -85,9 +86,9 @@ msgid ""
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
 msgstr ""
-"Precisamos de assegurar as nossas necessidades básicas para nos mantermos "
-"vivos. É tempo de enviar pessoas para recolher comida e madeira para que "
-"possamos sobreviver e construir algum abrigo."
+"Temos de proteger as nossas necessidades básicas para nos mantermos vivos. É "
+"hora de enviar algumas pessoas para coletar alimento e madeira para podermos "
+"sobreviver e construir um abrigo."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -107,7 +108,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr "25 de Novembro 1740"
+msgstr "25 de novembro 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -125,7 +126,7 @@ msgid ""
 "our citizens with goods."
 msgstr ""
 "É tempo de construir algumas tendas para habitação e uma pequena praça "
-"principal para fornecer os nossos cidadãos com bens."
+"principal para fornecer bens aos nossos cidadãos."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -137,7 +138,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr "1 de Dezembro 1740"
+msgstr "1 de dezembro 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -145,8 +146,8 @@ msgid ""
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
 msgstr ""
-"Finalmente temos suficiente para comer e um lugar para viver novamente. A "
-"minha tenda não é muito confortável mas mantem-me seco e tenho o sentimento "
+"Finalmente temos o suficiente para comer e um lugar para viver novamente. A "
+"minha tenda não é muito confortável mas mantém-me seco e tenho o sentimento "
 "de ter um telhado por cima da minha cabeça à noite."
 
 #. This is the text body of a logbook page.
@@ -160,7 +161,8 @@ msgstr ""
 "marítimas e instrumentos o seu significado permanece desconhecido. Tenho a "
 "sensação de que iremos ficar presos aqui por um tempo, logo temos de tirar o "
 "melhor partido da situação.\n"
-"Só podemos tentar construir uma civilização e encontrar um caminho para casa…"
+"Tudo o que podemos fazer por agora é construir uma civilização e encontrar "
+"um caminho para casa…"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -173,7 +175,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr "27 de Agosto 1745"
+msgstr "27 de agosto 1745"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -181,7 +183,7 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
-"A nossa aldeia está a dar-se bem, a cidade expandiu para além dos 250 "
+"A nossa aldeia está a dar-se bem, a cidade expandiu-se para além dos 250 "
 "habitantes. Já comecei a habituar-me à minha nova casa, mas esta ilha é "
 "demasiado pequena para ficar aqui para sempre."
 
@@ -192,10 +194,10 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
-"Devíamos carregar o nosso navio e ir em busca de uma ilha maior, capaz de "
-"oferecer espaço e recursos para a minha gente. Criei outra vez um mapa de "
-"navegação básico, usando as estrelas que vejo de noite. Não é perfeito, mas "
-"espero que seja suficiente para voltar aqui."
+"Devíamos carregar o nosso navio e procurar uma ilha maior, capaz de oferecer "
+"espaço e recursos para o meu povo. Criei outra vez um mapa de navegação "
+"básico, usando as estrelas que vejo de noite. Não é perfeito, mas espero que "
+"seja suficiente para voltar aqui."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -205,4 +207,4 @@ msgid ""
 msgstr ""
 "Tarefa:\n"
 "Contacta a equipa da Unknown Horizons (www.unknown-horizons.org) e descobre "
-"como contribuir para tornar este cenário mais longo e melhor!"
+"como colaborar para tornar este cenário mais longo e melhor!"
