@@ -187,7 +187,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Tarefa: Constrói um Sinal de Fogo na costa próxima do Armazém.']
 
 - &TRADING
-  - [Message, Atinja um estoque na ilha de ao menos 30 ferramentas. Isso talvez demore.]
+  - [Message, Atinge o limite de pelo menos 30 ferramentas em stock na ilha.]
   - [Headline, APRENDE A EFECTUAR TROCAS COMERCIAS]
   - [Image, content/gui/images/background/hr.png]
   - 'Excelente! O comerciante livre irá agora passar em seu armazém de vez em quando.
