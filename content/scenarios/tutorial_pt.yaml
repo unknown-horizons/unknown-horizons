@@ -25,12 +25,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - Este é o teu Diário, onde informação importante sobre o cenário atual é armazenada. O sumário de cada tarefa nova irá também aparecer como um 'botão de notificação' perto do canto esquerdo do ecrã. Podes passar com o cursor do rato por cima destas notificações para ler o resumo, ou clica no próprio botão para abrir o Diário.
-  - Também podes voltar a abrir o Diário a qualquer momento ao clicar no botão debaixo do mini-mapa, no canto superior direito do teu ecrã. Daqui em diante, iremos referir-nos a esta área que contém o mini-mapa, vários botões e separadores como a 'Visão Geral'.
+  - Também podes voltar a abrir o Diário a qualquer momento ao clicar no botão debaixo do mini-mapa, no canto superior direito do ecrã. Daqui em diante, iremos referir-nos a esta área que contém o mini-mapa, vários botões e separadores como a 'Visão Geral'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Para ver a tua primeira tarefa, passa para a próxima página do Diário usando o botão no fundo da página oposta - parece-se com isto:'
+    Para ver a tua primeira tarefa, passa para a próxima página do Diário usando o botão no fundo da página oposta - é parecido com isto:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
@@ -39,25 +39,25 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Se tiveres alguma sugestão sobre como este tutorial pode ser melhorado, ou se encontrares algum erro, por favor diz-nos.'
   - '
 
-    Visite www.unknown-horizons.org para descobrir como contactar a equipa.'
+    Visita www.unknown-horizons.org para descobrir como contactar a equipa.'
   - ''
   - E agora, vamos iniciar o jogo!
   - [Pagebreak]
   - [Headline, 'NOVA TAREFA: CRIAR UMA POVOAÇÃO']
   - [Image, content/gui/images/background/hr.png]
   - O teu navio está no mar, carregado com suprimentos que irás necessitar para estabelecer uma nova povoação.
-  - Para moveres o teu navio, seleciona-o com um clique-esquerdo seguido de um clique-direito na localização para onde pretendes navegar.
-  - Assim que estiveres perto da costa, o botão 'Construir Povoação' na vista geral ficará ativo.
+  - Para moveres o teu navio, seleciona-o com um clique com o botão esquerdo do rato seguido de um clique com o botão direito na localização para onde pretendes navegar.
+  - Assim que estiveres perto da costa, estará ativo o botão 'Construir povoação' na vista geral.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicar neste botão irá mostrar uma preview do Armazém, o primeiro edifício requerido a fundar uma nova povoação. À medida que moves o cursor, irás notar que a preview é sombreada a vermelho quando o edifício está numa área inadequada.
-  - O Armazém necessita de estar posicionado na costa para permitir que os navios atraquem. Logo, encontra uma boa localização e de seguida dá um clique-esquerdo para colocar este importante edifício.
+  - Clicar neste botão irá mostrar uma pré-visualização do Armazém, o primeiro edifício necessário para fundar uma nova povoação. À medida que moves o cursor, irás notar que a pré-visualização é sombreada a vermelho quando o edifício está numa área inadequada.
+  - O Armazém necessita de estar posicionado na costa para permitir que os navios atraquem. Logo, encontra uma boa localização e de seguida clica com o botão esquerdo do rato para colocar este edifício importante.
   - ''
-  - [BoldLabel, 'Tarefa: Constrói um Armazém na costa.']
+  - [BoldLabel, 'Tarefa: constrói um Armazém na costa.']
 
 - &LUMBERJACK
   - [Message, Constrói uma Tenda de Lenhador e liga-a ao Armazém.]
-  - [Headline, 'NOVA TAREFA: CONSTRÓI UM LENHADOR']
+  - [Headline, 'NOVA TAREFA: CONSTRÓI UMA TENDA DE LENHADOR']
   - [Image, content/gui/images/background/hr.png]
   - Os suprimentos e os materiais de construção foram descarregados do teu navio e armazenados de forma segura no teu novo Armazém. Agora é tempo de construir alguns edifícios básicos, comecemos pela Tenda de Lenhador.
   - Os lenhadores irão cortar árvores na floresta que rodeia as suas tendas e processá-la para produzir tábuas, para uso em construção ou como recurso de troca.

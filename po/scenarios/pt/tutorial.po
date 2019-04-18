@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2018-11-19 22:08+0000\n"
-"Last-Translator: ssantos <ssantos@web.de>\n"
+"PO-Revision-Date: 2019-04-18 11:29+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/tutorial/"
 "pt/>\n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.3-dev\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -63,9 +63,9 @@ msgid ""
 "'Overview'."
 msgstr ""
 "Também podes voltar a abrir o Diário a qualquer momento ao clicar no botão "
-"debaixo do mini-mapa, no canto superior direito do teu ecrã. Daqui em "
-"diante, iremos referir-nos a esta área que contém o mini-mapa, vários botões "
-"e separadores como a 'Visão Geral'."
+"debaixo do mini-mapa, no canto superior direito do ecrã. Daqui em diante, "
+"iremos referir-nos a esta área que contém o mini-mapa, vários botões e "
+"separadores como a 'Visão Geral'."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "\n"
 "Para ver a tua primeira tarefa, passa para a próxima página do Diário usando "
-"o botão no fundo da página oposta - parece-se com isto:"
+"o botão no fundo da página oposta - é parecido com isto:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -93,7 +93,7 @@ msgid ""
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"Visite www.unknown-horizons.org para descobrir como contactar a equipa."
+"Visita www.unknown-horizons.org para descobrir como contactar a equipa."
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
@@ -116,16 +116,17 @@ msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
-"Para moveres o teu navio, seleciona-o com um clique-esquerdo seguido de um "
-"clique-direito na localização para onde pretendes navegar."
+"Para moveres o teu navio, seleciona-o com um clique com o botão esquerdo do "
+"rato seguido de um clique com o botão direito na localização para onde "
+"pretendes navegar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
-"Assim que estiveres perto da costa, o botão 'Construir Povoação' na vista "
-"geral ficará ativo."
+"Assim que estiveres perto da costa, estará ativo o botão 'Construir "
+"povoação' na vista geral."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -134,10 +135,10 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
-"Clicar neste botão irá mostrar uma preview do Armazém, o primeiro edifício "
-"requerido a fundar uma nova povoação. À medida que moves o cursor, irás "
-"notar que a preview é sombreada a vermelho quando o edifício está numa área "
-"inadequada."
+"Clicar neste botão irá mostrar uma pré-visualização do Armazém, o primeiro "
+"edifício necessário para fundar uma nova povoação. À medida que moves o "
+"cursor, irás notar que a pré-visualização é sombreada a vermelho quando o "
+"edifício está numa área inadequada."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -145,12 +146,12 @@ msgid ""
 "So, find a good location then left-click to place this important building."
 msgstr ""
 "O Armazém necessita de estar posicionado na costa para permitir que os "
-"navios atraquem. Logo, encontra uma boa localização e de seguida dá um "
-"clique-esquerdo para colocar este importante edifício."
+"navios atraquem. Logo, encontra uma boa localização e de seguida clica com o "
+"botão esquerdo do rato para colocar este edifício importante."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr "Tarefa: Constrói um Armazém na costa."
+msgstr "Tarefa: constrói um Armazém na costa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
@@ -158,7 +159,7 @@ msgstr "Constrói uma Tenda de Lenhador e liga-a ao Armazém."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "NOVA TAREFA: CONSTRÓI UM LENHADOR"
+msgstr "NOVA TAREFA: CONSTRÓI UMA TENDA DE LENHADOR"
 
 #. This is the text body of a logbook page.
 msgid ""
