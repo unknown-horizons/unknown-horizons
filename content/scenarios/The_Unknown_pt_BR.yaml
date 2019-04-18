@@ -35,11 +35,11 @@ logbook-data:
 - &FOOD_BOARDS
   - [Headline, 22 de novembro de 1740]
   - [Image, content/gui/images/background/hr.png]
-  - O porto foi construído e uma nova esperança surge. Os próximos dias ainda me preocupam... estamos ficando sem comida e sem material básico de construção.
-  - Precisamos proteger nossas necessidades básicas para nos mantermos vivos. É hora de enviar algumas pessoas para coletar alimento e madeira para podermos sobreviver e construir abrigo.
+  - O porto foi construído e uma nova esperança surge. Os próximos dias ainda me preocupam… estamos ficando sem comida e sem material básico de construção.
+  - Temos de proteger nossas necessidades básicas para nos mantermos vivos. Está na hora de enviar algumas pessoas para coletar alimento e madeira para podermos sobreviver e construir abrigo.
   - 'Tarefa:
 
-    Construir ao menos um de cada:
+    Construir pelo menos um de cada:
 
     * Lenhador
 
@@ -47,7 +47,7 @@ logbook-data:
 
     * Caçador
 
-    Coletar 5 unidades de alimento e 5 de tábuas.'
+    Coletar 5 alimentos e 5 tábuas.'
   - [Pagebreak]
   - ''
 
