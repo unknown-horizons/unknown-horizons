@@ -29,7 +29,7 @@ To get the latest version of the game, you have to build it from source:
  * [Instructions for Windows](https://github.com/unknown-horizons/unknown-horizons/wiki/Windows)
  * [Instructions for OS X](https://github.com/unknown-horizons/unknown-horizons/wiki/MacOS)
 
-If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3AD-starter).
+If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. A [development workflow](development/docker/) with containers is also available. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3AD-starter).
 
 
 ## Dependencies

@@ -16,7 +16,7 @@ repository:
 
 
 ```bash
-$ docker build -f docker/Dockerfile -t unknown-horizons .
+$ docker build -f development/docker/Dockerfile -t unknown-horizons .
 ```
 
 At this point, we need to push to Docker Hub (or other registry) so that we can run
@@ -75,5 +75,5 @@ just build a Singularity container. The [Singularity](Singularity) recipe in thi
 folder can build a container on your host directly:
 
 ```bash
-$ sudo singularity build uh.sif docker/Singularity
+$ sudo singularity build uh.sif development/docker/Singularity
 ```

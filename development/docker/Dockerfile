@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-# docker build -f docker/Dockerfile -t unknown-horizons .
+# docker build -f development/docker/Dockerfile -t unknown-horizons .
 
 RUN apt-get update && \
     apt-get install -y build-essential \
@@ -53,7 +53,13 @@ ADD . /code
 WORKDIR /code
 RUN python3 setup.py build_i18n && \
     adduser --disabled-password --gecos "" horizonuser
+RUN usermod -a -G video horizonuser
 USER horizonuser
+RUN mkdir -p ~/.config/unknown-horizons/ && \
+    cp content/settings-template.xml ~/.config/unknown-horizons/settings.xml
+
+# Also create config for root user that can leverage video
+USER root
 RUN mkdir -p ~/.config/unknown-horizons/ && \
     cp content/settings-template.xml ~/.config/unknown-horizons/settings.xml
 
