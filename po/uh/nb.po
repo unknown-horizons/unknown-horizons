@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-04-19 11:34+0000\n"
+"PO-Revision-Date: 2019-05-01 23:49+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/uh/"
 "nb_NO/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6-dev\n"
+"X-Generator: Weblate 3.6.1\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -4108,15 +4108,15 @@ msgstr "tilsetningsstoffer"
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr "marmor åre"
+msgstr "marmoråre"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr "marmor topper"
+msgstr "marmortopper"
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
-msgstr "kull åre"
+msgstr "kullåre"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
@@ -4160,11 +4160,11 @@ msgstr "vokskake"
 
 #. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr "gull forekomst"
+msgstr "gullforekomst"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr "gull åre"
+msgstr "gullåre"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
@@ -4172,11 +4172,11 @@ msgstr "gullbarrer"
 
 #. This is a database entry: the name of a resource
 msgid "gem deposit"
-msgstr "edelstein åre"
+msgstr "edelsteinsåre"
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr "rå edelsteiner"
+msgstr "råe edelsteiner"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
@@ -4184,11 +4184,11 @@ msgstr "edelsteiner"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr "kaffe planter"
+msgstr "kaffe-planter"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr "kaffe bønner"
+msgstr "kaffe-bønner"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
@@ -4196,11 +4196,11 @@ msgstr "kaffe"
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr "te planter"
+msgstr "te-planter"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr "te blader"
+msgstr "te-blader"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
@@ -4216,7 +4216,7 @@ msgstr "blomstrer"
 
 #. This is a database entry: the name of a resource
 msgid "brine deposit"
-msgstr "saltlake åre"
+msgstr "saltlakeåre"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
@@ -4244,7 +4244,7 @@ msgstr "bomull"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr "indigo planter"
+msgstr "indigo-planter"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
