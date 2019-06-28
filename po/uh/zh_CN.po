@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2018-08-17 07:35+0000\n"
-"Last-Translator: 唐梓文 <ziwen.tang@chukong-inc.com>\n"
+"PO-Revision-Date: 2019-06-29 21:00+0000\n"
+"Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh/"
 "uh/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.2-dev\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1223,7 +1223,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
-msgstr ""
+msgstr "聊天"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:16
 msgid "Exit gamelobby"
@@ -1239,7 +1239,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:34
 msgid "Color"
-msgstr ""
+msgstr "颜色"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:40
 msgid "Ready:"
@@ -1386,7 +1386,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:144
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: content/gui/xml/mainmenu/settings.xml:156
 msgid "General"
@@ -1485,7 +1485,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
@@ -1527,7 +1527,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "地图的设置:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
@@ -1536,7 +1536,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "选语言:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
@@ -1544,7 +1544,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "游戏的设置:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
@@ -1567,7 +1567,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr ""
+msgstr "颜色:"
 
 #: horizons/command/game.py:38
 msgid "Invalid filename"
@@ -1609,7 +1609,7 @@ msgstr ""
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr ""
+msgstr "你没有这个。"
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
@@ -1889,13 +1889,13 @@ msgstr ""
 #: horizons/gui/modules/multiplayermenu.py:482
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "地图：{map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/gui/modules/multiplayermenu.py:483
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "姓名：{game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:215
 #: horizons/gui/modules/multiplayermenu.py:484
@@ -2121,7 +2121,7 @@ msgstr ""
 
 #: horizons/gui/modules/settings.py:57
 msgid "Game"
-msgstr ""
+msgstr "游戏"
 
 #: horizons/gui/modules/settings.py:77
 msgid "Disabled"
@@ -2195,7 +2195,7 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Water:"
-msgstr ""
+msgstr "水："
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Max island size:"
@@ -2407,7 +2407,7 @@ msgstr ""
 
 #: horizons/gui/tabs/shiptabs.py:94
 msgid "Buy/Sell"
-msgstr ""
+msgstr "买／卖"
 
 #: horizons/gui/tabs/shiptabs.py:103
 msgid "Too far from the nearest tradeable warehouse"
@@ -2447,7 +2447,7 @@ msgstr ""
 #: horizons/gui/widgets/inventory.py:174
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}／{limit}"
 
 #: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
@@ -2474,7 +2474,7 @@ msgstr ""
 #: horizons/gui/widgets/playersships.py:45
 #, python-brace-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "{player}的船"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:95
@@ -2554,7 +2554,7 @@ msgstr ""
 #: horizons/gui/widgets/unitoverview.py:120
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}：{amount}"
 
 #: horizons/gui/widgets/unitoverview.py:125
 msgid "none"
@@ -2653,7 +2653,7 @@ msgstr ""
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "需要猪或是牛。做食品。"
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
@@ -2703,7 +2703,7 @@ msgstr ""
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:125
 msgid "Doctor"
-msgstr ""
+msgstr "医生"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:127
@@ -2933,7 +2933,7 @@ msgstr ""
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:263
 msgid "Mountain"
-msgstr ""
+msgstr "山"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:267
@@ -3058,7 +3058,7 @@ msgstr ""
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:337
 msgid "House"
-msgstr ""
+msgstr "房子"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:339
@@ -3123,7 +3123,7 @@ msgstr ""
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:371
 msgid "Tree"
-msgstr ""
+msgstr "树木"
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:373
@@ -3256,7 +3256,7 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:453
 msgid "Food"
-msgstr ""
+msgstr "食品"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:455
@@ -3293,7 +3293,7 @@ msgstr ""
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:471
 msgid "Sea"
-msgstr ""
+msgstr "大海"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
@@ -3556,7 +3556,7 @@ msgstr ""
 #: horizons/world/building/__init__.py:178
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}：{description}"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building must be built on an island."
