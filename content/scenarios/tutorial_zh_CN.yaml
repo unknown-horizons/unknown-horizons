@@ -102,7 +102,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &MAINSQUARE
   - [Message, Build a Main Square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Headline, 新任务：中央广场]
   - [Image, content/gui/images/background/hr.png]
   - Your residents need a main square where they can fetch their goods from.
   - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
@@ -112,7 +112,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
   - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 任务：建造一个中央广场。]
   - [Pagebreak]
   - '
 
@@ -128,7 +128,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FIRSTTENT
   - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Headline, 新任务：居民区的建筑]
   - [Image, content/gui/images/background/hr.png]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
   - - Gallery
@@ -163,7 +163,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &SIGNALFIRE
   - [Message, Build a Signal Fire at the coast close to your Warehouse.]
-  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - [Headline, 新任务：建造烽火]
   - [Image, content/gui/images/background/hr.png]
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
   - The trader will supply your settlement with necessary goods which you can't produce yet.
@@ -188,7 +188,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &TRADING
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
-  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - [Headline, 新任务：学贸易]
   - [Image, content/gui/images/background/hr.png]
   - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
@@ -219,7 +219,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &PAVILION
   - [Message, Build a Pavilion with connection to the Tents.]
-  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - [Headline, 新任务：建造一个帐篷]
   - [Image, content/gui/images/background/hr.png]
   - Those tools will be enough for the moment. Well done!
   - You now provide housing, a main square and food to your inhabitants.
@@ -265,7 +265,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FARM
   - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, 'NEW TASK: BUILD A FARM']
+  - [Headline, 新任务：建造一个农场]
   - [Image, content/gui/images/background/hr.png]
   - Congratulations! Some of your inhabitants have reached tier II!
   - Now you have access to new buildings, take a look at the Build menu again.
@@ -284,7 +284,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 任务：建造一个农场。]
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -317,7 +317,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &STORAGE
   - [Message, Build a storage tent (tier I tab) where it makes sense.]
-  - [Headline, 'NEW TASK: BUILD STORAGE']
+  - [Headline, 新任务：建造存储]
   - [Image, content/gui/images/background/hr.png]
   - Did you watch your lumberjack recently?
   - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
@@ -382,7 +382,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Our forums are open to you as well!
   - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
   - [Pagebreak]
-  - [Headline, Thanks!]
+  - [Headline, 谢谢！]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -657,4 +657,4 @@ metadata:
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 25 translated messages, 163 untranslated messages.
+  translation_status: 38 translated messages, 150 untranslated messages.
