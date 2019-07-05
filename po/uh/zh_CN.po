@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-06-29 21:00+0000\n"
+"PO-Revision-Date: 2019-07-06 01:00+0000\n"
 "Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh/"
 "uh/zh_Hans/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1243,7 +1243,7 @@ msgstr "颜色"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:40
 msgid "Ready:"
-msgstr ""
+msgstr "就绪："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Sets your state to ready (necessary for the game to start)"
@@ -1251,11 +1251,11 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr ""
+msgstr "新游戏—多人游戏"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 msgid "Load game:"
-msgstr ""
+msgstr "载入游戏："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load a saved game"
@@ -1283,7 +1283,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
 msgid "Join game:"
-msgstr ""
+msgstr "参加游戏："
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Join the selected game"
@@ -1331,7 +1331,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:74
 msgid "Mouse"
-msgstr ""
+msgstr "鼠标"
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid "Scroll at map edge:"
@@ -1477,7 +1477,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
-msgstr ""
+msgstr "你的已保存游戏："
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
@@ -1498,7 +1498,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:53
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "删除已选取保存游戏"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
@@ -1510,7 +1510,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr ""
+msgstr "随机地图"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
@@ -1518,7 +1518,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr ""
+msgstr "开始游戏"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
@@ -1549,7 +1549,7 @@ msgstr "游戏的设置:"
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr ""
+msgstr "自由贸易"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
@@ -1559,11 +1559,11 @@ msgstr ""
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "灾害"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr ""
+msgstr "玩家姓名："
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
@@ -1571,7 +1571,7 @@ msgstr "颜色:"
 
 #: horizons/command/game.py:38
 msgid "Invalid filename"
-msgstr ""
+msgstr "无效文件名"
 
 #: horizons/command/game.py:39
 msgid "Received an invalid filename for a save command."
@@ -1581,7 +1581,7 @@ msgstr ""
 #: horizons/command/game.py:50 horizons/gui/modules/multiplayermenu.py:166
 #: horizons/gui/modules/pausemenu.py:100 horizons/mpsession.py:58
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #: horizons/command/game.py:50 horizons/gui/modules/pausemenu.py:100
 msgid "Failed to save."
@@ -1589,7 +1589,7 @@ msgstr ""
 
 #: horizons/component/tradepostcomponent.py:194
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "贸易伙伴不卖这个。"
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not store this."
@@ -1605,7 +1605,7 @@ msgstr ""
 
 #: horizons/component/tradepostcomponent.py:236
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "贸易伙伴不卖这个。"
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
@@ -1647,7 +1647,7 @@ msgstr ""
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "退出游戏"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
@@ -1663,7 +1663,7 @@ msgstr ""
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
