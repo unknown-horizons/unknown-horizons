@@ -59,17 +59,17 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Wybuduj chatę drwala i poprowadź drogę od chaty do portu.]
   - [Headline, 'NOWE ZADANIE: Wybuduj chatę drwala']
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - Zapasy i materiały budowlane zostały rozładowane ze statku i bezpiecznie przechowywane w nowym magazynie. Nadszedł czas, aby zbudować kilka podstawowych budynków, zaczynając od namiotu drwala.
+  - Drwale powalają drzewa z lasu wokół swojego namiotu i przetwarzają drewno w celu wyprodukowania desek, do wykorzystania w budownictwie lub jako zasób handlowy.
+  - Aby zbudować chatę drwala, otwórz menu budowy klikając wielką ikonę poniżej mini mapy lub naciskając klawisz 'B'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Menu kompilacji jest posortowane według poziomów, a ponieważ twoja osada jest nowa, budynki pierwszego poziomu są jedynymi dostępnymi dla ciebie; wraz z postępem cywilizacji uzyskasz dostęp do wyższych poziomów i będziesz mógł budować znacznie szerszy zakres budynków.
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
-  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - Znajdź ładny zalesiony obszar do działania naszego drwala, a następnie wybierz „Namiot drwala” z listy budynków w Przeglądzie i umieść budynek.
+  - W dalszej części gry możesz chcieć tworzyć lasy, sadząc drzewa, ale ponieważ to kosztuje, powinieneś wykorzystać to, co natura dała na razie!
+  - Każdy budynek gromadzący zasoby lub budynek produkcyjny potrzebuje ścieżki łączącej go z magazynem lub inną formą magazynowania, w przeciwnym razie wytwarzane przez niego towary nie zostaną odebrane.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
   - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
@@ -657,4 +657,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 110 translated messages, 68 fuzzy translations, 10 untranslated messages.
+  translation_status: 117 translated messages, 67 fuzzy translations, 4 untranslated messages.
