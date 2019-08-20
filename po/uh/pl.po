@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-08-10 07:22+0000\n"
+"PO-Revision-Date: 2019-08-21 09:22+0000\n"
 "Last-Translator: Przemysław Szulc <psemeq@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.8-dev\n"
+"X-Generator: Weblate 3.8\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -3896,16 +3896,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Nowy statek o nazwie {name} został wybudowany."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Nowy statek o nazwie {name} został wybudowany."
+msgstr "Wojownik o nazwie {name} jest gotowy do walki."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Nowy statek o nazwie {name} został wybudowany."
+msgstr "Mieszkaniec o nazwie {name} jest dostępny."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen)
@@ -4133,7 +4131,7 @@ msgstr "działa"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "miecz"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -4327,7 +4325,7 @@ msgstr "Chmiel"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "piwo"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
