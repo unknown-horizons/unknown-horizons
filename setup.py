@@ -32,6 +32,8 @@ from distutils.core import setup
 from distutils.spawn import find_executable
 from shutil import copytree, rmtree
 
+import distro
+
 import horizons
 from horizons.constants import VERSION
 from horizons.ext import polib
@@ -39,7 +41,7 @@ from horizons.ext import polib
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
 
-if platform.dist()[0].lower() in ('debian', 'ubuntu'):
+if distro.linux_distribution(full_distribution_name=False)[0] in ('debian', 'mint', 'ubuntu'):
 	executable_path = 'games'
 else:
 	executable_path = 'bin'
