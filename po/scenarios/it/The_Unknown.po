@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2018-01-08 16:35+0000\n"
-"Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/uh/the-"
-"unknown/it/>\n"
+"PO-Revision-Date: 2019-08-28 05:23+0000\n"
+"Last-Translator: Swann Martinet <swann.ranskassa@laposte.net>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/uh/the-unknown/"
+"it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 3.9-dev\n"
 
 #. scenario difficulty
 msgid "easy"
@@ -29,14 +29,14 @@ msgid ""
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
-"Sei il capitano di un vascello sotto bandiera Britannica nel 1740. Tu e il "
-"tuo equipaggio eravate in viaggio verso una colonia Inglese nell'Oceano "
-"Pacifico.\n"
+"Sei il capitano di un vascello sotto bandiera inglese nel 1740. Tu e il tuo "
+"equipaggio eravate in viaggio verso una colonia inglese nell'oceano Pacifico."
+"\n"
 "Tutto stava andando bene, quando finiste in una violenta tempesta…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr "20 Novembre 1740"
+msgstr "20 novembre 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -69,7 +69,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr "22 Novembre 1740"
+msgstr "22 novembre 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -108,7 +108,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr "25 Novembre 1740"
+msgstr "25 novembre 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
