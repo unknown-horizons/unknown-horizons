@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-08-08 20:11+0000\n"
-"Last-Translator: Lyz Lach'lan <jminscri@liev.re>\n"
+"PO-Revision-Date: 2019-08-28 05:23+0000\n"
+"Last-Translator: Swann Martinet <swann.ranskassa@laposte.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/uh/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 3.9-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -28,14 +28,14 @@ msgstr "Unknown Horizons a planté."
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
 msgstr ""
-"Nous sommes désolé pour cela et nous  allons faire notre possible afin de "
-"corriger cette erreur."
+"Nous sommes désolés et nous  allons faire notre possible afin de corriger "
+"cette erreur."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
 msgstr ""
-"Pour faire cela, nous avons besoin des informations provenant de l'archive "
-"de registre :"
+"Pour ce faire, nous avons besoin des informations provenant de l'archive de "
+"registre :"
 
 #: run_uh.py:192
 msgid ""
@@ -56,7 +56,7 @@ msgstr "Sauvegarder la carte"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Charger une Carte"
+msgstr "Charger une carte"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -86,7 +86,7 @@ msgstr "Sélectionner le terrain :"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(clic-droit pour arrêter)"
+msgstr "(clic droit pour arrêter)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -100,7 +100,7 @@ msgstr ""
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
 msgstr ""
-"Sélectionnez votre navire et approchez de la côte grâce à un clic-droit."
+"Sélectionnez votre navire et approchez de la côte grâce à un clic droit."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:21
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -197,7 +197,7 @@ msgstr "Appliquer le nouveau nom"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Chat"
+msgstr "Tchat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
@@ -384,7 +384,7 @@ msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
-msgstr "Construire une unité terrestre:"
+msgstr "Construire une unité terrestre :"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
@@ -421,7 +421,7 @@ msgstr "neutre"
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:18
 msgid "enemy"
-msgstr "ennemie"
+msgstr "ennemi"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:10
@@ -468,7 +468,7 @@ msgstr "Impôts :"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:41
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:44
 msgid "Tax rate"
-msgstr "Taux d'impôts"
+msgstr "Taux d'imposition"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:38
 msgid "Upgrade permissions:"
@@ -491,7 +491,7 @@ msgstr "satisfait"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:65
 msgid "happy"
-msgstr "joyeux"
+msgstr "heureux"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
@@ -519,7 +519,7 @@ msgstr "maisons"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "habitants"
+msgstr "résidents"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
@@ -714,7 +714,9 @@ msgstr "Sélectionner les ressources :"
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr "La ressource cliqué prend la place de l'actuelle. Videz en cliquant X."
+msgstr ""
+"La ressource sélectionnée prend la place de l'actuelle. Videz en cliquant "
+"sur X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
@@ -792,7 +794,7 @@ msgstr "Envoie ce message à tous les joueurs."
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Entrez votre message içi"
+msgstr "Entrez votre message ici"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -823,13 +825,13 @@ msgstr "Sélectionner une ressource :"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 msgid "Route activity:"
-msgstr "Activité de la route :"
+msgstr "Activité du parcours :"
 
 #. Trade route
 #: content/gui/xml/ingame/widgets/configure_route.xml:47
 #: horizons/gui/widgets/routeconfig.py:118
 msgid "Start route"
-msgstr "Débuter la route"
+msgstr "Démarrer le parcours"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:49
 msgid "Exit"
@@ -927,7 +929,7 @@ msgstr "Valeur de toutes les unités possédées par le joueur"
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
 msgstr ""
-"La valeur totale de toutes les unités ou en bref : le Score Total du Joueur"
+"La valeur totale de toutes les unités ou en bref : le score total du joueur"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
@@ -991,7 +993,7 @@ msgstr "Choisir une taille de carte :"
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr "Choisissez une carte :"
+msgstr "Choisir une carte :"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
@@ -1059,7 +1061,7 @@ msgstr "Réduire la vitesse du jeu"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr "Interrompre la partie"
+msgstr "Mettre le jeu en pause"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Show build menu"
@@ -1139,7 +1141,7 @@ msgstr "Activer/Désactiver la grille"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:41
 msgid "Show coordinate values (Debug)"
-msgstr "Afficher la valeur des coordonnées (Debug)"
+msgstr "Afficher la valeur des coordonnées (Débogage)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:45
