@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-10-26 14:46+0000\n"
-"Last-Translator: Wuzzy <almikes@aol.com>\n"
+"PO-Revision-Date: 2019-08-28 05:23+0000\n"
+"Last-Translator: Swann Martinet <swann.ranskassa@laposte.net>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.17\n"
+"X-Generator: Weblate 3.9-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1174,7 +1174,7 @@ msgstr "Spiel speichern"
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:53
 msgid "Load game"
-msgstr "Lade Spiel"
+msgstr "Spiel laden"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
