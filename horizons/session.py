@@ -120,6 +120,9 @@ class Session(LivingObject):
 
 		self._old_autosave_interval = None
 
+	def SetLogBook(self, logbook):
+		self.view.SetLogBook(logbook)
+
 	def start(self):
 		"""Actually starts the game."""
 		self.timer.activate()

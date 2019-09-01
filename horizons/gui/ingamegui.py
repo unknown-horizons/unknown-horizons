@@ -89,6 +89,7 @@ class IngameGui(LivingObject):
 		self.open_error_popup = self.windows.open_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
+		self.session.SetLogBook(self.logbook)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
@@ -485,8 +486,10 @@ class IngameGui(LivingObject):
 		elif action == _Actions.SPEED_DOWN:
 			SpeedDownCommand().execute(self.session)
 		elif action == _Actions.ZOOM_IN:
+			print('DEBUG TEST')
 			self.session.view.zoom_in()
 		elif action == _Actions.ZOOM_OUT:
+			print('DEBUG TEST')
 			self.session.view.zoom_out()
 		elif action == _Actions.PAUSE:
 			TogglePauseCommand().execute(self.session)
