@@ -89,6 +89,7 @@ class IngameGui(LivingObject):
 		self.open_error_popup = self.windows.open_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
+		self.session.SetLogBook(self.logbook)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)

@@ -228,9 +228,9 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 	def pay_tax(self):
 		"""Pays the tax for this settler"""
 		# the money comes from nowhere, settlers seem to have an infinite amount of money.
-		# see http://wiki.unknown-horizons.org/w/Settler_taxing
+		# see https://github.com/unknown-horizons/unknown-horizons/wiki/Settler-taxing
 
-		# calc taxes http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
+		# calc taxes https://github.com/unknown-horizons/unknown-horizons/wiki/Settler-taxing#Formulae
 		happiness_tax_modifier = 0.5 + (float(self.happiness) / 70.0)
 		inhabitants_tax_modifier = float(self.inhabitants) / self.inhabitants_max
 		taxes = self.tax_base * self.settlement.tax_settings[self.level] * happiness_tax_modifier * inhabitants_tax_modifier
@@ -239,7 +239,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 		self.settlement.owner.get_component(StorageComponent).inventory.alter(RES.GOLD, real_taxes)
 		self.last_tax_payed = real_taxes
 
-		# decrease happiness http://wiki.unknown-horizons.org/w/Settler_taxing#Formulae
+		# decrease happiness https://github.com/unknown-horizons/unknown-horizons/wiki/Settler-taxing#Formulae
 		difference = 1.0 - self.settlement.tax_settings[self.level]
 		happiness_decrease = 10 * difference - 6 * abs(difference)
 		happiness_decrease = int(round(happiness_decrease))
@@ -266,7 +266,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			self.log.debug("%s: inhabitants decrease to %s", self, self.inhabitants)
 
 		if change != 0:
-			# see http://wiki.unknown-horizons.org/w/Supply_citizens_with_resources
+			# see https://github.com/unknown-horizons/unknown-horizons/wiki/Supply-citizens-with-resources
 			self.get_component(Producer).alter_production_time(
 				6.0 / 7.0 * math.log(1.5 * (self.inhabitants + 1.2)))
 			self.inhabitants += change
