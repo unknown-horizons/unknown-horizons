@@ -40,7 +40,7 @@ from horizons.util.python.callback import Callback
 
 class LogBook(PickBeltWidget, Window):
 	"""Implementation of the logbook as described here:
-	http://wiki.unknown-horizons.org/w/Message_System
+	https://github.com/unknown-horizons/unknown-horizons/wiki/Message-System
 
 	It displays longer messages, which are essential for scenarios.
 	Headings can be specified for each entry.

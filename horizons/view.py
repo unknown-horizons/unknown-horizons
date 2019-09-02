@@ -38,6 +38,7 @@ class View(ChangeListener):
 	def __init__(self):
 		super().__init__()
 		self.world = None
+		self.logbook = None
 		self.model = horizons.globals.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -187,21 +188,27 @@ class View(ChangeListener):
 		map_point = self.cam.toMapCoordinates(screen_point, False)
 		self.center(map_point.x, map_point.y)
 
+	def SetLogBook(self, logbook):
+		if self.logbook is None:
+			self.logbook = logbook
+
 	def zoom_out(self, track_cursor=False):
-		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
-		if zoom < VIEW.ZOOM_MIN:
-			zoom = VIEW.ZOOM_MIN
-		if track_cursor:
-			self._prepare_zoom_to_cursor(zoom)
-		self.zoom = zoom
+		if not self.logbook.is_visible():
+			zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
+			if zoom < VIEW.ZOOM_MIN:
+				zoom = VIEW.ZOOM_MIN
+			if track_cursor:
+				self._prepare_zoom_to_cursor(zoom)
+			self.zoom = zoom
 
 	def zoom_in(self, track_cursor=False):
-		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
-		if zoom > VIEW.ZOOM_MAX:
-			zoom = VIEW.ZOOM_MAX
-		if track_cursor:
-			self._prepare_zoom_to_cursor(zoom)
-		self.zoom = zoom
+		if not self.logbook.is_visible():
+			zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
+			if zoom > VIEW.ZOOM_MAX:
+				zoom = VIEW.ZOOM_MAX
+			if track_cursor:
+				self._prepare_zoom_to_cursor(zoom)
+			self.zoom = zoom
 
 	@property
 	def zoom(self):

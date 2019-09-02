@@ -440,3 +440,6 @@ class Session(LivingObject):
 			db.close()
 			os.unlink(savegame)
 			return False
+
+	def SetLogBook(self, logbook):
+		self.view.SetLogBook(logbook)
