@@ -193,7 +193,15 @@ class View(ChangeListener):
 			self.logbook = logbook
 
 	def zoom_out(self, track_cursor=False):
-		if not self.logbook.is_visible():
+		if self.logbook is not None:
+			if not self.logbook.is_visible():
+				zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
+				if zoom < VIEW.ZOOM_MIN:
+					zoom = VIEW.ZOOM_MIN
+				if track_cursor:
+					self._prepare_zoom_to_cursor(zoom)
+				self.zoom = zoom
+		else:
 			zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
 			if zoom < VIEW.ZOOM_MIN:
 				zoom = VIEW.ZOOM_MIN
@@ -202,7 +210,15 @@ class View(ChangeListener):
 			self.zoom = zoom
 
 	def zoom_in(self, track_cursor=False):
-		if not self.logbook.is_visible():
+		if self.logbook is not None:
+			if not self.logbook.is_visible():
+				zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
+				if zoom > VIEW.ZOOM_MAX:
+					zoom = VIEW.ZOOM_MAX
+				if track_cursor:
+					self._prepare_zoom_to_cursor(zoom)
+				self.zoom = zoom
+		else:
 			zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
 			if zoom > VIEW.ZOOM_MAX:
 				zoom = VIEW.ZOOM_MAX
