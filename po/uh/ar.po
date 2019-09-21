@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2017.2-731-g533abe7eb\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-10-30 22:44+0000\n"
-"Last-Translator: omar anwar aglan <omar.aglan91@yahoo.com>\n"
+"PO-Revision-Date: 2019-05-13 18:49+0000\n"
+"Last-Translator: Omar Aglan <omar.aglan91@yahoo.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/uh/uh/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -17,40 +17,40 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2.17\n"
+"X-Generator: Weblate 3.7-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "شكراً لك للإستخدام Unknown Horizons!"
+msgstr "شكراً لك لإستخدام \"Unknown Horizons\"!"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons قد تحطمت."
+msgstr "تحطمت Unknown Horizons."
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "نحن أسفون جداً علي حصول هذا ونود إصلاح هذا الخطأ الحاصل."
+msgstr "نحن آسفون جداً على حصول هذا ونود إصلاح هذا الخطأ الحاصل."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "لكي يحدث هذا، نحن نحتاج المعلومات من ملف السجل:"
+msgstr "لكي يحدث هذا، نحن نحتاج للمعلومات من ملف السجل:"
 
 #: run_uh.py:192
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"من فضلك أعطه لنا عن طريق IRC أو منتدايتنا، لكي تري الأثنين أنظر http"
-"://unknown-horizons.org ."
+"من فضلك أرسله لنا عن طريق بروتوكول الدردشة عبر الإنترنت أو منتدايتنا، "
+"للأثنين أنظر http://unknown-horizons.org ."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
-msgstr "إرجع إلي المُعدل"
+msgstr "ارجع إلي المُعدل"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:55
 msgid "Save map"
-msgstr "إحفظ الخريطة"
+msgstr "احفظ الخريطة"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
@@ -72,27 +72,27 @@ msgstr "مساعدة"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:19
 msgid "Exit editor"
-msgstr "إخرج من المُعدل"
+msgstr "اخرج من المُعدل"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "حدد حجم الفرشاة:"
+msgstr "اختر حجم الفرشاة:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr "حدد التربة:"
+msgstr "اختر التربة:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(إضغط باليمين لكي تتوقف)"
+msgstr "(اضغط بزر الفأرة اليمين لتتوقف)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "إبدء اللعبة"
+msgstr "إبدأ اللعبة"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "يجب عليك تأسيس مستعمرة قبل بناء المباني!"
+msgstr "يجب عليك إيجاد مستعمرة قبل بناء المباني!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
@@ -183,7 +183,7 @@ msgstr "الأسم القديم:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
-msgstr "أدخل الأسم الجديد:"
+msgstr "ادخل الأسم الجديد:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:18
 msgid "Apply the new name"
@@ -197,7 +197,7 @@ msgstr "الشات"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "أدخل رسالتك:"
+msgstr "ادخل رسالتك:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -220,7 +220,7 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"لكي تبني وحدة أرضية، إضغط علي إحدي تبويبات الفصول، إختر الوحدة الأرضية "
+"لكي تبني وحدة أرضية، إضغط على إحدى تبويبات الفصول، إختر الوحدة الأرضية "
 "المرادة وأكد الأمر."
 
 #. Information about the ship currently under construction at the boat
@@ -230,7 +230,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "يبني حالياً:"
+msgstr "يُبني حالياً:"
 
 #. Pauses the current ship production, can be resumed later
 #. Pauses the current groundunit production, can be resumed later
@@ -244,7 +244,7 @@ msgstr "توقف مؤقت"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:43
 msgid "Resume"
-msgstr "إكمال البناء"
+msgstr "اكمال البناء"
 
 #. Refers to the resources still missing to complete the current boat
 #. builder task
@@ -258,7 +258,7 @@ msgstr "تقدم البناء:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:55
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:55
 msgid "Resources still needed:"
-msgstr "مازال يحتاج الموارد الأتية:"
+msgstr "مازال يحتاج للموارد الآتية:"
 
 #. abort construction of a ship, lose invested resources
 #. abort construction of a groundunit, lose invested resources
@@ -291,7 +291,7 @@ msgstr "أكد الأمر"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
 msgid "(like in the selection tabs)"
-msgstr "(مثل في تبويبات التحديد)"
+msgstr "(مثل ما في تبويبات التحديد)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -309,19 +309,19 @@ msgstr "$حجم"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr "24t"
+msgstr "24طن"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr "14t"
+msgstr "14طن"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr "06t"
+msgstr "06طن"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
@@ -356,19 +356,19 @@ msgstr "بدن السفينة"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr "+ 24t"
+msgstr "+ 24طن"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr "+ 14t"
+msgstr "+ 14طن"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr "+ 06t"
+msgstr "+ 06طن"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
@@ -382,7 +382,7 @@ msgstr "بناء وحدة أرضية:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
 msgid "Build this groundunit!"
-msgstr "بناء هذه الوحدة الأرضية!"
+msgstr "بناء تلك الوحدة الأرضية!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -393,12 +393,12 @@ msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
-msgstr "أبني السفينة:"
+msgstr "بناء السفينة:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
-msgstr "إبني هذه السفينة!"
+msgstr "بناء هذه السفينة!"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -429,7 +429,7 @@ msgstr "استغلال القدرة"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr "إضغط لكي تغيير أسم هذه الوحدة الأرضية"
+msgstr "اضغط لكي تغيير أسم هذه الوحدة الأرضية"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
@@ -439,7 +439,7 @@ msgstr "خزانة المستعمرة"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr "نظرة عامة للمستعمرة"
+msgstr "نظرة عامة على المستوطن"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
@@ -489,7 +489,7 @@ msgstr "كمية المنازل بهذه السعادة"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
-msgstr "المواطنيين لكل منزل"
+msgstr "المواطنين بكل منزل"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:64
 msgid "Number of inhabitants per house"
@@ -509,7 +509,7 @@ msgstr "المنازل"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:74
 msgid "residents"
-msgstr "المواطنيين"
+msgstr "المواطنين"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
@@ -549,7 +549,7 @@ msgstr "هذا هو مخزن الموارد حيث يمكنك بناء منجم 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
 msgid "It contains these resources:"
-msgstr "هو يحتوي علي هذه الموارد:"
+msgstr "يحتوي علي هذه الموارد:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:10
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:11
@@ -557,7 +557,7 @@ msgstr "هو يحتوي علي هذه الموارد:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "إضغط لكي تغيير أسم المستعمرة"
+msgstr "اضغط لكي تغيير أسم المستعمرة"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -567,7 +567,7 @@ msgstr "السعادة"
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:28
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:30
 msgid "Residents"
-msgstr "المواطنيين"
+msgstr "المواطنين"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:49
 msgid "Needed resources:"
@@ -578,7 +578,7 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"إشارة النار تُري التاجر الحر كيفية الوصول لمستعمرتك في حالة إذا أردت أن "
+"اشارة النار تُري التاجر الحر كيفية الوصول لمستعمرتك في حالة إذا أردت أن "
 "تشتري أو تبيع البضائع."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
@@ -593,7 +593,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
-msgstr "إضغط لكي تغيير أسم هذه السفينة"
+msgstr "اضغط لكي تغيير أسم هذه السفينة"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -608,13 +608,13 @@ msgstr "تاجر"
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:69
 msgid "Build settlement"
-msgstr "إبني مستعمرة"
+msgstr "ابني مستعمرة"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:34
 msgid "Configure trading route"
-msgstr "أضبط طريق التجارة"
+msgstr "اضبط طريق التجارة"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
 msgid "Discard all resources"
@@ -634,7 +634,7 @@ msgstr "زميل التجارة:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:7
 msgid "Buy or sell resources"
-msgstr "إشتري أو بيع الموارد"
+msgstr "قم بشراء أو بيع الموارد"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:18
 msgid "Trade history"
@@ -675,17 +675,17 @@ msgstr "الميزانية:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "أظهر الموارد المُنتجة في المستعمرة"
+msgstr "اظهر الموارد المُنتجة في المستعمرة"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:15
 #: content/gui/xml/ingame/templates/overview_productionline.xml:15
 msgid "Pause production"
-msgstr "أوقف الإنتاج مؤقتاً"
+msgstr "اوقف الإنتاج مؤقتاً"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:18
 #: content/gui/xml/ingame/templates/overview_productionline.xml:18
 msgid "Start production"
-msgstr "إبدء الإنتاج"
+msgstr "ابدء الإنتاج"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -699,15 +699,15 @@ msgstr "حدد المورد:"
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
-msgstr "المورد الذي حددته هو الظاهر بدلاً من الحالي. إخلاء بواسطة الضغط علي X."
+msgstr "المورد الذي حددته هو الظاهر بدلاً من الحالي. لكى تفرغة أضغط علي X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "إحفظ إعدادات المورد الحالي كأفتراضي لكل المستعمرات."
+msgstr "احفظ إعدادات المورد الحالي كأفتراضي لكل المستعمرات."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "أرجع إعدادات المورد للإفتراضي في كل المستعمرات."
+msgstr "ارجع إعدادات المورد للإفتراضي في كل المستعمرات."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -727,12 +727,12 @@ msgstr "تحريك للأسفل"
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:18
 msgid "Read previous entries"
-msgstr "إقرء المدخلات السابقة"
+msgstr "اقرء المدخلات السابقة"
 
 #. Entry of Captain's Log (logbook/diary used in scenarios)
 #: content/gui/xml/ingame/widgets/captains_log.xml:21
 msgid "Read next entries"
-msgstr "إقرء المدخلات التالية"
+msgstr "اقرء المدخلات التالية"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:36
 #: horizons/gui/widgets/logbook.py:53
@@ -741,7 +741,7 @@ msgstr "الأحصائيات"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:39
 msgid "Players"
-msgstr "اللأعبيبن"
+msgstr "اللأعيبين"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:40
 msgid "My ships"
@@ -768,7 +768,7 @@ msgstr "كل الأشخاص"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:72
 msgid "Sends the chat messages to all players."
-msgstr "إرسال رسائل الشات لكل اللأعبيين."
+msgstr "إرسال رسائل الشات لكل اللاعبين."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -778,25 +778,25 @@ msgstr "أدخل رسالتك هنا"
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr "إرجع إلي اللعبة"
+msgstr "ارجع إلي اللعبة"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
 msgid "Island Name:"
-msgstr "إسم الجزيرة:"
+msgstr "اسم الجزيرة:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
 msgid "Player Name:"
-msgstr "إسم اللاعب:"
+msgstr "اسم اللاعب:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
 msgid "Wait at load:"
-msgstr "إنتظر للتحميل:"
+msgstr "انتظر للتحميل:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:20
 msgid "Wait at unload:"
-msgstr "إنتظر للتنزيل:"
+msgstr "انتظر للتنزيل:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Select a resource:"
@@ -810,7 +810,7 @@ msgstr "نشاط الطريق:"
 #: content/gui/xml/ingame/widgets/configure_route.xml:47
 #: horizons/gui/widgets/routeconfig.py:118
 msgid "Start route"
-msgstr "إبدء الطريق"
+msgstr "بدء الطريق"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:49
 msgid "Exit"

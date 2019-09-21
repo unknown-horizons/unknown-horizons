@@ -253,8 +253,8 @@ class BoatbuilderSelectTab(ProducerOverviewTabBase):
 		# consumed == negative, reverse to sort in *ascending* order:
 		costs = sorted(production.consumed_res.items(), key=itemgetter(1))
 		for i, (res, amount) in enumerate(costs):
-			xoffset = 103 + (i  % 2) * 55
-			yoffset =  20 + (i // 2) * 20
+			xoffset = 103 + (i % 2) * 55
+			yoffset = 20 + (i // 2) * 20
 			icon = create_resource_icon(res, self.instance.session.db)
 			icon.max_size = icon.min_size = icon.size = (16, 16)
 			icon.position = (xoffset, yoffset)

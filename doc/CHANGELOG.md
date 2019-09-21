@@ -3,7 +3,7 @@ CHANGELOG Unknown Horizons
 
 | Release | Current savegame revision |
 |---|---|
-| 2017.3 | 76 |
+| 2019.1 | 77 |
 | 2017.2 | 76 |
 | 2017.1 | 76 |
 | 2015.1 | 75 |
@@ -20,17 +20,29 @@ CHANGELOG Unknown Horizons
 | 2010.1 | 8 |
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-2017-XX-XX: Milestone 2017.3
+2019-01-11: Milestone 2019.1
 ----------------------------
-changelog date: 10th April 2017
+changelog date: 9th Jan 2019
 
 ### Codebase
+
+Features:
+ - Minimap is now isometric too
+ - #2749 Follow XDG basedir specification for user directories
+ - Ambient objects
 
 Port:
  - Port to Python3
 
 Bugfixes:
+ - Random segfaults when moving mouse over menu buttons
+ - #661 objects and buildings drawn in wrong order; further building shown infront of a closer building
  - #2542 Don't place tress on sand tiles
+ - #2717 Tooltips on the wrong side of the cursor (offscreen)
+ - #2753 Horizontal scrolling crashing UH
+ - #2156 Numpad keys not working
+ - #1379 Ships drawn with wrong offsets
+ 
 
 2017-02-07: Milestone 2017.2
 ----------------------------

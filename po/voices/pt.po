@@ -8,32 +8,32 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2016-08-01 05:41+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2019-04-18 11:40+0000\n"
+"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/voices/pt/>"
 "\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
-msgstr "povoação."
+msgstr "Esforça-te para que esta povoação se desenvolva plenamente."
 
 #. Founding settlement - Player found settlement"
 msgid "Your inhabitants will certainly feel comfortable on this island."
-msgstr "Seus habitantes com certeza se sentirão confortáveis nesta ilha."
+msgstr "Os teus habitantes vão com certeza se sentir confortáveis nesta ilha."
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr "Se aproprie deste pedaço de terra de agora em diante."
+msgstr "A partir de agora apropria-te desta terra."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr "Esta região pertence à nossas cores agora."
+msgstr "Esta região agora pertence às nossas cores."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
@@ -41,7 +41,7 @@ msgstr "Este pedaço de terra agora é nosso."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "Another player has settled on an island."
-msgstr ""
+msgstr "Outro jogador já se instalou nesta ilha."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "A player develops a new settlement."
@@ -49,80 +49,84 @@ msgstr "Um jogador desenvolveu um novo povoamento."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr ""
+msgstr "Um dos teus companheiros fundou um povoamento."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr ""
+msgstr "Um dos nossos rivais parece ter fundado uma povoação."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
-msgstr ""
+msgstr "Fomos informados que um dos nossos rivais conquistou novas terras."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "Parece que um dos nossos oponentes se expandiu."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr ""
+msgstr "O nosso aliado povoou outra ilha."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr ""
+msgstr "Um dos nossos aliados está a cultivar numa ilha."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
 msgstr ""
+"O nosso aliado envia notícias sobre a fundação bem sucedida de uma nova "
+"povoação."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr ""
+msgstr "Esta ilha deixou de ser totalmente tua."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
 msgstr ""
+"Os exploradores descobriram que alguns convidados estabeleceram-se numa das "
+"nossas ilhas."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
-msgstr ""
+msgstr "Temos novos vizinhos nesta ilha!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Scouts report that uninvited guests beleaguer our island!"
-msgstr ""
+msgstr "Os exploradores relatam que alguns intrusos se sitiaram na nossa ilha!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Should we really accept our rival as new neighbor?"
-msgstr ""
+msgstr "Devíamos mesmo aceitar o nosso rival como um novo vizinho?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr ""
+msgstr "Um dos nossos inimigos estabeleceu-se nas nossas terras!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
-msgstr ""
+msgstr "Um dos nossos aliados necessita desesperadamente das tuas terras."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
-msgstr ""
+msgstr "Por enquanto partilhamos esta terra com o nosso aliado."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr ""
+msgstr "O nosso aliado estabeleceu-se numa das nossas ilhas."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr ""
+msgstr "Precisas de mais recursos para construir isto."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
-msgstr ""
+msgstr "Esta construção precisa de mais recursos."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "Não é possível construir sem materiais suficientes."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr ""
+msgstr "Os recursos no teu inventário não são suficientes para construir isto."

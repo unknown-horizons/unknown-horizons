@@ -40,7 +40,7 @@ from horizons.util.python.callback import Callback
 
 class LogBook(PickBeltWidget, Window):
 	"""Implementation of the logbook as described here:
-	http://wiki.unknown-horizons.org/w/Message_System
+	https://github.com/unknown-horizons/unknown-horizons/wiki/Message-System
 
 	It displays longer messages, which are essential for scenarios.
 	Headings can be specified for each entry.
@@ -82,13 +82,13 @@ class LogBook(PickBeltWidget, Window):
 		"""Initial gui setup for all subpages accessible through pickbelts."""
 		self._gui = self.get_widget()
 		self._gui.mapEvents({
-		  OkButton.DEFAULT_NAME : self._windows.close,
-		  'backwardButton' : Callback(self._scroll, -2),
-		  'forwardButton' : Callback(self._scroll, 2),
-		  'stats_players' : Callback(self.show_statswidget, widget='players'),
-		  'stats_settlements' : Callback(self.show_statswidget, widget='settlements'),
-		  'stats_ships' : Callback(self.show_statswidget, widget='ships'),
-		  'chatTextField' : self._send_chat_message,
+		  OkButton.DEFAULT_NAME: self._windows.close,
+		  'backwardButton': Callback(self._scroll, -2),
+		  'forwardButton': Callback(self._scroll, 2),
+		  'stats_players': Callback(self.show_statswidget, widget='players'),
+		  'stats_settlements': Callback(self.show_statswidget, widget='settlements'),
+		  'stats_ships': Callback(self.show_statswidget, widget='ships'),
+		  'chatTextField': self._send_chat_message,
 		  })
 
 		# stuff in the game message / chat history subwidget

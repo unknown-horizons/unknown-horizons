@@ -15,7 +15,7 @@
 				<Label min_size="70,20" name="building_score" text="Buildings" helptext="Value of all the buildings in the player's settlement(s)" />
 				<Label min_size="60,20" name="settler_score" text="Settlers" helptext="Value denoting the progress of the settlement(s) in terms of inhabitants, buildings and overall happiness" />
 				<Label min_size="50,20" name="unit_score" text="Units" helptext="Value of all the units owned by the player" />
-				<Label min_size="70,20" name="total_score" text="Total" helptext="The total value from all individual entities or in short : Total Player Score" />
+				<Label min_size="70,20" name="total_score" text="Total" helptext="The total value from all individual entities or in short: Total Player Score" />
 			</HBox>
 		</VBox>
 

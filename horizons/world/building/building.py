@@ -230,62 +230,24 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 		#rotation = cls.check_build_rotation(session, rotation, x, y)
 		# TODO: replace this with new buildable api
 		# IDEA: save rotation in savegame
-		facing_loc = fife.Location(session.view.layers[cls.layer])
-		instance_coords = list((x, y, 0))
-		layer_coords = list((x, y, 0))
+
 		width, length = cls.size
+		if rotation == 135 or rotation == 315:
+			# if you look at a non-square builing from a 45 degree angle it looks
+			# different than from a 135 degree angle
+			# when you rotate it the width becomes the length and the length becomes the width
+			width, length = length, width
 
-		# NOTE:
-		# nobody actually knows how the code below works.
-		# it's for adapting the facing location and instance coords in
-		# different rotations, and works with all quadratic buildings (tested up to 4x4)
-		# for the first unquadratic building (2x4), a hack fix was put into it.
-		# the plan for fixing this code in general is to wait until there are more
-		# unquadratic buildings, and figure out a pattern of the placement error,
-		# then fix that generally.
+		# the drawing origin is the center of it's area, minus 0.5
+		# the 0.5 isn't really necessary, but other code is aligned with the 0.5 shift
+		# this is at least for the gridoverlay, and the location of a build preview relative to the mouse
+		# it this is changed, it should also be changed for ground tiles (world/ground.py) and units
+		instance_coords = [x + width / 2 - 0.5, y + length / 2 - 0.5, 0]
 
-		if rotation == 45:
-			layer_coords[0] = x + width + 3
-
-			if width == 2 and length == 4:
-				# HACK: fix for 4x2 buildings
-				instance_coords[0] -= 1
-				instance_coords[1] += 1
-
-		elif rotation == 135:
-			instance_coords[1] = y + length - 1
-			layer_coords[1] = y - length - 3
-
-			if width == 2 and length == 4:
-				# HACK: fix for 4x2 buildings
-				instance_coords[0] += 1
-				instance_coords[1] -= 1
-
-		elif rotation == 225:
-			instance_coords = list(( x + width - 1, y + length - 1, 0))
-			layer_coords[0] = x - width - 3
-
-			if width == 2 and length == 4:
-				# HACK: fix for 4x2 buildings
-				instance_coords[0] += 1
-				instance_coords[1] -= 1
-
-		elif rotation == 315:
-			instance_coords[0] = x + width - 1
-			layer_coords[1] = y + length + 3
-
-			if width == 2 and length == 4:
-				# HACK: fix for 4x2 buildings
-				instance_coords[0] += 1
-				instance_coords[1] -= 1
-
-		else:
-			return None
 		instance = session.view.layers[cls.layer].createInstance(
 			cls._fife_object,
-			fife.ModelCoordinate(*instance_coords),
+			fife.ExactModelCoordinate(*instance_coords),
 			world_id)
-		facing_loc.setLayerCoordinates(fife.ModelCoordinate(*layer_coords))
 
 		if action_set_id is None:
 			action_set_id = cls.get_random_action_set(level=level)
@@ -300,8 +262,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 			else:
 				# set first action
 				action = list(action_set.keys())[0]
-
-		instance.actRepeat(action + "_" + str(action_set_id), facing_loc)
+		instance.actRepeat("{}_{}".format(action, action_set_id), rotation)
 		return (instance, action_set_id)
 
 	@classmethod

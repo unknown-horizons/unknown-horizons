@@ -72,12 +72,12 @@ def update_from_template(input_po, input_template):
 	print('Updating {}:'.format(input_po))
 	try:
 		subprocess.call([
-			'msgmerge',
-			'--previous',
-			'--update',
-			input_po,
-			input_template,
-		], stderr=subprocess.STDOUT)
+		    'msgmerge',
+		    '--previous',
+		    '--update',
+		    input_po,
+		    input_template, ],
+		    stderr=subprocess.STDOUT)
 	except subprocess.CalledProcessError:
 		#TODO handle
 		print('Error while updating translation `{}`. Exiting.'.format(input_po))
@@ -86,14 +86,14 @@ def update_from_template(input_po, input_template):
 
 def update_authors_per_file(input_po, regexp=LANG_RE, since='weblate-credits..', pushed_by='Weblate'):
 	authors = subprocess.check_output([
-		'git',
-		'log',
-		since,
-		'--committer',
-		pushed_by,
-		'--format=%an',
-		input_po,
-	], stderr=subprocess.STDOUT)
+	    'git',
+	    'log',
+	    since,
+	    '--committer',
+	    pushed_by,
+	    '--format=%an',
+	    input_po, ],
+	    stderr=subprocess.STDOUT)
 
 	#TODO Clearly the above can never fail, ever. But what if it did?
 	lang = regexp.search(input_po).groups()[0]
@@ -138,7 +138,7 @@ def main():
 	sort_order = lambda e: LANGUAGENAMES.get_by_value(e[0], english=True)
 	for language, authors in sorted(language_authors.items(), key=sort_order):
 		print('\n####', language)
-		#TODO
+		# TODO
 		# The sorted() below will not correctly sort names containing non-ascii.
 		# You'll need to rely on manual copy/paste and ordering anyways, so just
 		# keep your eyes open a bit more than usual.

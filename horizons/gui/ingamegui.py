@@ -89,6 +89,7 @@ class IngameGui(LivingObject):
 		self.open_error_popup = self.windows.open_error_popup
 
 		self.logbook = LogBook(self.session, self.windows)
+		self.session.SetLogBook(self.logbook)
 		self.players_overview = PlayersOverview(self.session)
 		self.players_settlements = PlayersSettlements(self.session)
 		self.players_ships = PlayersShips(self.session)
@@ -118,7 +119,8 @@ class IngameGui(LivingObject):
 		                       targetrenderer=horizons.globals.fife.targetrenderer,
 		                       imagemanager=horizons.globals.fife.imagemanager,
 		                       session=self.session,
-		                       view=self.session.view)
+		                       view=self.session.view,
+		                       mousearea=self.mainhud.findChild(name="minimapMouse"))
 
 		def speed_up():
 			SpeedUpCommand().execute(self.session)
@@ -127,17 +129,17 @@ class IngameGui(LivingObject):
 			SpeedDownCommand().execute(self.session)
 
 		self.mainhud.mapEvents({
-			'zoomIn' : self.session.view.zoom_in,
-			'zoomOut' : self.session.view.zoom_out,
-			'rotateRight' : Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.rotate_right),
-			'rotateLeft' : Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.rotate_left),
-			'speedUp' : speed_up,
-			'speedDown' : speed_down,
-			'destroy_tool' : self.toggle_destroy_tool,
-			'build' : self.show_build_menu,
-			'diplomacyButton' : self.show_diplomacy_menu,
-			'gameMenuButton' : self.toggle_pause,
-			'logbook' : lambda: self.windows.toggle(self.logbook)
+			'zoomIn': self.session.view.zoom_in,
+			'zoomOut': self.session.view.zoom_out,
+			'rotateRight': Callback.ChainedCallbacks(self.session.view.rotate_right, self.minimap.update_rotation),
+			'rotateLeft': Callback.ChainedCallbacks(self.session.view.rotate_left, self.minimap.update_rotation),
+			'speedUp': speed_up,
+			'speedDown': speed_down,
+			'destroy_tool': self.toggle_destroy_tool,
+			'build': self.show_build_menu,
+			'diplomacyButton': self.show_diplomacy_menu,
+			'gameMenuButton': self.toggle_pause,
+			'logbook': lambda: self.windows.toggle(self.logbook)
 		})
 		self.mainhud.show()
 
@@ -173,15 +175,15 @@ class IngameGui(LivingObject):
 		GuiCancelAction.unsubscribe(self._on_gui_cancel_action)
 
 		self.mainhud.mapEvents({
-			'zoomIn' : None,
-			'zoomOut' : None,
-			'rotateRight' : None,
+			'zoomIn': None,
+			'zoomOut': None,
+			'rotateRight': None,
 			'rotateLeft': None,
 
-			'destroy_tool' : None,
-			'build' : None,
-			'diplomacyButton' : None,
-			'gameMenuButton' : None
+			'destroy_tool': None,
+			'build': None,
+			'diplomacyButton': None,
+			'gameMenuButton': None
 		})
 		self.mainhud.hide()
 		self.mainhud = None
@@ -370,7 +372,7 @@ class IngameGui(LivingObject):
 			player1 = "{0!s}".format(a.name)
 			player2 = "{0!s}".format(b.name)
 
-			data = {'player1' : player1, 'player2' : player2}
+			data = {'player1': player1, 'player2': player2}
 
 			string_id = 'DIPLOMACY_STATUS_{old}_{new}'.format(old=old_state.upper(),
 			                                                  new=new_state.upper())
@@ -508,13 +510,13 @@ class IngameGui(LivingObject):
 				self.cursor.rotate_right()
 			else:
 				self.session.view.rotate_right()
-				self.minimap.rotate_right()
+				self.minimap.update_rotation()
 		elif action == _Actions.ROTATE_LEFT:
 			if hasattr(self.cursor, "rotate_left"):
 				self.cursor.rotate_left()
 			else:
 				self.session.view.rotate_left()
-				self.minimap.rotate_left()
+				self.minimap.update_rotation()
 		elif action == _Actions.CHAT:
 			self.windows.open(self.chat_dialog)
 		elif action == _Actions.TRANSLUCENCY:
@@ -599,12 +601,12 @@ class IngameGui(LivingObject):
 		self.cursor.remove()
 		self.current_cursor = which
 		klass = {
-			'default'        : mousetools.SelectionTool,
-			'selection'      : mousetools.SelectionTool,
-			'tearing'        : mousetools.TearingTool,
-			'pipette'        : mousetools.PipetteTool,
-			'attacking'      : mousetools.AttackingTool,
-			'building'       : mousetools.BuildingTool,
+			'default': mousetools.SelectionTool,
+			'selection': mousetools.SelectionTool,
+			'tearing': mousetools.TearingTool,
+			'pipette': mousetools.PipetteTool,
+			'attacking': mousetools.AttackingTool,
+			'building': mousetools.BuildingTool,
 		}[which]
 		self.cursor = klass(self.session, *args, **kwargs)
 

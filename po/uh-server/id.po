@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2014-08-02 13:08+0200\n"
-"Last-Translator: Samuel Christo <srandiny@gmail.com>\n"
+"PO-Revision-Date: 2018-12-06 13:09+0000\n"
+"Last-Translator: Adnan Habib Laode <habib.laode@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/uh-server/"
 "id/>\n"
 "Language: id\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Protokol permainan berdua tua atau tidak didukung. Mohon cek versi permainan "
-"anda"
+"Protokol permainan bersama sudah tua atau tidak didukung lagi. Mohon cek "
+"versi permainan anda"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
@@ -63,7 +63,7 @@ msgstr "Permainan sudah dimulai. Tidak bisa bergabung lagi"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
-msgstr "Permainan sudah penuh"
+msgstr "Permainan sudah penuh."
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
@@ -79,7 +79,7 @@ msgstr "Mohon ganti nama anda."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr "Sudah ada pemain dengan warna anda di permainan ini."
+msgstr "Sudah ada pemain dengan warna Anda di permainan ini."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
@@ -116,7 +116,7 @@ msgstr "Tidak bisa mengganti nama anda."
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr "Tidak bisa mengubah warna anda."
+msgstr "Tidak bisa mengubah warna Anda."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"

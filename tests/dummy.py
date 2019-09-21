@@ -35,7 +35,7 @@ class Dummy:
 				class B(Dummy):
 					pass
 				return B
-			elif attr == 'VBox' or  attr == 'HBox':
+			elif attr == 'VBox' or attr == 'HBox':
 				class C(Dummy):
 					ATTRIBUTES = Dummy()
 				return C
@@ -44,7 +44,7 @@ class Dummy:
 			if attr in ('__base__', '__bases__', '__basicsize__',
 				'__dictoffset__', '__flags__', '__itemsize__',
 				'__members__', '__methods__', '__mro__', '__name__',
-				'__subclasses__', '__weakrefoffset__',
+				'__subclasses__', '__weakrefoffset__', '__mro_entries__',
 				'_getAttributeNames', 'mro'):
 				raise
 			else:

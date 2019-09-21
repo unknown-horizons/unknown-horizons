@@ -22,7 +22,7 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 Novembre 1740]
+  - [Headline, 20 novembre 1740]
   - [Image, content/gui/images/background/hr.png]
   - Dopo quattro giorni la tempesta è finalmente cessata e possiamo riposarci. Nonostante ciò, abbiamo poche scorte di cibo e la nave è ridotta malamente. Abbiamo perso gli strumenti di navigazione e le nostre mappe.
   - Dobbiamo assolutamente raggiungere la costa il più presto possibile. Una vedetta ha visto degli uccelli a caccia di pesce, quindi la costa non può essere lontana. Per fortuna abbiamo alcuni strumenti da lavoro e delle tavole di legno, quindi possiamo costruirci un riparo.
@@ -33,7 +33,7 @@ logbook-data:
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22 Novembre 1740]
+  - [Headline, 22 novembre 1740]
   - [Image, content/gui/images/background/hr.png]
   - Il porto è stato costruito e le speranze dei miei uomini si sono risollevate. Sono ancora preoccupato per i giorni a venire... il nostro cibo è quasi terminato e ci servono materiali da costruzione.
   - Dobbiamo soddisfare le nostre necessità per sopravvivere. È tempo di mandare degli uomini a caccia e a fare legna così potremo sopravvivere.
@@ -52,7 +52,7 @@ logbook-data:
   - ''
 
 - &TENTS
-  - [Headline, 25 Novembre 1740]
+  - [Headline, 25 novembre 1740]
   - [Image, content/gui/images/background/hr.png]
   - Abbiamo risolto le nostre necessità di cibo e raccolto del legname per poterci espandere. La gente chiede un posto dove poter vivere e dove potersi scambiare le merci per soddisfare i propri bisogni quotidiani.
   - È tempo di costruire alcune tende dove vivere e una piccola piazza princiaple che si possa fornire con i prodotti di prima necessità.
@@ -142,7 +142,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Sei il capitano di un vascello sotto bandiera Britannica nel 1740. Tu e il tuo equipaggio eravate in viaggio verso una colonia Inglese nell''Oceano Pacifico.
+  description: 'Sei il capitano di un vascello sotto bandiera inglese nel 1740. Tu e il tuo equipaggio eravate in viaggio verso una colonia inglese nell''oceano Pacifico.
 
     Tutto stava andando bene, quando finiste in una violenta tempesta…'
   difficulty: facile

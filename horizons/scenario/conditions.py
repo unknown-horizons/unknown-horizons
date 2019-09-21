@@ -181,7 +181,7 @@ def buildings_connected_to_warehouse_gt(session, building_class, limit):
 	"""Checks whether more than *limit* of *building_class* type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class,
-	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > limit )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) > limit)
 
 
 @register(periodically=True)
@@ -189,21 +189,21 @@ def buildings_connected_to_warehouse_lt(session, building_class, limit):
 	"""Checks whether less than *limit* of *building_class* type buildings are
 	connected to a warehouse or storage."""
 	return (_building_connected_to_any_of(session, building_class,
-	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < limit )
+	        BUILDINGS.WAREHOUSE, BUILDINGS.STORAGE) < limit)
 
 
 @register(periodically=True)
 def buildings_connected_to_building_gt(session, building_class, class2, limit):
 	"""Checks whether more than *limit* of *building_class* type buildings are
 	connected to any building of type *class2*."""
-	return (_building_connected_to_any_of(session, building_class, class2) > limit )
+	return (_building_connected_to_any_of(session, building_class, class2) > limit)
 
 
 @register(periodically=True)
 def buildings_connected_to_building_lt(session, building_class, class2, limit):
 	"""Checks whether less than *limit* of *building_class* type buildings are
 	connected to any building of type *class2*."""
-	return (_building_connected_to_any_of(session, building_class, class2) < limit )
+	return (_building_connected_to_any_of(session, building_class, class2) < limit)
 
 
 @register(periodically=True)

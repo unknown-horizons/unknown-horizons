@@ -59,8 +59,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Bygg et tømmerhuggertelt og koble det til varehuset.]
   - [Headline, 'NY OPPGAVE: BYGG TØMMERHUGGERTELT']
   - [Image, content/gui/images/background/hr.png]
-  - Forsyningene og konstruksjonsmaterialer er lastet ut av skipet ditt og trygt lagret i ditt nye varehus.  Nå er det på tide å konstruere noen grunnleggende bygninger, aller først et tømmerhuggertelt.
-  - Tømmerhuggere vil kutte ned trær fra skogområdene rundt teltene sine og gjøre tømmeret om til bord, som kan brukes i konstruksjon eller som en handelsvare.
+  - Forsyningene og konstruksjonsmaterialer er lastet ut av skipet ditt og trygt lagret i ditt nye varehus.  Nå er det på tide å sette opp noen grunnleggende bygninger, aller først et tømmerhuggertelt.
+  - Tømmerhuggere vil kutte ned trær fra skogområdene rundt teltene sine og gjøre tømmeret om til bord, som kan brukes til bygging eller som en handelsvare.
   - For å bygge et tømmerhuggertelt, åpne bygge-menyen ved å klippe på knappen under mini-kartet eller trykk 'B', som er den vanlige hurtigtasten.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
@@ -181,7 +181,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - I «seiler»-nivået er du utstyrt med tre handelsfelter.
-  - Klikk på det lille ikonet for å bytte spormodus fra «Kjøp» til «Selg» og visa versa.
+  - Klikk på det lille ikonet for å bytte feltmodus fra «Kjøp» til «Selg» og visa versa.
   - Klikk på feltet for å velge hvilke varer du ønsker å handle med.  Vi forklarer mer om dette når du er klar til å handle.
   - ''
   - [BoldLabel, 'Oppgave: Bygg et signaltårn ved kysten i nærheten av varehuset ditt.']

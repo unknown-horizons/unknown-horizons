@@ -22,11 +22,11 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 Novembre 1740]
+  - [Headline, 20 novembre 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Au bout de quatre jours, la tempête s'atténue enfin et nous pouvons nous reposer. Cependant il ne nous reste que très peu de nourriture et le navire est dans un mauvais état. Les instruments de navigation et les cartes marines sont perdus.
+  - Au bout de quatre jours, la tempête s'atténue enfin et nous pouvons nous reposer. Cependant, il ne nous reste que très peu de nourriture et le navire est dans un mauvais état. Les instruments de navigation et les cartes marines sont perdus.
   - Nous devons atteindre la terre ferme bientôt. L'un de mes matelots a aperçu un oiseau chassant des poissons, donc il doit y avoir de la terre tout près. Heureusement nous avons toujours quelques outils et des planches à bord, ainsi nous pourrons ériger des abris rudimentaires.
-  - 'Mission:
+  - 'Mission :
 
     Trouvez de la terre ferme et construisez un port.'
   - [Pagebreak]
@@ -37,9 +37,9 @@ logbook-data:
   - [Image, content/gui/images/background/hr.png]
   - Le port est achevé et de nouveaux espoirs naissent. Néanmoins, je suis inquiet pour les prochains jours... nos réserves de nourriture s'épuisent et nous manquons de matériaux de construction de base.
   - Afin de rester en vie, nous devrons assurer nos besoins de base. Il est temps d'envoyer des matelots pour trouver de la nourriture et du bois de construction, afin que nous puissions construire des abris et survivre.
-  - 'Mission:
+  - 'Mission :
 
-    Érigez au moins un:
+    Érigez au moins un :
 
     * Camp de bûcheron
 
@@ -56,9 +56,9 @@ logbook-data:
   - [Image, content/gui/images/background/hr.png]
   - Nous avons assuré nos besoins en nourriture et amassé un peu de bois afin de continuer le développement de notre nouvelle colonie. Nos citoyens exigent un endroit où vivre et échanger des biens pour leurs besoins quotidiens.
   - Il est temps de construire quelques tentes où vivre et une place principale afin d'approvisionner nos citoyens en biens.
-  - 'Mission:
+  - 'Mission :
 
-    Édifiez une Place Principale et au moins 10 tentes.'
+    Édifiez une Place principale et au moins 10 tentes.'
   - [Pagebreak]
   - ''
 
@@ -69,18 +69,18 @@ logbook-data:
   - 'J''ai étudié les étoiles la nuit mais sans mes instruments et mes cartes marines leur signification reste inconnue. J''ai le sentiment que nous sommes bloqués ici pour quelque temps, alors tirons le meilleur parti de la situation.
 
     Tout ce que nous pouvons faire c''est fonder une colonie et trouver notre chemin de retour…'
-  - 'Mission:
+  - 'Mission :
 
-    Agrandissez le village à 250 habitants et obtenez un bilan financier positif.'
+    Agrandissez le village de 250 habitants et obtenez un bilan financier positif.'
   - [Pagebreak]
   - ''
 
 - &WON
-  - [Headline, 27 Août 1745]
+  - [Headline, 27 août 1745]
   - [Image, content/gui/images/background/hr.png]
   - Notre village se porte bien, la ville s'est agrandie et est forte désormais de plus de 250 habitants. J'ai commencé à m'habituer à mon nouveau chez-moi mais cette île est trop petite pour y rester définitivement.
   - Nous devrions charger notre navire et partir à la recherche d'une île plus grande offrant plus d'espace et de ressources pour nos citoyens. En me basant sur les étoiles que je vois la nuit j'ai créé une carte marine rudimentaire. Elle n'est pas parfaite mais j'espère qu'elle nous permettra de revenir ici.
-  - 'Mission:
+  - 'Mission :
 
     Contactez l’équipe Unknown Horizons (www.unknown-horizons.org) et découvrez comment vous pouvez contribuer à améliorer et allonger ce scénario !'
   - [Pagebreak]
@@ -142,7 +142,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Vous êtes le capitaine d''un navire sous pavillon Anglais en 1740. Votre équipage et vous étiez en chemin vers une colonie d''Angleterre dans l''Océan Pacifique.
+  description: 'Vous êtes capitaine d''un navire sous pavillon anglais en 1740. Votre équipage et vous étiez en chemin vers une colonie de l''Angleterre dans l''océan Pacifique.
 
     Tout se passait bien jusqu’à ce que vous subissiez une tempête…'
   difficulty: facile

@@ -24,8 +24,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - This is your Journal, where important information about the current scenario is stored. A summary of each new task will also appear as a 'notification button' near the left-hand edge of the screen. You can hover your mouse over these notifications to read the summary, or click the button itself to open the Journal.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - 这是您的日志，其中存储了关于当前场景的重要信息。每个新任务的总结也会出现在屏幕左边的“通知按钮”上。您可以将鼠标停留在这些通知上，以阅读摘要，或者单击按钮本身打开日志。
+  - 你也可以在任何时候通过点击迷你地图下面的按钮来重新打开日志，在屏幕的右上角。从现在开始，我们将把包含迷你地图、各种按钮和标签的区域称为“概述”。
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -50,25 +50,25 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 当你的船靠近海岸，在概况显示栏中的“修建驻地”按钮会被激活。
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - 点击这个按钮将显示仓库的预览，第一个建筑要找到一个新的定居点。当你移动光标的时候，你会注意到当建筑物在一个不合适的区域时，预览会被阴影所覆盖。
+  - 仓库需要安置在海岸上，以便船只停靠。所以，找到一个好的位置，然后左键点击来放置这个重要的建筑。
   - ''
   - [BoldLabel, 任务：在海岸上建一间仓库。]
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Message, 建造一个伐木工人的帐篷并把它与仓库相连。]
   - [Headline, 新任务：建伐木工帐篷]
   - [Image, content/gui/images/background/hr.png]
-  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
-  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
+  - 物资和建筑材料已从你的船上卸下，并安全储存在你的新仓库里。现在是建造一些基本建筑的时候了，从一个伐木工人的帐篷开始。
+  - 伐木工人会从他们的帐篷周围的林地上砍伐树木，并加工木材来生产木板，用于建筑或贸易资源。
+  - 要建立一个伐木工人的帐篷，通过点击迷你地图下方的按钮或按下“B”键打开构建菜单，这是默认的快捷键。
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - 建筑菜单按层次排序，因为您的是一个新的殖民地，第一级的建筑物是您唯一可用的;随着你的文明进步，你将获得更高级的建筑物，并能够建造更大范围的建筑。
   - [Pagebreak]
   - ''
-  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - 找一个树木繁茂的地区，让我们的伐木工人工作，然后从概述的建筑物列表中选择“伐木工人的帐篷”，然后把房子建好。
+  - 在游戏后期，你可能想要通过植树来创造林地，但由于这需要花钱，你应该用自然时间！
   - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
@@ -102,7 +102,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &MAINSQUARE
   - [Message, Build a Main Square. Choose an area without many economy buildings.]
-  - [Headline, 'NEW TASK: MAIN SQUARE']
+  - [Headline, 新任务：中央广场]
   - [Image, content/gui/images/background/hr.png]
   - Your residents need a main square where they can fetch their goods from.
   - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
@@ -112,7 +112,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
   - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 任务：建造一个中央广场。]
   - [Pagebreak]
   - '
 
@@ -128,7 +128,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FIRSTTENT
   - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Headline, 新任务：居民区的建筑]
   - [Image, content/gui/images/background/hr.png]
   - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
   - - Gallery
@@ -163,7 +163,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &SIGNALFIRE
   - [Message, Build a Signal Fire at the coast close to your Warehouse.]
-  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - [Headline, 新任务：建造烽火]
   - [Image, content/gui/images/background/hr.png]
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
   - The trader will supply your settlement with necessary goods which you can't produce yet.
@@ -188,7 +188,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &TRADING
   - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
-  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - [Headline, 新任务：学贸易]
   - [Image, content/gui/images/background/hr.png]
   - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
@@ -219,7 +219,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &PAVILION
   - [Message, Build a Pavilion with connection to the Tents.]
-  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - [Headline, 新任务：建造一个帐篷]
   - [Image, content/gui/images/background/hr.png]
   - Those tools will be enough for the moment. Well done!
   - You now provide housing, a main square and food to your inhabitants.
@@ -265,7 +265,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &FARM
   - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, 'NEW TASK: BUILD A FARM']
+  - [Headline, 新任务：建造一个农场]
   - [Image, content/gui/images/background/hr.png]
   - Congratulations! Some of your inhabitants have reached tier II!
   - Now you have access to new buildings, take a look at the Build menu again.
@@ -284,7 +284,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
   - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 任务：建造一个农场。]
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -317,7 +317,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &STORAGE
   - [Message, Build a storage tent (tier I tab) where it makes sense.]
-  - [Headline, 'NEW TASK: BUILD STORAGE']
+  - [Headline, 新任务：建造存储]
   - [Image, content/gui/images/background/hr.png]
   - Did you watch your lumberjack recently?
   - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
@@ -382,7 +382,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Our forums are open to you as well!
   - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
   - [Pagebreak]
-  - [Headline, Thanks!]
+  - [Headline, 谢谢！]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -657,4 +657,4 @@ metadata:
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 14 translated messages, 174 untranslated messages.
+  translation_status: 38 translated messages, 150 untranslated messages.

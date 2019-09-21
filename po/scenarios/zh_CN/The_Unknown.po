@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2016-09-02 09:42+0000\n"
-"Last-Translator: Arm Coon <armcoon@gmail.com>\n"
-"Language-Team: Chinese (China) <https://hosted.weblate.org/projects/uh/the-"
-"unknown/zh_CN/>\n"
+"PO-Revision-Date: 2019-06-29 21:00+0000\n"
+"Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh/"
+"the-unknown/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.8\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. scenario difficulty
 msgid "easy"
@@ -34,14 +34,14 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr ""
+msgstr "1740年11月20日"
 
 #. This is the text body of a logbook page.
 msgid ""
 "After four days the storm finally fades and we can take a rest. But we only "
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
-msgstr ""
+msgstr "在四天的风暴过后我们终于获得了喘息的机会。但是我们现在只剩下少许的食物与破损的船只。导航设备与航海图已经遗失了。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -60,7 +60,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr ""
+msgstr "1740年11月22日"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -93,7 +93,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr ""
+msgstr "1740年11月25号"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -118,7 +118,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr ""
+msgstr "1740年12月1号"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -144,7 +144,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr ""
+msgstr "1745年8月27号"
 
 #. This is the text body of a logbook page.
 msgid ""

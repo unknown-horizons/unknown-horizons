@@ -106,11 +106,11 @@ def show_data(games):
 if __name__ == '__main__':
 	parser = PassThroughOptionParser()
 	parser.add_option("-p", "--processes", dest="num_processes", metavar="<processes>",
-	    type="int", default=1, help="Run <processes> processes in parallel.")
+	                  type="int", default=1, help="Run <processes> processes in parallel.")
 	parser.add_option("--game-seed-range", dest="game_seed_range",
-	    help="Use the given expression (same as for xrange) to run a number of game instances with --sp-seed=SEED")
+	                  help="Use the given expression (same as for xrange) to run a number of game instances with --sp-seed=SEED")
 	parser.add_option("--map-seed-range", dest="map_seed_range",
-	    help="Use the given expression (same as for xrange) to run a number of game instances with --start-specific-random-map=SEED")
+	                  help="Use the given expression (same as for xrange) to run a number of game instances with --start-specific-random-map=SEED")
 	(options, args) = parser.parse_args()
 
 	games = []

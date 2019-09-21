@@ -520,3 +520,8 @@ class DefaultPersonality:
 
 	class AbstractFisher:
 		max_options = 30 # maximum number of farm options to consider
+
+	class StonemasonEvaluator:
+		alignment_importance = 0.02 # the larger this value, the larger the effect of alignment on the placement
+		distance_penalty = 2 # (guessing) When no relevant mason is in reach, then apply a penalty of this time the radius.
+		stone_pit_distance_importance = 0.3 # importance of the distance to the nearest relevant stone-pit in the range [0, 1]

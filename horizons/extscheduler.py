@@ -43,6 +43,12 @@ class _ExtCallbackObject:
 	def __str__(self):
 		return "ExtSchedCb(%s on %s)" % (self.callback, self.class_instance)
 
+	def __lt__(self, other):
+		# make sure that there is always some ordering
+		if self.run_in < other.run_in:
+			return True
+		return id(self) < id(other)
+
 
 class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	"""The ExtScheduler is used for time based events that are not part of the simulation(gui, menu, scrolling).
@@ -50,7 +56,7 @@ class ExtScheduler(object, metaclass=ManualConstructionSingleton):
 	@param pump: pump list the scheduler registers itself with.
 	"""
 
-	NOOP = _ExtCallbackObject(lambda : 42 * 1337 - 3.14, None)
+	NOOP = _ExtCallbackObject(lambda: 42 * 1337 - 3.14, None)
 
 	def __init__(self, pump):
 		super().__init__()

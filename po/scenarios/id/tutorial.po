@@ -8,32 +8,37 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9ecf5e5\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-08-29 03:24+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2018-12-05 11:10+0000\n"
+"Last-Translator: Adnan Habib Laode <habib.laode@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/tutorial/"
+"id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.4-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
-msgstr ""
+msgstr "Tingkat kesulitan skenario."
 
 #. scenario description
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
-msgstr ""
+msgstr "Bangun pemukiman pertama kamu dan belajar bagaimana cara bermain!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
+"Bangun sebuah gudang di pantai untuk mengijinkan kapal dagang untuk "
+"berkunjung di pemukiman kamu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Selamat datang di Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -43,6 +48,11 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"Ini jurnal kamu, dimana informasi penting mengenai skenario berlangsung "
+"disimpan. Sebuah ringkasan dari setiap tugas baru akan muncul sebagai sebuah "
+"tombol notifikasi dekat sebelah kiri tangan dari layar. Anda dapat "
+"mengarahkan mouse di atas notifikasi untuk membaca ringkasan, atau klik "
+"tombol tersebut untuk membuka jurnal."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -51,6 +61,10 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Anda dapat juga membuka kembali jurnal kapan saja dengan mengklik tombol di "
+"bawah peta kecil, di atas kanan layar Anda. Sekarang, kita akan menunjukan "
+"ke area ini yang berisi peta kecil, bermacam tombol dan tab sebagai gambaran "
+"ikhtisari."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -58,6 +72,10 @@ msgid ""
 "To see your first task, turn to the next page of the Journal using the "
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
+"\n"
+"Untuk melihat tugas pertama kamu, beralih ke halaman selanjutnya dari Jurnal "
+"Anda menggunakan tombol di bagian bawah halaman yang berlawanan - terlihat "
+"seperti ini :"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -65,38 +83,51 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"Jika Anda mempunyai beberapa masukan mengenai bagaimana tutorial ini dapat "
+"dikembangkan, atau jika Anda menemukan beberapa kesalahan, Mohon beritahu "
+"kami."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
+"\n"
+"Kunjungi www.unknown-horizons.org untuk menemukan bagaimana menghubungi tim "
+"kami."
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
-msgstr ""
+msgstr "Dan sekarang, Ayo mulai permainannya!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr ""
+msgstr "TUGAS BARU: Buat sebuah bangunan pemukiman"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Kapal kamu berada di laut, dimuat suplai yang kamu akan butuhkan untuk "
+"mendirikan sebuah bangunan pemukiman baru."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
+"Untuk mengerakan kapal kamu, pilih kapal dengan klik kiri kemudian klik "
+"kanan pada lokasi kamu inginkan untuk berlayar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
+"Sekali kamu mendekati pantai, tombol 'Pembangunan Pemukiman'  di gambaran "
+"ikhtisari akan menjadi aktif."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -105,24 +136,31 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Mengklik tombol ini akan menampilkan sebuah pratinjau dari gudang, Bangunan "
+"pertama memerlukan sebuah pemukiman baru. Dengan kamu menggerakan kursor "
+"sekitar, kamu akan melihat sebuah pratinjau  yang berarsir merah ketika "
+"bangunan tersebut berada di daerah yang tidak cocok."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Gudang membutuhkan untuk diposisi di pantai agar kapal bisa ke dermaga. "
+"Jadi, cari lokasi bagus kemudian klik kiri to menempatkan bangunan penting "
+"ini."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr ""
+msgstr "Task: Bangun sebuah gudang di pantai."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
+msgstr "Bangun sebuah tenda penebang pohon dan hubungkan itu menuju ke gudang."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr ""
+msgstr "TUGAS BARU: BANGUN SEBUAH TENDA PENEBANG POHON"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -130,18 +168,26 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Persedian dan material konstrusi dapat dibongkar dari kapal kamu dan taruh "
+"secara aman di gudang baru kamu. Sekarang  waktu untuk membangun beberapa "
+"bangunan dasar, memulai dengan sebuah tenda penebang pohon."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Para penebang akan menebang pohon dari daerah berhutan sekitar tenda mereka "
+"dan memulai proses pengolahan kayu untuk memproduksi papan, untuk kegunaan "
+"di konstruksi atau sebagai sumber daya perdagangan."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"Untuk membangun sebuah tenda penebang pohon, buka Menu Bangunan dengan "
+"mengklik tombol di bawah peta mini atau tekan 'B' sebagai pintasan default."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -150,12 +196,20 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Menu bangunan diurut berdasarkan beberapa tingkatan dan seperti keadaan kamu "
+"sekarang adalah sebuah pemukiman baru, Bangunan tingkat pertama hanya satu "
+"jenis tersedia untuk kamu; Dengan peradaban kamu maju, kamu akan memperoleh "
+"akses ke tingkat yang lebih tinggi dan mampu membangun bangunan yang jenis "
+"lebih luas."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Cari sebuah lokasi yang bagus untuk para penebang kita berkerja kemudian "
+"pilih 'tenda penebang pohon' dari list bangunan di gambaran ikhtisari dan "
+"tempatkan bangunan tersebut."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -163,6 +217,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Kemudian di dalam permaina kamu mungkin ingin membuat daerah hutang dengan "
+"menanam pohon - pohon, tapi karena itu membutuhkan uang, kamu sebaiknya "
+"menggunakan apa alam yang telah sediakan untuk sementara waktu!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -170,6 +227,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Ada beberapa sumber daya yang dikumpulkan atau bangunan produksi membutuhkan "
+"sebuah jalur yang terhubung ke sebuah gudang atau bentuk penyimpanan "
+"lainnya, jika tidak, barang yang diproduksi tidak akan diambil."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -178,12 +238,19 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Jadi, sekali tenda penebang pohon kamu berada diposisinya, hubungkan "
+"bangunan tersebut ke gudang kamu denga membuka bangunan menu kemudian "
+"mengklik  tombol 'Jalur'. Sekarang kamu dapat mengklik dan menyeret dengan "
+"mouse untuk menggambar rute dari jalur kamu diantara tenda penebang pohon "
+"dan gudang kamu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
+"Task:  Bangun sebuah tenda penebng pohon di sebuah daerah berhutan dan "
+"hubungkan bangunan tersebut ke gudang kamu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -191,48 +258,66 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"Sekali bangunan - bangunan tersebut terhubung. Kamu akan melihat pengumpul "
+"tiba untuk mengambil papan - papan kamu yang baru diproduksi dan kirim "
+"beberapa papan tersebut ke gudang, siap untuk digunakan di konstruksi atau "
+"dagang."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
 msgstr ""
+"Bangun sebuah tenda pemburu dan sebuah tenda nelayan. hubungkan keduanya ke "
+"gudang."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "TUGAS BARU: PERSEDIAN MAKANAN"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Kamu akan membutuhkan beberapa kumpulan tempat produksi makanan juga, karena "
+"orang secara umum (dan pada khususnya para pelaut) sangat lapar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
 msgstr ""
+"Kumpulan tempat produksi makanan pada tingkat pertama adalah tenda pemburu "
+"dan tenda nelayan."
 
 #. This is the text body of a logbook page.
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Pemburu memburu binatang di dalam hutan, jadi ini membutuhkan pohon - pohon "
+"dekatnya."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
 msgstr ""
+"Catat yang kamu dapat menaruh tenda pemburu dekat dengan hutan para penebang "
+"kayu."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Ini bisa dilakukan kalau para binatang tidak berkembang biak cukup cepat "
+"atau hanya bersembunyi dengan baik."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the Hunter's Tent is not too reliable if you need continuous "
 "supply."
 msgstr ""
+"Kesimpulan: Tenda pemburu tidak terlalu handal jika kamu ingin persedian "
+"berkelanjutan."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -240,43 +325,56 @@ msgid ""
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"Nelayan membutuhkan sebuah letak bangunan pantai seperti gudang dan kumpulan "
+"ikan di jangkuannya."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
 msgstr ""
+"Dia akan membangun sebuah perahu dayung kecil dan menangkap beberapa ikan."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Ini sebuah persedian sangat konstan pada biaya dari sebuah waktu produksi "
+"yang sedikit lama per unit dari makanan."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Sebuah pemukiman kecil seperit kamu punya dapat mengunakan kedua pengumpulan "
+"tempat makanan tersebut, dan kamu dapat lebih menyeimbangkan pro dan kontra "
+"jika kamu melihat arahan perbandingan tersebut."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr ""
+msgstr "Tugas: Bangun sebuah tenda pemburu dan sebuah tenda nelayan."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
 msgstr ""
+"Jangan lupa untuk menghubungkan keduany ke gudang kamu dengan jalanan kecil!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Main Square. Choose an area without many economy buildings."
 msgstr ""
+"Bangun sebuah alun - alun. Pilih sebuah area tanpa bangunan perekonomian."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "TUGAS BARU: ALUN - ALUN"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Para penduduk kamu membutuhkan sebuah alun - alun dimana mereka dapat "
+"mengambil barang mereka dari situ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -284,6 +382,10 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
+"Ini berarti mereka membutuhkan sebuah jalan kecil yang menghubungkan dari "
+"rumah mereka ke alun - alun. Catatan: Alun - alun tersebut bertindak sebagai "
+"jalan juga, karena itu tenda berdekatan alun - alun tidak membutuhkan sebuah "
+"jalan setapak pemisah."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -291,6 +393,9 @@ msgid ""
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
+"Semua barang - barang di dalam gudang kamu tersedia di 'plaza' ini, jadi "
+"para penduduk kamu tidak membutuhkan berjalan kaki ke tenda nelayan  atau "
+"bahkan ke gudang."
 
 #. This is the text body of a logbook page.
 msgid ""

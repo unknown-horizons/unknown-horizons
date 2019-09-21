@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2014-10-19 14:59+0200\n"
-"Last-Translator: Rafał Michalski <rafal.michalski.pl@gmail.com>\n"
+"PO-Revision-Date: 2019-08-10 07:22+0000\n"
+"Last-Translator: Przemysław Szulc <psemeq@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/the-unknown/pl/"
 ">\n"
 "Language: pl\n"
@@ -18,18 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 3.8-dev\n"
 
 #. scenario difficulty
 msgid "easy"
 msgstr "łatwy"
 
 #. scenario description
-#, fuzzy
-#| msgid ""
-#| "You are the captain of a ship under the flag of England in 1740. You and "
-#| "your crew were on the way to a colony of England in the pacific ocean.\n"
-#| "Everything went fine until you came into a storm…"
 msgid ""
 "You are the captain of a ship under the flag of England in 1740. You and "
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
@@ -134,10 +129,6 @@ msgstr ""
 "naszym obywatelom towarów."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Task:\n"
-#| "Build a main square and at least 10 tents."
 msgid ""
 "Task:\n"
 "Build a Main Square and at least 10 Tents."

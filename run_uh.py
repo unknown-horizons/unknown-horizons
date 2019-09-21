@@ -32,7 +32,6 @@ If you want to dig into the game, continue to horizons/main.py. """
 
 
 import functools
-import imp
 import locale
 import logging
 import logging.config
@@ -185,7 +184,7 @@ def excepthook_creator(outfilename):
 		print(T('We are very sorry for this and want to fix the underlying error.'))
 		print(T('In order to do this, we need the information from the logfile:'))
 		print(outfilename)
-		print(T('Please give it to us via IRC or our forum, for both see http://unknown-horizons.org .'))
+		print(T('Please give it to us via Github bug tracker, Discord or IRC; see http://unknown-horizons.org/support/'))
 	return excepthook
 
 
@@ -237,7 +236,7 @@ def setup_debugging(options):
 			                           format(time.strftime("%Y-%m-%d_%H-%M-%S")))
 		print('Logging to {uh} and {fife}'.format(
 			uh=logfilename.encode('utf-8', 'replace'),
-			fife=os.path.join(os.getcwd(), 'fife.log')) )
+			fife=os.path.join(os.getcwd(), 'fife.log')))
 		# create logfile
 		logfile = open(logfilename, 'w')
 		# log there
@@ -248,6 +247,7 @@ def setup_debugging(options):
 		# log any other stdout output there (this happens, when FIFE c++ code launches some
 		# FIFE python code and an exception happens there). The exceptionhook only gets
 		# a director exception, but no real error message then.
+
 		class StdOutDuplicator:
 			def write(self, line):
 				line = str(line)

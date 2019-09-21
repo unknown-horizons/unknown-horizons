@@ -28,3 +28,6 @@ content/gfx/atlas/*.png
 content/atlas.sql
 content/actionsets.json
 content/tilesets.json
+
+# vscode settings
+.vscode

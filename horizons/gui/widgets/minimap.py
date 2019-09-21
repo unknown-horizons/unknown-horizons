@@ -30,74 +30,59 @@ import horizons.globals
 from horizons.command.unit import Act
 from horizons.component.namedcomponent import NamedComponent
 from horizons.extscheduler import ExtScheduler
-from horizons.messaging import SettingChanged
 from horizons.util.shapes import Circle, Point, Rect
 
 
-def iter_minimap_points(location, world, island_color, water_color, area=None):
+def get_minimap_color(world_coords, world, island_color, water_color):
+	"""Return the color that the minimap would have for given world coordinates
+
+	The color is a (r, g, b) tuple.
+	The world_coords should be a (x, y) tuple of integer coordinates, giving
+	the location on the real_world map.
+
+	If you only have the minimap coords you have to use
+	_MinimapTransform.minimap_to_world() first
+
+	island_color is the color used for unclaimed parts of islands
+	"""
+
+	full_map = world.full_map
+
+	# check what's at the covered_area
+	if world_coords in full_map:
+		# this pixel is an island
+		tile = full_map[world_coords]
+		settlement = tile.settlement
+		if settlement is None:
+			# island without settlement
+			if tile.id <= 0:
+				color = water_color
+			else:
+				color = island_color
+		else:
+			# pixel belongs to a player
+			color = settlement.owner.color.to_tuple()
+	else:
+		color = water_color
+	return color
+
+
+def iter_minimap_points_colors(location, world, island_color, water_color):
 	"""Return an iterator over the pixels of a minimap of the given world.
 
 	For every pixel, a tuple ((x, y), (r, g, b)) is returned. These are the x and y
 	coordinated and the color of the pixel in RGB.
 
-	If `area` is set, it's supposed to be a part of `location`, that is to be
-	returned.
-
 	This function is not used anymore in the in-game minimap, but it is necessary
 	for the minimap preview.
 	"""
 
-	if area is None:
-		area = location
+	transform = _MinimapTransform(world.map_dimensions, location, 0, False)
 
-	# calculate which area of the real map is mapped to which pixel on the minimap
-	world_dimensions = (world.map_dimensions.width, world.map_dimensions.height)
-	minimap_dimensions = (location.width, location.height)
-	pixel_per_coord_x = world.map_dimensions.width / location.width
-	pixel_per_coord_y = world.map_dimensions.height / location.height
+	for x, y in transform.iter_points():
+			world_coords = transform.minimap_to_world((x, y))
 
-	# calculate values here so we don't have to do it in the loop
-	pixel_per_coord_x_half_as_int = int(pixel_per_coord_x / 2)
-	pixel_per_coord_y_half_as_int = int(pixel_per_coord_y / 2)
-
-	world_min_x = world.min_x
-	world_min_y = world.min_y
-	full_map = world.full_map
-
-	# loop through map coordinates, assuming (0, 0) is the origin of the minimap
-	# this facilitates calculating the real world coords
-	for x in range(area.left - location.left, area.left + area.width - location.left):
-		for y in range(area.top - location.top, area.top + area.height - location.top):
-			"""
-			This code should be here, but since python can't do inlining, we have to inline
-			ourselves for performance reasons
-			covered_area = Rect.init_from_topleft_and_size(
-			  int(x * pixel_per_coord_x)+world_min_x,
-			  int(y * pixel_per_coord_y)+world_min_y),
-			  int(pixel_per_coord_x), int(pixel_per_coord_y))
-			real_map_point = covered_area.center
-			"""
-			# use center of the rect that the pixel covers
-			real_map_x = int(x * pixel_per_coord_x) + world_min_x + pixel_per_coord_x_half_as_int
-			real_map_y = int(y * pixel_per_coord_y) + world_min_y + pixel_per_coord_y_half_as_int
-			real_map_coords = (real_map_x, real_map_y)
-
-			# check what's at the covered_area
-			if real_map_coords in full_map:
-				# this pixel is an island
-				tile = full_map[real_map_coords]
-				settlement = tile.settlement
-				if settlement is None:
-					# island without settlement
-					if tile.id <= 0:
-						color = water_color
-					else:
-						color = island_color
-				else:
-					# pixel belongs to a player
-					color = settlement.owner.color.to_tuple()
-			else:
-				color = water_color
+			color = get_minimap_color(world_coords, world, island_color, water_color)
 
 			yield ((x, y), color)
 
@@ -118,10 +103,10 @@ class Minimap:
 	** Handle clicks, remove overlay icon
 	"""
 	COLORS = {
-		"island":    (137, 117,  87),
-		"cam":       (  1,   1,   1),
-		"water":     (198, 188, 165),
-		"highlight": (255,   0,   0),  # for events
+		"island": (137, 117, 87),
+		"cam": (1, 1, 1),
+		"water": (198, 188, 165),
+		"highlight": (255, 0, 0),  # for events
 	}
 
 	WAREHOUSE_IMAGE = "content/gui/icons/minimap/warehouse.png"
@@ -133,14 +118,14 @@ class Minimap:
 
 	# Alpha-ordering determines the order:
 	RENDER_NAMES = {
-	  "background" : "c",
-	  "base" : "d",  # islands, etc.
-	  "warehouse" : "e",
-	  "ship" : "f",
-	  "cam" : "g",
-	  "ship_route" : "h",
-	  "highlight" : "l",
-	  }
+	    "background": "c",
+	    "base": "d",  # islands, etc.
+	    "warehouse": "e",
+	    "ship": "f",
+	    "cam": "g",
+	    "ship_route": "h",
+	    "highlight": "l"
+	    }
 
 	__minimap_id_counter = itertools.count()
 	__ship_route_counter = itertools.count()
@@ -150,7 +135,7 @@ class Minimap:
 	_dummy_fife_point = fife.Point(0, 0) # use when you quickly need a temporary point
 
 	def __init__(self, position, session, view, targetrenderer, imagemanager, renderer=None, world=None,
-	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None):
+	             cam_border=True, use_rotation=True, on_click=None, preview=False, tooltip=None, mousearea=None):
 		"""
 		@param position: a Rect or a Pychan Icon, where we will draw to
 		@param world: World object or fake thereof
@@ -159,7 +144,7 @@ class Minimap:
 		@param targetrenderer: fife target renderer for drawing on icons
 		@param imagemanager: fife imagemanager for drawing on icons
 		@param cam_border: boolean, whether to draw the cam border
-		@param use_rotation: boolean, whether to use rotation (it must also be enabled in the settings)
+		@param use_rotation: boolean, whether to use rotation
 		@param on_click: function taking 1 argument or None for scrolling
 		@param preview: flag, whether to only show the map as preview
 		@param tooltip: always show this tooltip when cursor hovers over minimap
@@ -172,7 +157,9 @@ class Minimap:
 		else: # assume icon
 			self.location = Rect.init_from_topleft_and_size(0, 0, position.width, position.height)
 			self.icon = position
-			self.use_overlay_icon(self.icon)
+			if mousearea is None:
+				mousearea = self.icon
+			self.use_overlay_icon(mousearea)
 
 		# FIXME PY3 width / height of icon is sometimes zero. Why?
 		if self.location.height == 0 or self.location.width == 0:
@@ -181,7 +168,6 @@ class Minimap:
 		self.session = session
 		self.world = world
 		self.view = view
-		self.rotation = 0
 		self.fixed_tooltip = tooltip
 
 		self.click_handler = on_click if on_click is not None else self.default_on_click
@@ -200,20 +186,13 @@ class Minimap:
 
 		self.minimap_image = _MinimapImage(self, targetrenderer)
 
-		self._rotation_setting = horizons.globals.fife.get_uh_setting("MinimapRotation")
-		if self.use_rotation:
-			SettingChanged.subscribe(self._on_setting_changed)
-
 		self.transform = None
-
 
 	def end(self):
 		self.disable()
 		self.world = None
 		self.session = None
 		self.renderer = None
-		if self.use_rotation:
-			SettingChanged.unsubscribe(self._on_setting_changed)
 
 	def disable(self):
 		"""Due to the way the minimap works, there isn't really a show/hide,
@@ -236,9 +215,10 @@ class Minimap:
 			return # don't draw while loading
 		if self.transform is None:
 			self.transform = _MinimapTransform(self.world.map_dimensions,
-									  self.location,
-									  self.rotation,
-									  self._get_rotation_setting())
+			                                   self.location,
+			                                   0,
+			                                   self.use_rotation)
+			self.update_rotation()
 
 		self.__class__._instances.append(self)
 
@@ -292,11 +272,11 @@ class Minimap:
 			return
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		self.minimap_image.rendertarget.removeAll(self._get_render_name("cam"))
 		# draw rect for current screen
 		displayed_area = self.view.get_displayed_area()
+
 		minimap_corners_as_point = []
 		for (x, y) in displayed_area:
 			coords = self.transform.world_to_minimap((x, y))
@@ -318,20 +298,21 @@ class Minimap:
 		@param tup: (x, y)"""
 		if self.world is None or not self.world.inited:
 			return # don't draw while loading
-		minimap_point = self.transform.world_to_minimap(tup)
+		if tup is not None:
+			tup = self.transform.world_to_minimap(tup)
 
-		self._recalculate(minimap_point)
+		self._recalculate(tup)
 
 	def use_overlay_icon(self, icon):
 		"""Configures icon so that clicks get mapped here.
 		The current gui requires, that the minimap is drawn behind an icon."""
 		self.overlay_icon = icon
 		icon.mapEvents({
-			icon.name + '/mousePressed' : self._on_click,
-			icon.name + '/mouseDragged' : self._on_drag,
-			icon.name + '/mouseEntered' : self._mouse_entered,
-			icon.name + '/mouseMoved' : self._mouse_moved,
-			icon.name + '/mouseExited' : self._mouse_exited,
+			icon.name + '/mousePressed': self._on_click,
+			icon.name + '/mouseDragged': self._on_drag,
+			icon.name + '/mouseEntered': self._mouse_entered,
+			icon.name + '/mouseMoved': self._mouse_moved,
+			icon.name + '/mouseExited': self._mouse_exited,
 		})
 
 	def default_on_click(self, event, drag):
@@ -380,7 +361,9 @@ class Minimap:
 			if not self.location.contains(abs_mouse_position):
 				# mouse click was on icon but not actually on minimap
 				return None
-		return self.transform.minimap_to_world((event.getX(), event.getY()))
+		world_position = self.transform.minimap_to_world((event.getX(), event.getY()))
+		if self.world.map_dimensions.contains_tuple(world_position):
+			return world_position
 
 	def _mouse_entered(self, event):
 		self._show_tooltip(event)
@@ -430,7 +413,7 @@ class Minimap:
 
 		# grow the circle from MIN_RAD to MAX_RAD and back with STEPS steps, where the
 		# interval between steps is INTERVAL seconds
-		MIN_RAD = int( 3 * factor) # pixel
+		MIN_RAD = int(3 * factor) # pixel
 		MAX_RAD = int(12 * factor) # pixel
 		STEPS = int(20 * factor)
 		INTERVAL = (math.pi / 16) * factor
@@ -454,7 +437,7 @@ class Minimap:
 			for x, y in Circle(Point(*tup), radius=radius).get_border_coordinates():
 				draw_point(render_name, fife.Point(x, y), *color)
 
-			ExtScheduler().add_new_object(lambda : high(i), self, INTERVAL, loops=1)
+			ExtScheduler().add_new_object(lambda: high(i), self, INTERVAL, loops=1)
 
 		high()
 		return STEPS * INTERVAL
@@ -486,7 +469,6 @@ class Minimap:
 		relevant_coords.append(path[-1])
 
 		# get coords, actual drawing
-		use_rotation = self._get_rotation_setting()
 		self.minimap_image.set_drawing_enabled()
 		p = fife.Point(0, 0)
 		render_name = self._get_render_name("ship_route") + str(next(self.__class__.__ship_route_counter))
@@ -533,28 +515,11 @@ class Minimap:
 		fife_point = fife.Point(0, 0)
 		island_color = self.COLORS["island"]
 		water_color = self.COLORS["water"]
-		full_map = self.world.full_map
 
 		for (x, y) in points:
 
-			real_map_coords = self.transform.minimap_to_world((x, y))
-
-			# check what's at the covered_area
-			if real_map_coords in full_map:
-				# this pixel is an island
-				tile = full_map[real_map_coords]
-				settlement = tile.settlement
-				if settlement is None:
-					# island without settlement
-					if tile.id <= 0:
-						color = water_color
-					else:
-						color = island_color
-				else:
-					# pixel belongs to a player
-					color = settlement.owner.color.to_tuple()
-			else:
-				color = water_color
+			world_coords = self.transform.minimap_to_world((x, y))
+			color = get_minimap_color(world_coords, self.world, island_color, water_color)
 			fife_point.set(x, y)
 			draw_point(render_name, fife_point, *color)
 
@@ -566,7 +531,6 @@ class Minimap:
 		self.minimap_image.set_drawing_enabled()
 		render_name = self._get_render_name("ship")
 		self.minimap_image.rendertarget.removeAll(render_name)
-		use_rotation = self._get_rotation_setting()
 		# Make use of these dummy points instead of creating fife.Point instances
 		# (which are consuming a lot of resources).
 		dummy_point0 = fife.Point(0, 0)
@@ -614,10 +578,7 @@ class Minimap:
 			draw_point = self.minimap_image.rendertarget.addPoint
 			if ship in self.session.selected_instances:
 				draw_point(render_name, dummy_point0, *Minimap.COLORS["water"])
-				for x_off, y_off in ((-2,  0),
-				                     (+2,  0),
-				                     ( 0, -2),
-				                     ( 0, +2)):
+				for x_off, y_off in ((-2, 0), (+2, 0), (0, -2), (0, +2)):
 					dummy_point1.set(coord[0] + x_off, coord[1] + y_off)
 					draw_point(render_name, dummy_point1, *color)
 
@@ -654,47 +615,39 @@ class Minimap:
 		# resizeImage also means draw
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
-
-	def rotate_right(self):
-		# keep track of rotation at any time, but only apply
-		# if it's actually used
-		self.transform.update_rotation(-1)
-		if self._get_rotation_setting():
-			self.draw()
-
-	def rotate_left(self):
-		# see above
-		self.transform.update_rotation(1)
-		if self._get_rotation_setting():
-			self.draw()
-
-
-	def _get_rotation_setting(self):
-		return self.use_rotation and self._rotation_setting
-
-
-	def _on_setting_changed(self, message):
-		if message.setting_name == "MinimapRotation":
-			self._rotation_setting = message.new_value
-			self.transform.set_use_rotation(self._get_rotation_setting())
-			self.draw()
+	def update_rotation(self):
+		# ensure the minimap rotation matches the main view rotation
+		if self.view is None:
+			return
+		self.transform.set_rotation(self.view.cam.getRotation())
+		self.draw()
 
 	def get_size(self):
-		return (self.location.height, self.location.width)
+		return (self.location.width, self.location.height)
 
 
 class _MinimapTransform:
 
 	def __init__(self, world_dimensions, location, rotation=0, use_rotation=True):
+		"""
+		@param world_dimensions: Rect, specifying the size of the world
+		@param location: Rect, specifying the place and size of the area to draw to
+		@param rotation: integer giving minimap rotation in degrees.
+		                 Might act weird with other values than 45, 135, 225 and 315
+		@param use_rotation: boolean, if this is false no rotation is used
+		"""
 		self.world_dimensions = world_dimensions
 		self.location = location
 		self.rotation = rotation
 		self.use_rotation = use_rotation
 		self._update_parameters()
 
-	def update_rotation(self, direction):
-		self.rotation += direction
-		self.rotation %= 4
+	def set_rotation(self, rotation):
+		"""
+		@param rotation: integer giving rotation in degrees
+		the rotation only does something when use_rotation is True
+		"""
+		self.rotation = rotation
 		self._update_parameters()
 
 	def set_use_rotation(self, use_rotation):
@@ -702,7 +655,9 @@ class _MinimapTransform:
 		self._update_parameters()
 
 	def world_to_minimap(self, coords):
-		"""Complete coord transformation, batteries included."""
+		"""Complete coord transformation, batteries included.
+		@param coords: tuple of two numbers representing a coordinate in the world
+		"""
 
 		x, y = coords
 
@@ -721,6 +676,9 @@ class _MinimapTransform:
 		return (int(x), int(y))
 
 	def minimap_to_world(self, coords):
+		"""
+		@param coords: tuple of two numbers representing a point in the minimap
+		"""
 		x, y = coords
 
 		# center on 0,0 and scale to world size
@@ -728,16 +686,14 @@ class _MinimapTransform:
 		y = (y - self.location.center.y) / self._world_minimap_ratio_y
 
 		# rotate
-		x_ =  x * self._cos_rotation + y * self._sin_rotation
+		x_ = x * self._cos_rotation + y * self._sin_rotation
 		y_ = -x * self._sin_rotation + y * self._cos_rotation
 
 		# undo centering and translate to correct position
 		x = x_ + self.world_dimensions.center.x
 		y = y_ + self.world_dimensions.center.y
 
-
 		return (int(x), int(y))
-
 
 	def _update_parameters(self):
 		""" Update the transformation parameters.
@@ -753,12 +709,12 @@ class _MinimapTransform:
 		self._world_minimap_ratio_y = self.location.height / self.world_dimensions.height * self._scale_correction
 		self.world_to_minimap_ratio = (self._world_minimap_ratio_x, self._world_minimap_ratio_y)
 
-
-
-
 	def _get_rotation(self):
+		# keep track of rotation at any time, but only apply
+		# if it's actually used
 		if self.use_rotation:
-			return (-self.rotation - 0.5) * math.pi / 2
+			# convert to radians
+			return -self.rotation / 180 * math.pi
 		else:
 			return 0
 
@@ -775,15 +731,31 @@ class _MinimapTransform:
 		if self.use_rotation:
 			for x_i in range(0, location.width):
 				x = x_i + location.left
-				# TODO: better name
-				asdf = int(abs(x / location.width - 0.5) * location.height)
-				for y_i in range(asdf, location.height - asdf):
+				for y_i in range(self.get_min_y(x), self.get_max_y(x)):
 					y = y_i + location.top
 					yield (x, y)
 		else:
 			for x in range(location.left, location.width + location.left):
 				for y in range(location.top, location.height + location.top):
 					yield (x, y)
+
+	def get_min_y(self, x):
+		if self.use_rotation:
+			return int(abs(x / self.location.width - 0.5) * self.location.height)
+		else:
+			return 0
+
+	def get_max_y(self, x):
+		return self.location.height - self.get_min_y(x)
+
+	def get_min_x(self, y):
+		if self.use_rotation:
+			return int(abs(y / self.location.height - 0.5) * self.location.width)
+		else:
+			return 0
+
+	def get_max_x(self, y):
+		return self.location.height - self.get_min_x(y)
 
 
 class _MinimapImage:
@@ -815,4 +787,3 @@ class _MinimapImage:
 		"""Always call this."""
 		targetname = self.rendertarget.getTarget().getName()
 		self.targetrenderer.setRenderTarget(targetname, False, 0)
-

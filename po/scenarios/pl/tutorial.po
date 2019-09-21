@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-07-31 15:17+0000\n"
-"Last-Translator: Martoceratops <martoceratops@gmail.com>\n"
+"PO-Revision-Date: 2019-08-21 09:22+0000\n"
+"Last-Translator: Przemysław Szulc <psemeq@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/tutorial/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.8-dev\n"
+"X-Generator: Weblate 3.8\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -31,10 +31,6 @@ msgstr ""
 "Zbuduj swoją pierwszą osadę i naucz się grać!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid ""
-#| "Build a warehouse on the coast to allow trade ships to visit your "
-#| "settlement."
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
@@ -60,12 +56,6 @@ msgstr ""
 "kliknąć przycisk, aby otworzyć dziennik."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "You can also re-open the Journal at any time by clicking the button below "
-#| "the mini-map, at the top right of your screen. From now on we'll refer to "
-#| "this area containing the mini-map and various buttons and tabs as the "
-#| "'Overview'."
 msgid ""
 "You can also re-open the Journal at any time by clicking the button below "
 "the mini-map, at the top right of your screen. From now on, we'll refer to "
@@ -74,7 +64,7 @@ msgid ""
 msgstr ""
 "Można również ponownie otworzyć dziennik w dowolnej chwili, klikając "
 "przycisk poniżej mini-mapy, w prawym górnym rogu ekranu. Od teraz będziemy "
-"odnosić się do tego obszaru zawierającego mini-mapę i różne przyciski i "
+"odnosić się do tego obszaru zawierającego mini-mapę, różnych przycisków i "
 "zakładki jako \"Przegląd\"."
 
 #. This is the text body of a logbook page.
@@ -110,10 +100,8 @@ msgid "And now, let's start the game!"
 msgstr "A teraz rozpocznijmy zabawę!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "NOWE ZADANIE: Osiedl się na wyspie"
+msgstr "NOWE ZADANIE: ZAŁÓŻ OSADĘ"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -132,10 +120,6 @@ msgstr ""
 "następnie kliknij prawym przyciskiem w miejscu do którego ma się udać."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Once you are near the coast, the anchor-like button you see in the "
-#| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
@@ -164,20 +148,14 @@ msgstr ""
 "przyciskiem myszy, aby umieścić Skład."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
 msgstr "Zadanie: Wybuduj port na wybrzeżu."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
 msgstr "Wybuduj chatę drwala i poprowadź drogę od chaty do portu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
 msgstr "NOWE ZADANIE: Wybuduj chatę drwala"
 
@@ -187,18 +165,20 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Zapasy i materiały budowlane zostały rozładowane ze statku i bezpiecznie "
+"przechowywane w nowym magazynie. Nadszedł czas, aby zbudować kilka "
+"podstawowych budynków, zaczynając od namiotu drwala."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Drwale powalają drzewa z lasu wokół swojego namiotu i przetwarzają drewno w "
+"celu wyprodukowania desek, do wykorzystania w budownictwie lub jako zasób "
+"handlowy."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "In order to construct lumberjacks; open the build menu by either clicking "
-#| "the big icon below the mini map or pressing B key."
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
@@ -213,12 +193,18 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Menu kompilacji jest posortowane według poziomów, a ponieważ twoja osada "
+"jest nowa, budynki pierwszego poziomu są jedynymi dostępnymi dla ciebie; "
+"wraz z postępem cywilizacji uzyskasz dostęp do wyższych poziomów i będziesz "
+"mógł budować znacznie szerszy zakres budynków."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Znajdź ładny zalesiony obszar do działania naszego drwala, a następnie "
+"wybierz „Namiot drwala” z listy budynków w Przeglądzie i umieść budynek."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -226,6 +212,8 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"W dalszej części gry możesz chcieć tworzyć lasy, sadząc drzewa, ale ponieważ "
+"to kosztuje, powinieneś wykorzystać to, co natura dała na razie!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -233,6 +221,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Każdy budynek gromadzący zasoby lub budynek produkcyjny potrzebuje ścieżki "
+"łączącej go z magazynem lub inną formą magazynowania, w przeciwnym razie "
+"wytwarzane przez niego towary nie zostaną odebrane."
 
 #. This is the text body of a logbook page.
 msgid ""

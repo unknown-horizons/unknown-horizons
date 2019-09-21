@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2018-03-04 09:40+0000\n"
-"Last-Translator: Przemysław Wierzbowski <pwierzbowski@gmail.com>\n"
+"PO-Revision-Date: 2019-08-21 09:22+0000\n"
+"Last-Translator: Przemysław Szulc <psemeq@o2.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.20-dev\n"
+"X-Generator: Weblate 3.8\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -267,7 +267,7 @@ msgstr "Potrzebne surowce:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr "Anuluj budowę:"
+msgstr "Zrezygnuj z budowy:"
 
 #. abort construction of a ship, lose invested resources
 #. abort construction of a groundunit, lose invested resources
@@ -292,10 +292,8 @@ msgstr "Potwierdzenia zamówienia"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "Dołącz do wybranej gry"
+msgstr "(tak jak w zakładkach wyboru)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -313,24 +311,24 @@ msgstr "$res"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24 t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14 t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06 t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
@@ -341,6 +339,7 @@ msgstr "Slup wojenny"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
 msgstr ""
+"Trójmasztowy najzwyklejszy żaglowiec wojenny z jednym pokładem artyleryjskim."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -355,42 +354,38 @@ msgstr "Działa"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
 msgid "Hull"
-msgstr ""
+msgstr "Kadłub"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "Utrzymaj pozycje"
+msgstr "Zbuduj jednostkę lądową:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "Zbuduj ten okręt!"
+msgstr "Zbuduj tę jednostkę lądową:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -521,10 +516,8 @@ msgid "residents"
 msgstr "Mieszkańcy"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Verdedigd je nederzetting."
+msgstr "Zapewnia bezpieczeństwo twojej osady."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -797,16 +790,12 @@ msgid "Return to game"
 msgstr "Powrót do gry"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Dawna nazwa:"
+msgstr "Nazwa wyspy:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Nazwa gracza"
+msgstr "Imię gracza"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -1799,10 +1788,9 @@ msgid "Press 'T' to make trees transparent."
 msgstr "Naciśnij 'T', żeby drzewa stały się przezroczyste."
 
 #: horizons/gui/modules/loadingscreen.py:80
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "Buduj magazyny, by móc gromadzić więcej towarów na jednej wyspie."
+msgstr ""
+"Buduj namioty magazynowe i punkty obserwacyjne, aby poszerzyć zasięg osiedli."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1811,33 +1799,36 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Aby łatwo sprawdzić, czy zasięg pawilonu obejmuje wszystkie namioty, wybierz "
+"go z menu budowy i umieść nad istniejącym pawilonem. Namioty poza zasięgiem "
+"są pokazane na żółto. Dobrym pomysłem jest wybudowanie nowego pawilonu w ich "
+"sąsiedztwie."
 
 #: horizons/gui/modules/loadingscreen.py:82
-#, fuzzy
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
-"Aby zapewnić większą rozrywkę, dodaj graczy AI kiedy rozpoczynasz nową "
-"rozgrywkę."
+"Dodanie dodatkowych graczy AI podczas rozpoczęcia nowej gry może zapewnić "
+"ciekawszą jednoosobową rozrywkę."
 
 #: horizons/gui/modules/loadingscreen.py:83
-#, fuzzy
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
-"Pierwsze kroki są łatwiejsze jeśli zobaczysz jak gracz AI rozbudowuje swoją "
-"osadę."
+"Pierwsze kroki będą łatwiejsze jeśli podpatrzysz jak gracz AI rozbudowuje "
+"swoją osadę."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Czy chcesz tylko śmieszne cytaty? Zmień rodzaj wyświetlanych cytatów w menu "
+"ustawień na stronie gry."
 
 #: horizons/gui/modules/loadingscreen.py:85
-#, fuzzy
 msgid "A marketplace links your buildings like a road."
 msgstr "Targowisko łączy twoje budynki podobnie jak droga."
 
@@ -2345,26 +2336,24 @@ msgstr "Vernietig gebouw"
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr ""
+msgstr "To zniszczy wszystkie budynki znajdujące się poza zasięgiem osady."
 
 #: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s dodatkowy budynek zostanie zniszczony."
+msgstr[1] "%s dodatkowe budynki zostaną zniszczone."
+msgstr[2] "%s dodatkowych budynków zostanie zniszczonych"
 
 # lub Rynku lub Rynku Miejskiego
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "Przegląd magazynu"
+msgstr "Przegląd koszar"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
-msgstr ""
+msgstr "Szermierz"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
@@ -2698,14 +2687,12 @@ msgstr "Drewniana wieża"
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
-msgstr ""
+msgstr "Gliniany mur"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:63
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Zapewnia edukację."
+msgstr "Zapewnia bezpieczeństwo."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:67
@@ -2730,14 +2717,12 @@ msgstr "Buduje łodzie oraz małe statki. Zbuduj na wybrzeżu."
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:79
 msgid "Brewery"
-msgstr ""
+msgstr "Browar"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:81
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "Zużywa mąkę i produkuje żywność."
+msgstr "Zużywa chmiel. Produkuje piwo."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:85
@@ -2762,14 +2747,12 @@ msgstr "Potrzebuje świń i bydła. Produkuje żywność."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Odlewnia dział"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
-#, fuzzy
-#| msgid "Produces weapons out of iron."
 msgid "Produces Cannons."
-msgstr "Produkuje broń z żelaza."
+msgstr "Produkuje działa."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:103
@@ -2883,17 +2866,13 @@ msgstr "Dostarcza ziół. Wymaga farmy."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "Uprawa kukurydzy"
+msgstr "Pole chmielu"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:169
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "Dostarcza kukurydzę. Wymaga farmy."
+msgstr "Dostarcza chmiel. Wymaga farmy."
 
 # Building
 #. name of buildings:fields:pasture
@@ -3113,10 +3092,8 @@ msgstr "Poprawia jakość rud każdego rodzaju."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:301
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "depozyt kamieni"
+msgstr "Depozyt kamieni"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:305
@@ -3260,10 +3237,8 @@ msgstr "Zapewnia surowiec drzewny. Ścięty przez drwali."
 # Building
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:377
-#, fuzzy
-#| msgid "Village school"
 msgid "Village School"
-msgstr "Szkoła wiejska"
+msgstr "Wiejska szkoła"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:379
@@ -3308,7 +3283,7 @@ msgstr "Mieli kukurydzę na mąkę."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
-msgstr ""
+msgstr "Winiarnia"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:407
@@ -3529,106 +3504,100 @@ msgstr "Niegotowy"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Stary albo niewspierany protokół gry sieciowej. Sprawdź swoją wersję gry"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Przekroczyłeś globalną wielkość pakietu."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"To nigdy nie powinno się stać. Proszę skontaktuj się z nami albo zgłoś błąd."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Przekroczono rozmiar pakietu."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Nieznany lub uszkodzony pakiet. Sprawdź swoją wersję gry"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Nieprawidłowa / nieznana sesja"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Nie możesz dołączyć do gry gdy już w jednej jesteś"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Nieznana gra lub gra działa w innej wersji"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Gra już się rozpoczęła. Już nie można dołączyć"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "Gra jest pełna"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Wprowadź hasło:"
+msgstr "Niepoprawne hasło"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "W tej grze jest już gracz z twoim imieniem."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Proszę zmień swoje imię."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "W tej grze jest już gracz z twoim kolorem."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Zmieniłeś swój kolor"
+msgstr "Zmień swój kolor."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"W tej grze jest już gracz z twoim unikalnym identyfikatorem gracza. To nigdy "
+"nie powinno się zdarzyć."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Nie jesteś już gotowy"
+msgstr "Nie jesteś w grze"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Nie można połączyć z serwerem."
+msgstr "Nie można zmienić twojego imienia."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Zmieniłeś swój kolor"
+msgstr "Nie można zmienić twojego koloru."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "De snelheid van een multiplayer spel kan niet worden gewijzigd"
+msgstr "Nie mona połączyć z grą gdy już w jednej jesteś"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "Gra została zakończona. Twórca gry ją opuścił."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Jeden gracz zakończył grę. Ze względów technicznych obecnie oznacza to, że "
+"gra nie może być kontynuowana. Bardzo nam przykro z tego powodu."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3927,16 +3896,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Nowy statek o nazwie {name} został wybudowany."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Nowy statek o nazwie {name} został wybudowany."
+msgstr "Wojownik o nazwie {name} jest gotowy do walki."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Nowy statek o nazwie {name} został wybudowany."
+msgstr "Mieszkaniec o nazwie {name} jest dostępny."
 
 # Messages
 #. This is a database entry: a messagewidget message (left part of the screen)
@@ -4164,7 +4131,7 @@ msgstr "działa"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "miecz"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -4358,7 +4325,7 @@ msgstr "Chmiel"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "piwo"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"

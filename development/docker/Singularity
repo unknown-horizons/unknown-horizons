@@ -1,0 +1,64 @@
+Bootstrap: docker
+From:ubuntu:18.04
+
+# sudo singularity build uh.sif docker/Singularity
+
+%setup
+    mkdir -p ${SINGULARITY_ROOTFS}/code
+    cp -R . ${SINGULARITY_ROOTFS}/code
+
+%post
+apt-get update && \
+apt-get install -y build-essential \
+libalsa-ocaml-dev \
+libsdl2-dev \
+libboost-dev \
+libsdl2-ttf-dev \
+libsdl2-image-dev \
+libvorbis-dev \
+libalut-dev \
+python3 \
+python3-dev \
+libboost-regex-dev \
+libboost-filesystem-dev \
+libboost-test-dev \
+swig \
+zlib1g-dev \
+libopenal-dev \
+git \
+python3-yaml \
+libxcursor1 \
+libxcursor-dev \
+cmake \
+cmake-data \
+libtinyxml-dev \
+libpng-dev \
+libglew-dev \
+python3-enet \
+intltool \
+python3-pillow \
+python3-future
+
+# Install Fifengine and Fifechan
+git clone https://github.com/fifengine/fifechan.git && \
+cd fifechan && \
+mkdir _build && \
+cd _build && \
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .. && \
+make && make install
+
+git clone https://github.com/fifengine/fifengine.git && \
+cd fifengine && \
+mkdir _build && \
+cd _build && \
+cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DPYTHON_EXECUTABLE=/usr/bin/python3 .. && \
+make && make install
+
+cd /code
+python3 setup.py build_i18n && \
+adduser --disabled-password --gecos "" horizonuser
+su horizonuser -c "mkdir -p /home/horizonuser/.config/unknown-horizons/"
+su horizonuser -c "cp /code/content/settings-template.xml /home/horizonuser/.config/unknown-horizons/settings.xml"
+
+%runscript
+exec /usr/bin/python3 /code/run_uh.py "$@"

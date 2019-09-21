@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-09-03 16:47+0000\n"
+"PO-Revision-Date: 2019-03-17 12:04+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 3.6-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -743,7 +743,7 @@ msgstr "통계"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:39
 msgid "Players"
-msgstr "플레이어"
+msgstr "선수"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:40
 msgid "My ships"
@@ -770,7 +770,7 @@ msgstr "모든 사람"
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:72
 msgid "Sends the chat messages to all players."
-msgstr "모든 플레이어에게 메시지를 보냅니다."
+msgstr "모든 선수에게 메시지를 보냅니다."
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
@@ -788,7 +788,7 @@ msgstr "섬 이름:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
 msgid "Player Name:"
-msgstr "플레이어 이름:"
+msgstr "선수 이름:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -832,7 +832,7 @@ msgstr "닫기"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:4
 msgid "Player scores"
-msgstr "플레이어 점수"
+msgstr "선수 점수"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 #: content/gui/xml/ingame/widgets/players_settlements.xml:11
@@ -842,7 +842,7 @@ msgstr "이름"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:11
 msgid "Player Name"
-msgstr "플레이어 이름"
+msgstr "선수 이름"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Money"
@@ -850,7 +850,7 @@ msgstr "돈"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "플레이어의 현재 잔고 + 곧 발생할 수입"
+msgstr "선수의 현재 잔고 + 곧 발생할 수입"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -877,7 +877,7 @@ msgstr "건물"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "플레이어의 정착지에 있는 모든 건물의 점수"
+msgstr "선수의 정착지에 있는 모든 건물의 점수"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -898,7 +898,7 @@ msgstr "유닛"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "플레이어가 소유한 모든 유닛의 점수"
+msgstr "선수가 소유한 모든 유닛의 가치"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
@@ -1055,7 +1055,7 @@ msgstr "피펫 모드 켜기 (건물 복제)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show player scores"
-msgstr "플레이어 점수 보이기"
+msgstr "선수 점수 보이기"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Show settlement list"
@@ -1163,12 +1163,12 @@ msgstr "배경 변경"
 #. play)
 #: content/gui/xml/mainmenu/mainmenu.xml:11
 msgid "Singleplayer"
-msgstr "혼자 플레이"
+msgstr "혼자 놀기"
 
 #. Opens widget to join or create multiplayer games
 #: content/gui/xml/mainmenu/mainmenu.xml:16
 msgid "Multiplayer"
-msgstr "여럿이 플레이"
+msgstr "함께 놀기"
 
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
@@ -1186,47 +1186,47 @@ msgstr "크레딧"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr "게임 생성 - 여럿이 플레이"
+msgstr "게임 만들기 - 함께 놀기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
-msgstr "플레이어 제한:"
+msgstr "선수 제한:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr "다중 사용자 메뉴 나가기"
+msgstr "함께 놀기 차림표 나가기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:18
 msgid "Name of the game:"
-msgstr "게임 이름:"
+msgstr "놀이 이름:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:18
 msgid "This will be displayed to other players so they recognize the game."
-msgstr "다른 플레이어들이 게임을 인식 할 수 있도록 표시됩니다."
+msgstr "다른 선수들이 놀이를 인식 할 수 있도록 표시합니다."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:40
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:19
 msgid "Unnamed Game"
-msgstr "이름없는 게임"
+msgstr "이름없는 놀이"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game:"
-msgstr "게임의 암호:"
+msgstr "놀이의 암호:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:45
 msgid "This game's password. Required to join this game."
-msgstr "이 게임의 암호를 입력합니다. 이 게임에 참여하는 데 필요합니다."
+msgstr "이 놀이의 암호를 입력합니다. 이 놀이를 참여하는 데 필요합니다."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr "이 새로운 게임을 만들기"
+msgstr "이 새로운 놀이 만들기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
-msgstr "대기방"
+msgstr "앞마당"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:9
 msgid "Chat:"
@@ -1238,7 +1238,7 @@ msgstr "대기방 나가기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:23
 msgid "The game will start as soon as all players are ready."
-msgstr "플레이어들이 전부 준비되면 바로 게임을 시작합니다."
+msgstr "선수들이 전부 준비되면 바로 게임을 시작합니다."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:25
 msgid "Game details:"
@@ -1298,7 +1298,7 @@ msgstr "선택한 게임에 참여하기"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
-msgstr "플레이어 상세정보 변경하기"
+msgstr "선수 상세정보 바꾸기"
 
 #: content/gui/xml/mainmenu/settings.xml:14 horizons/gui/modules/settings.py:55
 msgid "Graphics"
@@ -1514,7 +1514,7 @@ msgstr "선택한 저장된 게임 삭제"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr "새로운 게임 - 혼자 플레이"
+msgstr "새로운 놀이 - 혼자 놀기"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
@@ -1526,7 +1526,7 @@ msgstr "임의의 지도"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr "자유 플레이"
+msgstr "자유롭게 놀기"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
@@ -1535,7 +1535,7 @@ msgstr "게임 시작"
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr "플레이할 지도를 선택하십시오:"
+msgstr "놀이 지도를 선택하십시오:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
@@ -1552,7 +1552,7 @@ msgstr "언어 선택:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr "인공지능 플레이어:"
+msgstr "인공지능 선수:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
@@ -1575,7 +1575,7 @@ msgstr "재난"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr "플레이어 이름:"
+msgstr "선수 이름:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
@@ -1667,7 +1667,7 @@ msgstr "가능한 외교가 없습니다"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "다른 플레이어가 없기 때문에 외교를 할 수 없습니다."
+msgstr "다른 선수가 없기 때문에 외교를 할 수 없습니다."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
@@ -1708,7 +1708,7 @@ msgstr "견적"
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "Gameplay Tips"
-msgstr "게임 플레이 팁"
+msgstr "놀이 방법 도움말"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
@@ -1932,7 +1932,7 @@ msgstr "제작자: {game_creator}"
 #: horizons/gui/modules/multiplayermenu.py:485
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr "플레이어: {player_amount}/{player_limit}"
+msgstr "선수: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Wrong version"
@@ -1946,10 +1946,8 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"게임 버전이 당신이 가지고 있는것과 다릅니다. 다중 사용자 게임의 모든 플레이어"
-"가 동일한 버전을 사용해야 합니다. 이 최신 버전으로 업데이트하는 모든 플레이어"
-"에 의해 고쳐질 수 있습니다. 게임 버전: {game_version} 당신의 버전 "
-"{own_version}"
+"놀이 버전이 당신이 가지고 있는것과 다릅니다. 함께 놀기 게임의 모든 선수가 같은 버전을 사용해야 합니다. 모든 선수가 최신 버전으로 "
+"갱신하면 해결됩니다. 놀이 버전: {game_version} 당신 버전 {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
@@ -1963,7 +1961,7 @@ msgstr "암호 입력:"
 #: horizons/gui/modules/singleplayermenu.py:415
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr "추천하는 플레이어 수: {number}"
+msgstr "추천하는 선수 수: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:407
@@ -2212,11 +2210,11 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "Invalid player name"
-msgstr "잘못된 플레이어 이름"
+msgstr "잘못된 선수 이름"
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "You entered an invalid playername."
-msgstr "잘못된 플레이어 이름을 입력하였습니다."
+msgstr "잘못된 선수 이름을 입력하였습니다."
 
 #: horizons/gui/modules/singleplayermenu.py:156
 msgid "Resource density:"
@@ -2398,7 +2396,7 @@ msgstr "업그레이드가 불가능:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:153
 msgid "This is the highest playable tier for now!"
-msgstr "현재 가장 높은 플레이 가능한 계층입니다!"
+msgstr "지금은 이것이 놀이의 가장 높은 계층 계층입니다!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
@@ -2588,7 +2586,7 @@ msgstr "하역하는중"
 
 #: horizons/gui/widgets/routeconfig.py:399
 msgid "You are not allowed to trade with this player"
-msgstr "이 플레이어와 무역할 수 없습니다"
+msgstr "이 선수와 무역할 수 없습니다"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:120
@@ -3018,7 +3016,7 @@ msgstr "봉화대"
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:291
 msgid "Allows the player to trade with the free trader."
-msgstr "플레이어가 자유 무역상선과의 무역을 허용합니다."
+msgstr "선수가 자유 무역상선과의 무역을 허용합니다."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:295
@@ -3432,9 +3430,7 @@ msgstr "준비 안됨"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
-"오래 되었거나 지원 되지 않는 다중 플레이어 프로토콜입니다. 게임 버전을 확인 "
-"하시기 바랍니다"
+msgstr "오래 되었거나 지원 되지 않는 다중 선수 프로토콜입니다. 놀이 버전을 확인 하시기 바랍니다"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
@@ -3454,23 +3450,23 @@ msgstr "알 수 없거나 잘못된 패킷입니다. 게임 버전을 확인 하
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr "잘못되었거나 알수없는 세션"
+msgstr "잘못되었거나 알 수 없는 세션"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr "다른 판에는 참여할수 없습니다"
+msgstr "다른 놀이에는 참여할 수 없습니다"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr "알수없는 게임이거나 다른버전의 게임이 실행중입니다"
+msgstr "알 수 없는 놀이이거나 다른버전의 놀이가 실행중입니다"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr "이 판은 이미 시작되었습니다. 더 이상 참여할수 없습니다"
+msgstr "이 놀이는 이미 시작되었습니다. 더 이상 참여할수 없습니다"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr "이 판의 정원이 채워졌습니다"
+msgstr "이 놀이는 정원이 채워졌습니다"
 
 #: horizons/network/server.py:469
 msgid "Wrong password"
@@ -3478,53 +3474,51 @@ msgstr "잘못된 암호입니다"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr "이 판에 이미 같은 이름의 사용자가 있습니다."
+msgstr "이 놀이에 이미 같은 이름의 사용자가 있습니다."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr "이름을 바꿔주십시오."
+msgstr "이름을 바꾸십시오."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr "이 판에 이미 같은 색상의 사용자가 있습니다."
+msgstr "이 놀이에는 이미 같은 색상의 사용자가 있습니다."
 
 #: horizons/network/server.py:480
 msgid "Please change your color."
-msgstr "색상을 바꿔주십시오."
+msgstr "색상을 바꾸십시오."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr "게임에서 이미 유일해야되는 플레이어 ID가 있습니다. 발생하면 안됩니다."
+msgstr "이미 놀이 안에 고유 한 선수 아이디가 있는 선수가 있습니다. 이런 일은 절대로 발생해서는 안됩니다."
 
 #: horizons/network/server.py:496
 msgid "You are not inside a game"
-msgstr "게임을 하고 있지 않습니다"
+msgstr "놀이안에 있지 않습니다"
 
 #: horizons/network/server.py:541
 msgid "Unable to change your name."
-msgstr "이름을 바꿀수 없습니다."
+msgstr "이름을 바꿀 수 없습니다."
 
 #: horizons/network/server.py:573
 msgid "Unable to change your color."
-msgstr "색상을 바꿀수 없습니다."
+msgstr "색상을 바꿀 수 없습니다."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
-msgstr "다른 게임중에는 게임을 가져올 수 없습니다"
+msgstr "한 놀이를 하는중에는 다른 놀이를 선택할 수 없습니다"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr "이 판 게임이 종료 되었습니다. 방장이 이 게임을 떠났습니다."
+msgstr "놀이가 끝났습니다. 방장이 놀이를 떠났습니다."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr ""
-"한 플레이어가 게임을 종료하였습니다. 기술적인 이유로 지금은 이 판을 더 이상 "
-"지속할수 없음을 의미합니다. 죄송합니다."
+msgstr "한 선수가 놀이를 끝냈습니다. 기술적인 이유로 인해, 지금은 놀이를 계속할 수 없다는 의미입니다. 죄송합니다."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3625,7 +3619,7 @@ msgstr "이 건물은 정착지 내에 건설해야 합니다."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by another player."
-msgstr "이 지역은 다른 플레이어가 점령중입니다."
+msgstr "이 지역은 다른 선수가 점령중입니다."
 
 #: horizons/world/building/buildable.py:46
 msgid "This area is already occupied by another building."

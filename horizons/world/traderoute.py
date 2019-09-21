@@ -124,10 +124,11 @@ class TradeRoute(ChangeListener):
 		suppress_messages = self.current_transfer is not None # no messages from second try on
 
 		if self.current_transfer is not None:
-			for res in copy.copy(self.current_transfer):
+			for res, current in self.current_transfer.copy().items():
 				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
-				if self.current_transfer[res] == 0 or res not in self.get_location()['resource_list'] or \
-				   cmp(self.current_transfer[res], 0) != cmp(self.get_location()['resource_list'][res], 0):
+				trade_stock = self.get_location()['resource_list'].get(res, 0)
+				if current == 0 or trade_stock == 0 or (current < 0) != (trade_stock < 0):
+					#If unload/load has changed, (based on signs)
 					del self.current_transfer[res]
 
 		settlement = warehouse.settlement
@@ -296,8 +297,8 @@ class TradeRoute(ChangeListener):
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
-				'warehouse' : warehouse,
-				'resource_list' : resource_list
+				'warehouse': warehouse,
+				'resource_list': resource_list
 			})
 
 		waiting = False

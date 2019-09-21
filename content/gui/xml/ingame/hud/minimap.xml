@@ -5,28 +5,41 @@
 In case you change the size of this Container, also adapt the ingamegui positioning value.  -->
 <!-- The actual minimap Icon is placed after everything else so that it gets focus  -->
 
-<Container name="background_and_buttons" position="-32,-2" size="240,240">
-	<Icon name="minimap_overlay_image" position="31, 1"
-		image="content/gui/images/background/widgets/map_bg.png" />
-	<Label name="speed_text" position="50,90" font="default_bold" />
 
-	<ImageButton name="speedUp" position="48,63"
+<Icon name="minimap"  fixed_size="160,120"  position="24,44" />
+
+<Icon name="minimap_overlay_image" position="0,0"
+	image="content/gui/images/background/widgets/map_bg.png" />
+
+<Container name="buttons" position="0,0" size="240,240">
+	
+	<!-- The area that is used for minimap mouse events.
+	This should always cover the same area as the actual minimap
+	(why that involves a (-2,-2) correction I don't know)
+	This is distinct for ordering purposes:
+	The draw minimap should be behind the background so it doesn't overflow,
+	but the mousetext must be in front of it so it can catch the mouse events -->
+	<Icon name="minimapMouse" fixed_size="160,120" position="22,42" />
+	
+	<Label name="speed_text" position="40,42" font="default_bold" />
+
+	<ImageButton name="speedUp" position="55,23"
 		path="icons/widgets/minimap/speed_up" helptext="Increase game speed ({key})" />
-	<ImageButton name="speedDown" position="48,105"
+	<ImageButton name="speedDown" position="20,55"
 		path="icons/widgets/minimap/speed_down" helptext="Decrease game speed ({key})" />
 
-	<ImageButton name="rotateLeft" position="96,19"
+	<ImageButton name="rotateLeft" position="61,150"
 		path="icons/widgets/minimap/rotate_left" helptext="Rotate map counterclockwise ({key})" />
-	<ImageButton name="rotateRight" position="150,19"
+	<ImageButton name="rotateRight" position="115,150"
 		path="icons/widgets/minimap/rotate_right" helptext="Rotate map clockwise ({key})" />
 
-	<ImageButton name="zoomIn" position="195,63"
+	<ImageButton name="zoomIn" position="120,25"
 		path="icons/widgets/minimap/zoom_in" helptext="Zoom in" />
-	<ImageButton name="zoomOut" position="195,105"
+	<ImageButton name="zoomOut" position="152,55"
 		path="icons/widgets/minimap/zoom_out" helptext="Zoom out" />
 </Container>
 
-<Container size="250,90"  position="11,149">
+<Container size="250,90"  position="8,149">
 <!-- Main buttons that are under minimap, including build menu, diplomacy etc-->
 	<!--<Icon image="content/gui/images/buttons/glass_small.png" position="2,0" size="64,64" />-->
 	<Icon position="0,0"  image="content/gui/images/buttons/glass_small.png" />
@@ -47,5 +60,4 @@ In case you change the size of this Container, also adapt the ingamegui position
 		path="icons/widgets/minimap/gamemenu" helptext="Game menu ({key})" />
 </Container>
 
-<Icon name="minimap"  fixed_size="120,120"  position="47,46" />
 </Container>

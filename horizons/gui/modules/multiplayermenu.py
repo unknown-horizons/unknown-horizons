@@ -52,9 +52,9 @@ class MultiplayerMenu(Window):
 		self._mainmenu = mainmenu
 		self._gui = load_uh_widget('multiplayermenu.xml')
 		self._gui.mapEvents({
-			'cancel' : self._windows.close,
-			'join'   : self._join_game,
-			'create' : self._create_game,
+			'cancel': self._windows.close,
+			'join': self._join_game,
+			'create': self._create_game,
 			'refresh': Callback(self._refresh, play_sound=True)
 		})
 
@@ -126,7 +126,8 @@ class MultiplayerMenu(Window):
 			headline = T("Unable to find pyenet")
 			descr = T('The multiplayer feature requires the library "pyenet", '
 			          "which could not be found on your system.")
-			advice = T("Linux users: Try to install pyenet through your package manager.")
+			advice = T("For instructions on installing pyenet see:"
+			           "https://github.com/unknown-horizons/unknown-horizons/wiki/Installing-PyEnet")
 			self._windows.open_error_popup(headline, descr, advice)
 			return False
 
@@ -144,6 +145,13 @@ class MultiplayerMenu(Window):
 		if not NetworkInterface().is_connected:
 			try:
 				NetworkInterface().connect()
+			except TypeError as terr:
+				self._windows.close()
+				headline = T("Pyenet type error")
+				descr = T("You are probably using an incompatible pyenet installation")
+				advice = T("For instructions on properly installing pyenet see: "
+				           "https://github.com/unknown-horizons/unknown-horizons/wiki/Installing-PyEnet")
+				self._windows.open_error_popup(headline, descr, advice, str(terr))
 			except Exception as err:
 				self._windows.close()
 				headline = T("Fatal Network Error")
@@ -167,7 +175,7 @@ class MultiplayerMenu(Window):
 		else:
 			self._windows.open_popup(T("Fatal Network Error"),
 		                             T("Something went wrong with the network:") + '\n' +
-		                             str(exception) )
+		                             str(exception))
 			# FIXME: this shouldn't be necessary, the main menu window is still somewhere
 			# in the stack and we just need to get rid of all MP related windows
 			self._mainmenu.show_main()

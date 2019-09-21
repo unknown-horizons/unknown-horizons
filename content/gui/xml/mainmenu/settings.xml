@@ -160,12 +160,6 @@
 				<hr />
 
 				<HBox>
-					<Label name="minimap_rotation_label" text="Rotate minimap with map:" min_size="256,0"
-					       helptext="Whether to also rotate the minimap whenever the regular map is rotated" />
-					<CheckBox min_size="24,24" name="minimaprotation" />
-				</HBox>
-
-				<HBox>
 					<Label name="uninterrupted_building_label" text="Uninterrupted building:" min_size="256,0"
 					       helptext="When enabled, do not exit the build mode after successful construction" />
 					<CheckBox min_size="24,24" name="uninterrupted_building" />

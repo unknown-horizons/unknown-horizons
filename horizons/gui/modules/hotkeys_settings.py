@@ -55,13 +55,12 @@ class HotkeyConfiguration:
 		# Stores whether the last button pressed was for a primary or secondary binding (1 or 2)
 		self.last_column = 1
 
-		# There are some keys which are not detected by the event widget/keyPressed
-		# In that case, the key presses are detected by the listener, which calls _detect_keypress
+		# This used to go though the widget's key events, but fifechan has different keynames
+		# Using a fife keylistener ensures that the in-game keys always match
 		self.listener = HotkeysListener(self._detect_keypress)
 
-		self.widget.mapEvents({self.widget.name + '/keyPressed' : self._detect_keypress})
 		self.widget.findChild(name=OkButton.DEFAULT_NAME).capture(self.save_settings)
-		self.widget.mapEvents({OkButton.DEFAULT_NAME : self.save_settings})
+		self.widget.mapEvents({OkButton.DEFAULT_NAME: self.save_settings})
 		self.widget.findChild(name="reset_to_default").capture(self.reset_to_default)
 
 	def _build_interface(self):
@@ -70,8 +69,8 @@ class HotkeyConfiguration:
 		for i, action in enumerate(self.actions):
 			button = self._create_button(action, i)
 			sec_button = self._create_button(action, i)
-			button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, button, 1)})
-			sec_button.mapEvents({button.name + '/mouseClicked' : Callback(self._detect_click_on_button, sec_button, 2)})
+			button.mapEvents({button.name + '/mouseClicked': Callback(self._detect_click_on_button, button, 1)})
+			sec_button.mapEvents({button.name + '/mouseClicked': Callback(self._detect_click_on_button, sec_button, 2)})
 			button_container.addChild(button)
 			sec_button_container.addChild(sec_button)
 			self.buttons.append(button)
@@ -80,7 +79,7 @@ class HotkeyConfiguration:
 
 	def _create_button(self, action, index):
 		"""Important! The button name is set to index so that when a button is pressed, we know its index"""
-		button = Button()
+		button = Button(is_focusable=False)
 		button.name = str(index)
 		button.max_size = button.min_size = (100, 18)
 		return button

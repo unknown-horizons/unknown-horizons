@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
@@ -28,7 +29,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from horizons.ext.enum import Enum
-from horizons.util.platform import get_user_game_directory
+from horizons.util.platform import get_old_user_game_directory, get_user_game_directories
 
 
 """This file keeps track of the constants that are used in Unknown Horizons.
@@ -95,16 +96,16 @@ class VERSION:
 	RELEASE_VERSION = get_git_version()
 	# change for release:
 	IS_DEV_VERSION = True
-	#RELEASE_VERSION = u'2017.2'
+	#RELEASE_VERSION = u'2019.1'
 
 	REQUIRED_FIFE_MAJOR_VERSION = 0
 	REQUIRED_FIFE_MINOR_VERSION = 4
-	REQUIRED_FIFE_PATCH_VERSION = 1
+	REQUIRED_FIFE_PATCH_VERSION = 2
 
 	REQUIRED_FIFE_VERSION = (REQUIRED_FIFE_MAJOR_VERSION, REQUIRED_FIFE_MINOR_VERSION, REQUIRED_FIFE_PATCH_VERSION)
 
 	## +=1 this if you changed the savegame "api"
-	SAVEGAMEREVISION = 76
+	SAVEGAMEREVISION = 77
 	SAVEGAME_LEAST_UPGRADABLE_REVISION = 76
 
 	@staticmethod
@@ -218,6 +219,8 @@ class BUILDINGS:
 
 	BARRIER          = 71
 
+	AMBIENT          = 72
+
 	SALINE           = 86
 	PUBLIC_BATH      = 87
 
@@ -231,15 +234,15 @@ class BUILDINGS:
 		# you need to sort this before iterating via sorted, since order is important here.
 		action_offset_dict = {
 		# Direct connections
-		  'a' : ( 0, -1),
-		  'b' : (+1,  0),
-		  'c' : ( 0, +1),
-		  'd' : (-1,  0),
+		  'a': (0, -1),
+		  'b': (+1, 0),
+		  'c': (0, +1),
+		  'd': (-1, 0),
 		# Remote connections
-		  'e' : (+1, -1),
-		  'f' : (+1, +1),
-		  'g' : (-1, +1),
-		  'h' : (-1, -1),
+		  'e': (+1, -1),
+		  'f': (+1, +1),
+		  'g': (-1, +1),
+		  'h': (-1, -1),
 		}
 
 	class BUILD:
@@ -558,28 +561,21 @@ class STORAGE:
 	SHIP_TOTAL_STORAGE = 120
 	SHIP_TOTAL_SLOTS_NUMBER = 4
 
+	# The maximum number of items you can set in a trade route slot or warehouse trade slot
+	# This was actually only added to make sure the number wouldn't overflow the amount slider
+	# If more items can be traded than pixels in the slider it is impossible to accurately select an amount
+	# See https://github.com/unknown-horizons/unknown-horizons/issues/1095
+	ITEMS_PER_TRADE_SLOT = 50
+
 
 ## ENGINE
 class LAYERS:
 	WATER = 0
 	GROUND = 1
-	FIELDS = 2
+	FIELDS = 2 # ironically doesn't apply to fields anymore...
 	OBJECTS = 3
 
 	NUM = 4 # number of layers
-
-## PATHS
-# workaround, so it can be used to create paths within PATHS
-
-
-if 'UH_USER_DIR' in os.environ:
-	# Prefer the value from the environment. Used to override user dir when
-	# running GUI tests.
-	_user_dir = os.environ['UH_USER_DIR']
-else:
-	_user_dir = str(get_user_game_directory())
-	if not os.path.exists(_user_dir):
-		os.makedirs(_user_dir)
 
 
 class GFX:
@@ -596,18 +592,26 @@ class GFX:
 	USE_ATLASES = False
 
 
+## PATHS
+
+_config_dir, _data_dir, _cache_dir = get_user_game_directories()
+
+
 class PATHS:
-	# paths in user dir
-	USER_DIR = _user_dir
-	LOG_DIR = os.path.join(USER_DIR, "log")
-	USER_MAPS_DIR = os.path.join(USER_DIR, "maps")
-	USER_CONFIG_FILE = os.path.join(USER_DIR, "settings.xml")
-	SCREENSHOT_DIR = os.path.join(USER_DIR, "screenshots")
-	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
-	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
-	ATLAS_METADATA_PATH = os.path.join(USER_DIR, "atlas-metadata.cache")
+	# paths in user directories
+	USER_CONFIG_FILE = os.path.join(_config_dir, "settings.xml")
+	USER_DATA_DIR = _data_dir
+	LOG_DIR = os.path.join(USER_DATA_DIR, "log")
+	USER_MAPS_DIR = os.path.join(USER_DATA_DIR, "maps")
+	SCREENSHOT_DIR = os.path.join(USER_DATA_DIR, "screenshots")
+	SAVEGAME_DIR = os.path.join(USER_DATA_DIR, "save")
+	CACHE_DIR = _cache_dir
+	ATLAS_METADATA_PATH = os.path.join(CACHE_DIR, "atlas-metadata.cache")
 
 	# paths relative to uh dir
+	DEFAULT_WINDOW_ICON_PATH = os.path.join("content", "gui", "images", "logos", "uh_32.png")
+	MAC_WINDOW_ICON_PATH = os.path.join("content", "gui", "icons", "Icon.icns")
+
 	ACTION_SETS_DIRECTORY = os.path.join("content", "gfx")
 	TILE_SETS_DIRECTORY = os.path.join("content", "gfx", "base")
 	SAVEGAME_TEMPLATE = os.path.join("content", "savegame_template.sql")
@@ -623,18 +627,27 @@ class PATHS:
 	DB_FILES = tuple(os.path.join("content", i) for i in
 	                 ("game.sql", "balance.sql", "names.sql"))
 
-	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content/gfx", d)
+	ATLAS_SOURCE_DIRECTORIES = tuple(os.path.join("content", "gfx", d)
 	                                 for d in (
-	                                 "/base",
-	                                 "/buildings",
-	                                 "/misc",
-	                                 "/terrain",
-	                                 "/units",
+	                                 "base",
+	                                 "buildings",
+	                                 "misc",
+	                                 "terrain",
+	                                 "units",
 	                                ))
 
 	#voice paths
 	VOICE_DIR = os.path.join("content", "audio", "voice")
 	UH_LOGO_FILE = os.path.join("content", "gfx", "uh.png")
+
+
+_old_user_dir = get_old_user_game_directory()
+
+
+class OLDPATHS:
+	USER_DATA_DIR = _old_user_dir
+	USER_CONFIG_FILE = os.path.join(_old_user_dir, "settings.xml")
+	CACHE_DIR = _old_user_dir
 
 
 class SETTINGS:
@@ -660,7 +673,7 @@ class MULTIPLAYER:
 
 
 class NETWORK:
-	SERVER_ADDRESS = "master.unknown-horizons.org"
+	SERVER_ADDRESS = "207.180.251.79"
 	# change port to 2022 for development server updated after UH commits
 	SERVER_PORT = 2002
 	CLIENT_ADDRESS = None # type: Optional[str]
@@ -730,6 +743,7 @@ LANGUAGENAMES = _LanguageNameDict({
 	"uk"    : ('Українська', 'Ukrainian'),
 	"vi"    : ('Tiếng Việt', 'Vietnamese'),
 	"zh_CN" : ('简化字', 'Simplified Chinese'),
+	"zh_Hant" : ('繁體字', 'Traditional Chinese'),
 	"zh_TW" : ('繁體字', 'Traditional Chinese'),
 	"zu"    : ('IsiZulu', 'Zulu'),
 })

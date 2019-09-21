@@ -48,10 +48,6 @@ except ImportError:
 	      ' is needed to run the atlas generator.')
 	sys.exit(1)
 
-# TODO We can probably remove the type ignore in the next release of typeshed/mypy
-#      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
-# make sure os.path.getmtime returns ints
-os.stat_float_times(False) # type: ignore
 
 # make this script work both when started inside development and in the uh root dir
 if not os.path.exists('content'):
@@ -63,6 +59,9 @@ sys.path.append('.')
 
 class DummyFife:
 	use_atlases = False
+
+# TODO We can probably remove the type ignore in the next release of typeshed/mypy
+#      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
 
 
 import horizons.globals # isort:skip
@@ -102,7 +101,7 @@ class AtlasBook:
 		"""Return true if and only if the image was added."""
 		if self.cur_x + w <= self.max_size and self.cur_y + h <= self.max_size:
 			# add to the end of the current row
-			self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h, os.path.getmtime(path))
+			self.location[path] = AtlasEntry(self.cur_x, self.cur_y, w, h, int(os.path.getmtime(path)))
 			self.cur_x += w
 			self.cur_h = max(self.cur_h, h)
 			return True
@@ -112,7 +111,7 @@ class AtlasBook:
 			self.cur_x = w
 			self.cur_y += self.cur_h
 			self.cur_h = h
-			self.location[path] = AtlasEntry(0, self.cur_y, w, h, os.path.getmtime(path))
+			self.location[path] = AtlasEntry(0, self.cur_y, w, h, int(os.path.getmtime(path)))
 			return True
 
 		# unable to fit in the given space with the current algorithm
@@ -295,7 +294,7 @@ class AtlasGenerator:
 					recreate_all = True
 					break
 
-				last_modified = os.path.getmtime(path)
+				last_modified = int(os.path.getmtime(path))
 				book = self.atlas_book_lookup[path]
 				entry = book.location[path]
 				if last_modified == entry.last_modified:
@@ -348,9 +347,9 @@ class AtlasGenerator:
 	def check_files(cls):
 		"""Check that the required atlas files exist."""
 		paths = [
-			'content' + os.sep + 'actionsets.json',
-			'content' + os.sep + 'atlas.sql',
-			'content' + os.sep + 'tilesets.json',
+			PATHS.ACTION_SETS_JSON_FILE,
+			PATHS.ATLAS_DB_PATH,
+			PATHS.TILE_SETS_JSON_FILE,
 		]
 		for path in paths:
 			if not os.path.exists(path):
@@ -358,7 +357,7 @@ class AtlasGenerator:
 
 		# verify that the combined images exist
 		db = DbReader(':memory:')
-		with open('content' + os.sep + 'atlas.sql') as f:
+		with open(PATHS.ATLAS_DB_PATH) as f:
 			db.execute_script(f.read())
 		for db_row in db("SELECT atlas_path FROM atlas"):
 			if not os.path.exists(db_row[0]):
@@ -398,7 +397,7 @@ class AtlasGenerator:
 		paths.append(PATHS.ATLAS_DB_PATH)
 		paths.append(PATHS.ACTION_SETS_JSON_FILE)
 		paths.append(PATHS.TILE_SETS_JSON_FILE)
-		paths.extend(glob.glob('content/gfx/atlas/*.png'))
+		paths.extend(glob.glob(os.path.join(PATHS.ATLAS_FILES_DIR, '*.png')))
 
 		# delete everything
 		for path in paths:

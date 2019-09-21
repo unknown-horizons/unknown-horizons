@@ -98,7 +98,7 @@ class Collector(Unit):
 	def remove(self):
 		"""Removes the instance. Useful when the home building is destroyed"""
 		self.log.debug("%s: remove called", self)
-		self.cancel(continue_action=lambda : 42)
+		self.cancel(continue_action=lambda: 42)
 		# remove from target collector list
 		self._abort_collector_job()
 		self.hide()
@@ -132,7 +132,7 @@ class Collector(Unit):
 		if current_callback is not None:
 			calls = Scheduler().get_classinst_calls(self, current_callback)
 			assert len(calls) == 1, 'Collector should have callback {} scheduled, but has {}'.format(
-			        current_callback, [ str(i) for i in Scheduler().get_classinst_calls(self).keys() ])
+			        current_callback, [str(i) for i in Scheduler().get_classinst_calls(self).keys()])
 			remaining_ticks = max(list(calls.values())[0], 1) # save a number > 0
 
 		db("INSERT INTO collector(rowid, state, remaining_ticks, start_hidden) VALUES(?, ?, ?, ?)",
@@ -161,7 +161,7 @@ class Collector(Unit):
 		if job_db:
 			reslist = []
 			for obj, res, amount in job_db:
-				reslist.append( Job.ResListEntry(res, amount, False) )
+				reslist.append(Job.ResListEntry(res, amount, False))
 			# create job with worldid of object as object. This is used to defer the target resolution,
 			# which might not have been loaded
 			self.job = Job(obj, reslist)
@@ -278,7 +278,7 @@ class Collector(Unit):
 		  collector in self.get_colleague_collectors() if
 		  collector.job is not None for
 		  entry in collector.job.reslist if
-		  entry.res == res )
+		  entry.res == res)
 
 		inventory = self.get_home_inventory()
 
@@ -368,7 +368,8 @@ class Collector(Unit):
 		self.job.object.remove_incoming_collector(self)
 		# reconsider job now: there might now be more res available than there were when we started
 
-		reslist = ( self.check_possible_job_target_for(self.job.object, res) for res in self.get_collectable_res() )
+		reslist = (self.check_possible_job_target_for(
+			self.job.object, res) for res in self.get_collectable_res())
 		reslist = [i for i in reslist if i]
 		if reslist:
 			self.job.reslist = reslist
@@ -386,9 +387,9 @@ class Collector(Unit):
 		for entry in self.job.reslist:
 			actual_amount = self.job.object.pickup_resources(entry.res, entry.amount, self)
 			if entry.amount != actual_amount:
-				new_reslist.append( Job.ResListEntry(entry.res, actual_amount, False) )
+				new_reslist.append(Job.ResListEntry(entry.res, actual_amount, False))
 			else:
-				new_reslist.append( entry )
+				new_reslist.append(entry)
 
 			remnant = self.get_component(StorageComponent).inventory.alter(entry.res, actual_amount)
 			assert remnant == 0, "{} couldn't take all of res {}; remnant: {}; planned: {}".format(
@@ -561,4 +562,4 @@ class JobList(list):
 		self.sort(key=operator.attrgetter('target_inventory_full_num'), reverse=True)
 
 	def __str__(self):
-		return str([ str(i) for i in self ])
+		return str([str(i) for i in self])

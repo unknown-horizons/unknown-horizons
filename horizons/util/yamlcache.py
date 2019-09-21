@@ -59,20 +59,20 @@ def parse_token(token, token_klass):
 		# No need to parse anything
 		return token
 	try:
-		return getattr( classes[token_klass], token.split(".", 2)[1])
+		return getattr(classes[token_klass], token.split(".", 2)[1])
 	except AttributeError as e: # token not defined here
 		err = ("This means that you either have to add an entry in horizons/constants.py "
 		       "in the class {0!s} for {1!s},\nor {2!s} is actually a typo.".
 		       format(token_klass, token, token))
-		raise Exception( str(e) + "\n\n" + err + "\n" )
+		raise Exception(str(e) + "\n\n" + err + "\n")
 
 
 def convert_game_data(data):
 	"""Translates convenience symbols into actual game data usable by machines"""
 	if isinstance(data, dict):
-		return dict( [ convert_game_data(i) for i in data.items() ] )
+		return dict([convert_game_data(i) for i in data.items()])
 	elif isinstance(data, (tuple, list)):
-		return type(data)( ( convert_game_data(i) for i in data) )
+		return type(data)((convert_game_data(i) for i in data))
 	else: # leaf
 		data = parse_token(data, "TIER")
 		data = parse_token(data, "RES")
@@ -89,7 +89,7 @@ class YamlCache:
 	"""
 
 	cache = None # type: Optional[YamlCacheStorage]
-	cache_filename = os.path.join(PATHS.USER_DIR, 'yamldata.cache')
+	cache_filename = os.path.join(PATHS.CACHE_DIR, 'yamldata.cache')
 
 	sync_scheduled = False
 
@@ -100,7 +100,7 @@ class YamlCache:
 	@classmethod
 	def load_yaml_data(cls, string_or_stream):
 		"""Use this instead of yaml.load everywhere in uh in case get_file isn't useable"""
-		return yaml.load( string_or_stream, Loader=SafeLoader )
+		return yaml.load(string_or_stream, Loader=SafeLoader)
 
 	@classmethod
 	def get_file(cls, filename, game_data=False):
@@ -127,8 +127,8 @@ class YamlCache:
 				except Exception as e:
 					# add info about file
 					to_add = "\nThis error happened in {0!s} .".format(filename)
-					e.args = ( e.args[0] + to_add, ) + e.args[1:]
-					e.message = ( e.message + to_add )
+					e.args = (e.args[0] + to_add, ) + e.args[1:]
+					e.message = (e.message + to_add)
 					raise
 
 			cls.lock.acquire()

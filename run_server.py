@@ -46,7 +46,7 @@ def daemonize() -> int:
 
 	# fork again to remove a possible session leadership gained after setsid()
 	try:
-		pid = os.fork( )
+		pid = os.fork()
 		if pid > 0:
 			sys.exit(0)
 	except OSError as e:

@@ -2,9 +2,12 @@
 <!-- Overview tab -->
 <Container size="250,550" name="overview_select_multi">
 <TabBG amount="5" />
-	<VBox name="selected_units" position="20,70" />
-
-	<Icon image="content/gui/images/background/hr.png" position="22,280" />
-
-	<StanceWidget position="58,290" name="stance" />
+	<Container name="selected_units" position="20,70" size="600,400">
+		<VBox>
+			<HBox name="hbox_0" />
+			<HBox name="hbox_1" />
+			<HBox name="hbox_2" />
+		</VBox>
+	</Container>
+	<Container position="0,290" size = "600,300" name="stance" />
 </Container>

@@ -43,7 +43,6 @@
 		<Setting name="ClientID" type="str"></Setting>
 		<Setting name="ColorID" type="int">1</Setting>
 		<Setting name="Nickname" type="unicode">Unnamed Traveler</Setting>
-		<Setting name="MinimapRotation" type="bool">True</Setting>
 		<Setting name="EdgeScrolling" type="bool">True</Setting>
 		<Setting name="UninterruptedBuilding" type="bool">False</Setting>
 		<Setting name="NetworkPort" type="unicode">0</Setting>
@@ -83,8 +82,8 @@
 		<Setting name="DESTROY_TOOL" type="list"> X </Setting>
 		<Setting name="ROTATE_RIGHT" type="list"> PERIOD </Setting>
 		<Setting name="ROTATE_LEFT" type="list"> COMMA </Setting>
-		<Setting name="SPEED_UP" type="list"> PLUS ; EQUALS ; KP_PLUS</Setting>
-		<Setting name="SPEED_DOWN" type="list"> MINUS ;  ; KP_MINUS</Setting>
+		<Setting name="SPEED_UP" type="list"> EQUALS ; KP_PLUS</Setting>
+		<Setting name="SPEED_DOWN" type="list"> MINUS ; KP_MINUS</Setting>
 		<Setting name="ZOOM_IN" type="list"> PAGE_DOWN </Setting>
 		<Setting name="ZOOM_OUT" type="list"> PAGE_UP </Setting>
 		<Setting name="REMOVE_SELECTED" type="list"> DELETE </Setting>

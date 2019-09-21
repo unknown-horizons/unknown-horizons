@@ -132,7 +132,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 	def __init__(self, instance):
 		self.max_inhabitants = instance.session.db.get_tier_inhabitants_max(self.__class__.LEVEL)
 		self.min_inhabitants = instance.session.db.get_tier_inhabitants_min(self.__class__.LEVEL)
-		self.helptext = instance.session.db.get_settler_name(self.__class__.LEVEL)
+		self.helptext = LazyT(instance.session.db.get_settler_name(self.__class__.LEVEL))
 
 		icon_path = 'icons/tabwidget/mainsquare/inhabitants{tier}'.format(tier=self.__class__.LEVEL)
 		super().__init__(instance=instance, icon_path=icon_path)
@@ -185,7 +185,7 @@ class MainSquareSettlerLevelTab(MainSquareTab):
 
 	def refresh(self):
 		self.widget.mapEvents({
-			'allow_upgrades/mouseClicked' : self.toggle_upgrades,
+			'allow_upgrades/mouseClicked': self.toggle_upgrades,
 		})
 
 		# refresh taxes

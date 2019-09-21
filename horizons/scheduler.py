@@ -244,7 +244,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		calls = {}
 		if instance in self.calls_by_instance:
 			for callback_obj in self.calls_by_instance[instance]:
-				if  callback is None or callback_obj.callback == callback:
+				if callback is None or callback_obj.callback == callback:
 					calls[callback_obj] = callback_obj.tick - self.cur_tick
 		return calls
 

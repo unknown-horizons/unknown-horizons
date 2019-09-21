@@ -48,8 +48,8 @@ class _Tooltip:
 		self.bg = None
 		self.label = None
 		self.mapEvents({
-			self.name + '/mouseEntered/tooltip' : self.position_tooltip,
-			self.name + '/mouseExited/tooltip' : self.hide_tooltip,
+			self.name + '/mouseEntered/tooltip': self.position_tooltip,
+			self.name + '/mouseExited/tooltip': self.hide_tooltip,
 			# Below causes frequent Segmentation Faults due to too many
 			# self.position_tooltip() calls.
 			# self.name + '/mouseMoved/tooltip' : self.position_tooltip,
@@ -58,11 +58,11 @@ class _Tooltip:
 			# will trigger this tooltip's parent widget to be hidden (or destroyed),
 			# which hides this tooltip first before hides the parent widget.
 			# Otherwise the tooltip will show forever.
-			self.name + '/mousePressed/tooltip' : self.hide_tooltip,
+			self.name + '/mousePressed/tooltip': self.hide_tooltip,
 
 			# TODO: not sure if below are useful or not
 			# self.name + '/mouseReleased/tooltip' : self.position_tooltip,
-			self.name + '/mouseDragged/tooltip' : self.hide_tooltip
+			self.name + '/mouseDragged/tooltip': self.hide_tooltip
 			})
 		self.tooltip_shown = False
 		self.cooldown = time.time()		# initial timer value
@@ -115,7 +115,9 @@ class _Tooltip:
 
 		screen_width = horizons.globals.fife.engine_settings.getScreenWidth()
 
-		if isinstance(self, ImageButton):
+		if not isinstance(self, Icon):
+			# exclude building statusicons (eg low productivity) and minimap
+
 			# If the a button spawn a tooltip and the cursor hovers over that
 			# tooltip the tooltip will disappear and the button becomes
 			# unclickable. (see issue #2776: https://git.io/vxRrn)
@@ -131,8 +133,7 @@ class _Tooltip:
 
 			ypos = widget_position[1] + self.height + 10
 
-			xpos = int(widget_position[0] + self.width/2 - self.gui.size[0]/2)
-			xpos = max(xpos, 5)
+			xpos = int(widget_position[0])
 			xpos = min(xpos, screen_width - self.gui.size[0] - 5)
 
 		else:

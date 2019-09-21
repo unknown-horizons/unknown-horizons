@@ -3,7 +3,6 @@
 
 [![Build Status](https://travis-ci.org/unknown-horizons/unknown-horizons.svg?branch=master)](https://travis-ci.org/unknown-horizons/unknown-horizons)
 [![Coverage Status](https://coveralls.io/repos/github/unknown-horizons/unknown-horizons/badge.svg?branch=master)](https://coveralls.io/github/unknown-horizons/unknown-horizons?branch=master)
-[![Bountysource](https://www.bountysource.com/badge/team?team_id=9261&style=bounties_received)](https://www.bountysource.com/teams/unknown-horizons/issues?utm_source=unknown-horizons&utm_medium=shield&utm_campaign=bounties_received)
 [![Translation status](https://hosted.weblate.org/widgets/uh/-/shields-badge.svg)](https://hosted.weblate.org/engage/uh/?utm_source=widget)
 [![#unknown-horizons on Freenode](https://img.shields.io/badge/freenode-%23unknown--horizons-green.svg)](https://webchat.freenode.net/?channels=unknown-horizons)
 
@@ -22,8 +21,6 @@ Find more information about Unknown Horizons on [our website](http://unknown-hor
 For installation instructions check the "Downloads" section on
 [our website](http://unknown-horizons.org/downloads/).
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/unknown-horizons.svg)](https://repology.org/metapackage/unknown-horizons)
-
 ## Building from source
 
 To get the latest version of the game, you have to build it from source:
@@ -32,7 +29,7 @@ To get the latest version of the game, you have to build it from source:
  * [Instructions for Windows](https://github.com/unknown-horizons/unknown-horizons/wiki/Windows)
  * [Instructions for OS X](https://github.com/unknown-horizons/unknown-horizons/wiki/MacOS)
 
-If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3AD-starter).
+If you want to start hacking on Unknown Horizons, check out [this guide](https://github.com/unknown-horizons/unknown-horizons/wiki/Getting-started) and contact us to help you get started. A [development workflow](development/docker/) with containers is also available. We have easy tasks for starters [here](https://github.com/unknown-horizons/unknown-horizons/issues?q=is%3Aopen+is%3Aissue+label%3AD-starter).
 
 
 ## Dependencies
@@ -45,6 +42,7 @@ Technology     | Component
 **YAML**       | Object files storing component based information, easily scriptable
 **[fifengine](https://github.com/fifengine/fifengine)**  | The C++ game engine, provides Python bindings
 **[fifechan](https://github.com/fifengine/fifechan)**   | GUI library
+**[pyenet](https://github.com/aresch/pyenet)** | The multiplayer library. Can be ignored if you don't want to play multiplayer
 
 ## Community
 
@@ -53,6 +51,8 @@ Type         | Where?
 Forum        | http://forum.unknown-horizons.org/
 Bug Tracker  | https://github.com/unknown-horizons/unknown-horizons/issues
 IRC Channel  | irc://irc.freenode.net/unknown-horizons
+Web IRC Link | https://webchat.freenode.net/?channels=unknown-horizons
+Discord      | https://discord.gg/VX6m2ZX
 
 More support info [here](https://github.com/unknown-horizons/unknown-horizons/wiki/Support-Infos).
 

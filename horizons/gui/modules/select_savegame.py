@@ -103,7 +103,7 @@ class SelectSavegameDialog(Dialog):
 		self._gui.findChild(name="savegamelist").capture(self.check_double_click, event_name="mousePressed")
 
 		self.return_events = {
-			OkButton.DEFAULT_NAME    : True,
+			OkButton.DEFAULT_NAME: True,
 			CancelButton.DEFAULT_NAME: False,
 			DeleteButton.DEFAULT_NAME: 'delete'
 		}
@@ -135,7 +135,7 @@ class SelectSavegameDialog(Dialog):
 			# delete button was pressed. Apply delete and reshow dialog, delegating the return value
 			delete_retval = self._delete_savegame(self._map_files)
 			if delete_retval:
-				self._gui.distributeData({'savegamelist' : -1})
+				self._gui.distributeData({'savegamelist': -1})
 				self._cb()
 			return self._windows.open(self)
 

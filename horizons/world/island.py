@@ -275,9 +275,9 @@ class Island(BuildingOwner, WorldObject):
 		settlement_tiles_changed = []
 		for coords in settlement_coords_changed:
 			settlement_tiles_changed.append(self.ground_map[coords])
-			Minimap.update(coords)
 			if coords in flat_land_set:
 				self.available_flat_land -= 1
+		Minimap.update(None)
 		self.available_land_cache.remove_area(settlement_coords_changed)
 
 		self._register_change()
@@ -316,9 +316,9 @@ class Island(BuildingOwner, WorldObject):
 				clean_coords.add(coords)
 			settlement_tiles_changed.append(self.ground_map[coords])
 			del settlement.ground_map[coords]
-			Minimap.update(coords)
 			if coords in flat_land_set:
 				self.available_flat_land += 1
+		Minimap.update(None)
 		self.available_land_cache.add_area(clean_coords)
 
 		self._register_change()

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2016-12-26 09:55+0000\n"
-"Last-Translator: Lari Oesch <lari@oesch.me>\n"
+"PO-Revision-Date: 2019-04-24 09:49+0000\n"
+"Last-Translator: mrtr33 <aalovuorinen@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh-server/fi/>"
 "\n"
 "Language: fi\n"
@@ -16,52 +16,50 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.11-dev\n"
+"X-Generator: Weblate 3.7-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
-"Vanha tai muuten tukematon yhteystapa. Tarkista, onko pelistä saatavilla "
-"uudempaa versiota"
+msgstr "Vanha tai ei tuettu moninpeli protokolla. Tarkista pelisi versio"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr "Olet ylittänyt maailmanlaajuisen paketti koon."
+msgstr "Olet ylittänyt globaalin paketti koon."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Tämän ei pitäisi koskaan tapahtua. Ole hyvä ja ota meihin yhteyttä tai "
-"lähetä virheilmoitus."
+"Näin ei koskaan olisi pitänyt käydä. Ota meihin yhteyttä tai tee virhe "
+"reportti."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Olet ylittänyt paketti kohtaisen koon."
+msgstr "Olet ylittänyt paketti koon."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Tuntematon tai vioittunut paketti. Ole hyvä ja tarkista peli versiosi"
+msgstr "Tuntematon tai epämuodostanut paketti. Tarkista pelisi versio"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr "Viallinen/tuntematon istunto"
+msgstr "Invaliidi/Tuntematon istunto"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr "Et voi liittyä peliin ollessasi toisessa pelissä"
+msgstr "Et voi liittyä peliin kun olet toisessa pelissä"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr "Tuntematon peli tai peli käyttää eri peliversiota"
+msgstr "Tuntematon peli tai peli pyörii eri versiolla"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "Peli on jo alkanut, eikä siihen oteta lisää pelaajia"
+msgstr "Peli on jo alkanut. Ei enään liittymisiä"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
-msgstr "Peliin ei mahdu lisää pelaajia"
+msgstr "Peli on jo täynnä"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
@@ -69,52 +67,52 @@ msgstr "Väärä salasana"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr "Pelissä on jo pelaaja, jolla on sama nimimerkki kuin sinulla."
+msgstr "Siellä on jo pelaaja samalla nimellä."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr "Vaihda nimimerkkisi."
+msgstr "Vaihda nimesi."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr "Pelissä on jo pelaaja, jolla on sama peliväri kuin sinulla."
+msgstr "Siellä on jo pelaaja samalla värillä kun sinulla."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr "Vaihda pelivärisi."
+msgstr "Vaihda peliväriä."
 
 #: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"Pelissä on jo pelaaja sinun ainutlaatuisella pelaaja tunnuksellasi. Tämän ei "
-"pitäisi koskaan ilmetä."
+"Pelissä on jo pelaaja samalla ainutlaatuisella ID:ellä. Tämän ei pitäisi "
+"ikinä tapahtua."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
-msgstr "Et ole pelissä"
+msgstr "Et ole enää pelissä"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Peli päättyi. Pelin ylläpitäjä poistui pelistä."
+msgstr "Peli on lopetettu. Tekijä poistui pelistä."
 
 #: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Yksi pelaaja on keskeyttänyt pelin. Teknisistä syistä, peliä ei voida "
-"jatkaa. Olemme pahoillamme tästä."
+"Yksi pelaaja on lopettanut pelinsä. Teknisistä syistä tämä tarkoittaa että "
+"peli ei voi jatkua. Olemme pahoillamme."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr "Nimimerkin vaihtaminen epäonnistui."
+msgstr "Nimeäsi ei voi muuttaa."
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr "Pelivärin vaihtaminen epäonnistui."
+msgstr "Väriäsi ei voi muuttaa."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr "Et voi hakea peliä, jos olet jo toisessa pelissä"
+msgstr "Et voi noutaa peliä, kun olet toisessa pelissä"

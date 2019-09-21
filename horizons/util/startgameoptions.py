@@ -101,12 +101,12 @@ class StartGameOptions:
 				name = 'AI' + str(num + 1)
 
 			players.append({
-				'id' : num + 2,
-				'name' : name,
-				'color' : color,
-				'local' : False,
-				'ai' : True,
-				'difficulty' : difficulty_level[True],
+				'id': num + 2,
+				'name': name,
+				'color': color,
+				'local': False,
+				'ai': True,
+				'difficulty': difficulty_level[True],
 			})
 		return players
 

@@ -23,8 +23,7 @@ import math
 import time
 
 from fife import fife
-from fife.fife import AudioSpaceCoordinate
-from fife.fife import Point3D
+from fife.fife import AudioSpaceCoordinate, Point3D
 
 import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
@@ -33,14 +32,13 @@ from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Rect
 
 
-
-
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
 	def __init__(self):
 		super().__init__()
 		self.world = None
+		self.logbook = None
 		self.model = horizons.globals.fife.engine.getModel()
 		self.map = self.model.createMap("map")
 
@@ -190,21 +188,43 @@ class View(ChangeListener):
 		map_point = self.cam.toMapCoordinates(screen_point, False)
 		self.center(map_point.x, map_point.y)
 
+	def SetLogBook(self, logbook):
+		if self.logbook is None:
+			self.logbook = logbook
+
 	def zoom_out(self, track_cursor=False):
-		zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
-		if zoom < VIEW.ZOOM_MIN:
-			zoom = VIEW.ZOOM_MIN
-		if track_cursor:
-			self._prepare_zoom_to_cursor(zoom)
-		self.zoom = zoom
+		if self.logbook is not None:
+			if not self.logbook.is_visible():
+				zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
+				if zoom < VIEW.ZOOM_MIN:
+					zoom = VIEW.ZOOM_MIN
+				if track_cursor:
+					self._prepare_zoom_to_cursor(zoom)
+				self.zoom = zoom
+		else:
+			zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
+			if zoom < VIEW.ZOOM_MIN:
+				zoom = VIEW.ZOOM_MIN
+			if track_cursor:
+				self._prepare_zoom_to_cursor(zoom)
+			self.zoom = zoom
 
 	def zoom_in(self, track_cursor=False):
-		zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
-		if zoom > VIEW.ZOOM_MAX:
-			zoom = VIEW.ZOOM_MAX
-		if track_cursor:
-			self._prepare_zoom_to_cursor(zoom)
-		self.zoom = zoom
+		if self.logbook is not None:
+			if not self.logbook.is_visible():
+				zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
+				if zoom > VIEW.ZOOM_MAX:
+					zoom = VIEW.ZOOM_MAX
+				if track_cursor:
+					self._prepare_zoom_to_cursor(zoom)
+				self.zoom = zoom
+		else:
+			zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
+			if zoom > VIEW.ZOOM_MAX:
+				zoom = VIEW.ZOOM_MAX
+			if track_cursor:
+				self._prepare_zoom_to_cursor(zoom)
+			self.zoom = zoom
 
 	@property
 	def zoom(self):
@@ -235,7 +255,7 @@ class View(ChangeListener):
 
 		points = []
 		for screen_x, screen_y in [
-				(0,0),
+				(0, 0),
 				(screen_width, 0),
 				(screen_width, screen_height),
 				(0, screen_height)]:

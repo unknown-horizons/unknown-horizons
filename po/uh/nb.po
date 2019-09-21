@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-08-07 05:28+0000\n"
-"Last-Translator: Petter Reinholdtsen <pere-weblate@hungry.com>\n"
+"PO-Revision-Date: 2019-05-01 23:49+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/uh/"
-"nb/>\n"
+"nb_NO/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 3.6.1\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -194,7 +194,7 @@ msgstr "Utfør navneendring"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Chat"
+msgstr "Lynmelding"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
@@ -912,7 +912,7 @@ msgstr "Verdien av alle spillerens enheter"
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr "Totalverdien fra alle individuelle verdier, eller: Total spillerpoeng"
+msgstr "Totalverdien fra alle individuelle verdier, eller: Samlede spillerpoeng"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
@@ -1920,8 +1920,8 @@ msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Vennligst sjekk internettforbindelsen. Dersom det ikke er noen problemer med "
-"den er sannsynligvis hovedserveren midlertidig nede."
+"Sjekk internettforbindelsen. Dersom det ikke er noen problemer med den er "
+"sannsynligvis hovedtjeneren midlertidig nede."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
@@ -2445,7 +2445,7 @@ msgstr "Enhetsoversikt"
 #: horizons/gui/tabs/productiontabs.py:46
 #: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
-msgstr "Produksjonsoverskit"
+msgstr "Produksjonsoversikt"
 
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
@@ -2520,7 +2520,7 @@ msgstr "{stored}/{limit}"
 #: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr "Grense: {amount}t per spor"
+msgstr "Grense: {amount}t per felt"
 
 #: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
@@ -2564,7 +2564,7 @@ msgstr "Klikk for å vise statistikk"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr "Klikk for å legge til nytt spor"
+msgstr "Klikk for å legge til nytt felt"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
@@ -3455,7 +3455,7 @@ msgstr ""
 
 #: horizons/network/connection.py:88 horizons/network/connection.py:94
 msgid "Unable to connect to server."
-msgstr "Kunne ikke koble til server."
+msgstr "Kunne ikke koble til tjener."
 
 #: horizons/network/connection.py:89
 msgid "Maybe invalid or irresolvable server address."
@@ -4108,15 +4108,15 @@ msgstr "tilsetningsstoffer"
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr "marmor åre"
+msgstr "marmoråre"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr "marmor topper"
+msgstr "marmortopper"
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
-msgstr "kull åre"
+msgstr "kullåre"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
@@ -4160,11 +4160,11 @@ msgstr "vokskake"
 
 #. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr "gull forekomst"
+msgstr "gullforekomst"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr "gull åre"
+msgstr "gullåre"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
@@ -4172,11 +4172,11 @@ msgstr "gullbarrer"
 
 #. This is a database entry: the name of a resource
 msgid "gem deposit"
-msgstr "edelstein åre"
+msgstr "edelsteinsåre"
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr "rå edelsteiner"
+msgstr "råe edelsteiner"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
@@ -4184,11 +4184,11 @@ msgstr "edelsteiner"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr "kaffe planter"
+msgstr "kaffe-planter"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr "kaffe bønner"
+msgstr "kaffe-bønner"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
@@ -4196,11 +4196,11 @@ msgstr "kaffe"
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr "te planter"
+msgstr "te-planter"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr "te blader"
+msgstr "te-blader"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
@@ -4216,7 +4216,7 @@ msgstr "blomstrer"
 
 #. This is a database entry: the name of a resource
 msgid "brine deposit"
-msgstr "saltlake åre"
+msgstr "saltlakeåre"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
@@ -4244,7 +4244,7 @@ msgstr "bomull"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr "indigo planter"
+msgstr "indigo-planter"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
