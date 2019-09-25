@@ -68,6 +68,12 @@ class SelectSavegameDialog(Dialog):
 		else:
 			w.parent.hideChild(w)
 
+		w2 = self._gui.findChild(name='enter_players_recommended')
+		if self._mode in ('editor-save'): # only show enter_filename on editor-save
+			w2.parent.showChild(w2)
+		else:
+			w2.parent.hideChild(w2)
+
 		self.last_click_event = None
 
 	def prepare(self):

@@ -106,6 +106,10 @@ class WorldEditor:
 				for x, y in coords_list:
 					tile = self.world.full_map[(x, y)]
 					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation)
+			#test code to implement number of players recommended
+			name = "players_recommended"
+			value = int(players_recommended)
+			db('INSERT INTO properties VALUES(?,?)',name,value)
 			db('COMMIT')
 		except sqlite3.Error as e:
 			self.log.debug('Error: {error}'.format(error=e.args[0]))
