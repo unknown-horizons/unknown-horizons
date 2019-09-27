@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Constrói um Armazém na costa para permitir que navios de troca visitem a tua povoação.]
+  - [Message, Construa um Armazém na costa para permitir que os navios de comércio visitem a sua colónia.]
   - '
 
 
@@ -652,7 +652,7 @@ metadata:
   author: The UH team
   description: 'O tutorial:
 
-    Constrói a tua primeira povoação e aprende a jogar!'
+    Construa a sua primeira colónia e aprenda a jogar!'
   difficulty: Tutorial
   locale: pt
   mapfile: development.sqlite
