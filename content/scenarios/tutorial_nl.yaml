@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Bouw een pakhuis aan de kust, zodat deze makkelijk bereikbaar is voor handelsschepen.']
+  - [Message, 'Bouw een pakhuis aan de kust, zodat het bereikbaar is voor handelsschepen.']
   - '
 
 
@@ -24,127 +24,127 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Dit is jouw dagboek, waar belangrijke informatie over deze oefening word bewaard. Een samenvatting van elke nieuwe opdracht zal ook verschenen als 'berichtenknop' aan de linkerkant van het scherm. Als je met je muis over de knop heen gaat verschijnt de samenvatting, als je op de knop klikt zal het dagboek worden geopend.
-  - Je kunt het dagboek ook heropenen door op de knop onder de overzichtskaart rechts bovenin het scherm te klikken. Van nu af aan zullen we naar dit gebied met de overzichtskaart en allerlei knoppen verwijzen als "Overzicht'.
+  - Dit is je dagboek, met belangrijke informatie over deze oefening. Elke nieuwe opdracht verschijnt ook als 'berichtenknop' links op je scherm. Daar met de muis overheen gaan toont een samenvatting van de opdracht; erop klikken opent het dagboek.
+  - Je kunt het dagboek ook heropenen met op de knop onder de overzichtskaart rechts bovenaan het scherm. Dit gebied (met overzichtskaart, knoppen en tabs) zullen we vanaf nu het 'Overzicht' noemen.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Om je eerst opdracht te bekijken, ga je naar de volgende pagina in het dagboek door op de knop onderaan de volgende pagina te klikken Deze ziet er zo uit:'
+    Bekijk je eerste opdracht op de volgende bladzij in het dagboek.  Klik hiertoe onderaan de aanliggende pagina op de knop die er aldus uitziet:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Als je suggesties hebt over hoe deze oefening kan worden verbeterd, of kom je fouten tegen, laat het ons dan weten.'
+    Mocht je suggesties ter verbetering van deze oefening hebben, of fouten zijn tegengekomen, laat het ons dan weten.'
   - '
 
-    Bezoek www.unknown-horizons.org om erachter te komen hoe je contact op kunt nemen met het team.'
+    Op www.unknown-horizons.org staat hoe je contact met het team op kunt nemen.'
   - ''
-  - Zo, laten we nu met het spel beginnen!
+  - En nu - spelen maar!
   - [Pagebreak]
-  - [Headline, 'OPDRACHT: BOUW EEN NEDERZETTING']
+  - [Headline, 'OPDRACHT: STICHT EEN NEDERZETTING']
   - [Image, content/gui/images/background/hr.png]
-  - Jouw ship is op zee, beladen met benodigdheden om een nieuwe nederzetting te stichten.
-  - Om je schip te verplaatsen, selecteer met de linkermuisknop het schip en klik vervolgens met de rechtermuisknop op de gewenste locatie.
-  - Eenmaal aangekomen aan de kust, zal de knop 'Bouw nederzetting' actief worden in het scheepsoverzicht.
+  - Je schip vaart op zee, beladen met wat nodig is voor een nieuwe nederzetting.
+  - Selecteer voor navigatie met de linkermuisknop het schip, en klik vervolgens met de rechtermuisknop op de doellocatie.
+  - Het bereiken van een kust maakt de knop 'Bouw nederzetting' in het scheepsoverzicht actief.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Bij het klikken op deze knop wordt een voorbeeld van het pakhuis zichtbaar, het eerste gebouw dat nodig is om een nieuwe nederzetting te stichten. Wanneer je de cursor heen en weer beweegt, zal je zien dat het voorbeeld rood kleurt als je het gebouw in een ongeschikt gebied wil plaatsen.
-  - Het pakhuis moet aan de kust geplaatst worden, zodat schepen kunnen aanleggen. Vindt nu een geschikte locatie en plaats daar dit belangrijke gebouw.
+  - Bij het klikken op deze knop wordt een voorbeeld van het pakhuis zichtbaar, het eerste gebouw dat nodig is om een nieuwe nederzetting te stichten. Het voorbeeld kleurt rood als je de muiswijzer beweegt naar een voor het gebouw ongeschikte locatie.
+  - Het pakhuis moet aan de kust liggen, zodat schepen er kunnen aanleggen. Zoek nu een geschikte locatie voor dit belangrijke gebouw, en plaats het daar met een linkermuisklik.
   - ''
-  - [BoldLabel, 'Opdracht: Plaats een pakhuis aan de kust.']
+  - [BoldLabel, 'Opdracht: Bouw een pakhuis aan de kust.']
 
 - &LUMBERJACK
-  - [Message, Plaats een houthakkershut en verbind deze met het pakhuis.]
+  - [Message, Bouw een houthakkershut en verbind die met het pakhuis.]
   - [Headline, 'OPDRACHT: BOUW EEN HOUTHAKKERSHUT']
   - [Image, content/gui/images/background/hr.png]
-  - De voorraden en bouwmaterialen zijn van jouw schip gelost en veilig opgeslagen in het pakhuis. Het is nu tijd om een paar simpele gebouwen te plaatsen, om te beginnen een houthakkershut.
-  - Houthakkers zullen bomen kappen uit het bos rondom hun hut en deze verder verwerken tot planken, welke als bouwmateriaal of voor de handel gebruikt kunnen worden.
-  - Om een houthakkershut te bouwen; open het bouwmenu door op het grote icoon onder de kaart te klikken of door op de B op je toetsenbord te drukken .
+  - De voorraden en bouwmaterialen zijn gelost en veilig in het pakhuis opgeslagen. Het is nu tijd voor een paar basale gebouwen, allereerst een houthakkershut.
+  - Houthakkers vellen bomen uit het bos rondom hun hut en zagen die tot planken voor de bouw of voor de handel.
+  - Open om een houthakkershut te bouwen het bouwmenu, hetzij met het werktuigsymbool onder de kaart, hetzij met de 'B' op je toetsenbord.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Het bouwmenu is gesorteerd naar beschavingsniveau. Omdat je nederzetting nog nieuw is, zijn er alleen nog gebouwen van het eerste niveau beschikbaar. Als je je beschaving opbouwt, zullen er volgende niveaus beschikbaar komen en daarmee veel meer verschillende gebouwen.
+  - Het bouwmenu is gesorteerd naar ontwikkelingsniveau. Omdat je nederzetting nog jong is, zijn enkel de gebouwen van het eerste niveau beschikbaar. Naarmate je nederzetting zich ontwikkelt zul je veel meer verschillende gebouwen kunnen bouwen.
   - [Pagebreak]
   - ''
-  - Vind een goed beboste plaats om je houthakkers te laten werken, selecteer vervolgens 'Houthakkershut' uit het overzicht en plaats dit gebouw.
-  - Later in het spel kun je bossen maken door bomen te planten, maar omdat dat geld kost, moet je het voorlopig doen met wat de natuur heeft gegeven!
-  - Alle gebouwen die grondstoffen verbouwen of verder verwerken moeten met een pad verbonden zijn met een pakhuis of andere opslagplaats, anders zullen de geproduceerde goederen niet worden verzameld.
-  - Zo, nu je houthakkershut is geplaatst, verbind je deze met het pakhuis door het bouwmenu te openen en op de 'pad'-knop te klikken. Klik en sleep met de muis om een weg te maken tussen de houthakkershut en het pakhuis.
+  - Vind een bosrijke plaats voor je houthakkers, en kies dan de 'Houthakkershut' uit het overzicht en plaats die daar.
+  - Later in het spel kun je bos planten, maar omdat dat geld kost moet je het vooralsnog doen met wat de natuur te bieden heeft!
+  - Goederen worden slechts opgehaald als de gebouwen waar ze opgeslagen of verwerkt worden aangesloten zijn op een pakhuis of andere opslagplaats.
+  - Zo, je houthakkershut staat.  Verbind die nu met het pakhuis door het bouwmenu te openen en op de 'pad'-knop te klikken. Baan dan met klikken en slepen een weg tussen houthakkershut en pakhuis.
   - ''
-  - [BoldLabel, 'Opdracht: Bouw een houthakkershut in een gebied met bomen en verbind het met je pakhuis.']
-  - Nadat de gebouwen zijn verbonden, zul je zien dat een verzamelaar komt om de net geproduceerde planken op te halen en naar het pakhuis te brengen, klaar om te worden gebruikt in nieuwe gebouwen of om te worden verhandeld.
+  - [BoldLabel, 'Opdracht: Bouw in een bosrijk gebied een houthakkershut en verbind die met je pakhuis.']
+  - Wanneer de gebouwen zijn verbonden zal een inkoper verschijnen die de versgezaagde planken ophaalt en naar het pakhuis brengt, voor gebruik in de bouw of de handel.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Plaats een jagers-tent en een vissers-tent. Verbindt ze met het pakhuis.]
-  - [Headline, 'OPDRACHT: AANVOER VAN VOEDSEL']
+  - [Message, 'Bouw een jagerstent en een visserstent, en sluit die aan op het pakhuis.']
+  - [Headline, 'OPDRACHT: RAVITAILLERING']
   - [Image, content/gui/images/background/hr.png]
-  - Je hebt een aantal voedselproducerende bedrijven nodig, want mensen in het algemeen (en zeker zeelui) zijn heel hongerig.
-  - Beschikbare bedrijven in het eerste beschavingsniveau zijn de jagerstent en de vissershut.
-  - Een jager jaagt op dieren in het bos, dus er moeten bomen in de omgeving staan.
-  - Merk op dat je een jagerstent dichtbij een houthakkershut kan plaatsen.
-  - Het kan dus gebeuren dat er op eens niet genoeg dieren meer zijn of dat ze zich goed hebben verstopt.
-  - 'Conclusie: een jager is niet zo betrouwbaar voor een vaste aanvoer van voedsel.'
+  - Je hebt voedselproducerende bedrijven nodig, want mensen in het algemeen, en zeelui al helemaal, zijn grote eters.
+  - Op het eerste ontwikkelingsniveau zijn hiervoor de jagerstent en de vissershut beschikbaar.
+  - Jagers jagen op bosdieren, dus er moeten bomen in de omgeving staan.
+  - Je kunt een jagerstent overigens vlakbij een houthakkershut zetten.
+  - Dieren kunnen ook uitsterven, of zich te goed verstoppen.
+  - 'Kortom: een jager is niet zo betrouwbaar voor de ravitaillering.'
   - [Pagebreak]
   - '
 
-    Een visser heeft een gebouw nodig aan de kust, net zoals een pakhuis, en een school vissen binnen bereik.'
+    Een visser heeft een kustwoning nodig (vergelijk het pakhuis), en een school vissen binnen bereik.'
   - Hij bouwt een klein roeibootje om wat vis te vangen.
-  - Dit is een zeer stabiele aanvoer voor voedsel, maar met een wat langere productietijd.
-  - Een zeer kleine nederzetting zoals die van jouw kan gebruik maken van beide bedrijven, zo kun je een betere vergelijking maken tussen de voor- en nadelen.
+  - Dat levert een zeer stabiele voedselaanvoer, zij het met een wat langere productietijd.
+  - Een klein nederzettinkje als het jouwe kan beide bedrijven inzetten, zodat je de voor- en nadelen kunt vergelijken.
   - ''
   - [BoldLabel, 'Opdracht: Bouw een jagerstent en een vissershut.']
-  - Vergeet niet om deze te verbinden met het pakhuis door middel van padden!
+  - En vergeet de paden naar het pakhuis niet!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Plaats een marktplein. Kies een gebied zonder al te veel economische gebouwen.]
+  - [Message, Bouw een marktplein. Kies een gebied zonder al te veel bedrijfsgebouwen.]
   - [Headline, 'OPDRACHT: MARKTPLEIN']
   - [Image, content/gui/images/background/hr.png]
-  - Uw bewoners hebben behoeften aan een plein om goederen te krijgen.
-  - Dit betekend dat ze een pad nodig hebben van hun huis naar het marktplein. Weet dat het marktplein ook fungeert als pad, waardoor aangrenzende tenten geen apart pad nodig zijn.
-  - Alle goederen in uw pakhuis zijn beschikbaar op het 'marktplein', zodat de bewoners niet hoeven te lopen naar de vissershut of het pakhuis.
+  - Uw bewoners hebben behoefte aan een plein om goederen te krijgen.
+  - Ze hebben dus een pad van hun huis naar het marktplein nodig.  Doordat het marktplein ook als pad fungeert hebben aanpalende tenten geen apart pad nodig.
+  - Dit 'marktplein' biedt alle goederen uit uw pakhuis, zodat de inwoners niet naar de vissershut of het pakhuis hoeven te lopen.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - Probeer te vermeiden om je woontenten te dicht bij een houthakker te plaatsen, omdat je dan bomen moet kappen die een houthakker nodig heeft.
-  - Bedrijven werken ook zonder deze te verbinden met een pad naar de tenten, dus je hoeft geen pad te bouwen naar het marktplein of naar de houthakkershut.
+  - Zet je woontenten niet te dicht bij de houthakkers, want anders moet je bomen vellen die zij nodig hebben.
+  - Bedrijven werken ook zonder aansluiting op de tenten, dus een pad van het marktplein naar bijvoorbeeld de houthakkershut is niet nodig.
   - ''
   - [BoldLabel, 'Opdracht: Bouw een marktplein.']
   - [Pagebreak]
   - '
 
-    Zo, laten we eens een kijkje nemen op het marktplein.'
+    Laten we nu het marktplein eens nader beschouwen.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In het 'Financiën' tabblad zie je een overzicht van al jouw inkomsten en uitgaven van dit eiland.
-  - De onderwerpen 'Verkoop' en 'Koop' verwijzen naar je handelsbalans en worden later behandeld.
-  - Als je balans positief is, dan maak je winst.
+  - Het tabblad 'Financiën' geeft een overzicht van dit eiland, met al je uitgaven en (belasting)inkomsten.
+  - De posten 'Verkoop' en 'Koop' hebben betrekking op je handelsbalans en worden later behandeld.
+  - Bij een positieve balans maak je onder de streep winst.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In de verschillende beschavingsniveau tabbladen zijn statistieken te zien over jouw inwoners. Hier kunt je de algemene belasting voor elk niveau verhogen of verlagen en daarnaast kun je de inwoners verbieden om hun huisvesting te verbeteren naar het volgende niveau.
+  - De tabbladen per ontwikkelingsniveau bevatten statistieken over je inwoners. Hier kun je ook de algemene belasting per niveau aanpassen, of inwoners dehuisvestingsverbetering naar het volgende niveau ontzeggen.
 
 - &FIRSTTENT
-  - [Message, 'Plaats een tent en verbindt deze, indien nodig, met het marktplein.']
+  - [Message, Zet een tent op en verbind die zonodig met het marktplein.]
   - [Headline, 'OPDRACHT: WOONGEBOUWEN']
   - [Image, content/gui/images/background/hr.png]
-  - Kolonisten willen een dak boven hun hoofd, anders zouden ze niet eens in je stad willen wonen! Je zult dus tenten moeten bouwen.
+  - Zonder huisvesting willen kolonisten niet eens in je stad wonen! Je zult dus tenten moeten bouwen.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tenten zijn de simpelste woongebouwen. Je inwoners zullen deze verbeteren wanneer ze een hoger beschavingsniveau bereiken.
-  - Let op dat het verbeteren van elk gebouw ook bouwmaterialen vereisen, zo is er voor de eerste verbetering hout nodig.
-  - Overweeg om deze verbetering te verbieden als je te weinig van dit materiaal op voorraad hebt.
-  - Bewoners lijken op het eerste oog niet erg nuttig, omdat ze alle goederen die u produceert proberen te consumeren. Maar ze betalen in ieder geval belasting, wat momenteel de enige manier is om aan geld te komen!
+  - Tenten zijn de basaalste woningen. Je inwoners zullen deze verbeteren zodra ze een hoger economisch niveau bereiken.
+  - Bedenk dat het verbeteren gebouwen ook bouwmaterialen vereist; zo vergt de eerste verbetering hout.
+  - Overweeg deze verbetering te verbieden als je krap in dit materiaal zit.
+  - Bewoners lijken op het eerste oog niet erg nuttig, omdat ze alle goederen die u produceert proberen te consumeren. Maar ze betalen wel belasting - momenteel uw enige inkomstenbron!
   - ''
-  - [BoldLabel, 'Opdracht: Bouw een tent en verbind deze met het marktplein (indien nodig). Tenten hoeven niet verbonden te worden naar een bedrijf.']
+  - [BoldLabel, 'Opdracht: Zet een tent op en verbind die zonodig met het marktplein. Tenten hoeven niet met een bedrijf verbonden te zijn.']
 
 - &MORETENTS
-  - [Message, Plaats tenminste drie extra tenten en verbindt deze met het marktplein.]
+  - [Message, 'Zet minstens drie extra tenten op, en sluit die aan op het marktplein.']
   - '
 
-    Laten we nu een kijkje nemen in het overzichtstabblad van een tent.'
+    Laten we het overzichtstabblad van een tent eens nader beschouwen.'
   - 'Hier ziet u
 
     * de tevredenheid van deze bewoners,
@@ -152,43 +152,43 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * de belasting die ze betalen en
 
     * de goederen die ze eisen.'
-  - Als hun eisen zijn ingewilligd, zal hun tevredenheid en daarmee uw belastinginkomen stijgen.
-  - Zo niet, dan zullen de tevredenheid en de belastinginkomen dalen. Op een gegeven moment zullen jouw inwoners het zat zijn en hun koffers pakken, waarbij ze een onbewoonbare ruïne achterlaten.
-  - Merk op dat u ook hier het algemene belastingniveau veranderen kunt.
+  - Inwilliging van hun eisen vergroot hun tevredenheid en daarmee uw belastinginkomsten.
+  - Zo niet, dan zullen tevredenheid en belastinginkomsten dalen. Uiteindelijk zullen je inwoners het zat zijn en hun koffers pakken, een onbewoonbare ruïne achterlatend.
+  - Merk op dat u ook hier het algemene belastingniveau aanpassen kunt.
   - ''
-  - [BoldLabel, 'Opdracht: Bouw op zijn minst drie extra tenten.']
+  - [BoldLabel, 'Opdracht: Zet minstens drie extra tenten op.']
   - '
 
-    TIP: Met een ingedrukte SHIFT-toets wordt het makkelijker om meerdere gebouwen van het zelfde soort te bouwen.'
+    TIP: De SHIFT-toets ingedrukt houden helpt meer gelijkaardige gebouwen te bouwen.'
 
 - &SIGNALFIRE
-  - [Message, Plaats een signaalvuur bij de kust nabij het pakhuis.]
+  - [Message, Stook een signaalvuur bij de kust nabij het pakhuis.]
   - [Headline, 'OPDRACHT: SIGNAALVUUR']
   - [Image, content/gui/images/background/hr.png]
-  - Heb je het schip gezien dat af en toe lang je eiland vaart? Het behoord tot de Vrije Handelaars, een van de eerste kolonisten in deze archipel.
-  - De handelaar zul je nederzetting voorzien van de noodzakelijke goederen die je nog niet zelf kunt produceren.
-  - Je kunt ook het productieoverschot verkopen, maar over het algemeen zal consumptie (door meer tenten te bouwen) meer geld opleveren dan de verkoop.
-  - Normaal zullen de handelaren gewoon wat rondvaren op zoek naar handelswaar, maar dit proces kan wat worden versneld.
+  - Heb je het schip dat af en toe langs je eiland vaart gezien? Het behoort tot de Vrije Handelaars, een van de eerste kolonisten in deze archipel.
+  - De handelaar zal uw nederzetting de noodzakelijke goederen leveren die u zelf nog niet kunt produceren.
+  - U kunt het productieoverschot ook verkopen, maar over het algemeen zal consumptie (door meer tenten op te zetten) meer opleveren dan verkoop.
+  - Normaal varen de handelaren maar wat rond op zoek naar handelswaar, maar u kunt de zaak versnellen.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Voor dit doel bouw je langs de kust een signaalvuur, in de nabijheid van je pakhuis. Deze zal schepen de weg wijzen naar je nederzetting.
-  - Het signaalvuur moet het gebied afdekken, waar de af te vangen schepen doorheen varen.
+  - Bouw hiertoe een vuurtoren aan de kust nabij je pakhuis, om schepen de weg naar je nederzetting te wijzen.
+  - Het signaalvuur moet het gebied bestrijken waar de aan te trekken schepen varen.
   - [Pagebreak]
   - '
 
-    Na dit zetje in de goede richting, zal de handelaar langskomen om in jouw pakhuis te komen kijken, zelf als hij eerst van plan was om voorbij te varen.'
-  - Te verhandelen goederen kunnen worden ingesteld via het tabblad "Koop/Verkoop" in het pakhuis.
+    Deze uitnodiging zal de handelaar overhalen in uw pakhuis te komen kijken, zelfs als hij anders door zou zijn gevaren.'
+  - U kunt aanbiedingen doen via het tabblad "(Ver)koop" van het pakhuis.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - In het "Zeeman's" niveau staan drie handelsvakken ter beschikking.
-  - Klik op het icoontje in het handelsvak om van de modus 'Koop' naar 'Verkoop' en omgekeerd te wisselen.
-  - Klik op het vak om het handelswaar te kiezen dat je wilt verhandelen. We zullen verder gaan met de uitleg, zodra een aantal voorbereidingen zijn gedaan.
+  - Het "Zeemans"niveau biedt drie handelsvakken.
+  - Klik op het icoontje in het handelsvak om tussen 'Koop' en 'Verkoop' te wisselen.
+  - Klik op het vak om de handelswaar te kiezen die u wilt verhandelen. Zodra u aan handel toe bent zal verdere uitleg volgen.
   - ''
-  - [BoldLabel, 'Opdracht: Plaats een signaalvuur bij de kust nabij het pakhuis.']
+  - [BoldLabel, 'Opdracht: Stook een signaalvuur bij de kust nabij het pakhuis.']
 
 - &TRADING
-  - [Message, 'Bereik op dit eiland een voorraad van tenminste 30 stuks gereedschap. Let op, dit kan een tijdje duren.']
-  - [Headline, 'OPDRACHT: LEER HANDELEN']
+  - [Message, Bereik op dit eiland een voorraad van tenminste 30 stuks gereedschap. (Dit kan wel even duren.).]
+  - [Headline, 'OPDRACHT: HANDELDRIJVEN']
   - [Image, content/gui/images/background/hr.png]
   - 'Uitstekend! De Vrije Handelaars zal nu van tijd tot tijd bij je pakhuis stoppen.
 
@@ -208,9 +208,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Wanneer er bij het inkopen 5 ton op voorraad is en de schuif op 9 ton is ingesteld, dan zal er hoogstens 4 ton worden ingekocht.'
   - Verkoop werkt op soortgelijke wijze. Bij een handelsvak ingesteld op 'Verkoop', met 18 ton op voorraad en de schuif ingesteld op 13 ton, zal er niet meer dan 5 ton worden verkocht.
   - Echter, als de Vrije Handelaars minder wil kopen of verkopen dan jij hebt ingesteld, dan moet je geduld hebben en wachten tot het volgende bezoek.
-  - 'Unknown Horizons heeft een slim prijzingssysteem, waardoor de waarde van een eenheid kan variëren.
+  - 'Unknown Horizons kent marktafhankelijke prijzen, zodat de waarde van een eenheid niet vastligt.
 
-    Het is NIET mogelijk om deze prijzen handmatig te veranderen!'
+    De prijzen kunnen NIET handmatig aangepast worden!'
   - U kunt de handelsbalans opmaken door in het 'Financiën' tabblad de waarden van 'Verkocht' en 'Gekocht' te vergelijken.
   - ''
   - [BoldLabel, 'Opdracht: Koop zo veel mogelijk gereedschap, zodat je er minimaal 30 op voorraad hebt!']
@@ -225,7 +225,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners.
   - 'Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben (dat kun je controleren door op een tent te klikken): De zeelui willen een simpel gebouw om te kunnen bidden.'
   - De oplossing is een paviljoen die de dominee opzet als bescherming tegen de zon.
-  - Gebouwen ten behoeve van dienstverlening moeten met behulp van een pad verbonden worden met de tenten, anders kunnen je inwoners deze gebouwen niet bereiken.
+  - Nutsgebouwen zijn slechts bereikbaar als ze middels een pad aangesloten zijn op de tenten.
   - [Pagebreak]
   - '
 
@@ -257,7 +257,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Zulke verbeteringen van woonhuizen verbruiken goederen en kunnen daarom verhinderd worden in de tabbladen van de marktplein.'
   - Er zijn ook gebouwen die zonder verdere kosten zullen worden verbeterd, zoals je zult zien bij de houthakker. In dit geval zal alleen de weergave veranderen.
   - Verbeterde woningen bieden plaats aan meer inwoners, daarnaast betalen pioniers meer belasting als zeelui.
-  - Zoals je misschien al hebt ondervonden, het nadeel is dat pioniers meer goederen eisen, die de zeelui niet nodig waren. Hierdoor moet je meer geld uitgeven om deze mensen tevreden te houden.
+  - Zoals je wellicht al ontdekt hebt is het nadeel dat pioniers meer goederen eisen, waar zeelui zonder konden. Hierdoor kost het meer geld deze mensen tevreden te houden.
   - ''
   - [BoldLabel, 'Opdracht: Zet het belastingniveau op laag (linkerzijde) en wacht tot de zeelui hun woningen verbeteren.']
   - - Gallery
@@ -272,7 +272,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Een prachtig nieuw tabblad is hier verschenen.
-  - Pioniers zijn kleding nodig, dus moet je hiervoor een productielijn opzetten. Deze begint met schapenwol, wat één van de producten van de boerderij is.
+  - Pioniers hebben kleding nodig, dus moet je hiervoor een productielijn opzetten, te beginnen met - op de boerderij geproduceerde - schapenwol.
   - De boerderij is een heel speciaal gebouw, omdat je er voor kunt kiezen niet één, maar meerdere verschillende producten te laten produceren.
   - Welke producten boerderijen produceren, is afhankelijk van wat voor soort velden je er omheen bouwt.
   - [Pagebreak]
@@ -280,8 +280,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Hier zullen we later verder op ingaan.'
   - Bij boerderijen is het, net als alle andere bedrijven die grondstoffen produceren, niet noodzakelijk om ze met een opslaggebouw of pakhuis te verbinden.
-  - Zolang medewerkers van de verwerkende bedrijven de boerderij kunnen bereiken en deze bedrijven op hun beurt weer door de verzamelaars van het pakhuis of ander opslaggebouw kunnen worden bereikt, is alles in orde.
-  - Echter, als je de verwerking wil laten plaatsnemen op andere delen van het eiland (wat zinvol kan zijn) of zelfs op een ander eiland, dan moeten de verzamelaars bij de boerderij kunnen komen, waarvoor een wegverbinding noodzakelijk is.
+  - Zolang medewerkers van de verwerkende bedrijven de boerderij kunnen bereiken en die bedrijven op hun beurt weer door de inkopers van het pakhuis of ander opslaggebouw kunnen worden bereikt, is alles in orde.
+  - Echter, als je de verwerking wil laten plaatsnemen op andere delen van het eiland (wat zinvol kan zijn) of zelfs op een ander eiland, dan moeten de inkopers bij de boerderij kunnen komen, waarvoor een wegverbinding noodzakelijk is.
   - Probeer een boerderij niet te dicht bij de kust of bestaande gebouwen te bouwen, omdat je eromheen werkruimte nodig bent.
   - ''
   - [BoldLabel, 'Opdracht: Bouw een boerderij.']
@@ -302,7 +302,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     * Suikerveld: verbouwt suiker, dat voor drank en de banketbakkerij gebruikt worden.'
   - We zijn alleen weilanden nodig, maar in het geval de voedselproductieketen niet toereikend is (bijvoorbeeld omdat je veel woonhuizen hebt) kun je ook wat aardappelen gaan verbouwen.
-  - Merk op, dat indien je boerderij aardappelen produceert, er een pad naar deze boerderij (niet naar het veld!) moet liggen.
+  - 'Let op: voor aardappelen is een pad naar de boerderij, niet naar het veld, nodig!  Die boerderij is het einde van de keten.'
   - [Pagebreak]
   - '
 
@@ -320,28 +320,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, 'OPDRACHT: OPSLAGRUIMTE']
   - [Image, content/gui/images/background/hr.png]
   - Heeft u uw houthakker nog in de gaten gehouden?
-  - Omdat je pakhuis niet oneindig ruimte heeft om goederen op te slaan, stoppen de verzamelaars met het verzamelen bij de bedrijven.
+  - Omdat je pakhuis niet oneindig ruimte heeft om goederen op te slaan, stoppen de inkopers met het ophalen bij de bedrijven.
   - Als een zeeman zijn tent niet wil verbeteren, heb je straks teveel planken en raken de houthakkers werkeloos.
   - We kunnen de situatie op twee manieren verbeteren en we zullen nu beide methoden bekijken.
   - 'Alle bedrijven bieden de mogelijkheid om hun productie te pauzeren.
 
     Klik op het tandwiel dat te zien is in het overzichtstabblad van de houthakkershut.'
-  - Als deze 'stilleg'-modus is geactiveerd, dan zullen de lopende kosten van het gebouw dalen. Niet altijd tot nul, maar zeker een stuk lager dan wanneer het bedrijf blijft produceren.
+  - Als deze 'stilleg'-modus is geactiveerd, dan zullen de lopende kosten van het gebouw dalen. Niet tot nul, maar wel tot een stuk lager dan wanneer het gebouw in bedrijf blijft.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    Dit betekend dat je geld kunt besparen als je tijdelijk geen bedrijf nodig hebt, en deze niet wilt slopen.'
+    Zo kun je besparen op bedrijven die je tijdelijk niet nodig hebt, maar niet wilt slopen.'
   - 'Een andere oplossing is het laatste gebouw uit het eerste beschavingsniveau dat nog niet eerder genoemd is: de opslagtent.'
   - 'Dit gebouw heeft twee doelen. het:
 
     * Geeft je meer opslag ruimte, en
 
-    * stuurt verzamelaars op pad om goederen te collecteren, net als het pakhuis.'
+    * stuurt inkopers op pad om goederen te op te halen, net als het pakhuis.'
   - Merk op dat bedrijven ook met een opslaggebouw verbonden kunnen worden om hun goederen te laten afhalen. Wanneer het pakhuis de aanvoer van goederen niet meer kan bijbenen, dan kan het bijplaatsen van een opslagtent uitkomst bieden.
   - ''
-  - [BoldLabel, 'Opdracht: Bouw een opslag tent, op een plek waar je verzamelaars nodig hebt.']
+  - [BoldLabel, 'Opdracht: Bouw een opslagtent, bij voorkeur daar waar je inkopers nodig hebt.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
@@ -351,7 +351,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Nu de wol productie op gang is, heb je kleermakers nodig om kleren te maken van de wol.
   - De weverij is waar de kleermaker woont. Er zijn twee plekken waar je het kan plaatsen - of dicht bij de boerderij of bij een opslagtent (of het pakhuis).
-  - In deze twee gevallen moet je er zeker van zijn dat er een verbinding is.
+  - Zorg in beide gevallen ook voor aansluiting op een pad.
   - Als je een weverij dicht bij een boerderij bouwt en alle paden er na toe afbreekt, dan zul je zien dat er nog steeds wol wordt afgehaald en stof wordt geproduceerd.
   - ''
   - [BoldLabel, 'Opdracht: Bouw een weverij die bij het wol kan komen.']
@@ -359,19 +359,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, Bereik een totaal van 50 inwoners om deze tutorial te voltooien. U heeft een positieve balans nodig.]
+  - [Message, Deze oefening is af als je minstens 50 inwoners en een positieve balans hebt.]
   - [Headline, 'OPDRACHT: VOLTOOI TUTORIAL']
   - [Image, content/gui/images/background/hr.png]
   - Probeer 50 of meer bewoners in je stad te huisvesten door meer residentiële gebouwen te bouwen.
   - Zodra je in staat bent de economie draaiende te houden met dit aantal verbruikers, ben je klaar om nieuwe onbekende horizonnen te ontdekken!
   - Je hebt ook genoeg geld nodig om de economie draaiende te houden, een positief balans (controleer in het pakhuis het tabblad 'Financiën') is aanbevolen.
   - ''
-  - [BoldLabel, 'Opdracht: Bereik een totaal aantal inwoners van 50 en een positief balans om deze opdracht te voltooien.']
+  - [BoldLabel, 'Opdracht: Bereik een totaal van 50 inwoners en een positieve balans.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Gefeliciteerd! U heeft het einde van deze handleiding bereikt en bent nu klaar voor nieuwe uitdagingen!]
+  - [Message, Gefeliciteerd! U heeft deze handleiding voltooid en bent nu klaar voor nieuwe uitdagingen!]
   - [Headline, GEEN OPDRACHTEN RESTEREND]
   - [Image, content/gui/images/background/hr.png]
   - U hebt met succes alle opdrachten voltooid die we u hebben voorgeschoteld. De wereld ligt nu aan je voeten, wachtend op uw goeie bedoelingen!
@@ -652,7 +652,7 @@ metadata:
   author: The UH team
   description: 'De opdracht:
 
-    Plaats jouw eerste nederzetting en leer hoe je verder moet spelen!'
+    Sticht je eerste nederzetting en leer het spel!'
   difficulty: Oefening
   locale: nl
   mapfile: development.sqlite
