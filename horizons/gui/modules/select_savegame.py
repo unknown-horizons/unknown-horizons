@@ -61,17 +61,18 @@ class SelectSavegameDialog(Dialog):
 
 		w = self._gui.findChild(name="gamepassword_box")
 		w.parent.hideChild(w)
-
 		w = self._gui.findChild(name='enter_filename')
-		if self._mode in ('save', 'editor-save'): # only show enter_filename on save
+		if self._mode in ('save'): # only show enter_filename on save
 			w.parent.showChild(w)
 		else:
 			w.parent.hideChild(w)
 
-		w2 = self._gui.findChild(name='enter_players_recommended')
-		if self._mode in ('editor-save'): # only show enter_filename on editor-save
+		w2 = self._gui.findChild(name='players_recommended')
+		if self._mode in ('editor-save'): # only show players_recommended and enter_filename on editor-save
+			w.parent.showChild(w)
 			w2.parent.showChild(w2)
 		else:
+			w.parent.hideChild(w)
 			w2.parent.hideChild(w2)
 
 		self.last_click_event = None
@@ -146,8 +147,10 @@ class SelectSavegameDialog(Dialog):
 			return self._windows.open(self)
 
 		selected_savegame = None
+		recommended_players = None
 		if self._mode in ('save', 'editor-save'):  # return from textfield
 			selected_savegame = self._gui.collectData('savegamefile')
+			recommended_players = self._gui.collectData('players_recommended')
 			if selected_savegame == "":
 				self._windows.open_error_popup(windowtitle=T("No filename given"),
 				                               description=T("Please enter a valid filename."))
@@ -168,7 +171,7 @@ class SelectSavegameDialog(Dialog):
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
 			selected_savegame = self._map_files[selected_savegame]
 
-		return selected_savegame
+		return selected_savegame, recommended_players
 
 	def _create_show_savegame_details(self, gui, map_files, savegamelist):
 		"""Creates a function that displays details of a savegame in gui"""

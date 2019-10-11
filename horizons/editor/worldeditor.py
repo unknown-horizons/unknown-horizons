@@ -90,7 +90,7 @@ class WorldEditor:
 			yield (n, coords_list)
 			n += 1
 
-	def save_map(self, path, prefix):
+	def save_map(self, path, prefix,players_recommended):
 		map_file = os.path.join(path, prefix + '.sqlite')
 		if os.path.exists(map_file):
 			os.unlink(map_file) # the process relies on having an empty file
@@ -108,7 +108,14 @@ class WorldEditor:
 					db('INSERT INTO ground VALUES(?, ?, ?, ?, ?, ?)', island_id, x, y, tile.id, tile.shape, tile.rotation)
 			#test code to implement number of players recommended
 			name = "players_recommended"
-			value = int(players_recommended)
+			if type(players_recommended) == int:
+				value = players_recommended
+			elif type(players_recommended) == str:
+				value = int(players_recommended)
+			elif type(players_recommended) == float:
+				value = int(float(players_recommended))
+			else:
+				value = ""
 			db('INSERT INTO properties VALUES(?,?)',name,value)
 			db('COMMIT')
 		except sqlite3.Error as e:

@@ -39,8 +39,8 @@
 				<TextField name="savegamefile" fixed_size="150,20"/> <Spacer />
 			</HBox>
 
-			<HBox name="enter_players_recommended">
-				<Label name="enter_players_recommended_label" text="Enter recommended number of players:" />
+			<HBox name="player_recommended">
+				<Label name="player_recommended_label" text="Enter recommended number of players:" />
 				<TextField name="players_recommended" fixed_size="40,20"/> <Spacer />
 			</HBox>
 
