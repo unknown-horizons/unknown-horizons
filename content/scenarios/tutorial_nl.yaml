@@ -190,16 +190,16 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Bereik op dit eiland een voorraad van tenminste 30 stuks gereedschap. (Dit kan wel even duren.).]
   - [Headline, 'OPDRACHT: HANDELDRIJVEN']
   - [Image, content/gui/images/background/hr.png]
-  - 'Uitstekend! De Vrije Handelaars zal nu van tijd tot tijd bij je pakhuis stoppen.
+  - 'Uitstekend! De Vrije Handelaars zal nu van tijd tot tijd bij uw pakhuis stoppen.
 
 
-    Laten we nu verder gaan met de handelsinstructies.'
-  - Klik eerst op jouw eigen pakhuis en klik daarna op het derde tabblad.
-  - Klik dan op één van de de drie slots, selecteer vervolgens het product dat je wil kopen of verkopen.
-  - Nadat een bepaald handelswaar is geselecteerd, zal een groene balk onderaan het vak laten zien hoeveel er van op voorraad is. Is er niets op voorraad, dan zal er ook geen balk verschijnen.
-  - Het bewegen van de schuif aan de rechterkant van het vak bepaalt de 'doelstelling', wat een andere betekenis heeft bij 'Koop' en 'Verkoop'.
-  - Bij het inkopen wordt niet meer aangeschaft dan in de 'doelstelling' is vastgelegd.
-  - Bij het verkopen wordt het overschot aan goederen boven de 'doelstelling' verkocht.
+    En nu de handelsinstructies.'
+  - Klik eerst op uw eigen pakhuis en dan op het derde tabblad.
+  - Klik dan op één van de de drie slots, en kies een product om te (ver)kopen.
+  - Na selectie van een handelswaar zal een groene balk onderaan het vak laten zien hoeveel er van op voorraad is. Is er niets op voorraad, dan zal er ook geen balk verschijnen.
+  - Met de schuif rechts van het vak stelt u de 'doelwaarde' in - wat bij 'Koop' iets anders betekent dan bij 'Verkoop'.
+  - Bij het inkopen wordt voldoende aangeschaft om de 'doelwaarde' te handhaven.
+  - Bij het verkopen wordt slechts het overschot aan goederen boven de 'doelstelling' verkocht.
   - [Pagebreak]
   - '
 
