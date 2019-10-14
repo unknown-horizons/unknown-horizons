@@ -205,7 +205,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Bijvoorbeeld:
 
-    Wanneer er bij het inkopen 5 ton op voorraad is en de schuif op 9 ton is ingesteld, dan zal er hoogstens 4 ton worden ingekocht.'
+    Als bij ''Koop'' de schuif op 9 ton staat en er 5 ton op voorraad is zal er hoogstens 4 ton worden bijgekocht.'
   - Verkoop werkt op soortgelijke wijze. Bij een handelsvak ingesteld op 'Verkoop', met 18 ton op voorraad en de schuif ingesteld op 13 ton, zal er niet meer dan 5 ton worden verkocht.
   - Echter, als de Vrije Handelaars minder wil kopen of verkopen dan jij hebt ingesteld, dan moet je geduld hebben en wachten tot het volgende bezoek.
   - 'Unknown Horizons kent marktafhankelijke prijzen, zodat de waarde van een eenheid niet vastligt.
