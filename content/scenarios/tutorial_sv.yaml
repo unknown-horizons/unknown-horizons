@@ -53,10 +53,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Om du klickar på den här knappen kommer en förhandsvisning av Packhuset att visas, den första byggnaden som behövs för en ny bosättning. När du flyttar runt markören kommer du att notera att förhandsvisningen är skuggad i rött när byggnaden är på ett olämpligt område.
   - Packhuset måste positioneras vid kusten för att tilllåta skepp att docka. Så hitta en bra plats och vänsterklicka sedan för att placera denna viktiga byggnad.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Uppgift: Bygg ett handelskontor vid kusten.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Message, Bygg ett skogshuggartält och anslut den till handelskontoret.]
   - [Headline, 'NY UPPGIFT: BYGG EN SKOGSHUGGARE']
   - [Image, content/gui/images/background/hr.png]
   - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
@@ -72,7 +72,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
   - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - [BoldLabel, 'Uppgift: Bygg ett skogshuggartält i ett skogsområde och anslut den till handelskontoret.']
   - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
@@ -657,4 +657,4 @@ metadata:
   locale: sv
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 29 translated messages, 17 fuzzy translations, 142 untranslated messages.
+  translation_status: 32 translated messages, 14 fuzzy translations, 142 untranslated messages.

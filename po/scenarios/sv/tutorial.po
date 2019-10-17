@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2018-03-13 03:39+0000\n"
-"Last-Translator: Unlucky Luke <emil@nordicnode.com>\n"
+"PO-Revision-Date: 2019-10-18 11:52+0000\n"
+"Last-Translator: Mattias Münster <mattiasmun@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/>"
 "\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.20-dev\n"
+"X-Generator: Weblate 3.9.1-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -148,17 +148,12 @@ msgstr ""
 "byggnad."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
-msgstr "Bygg ett handelskontor vid kusten."
+msgstr "Uppgift: Bygg ett handelskontor vid kusten."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
-"Bygg en skogshuggare och anslut den till handelskontoret med en gångstig."
+msgstr "Bygg ett skogshuggartält och anslut den till handelskontoret."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
@@ -220,13 +215,12 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
-"Bygg en skogshuggare och anslut den till handelskontoret med en gångstig."
+"Uppgift: Bygg ett skogshuggartält i ett skogsområde och anslut den till "
+"handelskontoret."
 
 #. This is the text body of a logbook page.
 msgid ""
