@@ -165,7 +165,17 @@ class SelectSavegameDialog(Dialog):
 				# keep the pop-up non-modal because otherwise it is double-modal (#1876)
 				if not self._windows.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True):
 					return self._windows.open(self)
-
+			if recommended_players == "":
+				self._windows.open_error_popup(windowtitle=T("No recommended number of players given"),
+											   description=T("Please enter a recommended number of players for the map."))
+				return self._windows.open(self)
+			elif type(recommended_players) != int:
+				try:
+					recommended_players = int(recommended_players)
+				except:
+					self._windows.open_error_popup(windowtitle=T("Number format incorrect"),
+												   description=T("Please enter a numeric recommended number of players for the map."))
+					return self._windows.open(self)
 		elif self._mode == 'load':  # return selected item from list
 			selected_savegame = self._gui.collectData('savegamelist')
 			assert selected_savegame != -1, "No savegame selected in savegamelist"
