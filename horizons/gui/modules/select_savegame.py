@@ -166,9 +166,13 @@ class SelectSavegameDialog(Dialog):
 				if not self._windows.open_popup(T("Confirmation for overwriting"), message, show_cancel_button=True):
 					return self._windows.open(self)
 			if recommended_players == "":
-				self._windows.open_error_popup(windowtitle=T("No recommended number of players given"),
-											   description=T("Please enter a recommended number of players for the map."))
-				return self._windows.open(self)
+				message = T("no number input")
+				message += "\n" + T('Use 0?')
+				if not self._windows.open_popup(T("Confirmation for zero value"), message, show_cancel_button=True):
+					return self._windows.open(self)
+#				self._windows.open_error_popup(windowtitle=T("No recommended number of players given"),
+#											   description=T("Please enter a recommended number of players for the map."))
+#				return self._windows.open(self)
 			elif type(recommended_players) != int:
 				try:
 					recommended_players = int(recommended_players)

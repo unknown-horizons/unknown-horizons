@@ -73,6 +73,6 @@ class EditorSession(Session):
 				   "{website}").format(website="http://unknown-horizons.org/support/")
 			self.ingame_gui.open_error_popup(headline, descr, advice)
 
-	def save(self, savegamename,players_recommended):
+	def save(self, savegamename, players_recommended):
 		success = self.world_editor.save_map(PATHS.USER_MAPS_DIR, savegamename, players_recommended)
 		return success

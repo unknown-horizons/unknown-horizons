@@ -147,10 +147,10 @@ class IngameGui(LivingObject):
 	def show_save_map_dialog(self):
 		"""Shows a dialog where the user can set the name of the saved map."""
 		window = SelectSavegameDialog('editor-save', self.windows)
-		savegamename,players_recommended = self.windows.open(window)
+		savegamename, players_recommended = self.windows.open(window)
 		if savegamename is None:
 			return False # user aborted dialog
-		success = self.session.save(savegamename,players_recommended)
+		success = self.session.save(savegamename, players_recommended)
 		if success:
 				self.message_widget.add('SAVED_GAME')
 

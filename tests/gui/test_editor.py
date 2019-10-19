@@ -60,6 +60,7 @@ def test_save_map(gui):
 
 	def func1():
 		gui.find('savegamefile').write('test_map')
+		gui.find('players_recommended').write('1')
 		gui.trigger('load_game_window/okButton')
 
 	with gui.handler(func1):
