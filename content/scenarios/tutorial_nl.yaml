@@ -206,39 +206,39 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Bijvoorbeeld:
 
     Als bij ''Koop'' de schuif op 9 ton staat en er 5 ton op voorraad is zal er hoogstens 4 ton worden bijgekocht.'
-  - Verkoop werkt op soortgelijke wijze. Bij een handelsvak ingesteld op 'Verkoop', met 18 ton op voorraad en de schuif ingesteld op 13 ton, zal er niet meer dan 5 ton worden verkocht.
-  - Echter, als de Vrije Handelaars minder wil kopen of verkopen dan jij hebt ingesteld, dan moet je geduld hebben en wachten tot het volgende bezoek.
-  - 'Unknown Horizons kent marktafhankelijke prijzen, zodat de waarde van een eenheid niet vastligt.
+  - Verkoop werkt net zo.  Heeft een handelsvak voor 'Verkoop' 18 ton op voorraad en de schuif ingesteld op 13 ton, dan zal er tot 5 ton worden verkocht.
+  - Mocht de Vrije Handelaar echter minder willen (ver)kopen dan jij hebt ingesteld, dan heb je pech en moet je wachten tot zijn volgende bezoek.
+  - 'Prijzen zijn in Unknown Horizons marktafhankelijk, en fluctueren.
 
-    De prijzen kunnen NIET handmatig aangepast worden!'
-  - U kunt de handelsbalans opmaken door in het 'Financiën' tabblad de waarden van 'Verkocht' en 'Gekocht' te vergelijken.
+    Ze zijn dan ook NIET handmatig aan te passen!'
+  - U kunt uw handelsbalans opmaken door in het tabblad 'Financiën' de waarden van 'Verkocht' en 'Gekocht' te vergelijken.
   - ''
-  - [BoldLabel, 'Opdracht: Koop zo veel mogelijk gereedschap, zodat je er minimaal 30 op voorraad hebt!']
+  - [BoldLabel, 'Opdracht: Koop genoeg gereedschap om uw voorraad op 30 stuks te brengen!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Plaats een paviljoen met verbinding naar de tenten.]
-  - [Headline, 'OPDRACHT: PLAATS EEN PAVILJOEN']
+  - [Message, Plaats een met de tenten verbonden paviljoen.]
+  - [Headline, 'OPDRACHT: BOUW EEN PAVILJOEN']
   - [Image, content/gui/images/background/hr.png]
-  - Dit is voorlopig genoeg gereedschap. Goed gedaan!
-  - U voorziet nu in huisvesting, een marktplein en voedsel voor uw inwoners.
-  - 'Er is nog steeds een eis waaraan we tot nu toe nog niet aan voldaan hebben (dat kun je controleren door op een tent te klikken): De zeelui willen een simpel gebouw om te kunnen bidden.'
-  - De oplossing is een paviljoen die de dominee opzet als bescherming tegen de zon.
-  - Nutsgebouwen zijn slechts bereikbaar als ze middels een pad aangesloten zijn op de tenten.
+  - Dit is voor nu gereedschap genoeg.  Bravo!
+  - U verschaft uw inwoners nu huisvesting, een marktplein en voedsel.
+  - 'Aan één eis hebben we nog steeds niet voldaan (zoals blijkt als u op een tent klikt): De zeelui willen een eenvoudige gebedsplaats.'
+  - De oplossing is een paviljoen dat de dominee opricht tegen de zon.
+  - Zulke nutsgebouwen zijn slechts bereikbaar als ze middels een pad met de tenten verbonden zijn.
   - [Pagebreak]
   - '
 
-    Merk op dat geloof wordt behandeld als een fysiek consumptiegoed!'
-  - Dit betekend dat jouw inwoners een wegverbinding met het paviljoen moeten hebben om hun voorraad geloof aan te kunnen vullen.
-  - Na een tijdje zullen ze het opgebruikt hebben en zullen ze opnieuw het product geloof op gaan halen.
-  - 'Belangrijk:
+    Geloof wordt dus gezien als consumptiegoed!'
+  - Inwoners moeten dus een pad naar het paviljoen hebben om aldaar geloof bij te kunnen tanken.
+  - En telkens wanneer die voorraad op is zullen ze een plaats zoeken om geloof bij te tanken.
+  - 'Let op:
 
-    Het is NIET voldoende om het gebouw binnen een bepaald bereik van de tenten te zetten.
+    Nabijheid van het gebouw aan de tenten volstaat NIET.
 
-    Een wegverbinding is noodzakelijk.'
+    Een wegverbinding is evenzeer noodzakelijk.'
   - ''
-  - [BoldLabel, 'Opdracht: Bouw een paviljoen met een pad naar de tenten om aan de vraag van de zeelieden te voldoen.']
+  - [BoldLabel, 'Opdracht: Zet een met de tenten verbonden paviljoen op om aan de geloofsbehoefte van de zeelieden te voldoen.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
