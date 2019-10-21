@@ -1,3 +1,9 @@
+## Unknown-Horizons based on Fifengine is no longer in development. We are porting it to Godot Engine.
+## Please dont report any new bugs.
+## Only bugfixes will get acepted for maybe an last release.
+## New git repo for the Godot port is: https://github.com/unknown-horizons/godot-port
+
+
 [![Unknown-Horizons](/content/gfx/uh.png)](http://unknown-horizons.org/)
 ============================================================
 
