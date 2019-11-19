@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2017.2-731-g533abe7eb\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-11-18 10:04+0000\n"
+"PO-Revision-Date: 2019-11-20 21:04+0000\n"
 "Last-Translator: abidin toumi <abidin24@disroot.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/uh/uh/ar/>\n"
 "Language: ar\n"
@@ -304,7 +304,7 @@ msgstr "(مثل ما في تبويبات التحديد)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr "$حجم"
+msgstr ""
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
@@ -906,7 +906,7 @@ msgstr "قيمة كل الوحدات المملوكة لللاعب"
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
 "The total value from all individual entities or in short : Total Player Score"
-msgstr "القيمة الكلية من كل الجهات أو بأختصار : درجة اللاعب الكلية"
+msgstr "القيمة الكلية من كل الجهات أو بأختصار: درجة اللاعب الكلية"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 #: horizons/gui/widgets/playerssettlements.py:118
@@ -2102,8 +2102,8 @@ msgstr "حُفظت عند {time}"
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "حُفظت {amount} من المرات"
-msgstr[1] "حُفظت {amount} من المرات"
+msgstr[0] "لم تحفظ {amount} مرة"
+msgstr[1] "حُفظت {amount} مرة"
 msgstr[2] "حُفظت {amount} مرة"
 msgstr[3] "حفظت {amount} من المرات"
 msgstr[4] "حُفظت {amount} من المرات"
@@ -2324,7 +2324,7 @@ msgstr "نظرة عامة"
 #: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (الوجهة القادمة: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
@@ -2356,7 +2356,7 @@ msgstr "بناء المباني ذات الصلة"
 
 #: horizons/gui/tabs/buyselltab.py:135
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "أنقر على إحدى خانات الموارد لإضافة عرض تجاري."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:178
@@ -2371,7 +2371,7 @@ msgstr "اختر إن كنت تريد الشراء او البيع، ثم حدد
 msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
-msgstr "سيشتري {resource_name} يـ{price} ذهب اذا  قل المخزون عن {limit}."
+msgstr "سيشتري {resource_name} يـ{price} ذهب اذا قل المخزون عن {limit}."
 
 #: horizons/gui/tabs/buyselltab.py:325
 #, python-brace-format
@@ -2438,7 +2438,7 @@ msgstr "يجب أن تكون السفينة قريبة من جزيرة لتأس�
 
 #: horizons/gui/tabs/shiptabs.py:61
 msgid "You already have a settlement on this island."
-msgstr "لديك  مستعمرة على هذه الجزيرة."
+msgstr "لديك مستعمرة على هذه الجزيرة."
 
 #: horizons/gui/tabs/shiptabs.py:92
 msgid "Load/Unload"
@@ -2486,12 +2486,12 @@ msgstr "بِع بـ {sellprice} ذهب"
 #: horizons/gui/widgets/inventory.py:174
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}\\{limit}"
 
 #: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "الحد: {amount} للخانة"
 
 #: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
@@ -2535,7 +2535,7 @@ msgstr "انقر لعرض الاحصائيات"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "أنقر لإضافة خانة جديدة"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
@@ -2595,9 +2595,9 @@ msgstr "لا يسمح لك بالتداول مع هذا اللاعب"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:120
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:125
 msgid "none"
@@ -2823,7 +2823,7 @@ msgstr "حقل جلجل"
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:169
 msgid "Yields hop. Needs a farm."
-msgstr "محاصيل جلجل.يحتاج الى  مزرعة."
+msgstr "محاصيل جلجل.يحتاج الى مزرعة."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
@@ -2908,7 +2908,7 @@ msgstr "إخماد الحريق."
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:221
 msgid "Fish Deposit"
-msgstr ""
+msgstr "أسماك"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:225
@@ -3039,7 +3039,7 @@ msgstr "تكرير كل أنواع الخامات."
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:301
 msgid "Stone Deposit"
-msgstr ""
+msgstr "خام الحجارة"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:305
@@ -3079,7 +3079,7 @@ msgstr "كوخ تخزين"
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:323
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr ""
+msgstr "يزيد سعة التخزين، يوسع المستعمرة ويوفر الجامعين."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:327
@@ -3119,7 +3119,7 @@ msgstr "عقار"
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:343
 msgid "Manor"
-msgstr ""
+msgstr "قصر عزبة"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
@@ -3159,7 +3159,7 @@ msgstr "مسار الحصى"
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:365
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "شارع مرصوف"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:367
@@ -3391,7 +3391,7 @@ msgstr "تسجيل الدخول ممَكن"
 #: horizons/main.py:606
 #, python-brace-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "تكتب السجلات في {directory}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3415,7 +3415,7 @@ msgstr "غير ممكن"
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "حفظ\\تحميل لعبة متعددة الاعبين غير ممكن حتى الآن"
 
 #: horizons/mpsession.py:105
 msgid ""
@@ -3607,7 +3607,7 @@ msgstr "الصحة: {health}"
 #: horizons/world/building/__init__.py:178
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}:{description}"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building must be built on an island."
@@ -3631,7 +3631,7 @@ msgstr "هذه المنطقة مشغولة من طرف مبنا آخر."
 
 #: horizons/world/building/buildable.py:47
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "هذه المنطقة مشغولة من قبل وحدة."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building must be built on the coastline."
@@ -3655,40 +3655,40 @@ msgstr "إسعمرت هذه الجزيرة بالفعل."
 
 #: horizons/world/building/buildable.py:53
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "يجب أن يكون جزء من هذا المبنى فوق أرض مستوية."
 
 #: horizons/world/status.py:73
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "السكان مصابون بالطاعون!"
 
 #: horizons/world/status.py:79
 msgid "This building is on fire!"
-msgstr ""
+msgstr "المبنى يحترق!"
 
 #: horizons/world/status.py:86
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "السكان غير راضون."
 
 #: horizons/world/status.py:92
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "لا يتمكن هؤلاء السكان من الوصول الى الساحة الرئيسية."
 
 #: horizons/world/status.py:98
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "مخزون هذا المبنى ممتلئ."
 
 #: horizons/world/status.py:113
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "إنتاجية هذا المبنى منخفضة."
 
 #: horizons/world/status.py:119
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "هذا المبنى متوقف عن العمل."
 
 #: horizons/world/traderoute.py:336
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "الطريق التجاري: متوجهةالى {location}"
 
 #: horizons/world/traderoute.py:340
 #, python-brace-format
@@ -3698,12 +3698,12 @@ msgstr ""
 #: horizons/world/units/ship.py:214
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "متوجه الى {location}"
 
 #: horizons/world/units/ship.py:215
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "متوجه الى {x}،{y}"
 
 #: horizons/world/units/ship.py:219
 #, python-brace-format
@@ -3717,47 +3717,47 @@ msgstr ""
 
 #: horizons/world/units/ship.py:231
 msgid "Trader"
-msgstr ""
+msgstr "تاجر"
 
 #: horizons/world/units/weaponholder.py:436
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "مهاجمة {target}' {name}'({owner})"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "مهاجمة {owner}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "تم الحفظ التلقائي للعبتك."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "مبناك يهاجَم!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}:{message}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
-msgstr ""
+msgstr "انتهى تحالف {player1} و {player2} وهما الآن في حالة حرب."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "أنهى {player1} و {player2} تحالفهما."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "أنهى {player1} و{player2} الحرب وهما الآن في تحالف."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3767,24 +3767,24 @@ msgstr ""
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "وحد {player1} و{player2} قواهما."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "سيتقاتل {player1} و {player2} حتى الموت."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr ""
+msgstr "يمكنك سحب الطرق."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "إحدى حقولك تحتاج الى مزرعة لحصد المحاصيل."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "نفذت موارد المنجم."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
@@ -3794,31 +3794,31 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
-msgstr ""
+msgstr "لا يمكن الذهاب الى هناك."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "رفض طاقمك ترك هذه الخريطة."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "تحتاج الى المزيد من {resource} لبناء هذا المبنى."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "تم تأسيس مستعمرة جديدة من قبل {player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "أنشئت سفينة جديدة باسم {name}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr ""
+msgstr "جندي باسم {name} جاهز للقتال."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3827,39 +3827,40 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "تم إنشاء عالم جديد."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "لا يتمكن بعض من سكانك من الوصول الى الساحة الرئيسية."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "تم الحفظ السريع للعبة."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"الطريق مُعدة. اِبدأها باستخدام زر \"إبدأ الطريق\" من قائمة \"إعداد الطريق\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "تم حفظ اللعبة."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "تم حفظ لقطة الشاشة الى {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "وصل سكانك الى المستوى {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "إنتقل بعض من سكانك."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
@@ -3867,7 +3868,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr ""
+msgstr "ربحتَ!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
@@ -3875,51 +3876,51 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "أصيب سكان هذا المبتى بالطاعون!"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
-msgstr ""
+msgstr "قطع نقدية"
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr ""
+msgstr "صوف"
 
 #. This is a database entry: the name of a resource
 msgid "textile"
-msgstr ""
+msgstr "منسوجات"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "ألواح"
 
 #. This is a database entry: the name of a resource
 msgid "food"
-msgstr ""
+msgstr "غذاء"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "أدوات"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "طوب"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "أشجار"
 
 #. This is a database entry: the name of a resource
 msgid "grass"
-msgstr ""
+msgstr "عشب"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "صوف"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "إيمان"
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
@@ -3927,119 +3928,119 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "لحم الغزال"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
-msgstr ""
+msgstr "سعادة"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "بطاطا"
 
 #. This is a database entry: the name of a resource
 msgid "education"
-msgstr ""
+msgstr "تعليم"
 
 #. This is a database entry: the name of a resource
 msgid "sugar cane"
-msgstr ""
+msgstr "قصب السكر"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
-msgstr ""
+msgstr "سكر"
 
 #. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "مجتمع"
 
 #. This is a database entry: the name of a resource
 msgid "clay deposit"
-msgstr ""
+msgstr "رواسب طين"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
-msgstr ""
+msgstr "طين"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
-msgstr ""
+msgstr "شراب"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "فحم"
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr ""
+msgstr "رواسب الحديد"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr ""
+msgstr "خام الحديد"
 
 #. This is a database entry: the name of a resource
 msgid "iron ingots"
-msgstr ""
+msgstr "سبائك الحديد"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr ""
+msgstr "مجالس"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "سمك"
 
 #. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "ملح"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "نبات التبغ"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr ""
+msgstr "أوراق التبغ"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "تبغ"
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "ماشية"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "حيوانات"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "ماشية للذبح"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "حيوانات للذبح"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "أعشاب"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "أعشاب طبية"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "بلوط"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr ""
+msgstr "مدفع"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "سيف"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -4047,11 +4048,11 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "corn"
-msgstr ""
+msgstr "ذرة"
 
 #. This is a database entry: the name of a resource
 msgid "flour"
-msgstr ""
+msgstr "طحين"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
@@ -4067,7 +4068,7 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr ""
+msgstr "رواسب الرخام"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
@@ -4075,11 +4076,11 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
-msgstr ""
+msgstr "رواسب الفحم"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr ""
+msgstr "رواسب الحجارة"
 
 #. This is a database entry: the name of a resource
 msgid "stone tops"
@@ -4087,83 +4088,83 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr ""
+msgstr "حبوب الكاكاو"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
-msgstr ""
+msgstr "كاكاو"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "حلويات"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "شموع"
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "كروم"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
-msgstr ""
+msgstr "عنب"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
+msgstr "خلايا نحل"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "أقراص العسل"
 
 #. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr ""
+msgstr "رواسب الذهب"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr ""
+msgstr "خام الحديد"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
-msgstr ""
+msgstr "سبائك الذهب"
 
 #. This is a database entry: the name of a resource
 msgid "gem deposit"
-msgstr ""
+msgstr "رواسب الجواهر"
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "خام الجواهر"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "جواهر"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr ""
+msgstr "نبات القهوة"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr ""
+msgstr "حبوب القهوة"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "قهوة"
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr ""
+msgstr "نبات الشاي"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr ""
+msgstr "أوراق الشاي"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
-msgstr ""
+msgstr "شاي"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
@@ -4183,76 +4184,76 @@ msgstr ""
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "حيتان"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "عنبر"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "زيت مصباح"
 
 #. This is a database entry: the name of a resource
 msgid "cotton plants"
-msgstr ""
+msgstr "نبات القطن"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "قطن"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr ""
+msgstr "نبات النيلة"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "نيلة"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "ملابس"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "عطر"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr ""
+msgstr "نبات الجلجل"
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "جلجل"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "جعة"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "نظافة"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
-msgstr ""
+msgstr "ترفيه"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "طاعون"
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "نار"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr ""
+msgstr "بحارة"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
-msgstr ""
+msgstr "تجار"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
-msgstr ""
+msgstr "أرستقراطيون"
