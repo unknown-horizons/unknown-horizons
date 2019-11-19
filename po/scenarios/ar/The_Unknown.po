@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 32a8fce\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2019-11-18 10:04+0000\n"
+"PO-Revision-Date: 2019-11-20 21:04+0000\n"
 "Last-Translator: abidin toumi <abidin24@disroot.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/uh/the-unknown/ar/"
 ">\n"
@@ -52,22 +52,28 @@ msgid ""
 "fish, so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
 msgstr ""
+"يجب أن نصل الشاطئ قريبا. أحد المراقبين لمح طيرا يصطاد سمكا، لابد أن اليابسة "
+"قريبة. لحسن الحظ لدينا بعض الألواح والأدوات لبناء ملاجئ بسيطة."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"المهمة:\n"
+"إبحث عن أرض لبناء الميناء."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr ""
+msgstr "22 نوفمبر 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
+"بُنيَ الميناء وبدأ أمل جديد. أنا قلق من الأيام القادمة... نحن نفتقر الى "
+"المواد الأساسية والغذاء بدأ بالنفاذ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -75,6 +81,8 @@ msgid ""
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
 msgstr ""
+"علينا تأمين أساسيات الحياة. حان الوقت لإرسال الناس لجمع الغذاء والخشب "
+"اللازمين لنجاة وبناء المآوي."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -85,10 +93,16 @@ msgid ""
 "* Hunter\n"
 "Collect 5 food and 5 boards."
 msgstr ""
+"المهمة:\n"
+"إبني واحد على الأقل من كل من:\n"
+"*حطاب\n"
+"*صائد سمك\n"
+"* صياد\n"
+"إجمع 5 من الغذاء و5 ألواح."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr ""
+msgstr "25 نوفمبر 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -96,22 +110,26 @@ msgid ""
 "the growth of our new settlement. Our people demand a place to live and "
 "exchange goods for their everyday needs."
 msgstr ""
+"قمنا بتأمين إحتياجاتنا الأساسية من الغذاء وجمعنا بعض الحطب اللازم لنمو "
+"مستعمرتنا. شعبنا يطالب بمكان للمبيت ولتبادل إحتياجاتهم من السلع."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It is time to build some tents to live in and a small main square to supply "
 "our citizens with goods."
-msgstr ""
+msgstr "حان الوقت لبناء الخيم للعيش وساحة رئيسية لتزويد مواطنينا بالسلع."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task:\n"
 "Build a Main Square and at least 10 Tents."
 msgstr ""
+"المهمة:\n"
+"إبني ساحة رئيسية و 10 خيم على الأقل."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr ""
+msgstr "1 ديسمبر 1740"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -119,6 +137,8 @@ msgid ""
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
 msgstr ""
+"أخير لدينا مكان للأكل والعيش مجددا. خيمتي ليست مريحة ولكنا تبقيني جافا "
+"وتعطيني سقفا يؤيني ليلا."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -127,6 +147,9 @@ msgid ""
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
+"كنت أتفحص النجوم ليلا، لكن بدون الخرائط وأدوات الملاحة ليس لنجوم معنا. لدي "
+"شعور أننا سنعلق هنا طويلا، علينا إستغلال الموقف بأفضل طريقة.\n"
+"ليس لدينا سوى محاولت بناء حضارة وإيجاد المنزل…"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -134,10 +157,12 @@ msgid ""
 "Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"المهمة:\n"
+"وسع القرية حتى تحصل على 250 ساكن وتقدير إيجابي."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr ""
+msgstr "27 أوت 1745"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -145,6 +170,8 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
+"قريتنا بأفضل حال، نمى عدد سكان المدينة الى أكثر من 250، بدأت بالإعتياد على "
+"بيتي الجديد، لكن هذه الجزيرة صغيرة للبقاء فيها طويلا."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -153,6 +180,8 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
+"علينا تحميل السفينة وإيجاد جزيرة أكبر لتوفير إحتياجات الشعب المتزايد، رسمت "
+"خريطة بدائية باستخدام النجوم. ليست مثالية، لكن آمل أن تعيدنا لهنا."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -160,3 +189,6 @@ msgid ""
 "Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
 "how you can contribute to making this scenario longer and better!"
 msgstr ""
+"المهمة:\n"
+"تواصل مع فريقUnknown Horizons (www.unknown-horizons.org) وشارك بجعل هذا "
+"السيناريو أطول وأفضل!"
