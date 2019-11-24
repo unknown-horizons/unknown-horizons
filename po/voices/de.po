@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2016-01-10 02:15+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2019-11-25 09:05+0000\n"
+"Last-Translator: Wuzzy <almikes@aol.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/voices/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.5-dev\n"
+"X-Generator: Weblate 3.10-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -33,7 +33,7 @@ msgstr "Dieses Land könnt Ihr nun Euer Eigen nennen."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
-msgstr "Diese Region gehört nun Uns!"
+msgstr "Diese Region gehört nun unseren Farben an."
 
 #. Founding settlement - Player found settlement"
 msgid "This piece of ground is now ours."
@@ -53,7 +53,7 @@ msgstr "Einer unserer Mitspieler hat eine Siedlung gegründet."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr "Es scheint so als ob ein Gegner eine Siedlung gegründet hat."
+msgstr "Es scheint so, als ob ein Gegner eine Siedlung gegründet hat."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
@@ -63,7 +63,7 @@ msgstr ""
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr "Es scheint so als ob sich einer unserer Gegner ausgebreitet hat."
+msgstr "Es scheint so, als ob sich einer unserer Gegner ausgebreitet hat."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
@@ -106,9 +106,7 @@ msgstr "Ein Kontrahent besiedelt Eurem Grund und Boden!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
-msgstr ""
-"Einer unserer Verbündeten scheint dringend unser Land zu benötigen.\n"
-"Einer unserer Verbündeten scheint dringend dein Land zu benötigen."
+msgstr "Einer unserer Verbündeten scheint dringend Euer Land zu benötigen."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
