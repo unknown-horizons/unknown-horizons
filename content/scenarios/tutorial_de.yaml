@@ -25,7 +25,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     '
   - Dies ist Euer Journal, hier findet Ihr wichtige Informationen zum aktuellen Szenario. Eine Zusammenfassung zu jeder neuen Aufgabe wird auch als Benachrichtigungsfeld auf der linken Seite Eures Bildschirms angezeigt. Ihr könnt die Benachrichtigungen lesen, indem Ihr mit Eurem Mauszeiger darüber fährt oder das Feld anklickt, um das Journal anzuzeigen.
-  - Ihr könnt das Journal auch jederzeit öffnen, indem Ihr das Feld unterhalb der Übersichtskarte in der oberen rechten Seite Ihres Bildschirmes anklickt. Im Folgenden wird dieser Bereich, der die Karte und verschiedene andere Schaltflächen beinhaltet, als 'Übersicht' bezeichnet.
+  - Ihr könnt das Journal auch jederzeit öffnen, indem Ihr das Feld unterhalb der Übersichtskarte in der oberen rechten Seite Ihres Bildschirmes anklickt. Im Folgenden wird dieser Bereich, der die Karte und verschiedene andere Schaltflächen beinhaltet, als „Übersicht“ bezeichnet.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
@@ -36,7 +36,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Solltet Ihr Vorschläge zur Verbesserung des Tutorial haben oder Fehler finden, bitte teilt uns diese mit.'
+    Solltet Ihr Vorschläge zur Verbesserung der Einführung haben oder Fehler finden, bitte teilt uns diese mit.'
   - '
 
     Die Kontaktdaten des Teams findet Ihr auf www.unknown-horizons.org .'
@@ -47,7 +47,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Euer Schiff ist auf See, beladen mit den Gütern, die Ihr benötigt, um eine neue Siedlung aufzubauen.
   - Um Euer Schiff zu lenken, wählt es mit einem Linksklick aus. Ein Rechtsklick bewegt es zur gewünschten Position.
-  - In Küstennähe wird die Schaltfläche "Siedlung aufbauen" im Übersichtstab Eures Schiffes aktiv.
+  - In Küstennähe wird die Schaltfläche „Siedlung errichten“ im Übersichts-Tab Eures Schiffes aktiv.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
   - Beim Klicken dieser Schaltfläche wird eine Vorschau des Kontors angezeigt, des ersten Gebäudes, das benötigt wird, um eine Siedlung zu gründen. Wenn Ihr den Mauszeiger bewegt, werdet Ihr bemerken, dass die Vorschau rot gefärbt ist, wenn sich das Gebäude in einem ungeeigneten Bereich befindet.
@@ -56,24 +56,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [BoldLabel, 'Aufgabe: Errichtet ein Kontor an der Küste.']
 
 - &LUMBERJACK
-  - [Message, Errichtet ein Holzfällerlager und verbindet es durch eine Straße mit dem Kontor.]
-  - [Headline, 'NEUE AUFGABE: HOLZFÄLLERLAGER BAUEN']
+  - [Message, Errichtet ein Holzfällerzelt und verbindet es durch eine Straße mit dem Kontor.]
+  - [Headline, 'NEUE AUFGABE: HOLZFÄLLERZELT BAUEN']
   - [Image, content/gui/images/background/hr.png]
-  - Die Vorräte und Baumaterialien wurden vom Schiff entladen und sicher im neuen Kontor gelagert. Nun ist es Zeit einige elementare Bauten zu errichten, beginnend mit dem Holzfällerlager.
-  - Holzfäller fällen Bäume im Wald in der Nähe ihres Lagers und verarbeiten diese dann zu Brettern, welche als Baumaterial oder Handelsressource verwendet werden können.
-  - Um ein Holzfällerlager zu errichten, müsst Ihr das Baumenü öffnen. Klickt dazu auf das große Werkzeug-Symbol unter der Übersichtskarte oder drückt die Taste 'B'.
+  - Die Vorräte und Baumaterialien wurden vom Schiff entladen und sicher im neuen Kontor gelagert. Nun ist es Zeit, einige elementare Bauten zu errichten, beginnend mit dem Holzfällerzelt.
+  - Holzfäller fällen Bäume im Wald in der Nähe ihres Zeltes und verarbeiten diese dann zu Brettern, welche als Baumaterial oder Handelsressource verwendet werden können.
+  - Um ein Holzfällerzelt zu errichten, müsst Ihr das Baumenü öffnen. Klickt dazu auf das große Werkzeug-Symbol unter der Übersichtskarte oder drückt die Taste „B“.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
   - Das Baumenü ist beim Aufbau einer neuen Siedlung nach Stufen sortiert. Derzeit habt Ihr nur niederrangige Gebäude zur Verfügung; wenn Eure Zivilisation aufsteigt, werdet Ihr Zugang zu höherrangigen Gebäuden erhalten.
   - [Pagebreak]
   - ''
-  - Findet einen gut bewaldeten Bereich, wählt in der Übersicht 'Holzfällerlager' aus der Liste der Bauten und platziert es.
-  - Später im Spiel könnt Ihr Wald aufforsten indem Ihr Bäume pflanzt, da dies aber Geld kostet, solltet Ihr zu Beginn lieber auf das zurückgreifen, was die Natur Euch bereitstellt!
+  - Findet einen gut bewaldeten Bereich, wählt in der Übersicht „Holzfällerzelt“ aus der Liste der Bauten und platziert es.
+  - Später im Spiel könnt Ihr Wald aufforsten, indem Ihr Bäume pflanzt, da dies aber Geld kostet, solltet Ihr zu Beginn lieber auf das zurückgreifen, was die Natur Euch bereitstellt!
   - Jedes Gebäude zum Abbau von Rohstoffen oder Produktionsgebäude braucht eine Verbindung zum Kontor oder einem anderen Lager, andernfalls werden die Güter nicht gesammelt.
-  - Wenn das Holzfällerlager platziert ist, verbindet Ihr es mit dem Kontor, indem Ihr das Baumenu öffnet und auf die 'Pfad'-Schaltfläche klickt. Nun könnt Ihr durch Klicken und Ziehen den Weg zwischen Holzfällerlager und Kontor bauen.
+  - Wenn das Holzfällerzelt platziert ist, verbindet Ihr es mit dem Kontor, indem Ihr das Baumenü öffnet und auf die „Pfad“-Schaltfläche klickt. Nun könnt Ihr durch Klicken und Ziehen den Weg zwischen Holzfällerzelt und Kontor bauen.
   - ''
-  - [BoldLabel, 'Aufgabe: Errichtet ein Holzfällerlager in einem bewaldeten Gebiet und verseht es mit einer Straße zum Kontor.']
-  - Nachdem die Gebäude verbunden sind, werdet Ihr einen Sammler sehen, der die frisch produzierten Bretter abholt und sie zum Kontor bringt, bereit für neue Bauten oder den Handel.
+  - [BoldLabel, 'Aufgabe: Errichtet ein Holzfällerzelt in einem bewaldeten Gebiet und verseht es mit einer Straße zum Kontor.']
+  - Nachdem die Gebäude verbunden sind, werdet Ihr einen Träger sehen, der die frisch produzierten Bretter abholt und sie zum Kontor bringt, bereit für neue Bauten oder den Handel.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
@@ -95,7 +95,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dies ist eine sehr konstante Nahrungsversorgung zum Preis einer etwas längeren Produktionszeit pro Nahrungseinheit.
   - Eine kleine Siedlung wie die Eure kann beide Betriebe gebrauchen. Im direkten Vergleich könnt Ihr selbst Vor- und Nachteile abwägen.
   - ''
-  - [BoldLabel, 'Aufgabe: Errichtet einen Jäger und einen Fischer.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Jägerzelt und ein Fischerzelt.']
   - Und vergesst die Wege zum Kontor nicht!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
@@ -110,7 +110,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Ihr solltet vermeiden, die Zelte Eurer Siedler zu nahe an den Holzfällern zu errichten, da das Aufbauen von Zelten die Bäume entfernt, die diese zur Produktion von Brettern benötigen.
-  - Betriebe arbeiten auch ohne Anbindung an die Zelte, daher müsst Ihr keinen Weg zwischen Marktplatz und zum Beispiel dem Holzfällerlager bauen.
+  - Betriebe arbeiten auch ohne Anbindung an die Zelte, daher müsst Ihr keinen Weg zwischen Marktplatz und zum Beispiel dem Holzfällerzelt bauen.
   - ''
   - [BoldLabel, 'Aufgabe: Errichtet einen Marktplatz.']
   - [Pagebreak]
@@ -119,12 +119,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Lasst uns nun einen genaueren Blick auf den Marktplatz werfen.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - Im Tab 'Finanzen' erhaltet Ihr eine Übersicht der Bilanz dieser Insel. Sie enthält alle Betriebskosten und eingenommenen Steuern.
-  - Die Posten 'Verkaufen' und 'Einkaufen' beziehen sich auf Eure Handelsbilanz und werden später ausführlich erklärt.
+  - Unter der Schaltfläche „Finanzen“ erhaltet Ihr eine Übersicht der Bilanz dieser Insel. Sie enthält alle Betriebskosten und eingenommenen Steuern.
+  - Die Posten „Verkaufen“ und „Einkaufen“ beziehen sich auf Eure Handelsbilanz und werden später ausführlich erklärt.
   - Fällt die Bilanz positiv aus, macht Ihr auf dieser Insel Gewinn.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - Im 'Siedler'-Tab seht Ihr Statistiken bezüglich Eurer Einwohner. Der globale Steuersatz für diese Siedlerstufe kann eingestellt werden, ebenso könnt Ihr Euren Einwohnern erlauben oder verbieten, in die nächsthöhere Stufe aufzusteigen.
+  - Unter der „Siedler“-Schaltfläche seht Ihr Statistiken bezüglich Eurer Einwohner. Der globale Steuersatz für diese Siedlerstufe kann eingestellt werden, ebenso könnt Ihr Euren Einwohnern erlauben oder verbieten, in die nächsthöhere Stufe aufzusteigen.
 
 - &FIRSTTENT
   - [Message, 'Errichtet ein Zelt und verbindet es, wenn nötig, mit dem Marktplatz.']
@@ -144,7 +144,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Errichtet mindestens drei zusätzliche Zelte und verbindet sie mit dem Marktplatz.]
   - '
 
-    Wir sollten uns nun den Übersichts-Tab eines Zelts ansehen.'
+    Wir sollten uns nun die Übersichtsschaltfläche eines Zelts ansehen.'
   - 'Es wird angezeigt:
 
     * die Zufriedenheit der Bewohner,
@@ -154,7 +154,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * die Waren, nach denen sie verlangen.'
   - Ist dieser Bedarf gedeckt, werden Zufriedenheit und damit Eure Steuereinnahmen steigen.
   - Ist er es nicht, sinkt beides. Ab einem gewissen Punkt werden die Einwohner wirklich sauer, sodass sie ihre Koffer packen, aus der Stadt verschwinden und nur noch eine unbewohnbare Ruine zurücklassen.
-  - Beachtet, dass Ihr auch in diesem Tab an der Steuerschraube drehen könnt.
+  - Beachtet, dass Ihr hier auch an der Steuerschraube drehen könnt.
   - ''
   - [BoldLabel, 'Aufgabe: Erbaut mindestens drei weitere Zelte.']
   - '
@@ -162,8 +162,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     TIPP: Mit gedrückter Umschalt-Taste wird das Bauen von mehreren Gebäuden desselben Typs erleichtert.'
 
 - &SIGNALFIRE
-  - [Message, Errichtet ein Leuchtfeuer an der Küste in der Nähe des Kontors.]
-  - [Headline, 'NEUE AUFGABE: LEUCHTFEUER BAUEN']
+  - [Message, Errichtet ein Signalfeuer an der Küste in der Nähe des Kontors.]
+  - [Headline, 'NEUE AUFGABE: SIGNALFEUER BAUEN']
   - [Image, content/gui/images/background/hr.png]
   - Habt Ihr das Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert? Es gehört zum Freien Händler, einem der ersten Siedler in diesem Archipel.
   - Er beliefert Siedlungen mit Gütern, die Ihr momentan noch nicht produzieren könnt.
@@ -171,20 +171,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - In der Regel fahren die Händler umher und halten Ausschau nach möglichen Geschäften. Diesen Prozess könnt Ihr aber ein wenig beschleunigen.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Zu diesem Zweck könnt Ihr ein Leuchtfeuer an der Küste in der Nähe des Kontors errichten. Es wird Schiffen den Weg zu Eurer Siedlung zeigen.
-  - Das Leuchtfeuer muss das Gebiet abdecken, durch welches die abzufangenden Schiffe navigieren.
+  - Zu diesem Zweck könnt Ihr ein Signalfeuer an der Küste in der Nähe des Kontors errichten. Es wird Schiffen den Weg zu Eurer Siedlung zeigen.
+  - Das Signalfeuer muss das Gebiet abdecken, durch welches die abzufangenden Schiffe navigieren.
   - [Pagebreak]
   - '
 
     Nach dieser kleinen Orientierungshilfe wird der Händler gern ab und an vorbeikommen und Euer Kontor inspizieren, auch wenn er eigentlich vor hatte, daran vorbei zu segeln.'
-  - Angebote werden über den Tab "Ein-/Verkaufen" im Kontor vorgeschlagen.
+  - Angebote werden über die Schaltfläche „Ein-/Verkaufen“ im Kontor vorgeschlagen.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - In der Stufe 'Seefahrer' stehen Euch drei Handelsslots zur Verfügung.
-  - Klickt auf das kleine Symbol im Slot, um vom Modus 'Verkaufen' auf 'Kaufen' und umgekehrt zu wechseln.
-  - Um das Handelsgut auszuwählen, klickt in einen Slot. Wir werden das Vorgehen weiter betrachten, sobald Ihr alle Voraussetzungen erfüllt, um Handel zu treiben.
+  - In der Stufe „Seefahrer“ stehen Euch drei Handelsplätze zur Verfügung.
+  - Klickt auf das kleine Symbol im Slot, um vom Modus „Verkaufen“ auf „Kaufen“ und umgekehrt zu wechseln.
+  - Um das Handelsgut auszuwählen, klickt auf einen Platz. Wir werden das Vorgehen weiter betrachten, sobald Ihr alle Voraussetzungen erfüllt, um Handel zu treiben.
   - ''
-  - [BoldLabel, 'Aufgabe: Errichtet ein Leuchtfeuer an der Küste in der Nähe des Kontors.']
+  - [BoldLabel, 'Aufgabe: Errichtet ein Signalfeuer an der Küste in der Nähe des Kontors.']
 
 - &TRADING
   - [Message, 'Erreicht einen Lagerbestand von mindestens 30 Werkzeugen auf Eurer Insel. Beachtet, dass dies eine Weile dauern kann.']
@@ -194,10 +194,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     Weiter geht es mit der Anleitung zum Handeln.'
-  - Zuerst klickt ihr auf den Kontor und danach auf den dritten Tab.
-  - Dann klickt auf einen der 3 Slots, danach wählt Ihr aus, welches Gut ihr Kaufen oder Verkaufen möchtet.
+  - Zuerst klickt ihr auf den Kontor und danach auf die dritte Schaltfläche.
+  - Dann klickt auf einen der 3 Plätze, danach wählt Ihr aus, welches Gut ihr Kaufen oder Verkaufen möchtet.
   - Nach dem Auswählen eines Guts zeigt der grüne Balken, wie viel davon momentan vorrätig ist. Befindet sich keine Ware im Lager, wird auch kein Balken erscheinen.
-  - Das Bewegen des Schiebereglers auf der rechten Seite des Slots verändert die maximale Lagermenge. Dieser Wert hat unterschiedliche Bedeutungen beim Ein- bzw. Verkauf.
+  - Das Bewegen des Schiebereglers auf der rechten Seite des Platzes verändert die maximale Lagermenge. Dieser Wert hat unterschiedliche Bedeutungen beim Ein- bzw. Verkauf.
   - Beim Einkauf legt er fest, wie viel dieser Ware Ihr insgesamt bevorraten möchtet.
   - Beim Verkauf wird jeder Überschuss über diesem Grenzwert verkauft, und es wird nichts verkauft, solange Ihr nicht den eingestellten Lagerstand aufweist.
   - [Pagebreak]
@@ -205,11 +205,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Ein Beispiel zum besseren Verständnis:
 
-    Falls 5 Tonnen auf Lager sind und der Regler auf 9 Tonnen ''Einkauf'' gestellt ist, bedeutet dies, dass zusätzlich bis zu 4 Tonnen eingekauft werden.'
+    Falls 5 Tonnen auf Lager sind und der Regler auf 9 Tonnen „Einkauf“ gestellt ist, bedeutet dies, dass zusätzlich bis zu 4 Tonnen eingekauft werden.'
   - Ein Verkaufsposten, bei dem der Schieberegler auf 13 Tonnen gestellt ist, bewirkt bei einem Lagerstand von 18 Tonnen, dass bis zu 5 Tonnen verkauft werden.
   - Falls der Freie Händler jedoch weniger verkaufen möchte als Ihr abnehmen würdet, müsst ihr Geduld haben und auf den nächsten Besuch warten.
-  - Der Wert einer Ware kann NICHT manuell beeinflusst werden! Er setzt sich aus verschiedenen Faktoren zusammen und wird an die Handelssituation der Inselwelt angepasst.
-  - Ihr könnt Eure Handelsbilanz im Tab 'Finanzen' einsehen, in dem die Posten Ein- und Verkauf gegenübergestellt sind.
+  - 'Unknown Horizons hat ein ausgeklügeltes Preissystem, also kann der Wert einer Einheit variieren.
+
+    Es ist NICHT möglich, die Preise manuell anzupassen!'
+  - Ihr könnt Eure Handelsbilanz in der Schaltfläche „Finanzen“ einsehen, in dem die Posten Ein- und Verkauf gegenübergestellt sind.
   - ''
   - [BoldLabel, 'Aufgabe: Kauft so lange Werkzeuge ein, bis Ihr 30 Einheiten auf Lager habt!']
   - - Gallery
@@ -223,18 +225,20 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ihr stellt Euren Einwohnern nun Unterkünfte, einen Marktplatz und Nahrung zur Verfügung.
   - 'Ein Grundbedarf ist aber immer noch nicht gedeckt (wie Ihr in den Übersichten von jedem Zelt nachprüfen könnt): Eure Seefahrer verlangen nach einem Gebäude zum Beten.'
   - Die Lösung ist ein Pavillon, welchen der Dorfpfarrer als Sonnenschutz aufspannt.
-  - Dienstleistungsgebäude wie dieses benötigen einen Zugang zur Straße, ansonsten können es die Einwohner nicht erreichen.
+  - Nutzgebäude wie dieses benötigen einen Zugang zur Straße, ansonsten können es die Einwohner nicht erreichen.
   - [Pagebreak]
   - '
 
     Beachtet, dass die Religion wie ein Konsumgut behandelt wird!'
-  - Eure Einwohner müssen also regelmäßig ihren Vorrat davon auffüllen.
-  - Dazu benötigen sie Zugang zu einem Gebäude, das Religion produziert (dem Pavillon) und werden dann regelmäßig Religion dort abholen und zuhause verbrauchen.
+  - Das bedeutet, dass Eure Einwohner eine Wegverbindung zum Produzenten (Pavillon) benötigen, um den Glauben zu finden.
+  - Nach einiger Zeit werden sie ihn aufgebraucht haben und dann erneut nach einen Produzenten suchen, um den Glauben erneut zu finden.
   - 'Wichtig:
 
-    Es ist NICHT ausreichend, dass das Gebäude in einem gewissen Einzugsgebiet liegt. Auch ein Weg dorthin muss verfügbar sein.'
+    Es ist NICHT ausreichend, dass das Gebäude in einem gewissen Einzugsgebiet liegt.
+
+    Auch ein Weg dorthin muss verfügbar sein.'
   - ''
-  - [BoldLabel, 'Aufgabe: Baut einen Pavillon mit einer Verbindung zu den Zelten, um Euren Einwohnern den Zugang zum Glauben zu ermöglichen.']
+  - [BoldLabel, 'Aufgabe: Baut einen Pavillon mit einer Verbindung zu den Zelten, damit eure Seefahrer den Weg zum Glauben finden können.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -250,8 +254,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Solche Wohnungs Verbesserungen kosten Euch Waren, daher könnt Ihr sie in den Marktplatz-Tabs einschränken.'
-  - Es gibt aber auch Verbesserungen ohne Kosten, wie Ihr zum Beispiel beim Holzfällerlager bemerken werdet. In diesem Fall wird nur die Gebäude Grafik angepasst.
+    Solche Wohnungaufstiege kosten euch Ressourcen, daher könnt Ihr sie auf dem Marktplatz einschränken.'
+  - Es gibt aber auch Aufstiege ohne Kosten, wie Ihr zum Beispiel beim Holzfällerzelt bemerken werdet. In diesem Fall wird nur das Aussehen angepasst.
   - Verbesserte Wohnungen beherbergen mehr Bewohner und Pioniere zahlen auch mehr Steuern als Seefahrer.
   - Wie Ihr wahrscheinlich schon ahnt, gibt es auch einen Nachteil. Pioniere benötigen weitere Güter, die Seefahrer nicht brauchten. Damit müsst Ihr mehr Geld aufwenden, um sie weiterhin zufrieden zu stellen.
   - ''
@@ -260,67 +264,69 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Errichtet eine Farm und lasst ausreichend Platz in der Umgebung frei.]
-  - [Headline, 'NEUE AUFGABE: FARM BAUEN']
+  - [Message, Errichtet einen Bauernhof und lasst ausreichend Platz in der Umgebung frei.]
+  - [Headline, 'NEUE AUFGABE: BAUERNHOF']
   - [Image, content/gui/images/background/hr.png]
   - Gratulation! Einige Eurer Einwohner haben soeben Stufe II erreicht!
   - Jetzt habt Ihr Zugriff auf neue Gebäude. Werft dazu einen Blick auf das Baumenü.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - Ein hübscher neuer Tab ist aufgetaucht.
-  - Pioniere benötigen Kleidung, deshalb müsst Ihr eine neue Produktionslinie planen. Sie beginnt mit Schafs wolle (die, wie einige andere Rohstoffe, in der Farm produziert wird).
-  - Die Farm ist eine sehr spezielle Produktionsstätte, denn sie stellt nicht nur einen, sondern auch mehrere unterschiedliche Rohstoffe her, wenn Ihr dies wünscht.
-  - Die Erzeugnisse der Farm sind davon abhängig, welche Felder in ihrer Umgebung errichtet werden.
+  - Eine hübsche neue Schaltfläche ist aufgetaucht.
+  - Pioniere werden Stoffe verlangen, deshalb müsst Ihr eine neue Produktionslinie planen. Sie beginnt mit Lammwolle (die, wie einige andere Rohstoffe, am Bauernhof produziert wird).
+  - Der Bauernhof ist eine sehr besondere Produktionsstätte, denn sie stellt nicht nur einen, sondern auch mehrere unterschiedliche Rohstoffe her, wenn Ihr dies wünscht.
+  - Die Erzeugnisse des Bauernhofs sind davon abhängig, welche Felder in seiner Umgebung errichtet werden.
   - [Pagebreak]
   - '
 
     Wir werden später darauf zurückkommen.'
-  - Farmen müssen (wie alle Produktionsgebäude von Rohstoffen) nicht zwangsläufig mit einem Kontor oder Lager verbunden sein.
+  - Bauernhöfe müssen (wie alle Produktionsgebäude von Rohstoffen) nicht zwangsläufig mit einem Kontor oder Lager verbunden sein.
   - Solange die Güter das verarbeitende Gewerbe erreichen können, ist alles in Ordnung.
   - Falls aus irgendwelchen Gründen Teile der Verarbeitung an verschiedenen Stellen der Insel geplant sind (was durchaus Sinn ergeben kann) oder sogar auf verschiedenen Inseln, wird eine Abholung durch Träger und damit Straßenverbindung aber notwendig.
-  - Versucht, die Farm nicht zu nah an der Küste oder anderen Gebäuden zu bauen, denn sie benötigt etwas Platz für eine optimale Auslastung.
+  - Versucht, den Bauernhof nicht zu nah an der Küste oder anderen Gebäuden zu bauen, denn er benötigt etwas Platz für eine optimale Auslastung.
   - ''
-  - [BoldLabel, 'Aufgabe: Errichtet eine Farm.']
+  - [BoldLabel, 'Aufgabe: Errichtet einen Bauernhof.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, 'Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt Kartoffelfelder hinzu, falls Ihr wollt.']
+  - [Message, 'Legt mindestens eine Weide im Einzugsbereich des Bauernhofs an und fügt Kartoffelfelder hinzu, falls Ihr wollt.']
   - [Headline, 'NEUE AUFGABE: FELDER']
   - [Image, content/gui/images/background/hr.png]
-  - Die Farm selbst kann ohne Felder nichts produzieren.
+  - Der Bauernhof selbst kann ohne Felder nichts produzieren.
   - Momentan habt Ihr die Wahl zwischen drei Feldern.
   - 'Hier ein kurzer Überblick:
 
-    * Weide: Schafe leben dort und produzieren Schafwolle
+    * Weide: Schafe leben dort, sie produzieren Lammwolle.
 
-    * Kartoffelfeld: erzeugt Kartoffeln, die als Nahrung gehandelt werden
+    * Kartoffelfeld: Erzeugt Kartoffeln, die als Nahrung gehandelt werden.
 
-    * Zuckerfeld: erzeugt Zucker, welcher zum Brennen von Alkohol und für die Zuckerbäckerei verwendet wird.'
+    * Zuckerrohrfeld: Erzeugt Zucker, welcher zum Brennen von Alkohol und (später) zur Süßwarenherstellung benötigt wird.'
   - Momentan benötigt Ihr nur Weiden. Falls die Nahrung knapp wird, vielleicht aufgrund einer großen Stadt, könnt Ihr auch ein paar Kartoffeln anbauen.
-  - Beachtet, dass Ihr für die Abholung der Kartoffeln eine Straßenverbindung zur Farm benötigt, nicht zu den Feldern.
+  - Beachtet, dass Ihr für die Abholung der Kartoffeln eine Wegverbindung zum Bauernhof benötigt, jedoch nicht zu den Feldern, da der Bauernhof die einzige Produktionsstätte ist, die sie verarbeitet.
   - [Pagebreak]
   - '
 
-    Stellt sicher, dass alle Felder im Einzugsbereich der Farm liegen.'
-  - Ihr könnt für eine Farm auch mehrere Felder anlegen. Ein Stück Weideland allein wird sie sicherlich nicht zu 100 Prozent auslasten – probiert aus, wie viele Felder eine Farm versorgen kann.
-  - 'Auf unterschiedlichen Feldern benötigen die Arbeiter der Farm unterschiedlich viel Zeit: (Säen, Ernten, Tiere hüten, …). Deshalb kann es sein, dass eine Farm nicht alle Felder versorgen kann.'
+    Stellt sicher, dass alle Felder im Einzugsbereich des Bauernhofs liegen.'
+  - Ihr könnt für einen Bauernhof auch mehrere Felder anlegen. Eine Weide allein wird sie sicherlich nicht zu 100 Prozent auslasten – probiert aus, wie viele Felder einen Bauernhof versorgen kann.
+  - 'Auf unterschiedlichen Feldern benötigen die Arbeiter des Bauernhofs unterschiedlich viel Zeit: (Säen, Ernten, Tiere hüten, …). Deshalb kann es sein, dass ein Bauernhof nicht alle Felder versorgen kann.'
   - Im Moment braucht Ihr Euch darüber keine Gedanken machen, da noch keine Felder angelegt sind. Lasst uns das ändern!
   - ''
-  - [BoldLabel, 'Aufgabe: Legt mindestens eine Weide im Einzugsbereich der Farm an und fügt Kartoffelfelder hinzu, falls Ihr das wollt.']
+  - [BoldLabel, 'Aufgabe: Legt mindestens eine Weide im Einzugsbereich des Bauernhofs an und fügt Kartoffelfelder hinzu, falls Ihr das wollt.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Errichtet ein Lager (im Tab 'Stufe I') an einem sinnvollen Bauplatz.]
+  - [Message, Errichtet ein Lager (Schaltfläche „Stufe I“) an einem sinnvollen Bauplatz.]
   - [Headline, 'NEUE AUFGABE: LAGER']
   - [Image, content/gui/images/background/hr.png]
-  - Habt Ihr in letzter Zeit Euer Holzfällerlager betrachtet?
+  - Habt Ihr in letzter Zeit Euren Holzfäller betrachtet?
   - Da das Kontor nur begrenzt viel Platz hat, um Güter aufzubewahren, werden Güter nicht mehr von Euren Betrieben in ein Lager transportiert, sobald der Bestand voll ist.
   - Falls also kein Siedler vor kurzem sein Zelt ausbauen wollte, befindet sich wahrscheinlich eine Menge Bretter im Lager und Euer Holzfäller kann nichts mehr lagern.
   - Diese Situation könnt Ihr durch zwei Maßnahmen verbessern, die wir uns nun anschauen wollen.
-  - Alle Betriebe bieten die Möglichkeit, ihre Produktion zu pausieren. Klickt einmal auf das Zahnrad, welches sich in der Übersicht des Holzfällerlagers befindet.
-  - Ist dieser 'Stillgelegt'-Modus aktiv, sinken die laufenden Kosten eines Gebäudes. Sie werden vielleicht nicht immer auf null sinken, aber sie sind geringer als bei einem weiterhin produzierenden Betrieb.
+  - 'Alle Betriebe bieten die Möglichkeit, ihre Produktion zu pausieren.
+
+    Das mag seltsam klingen, aber klickt einmal auf das Zahnrad, welches sich in der Übersicht des Holzfällerzeltes befindet.'
+  - Ist dieser „Pause“-Modus aktiv, sinken die laufenden Kosten eines Gebäudes. Sie werden vielleicht nicht immer auf null sinken, aber sie sind geringer als bei einem weiterhin produzierenden Betrieb.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
@@ -340,27 +346,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, 'Errichtet einen Weber, der Wolle von einer Farm abholen kann.']
+  - [Message, Errichtet eine Weberhütte in Reichweite von Wolle.]
   - [Headline, 'NEUE AUFGABE: WEBER']
   - [Image, content/gui/images/background/hr.png]
   - Ihr benötigt nun noch einen Weber, um aus der Wolle Stoff herzustellen.
-  - 'Es gibt zwei Möglichkeiten, ihn zu bauen: entweder nahe der Farm oder in der Nähe eines Lagers bzw. des Kontors.'
-  - In beiden Fällen solltet Ihr eine Straßenverbindung sicherstellen.
-  - Der Weber wird auch ohne eine Straße bei der Farm Wolle abholen und Stoff produzieren, falls sie nah genug gelegen ist.
+  - 'Die Weberhütte ist das Zuhause des Webers. Es gibt zwei Möglichkeiten, sie zu bauen: entweder in der Nähe des Bauernhofs oder in der Nähe eines Lagerzeltes bzw. des Kontors.'
+  - In beiden Fällen solltet Ihr eine Wegverbindung sicherstellen.
+  - Ihr könnt die Weberhütte in der Nähe des Bauernhofs bauen und den Weg zum Bauernhof abreißen, und ihr werdet sehen, dass der Weber trotzdem die Wolle aufsammeln und mit der Produktion fortfahren wird.
   - ''
-  - [BoldLabel, 'Aufgabe: Errichtet einen Weber, der Wolle abholen kann.']
+  - [BoldLabel, 'Aufgabe: Errichtet eine Weberhütte in Reichweite von Wolle.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, 'Beherbergt mehr als 50 Einwohner, um das Tutorial zu beenden. Ihr benötigt außerdem eine positive Bilanz.']
+  - [Message, 'Beherbergt mehr als 50 Einwohner, um die Einführung zu beenden. Ihr benötigt außerdem eine positive Bilanz.']
   - [Headline, 'NEUE AUFGABE: ABSCHLUSS']
   - [Image, content/gui/images/background/hr.png]
-  - Beherbergt mehr als 50 Einwohner, um das Tutorial zu beenden. Errichtet hierzu weitere Wohngebäude und erweitert die Produktionslinien, falls nötig.
-  - Sobald die Wirtschaft floriert und diese Anzahl an Einwohnern versorgen kann, seid Ihr bereit für Eure nächsten Aufgaben:Segelt zu neuen Ufern und erforscht weitere 'Unknown Horizons'!
-  - Ihr benötigt außerdem eine positive Bilanz. Diese könnt ihr im Kontor überprüfen.
+  - Beherbergt mehr als 50 Einwohner, um die Einführung zu beenden. Errichtet hierzu weitere Wohngebäude und erweitert die Produktionslinien, falls nötig.
+  - 'Sobald die Wirtschaft floriert und diese Anzahl an Einwohnern versorgen kann, seid Ihr bereit für Eure nächsten Aufgaben: Segelt zu neuen Ufern und erforscht „Unknown Horizons“!'
+  - Ihr benötigt außerdem eine positive Bilanz. Diese könnt ihr im Kontor (Schaltfläche „Finanzen“) überprüfen.
   - ''
-  - [BoldLabel, 'Aufgabe: Erreicht insgesamt 50 Einwohner und eine positive Bilanz, um dieses Tutorial abzuschließen.']
+  - [BoldLabel, 'Aufgabe: Erreicht insgesamt 50 Einwohner und eine positive Bilanz, um diese Einführung abzuschließen.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
