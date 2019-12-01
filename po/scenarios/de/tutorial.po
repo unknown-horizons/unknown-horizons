@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2019-11-25 09:04+0000\n"
+"PO-Revision-Date: 2019-12-02 17:05+0000\n"
 "Last-Translator: Wuzzy <almikes@aol.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/tutorial/de/>\n"
 "Language: de\n"
@@ -101,7 +101,7 @@ msgstr "Und nun lasst uns das Spiel beginnen!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "NEUE AUFGABE: ERRICHTET EINE SIEDLUNG"
+msgstr "NEUE AUFGABE: SIEDLUNG BAUEN"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -160,7 +160,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "NEUE AUFGABE: HOLZFÄLLERZELT BAUEN"
+msgstr "NEUE AUFGABE: HOLZFÄLLER"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -576,7 +576,7 @@ msgstr "Errichtet ein Signalfeuer an der Küste in der Nähe des Kontors."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr "NEUE AUFGABE: SIGNALFEUER BAUEN"
+msgstr "NEUE AUFGABE: SIGNALFEUER"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -679,7 +679,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr "NEUE AUFGABE: HANDEL TREIBEN"
+msgstr "NEUE AUFGABE: HANDELN"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -797,7 +797,7 @@ msgstr "Errichtet einen Pavillon mit einer Verbindung zu Euren Zelten."
 # PAVILION -> Gebetszelt/Gebetshaus/Pfarrhaus
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr "NEUE AUFGABE: PAVILLON BAUEN"
+msgstr "NEUE AUFGABE: PAVILLON"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"

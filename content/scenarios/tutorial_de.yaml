@@ -43,7 +43,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - ''
   - Und nun lasst uns das Spiel beginnen!
   - [Pagebreak]
-  - [Headline, 'NEUE AUFGABE: ERRICHTET EINE SIEDLUNG']
+  - [Headline, 'NEUE AUFGABE: SIEDLUNG BAUEN']
   - [Image, content/gui/images/background/hr.png]
   - Euer Schiff ist auf See, beladen mit den Gütern, die Ihr benötigt, um eine neue Siedlung aufzubauen.
   - Um Euer Schiff zu lenken, wählt es mit einem Linksklick aus. Ein Rechtsklick bewegt es zur gewünschten Position.
@@ -57,7 +57,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &LUMBERJACK
   - [Message, Errichtet ein Holzfällerzelt und verbindet es durch eine Straße mit dem Kontor.]
-  - [Headline, 'NEUE AUFGABE: HOLZFÄLLERZELT BAUEN']
+  - [Headline, 'NEUE AUFGABE: HOLZFÄLLER']
   - [Image, content/gui/images/background/hr.png]
   - Die Vorräte und Baumaterialien wurden vom Schiff entladen und sicher im neuen Kontor gelagert. Nun ist es Zeit, einige elementare Bauten zu errichten, beginnend mit dem Holzfällerzelt.
   - Holzfäller fällen Bäume im Wald in der Nähe ihres Zeltes und verarbeiten diese dann zu Brettern, welche als Baumaterial oder Handelsressource verwendet werden können.
@@ -163,7 +163,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &SIGNALFIRE
   - [Message, Errichtet ein Signalfeuer an der Küste in der Nähe des Kontors.]
-  - [Headline, 'NEUE AUFGABE: SIGNALFEUER BAUEN']
+  - [Headline, 'NEUE AUFGABE: SIGNALFEUER']
   - [Image, content/gui/images/background/hr.png]
   - Habt Ihr das Schiff bemerkt, welches von Zeit zu Zeit Eure Insel ansteuert? Es gehört zum Freien Händler, einem der ersten Siedler in diesem Archipel.
   - Er beliefert Siedlungen mit Gütern, die Ihr momentan noch nicht produzieren könnt.
@@ -188,7 +188,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &TRADING
   - [Message, 'Erreicht einen Lagerbestand von mindestens 30 Werkzeugen auf Eurer Insel. Beachtet, dass dies eine Weile dauern kann.']
-  - [Headline, 'NEUE AUFGABE: HANDEL TREIBEN']
+  - [Headline, 'NEUE AUFGABE: HANDELN']
   - [Image, content/gui/images/background/hr.png]
   - 'Ausgezeichnet! Der Freie Händler hält nun von Zeit zu Zeit an Eurem Kontor.
 
@@ -219,7 +219,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &PAVILION
   - [Message, Errichtet einen Pavillon mit einer Verbindung zu Euren Zelten.]
-  - [Headline, 'NEUE AUFGABE: PAVILLON BAUEN']
+  - [Headline, 'NEUE AUFGABE: PAVILLON']
   - [Image, content/gui/images/background/hr.png]
   - Diese Werkzeuge sollten für den Moment ausreichen. Gut gemacht!
   - Ihr stellt Euren Einwohnern nun Unterkünfte, einen Marktplatz und Nahrung zur Verfügung.
