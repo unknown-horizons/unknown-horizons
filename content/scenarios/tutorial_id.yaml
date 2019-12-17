@@ -109,280 +109,288 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Semua barang - barang di dalam gudang kamu tersedia di 'plaza' ini, jadi para penduduk kamu tidak membutuhkan berjalan kaki ke tenda nelayan  atau bahkan ke gudang.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
-  - You should avoid placing your main settlement tents too close to your lumberjacks because building tents will clear away the trees that your lumberjack needs to produce boards.
-  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
+  - Seharusnya kamu menjauhkan tenda-tenda penduduk dari bangunan penebang pohon, karena membangun tenda-tenda penduduk didekat penebang pohon akan menghilangkan pepohonan yang penebang pohon butuhkan untuk memproduksi papan-papan kayu.
+  - Perusahaan bekerja tanpa harus terhubung ke tenda pemukiman, jadi kamu tidak perlu membangun jalan diantara alun-alun dan misalnya penebang pohon.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Tugas:
+
+      Bangunlah sebuah alun-alun.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Sekarang mari lihat lebih dekat ke alun-alun.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - Di tab 'Akun' kamu akan melihat lembar keseimbangan dari pulau ini, disana menampilkan semua pembayaran yang kamu bayar dan pajak yang kamu dapat.
+  - Barang-barang 'Jual' dan 'Beli' merujuk pada keseimbangan perdagangan milikmu dan akan dijelaskan nanti.
+  - Jika keseimbanganmu bernilai positif, kamu akan mendapatkan keuntungan seutuhnya.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - Di tab ikhtisar tingkatan kamu dapat melihat statistik mengenai pendudukmu. Kamu juga dapat menentukan pajak disini dan dapat mengizinkan atau melarang penduduk meningkatkan rumah-rumah mereka.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Message, Bangunlah sebuah tenda penduduk dan hubungkan ke alun-alun jika memungkinkan.]
+  - [Headline, 'TUGAS BARU: BANGUNLAH PERUMAHAN']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - Penduduk ingin ada atap diatas mereka (rumah), jika tidak mereka tidak ingin tinggal dikotamu! Kamu perlu menyediakan tenda.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
+  - Tenda adalah bangunan perumahan dasar. Pendudukmu akan segera menginginkan tenda-tenda mereka ditingkatkan ketika mereka mencapai ikhtisar tertinggi.
+  - Catat! Peningkatan dari beberapa bangunan membutuhkan bahan baku konstruksi, seperti kayu untuk peningkatan pertama mereka.
+  - Pertimbangkan untuk menonaktifkan Peningkatan jika persediaan bahan bakumu rendah.
+  - Para penduduk mungkin terlihat tidak terlalu berguna sejak mereka sesegera mungkin mencoba mengonsumsi semua barang yang kamu produksi - tapi pada akhirnya mereka akan membayar pajak, dan itu cara satu-satunya untuk menghasilkan uang saat ini!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Tugas:
+
+      Bangunlah sebuah tenda penduduk dan hubungkan ke alun-alun jika memungkinkan. Tenda penduduk tidak perlu dihubungkan ke perusahaan apapun.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, Bangunlah setidaknya 3 tenda penduduk tambahan dan hubungkan ke alun-alun.]
   - '
 
-    Let''s have a look at the Tent overview tab.'
-  - 'You can see
+    Mari kita lihat ke tab ikhtisar tenda penduduk.'
+  - 'Kamu dapat melihat
 
-    * the happiness of these residents,
+    *Kebahagiaan penduduk perumahan ini,
 
-    * the taxes they pay and
+    *Pajak yang mereka bayarkan dan,
 
-    * the resources they demand.'
-  - If their demands are fulfilled, happiness and thus your tax income increase.
-  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
-  - Note that you can also change the global tax settings here, too.
+    *Sumberdaya yang mereka inginkan.'
+  - Jika keinginan mereka terpenuhi, kebahagiaan mereka dan demikian juga pada peningkatan pendapatan pajakmu.
+  - Jika tidak, kebahagiaan dan pendapatan akan menurun. Pada saat-saat tertentu pendudukmu akan muram dan dengan mudah mengacuhkan desamu dan meninggalkan kehancuran yang membusuk.
+  - Catat! kamu juga dapat mengubah pengaturan pajak global disini.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'Tugas:
+
+      Bangunlah setidaknya 3 tenda penduduk.']
   - '
 
-    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
+    Tips: Tahan tombol SHIFT ketika membangun bangunan yang sama.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
-  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - [Message, Bangunlah sebuah Sinyal Api di bibir pantai dekat dengan gudang milikmu.]
+  - [Headline, 'TUGAS BARU: BANGUNLAH SINYAL API']
   - [Image, content/gui/images/background/hr.png]
-  - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
-  - The trader will supply your settlement with necessary goods which you can't produce yet.
-  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
+  - Dapat kamu lihat kapal melewati pulau mu dari waktu ke waktu? Kapal-kapal itu merupakan Pedagang Bebas, salah satu pemukim pertama di kepulauan ini.
+  - Pedagang akan menyediakan pemukimanmu dengan barang-barang kebutuhan yang mana tidak dapat kamu produksi.
+  - Kamu juga dapat menjual kelebihan produksimu, tapi secara umum kamu mengkonsumsinya (dengan membangun lebih banyak Tenda) alih-alih menjualnya menghasilkan lebih banyak keuntungan.
+  - Normalnya pedagang hanya berlayar disekitar dan mencari penawaran, tapi kamu dapat mempercepatnya sedikit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
-  - The Signal Fire has to cover the area which the ships pass through to catch them.
+  - Untuk ini, bangunlah sinyal api di tepi pantai dekat gudangmu. Itu akan menunjukkan kapal, jalan ke pemukimanmu.
+  - Sinyal Api dapat menjangkau area yang mana banyak kapal berlalu begitu saja untuk menarik mereka.
   - [Pagebreak]
   - '
 
-    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
-  - You can propose deals via the Warehouse tab "Buy/Sell".
+    Setelah iklan kecil ini, pedagang akan berlabuh dan melihat-lihat gudangmu, bahkan jika ia berencana melewatinya.'
+  - Kamu dapat mengatur penawaran lewat tab "Jual/Beli" di gudang.
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
-  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
-  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
+  - Di tingkatan 'pelaut', kamu hanya dapat menggunakan 3 petak penjualan.
+  - Ketuk pada ikon kecil untuk mengubah mode petak dari 'Jual' ke 'Beli' dan sebaliknya.
+  - Ketuk pada petak dagang untuk memilih barang yang ingin kamu perdagangkan. Kami akan jelaskan ini ketika kamu sudah siap untuk berdagang.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'Tugas: Bangunlah sebuah sinya api di tepi pantai dekat dengan gudangmu.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
-  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - [Message, Capai persediaan pulau setidaknya 30 alat. Catat! ini butuh waktu.]
+  - [Headline, 'TUGAS BARU: PELAJARI PERDAGANGAN']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - 'Bagus! Sekarang pedagang bebas akan berlabuh di gudangmu seiring waktu.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
-  - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
-  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
-  - When buying, you will buy sufficient to hold your 'target value' in stock.
-  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
+    Ayo lanjukan pembelajaran(tutorial) kita pada ''bagaimana caranya berdagang''.'
+  - Pertama, ketuk gudangmu lalu ketuk tab ketiga.
+  - Kemudian ketuk salah satu dari tiga petak dagang, lalu pilih barang yang ingin kamu beli atau jual.
+  - Setelah memilih barang tertentu, bilah hijau di bagian bawah petak dagang (jika terlihat) menampilkan banyaknya persediaan barang milikmu.
+  - Seret penggeser dikanan petak dagangmu untuk menentukan 'Jumlah/Nilai Target' yang mana berbeda dengan istilah 'Jual/Beli'.
+  - Ketika membeli, kamu akan cukup/selesai membeli sesuai 'Nilai Target' di persediaan.
+  - Ketika menjual, 'Nilai Target' adalah jumlah persediaan yang dijadikan Nilai Batas Jual. ketika melebihi batas, sumberdaya akan dijual. Ketika jumlah sumberdaya dibawah ambang batas, makan barang tidak akan dijual sampai jumlah barangmu melebihi batas yang tadi kamu tentukan.
   - [Pagebreak]
   - '
 
-    For example:
+    Sebagai contoh:
 
-    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
-  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+    Kamu punya petak dagang yang kamu ''jual'' dengan persediaan yang kamu miliki 5 ton, tapi penggeser disebelah kanan menunjukkan batas di 9 ton. Maka kamu akan membeli 4 ton lagi sehingga mencapai batas 9 ton.'
+  - Sama seperti 'Beli'. jika kamu punya satu petak 'Jual' dengan persediaan 18 ton dan penggeser dikanan menunjukkan batas 13 ton, makan persediaanmu akan terjual 5 ton hingga mencapai batas 13 ton. Jika persediaanmu sudah melebihi batas maka akan dijual kembali.
+  - Jika pedagang bebas hanya ingin membeli/menjual kurang dari yang kamu atur, kamu harus menunggu hingga pedagang bebas kembali datang membeli/menjual lagi.
+  - 'Uknown Horizon menyediakan Harga Pintar, jadi nilai satu unit dapat berbeda-beda.
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+    Tapi, Ini TIDAK memungkinkan kamu untuk mengubah harganya secara manual!'
+  - Kamu dapat melihat keseimbangan perdaganganmu di opsi 'Akun', dan tab perbandingan 'jual' dan 'beli' ada disana.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Tugas: Belilah beberapa alat sesuai yang kamu butuhkan hingga persediaanmu mecapai 30 alat!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
-  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - [Message, 'Bangunlah Paviliun dengan menghubungkannya ke tenda-tenda penduduk.
+
+      *KBBI : Paviliun berarti bangunan tambahan disebelah rumah induk.']
+  - [Headline, 'TUGAS BARU: BANGUNLAH SEBUAH PAVILIUN']
   - [Image, content/gui/images/background/hr.png]
-  - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
+  - Alat-alat itu akan cukup untuk saat ini, Selesai dengan baik!
+  - Sekarang kamu sediakan perumahan, alun-alun dan makanan untuk pendudukmu.
+  - 'Sampai disini ada satu permintaan yang belum kita penuhi dan tidak terlalu sulit (Kamu perlu memeriksanya, dengan mengetuk tenda penduduk): Pelautmu ingin bangunan dasar dimana ia dapat berdoa/beribadah.'
+  - Solusinya adalah Paviliun yang pemuka agama cepat tempatkan di pemukiman dari matahari.
+  - Pelayanan bangunan seperti ini juga butuh terhubung ke tenda penduduk dengan jalan, jika tidak para penduduk tidak dapat menjangkaunya.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
-  - 'Important:
+    Catat! Kepercayaan itu diperlukan, seperti sumberdaya jiwa!'
+  - Maknanya, pendudukmu butuh jalan yang menghubungkannya ke bangunan ibadah.
+  - Setelah beberapa waktu, mereka akan mengkonsumsinya dan kemudian mencari produser untuk mengumpulkan lebih banyak keyakinan.
+  - 'Penting:
 
-    It is NOT enough that the building is merely within a certain range of the Tents.
+    ini TIDAK cukup untuk pemukiman, karena bangunan tersebut memiliki kisaran tertentu.
 
-    The road connection is required as well.'
+    Cobalah untuk mengatur koneksi jalan sebaik-baiknya.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Tugas: Buatlah Paviliun dengan jalan ke tenda penduduk dalam rangka memenuhi permintaam untuk kepercayaan (ibadah).']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Message, Tetapkan tingkatan pajak ke Paling Rendah (Pojok Kiri) dan tunggu hingga pelaut ditingkatkan.]
+  - [Headline, 'TUGAS BARU: TINGKATAN BERIKUTNYA']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
-  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Semua permintaan telah dipenuhi, sekarang jika pendudukmu dapat mengunjungi alun-alun secara teratur dan paviliun serta pasokan makanan cukup.
+  - Jika pelaut cukup senang, mereka ingin ditingkatkan lagi ke tingkatan berikutnya, yaitu Pelopor (Pioneers).
+  - Untuk membuat mereka senang, Tidak ada cara lain selain menetapkan pajak ke paling rendah sejak kamu memenuhi semua kebutuhannya.
+  - Seharusnya kamu tidak selalu mencoba menurunkan pajak hingga terendah sejak saat ini atau kita akan jatuh dalam kebankrutan kedepan atau nanti. Untuk periode ini dan jika kamu tau apa yang kamu lakukan, ya.. itu tidak mengapa.
+  - Setelah beberapa waktu, Unit Pertama harus berjalan ke alun-alun dan mencari bahan baku kontruksi baru disana untuk membangun rumah kayu, untuk menggantikan tenda tua.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
-  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
-  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
+    Seperti peningkatan perumahan, biaya sumberdaya dapat dibatasi di alun-alun.'
+  - Disana juga ada peningkatan dari bangunan tanpa biaya, seperti yang kamu lihat penebang pohon. Dalam kasus ini, hanya perubahan grafis.
+  - Meningkatkan perumahan mengakomodasikan lebih banyak penduduk, dan pelopor membayar lebih banyak pajak daripada pelaut.
+  - Seperti yang mungkin sudah kamu ketahui, kelemahan permintaan pelopor adalah barang-barang tambahan yang mana pelaut tidak butuhkan - jadi kamu akan butuh meluangkan lebih banyak uang untuk membuat mereka senang.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Tugas: Tetapkan tingkatan pajak ke paling rendah (Pojok Kiri) dan tunggu hingga pelopor ditingkatkan.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, 'NEW TASK: BUILD A FARM']
+  - [Message, Bangun perkebunan dan jaga supaya tempat disekelilingnya tetap kosong.]
+  - [Headline, 'TUGAS BARU: BANGUNLAH PERKEBUNAN']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
-  - Now you have access to new buildings, take a look at the Build menu again.
+  - Selamat! Beberapa pendudukmu sudah mencapai tingkatan 2!
+  - Sekarang kamu punya akses ke bangunan yang baru, coba lihat ke daftar bangunan lagi.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - Tab baru yang Berkilau muncul disana.
+  - Pelopor akan menginginkan pakaian, jadi kamu perlu menetapkan produksi untuk pakaian, dengan memulainya dengan wool domba (yang mana merupakan barang produksi dari perkebunan).
+  - Perkebunan merupakan bangunan produksi yang sangat spesial sejak ia dapat memproduksi lebih dari satu jenis barang, tapi banyak (dan berbeda) barang jika kamu memilihnya.
+  - Pengeluaran dari perkebunan tergantung ladang apa saja yang kamu buat disekelilingnya.
   - [Pagebreak]
   - '
 
-    We will have a closer look at this later.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
-  - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+    Kita akan melihat lebih dekat nanti.'
+  - Perkebunan, seperti semua persuhaan memproduksi bahan mentah, tidak perlu menghubungkannya ke gedung penyimpanan ataupun gudang.
+  - Selama unit dari perusahaan produksi akhir dapat mencapai Pertanian, dan kolektor dari Gudang atau Tenda Penyimpanan dapat mencapai perusahaan akhir semuanya baik-baik saja.
+  - Jika kamu, mungkin, merencanakan proses dalam bagian yang berbeda di pulau (yang masuk akal) atau mungkin di pulau yang lain, kamu perlu menghubungkannya dengan pengumpul barang ; gudang atau gedung pengumpul barang.
+  - Cobalah bangun perkebunan tidak terlalu dekat dengan bibir pantai atau bangunanmu lainnya, karena itu memerlukan ruang disekitarnya.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'Tugas: Bangunlah Perkebunan.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Build at least one pasture and add potato fields if you like.]
-  - [Headline, 'NEW TASK: BUILD FIELDS']
+  - [Message, Bangun setidaknya satu padang rumput dan tambahkan ladang kentang jika kamu suka.]
+  - [Headline, 'TUGAS BARU: BANGUN LADANG']
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
-  - You currently have the choice between pastures, potato and sugar fields.
-  - 'Let''s have a short overview:
+  - Perkebunan sendiri tidak akan memproduksi sesuatu tanpa adanya ladang.
+  - Sekarang kamu harus memilih diantara Padang Rumput, Kentang atau Ladang Tebu (gula).
+  - 'Mari kita lihat ikhtisar singkatnya:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    *Padang Rumput: Domba tinggal disini, memproduksi bulu domba sebagai wool.
 
-    * Potato Field: Grows potatoes which are currently treated as food.
+    *Ladang Kentang: Menumbuhkan kentang, yang mana akan memproduksi makanan.
 
-    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
-  - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
-  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
+    *Ladang Tebu: menumbuhkan tebu, yang mana akan digunakan sebagai gula pada penyulingan minuman (bir) dan nantinya dapat pula memproduksi gula-gula/makanan manis.'
+  - Sekarang kita hanya butuh padang rumput, tapi pada kasus menyediakan rantai makanan, ini terlalu kecil (mungkin banyak perumahan) kamu juga dapat memproduksi beberapa kentang.
+  - Catat! Untuk produksi kentang, kamu perlu jalan yang menghubungkannya ke perkebunan bukan ke ladang, karena produksi kentang merupakan produksi akhir (tidak ada produksi selanjutnya yang mengelola kentang).
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
-  - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
-  - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
+    Pastikan semua ladangmu, kamu buat di area yang dapat dijangkau perkebunan.'
+  - Kamu dapat membuat kombinasi produksi - satu padang rumput tidak akan mengarahkan 100% efisiensinya - tapi kamu perlu memeriksa berapa banyak ladang yang dapat ditampung perkebunan.
+  - Berbeda jenis ladang diperlukan untuk mengisi waktu kosong perkebunan. Contohnya ketika habis masa panen, ia akan menunggu lama hingga masa panen berikutnya tiba, maka diperlukan ladang yang lain. Dan karenanya, perkebunan mungkin tidak dapat menghasilkan semuanya dalam satu waktu.
+  - Untuk saat ini, kamu tidak perlu terlalu memperhatikan hal-hal tadi, karena kamu belum membangun ladang apapun, Ayo ubah itu!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'Tugas: Bangun setidaknya satu padang rumput di jangkauan perkebunan dan tambahkan ladang kentang jikalau kamu suka.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
-  - [Headline, 'NEW TASK: BUILD STORAGE']
+  - [Message, Bangunlah sebuah tenda penyimpanan (terletak pada tab tingkatan pertama) yang mana masuk akal.]
+  - [Headline, 'TUGAS BARU: BANGUNLAH PENYIMPANAN']
   - [Image, content/gui/images/background/hr.png]
-  - Did you watch your lumberjack recently?
-  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
-  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
-  - We can improve this situation in two different ways, and we will have a look at both of them below.
-  - 'All companies offer to do no work at all.
+  - Apakah kamu lihat penebang pohonmu baru-baru ini?
+  - Sejak gudangmu tidak lagi memiliki ruang tersisa, kolektor/pengumpul sumberdaya akan berhenti mengambilnya dari tiap perusahaan.
+  - Jadi, jika baru-baru ini tidak ada pelaut yang meningkatkan tenda-tenda mereka, mungkin kamu punya banyak papan dan dapat saja penebang pohon menganggur.
+  - Kita dapat membenahi situasi ini dalam 2 jalan yang berbeda, dan kita akan melihatnya dibawah ini.
+  - 'Semua perusahaan menawarkan untuk tidak bekerja.
 
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
-  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+    Ini mungkin terdengar asing, tapi ketuk pada lambang roda bergerigi yang kamu lihat di opsi penebang pohon.'
+  - Jika mode 'break' atau 'istirahat' diaktifkan (kita menyebutnya 'Decomissioning' berarti 'Penonaktifan'), pajak bangunan tersebut akan menurun. Tapi tidak sepenuhnya menjadi Nol '0'. Tapi pajaknya lebih rendah dari pada ketika kamu membiarkannya tetap memproduksi.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+    Ini berarti kamu dapat menghemat uangmu ketika kamu tidak memerlukan suatu perusahaan dan tidak ingin menurunkan tingkatannya.'
+  - Solusi lainnya adalah membangun bangunan tingkat 1, yaitu Tenda Penyimpanan (dilain waktu dapat meningkat ke tingkatan 2 menjadi gedung penyimpanan).
+  - 'Bangunan ini memiliki 2 fungsi, yaitu:
 
-    * Offers more storage for your goods, and
+    *menyediakan lebih banyak kapasitas penyimpanan barang, dan
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+    *mengirimkan orang-orang pengumpul sumber daya untuk mengumpulkan barang, seperti yang gudang lakukan.'
+  - Catat! Perusahaan dapat juga terhubung ke penyimpanan dalam rangka mengumpulkan hasil produksi, dan jika gudang kewalahan dengan tugas mengumpulkan barang-barang, kamu dapat menempatkan tenda penyimpanan untuk membantunya.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'Tugas: Bangunlah tenda penyimpanan, dimana kamu butuh pengumpul barang.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
-  - [Headline, 'NEW TASK: BUILD A WEAVER']
+  - [Message, Bangunlah pondok penenun yang dapat menjangkau perkebunan wool kamu.]
+  - [Headline, 'TUGAS BARU: BANGUNLAH PENENUN']
   - [Image, content/gui/images/background/hr.png]
-  - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - Sekarang produksi wool sudah diatur, kamu perlu penenun untuk meproduksi pakaian dari wool tersebut.
+  - Pondok penenun adalah tempat dimana penenun tinggal. Ada 2 tempat dimana kamu dapat membangunya - ditempat dimana dekat perkebunan atau didekat penyimpanan atau gudang.
+  - Dalam kasus yang lain, kamu perlu menghubungkannya dengan jalan.
+  - Kamu dapat menempatkan pondok penenun dekat dengan perkebunan dan pastikan ada jalan yang menghubungkannya.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'Tugas: Bangun pondok penenun dan posisikan ia sehingga dapat memperoleh wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance.]
-  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
+  - [Message, Raih Rumah dengan jumlah 50 atau lebih banyak penduduk di kotamu untuk menyelesaikan pembelajaran atau tutorial. Dan kamu butuh keseimbangan yang positif.]
+  - [Headline, 'TUGAS BARU: SELESAIKAN PEMBELAJARAN']
   - [Image, content/gui/images/background/hr.png]
-  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
-  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - Coba bangun rumah dengan jumlah 50 atau lebih penduduk di kotamu dengan menyediakan lebih banyak bangunan perumahan.
+  - Selagi kamu dapat menjaga perekonomian berjalan yang dapat membuat pelanggan puas, kamu siap menjelajahi Unknown Horizon yang baru!
+  - Kamu juga butuh cukup uang untuk menjaga perekonomian tetap berjalan, jadi keseimbangan yang positif diperlukan (coba periksa di gudang, lalu ketuk tab 'Akun').
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Tugas: Capai jumlah 50 penduduk dan keseimbangan ekonomi yang positif untuk menyelesikan pembelajaran.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
-  - [Headline, NO TASKS LEFT]
+  - [Message, Selamat! Kamu sudah mencapai akhir dari pembelajaran ini dan kamu sudah siap untuk bertemu tantangan baru!]
+  - [Headline, TIDAK ADA TUGAS TERSISA]
   - [Image, content/gui/images/background/hr.png]
-  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
-  - www.unknown-horizons.org
+  - Kamu sudah menyelesaikaikan semua tugas yang dibebankan kepadamu. Sekarang dunia ada dalam genggamanmu, menunggu aspirasimu yang bebas dan keberanianmu menjelajah!
+  - 'Jika kamu punya beberapa saran yang perlu kita lakukan atau beberapa perbaikan, tambahkan atau tinggalkan :'
+  - www.unknown-horizon.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
-  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
+  - Forum kami terbuka untukmu!
+  - Hasil terbaik sampai sekarang yang diraih dengan bergabung channel kit IRC, jadi kamu dapat mencobanya pertama kali (-;
   - [Pagebreak]
-  - [Headline, Thanks!]
+  - [Headline, Terimakasih!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -390,7 +398,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Thanks for playing the tutorial!
+    Terimakasih telah bermain di pembelajaran!
 
 
     Your UH-Team'
@@ -651,8 +659,8 @@ events:
 metadata:
   author: The UH team
   description: Bangun pemukiman pertama kamu dan belajar bagaimana cara bermain!
-  difficulty: Tingkat kesulitan skenario.
+  difficulty: Tutorial
   locale: id
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 48 translated messages, 140 untranslated messages.
+  translation_status: 188 translated messages.
