@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-12-16 16:36+0000\n"
+"PO-Revision-Date: 2019-12-18 22:21+0000\n"
 "Last-Translator: Dhimas Wnz <dhi.mas26wnz@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/uh/id/>\n"
 "Language: id\n"
@@ -700,7 +700,6 @@ msgstr "Pilih sumber daya:"
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
-#, fuzzy
 msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
@@ -709,7 +708,6 @@ msgstr ""
 "mengetuk tanda X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
-#, fuzzy
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
 "Simpan konfigurasi sumberdaya saat ini sebagai standar untuk semua pemukiman."
@@ -720,7 +718,6 @@ msgstr "Setel ulang konfigurasi standar sumberdaya untuk semua pemukiman"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
-#, fuzzy
 msgid "Move up"
 msgstr "Naik"
 
@@ -953,7 +950,6 @@ msgstr "Agresif"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
-#, fuzzy
 msgid "Hold ground"
 msgstr "Pertahanan Bawah"
 
@@ -1093,7 +1089,6 @@ msgid "Quickload"
 msgstr "Muat Cepat"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
-#, fuzzy
 msgid "Toggle translucency of ambient buildings"
 msgstr "Matikan transparansi bangunan"
 
@@ -1102,51 +1097,50 @@ msgid "Highlight tile ownership"
 msgstr "Sorot petak kepemilikan"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:34
-#, fuzzy
 msgid "Toggle health bars"
 msgstr "Matikan bar kesehatan"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:35
 msgid "Focus camera on selection"
-msgstr ""
+msgstr "Fokuskan kamera yang dipilih"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Remove selected units / buildings"
-msgstr ""
+msgstr "Hapus yang dipilih"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Display help"
-msgstr ""
+msgstr "Tampilan Bantuan"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:38
 msgid "Screenshot"
-msgstr ""
+msgstr "Cuplikan Layar"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Toggle showing FPS on/off"
-msgstr ""
+msgstr "Mengaktifkan / menonaktifkan FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:40
 msgid "Toggle grid on/off"
-msgstr ""
+msgstr "Matikan / hidupkan grid"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:41
 msgid "Show coordinate values (Debug)"
-msgstr ""
+msgstr "Tampilkan nilai koordinat (Debug)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:45
 msgid "Primary"
-msgstr ""
+msgstr "Utama"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:49
 msgid "Secondary"
-msgstr ""
+msgstr "Sekunder"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default"
-msgstr ""
+msgstr "Setel ulang ke default"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 #, fuzzy
@@ -1156,7 +1150,7 @@ msgstr "Kembalikan ke pengaturan awal"
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:51
 msgid "Save game"
-msgstr ""
+msgstr "Simpan permainan"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
@@ -3426,7 +3420,7 @@ msgstr ""
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Protokol permainan bersama sudah tua atau tidak didukung lagi. Mohon cek "
+"Protokol permainan bersama sudah tua atau tidak didukung lagi. Mohon periksa "
 "versi permainan anda"
 
 #: horizons/network/server.py:339
@@ -3465,7 +3459,7 @@ msgstr "Permainan sudah dimulai. Tidak bisa bergabung lagi"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr "Permainan sudah penuh."
+msgstr "Permainan sudah penuh"
 
 #: horizons/network/server.py:469
 msgid "Wrong password"
