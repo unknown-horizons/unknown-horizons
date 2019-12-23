@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Rakenna sivutoimisto rannikolle, hyvien kulkuyhteyksien äärelle.']
+  - [Message, 'Rakenna varasto rannikolle, että kauppalaivat pääsevät vierailemaan asutuksellasi.']
   - '
 
 
@@ -24,104 +24,99 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Tämä on Kapteenin päiväkirja, johon kootaan paljon tärkeitä peliin liittyviä tietoja. Pelin aikana tulee tehtäviä, joista ilmoitetaan peli-ikkunan vasemmassa reunassa.
-  - Tulevista tehtävistä löytyy lisätietoja tästä päiväkirjasta.
-  - Päiväkirjan voi avata uudelleen napsauttamalla Kapteenin päiväkirja -kuvaketta peliruudun oikeassa yläkulmassa (pienoiskartan alapuolella).
+  - Tämä on päiväkirjasi, johon on tallennetu tärkeää tietoa nykyisestä scenaariosta. Tiivistelmä jokaisesta uudesta tehtävästä tulee näkymään myös ilmoituspainikkeina näytön vasempaan reunaan. Voit lukea tiivistelmän viemällä hiiren kursorin näiden ilmoutuspainikkeiden päälle tai avata päiväkirjan painamalla ilmoituspainiketta hiirellä.
+  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    Tutustu ensimmäiseen tehtävään napsauttamalla Seuraava merkintä -kuvaketta päiväkirjan alalaidassa. Kuvake näyttää tältä:'
+    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    Jos keksit ehdotuksia paremmalle kieliopille, haluaisit kuulla jostain lisää tai törmäät vikatilanteeseen, kerrothan siitä meille, jotta voimme parantaa tätä harjoituspeliä!'
+    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
   - '
 
-    Kehitysryhmämme yhteystiedot löytyvät verkkosivuiltamme osoitteesta www.unknown-horizons.org!'
-  - Ja nyt viimeinkin, aloitetaanpas itse peli.
+    Visit www.unknown-horizons.org to find out how to contact the team.'
+  - ''
+  - And now, let's start the game!
   - [Pagebreak]
-  - [Headline, ASETU SAARELLE]
+  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
   - [Image, content/gui/images/background/hr.png]
-  - Liikuta laivaasi valitsemalla se hiiren vasemmalla painikkeella ja oikealla sijainti, johon haluat sen menevän.
-  - Kun olet rannikon lähellä, ankkurin kuvake laivan yleiskatsauksessa muuttuu aktiiviseksi.
+  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
+  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
+  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Tämä kertoo, että voit rakentaa sivutoimiston tähän napsauttamalla tätä painiketta (nimeltään Perusta siirtokunta).
-  - Hiirtä liikutellessa pitäisi nyt sen yhteydessä olla sivutoimiston esikatselukuva.
-  - Sivutoimiston voi rakentaa mihin tahansa, kunhan rakennuksen kuvalla ei ole punertavaa värisävyä. Sivutoimisto sijoitetaan rannikolle. Valitse sopiva paikka ja rakenna sivutoimisto napsauttamalla hiiren vasenta painiketta.
+  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
+  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
   - ''
-  - [BoldLabel, 'Task: Build a warehouse at the coast.']
+  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
 
 - &LUMBERJACK
-  - [Message, Rakenna puunhakkaaja ja yhdistä se sivutoimistoon polulla.]
-  - [Headline, RAKENNA PUUNHAKKAAJA]
+  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
+  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
   - [Image, content/gui/images/background/hr.png]
-  - Laivan lastina olleet tavarat puretaan siirtokuntaan automaattisesti. Voit nyt rakentaa joitain perusrakennuksia.
-  - Aloitetaan puunhakkaajalla.
-  - Puunhakkaaja on tärkeä, koska sen tuottamia lautoja tarvitaan useimpiin rakennuksiin, kuten asukkaiden telttoihin.
-  - Myös kalastaja tarvitsee lautoja alustensa rakentamiseen.
-  - 'Rakenna puunhakkaaja näin: avaa aluksi rakennusvalikko joko napsauttamalla pikkukartan alapuolella olevista napeista keskimmäistä tai painamalla pikanäppäintä B.'
+  - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
+  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - To build a Lumberjack's Tent, open the Build Menu by clicking the button below the mini map or pressing 'B', the default hotkey.
   - - Gallery
     - [content/gui/icons/widgets/minimap/build.png]
-  - Rakennusvalikko on ryhmiteltu siirtokunnan tason mukaan välilehtiin (vasen reuna).
-  - Peli alkaa ensimmäisellä tasolla (Merimiehet-taso), joten voit rakentaa vain ensimmäisen tason rakennuksia.
+  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
   - [Pagebreak]
-  - '
-
-    Siirtokunnan kehittyessä tarjolle tulee lisää rakennuksia.'
-  - Nyt kuitenkin riittää, että valitset puunhakkaajan kohdasta Yritykset ja rakennat sen alueelle, jossa on riittävästi puita.
-  - Voit tarvittaessa myöhemmin myös istuttaa puita - mutta se maksaa rahaa. Käytä ensisijaisesti sitä, mitä luonto sinulle tarjoaa.
-  - Yritys tarvitsee polkuyhteyden varastoon tai sivutoimistoon, muuten tavarat jäävät yritykselle eikä niitä saada kerättyä.
-  - Rakenna siis polku puunhakkaajalta sivutoimistolle tai varastolle.
   - ''
-  - [BoldLabel, 'Task: Build a lumberjack in a wooded area and connect it to a road.']
-  - Katsele, kun kerääjä hakee ensimmäiset itsevalmistetut lautasi. Älä huolehdi lisätyövoiman palkkauksesta, sillä se tapahtuu automaattisesti.
+  - Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's Tent' from the list of buildings in the Overview and place the building.
+  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Any resource-gathering or production building needs a path connecting it to a Warehouse or other form of storage, otherwise the goods it produces will not be collected.
+  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - ''
+  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
+  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
   - - Gallery
     - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
 
 - &FOOD
-  - [Message, Rakenna metsästäjä ja kalastaja ja yhdistä ne sivutoimistoosi.]
+  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
   - [Headline, RUOKAVARASTO]
   - [Image, content/gui/images/background/hr.png]
-  - Tulet tarvitsemaan myös ruokaa tuottavia yrityksiä, sillä asukkaasi tarvitsevat ruokaa.
-  - Ensimmäisen tason yritykset ovat kalastaja ja metsästäjä.
-  - Metsästäjä (yllätys yllätys) metsästää eläimiä metsästä. Se tuleekin sijoittaa metsään.
-  - Huomaa, että paras paikka metsästäjälle on puunhakkaajan vieressä.
+  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
+  - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
+  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Metsästäjän huonona puolena eläimet eivät välttämättä lisäänny riittävän nopeasti tai osaavat piiloutua liian hyvin.
-  - 'Johtopäätös: metsästäjä ei ole sataprosenttisen luotettava pitkäntähtäimen ruokatuotantoon.'
+  - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
   - [Pagebreak]
   - '
 
-    Kalastaja pitää rakentaa rannikolle kuten sivutoimistokin ja sen lähelle tulee myöhemmin rakentaa kalastuskoulu.'
+    The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
   - Kalastaja rakentaa pienen soutuveneen ja alkaa pyydystämään kaloja.
   - Kalastus on todella varma ja pitkäikäinen ruoanlähde, mutta hitaampaa ja pienituottoisempaa kuin metsästäminen.
   - Pieni asutuskeskus - kuten omasi - voi käyttää molempia, jolloin pystyt paremmin tasapainottamaan hyvät ja huonot puolet.
   - ''
-  - [BoldLabel, 'Task: Build a hunter and a fisher.']
-  - Älä unohda yhdistää niitä polulla sivutoimistoosi!
+  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, 'Rakenna keskustori. Valitse alue, jolla ei ole liian montaa tuotantorakennusta.']
+  - [Message, Build a Main Square. Choose an area without many economy buildings.]
   - [Headline, KESKUSTORI]
   - [Image, content/gui/images/background/hr.png]
   - Asukkaasi tarvitsevat keskustorin, jolta he voivat hankkia elintarvikkeensa.
-  - This means that they need a trail connection from their home to the main square. Note that the main square acts as trail as well, therefore adjacent tents do not need a separate trail.
-  - Kaikki elintarvikkeet sivutoimistollasi ovat saatavilla tältä "kauppapaikalta", joten asukkaidesi ei tarvitse kävellä erikseen kalastajalle, metsästäjälle tai edes sivutoimistolle.
+  - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
+  - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
     - [content/gui/icons/buildmenu/004_h.png]
   - Vältä telttojen sijoittamista puunhakkaajan läheisyyteen, sillä teltan pystyttäminen raivaa paikalla olevat puut (ja et pääse sahaamaan niitä laudoiksi hyötykäyttöön).
-  - Yritysten toiminta jatkuu, vaikka niillä ei olisikaan kulkuyhteyttä keskustorille.
+  - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a main square.']
+  - [BoldLabel, 'Task: Build a Main Square.']
   - [Pagebreak]
   - '
 
-    Tutustutaan kuitenkin nyt tarkemmin keskustoriin.'
+    Now let''s have a closer look at the Main Square.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - Yleiskatsauksessa näet siirtokuntasi taloudellisen tilan, kuten ansaitsemasi verot ja rakennuksien ylläpitoon kuluvat juoksevat kulut.
@@ -132,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Eri tasojen mukaan ryhmitellystä yleiskatsauksesta näkee tietoja asukkaista. Voit määritellä siirtokuntatasokohtaisen veroprosentin ja sallia tai kieltää asukkailta oikeuden tasonsa päivittämiseen.
 
 - &FIRSTTENT
-  - [Message, Build a tent and connect it to the main square if necessary.]
+  - [Message, Build a Tent and connect it to the Main Square if necessary.]
   - [Headline, ASUINRAKENNUKSET]
   - [Image, content/gui/images/background/hr.png]
   - Uudisasukkaat haluavat katon päänsä päälle, muuten he eivät tule lähellekään siirtokuntaasi! Sinun pitää siis pystyttää telttoja.
@@ -143,13 +138,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Harkitse päivitysten kieltämistä, jos materiaalit ovat vähissä.
   - Uudisasukkaat eivät välttämättä vaikuta hyödyllisiltä, sillä he kuluttavat tuottamiasi elintarvikkeita. He kuitenkin maksavat veroja, ja se on tällä hetkellä ainoa tapa, jolla saat rahaa!
   - ''
-  - [BoldLabel, 'Task: Build a tent and connect it to the main square if necessary. Tents dont need to be connected to any of the companies.']
+  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
 
 - &MORETENTS
-  - [Message, Rakenna vähintään kolme telttaa lisää ja yhdistä ne keskustoriin.]
+  - [Message, Build at least three additional Tents and connect them to the Main Square.]
   - '
 
-    Katsotaanpa telttayleiskatsauksen välilehteä.'
+    Let''s have a look at the Tent overview tab.'
   - 'Näet teltan asukkaiden
 
     * onnellisuuden,
@@ -161,44 +156,46 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jos et täytä, onnellisuus ja tulot laskevat. Asukkaat saattavat tulla hyvin happamiksi ja yksinkertaisesti kääntää selkänsä kylällesi jättäen taakseen murenevat rauniot.
   - Huomaa, että veroprosenttia voi muuttaa myös telttakohtaisesti.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional tents.']
+  - [BoldLabel, 'Task: Build at least three additional Tents.']
   - '
 
     VINKKI: Shift-näppäimen pitäminen pohjassa helpottaa usean saman rakennuksen rakentamista.'
 
 - &SIGNALFIRE
-  - [Message, Rakenna merkkituli rannikolle sivutoimistosi lähettyville.]
+  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
   - [Headline, RAKENNA MERKKITULI]
   - [Image, content/gui/images/background/hr.png]
   - Oletko huomannut laivan ohittavan säännöllisesti siirtokuntasi? Alus on vapaakauppiaan, joka oli yksi saariston ensimmäisistä uudisasukkaista.
   - Kauppiaalta voi ostaa hyödyllisiä tarvikkeita, joita et voi tuottaa vielä itse.
-  - Tarvittaessa voit myydä myös ylijäämätuotantoasi, mutta tämä kannattaa ennemminkin korvata rakentamalla lisää telttoja (jolloin asukkaita tulee lisää ja resursseja kuluu enemmän).
-  - Normaalisti kauppa-alukset vain kiertelevät ympäriinsä etsien hyviä kauppapaikkoja, mutta voit nopeuttaa tätä prosessia.
+  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
+  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - Tätä varten rannikolle pitää rakentaa merkkituli sivutoimistosi lähelle. Se osoittaa kauppalaivoille tien siirtokuntaasi.
-  - Siirtotulikaan ei näy loputtoman kauaksi, vaan sillä on tietty kantama-alue, jonka sisällä kulkevat laivat huomaavat sen.
+  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
+  - The Signal Fire has to cover the area which the ships pass through to catch them.
   - [Pagebreak]
   - '
 
-    Tämän pikku mainostuksen jälkeen kauppias alkaa etsiä sivutoimistoasi.'
-  - Voit ehdottaa kauppoja sivutoimiston Kaupankäynti-välilehdeltä.
+    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
+  - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
   - Merimies-tasolla sinulla on kolme kauppapaikkaa, eli voit asettaa korkeintaan kolme tarjousta vapaakauppiaalle kerrallaan.
   - Voit muuttaa myyntitarjouksen ostotarjoukseksi napsauttamalla kauppapaikan vasemman yläkulman pienestä kuvakkeesta.
   - Valitse kaupattava tuote napsauttamalla kauppapaikkaa. Kerromme tästä ominaisuudesta myöhemmin, kun olet valmis kaupankäyntiin.
   - ''
-  - [BoldLabel, 'Task: Build a signal fire at the coast close to your warehouse.']
+  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
 
 - &TRADING
   - [Message, 'Varastoi saarellesi vähintään 30 työkalua. Huomaa, että tämä saattaa kestää kauan.']
   - [Headline, KAUPANKÄYNNIN PERUSTEET]
   - [Image, content/gui/images/background/hr.png]
-  - 'Loistavaa! Vapaakauppias pysähtyy nyt säännöllisesti sivutoimistollasi.
+  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
 
-    Jatketaan kaupankäyntiin tutustumisella.'
+    Let''s continue our tutorial on how to trade.'
+  - First click on your own Warehouse and click on the third tab.
+  - Then click on one of the 3 slots, then select a good you want to buy or sell.
   - Kun olet valinnut kauppapaikkaan resurssin, oikeassa reunassa oleva vihreä palkki näyttää, kuinka paljon tätä resurssia on varastossa. Jos resurssia ei ole yhtään, palkkia ei näy.
   - Liikuttamalla liukusäädintä tavararuudun (kauppapaikan) oikealla puolella valitaan kuinka paljon tavaraa korkeintaan myydään tai ostetaan.
   - Ostaessa liukusäätimen luku on se määrä, jonka tavoittelet olevan varastoissasi.
@@ -210,36 +207,38 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Tavararuutu on asetettu Osta-asentoon. Sinulla on 5 tonnia lautoja varastossa, ja olet asettanut liukusäätimen yhdeksään tonniin. Tällöin hankit korkeintaan 4 tonnia lautoja lisää.'
   - Myyminen toimii samalla tavalla. Kun Myy-asennossa oleva tavararuudun liukusäädin on 13 tonnissa ja varastossa on tavaraa 18 tonnia, tavaraa myydään korkeintaan 5 tonnia.
-  - Jos vapaakauppias ei kuitenkaan ole valmis myymään/ostamaan toivomaasi määrää, et voi sille mitään, vaan joudut odottamaan kauppiaan seuraavaa käyntiä.
+  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
   - 'Unknown Horisonzsissa on älykäs hinnoittelujärjestelmä, joten hinnat voivat olla muuttuneet kauppiaan seuraavalla käyntikerralla.
 
     Hintoihin EI voi vaikuttaa itse!'
   - Budjetti-välilehdellä näet kaupankäynnin tasapainon kohdista Ostot ja Myynti.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'Tehtävä: Osta niin monta työkalua, että niitä on varastossa vähintään 30!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Rakenna kirkko yhteydellä telttoihin.]
+  - [Message, Build a Pavilion with connection to the Tents.]
   - [Headline, RAKENNA KIRKKO]
   - [Image, content/gui/images/background/hr.png]
   - Nuo työkalut riittävät hetkeksi. Hyvin tehty!
   - Tarjoat nyt asuintilat, keskustorin ja ruokaa asukkaillesi.
-  - Yhä on yksi vaatimus, jota ei olla vielä täytetty, voit tarkistaa sen halutessasi toripaikasta tai teltan välilehdestä - merimiehesi haluavat yksinkertaisen rakennuksen, jossa voivat rukoilla.
-  - Siksi kylään pitää perustaa kirkko, jonka kyläpappi nopeasti rakentaa auringonsuojaksi.
-  - Kirkon kaltaiset palvelurakennukset pitää yhdistää polulla telttoihin tai muuten asukkaat eivät pääse käymään niissä.
+  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
+  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
+  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
   - [Pagebreak]
   - '
 
     Huomioi, että uskoa on kohdeltava samoin kuin muitakin resursseja!'
-  - Tämän takia sinun on tarjottava kaikille asukkaille polkuyhteys uskontuottajan (kirkon) luokse.
+  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
   - He keräävät uskovarantonsa täyteen, mutta varannotkin kuitenkin tyhjentyvät joskus. Jonkin ajan kuluttua heidän on päästävä kirkolle uudelleen täyttämään uskonnolliset tarpeensa.
-  - 'Tärkeää:
+  - 'Important:
 
-    Ei riitä, että kirkko on asuntojen lähellä, vaan sinne on oltava myös polkuyhteys.'
+    It is NOT enough that the building is merely within a certain range of the Tents.
+
+    The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a pavilion with a trail to the tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
@@ -247,25 +246,25 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Laske verotasosi alas (palkin vasempaan päähän) ja odota merimiestesi päivittyvän seuraavalle tasolle.]
   - [Headline, 'UUSI TEHTÄVÄ: SEURAAVA TASO']
   - [Image, content/gui/images/background/hr.png]
-  - Kaikki vaatimukset on nyt täytetty, kunhan asukkaasi voivat säännöllisesti vierailla keskustorilla ja kirkossa ja ruokavarantosi on riittävät.
+  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
   - Jos merimiehesi ovat riittävän onnellisia, he haluavat kehittyä seuraavalle tasolle, kansoittajiksi.
   - Voit tehdä asukkaistasi onnellisempia laskemalla veroprosenttia. Muuta sinun ei tarvitse tehdä, sillä olet jo täyttänyt asukkaidesi kaikki vaatimukset.
   - Veroprosenttia ei kannata kuitenkaan koko aikaa pitää alhaalla, sillä tästä todennäköisesti aiheutuu konkurssi ennemmin tai myöhemmin. Voit kuitenkin laskea prosenttia huoletta pieniksi ajoiksi.
-  - Jonkin ajan jälkeen ensimmäisen yksikön pitäisi kävellä keskustorille ja etsiä sieltä uusia rakennustarvikkeita rakentaakseen hirsitalon. Tämä talo korvaa vanhan teltan.
+  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - [Pagebreak]
   - '
 
-    Asuinrakennusten päivitykset ovat ainoat, jotka maksavat resursseja ja joita voidaan rajoittaa.'
+    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
   - Jotkut päivitykset ovat kuitenkin maksuttomia, kuten esimerkiksi puunhakkaaja (jolloin vain ulkoasu muuttuu).
   - Päivitettyyn asumukseen mahtuu enemmän asukkaita ja lisäksi kansoittajat maksavat myös enemmän veroja kuin merimiehet.
   - Kuten olet jo saattanut huomata, huonona puolena kansoittajat vaativat myös tavaroita, joita merimiehet eivät tarvinneet - sinun pitää siis käyttää nämä ylimääräiset tuotot myös heidän onnellisena pitämiseen.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'Tehtävä: Aseta veroprosentti matalaksi (vasempaan päähän) ja odota merimiesten päivittymistä.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Rakenna maatila ja jätä vapaata tilaa sen ympärille.]
+  - [Message, Build a Farm and keep some empty space around it.]
   - [Headline, RAKENNA MAATILA]
   - [Image, content/gui/images/background/hr.png]
   - Onneksi olkoon! Osa asukkaistasi on saavuttanut tason II!
@@ -273,19 +272,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
   - Sinne on ilmestynyt uutukainen välilehti.
-  - Kansoittajat tulevat vaatimaan vaatteita, joten sinun pitää rakentaa tuotantolinja vaatteille lampaanvillasta lähtien (joka on yksi maatilan tuottamista tarvikkeista).
-  - Maatila on tärkeä tuotantorakennus, sillä se voi tuottaa todella monia (ja erilaisia) resursseja.
-  - Maatilojen tuotanto riippuu siitä, mitä peltoja olet rakentanut sen lähettyville.
+  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
+  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
+  - The output of Farms depends on what kind of fields you build around it.
   - [Pagebreak]
   - '
 
     Tarkastelemme tätä myöhemmin.'
-  - Resursseja valmistavat yritykset eivät välttämättä tarvitse polkuyhteyttä varastoon tai sivutoimistoon. Maatila lukeutuu näihin yrityksiin.
-  - Riittää, että lopputuotannon yritykset tavoittavat maatilan ja kerääjät sivutoimistolta tai varastolta pääsevät lopputuottajalle.
+  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
+  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
   - Jos kuitenkin aiot valmistaa tuotteita eri saaren osissa (missä saattaa olla järkeä) tai jopa eri saarilla, tulet tarvitsemaan jonkinlaisen kulkuyhteyden sivutoimistoon tai johonkin varastoon.
-  - Maatila kannattaa rakentaa kauaksi rannikosta ja asutuksesta, sillä se tulee tarvitsemaan tilaa toiminnalleen.
+  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a farm.']
+  - [BoldLabel, 'Task: Build a Farm.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
@@ -293,26 +292,26 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Rakenna vähintään yksi laidun maatilan ulottuville ja halutessasi myös perunapeltoja.]
   - [Headline, RAKENNA PELTOJA]
   - [Image, content/gui/images/background/hr.png]
-  - Maatila ei itse itsessään tuota mitään ilman peltoja.
+  - The Farm itself is not going to produce anything without some fields.
   - Tällä hetkellä valittavissasi on laitumet sekä peruna- ja sokeripellot.
-  - 'Näiden ominaisuuksia:
+  - 'Let''s have a short overview:
 
-    * Laidun: Lampaat elelevät siellä tuottaen villaa.
+    * Pasture: Sheep live here, producing lamb wool.
 
-    * Perunapelto: Kasvattaa perunoita, jotka ovat mainiota ruokaa kansallesi.
+    * Potato Field: Grows potatoes which are currently treated as food.
 
-    * Sokeripelto: Kasvattaa sokeria, jota käytetään alkoholijuomien tislaamisessa ja (myöhemmin) tuottamaan makeisia.'
+    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
   - Tarvitsemme nyt vain laitumia, mutta jos tarvitset lisää ruokaa (esimerkiksi jos sinulla on paljon asukkaita), voit rakentaa myös perunapellon.
-  - Huomaa, että perunapeltoa varten kerääjillä on oltava polku maatilalle, sillä se on perunoiden viimeinen käsittelypaikka.
+  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
   - [Pagebreak]
   - '
 
-    Varmista, että kaikki rakentamasi pellot ovat maatilan alueella.'
-  - Voit harrastaa sekatuotantoa - yksi laidun ei johda 100 prosentin tehokkuuteen - mutta muista kuitenkin tarkistaa, montako peltoa yksi maatila kykenee hoitamaan.
+    Make sure that all fields you build are in the area covered by the Farm.'
+  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
   - Eri tyyppiset pellot tarvitsevat maatilayksiköiltä enemmän tai vähemmän aikaa (kylvämiseen, korjuuseen, paimennukseen, jne.) ja sen vuoksi maatila ei välttämättä pysty huolehtimaan kaikista rakentamistasi pelloista.
   - Vielä sinun ei kutenkaan tarvitse huolehtia, sillä et ole vielä rakentanut yhtäkään peltoa. Tehdään asialle jotakin!
   - ''
-  - [BoldLabel, 'Task: Build at least one pasture in the farm''s range and add potato fields if you like.']
+  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
@@ -321,12 +320,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Headline, RAKENNA VARASTO]
   - [Image, content/gui/images/background/hr.png]
   - Milloin olet viimeksi vilkaissut puunhakkaajaasi?
-  - Sivutoimistollasi ei ole loputtomasti tilaa tavaroiden varastoimiseen. Kerääjät lakkaavat keräämästä tavaroita yrityksiltä, kun varasto on täynnä.
+  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
   - Joten jos asukkaasi eivät viime aikoina ole olleet kiinnostuneita päivittelemään asuntojaan ja sinulla on paljon lautoja, puunhakkaajasi saattaa olla toimettomana.
   - Voimme parantaa tilannetta kahdella eri tavalla, ja alla tutustumme molempiin.
-  - 'Kaikkien yritysten toiminta voidaan väliaikaisesti keskeyttää.
+  - 'All companies offer to do no work at all.
 
-    Tämä saattaa kuulostaa oudolta, mutta kokeilepa napsauttaa puunhakkaajan yleiskatsauksessa olevaa hammaspyörää.'
+    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
   - Kun tämä "taukotila" on käytössä, rakennuksesta maksamasi juoksevat kustannukset vähenevät. Ne eivät laske nollaan, mutta kuitenkin alemmaksi kuin yrityksen ollessa käytössä.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
@@ -334,28 +333,28 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     Tämä tarkoittaa siis sitä, että voit säästää rahaa kun et väliaikaisesti tarvitse yritystä, mutta et myöskään halua tuhota sitä maan tasalle.'
-  - 'Toinen ratkaisu on rakentaa edellisen tason (taso I) rakennus, jota ei ole vielä mainittu: varastoteltta.'
-  - 'Tällä rakennuksella on kaksi tarkoitusta. Se...
+  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
+  - 'This building has two purposes. It:
 
-    * tarjoaa lisää varastotilaa tavaroillesi ja
+    * Offers more storage for your goods, and
 
-    * lähettää omat kerääjänsä hakemaan tavaroita kuten sivutoimistokin.'
-  - Yritykset voidaan siis yhdistää sivutoimiston sijasta varastoon, jolloin niiden tuotteet tulevat myös kerätyiksi. Varasto on hyödyllinen myös silloin, kun sivutoimistolla on paljon hommia keräystöissä.
+    * sends its own collectors to fetch goods, just like the Warehouse does.'
+  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a storage tent, preferably where you need collectors.']
+  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, 'Rakenna kutomo, joka saa jollain tavalla villaa.']
+  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
   - [Headline, RAKENNA KUTOMO]
   - [Image, content/gui/images/background/hr.png]
   - Nyt kun villan tuotanto on käynnissä, tarvitset vielä kutomon tuottamaan villasta vaatteita.
-  - Kutomo voidaan rakentaa kolmeen paikkaan - joko maatilan, varaston tai sivutoimiston lähelle.
-  - Kaikissa tapauksissa sinun pitää luonnollisesti varmistaa polkuyhteys.
-  - Voit testimielessä sijoittaa kutomon maatilan lähettyville ja tuhota kaikki maatilalle johtavat polut. Näin voit havaita, että kutomo saa silti noudettua villaa ja tuotettua vaatteita.
+  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
+  - In both cases you should ensure the connection to a Trail as well.
+  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a weaver positioned so it can get wool.']
+  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
@@ -365,9 +364,9 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Image, content/gui/images/background/hr.png]
   - Yritä saada siirtokuntaasi vähintään 50 asukasta rakentamalla lisää asuinrakennuksia.
   - Jos pystyt luomaan tällaisen talouden, joka kestää tällaista asukasmäärää, olet valmis lähtemään kohti Tuntematonta Horisonttia!
-  - Tehtävän suorittamiseksi myös talouden tulee olla tasapainossa (tarkista asia Budjetti-välilehdeltä keskustorilta tai sivustoimistosta).
+  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'Tehtävä: Hanki vähintään 50 asukasta, varmista että taloutesi on tasapainossa läpäistäksesi tämän harjoituspelin.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
@@ -659,4 +658,4 @@ metadata:
   locale: fi
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 191 translated messages.
+  translation_status: 96 translated messages, 77 fuzzy translations, 15 untranslated messages.
