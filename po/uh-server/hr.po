@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2014-01-21 22:29+0200\n"
-"Last-Translator: T S <tstritof@gmail.com>\n"
-"Language-Team: Croatian <http://hosted.weblate.org/projects/uh/uh-server/hr/"
+"PO-Revision-Date: 2019-12-28 12:21+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/uh/uh-server/hr/"
 ">\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 1.9-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.10\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -46,19 +46,19 @@ msgstr "Nepoznat ili neispravan paket. Molimo provjerite verziju igre"
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr "Neispravna/nepoznata sesija"
+msgstr "Neispravna/Nepoznata sesija"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr "Ne možete se pridružiti u dvije igre istodobno"
+msgstr "Ne možeš se pridružiti jednoj igri dok se nalaziš u jednoj drugoj igri"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr "Nepoznata igra ili je igra različite verzije"
+msgstr "Nepoznata igra ili je igra pokrenuta s drugačijom verzijom"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "Igra je već počela. Nema više pridruživanja"
+msgstr "Igra je započela. Nitko se više ne može pridružiti"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
@@ -70,52 +70,52 @@ msgstr "Kriva lozinka"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr "Već postoji igrač sa vašim imenom unutar ove igre."
+msgstr "Već postoji igrač s tvojim imenom u ovoj igri."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr "Molimo promijenite svoje ime."
+msgstr "Promijeni svoje ime."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr "Već postoji igrač sa vašom bojom unutar igre."
+msgstr "Već postoji igrač s tvojom bojom u ovoj igri."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr "Molimo promijenite svoju boju."
+msgstr "Promijeni svoju boju."
 
 #: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"U igri se već nalazi igrač sa vašim jedinstvenim brojem. Ovo se nije trebalo "
-"nikad dogoditi."
+"U igri se već nalazi igrač s tvojim jedinstvenim ID-om igrača. To se nikada "
+"ne bi smjelo dogoditi."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
-msgstr "Niste unutar igre"
+msgstr "Ne nalaziš se u igri"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Igra je prekinuta. Kreator igre je napustio igru."
+msgstr "Igra je prekinuta. Stvaratelj je napustio igru."
 
 #: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Jedan igrač je završio s igrom. Zbog tehničkih razloga igra se više ne može "
-"nastaviti. Žao nam je."
+"Jedan je igrač prekinuo igru. Iz tehničkih razloga, to trenutačno znači, da "
+"se igra ne može nastaviti. Žao nam je."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr "Ne mogu promijeniti tvoje ime."
+msgstr "Nije moguće promijeniti tvoje ime."
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr "Ne mogu promijeniti tvoju boju."
+msgstr "Nije moguće promijeniti tvoju boju."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr "Ne možeš dohvatiti igru dok si u drugoj igri"
+msgstr "Ne možeš preuzeti igru dok se nalaziš u drugoj igri"
