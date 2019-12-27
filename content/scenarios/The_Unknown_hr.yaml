@@ -56,9 +56,9 @@ logbook-data:
   - [Image, content/gui/images/background/hr.png]
   - Osigurali smo naše osnovne potrebe za hranom i skupili nešto drva kako bi nastavili sa rastom naše naseobine. Naši ljudi zahtjevaju mjesto za život i razmjenu dobara kako bi zadovoljili svoje potrebe.
   - Vrijeme je da izgradimo šatore za život i mali glavni trg za snabdjevanje stanovnika sa potrepštinama.
-  - 'Task:
+  - 'Zadatak:
 
-    Build a Main Square and at least 10 Tents.'
+    Izgradi glavni trg i barem 10 šatora.'
   - [Pagebreak]
   - ''
 
@@ -142,11 +142,11 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'You are the captain of a ship under the flag of England in 1740. You and your crew were on the way to a colony of England in the Pacific Ocean.
+  description: 'Vi ste kapetan broda pod engleskom zastavom 1740. godine. Vi i vaša posada bili ste na putu prema Engleskoj koloniji koja se nalazi negdje u pacifičkom oceanu.
 
-    Everything went fine until you came into a storm…'
+    Sve je bilo u redu dok vas nije zatekla strašna oluja …'
   difficulty: lagano
   locale: hr
   mapfile: development.sqlite
   original: content/scenarios/The_Unknown_en.yaml
-  translation_status: 20 translated messages, 2 fuzzy translations.
+  translation_status: 22 translated messages.
