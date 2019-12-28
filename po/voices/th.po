@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2019-12-28 12:21+0000\n"
+"PO-Revision-Date: 2019-12-29 02:30+0000\n"
 "Last-Translator: Chaowalit Phochan <siamese.cf@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/uh/voices/th/>\n"
 "Language: th\n"
@@ -28,7 +28,7 @@ msgstr "พลเมืองของคุณจะต้องรู้สึ
 
 #. Founding settlement - Player found settlement"
 msgid "Call this patch of ground yours from now on."
-msgstr ""
+msgstr "เรียกที่ดินบริเวณนี้ว่าเป็นของคุณได้แล้วตั้งแต่ตอนนี้."
 
 #. Founding settlement - Player found settlement"
 msgid "This region now belongs to our colors."
@@ -56,72 +56,74 @@ msgstr "คู่แข่งของเราดูเหมือนว่า
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
-msgstr ""
+msgstr "เราได้รับรายงานมาว่าหนึ่งในคู่แข่งของเราได้ตกหลุมพรางบนดินแดนใหม่."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
-msgstr ""
+msgstr "หนึ่งในคู่แข่งของเราบอกว่าจะมีการขยายตัว."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr ""
+msgstr "พันธมิตรของเราตั้งถิ่นฐานอยู่บนเกาะอื่น."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr ""
+msgstr "หนึ่งในพันธมิตรของเราได้ทำการถากถางบนเกาะ."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
-msgstr ""
+msgstr "พันธมิตรของเราได้ส่งข่าวเกี่ยวกับการก่อตั้งการตั้งถิ่นฐานสำเร็จ."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "This island no longer is all ours."
-msgstr ""
+msgstr "เกาะแห่งนี้ไม่ได้เป็นของเราทั้งหมด."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
-msgstr ""
+msgstr "หน่วยลาดตระเวนพบว่ามีแขกขึ้นมาตั้งถิ่นฐานอยู่บนเกาะแห่งหนึ่งของเรา."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
-msgstr ""
+msgstr "เรามีเพื่อนบ้านใหม่บนเกาะนี้!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Scouts report that uninvited guests beleaguer our island!"
 msgstr ""
+"รายงานหน่วยลาดตระเวนมาว่า มีแขกที่ไม่ได้รับเชิญเข้ามาเยี่ยมชมเกาะของเรา!"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Should we really accept our rival as new neighbor?"
-msgstr ""
+msgstr "เราควรยอมรับคู่แข่งของเราในฐานะเพื่อนบ้านใหม่ดีหรือไม่?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr ""
+msgstr "หนึ่งในศัตรูของเราเข้ามาตั้งถิ่นฐานอยู่บนพื้นดินของเรา!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
 msgstr ""
+"ดูเหมือนว่าพันธมิตรที่กำลังหมดหวังคนหนึ่ง กำลังจะตั้งถิ่นฐานบนดินแดนของคุณ."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
-msgstr ""
+msgstr "เราได้แบ่งปันพื้นดินนี้กับพันธมิตรของเราในตอนนี้."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "Our ally settles on one of our islands."
-msgstr ""
+msgstr "พันธมิตรของเราได้มาตั้งถิ่นฐานอยู่บนเกาะแห่งหนึ่งของเรา."
 
 #. Resources - Construction material missing
 msgid "You need more resources to build this."
-msgstr ""
+msgstr "คุณต้องการทรัพยากรเพิ่มเติมเพื่อสร้างสิ่งนี้."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
-msgstr ""
+msgstr "โครงการก่อสร้างนี้ต้องการทรัพยากรมากกว่านี้."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "การก่อสร้างเป็นไปไม่ได้หากไม่มีวัสดุสำรองเอาไว้อย่างเพียงพอ."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr ""
+msgstr "ทรัพยากรในคลังของคุณไม่เพียงพอที่จะสร้างสิ่งนี้."
