@@ -9,7 +9,7 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Build a Warehouse on the coast to allow trade ships to visit your settlement.]
+  - [Message, Φτιάξε μια Αποθήκη στην ακτή για να επιτρέψεις στα εμπορικά πλοία να επισκεφθούν τον οικισμό σου.]
   - '
 
 
@@ -657,4 +657,4 @@ metadata:
   locale: el
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 1 translated message, 187 untranslated messages.
+  translation_status: 2 translated messages, 186 untranslated messages.
