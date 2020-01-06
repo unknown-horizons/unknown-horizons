@@ -7,39 +7,39 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-05-15 17:49+0000\n"
-"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
+"PO-Revision-Date: 2020-01-07 11:21+0000\n"
+"Last-Translator: Manuela Silva <mmsrs@sky.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/uh/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7-dev\n"
+"X-Generator: Weblate 3.10.1-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Obrigado por utilizares o Unknown Horizons!"
+msgstr "Obrigado por utilizar o Unknown Horizons!"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
-msgstr "Unknown Horizons bloqueou."
+msgstr "Unknown Horizons crachou."
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Lamentamos o ocorrido e pretendemos corrigir o erro."
+msgstr "Nós lamentamos o ocorrido e pretendemos corrigir o erro."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Para fazer isto, necessitamos da informação no ficheiro de registo:"
+msgstr "Para fazer isto, nós necessitamos da informação do ficheiro de registo:"
 
 #: run_uh.py:192
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Por favor, entra em contacto via IRC ou no nosso fórum. Para ambos acede a "
-"http://unknown-horizons.org ."
+"Por favor, contacte-nos via IRC ou no nosso fórum. Para ambos, vá para http"
+"://unknown-horizons.org ."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -74,11 +74,11 @@ msgstr "Sair do editor"
 
 #: content/gui/xml/editor/editor_settings.xml:6
 msgid "Select brush size:"
-msgstr "Seleciona o tamanho do pincel:"
+msgstr "Selecionar tamanho do pincel:"
 
 #: content/gui/xml/editor/editor_settings.xml:20
 msgid "Select terrain:"
-msgstr "Seleciona o terreno:"
+msgstr "Selecionar terreno:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
@@ -3492,8 +3492,8 @@ msgstr "Não está pronto"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Protocolo multi-jogador antigo ou não suportado. Por favor verifica a versão "
-"do jogo"
+"Protocolo de multi jogador antigo ou não suportado. Por favor, verifique a "
+"versão do seu jogo"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
