@@ -8,32 +8,38 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9ecf5e5\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2016-08-29 03:24+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-01-09 13:21+0000\n"
+"Last-Translator: Chaowalit Phochan <siamese.cf@gmail.com>\n"
+"Language-Team: Thai <https://hosted.weblate.org/projects/uh/tutorial/th/>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.10.1-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
-msgstr ""
+msgstr "บทช่วยสอน"
 
 #. scenario description
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
+"บทช่วยสอน:\n"
+"สร้างนิคมแห่งแรกของคุณแล้วเรียนรู้ถึงวิธีการเล่น!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
+"สร้างคลังสินค้าบนชายฝั่งเพื่ออนุญาตให้เรือการค้าเข้ามาแลกเปลี่ยนในถิ่นฐานของค"
+"ุณ."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "ขอต้อนรับสู่ Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -43,6 +49,10 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"นี่คือบันทึกของคุณที่เก็บข้อมูลสำคัญเกี่ยวกับสถานการณ์ปัจจุบันไว้ "
+"สรุปของงานใหม่แต่ละงานจะปรากฏเป็น 'ปุ่มแจ้งเตือน' ใกล้กับขอบด้านซ้ายของหน้"
+"าจอ คุณสามารถเลื่อนเมาส์ไปเหนือการแจ้งเตือนเหล่านี้เพื่ออ่านข้อมูลสรุปหรือคลิ"
+"กปุ่มเพื่อเปิดบันทึก."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -51,6 +61,10 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"คุณสามารถเปิดบันทึกขึ้นมาใหม่ได้ตลอดเวลาโดยคลิกที่ปุ่มด้านล่างของแผนที่ขนาดเล"
+"็กที่อยู่ตรงมุมขวาบนของหน้าจอ "
+"จากนี้ไปเราจะอ้างอิงถึงพื้นที่เหล่านี้ที่มีอยู่ในแผนที่ย่อ "
+"รวมถึงปุ่มและแท็บต่างๆว่าเป็น 'ภาพรวม'."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -58,6 +72,9 @@ msgid ""
 "To see your first task, turn to the next page of the Journal using the "
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
+"\n"
+"หากต้องการดูงานแรกของคุณให้ไปที่หน้าถัดไปของบันทึกโดยใช้ปุ่มที่อยู่บริเวณด้าน"
+"ล่างของหน้า - มีลักษณะที่คล้ายแบบนี้:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -65,38 +82,50 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"หากคุณมีข้อเสนอแนะใดๆ เกี่ยวกับวิธีการปรับปรุงบทช่วยสอนนี้ "
+"หรือหากว่าคุณพบข้อผิดพลาดโปรดบอกเรา."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
+"\n"
+"เข้าไปที่ www.unknown-horizons.org "
+"เพื่อดูว่าจะสามารถติดต่อเราผ่านทางช่องทางไหนได้บ้าง."
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
-msgstr ""
+msgstr "และตอนนี้เรามาเริ่มเกมกันเถอะ!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr ""
+msgstr "งานใหม่: สร้างอาณานิคม"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"เรือของคุณกำลังลอยลำอยู่ในทะเล "
+"และเต็มไปด้วยทรัพยากรที่คุณต้องการเพื่อใช้สร้างอาณานิคมใหม่."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
+"เพื่อที่จะแล่นเรือของคุณให้เลือกเรือด้วยการคลิกซ้าย "
+"แล้วหลังจากนั้นให้คลิกขวาที่ตำแหน่งที่คุณต้องการให้เรือแล่นไป."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
+"เมื่อคุณแล่นเข้าใกล้ชายฝั่งปุ่มสำหรับ 'สร้างถิ่นฐาน' "
+"ในแผงภาพรวมจะสามารถใช้งานได้."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -105,24 +134,31 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"คลิกที่ปุ่มนี้จะแสดงตัวอย่างของคลังสินค้า "
+"ซึ่งเป็นสิ่งปลูกสร้างแรกที่จำเป็นในการค้นพบถิ่นฐานใหม่ "
+"ในขณะที่คุณเลื่อนเคอร์เซอร์ไปรอบๆ "
+"คุณจะสังเกตเห็นว่าภาพตัวอย่างเป็นสีแดงเมื่ออาคารอยู่บนพื้นที่ที่ไม่เหมาะสม."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"คลังสินค้าจะต้องถูกวางลงบนตำแหน่งชายฝั่งเพื่อให้เรือสามารถจอดเทียบท่าได้ ลองค"
+"้นหาสถานที่ที่เหมาะสมแล้วหลังจากนั้นให้คลิกซ้ายเพื่อวางสิ่งปลูกสร้างที่สำคัญน"
+"ี้."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr ""
+msgstr "งาน: สร้างคลังสินค้าบนชายฝั่ง."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
+msgstr "สร้างเต็นท์ที่พักสำหรับคนตัดไม้แล้วเชื่อมต่อไปยังคลังสินค้าด้วยถนน."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr ""
+msgstr "งานใหม่: สร้างเต็นท์ที่พักสำหรับคนตัดไม้"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -130,18 +166,26 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"เสบียงและวัสดุสำหรับงานก่อสร้างถูกขนถ่ายจากเรือและเก็บไว้อย่างปลอดภัยในคลังสิ"
+"นค้าใหม่ของคุณ ตอนนี้ถึงเวลาที่จะสร้างสิ่งปลูกสร้างพื้นฐานเริ่มต้นกันด้วยเต็น"
+"ท์สำหรับคนตัดไม้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"คนตัดไม้จะล้มต้นไม้จากป่ารอบๆเต็นท์ของพวกเขา แล้วแปรรูปท่อนไม้เพื่อผลิตเป็นไม"
+"้กระดานไว้สำหรับใช้ในการก่อสร้างหรือเป็นทรัพยากรสำหรับการค้า."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"เพื่อที่จะสร้างเต็นท์สำหรับคนตัดไม้ "
+"เปิดเมนูสำหรับสร้างโดยคลิกที่ปุ่มที่อยู่บริเวณใต้แผนที่ย่อหรือกดคีย์ลัด 'B' "
+"ซึ่งเป็นคีย์ลัดเริ่มต้น."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -150,12 +194,19 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"เมนูสำหรับก่อสร้างจะถูกจัดเรียงตามระดับและเนื่องจากคุณเป็นชุมชนใหม่สิ่งปลูกสร"
+"้างชั้นหนึ่งจึงเป็นสิ่งเดียวที่มีให้คุณในขณะนี้ เมื่ออาณานิคมของคุณก้าวหน้าคุ"
+"ณจะได้รับการเข้าถึงระดับที่สูงขึ้นและสามารถสร้างสิ่งปลูกสร้างได้หลากหลายมากยิ"
+"่งขึ้น."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"ลองหาพื้นที่ป่าสวยๆสำหรับคนตัดไม้ของเราเพื่อให้พวกเขาได้ทำงาน จากนั้นเลือก "
+"'เต็นท์สำหรับคนตัดไม้' "
+"จากรายการสิ่งปลูกสร้างในแผงภาพรวมแล้ววางสิ่งปลูกสร้างลงบริเวณที่คุณเลือก."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -163,6 +214,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"เมื่อระยะเวลาในเกมผ่านไปคุณอาจต้องสร้างป่าด้วยการปลูกต้นไม้ชุดใหม่เพิ่มขึ้"
+"นมา แต่เนื่องจากมันต้องมีค่าใช้จ่ายคุณควรใช้สิ่งที่ธรรมชาติได้จัดเตรียมไว้ให้"
+"ในตอนนี้!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -170,6 +224,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"การรวบรวมทรัพยากรหรือการสร้างจากการผลิตจำเป็นต้องมีถนนที่เชื่อมต่อกับคลังสินค"
+"้าหรือพื้นที่จัดเก็บรูปแบบอื่น "
+"มิฉะนั้นสินค้าที่ผลิตออกมาใหม่จะไม่ถูกเก็บรวบรวม."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -178,12 +235,17 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"ดังนั้นเมื่อเต็นท์สำหรับคนตัดไม้ของคุณถูกสร้างอยู่ในตำแหน่งที่ต้องการแล้ว "
+"ให้ทำการเชื่อมต่อเต็นท์กับคลังสินค้าโดยเปิดเมนูสร้างแล้วหลังจากนั้นคลิกปุ่ม "
+"'เส้นทาง' ในขั้นตอนนี้คุณสามารถคลิกและลากด้วยเมาส์เพื่อวาดเส้นทางระหว่างเต็นท"
+"์ของคนตัดไม้ไปยังคลังสินค้า."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
+"งาน: สร้างเต็นท์สำหรับคนตัดไม้ในพื้นที่ป่าแล้วเชื่อมต่อไปยังคลังสินค้าของคุณ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -191,48 +253,64 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"เมื่อเชื่อมต่อสิ่งปลูกสร้างเข้าด้วยกันเสร็จแล้วคุณจะเห็นคนงานมารับกระดานที่ถู"
+"กสร้างขึ้นมาใหม่ แล้วจัดส่งไปยังคลังสินค้าเพื่อเตรียมความพร้อมสำหรับการนำไปใช"
+"้งานในการก่อสร้างหรือการแลกเปลี่ยน."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
 msgstr ""
+"สร้างเต็นท์สำหรับคนล่าสัตว์และคนตกปลา "
+"แล้วหลังจากนั้นให้เชื่อมต่อพวกมันกับคลังเก็บของ."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "งานใหม่: การจัดหาอาหาร"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"คุณจำเป็นต้องมีแหล่งผลิตอาหารด้วย "
+"เพราะคนทั่วไป(โดยเฉพาะกะลาสี)มักจะเป็นพวกหิวมาก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
 msgstr ""
+"แหล่งผลิตอาหารที่มีอยู่ในขั้นแรกคือเต็นท์ของคนล่าสัตว์และเต็นท์ของคนตกปลา."
 
 #. This is the text body of a logbook page.
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"คนล่าสัตว์ต้องล่าสัตว์ที่อาศัยอยู่ในป่า "
+"ดังนั้นจึงต้องการต้นไม้อยู่รอบๆหรืออยู่ใกล้ๆกับเต็นท์."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
 msgstr ""
+"โปรดทราบว่าคุณสามารถวางเต็นท์ของคนล่าสัตว์ให้อยู่ใกล้กับเต็นท์ของคนตัดไม้ที่อ"
+"ยู่ภายในป่าได้ด้วยเหมือนกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"มันมีความเป็นไปได้ที่ฝูงสัตว์อาจเติบโตได้ไม่ทันความต้องการ "
+"หรือพวกมันอาจหาที่ใหม่เพื่อหลบซ่อนตัวได้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the Hunter's Tent is not too reliable if you need continuous "
 "supply."
 msgstr ""
+"ข้อสรุป: เต็นท์ของคนล่าสัตว์มีความไม่น่าไว้วางใจมากเกินไป "
+"หากคุณต้องการจัดหาอาหารอย่างต่อเนื่อง."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -240,43 +318,52 @@ msgid ""
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"คนหาปลาต้องการพื้นที่สำหรับสร้างสิ่งปลูกสร้างบริเวณชายฝั่งเหมือนกับคลังเก็"
+"บของ รวมถึงแหล่งของฝูงปลาที่อยู่ภายในระยะ."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "พวกเขาจะสร้างเรือพายขนาดเล็กเพื่อใช้สำหรับออกไปจับปลา."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"นี่อาจต้องใช้เวลาในการจัดหาที่นานมากยิ่งขึ้น "
+"และต้องใช้เวลาในการผลิตเพิ่มขึ้นอีกเล็กน้อยสำหรับอาหารในแต่ละหน่วย."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"สำหรับการตั้งถิ่นฐานเล็กๆเช่นคุณในตอนนี้สามารถใช้พวกเขาได้ทั้งสองอย่าง "
+"และคุณจะสามารถสร้างความสมดุลระหว่างข้อดีและข้อเสียได้ดีขึ้น."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr ""
+msgstr "งาน: สร้างเต็นท์สำหรับคนล่าสัตว์และคนหาปลา."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
-msgstr ""
+msgstr "อย่าลืมที่จะเชื่อมต่อเต็นท์เหล่านั้นเข้ากับคลังของคุณด้วยเส้นทาง!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Main Square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "สร้างจัตุรัสหลัก เลือกพื้นที่ที่ไม่มีสิ่งปลูกสร้างทางเศรษฐกิจจำนวนมาก."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "งานใหม่: จัตุรัสหลัก"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"ผู้อยู่อาศัยของคุณต้องการจัตุรัสหลักสถานที่ที่พวกเขาสามารถรับสิ่งของที่ต้องกา"
+"รได้."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -284,6 +371,9 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
+"ซึ่งหมายความว่าพวกมันต้องการเส้นทางการเชื่อมต่อจากบ้านพักอาศัยไปยังจัตุรัสหลั"
+"ก โปรดทราบว่าจัตุรัสหลักทำหน้าที่คล้ายเส้นทางได้ด้วยเช่นกัน "
+"ดังนั้นเต็นท์ที่อยู่ติดกันจึงไม่จำเป็นต้องมีเส้นทางแยก."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -291,6 +381,8 @@ msgid ""
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
+"สินค้าทั้งหมดในคลังสินค้าของคุณจะถูกส่งมาที่ 'ตลาด' แห่งนี้ ดังนั้นผู้อยู่อาศ"
+"ัยจึงไม่จำเป็นต้องเดินไปที่เต็นท์ของคนหาปลาหรือแม้แต่ไปที่คลังสินค้าโดยตรง."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -298,16 +390,22 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"คุณควรหลีกเลี่ยงการตั้งเต็นท์หลักของคุณไม่ให้อยู่ใกล้กับเต็นท์ของคนตัดไม้มากเ"
+"กินไป เพราะการสร้างเต็นท์จะเป็นการถากถางพื้นที่แล้วกำจัดต้นไม้ที่คนตัดไม้ต้อง"
+"การในการสร้างไม้กระดาน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the Main Square and e.g. your Lumberjack's Tent."
 msgstr ""
+"คนงานบางส่วนทำงานได้โดยไม่ต้องเชื่อมต่อกับเต็นท์ "
+"ดังนั้นคุณไม่จำเป็นต้องสร้างเส้นทางเชื่อมต่อระหว่างจัตุรัสหลักกับเต็นท์บางอย่"
+"าง เช่น เต็นท์สำหรับคนตัดไม้ เป็นต้น."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Main Square."
-msgstr ""
+msgstr "งาน: สร้างจัตุรัสหลัก."
 
 #. This is the text body of a logbook page.
 msgid ""
