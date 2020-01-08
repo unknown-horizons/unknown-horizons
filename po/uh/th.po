@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2020-01-08 09:51+0000\n"
+"PO-Revision-Date: 2020-01-09 13:21+0000\n"
 "Last-Translator: Chaowalit Phochan <siamese.cf@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/uh/uh/th/>\n"
 "Language: th\n"
@@ -303,34 +303,34 @@ msgstr "(เหมือนในแถบที่เลือก)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24ตัน"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14ตัน"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06ตัน"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "เรือสงครามสลุบ"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
@@ -357,24 +357,24 @@ msgstr "ตัวเรือ"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24ตัน"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14ตัน"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06ตัน"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
@@ -1356,415 +1356,427 @@ msgstr "เลื่อนที่บริเวณขอบแผนที่
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
 msgstr ""
+"กำหนดว่าต้องการจะย้ายส่วนที่มองเห็นหรือไม่ "
+"เมื่อตัวชี้เม้าส์อยู่ที่บริเวณขอบของแผนที่"
 
 #: content/gui/xml/mainmenu/settings.xml:85
 msgid "Cursor centered zoom:"
-msgstr ""
+msgstr "เคอร์เซอร์ซูมอยู่ตรงกลาง:"
 
 #: content/gui/xml/mainmenu/settings.xml:85
 msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
+"เมื่อเปิดใช้งานการซูมด้วยล้อเลื่อนของเมาส์จะใช้ตำแหน่งเคอร์เซอร์เป็นจุดศูนย์ก"
+"ลางของส่วนที่มองเห็นใหม่ "
+"และเมื่อปิดใช้งานให้ซูมไปที่ศูนย์กลางของส่วนที่มองเห็นปัจจุบันเสมอ."
 
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "Middle mouse button pan:"
-msgstr ""
+msgstr "เลื่อนด้วยปุ่มกลางของเมาส์:"
 
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "When enabled, dragging the middle mouse button will pan the camera"
-msgstr ""
+msgstr "เมื่อเปิดใช้งาน การลากด้วยปุ่มกลางของเมาส์จะเป็นการกวาดมุมกล้อง"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
-msgstr ""
+msgstr "0 เป็นการตั้งค่าเริ่มต้นของระบบ"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Mouse sensitivity:"
-msgstr ""
+msgstr "ความไวของเมาส์:"
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Saving"
-msgstr ""
+msgstr "เก็บรักษา"
 
 #: content/gui/xml/mainmenu/settings.xml:120
 msgid "Autosave interval in minutes:"
-msgstr ""
+msgstr "ช่วงเวลาบันทึกอัตโนมัติเป็นนาที:"
 
 #: content/gui/xml/mainmenu/settings.xml:128
 msgid "Number of autosaves:"
-msgstr ""
+msgstr "จำนวนบันทึกอัตโนมัติ:"
 
 #: content/gui/xml/mainmenu/settings.xml:136
 msgid "Number of quicksaves:"
-msgstr ""
+msgstr "จำนวนของเซฟอย่างรวดเร็ว:"
 
 #: content/gui/xml/mainmenu/settings.xml:144
 msgid "Language"
-msgstr ""
+msgstr "ภาษา"
 
 #: content/gui/xml/mainmenu/settings.xml:156
 msgid "General"
-msgstr ""
+msgstr "ทั่วไป"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Rotate minimap with map:"
-msgstr ""
+msgstr "หมุนแผนที่ย่อพร้อมแผนที่:"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr ""
+msgstr "กำหนดว่าจะหมุนแผนที่ย่อด้วยหรือไม่เมื่อมีการหมุนแผนที่ปกติ"
 
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "Uninterrupted building:"
-msgstr ""
+msgstr "ปลูกสร้างอย่างต่อเนื่อง:"
 
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "When enabled, do not exit the build mode after successful construction"
-msgstr ""
+msgstr "เมื่อเปิดใช้งาน จะไม่ออกจากโหมดก่อสร้างหลังจากที่สร้างเสร็จ"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Auto-unload ship:"
-msgstr ""
+msgstr "โหลดลงจากเรือโดยอัตโนมัติ:"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
+msgstr "กำหนดว่าจะโหลดลงจากเรือหรือไม่หลังจากที่ตั้งอาณานิคม"
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"อย่าใช้ในเซสชั่นเกมปกติ มันจะเป็นการตัดสินใจว่าจะต้องเขียนข้อมูลการดีบักลงในไ"
+"ดเร็กทอรีสำหรับบันทึกที่อยู่ในไดเร็กทอรีผู้ใช้ของคุณหรือไม่ "
+"ซึ่งจะทำให้เกมทำงานช้าลง."
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
-msgstr ""
+msgstr "เปิดใช้งานการบันทึก:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid "Production indicators:"
-msgstr ""
+msgstr "ตัวชี้วัดการผลิต:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"กำหนดว่าต้องการจะแสดงไอคอนทรัพยากรเหนือสิ่งปลูกสร้างทุกครั้งที่ผลิตเสร็จหรือไ"
+"ม่"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "ค่าที่สูงขึ้นจะทำให้การเลื่อนได้ช้าลง."
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Scroll delay:"
-msgstr ""
+msgstr "หน่วงเวลาการเลื่อน:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "เลือกประเภทคำพูด:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "ชนิดของคำพูดอ้างอิงที่จะให้แสดงในขณะโหลดเกม"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
-msgstr ""
+msgstr "เครือข่าย"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "หากตั้งค่าเป็น 0, จะใช้ค่าเริ่มต้นของเราเตอร์"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
-msgstr ""
+msgstr "พอร์ตเครือข่าย:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr ""
+msgstr "ยกเลิกการเปลี่ยนแปลงปัจจุบัน"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr ""
+msgstr "รีเซ็ตเป็นค่าเริ่มต้น"
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr ""
+msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
-msgstr ""
+msgstr "เกมที่คุณเซฟไว้:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "รหัสผ่านของเกม ต้องกรอกเพื่อขอเข้าร่วมเกมนี้"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
-msgstr ""
+msgstr "กรอกชื่อไฟล์:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:46
 msgid "Details:"
-msgstr ""
+msgstr "รายละเอียด:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:53
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "ลบเซฟเกมที่เลือก"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "เกมใหม่ - เล่นคนเดียว"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "โหมดเนื้อเรื่อง"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr ""
+msgstr "สุ่มแผนที่"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr ""
+msgstr "เล่นแบบอิสะ"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr ""
+msgstr "เริ่มเกม"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "เลือกแผนที่เพื่อเล่น:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "ตั้งค่าแผนที่:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "เมล็ดพันธุ์:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "เลือกภาษา:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr ""
+msgstr "ผู้เล่น AI:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "ตั้งค่าเกม:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr ""
+msgstr "พ่อค้าอิสระ"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
-msgstr ""
+msgstr "โจรสลัด"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "ภัยพิบัติ"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr ""
+msgstr "ชื่อผู้เล่น:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr ""
+msgstr "สี:"
 
 #: horizons/command/game.py:38
 msgid "Invalid filename"
-msgstr ""
+msgstr "ชื่อไฟล์ไม่ถูกต้อง"
 
 #: horizons/command/game.py:39
 msgid "Received an invalid filename for a save command."
-msgstr ""
+msgstr "ได้รับชื่อไฟล์ที่ไม่ถูกต้องสำหรับคำสั่งในการบันทึก."
 
 #. There was a problem during the 'save game' procedure.
 #: horizons/command/game.py:50 horizons/gui/modules/multiplayermenu.py:166
 #: horizons/gui/modules/pausemenu.py:100 horizons/mpsession.py:58
 msgid "Error"
-msgstr ""
+msgstr "ข้อผิดพลาด"
 
 #: horizons/command/game.py:50 horizons/gui/modules/pausemenu.py:100
 msgid "Failed to save."
-msgstr ""
+msgstr "ไม่สามารถบันทึก."
 
 #: horizons/component/tradepostcomponent.py:194
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "คู่ค้าจะไม่ขายสินค้าชนิดนี้."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not store this."
-msgstr ""
+msgstr "คุณไม่สามารถเก็บสิ่งนี้ได้."
 
 #: horizons/component/tradepostcomponent.py:206
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "คุณไม่สามารถที่จะซื้อสิ่งนี้."
 
 #: horizons/component/tradepostcomponent.py:212
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "คู่ค้าจะไม่ขายสินค้านี้มากขึ้น."
 
 #: horizons/component/tradepostcomponent.py:236
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "คู่ค้าจะไม่ซื้อสินค้านี้."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr ""
+msgstr "คุณไม่ได้ครอบครองสิ่งนี้."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "คู่ค้าไม่สามารถจัดเก็บสินค้าชนิดนี้ได้มากกว่านี้."
 
 #: horizons/component/tradepostcomponent.py:252
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "คู่ค้าไม่สามารถซื้อสิ่งนี้."
 
 #: horizons/component/tradepostcomponent.py:257
 msgid "The trade partner does not buy more of this."
-msgstr ""
+msgstr "คู่ค้าจะไม่ซื้อสินค้าชนิดนี้มากขึ้น."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:66
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "ไม่สามารถบันทึกอย่างรวดเร็ว."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:67
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "มีข้อผิดพลาดเกิดขึ้นระหว่างบันทึกอย่างรวดเร็ว."
 
 #: horizons/editor/session.py:71
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "แผนที่ของคุณยังไม่ได้รับการบันทึก."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr ""
+msgstr "หากข้อผิดพลาดนี้เกิดขึ้นอีกโปรดติดต่อทีมพัฒนา: {website}"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการที่จะออกจาก Unknown Horizons?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "ออกจากเกม"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "ไม่มีการเจรจาต่อรองที่เป็นไปได้"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "ไม่สามารถทำการเจรจาต่อรองเนื่องจากไม่มีผู้เล่นอื่น."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
-msgstr ""
+msgstr "คุณแน่ใจหรือว่าต้องการลบวัตถุเหล่านี้?"
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
-msgstr ""
+msgstr "ลบทิ้ง"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} ช่อง"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
-msgstr ""
+msgstr "กดคีย์…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} ถูกตั้งให้กับ {action} ไปแล้ว."
 
 #: horizons/gui/modules/hotkeys_settings.py:148
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "คุณต้องการจะเขียนทับมันหรือไม่?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:149
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "ยืนยันการเขียนทับ"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
-msgstr ""
+msgstr "คำคม"
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "เคล็ดลับการเล่นเกม"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "กด 'ESC' เพื่อเข้าถึงเมนูเกม."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "ใช้ 'SHIFT' เพื่อวางสิ่งปลูกสร้างหลายแห่ง."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "ขณะนี้มีเพียง {tier} ระดับแรกเท่านั้นที่สามารถเล่นได้."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "คุณสามารถหยุดเกมชั่วคราวด้วยการกด 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "คุณสามารถลากถนนโดยการกดปุ่มซ้ายของเมาส์ค้างไว้."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "คุณสามารถสร้างอาคารหลายหลังได้โดยกดปุ่ม 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
+msgstr "คุณสามารถเพิ่มความสุขให้กับผู้อยู่อาศัยของคุณได้โดยการลดหย่อนภาษี."
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"สร้างสถานีดับเพลิงและแพทย์ เพื่อปกป้องผู้อยู่อาศัยจากเหตุไฟไหม้และโรคร้าย."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "สร้างเต็นท์เก็บของเพื่อเพิ่มพื้นที่เก็บทรัพยากรของคุณ."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "ตรวจสอบให้แน่ใจว่าบ้านทุกหลังอยู่ในช่วงระยะของตลาด."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "กด 'T' เพื่อทำให้ต้นไม้โปร่งใส."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
+"สร้างเต๊นท์เก็บของและสถานีเฝ้าระวัง เพื่อช่วยขยายระยะการตั้งถิ่นฐานของคุณ."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1773,160 +1785,175 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"หากต้องการดูว่าช่วงของศาลาครอบคลุมเต็นท์ทั้งหมดของคุณหรือไม่ "
+"ให้เลือกจากเมนูสร้างและวางเมาส์เหนือศาลาที่คุณมีอยู่ "
+"เต๊นท์ที่ไม่มีหลังคาจะแสดงเป็นสีเหลือง "
+"เป็นความคิดที่ดีที่จะสร้างศาลาใหม่ในละแวกบ้านของพวกเขา."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"ทำให้การเล่นคนเดียวสนุกยิ่งขึ้นด้วยผู้เล่นที่เป็นคอมพิวเตอร์ "
+"เพิ่มได้โดยการเพิ่ม 'ผู้เล่น AI' เมื่อเริ่มเกมใหม่."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"ขั้นตอนแรกนั้นง่ายโดยการดูว่าผู้เล่นที่เป็น AI "
+"ตั้งค่าการตั้งถิ่นฐานของพวกเขาอย่างไร."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"ต้องการเฉพาะคำพูดตลกๆเท่านั้นหรือ? "
+"เปลี่ยนประเภทคำพูดที่แสดงที่นี่ได้ในหน้าเมนูการตั้งค่าของเกม."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "ตลาดเชื่อมโยงสิ่งปลูกสร้างของคุณเช่นเดียวกับถนน."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:91
 msgid "Mixed"
-msgstr ""
+msgstr "ผสม"
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr ""
+msgstr "กำลังสตาร์ทเครื่องยนต์…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
-msgstr ""
+msgstr "กำลังจับปลา…"
 
 #: horizons/gui/modules/loadingscreen.py:113
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "กำลังวาดส่วนติดต่อผู้ใช้…"
 
 #: horizons/gui/modules/loadingscreen.py:114
 msgid "Activating timer…"
-msgstr ""
+msgstr "กำลังเปิดใช้งานตัวจับเวลา…"
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Chomping game data…"
-msgstr ""
+msgstr "กำลังย่อยข้อมูลเกม…"
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Shaping islands…"
-msgstr ""
+msgstr "กำลังปรับรูปร่างของเกาะ…"
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "กำลังเตรียมพิมพ์เขียว…"
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Filling world with water…"
-msgstr ""
+msgstr "กำลังเทน้ำเติมลงบนโลก…"
 
 #: horizons/gui/modules/loadingscreen.py:119
 msgid "Raising animals…"
-msgstr ""
+msgstr "กำลังต้อนฝูงสัตว์…"
 
 #: horizons/gui/modules/loadingscreen.py:120
 msgid "Convincing AI…"
-msgstr ""
+msgstr "มองหา AI ที่น่าเชื่อถือ…"
 
 #: horizons/gui/modules/loadingscreen.py:121
 msgid "Burying treasures…"
-msgstr ""
+msgstr "กำลังหาที่ฝั่งสมบัติ…"
 
 #: horizons/gui/modules/multiplayermenu.py:126
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "ไม่พบ pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:127
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"คุณสมบัติผู้เล่นหลายคนต้องใช้ไลบรารี \"pyenet\" ซึ่งตรวจหาไม่พบในระบบของคุณ."
 
 #: horizons/gui/modules/multiplayermenu.py:129
 msgid "Linux users: Try to install pyenet through your package manager."
 msgstr ""
+"ผู้ใช้ Linux: ลองติดตั้งแพ็ค pyenet "
+"ผ่านทางตัวจัดการแพ็คเก็จของดิสโทรที่คุณใช้."
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "ไม่สามารถเริ่มต้นเครือข่าย."
 
 #: horizons/gui/modules/multiplayermenu.py:139
 #: horizons/gui/modules/settings.py:274
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "ไม่สามารถเริ่มต้นคุณสมบัติเครือข่ายด้วยการกำหนดค่าปัจจุบัน."
 
 #: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:275
 msgid "Check the settings you specified in the network section."
-msgstr ""
+msgstr "ตรวจสอบการตั้งค่าที่คุณได้ระบุไว้ในส่วนตั้งค่าเครือข่าย."
 
 #: horizons/gui/modules/multiplayermenu.py:149
 #: horizons/gui/modules/multiplayermenu.py:168 horizons/mpsession.py:53
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "ข้อผิดพลาดเครือข่ายที่ร้ายแรง"
 
 #: horizons/gui/modules/multiplayermenu.py:150
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์หลัก."
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
+"โปรดตรวจสอบการเชื่อมต่ออินเตอร์เน็ตของคุณ "
+"หากใช้ได้ก็หมายความว่าเซิร์ฟเวอร์หลักของเราหยุดให้บริการชั่วคราว."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "มีบางอย่างผิดพลาดกับเครือข่าย:"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Version differs!"
-msgstr ""
+msgstr "เวอร์ชันแตกต่าง!"
 
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/gui/modules/multiplayermenu.py:482
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "แผนที่: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/gui/modules/multiplayermenu.py:483
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "ชื่อเกม: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:215
 #: horizons/gui/modules/multiplayermenu.py:484
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "ผู้สร้าง: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:216
 #: horizons/gui/modules/multiplayermenu.py:485
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "ผู้เล่น: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Wrong version"
-msgstr ""
+msgstr "รุ่นไม่ถูกต้อง"
 
 #: horizons/gui/modules/multiplayermenu.py:237
 #, python-brace-format
@@ -1936,224 +1963,230 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
+"เวอร์ชั่นของเกมแตกต่างไปจากเวอร์ชั่นที่คุณใช้งานอยู่ ผู้เล่นทุกคนที่ต้องการเข"
+"้าร่วมเล่นแบบหลายคนจะต้องใช้ตัวเกมที่มีเวอร์ชั่นเดียวกัน "
+"ปัญหานี้สามารถแก้ไขได้โดยให้ผู้เล่นทุกคนทำการอัพเดตตัวเกมเป็นเวอร์ชั่นล่าสุ"
+"ด. เวอร์ชั่นของเกม: {game_version} เวอร์ชั่นของคุณ: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
-msgstr ""
+msgstr "รหัสผ่านของเกม"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr ""
+msgstr "ใส่รหัสผ่าน:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "จำนวนผู้เล่นที่แนะนำ: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:407
 #: horizons/network/networkinterface.py:531
 msgid "Ready"
-msgstr ""
+msgstr "พร้อม"
 
 #: horizons/gui/modules/multiplayermenu.py:409
 msgid "Not ready"
-msgstr ""
+msgstr "ไม่พร้อม"
 
 #: horizons/gui/modules/multiplayermenu.py:445
 msgid "Enter your message"
-msgstr ""
+msgstr "กรอกข้อความของคุณ"
 
 #: horizons/gui/modules/multiplayermenu.py:503
 #: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "คลิกที่นี่เพื่อเปลี่ยน ชื่อและสี ของคุณ"
 
 #: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "เตะ {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} ได้เข้าร่วมเกม"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} ออกไปจากเกม"
 
 #: horizons/gui/modules/multiplayermenu.py:605
 msgid "You are now ready"
-msgstr ""
+msgstr "ตอนนี้คุณพร้อมแล้ว"
 
 #: horizons/gui/modules/multiplayermenu.py:607
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "คุณยังไม่พร้อมในตอนนี้"
 
 #: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} พร้อมแล้วในตอนนี้"
 
 #: horizons/gui/modules/multiplayermenu.py:612
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} ยังไม่พร้อมในตอนนี้"
 
 #: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "ตอนนี้คุณเป็นที่รู้จักในฐานะ {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:618
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "ตอนนี้ {player} เป็นที่รู้จักในฐานะ {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:622
 msgid "You changed your color"
-msgstr ""
+msgstr "คุณเปลี่ยนสีของคุณ"
 
 #: horizons/gui/modules/multiplayermenu.py:624
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} ได้เปลี่ยนสีของเขา"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "Kicked"
-msgstr ""
+msgstr "ถูกเตะ"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "คุณถูกเตะออกจากเกมโดยผู้สร้าง"
 
 #: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} ถูกเตะออกไปโดยผู้สร้าง"
 
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกเซสชันที่กำลังทำงานอยู่?"
 
 #: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
-msgstr ""
+msgstr "ออกจากเซสชั่น"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "No saved games"
-msgstr ""
+msgstr "ไม่มีเกมที่บันทึกไว้"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "ไม่มีเกมที่บันทึกไว้ให้โหลด."
 
 #: horizons/gui/modules/select_savegame.py:146
 msgid "No filename given"
-msgstr ""
+msgstr "ไม่มีชื่อไฟล์."
 
 #: horizons/gui/modules/select_savegame.py:147
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "กรุณาใส่ชื่อไฟล์ที่ถูกต้อง."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "ไฟล์เซฟเกมที่ใช้ชื่อ {name} มีอยู่แล้ว."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "แผนที่ที่ใช้ชื่อ {name} มีอยู่แล้ว."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
-msgstr ""
+msgstr "เขียนทับมันไหม?"
 
 #: horizons/gui/modules/select_savegame.py:218
 msgid "Unknown savedate"
-msgstr ""
+msgstr "ไม่รู้วันที่บันทึก"
 
 #: horizons/gui/modules/select_savegame.py:221
 #, python-brace-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "ถูกบันทึกเมื่อ {time}"
 
 #. NT takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:225
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "บันทึกไป {amount} ครั้ง"
 
 #: horizons/gui/modules/select_savegame.py:232
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "เซฟจากเกมเวอร์ชั่น {version}"
 
 #: horizons/gui/modules/select_savegame.py:236
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(อาจเข้ากันไม่ได้)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:240
 msgid "Incompatible version"
-msgstr ""
+msgstr "รุ่นที่เข้ากันไม่ได้"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "No file selected"
-msgstr ""
+msgstr "ไม่ได้เลือกไฟล์"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "คุณต้องเลือกเซฟเกมเพื่อลบ."
 
 #: horizons/gui/modules/select_savegame.py:256
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "คุณต้องการลบเซฟเกมที่ชื่อ '{name}' จริงๆหรือ?"
 
 #: horizons/gui/modules/select_savegame.py:258
 msgid "Confirm deletion"
-msgstr ""
+msgstr "ยืนยันการลบ"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Error!"
-msgstr ""
+msgstr "ข้อผิดพลาด!"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "ไม่สามารถลบไฟล์เซฟ!"
 
 #: horizons/gui/modules/settings.py:56 horizons/gui/modules/settings.py:119
 msgid "Hotkeys"
-msgstr ""
+msgstr "คีย์ลัด"
 
 #: horizons/gui/modules/settings.py:57
 msgid "Game"
-msgstr ""
+msgstr "เกม"
 
 #: horizons/gui/modules/settings.py:77
 msgid "Disabled"
-msgstr ""
+msgstr "ปิดใช้งาน"
 
 #: horizons/gui/modules/settings.py:131
 msgid "Restart required"
-msgstr ""
+msgstr "จำเป็นต้องเริ่มต้นใหม่"
 
 #: horizons/gui/modules/settings.py:132
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
 msgstr ""
+"การเปลี่ยนแปลงบางอย่างของคุณจำเป็นต้องเริ่ม Unknown Horizons ใหม่ "
+"คุณต้องการเริ่มการทำงานใหม่ในตอนนี้หรือไม่?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
-msgstr ""
+msgstr "คืนค่าเป็นการตั้งค่าเริ่มต้น"
 
 #: horizons/gui/modules/settings.py:138
 msgid ""
