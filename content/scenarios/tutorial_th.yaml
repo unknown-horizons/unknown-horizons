@@ -116,102 +116,102 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    ตอนนี้เราลองมาดูที่จัตุรัสหลักแบบใกล้ๆกัน.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
-  - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
-  - The items 'Sale' and 'Buy' refer to your trading balance and will be explained later on.
-  - If your balance is positive, you all-in-all make a profit.
+  - ในแท็บ 'บัญชี' คุณจะได้รู้ถึงงบดุลของเกาะนี้ ซึ่งประกอบด้วยค่าใช้จ่ายทั้งหมดที่คุณได้จ่ายไปและภาษีทั้งหมดที่คุณได้รับเข้ามา.
+  - รายการ 'ขาย' และ 'ซื้อ' จะอ้างอิงถึงยอดคงเหลือในการซื้อขายของคุณ แต่เราจะอธิบายถึงเรื่องนี้กันในภายหลัง.
+  - หากยอดเงินของคุณเป็นค่าบวก คุณก็จะได้กำไรทั้งหมด.
   - - Gallery
     - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
-  - In the different tier overview tabs you can see statistics about your inhabitants. You also set the tier-specific global tax here and allow or deny inhabitants of this tier to upgrade to the next higher one.
+  - ในแท็บภาพรวมระดับต่างๆคุณสามารถดูสถิติเกี่ยวกับผู้อยู่อาศัยของคุณ นอกจากนี้คุณยังตั้งภาษีทั่วไปเฉพาะระดับได้ที่นี่และยังสามารถอนุญาตหรือปฏิเสธผู้อยู่อาศัยในระดับนี้ไม่ให้อัพเกรดที่พักเป็นระดับที่อยู่สูงขึ้นไป.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NEW TASK: RESIDENTIAL BUILDINGS']
+  - [Message, สร้างเต็นท์และเชื่อมต่อกับจัตุรัสหลักหากจำเป็น.]
+  - [Headline, 'งานใหม่: สร้างที่พักอาศัย']
   - [Image, content/gui/images/background/hr.png]
-  - Settlers want to have a roof over their heads, else they won't even think of living in your city! You need to provide tents.
+  - ผู้ตั้งถิ่นฐานต้องการมีหลังคาคลุมหัวมิฉะนั้นพวกเขาจะไม่คิดถึงการใช้ชีวิตในเมืองของคุณ! ดังนั้นคุณมีหน้าที่ที่จะต้องจัดหาเต็นท์ที่พักเอาไว้รองรับ.
   - - Gallery
     - [content/gui/icons/buildmenu/003_h.png]
-  - Tents are the basic residential buildings. Your inhabitants will want to upgrade it when they reach higher tiers.
-  - Note that the upgrade of each building requires construction material, like wood for their first upgrade.
-  - Consider to disable the upgrade if your stock of these materials is low.
-  - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
+  - เต็นท์เป็นที่พักอาศัยขั้นพื้นฐาน ผู้อยู่อาศัยของคุณจะต้องการอัพเกรดเมื่อถึงระดับที่สูงขึ้น.
+  - โปรดทราบว่าการอัพเกรดสิ่งปลูกสร้างแต่ละหลังต้องใช้วัสดุก่อสร้าง เช่นไม้สำหรับการอัพเกรดครั้งแรก.
+  - ลองพิจารณาปิดการใช้งานวัสดุในการอัปเกรด หากว่าสต็อกของวัสดุเหล่านี้อยู่ในระดับต่ำ.
+  - ผู้ตั้งถิ่นฐานอาจดูไม่ค่อยมีประโยชน์เพราะพวกเขาจะพยายามบริโภคทรัพยากรทั้งหมดที่คุณผลิตได้ - แต่อย่างน้อยพวกเขาก็จ่ายภาษีและนั่นเป็นวิธีเดียวที่คุณสามารถทำเงินได้ในตอนนี้!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'งาน: สร้างเต็นท์และเชื่อมต่อกับจัตุรัสหลักหากว่าจำเป็น เต็นท์ไม่จำเป็นต้องเชื่อมต่อกับแหล่งผลิตใดๆ.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, สร้างเต็นท์เพิ่มอย่างน้อยสามหลัง แล้วเชื่อมต่อมันเข้ากับจัตุรัสหลัก.]
   - '
 
-    Let''s have a look at the Tent overview tab.'
-  - 'You can see
+    ลองดูที่แถบภาพรวมของเต็นท์.'
+  - 'คุณจะเห็นได้ว่ามี
 
-    * the happiness of these residents,
+    * ความสุขของผู้อยู่อาศัยเหล่านี้,
 
-    * the taxes they pay and
+    * ภาษีที่พวกเขาจ่ายและ
 
-    * the resources they demand.'
-  - If their demands are fulfilled, happiness and thus your tax income increase.
-  - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
-  - Note that you can also change the global tax settings here, too.
+    * ทรัพยากรที่พวกเขาต้องการ.'
+  - หากความต้องการของพวกเขาบรรลุผล ความสุขก็จะเพิ่มขึ้นและทำให้รายได้จากภาษีของคุณเพิ่มขึ้นตาม.
+  - ถ้าไม่, ความสุขและรายได้ก็จะลดลง ในบางครั้งผู้พักอาศัยของคุณอาจมีความไม่พอใจและหันหลังให้กับหมู่บ้าน ทิ้งซากปรักหักพังของที่พักให้ผุกร่อนไปตามเวลา.
+  - โปรดทราบว่าคุณสามารถเปลี่ยนการตั้งค่าภาษีทั่วไปได้ที่นี่ด้วยเช่นกัน.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - [BoldLabel, 'งาน: สร้างเต็นท์เพิ่มอย่างน้อยสามหลัง.']
   - '
 
-    TIP: Holding down SHIFT eases constructing multiple buildings of the same kind.'
+    เคล็ดลับ: กดปุ่ม SHIFT ค้างเอาไว้จะช่วยให้การสร้างสิ่งปลูกสร้างหลายๆหลังที่เป็นแบบเดียวกันทำได้ง่ายขึ้น.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
-  - [Headline, 'NEW TASK: BUILD SIGNAL FIRE']
+  - [Message, สร้างไฟสัญญานบริเวณใกล้ๆกับคลังสินค้าของคุณ.]
+  - [Headline, 'งานใหม่: สร้างไฟสัญญาณ']
   - [Image, content/gui/images/background/hr.png]
-  - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
-  - The trader will supply your settlement with necessary goods which you can't produce yet.
-  - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
-  - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
+  - คุณเห็นเรือแล่นผ่านเกาะของคุณไปเป็นครั้งคราวไหม? เรือเหล่านั้นบางลำอาจเป็นของพ่อค้าอิสระซึ่งอาจเป็นของหนึ่งในผู้ตั้งถิ่นฐานคนแรกๆในหมู่เกาะนี้.
+  - พวกพ่อค้าจะช่วยสนับสนุนการตั้งถิ่นฐานของคุณ ด้วยสินค้าที่จำเป็นซึ่งคุณยังไม่สามารถผลิตได้.
+  - คุณยังสามารถขายทรัพยากรที่เป็นส่วนเกินจากการผลิตของคุณได้ แต่โดยทั่วไปคุณควรเก็บพวกมันเอาไว้ใช้งาน (โดยการสร้างเต็นท์เพิ่ม) แทนที่จะขายพวกมันเพื่อแลกกับผลกำไรเล็กๆน้อยๆ.
+  - โดยปกติพ่อค้าจะแล่นเรือไปรอบๆแล้วมองหาข้อตกลง แต่คุณสามารถเพิ่มความเร็วให้กับบางสิ่งได้เล็กน้อย.
   - - Gallery
     - [content/gui/icons/buildmenu/006_h.png]
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
-  - The Signal Fire has to cover the area which the ships pass through to catch them.
+  - เพื่อจุดประสงค์นี้สร้างสัญญาณไฟที่ชายฝั่งใกล้กับคลังสินค้าของคุณ มันจะแสดงให้เรือที่แล่นผ่านไปมามุ่งหน้ามาสู่จุดที่คุณได้ตั้งถิ่นฐาน.
+  - สัญญาณไฟจะต้องครอบคลุมพื้นที่เพื่อให้เรือที่ได้แล่นผ่านไปมาได้สะดุดตากับพวกมัน.
   - [Pagebreak]
   - '
 
-    After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
-  - You can propose deals via the Warehouse tab "Buy/Sell".
+    หลังจากมีการส่งสัญญาณเล็กๆนี้ พวกพ่อค้าก็จะแวะเข้ามาดูในคลังสินค้าของคุณ แม้ว่าพวกเขาวางแผนเอาไว้ว่าจะแล่นผ่านไปก็ตาม.'
+  - คุณสามารถเสนอข้อเสนอต่างๆผ่านแถบคลังสินค้าเพื่อ "ซื้อ/ขาย".
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
-  - At the 'sailors' tier, you are equipped with three trading slots.
-  - Click on the small icon to change the slot mode from 'Buy' to 'Sell' and vice versa.
-  - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
+  - ที่ระดับ 'ลูกเรือ', คุณมีสามช่องให้ใช้สำหรับการซื้อขาย.
+  - คลิกที่ไอคอนเล็กๆเพื่อเปลี่ยนโหมดของช่องนั้นๆจาก 'ซื้อ' เป็น 'ขาย' หรือในทางกลับกัน.
+  - คลิกที่ช่องเพื่อเลือกสิ่งที่คุณต้องการแลกเปลี่ยน เราจะอธิบายเรื่องนี้เพิ่มเติมในอนาคตเมื่อคุณพร้อมที่จะทำการค้า.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - [BoldLabel, 'งาน: สร้างไฟสัญญาณที่บริเวณใกล้ๆกับคลังสินค้าของคุณ.']
 
 - &TRADING
-  - [Message, Reach an island stock of at least 30 tools. Note that this might take a while.]
-  - [Headline, 'NEW TASK: LEARN TO TRADE']
+  - [Message, ทำการสะสมเครื่องมือบนเกาะอย่างน้อย 30 ชิ้น โปรดทราบว่ามันอาจต้องใช้เวลาสักระยะ.]
+  - [Headline, 'งานใหม่: เรียนรู้ที่จะแลกเปลี่ยน']
   - [Image, content/gui/images/background/hr.png]
-  - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
+  - 'ยอดเยี่ยม! ในตอนนี้พวกพ่อค้าอิสระจะหยุดดูคลังสินค้าของคุณเป็นครั้งคราว.
 
 
-    Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
-  - Then click on one of the 3 slots, then select a good you want to buy or sell.
-  - After selecting a particular type of good, the green bar across the bottom of the slot (if visible) shows you how much you have in stock of this good.
-  - Dragging the slider on the right of each slot determines your 'target value' which has a different meaning on 'Buy' and 'Sell'.
-  - When buying, you will buy sufficient to hold your 'target value' in stock.
-  - When selling, the 'target value' is the stock amount at which you will always stop selling until you get more of that resource again.
+    เรามาเรียนรู้ถึงวิธีการซื้อขายกันต่อดีกว่า.'
+  - ก่อนอื่นคลิกที่คลังสินค้าของคุณเอง แล้วคลิกที่แถบที่สาม.
+  - หลังจากนั้นคลิกที่หนึ่งใน 3 ช่อง ต่อจากนั้นเลือกสินค้าที่คุณต้องการจะซื้อหรือขาย.
+  - หลังจากเลือกสินค้าประเภทใดประเภทหนึ่งได้แล้ว จะมีแถบสีเขียวปรากฏขึ้นที่ด้านล่างของช่อง(หากว่ามองเห็น) มันจะแสดงถึงจำนวนของสินค้าที่คุณมีอยู่ในคลัง.
+  - หากว่าคุณลากตัวเลื่อนทางด้านขวาของแต่ละช่อง จะเป็นการกำหนด 'จำนวนเป้าหมาย' ซึ่งจะมีความหมายแตกต่างกันในระหว่างขั้นตอนการ 'ซื้อ' หรือ 'ขาย'.
+  - เมื่อทำการซื้อ คุณจะซื้อสินค้าประเภทนั้นเข้ามาให้เพียงพอจนถึง 'จำนวนเป้าหมาย' ในสต็อก.
+  - เมื่อทำการขาย 'จำนวนเป้าหมาย' คือจำนวนในสต็อกที่คุณจะหยุดขายเสมอ จนกว่าคุณจะได้รับทรัพยากรเข้ามาเพิ่มมากขึ้นอีกครั้ง.
   - [Pagebreak]
   - '
 
-    For example:
+    ตัวอย่างเช่น:
 
-    Having a ''Buy'' slot and 5 tons in stock, a slider positioned at 9 tons will cause you to buy 4 additional tons at most.'
-  - Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider positioned at 13 will sell up to 5 tons.
-  - If the Free Trader however only wants to buy or sell less than your settings would allow him, you need to live with that and wait for him to return.
-  - 'Unknown Horizons features smart pricing, so the value of one unit can vary.
+    มีการระบุว่าต้องการ ''ซื้อ'' ให้กับช่องและในขณะนั้นมีทรัพยากรประเภทนั้นอยู่ในสต็อกแล้ว 5 ตัน, แถบเลื่อนที่ถูกระบุตำแหน่งไว้ที่ 9 ตันจะทำให้คุณสามารถซื้อเพิ่มเข้ามาได้มากสุดอีก 4 ตันเป็นต้น.'
+  - ในขั้นตอนการขายก็เป็นอะไรที่คล้ายๆกัน ช่องที่ถูกระบุสถานะว่า 'ขาย' เมื่อขณะนั้นในสต็อกมีอยู่ 18 ตันและแถบเลื่อนถูกระบุเอาไว้ที่ 13 ตันจะเท่ากับว่าต้องการขายออกไป 5 ตันนั่นเอง.
+  - หากว่าพ่อค้าอิสระต้องการเพียงแค่ซื้อหรือขายในจำนวนที่น้อยกว่าการตั้งค่าที่คุณได้ระบุไว้ คุณจะต้องรอให้พวกพ่อค้ากลับมาซื้อหรือขายใหม่อีกครั้ง.
+  - 'คุณสมบัติอย่างหนึ่งของ Unknown Horizons จะมีการกำหนดราคาที่ชาญฉลาด
 
-    It is NOT possible to change prices manually!'
-  - You can see your trade balance in the 'Account' tab comparing the 'Sale' and 'Buy' values there.
+    ดังนั้นมูลค่าของสินค้าหนึ่งหน่วยจะมีความแตกต่างกัน และไม่สามารถเปลี่ยนแปลงราคาด้วยตนเองได้!'
+  - คุณสามารถดูดุลการค้าของคุณได้ในแถบ 'บัญชี' เพื่อเปรียบเทียบมูลค่าระหว่าง 'ขาย' และ 'ซื้อ' ได้ที่นั่น.
   - ''
   - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
   - - Gallery
@@ -657,4 +657,4 @@ metadata:
   locale: th
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 51 translated messages, 137 untranslated messages.
+  translation_status: 100 translated messages, 88 untranslated messages.

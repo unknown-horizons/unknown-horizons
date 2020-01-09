@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9ecf5e5\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2020-01-09 13:21+0000\n"
+"PO-Revision-Date: 2020-01-10 16:21+0000\n"
 "Last-Translator: Chaowalit Phochan <siamese.cf@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/uh/tutorial/th/>\n"
 "Language: th\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10.1-dev\n"
+"X-Generator: Weblate 3.10.1\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -412,22 +412,28 @@ msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
 msgstr ""
+"\n"
+"ตอนนี้เราลองมาดูที่จัตุรัสหลักแบบใกล้ๆกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"ในแท็บ 'บัญชี' คุณจะได้รู้ถึงงบดุลของเกาะนี้ ซึ่งประกอบด้วยค่าใช้จ่ายทั้งหมดท"
+"ี่คุณได้จ่ายไปและภาษีทั้งหมดที่คุณได้รับเข้ามา."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"รายการ 'ขาย' และ 'ซื้อ' จะอ้างอิงถึงยอดคงเหลือในการซื้อขายของคุณ "
+"แต่เราจะอธิบายถึงเรื่องนี้กันในภายหลัง."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "หากยอดเงินของคุณเป็นค่าบวก คุณก็จะได้กำไรทั้งหมด."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -435,37 +441,48 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"ในแท็บภาพรวมระดับต่างๆคุณสามารถดูสถิติเกี่ยวกับผู้อยู่อาศัยของคุณ นอกจากนี้คุ"
+"ณยังตั้งภาษีทั่วไปเฉพาะระดับได้ที่นี่และยังสามารถอนุญาตหรือปฏิเสธผู้อยู่อาศัย"
+"ในระดับนี้ไม่ให้อัพเกรดที่พักเป็นระดับที่อยู่สูงขึ้นไป."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Tent and connect it to the Main Square if necessary."
-msgstr ""
+msgstr "สร้างเต็นท์และเชื่อมต่อกับจัตุรัสหลักหากจำเป็น."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "งานใหม่: สร้างที่พักอาศัย"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"ผู้ตั้งถิ่นฐานต้องการมีหลังคาคลุมหัวมิฉะนั้นพวกเขาจะไม่คิดถึงการใช้ชีวิตในเมื"
+"องของคุณ! ดังนั้นคุณมีหน้าที่ที่จะต้องจัดหาเต็นท์ที่พักเอาไว้รองรับ."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
+"เต็นท์เป็นที่พักอาศัยขั้นพื้นฐาน "
+"ผู้อยู่อาศัยของคุณจะต้องการอัพเกรดเมื่อถึงระดับที่สูงขึ้น."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"โปรดทราบว่าการอัพเกรดสิ่งปลูกสร้างแต่ละหลังต้องใช้วัสดุก่อสร้าง "
+"เช่นไม้สำหรับการอัพเกรดครั้งแรก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"ลองพิจารณาปิดการใช้งานวัสดุในการอัปเกรด "
+"หากว่าสต็อกของวัสดุเหล่านี้อยู่ในระดับต่ำ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -473,23 +490,30 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"ผู้ตั้งถิ่นฐานอาจดูไม่ค่อยมีประโยชน์เพราะพวกเขาจะพยายามบริโภคทรัพยากรทั้งหมดท"
+"ี่คุณผลิตได้ - แต่อย่างน้อยพวกเขาก็จ่ายภาษีและนั่นเป็นวิธีเดียวที่คุณสามารถทำ"
+"เงินได้ในตอนนี้!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Tent and connect it to the Main Square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
+"งาน: สร้างเต็นท์และเชื่อมต่อกับจัตุรัสหลักหากว่าจำเป็น "
+"เต็นท์ไม่จำเป็นต้องเชื่อมต่อกับแหล่งผลิตใดๆ."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional Tents and connect them to the Main Square."
-msgstr ""
+msgstr "สร้างเต็นท์เพิ่มอย่างน้อยสามหลัง แล้วเชื่อมต่อมันเข้ากับจัตุรัสหลัก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Let's have a look at the Tent overview tab."
 msgstr ""
+"\n"
+"ลองดูที่แถบภาพรวมของเต็นท์."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -498,11 +522,17 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"คุณจะเห็นได้ว่ามี\n"
+"* ความสุขของผู้อยู่อาศัยเหล่านี้,\n"
+"* ภาษีที่พวกเขาจ่ายและ\n"
+"* ทรัพยากรที่พวกเขาต้องการ."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"หากความต้องการของพวกเขาบรรลุผล "
+"ความสุขก็จะเพิ่มขึ้นและทำให้รายได้จากภาษีของคุณเพิ่มขึ้นตาม."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -510,14 +540,17 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"ถ้าไม่, ความสุขและรายได้ก็จะลดลง "
+"ในบางครั้งผู้พักอาศัยของคุณอาจมีความไม่พอใจและหันหลังให้กับหมู่บ้าน "
+"ทิ้งซากปรักหักพังของที่พักให้ผุกร่อนไปตามเวลา."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "โปรดทราบว่าคุณสามารถเปลี่ยนการตั้งค่าภาษีทั่วไปได้ที่นี่ด้วยเช่นกัน."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build at least three additional Tents."
-msgstr ""
+msgstr "งาน: สร้างเต็นท์เพิ่มอย่างน้อยสามหลัง."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -525,50 +558,66 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"เคล็ดลับ: กดปุ่ม SHIFT ค้างเอาไว้จะช่วยให้การสร้างสิ่งปลูกสร้างหลายๆหลังที่เป"
+"็นแบบเดียวกันทำได้ง่ายขึ้น."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Signal Fire at the coast close to your Warehouse."
-msgstr ""
+msgstr "สร้างไฟสัญญานบริเวณใกล้ๆกับคลังสินค้าของคุณ."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "งานใหม่: สร้างไฟสัญญาณ"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Can you see the ship passing your island from time to time? That ship "
 "belongs to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"คุณเห็นเรือแล่นผ่านเกาะของคุณไปเป็นครั้งคราวไหม? เรือเหล่านั้นบางลำอาจเป็นของ"
+"พ่อค้าอิสระซึ่งอาจเป็นของหนึ่งในผู้ตั้งถิ่นฐานคนแรกๆในหมู่เกาะนี้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"พวกพ่อค้าจะช่วยสนับสนุนการตั้งถิ่นฐานของคุณ "
+"ด้วยสินค้าที่จำเป็นซึ่งคุณยังไม่สามารถผลิตได้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
 msgstr ""
+"คุณยังสามารถขายทรัพยากรที่เป็นส่วนเกินจากการผลิตของคุณได้ "
+"แต่โดยทั่วไปคุณควรเก็บพวกมันเอาไว้ใช้งาน (โดยการสร้างเต็นท์เพิ่ม) "
+"แทนที่จะขายพวกมันเพื่อแลกกับผลกำไรเล็กๆน้อยๆ."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
+"โดยปกติพ่อค้าจะแล่นเรือไปรอบๆแล้วมองหาข้อตกลง "
+"แต่คุณสามารถเพิ่มความเร็วให้กับบางสิ่งได้เล็กน้อย."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"เพื่อจุดประสงค์นี้สร้างสัญญาณไฟที่ชายฝั่งใกล้กับคลังสินค้าของคุณ "
+"มันจะแสดงให้เรือที่แล่นผ่านไปมามุ่งหน้ามาสู่จุดที่คุณได้ตั้งถิ่นฐาน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Signal Fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"สัญญาณไฟจะต้องครอบคลุมพื้นที่เพื่อให้เรือที่ได้แล่นผ่านไปมาได้สะดุดตากับพวกมั"
+"น."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -576,40 +625,49 @@ msgid ""
 "After this little advertisement, the trader will also stop by and look into "
 "your Warehouse, even if he had planned to sail past it."
 msgstr ""
+"\n"
+"หลังจากมีการส่งสัญญาณเล็กๆนี้ พวกพ่อค้าก็จะแวะเข้ามาดูในคลังสินค้าของคุณ "
+"แม้ว่าพวกเขาวางแผนเอาไว้ว่าจะแล่นผ่านไปก็ตาม."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
-msgstr ""
+msgstr "คุณสามารถเสนอข้อเสนอต่างๆผ่านแถบคลังสินค้าเพื่อ \"ซื้อ/ขาย\"."
 
 #. This is the text body of a logbook page.
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
-msgstr ""
+msgstr "ที่ระดับ 'ลูกเรือ', คุณมีสามช่องให้ใช้สำหรับการซื้อขาย."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
 "vice versa."
 msgstr ""
+"คลิกที่ไอคอนเล็กๆเพื่อเปลี่ยนโหมดของช่องนั้นๆจาก 'ซื้อ' เป็น 'ขาย' "
+"หรือในทางกลับกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"คลิกที่ช่องเพื่อเลือกสิ่งที่คุณต้องการแลกเปลี่ยน "
+"เราจะอธิบายเรื่องนี้เพิ่มเติมในอนาคตเมื่อคุณพร้อมที่จะทำการค้า."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
-msgstr ""
+msgstr "งาน: สร้างไฟสัญญาณที่บริเวณใกล้ๆกับคลังสินค้าของคุณ."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
 msgstr ""
+"ทำการสะสมเครื่องมือบนเกาะอย่างน้อย 30 ชิ้น "
+"โปรดทราบว่ามันอาจต้องใช้เวลาสักระยะ."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "งานใหม่: เรียนรู้ที่จะแลกเปลี่ยน"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -618,38 +676,52 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"ยอดเยี่ยม! ในตอนนี้พวกพ่อค้าอิสระจะหยุดดูคลังสินค้าของคุณเป็นครั้งคราว.\n"
+"\n"
+"เรามาเรียนรู้ถึงวิธีการซื้อขายกันต่อดีกว่า."
 
 #. This is the text body of a logbook page.
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "ก่อนอื่นคลิกที่คลังสินค้าของคุณเอง แล้วคลิกที่แถบที่สาม."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"หลังจากนั้นคลิกที่หนึ่งใน 3 ช่อง "
+"ต่อจากนั้นเลือกสินค้าที่คุณต้องการจะซื้อหรือขาย."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After selecting a particular type of good, the green bar across the bottom "
 "of the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"หลังจากเลือกสินค้าประเภทใดประเภทหนึ่งได้แล้ว "
+"จะมีแถบสีเขียวปรากฏขึ้นที่ด้านล่างของช่อง(หากว่ามองเห็น) "
+"มันจะแสดงถึงจำนวนของสินค้าที่คุณมีอยู่ในคลัง."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"หากว่าคุณลากตัวเลื่อนทางด้านขวาของแต่ละช่อง จะเป็นการกำหนด 'จำนวนเป้าหมาย' "
+"ซึ่งจะมีความหมายแตกต่างกันในระหว่างขั้นตอนการ 'ซื้อ' หรือ 'ขาย'."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"เมื่อทำการซื้อ คุณจะซื้อสินค้าประเภทนั้นเข้ามาให้เพียงพอจนถึง 'จำนวนเป้"
+"าหมาย' ในสต็อก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When selling, the 'target value' is the stock amount at which you will "
 "always stop selling until you get more of that resource again."
 msgstr ""
+"เมื่อทำการขาย 'จำนวนเป้าหมาย' คือจำนวนในสต็อกที่คุณจะหยุดขายเสมอ "
+"จนกว่าคุณจะได้รับทรัพยากรเข้ามาเพิ่มมากขึ้นอีกครั้ง."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -658,30 +730,46 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"ตัวอย่างเช่น:\n"
+"มีการระบุว่าต้องการ 'ซื้อ' "
+"ให้กับช่องและในขณะนั้นมีทรัพยากรประเภทนั้นอยู่ในสต็อกแล้ว 5 ตัน, "
+"แถบเลื่อนที่ถูกระบุตำแหน่งไว้ที่ 9 "
+"ตันจะทำให้คุณสามารถซื้อเพิ่มเข้ามาได้มากสุดอีก 4 ตันเป็นต้น."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"ในขั้นตอนการขายก็เป็นอะไรที่คล้ายๆกัน ช่องที่ถูกระบุสถานะว่า 'ขาย' "
+"เมื่อขณะนั้นในสต็อกมีอยู่ 18 ตันและแถบเลื่อนถูกระบุเอาไว้ที่ 13 "
+"ตันจะเท่ากับว่าต้องการขายออกไป 5 ตันนั่นเอง."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"หากว่าพ่อค้าอิสระต้องการเพียงแค่ซื้อหรือขายในจำนวนที่น้อยกว่าการตั้งค่าที่คุณ"
+"ได้ระบุไว้ คุณจะต้องรอให้พวกพ่อค้ากลับมาซื้อหรือขายใหม่อีกครั้ง."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"คุณสมบัติอย่างหนึ่งของ Unknown Horizons จะมีการกำหนดราคาที่ชาญฉลาด\n"
+"ดังนั้นมูลค่าของสินค้าหนึ่งหน่วยจะมีความแตกต่างกัน "
+"และไม่สามารถเปลี่ยนแปลงราคาด้วยตนเองได้!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"คุณสามารถดูดุลการค้าของคุณได้ในแถบ 'บัญชี' เพื่อเปรียบเทียบมูลค่าระหว่าง "
+"'ขาย' และ 'ซื้อ' ได้ที่นั่น."
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
