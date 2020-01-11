@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9ecf5e5\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2020-01-10 16:21+0000\n"
+"PO-Revision-Date: 2020-01-13 05:52+0000\n"
 "Last-Translator: Chaowalit Phochan <siamese.cf@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/uh/tutorial/th/>\n"
 "Language: th\n"
@@ -773,23 +773,25 @@ msgstr ""
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
-msgstr ""
+msgstr "งาน:ซื้อเครื่องมือให้ได้ครบ 30 ชิ้นในสต็อก!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Pavilion with connection to the Tents."
-msgstr ""
+msgstr "สร้างศาลาและเชื่อมต่อเข้ากับเต็นท์ที่พัก."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "งานใหม่: สร้างศาลา"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "เรามีเครื่องมือเหล่านั้นสำรองไว้เพียงพอแล้ว ทำได้ดีมาก!"
 
 #. This is the text body of a logbook page.
 msgid "You now provide housing, a main square and food to your inhabitants."
 msgstr ""
+"ตอนนี้คุณได้จัดหาที่อยู่อาศัย, จัตุรัสหลัก และอาหาร "
+"ให้กับผู้อยู่อาศัยของคุณเรียบร้อยแล้ว."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -797,36 +799,49 @@ msgid ""
 "that by clicking on any Tent): your sailors want a basic building where they "
 "can pray."
 msgstr ""
+"แต่ยังคงมีข้อเรียกร้องเดียวที่เรายังไม่พอใจจนถึงตอนนี้ "
+"(คุณสามารถตรวจสอบได้โดยคลิกที่เต็นท์ใดๆ): "
+"ลูกเรือของคุณต้องการสิ่งปลูกสร้างพื้นฐานที่พวกเขาสามารถเข้าไปอธิษฐานได้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The solution is a Pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"การแก้ปัญหาเบื้องต้นคือสร้างศาลา ซึ่งคนในหมู่บ้านสามารถทำขึ้นได้อย่างรวดเร็วเ"
+"พื่อใช้เป็นที่พักพิงหลบแสงจากดวงอาทิตย์."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Service buildings like this also need to be connected to the Tents with a "
 "Trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"สิ่งปลูกสร้างประเภทนี้ต้องการเชื่อมต่อกับเต็นท์ที่พักด้วยเส้นทาง "
+"ไม่เช่นนั้นผู้อยู่อาศัยของคุณจะไม่สามารถเข้าถึงได้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"โปรดทราบว่าศรัทธาจะได้รับการปฏิบัติเช่นเดียวกับทรัพยากรทางกายภาพ!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(Pavilion) to pick up faith there."
 msgstr ""
+"ซึ่งหมายความว่าผู้อยู่อาศัยของคุณต้องการการเชื่อมต่อเส้นทางกับผู้ผลิต(ศาลา) "
+"เพื่อรับศรัทธาจากที่นั่น."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"หลังจากเวลาผ่านไปเมื่อพวกเขาเริ่มรู้สึกสูญเสียความศรัทธา "
+"พวกเขาก็จะเริ่มมองหาผู้ผลิตเพื่อรวบรวมศรัทธาขึ้นมาใหม่อีกครั้ง."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -835,39 +850,52 @@ msgid ""
 "Tents.\n"
 "The road connection is required as well."
 msgstr ""
+"สิ่งสำคัญ:\n"
+"สิ่งปลูกสร้างบางชนิดเพียงแค่สร้างให้อยู่บริเวณเต็นท์ยังคงไม่เพียงพอต่อความต้"
+"องการ\n"
+"การเชื่อมต่อเส้นทางถนนเข้าไปที่นั่นก็จำเป็นเช่นกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"งาน: สร้างศาลาพร้อมด้วยเชื่อมต่อเส้นทางกับเต็นท์ที่พัก "
+"เพื่อช่วยเติมเต็มความต้องการของลูกเรือในด้านของความเชื่อ."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
-msgstr ""
+msgstr "ตั้งระดับของภาษีให้เป็นระดับต่ำ(ซ้ายสุด) แล้วรอให้กะลาสีของคุณอัพเกรด."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: NEXT TIER"
-msgstr ""
+msgstr "งานใหม่: ก้าวสู่ระดับต่อไป"
 
 #. This is the text body of a logbook page.
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square and the Pavilion and your food supply is adequate."
 msgstr ""
+"ความต้องการทั้งหมดได้รับการเติมเต็มแล้วในขณะนี้ "
+"ผู้อยู่อาศัยของคุณสามารถเยี่ยมชมจัตุรัสหลักและศาลาเป็นประจำ "
+"และแหล่งอาหารของคุณก็มีอยู่อย่างเพียงพอแล้ว."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
 msgstr ""
+"หากลูกเรือมีความสุขมากพอพวกเขาต้องการก้าวไปสู่ระดับถัดไปที่เรียกว่าผู้บุกเบิก"
+"."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
 msgstr ""
+"เพื่อให้พวกเขาได้มีความสุขไม่มีอะไรให้คุณทำนอกจากตั้งค่าภาษีให้อยู่ในระดับที่"
+"ต่ำ เนื่องจากคุณได้ทำตามความต้องการทั้งหมดของผู้อยู่อาศัยไปแล้ว."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -875,6 +903,9 @@ msgid ""
 "to bankruptcy sooner or later. For a period of time and if you know what you "
 "are doing, it is fine though."
 msgstr ""
+"คุณควรพยายามหลีกเลี่ยงอัตราภาษีระดับต่ำเป็นเวลานาน "
+"เพราะอาจทำให้เกิดการล้มละลายในไม่ช้าก็เร็ว "
+"แค่เพียงชั่วระยะเวลาหนึ่งหรือถ้าคุณรู้ว่าคุณกำลังทำอะไรอยู่มันก็ใช้ได้แล้ว."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -882,6 +913,9 @@ msgid ""
 "look for new construction material there to build a log house. This house "
 "will replace the old tent."
 msgstr ""
+"หลังจากเวลาผ่านไปผู้อยู่อาศัยชุดแรกจะเดินไปที่จัตุรัสหลักและมองหาวัสดุก่อสร้า"
+"งใหม่เพื่อสร้างบ้านไม้ "
+"บ้านประเภทนี้จะเปลี่ยนสภาพเต็นท์เก่าๆให้น่าอยู่อาศัยมากขึ้น."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -889,18 +923,25 @@ msgid ""
 "Such residential upgrades cost resources and can thus be restricted at the "
 "Main Square."
 msgstr ""
+"\n"
+"การอัพเกรดที่อยู่อาศัยดังกล่าวมีค่าใช้จ่ายและสามารถถูกจำกัดได้จากจัตุรัสหลัก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "There also are upgrades of buildings without costs, as you will see with the "
 "lumberjack. In this case, only the graphics change."
 msgstr ""
+"นอกจากนี้ยังมีการอัพเกรดสิ่งปลูกสร้างแบบไม่มีค่าใช้จ่าย "
+"เช่นเดียวกับที่คุณเห็นจากเต็นท์ของคนตัดไม้ "
+"ในกรณีนี้เกิดขึ้นเฉพาะการเปลี่ยนแปลงของภาพกราฟิก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Upgraded housing accomodates more inhabitants, and pioneers pay more taxes "
 "than sailors, too."
 msgstr ""
+"ที่อยู่อาศัยที่ได้รับการอัพเกรดจะรองรับผู้อยู่อาศัยได้มากขึ้น "
+"และผู้บุกเบิกต้องจ่ายภาษีมากกว่าลูกเรือด้วยเช่นกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -908,32 +949,37 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
+"ในตอนนี้คุณอาจจะคิดออกแล้ว "
+"ข้อเสียคือผู้บุกเบิกต้องการสินค้าบางอย่างเพิ่มเติมซึ่งเป็นสิ่งที่ลูกเรือไม่ต้"
+"องการ - ดังนั้นคุณจะต้องใช้เงินพิเศษที่ได้มานี้เพื่อทำให้พวกเขาได้มีความสุขด้"
+"วยเช่นกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Set the tax level to Low (left end) and wait for sailors to upgrade."
-msgstr ""
+msgstr "งาน: ตั้งค่าระดับภาษีเป็นระดับต่ำ(ซ้ายสุด) แล้วรอให้กะลาสีได้อัพเกรด."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Farm and keep some empty space around it."
-msgstr ""
+msgstr "สร้างฟาร์มและรักษาพื้นที่รอบๆให้เป็นพื้นที่ว่างเอาไว้."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A FARM"
-msgstr ""
+msgstr "งานใหม่: สร้างฟาร์ม"
 
 #. This is the text body of a logbook page.
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
-msgstr ""
+msgstr "ขอแสดงความยินดี! ผู้อยู่อาศัยของคุณบางคนมาถึงระดับที่สองแล้ว!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now you have access to new buildings, take a look at the Build menu again."
 msgstr ""
+"ตอนนี้คุณสามารถเข้าถึงสิ่งปลูกสร้างชนิดใหม่ ลองกลับไปดูที่เมนูสร้างอีกครั้ง."
 
 #. This is the text body of a logbook page.
 msgid "A shiny new tab appeared there."
-msgstr ""
+msgstr "มีแท็บใหม่ที่เป็นประกายปรากฏขึ้นที่นั่น."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -941,28 +987,36 @@ msgid ""
 "cloth starting with lambs wool (which is one of the goods produced at the "
 "Farm)."
 msgstr ""
+"ผู้บุกเบิกมีความต้องการเสื้อผ้า ดังนั้นคุณต้องตั้งสายการผลิตผ้าที่เริ่มต้นด้ว"
+"ยขนแกะ(ซึ่งเป็นหนึ่งในสินค้าที่ผลิตได้จากฟาร์ม)."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Farm is a very special production building since it can produce not only "
 "one, but many (and different) goods if you choose."
 msgstr ""
+"ฟาร์มเป็นสิ่งปลูกสร้างที่พิเศษมากเพราะมันสามารถผลิตสินค้าได้ไม่ใช่แค่เพียงอย่"
+"างเดียว แต่ยังมีสินค้ามากมาย(และแตกต่างกัน) หากคุณเลือก."
 
 #. This is the text body of a logbook page.
 msgid "The output of Farms depends on what kind of fields you build around it."
-msgstr ""
+msgstr "ผลผลิตของฟาร์มขึ้นอยู่กับพื้นที่ทางการเกษตรที่คุณได้สร้างขึ้น."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "We will have a closer look at this later."
 msgstr ""
+"\n"
+"เราจะไปดูเรื่องนี้กันอย่างละเอียดในภายหลัง."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Farms, like all companies producing raw materials, do not necessarily need "
 "to be connected to storage or a Warehouse."
 msgstr ""
+"ฟาร์มก็เป็นเช่นเดียวกับทุกๆแหล่งผลิตวัตถุดิบ "
+"มันไม่จำเป็นต้องเชื่อมต่อกับโกดังหรือคลังสินค้า."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -970,6 +1024,9 @@ msgid ""
 "collectors from the Warehouse or Storage Tent can reach the final company "
 "everything's fine."
 msgstr ""
+"ตราบใดที่ยูนิตจากฝ่ายผลิตขั้นสุดท้ายสามารถไปถึงฟาร์มได้ "
+"และคนงานจากคลังหรือเต็นท์เก็บของสามารถไปถึงแหล่งผลิตสุดท้ายได้ "
+"ทุกอย่างก็สามารถดำเนินไปได้ด้วยดี."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -977,33 +1034,37 @@ msgid ""
 "(which can make sense) or even on different islands, you will need a "
 "connection to collectors."
 msgstr ""
+"อย่างไรก็ตามหากคุณวางแผนที่จะทำการผลิตบางส่วนในพื้นที่ส่วนอื่นของเกาะ(ซึ่งอาจ"
+"สมเหตุสมผล) หรือแม้กระทั่งบนเกาะอื่นๆคุณจะต้องเชื่อมต่อกับคนงานจากคลังสินค้า."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Try to build the Farm not too close to the coast or your existing buildings "
 "since it will need some space around it to work well."
 msgstr ""
+"ลองสร้างฟาร์มให้ห่างจากชายฝั่งหรือสิ่งปลูกสร้างอื่นๆที่คุณมีอยู่ "
+"เพราะมันจะต้องใช้พื้นที่รอบๆเพื่อให้สามารถทำงานได้ดี."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Farm."
-msgstr ""
+msgstr "งาน: สร้างฟาร์ม."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build at least one pasture and add potato fields if you like."
-msgstr ""
+msgstr "สร้างทุ่งเลี้ยงสัตว์อย่างน้อยหนึ่งแห่ง และเพิ่มไร่มันเทศหากคุณต้องการ."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD FIELDS"
-msgstr ""
+msgstr "งานใหม่: สร้างพื้นที่ทำการเกษตร"
 
 #. This is the text body of a logbook page.
 msgid "The Farm itself is not going to produce anything without some fields."
-msgstr ""
+msgstr "โดยตัวฟาร์มเองแล้วมันจะไม่ผลิตอะไรเลยหากไม่มีพื้นที่สำหรับทำการเกษตร."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You currently have the choice between pastures, potato and sugar fields."
-msgstr ""
+msgstr "ในตอนนี้คุณมีตัวเลือกระหว่างไร่มันฝรั่งกับไร่อ้อย."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1013,24 +1074,35 @@ msgid ""
 "* Sugar Field: Grows sugar which is used to distill liquor and (later) "
 "produce confectionery."
 msgstr ""
+"มาดูภาพรวมคร่าวๆ:\n"
+"* ทุ่งเลี้ยงสัตว์: แกะถูกเลี้ยงที่นี่เพื่อผลิตขนแกะ.\n"
+"* ไร่มันฝรั่ง: ปลูกมันฝรั่งซึ่งปัจจุบันถือว่าเป็นอาหารชนิดหนึ่ง.\n"
+"* ไร่อ้อย: ปลูกอ้อยเพื่อใช้ในการกลั่นเหล้าและน้ำตาล "
+"เพื่อนำไปผลิตเป็นขนมในภายหลัง."
 
 #. This is the text body of a logbook page.
 msgid ""
 "We now only need pastures, but in case your food supply chain is too small "
 "(maybe many residential buildings) you can also produce some potatoes."
 msgstr ""
+"ตอนนี้เราต้องการเพียงทุ่งเลี้ยงสัตว์ แต่หลังจากที่ห่วงโซ่อาหารของคุณเริ่มมีน้"
+"อยเกินไป(อาจเป็นหลังจากมีที่พักอาศัยจำนวนมาก) คุณสามารถเริ่มผลิตมันฝรั่งได้."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that for potatoes you will need a road connection to the Farm (not to "
 "the field!), as it will be the only company to work on the goods."
 msgstr ""
+"โปรดทราบว่าสำหรับมันฝรั่งคุณจะต้องเชื่อมต่อเส้นทางกับฟาร์ม(ไม่ใช่ไปที่ไร่!) "
+"เนื่องจากเป็นแหล่งผลิตเดียวที่ทำหน้าที่เกี่ยวกับการผลิตสินค้า."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Make sure that all fields you build are in the area covered by the Farm."
 msgstr ""
+"\n"
+"ตรวจสอบให้แน่ใจว่าไร่ที่คุณสร้างอยู่ในพื้นที่ที่ครอบคลุมโดยฟาร์ม."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1038,6 +1110,9 @@ msgid ""
 "efficiency of the Farm - but you need to check how many fields one Farm can "
 "serve."
 msgstr ""
+"คุณสามารถรวมการผลิตได้ เช่น "
+"ทุ่งเลี้ยงสัตว์หนึ่งแห่งจะไม่นำไปสู่การผลิตของฟาร์ม 100 เปอร์เซ็นต์ "
+"แต่คุณต้องตรวจสอบว่าฟาร์มสามารถให้บริการได้กี่พื้นที่การเกษตร."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1045,48 +1120,61 @@ msgid ""
 "time there (to seed, harvest, herd, etc…) and because of that, the farm may "
 "be unable to serve all of the fields you built for it in time."
 msgstr ""
+"พื้นที่ทางการเกษตรประเภทต่างๆต้องการคนงานจากฟาร์มและต้องใช้เวลาเมื่ออยู่ที่นั"
+"่น(เพาะเมล็ด, เก็บเกี่ยว, เลี้ยงสัตว์ ฯลฯ) ด้วยเหตุนี้ฟาร์มจึงไม่สามารถให้บริ"
+"การพื้นที่การเกษตรทั้งหมดที่คุณสร้างได้ทันเวลา."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For now, you do not need to care about these issues a lot since you haven't "
 "built any fields. Let's change that!"
 msgstr ""
+"ในตอนนี้คุณไม่จำเป็นต้องสนใจปัญหาเหล่านี้มากนัก "
+"เนื่องจากคุณยังไม่ได้สร้างพื้นที่การเกษตรใดๆ มาเปลี่ยนกันเถอะ!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build at least one Pasture in the Farm's range and add Potato Fields "
 "if you like."
 msgstr ""
+"งาน: สร้างทุ่งเลี้ยงสัตว์อย่างน้อยหนึ่งแห่งในระยะของฟาร์มและเพิ่มไร่มันฝรั่งห"
+"ากคุณต้องการ."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a storage tent (tier I tab) where it makes sense."
-msgstr ""
+msgstr "สร้างเต็นท์จัดเก็บ(แถบระดับ I) บนพื้นที่ที่เหมาะสม."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD STORAGE"
-msgstr ""
+msgstr "งานใหม่: สร้างโกดังเก็บของ"
 
 #. This is the text body of a logbook page.
 msgid "Did you watch your lumberjack recently?"
-msgstr ""
+msgstr "คุณได้ลองแวะไปดูคนตัดไม้เมื่อเร็วๆนี้ไหม?"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Since your Warehouse does not have unlimited space to store goods, "
 "collectors will stop fetching goods from companies when stock is full."
 msgstr ""
+"เนื่องจากคลังสินค้าของคุณมีพื้นที่จำกัดในการจัดเก็บสินค้า "
+"คนงานจะหยุดรับสินค้าจากแหล่งผลิตเมื่อสต็อกสินค้าเต็ม."
 
 #. This is the text body of a logbook page.
 msgid ""
 "So if no sailors recently wanted to upgrade their tents, you probably have a "
 "lot of boards and in that case, the lumberjack may idle."
 msgstr ""
+"ดังนั้นหากไม่มีกะลาสีที่ต้องการอัพเกรดเต็นท์ของพวกเขาเมื่อเร็วๆนี้ "
+"คุณอาจมีไม้กระดานเหลืออยู่มากและในกรณีนั้นคนตัดไม้จะหยุดทำงาน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "We can improve this situation in two different ways, and we will have a look "
 "at both of them below."
 msgstr ""
+"เราสามารถแก้ไขสถานการณ์นี้ได้สองวิธีแตกต่างกัน "
+"และเราจะได้ดูทั้งสองวิธีด้านล่างนี้."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1094,6 +1182,8 @@ msgid ""
 "This may sound strange, but click on the gear wheel you see in the "
 "Lumberjack Hut's overview."
 msgstr ""
+"แหล่งผลิตทั้งหมดเสนอว่าจะไม่ทำงานเลย.\n"
+"นี่อาจฟังดูแปลก แต่ลองคลิกที่เฟืองที่คุณเห็นในส่วนภาพรวมของแหล่งตัดไม้."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1101,6 +1191,9 @@ msgid ""
 "costs you pay for the building will decrease. They won't be zero, but still "
 "lower than if you keep the company producing."
 msgstr ""
+"หากเปิดใช้งานโหมด 'หยุด' (เราเรียกมันว่า 'การเพิกถอน') "
+"ค่าใช้จ่ายที่ต้องใช้สำหรับบำรุงสิ่งปลูกสร้างจะลดลง "
+"พวกมันจะไม่เป็นศูนย์แต่ก็ถือว่าต่ำกว่าถ้าคุณยังต้องการให้แหล่งผลิตทำงาน."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1108,12 +1201,17 @@ msgid ""
 "This means that you can save money when you temporarily do not need a "
 "company and do not want to tear it down, either."
 msgstr ""
+"\n"
+"ซึ่งหมายความว่าคุณสามารถประหยัดเงินได้เมื่อคุณไม่จำเป็นต้องใช้แหล่งผลิตนั้นชั"
+"่วคราว และไม่ต้องการรื้อถอนแหล่งผลิตด้วยเช่นกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Another solution is to build the last tier-I building which has not been "
 "mentioned so far: the Storage Tent."
 msgstr ""
+"อีกวิธีหนึ่งคือการสร้างสิ่งปลูกสร้างระดับ I สุดท้าย ซึ่งยังไม่ได้ถูกกล่าวถึง:"
+" เต็นท์เก็บของ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1121,6 +1219,9 @@ msgid ""
 "* Offers more storage for your goods, and\n"
 "* sends its own collectors to fetch goods, just like the Warehouse does."
 msgstr ""
+"สิ่งปลูกสร้างนี้มีวัตถุประสงค์สองประการ, มันจะ:\n"
+"* มอบพื้นที่เก็บของเพิ่มให้กับคลังสินค้า และ\n"
+"* ส่งคนงานออกไปเพื่อเก็บสินค้าเหมือนที่คลังสินค้าทำ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1128,24 +1229,29 @@ msgid ""
 "products collected, and if the Warehouse is overwhelmed with collector "
 "tasks, you can place a Storage Tent to help out there."
 msgstr ""
+"โปรดทราบว่าแหล่งผลิตต่างๆสามารถเชื่อมต่อกับที่เก็บของเพื่อเก็บทรัพยากรที่รวบร"
+"วมได้และถ้าหากคลังสินค้ามีงานสะสมอยู่มากมาย "
+"คุณสามารถวางเต็นท์เก็บของไว้เพื่อช่วยแบ่งงานจากคลัง."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Storage Tent, preferably where you need collectors."
-msgstr ""
+msgstr "งาน: สร้างเต็นท์เก็บของจำเป็นอย่างยิ่งหากคุณต้องการพื้นที่เก็บของเพิ่ม."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Weaver's Hut that can somehow reach the wool of your Farm."
-msgstr ""
+msgstr "สร้างกระท่อมของคนทอผ้าที่สามารถเข้าไปรับขนแกะได้จากฟาร์มของคุณ."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A WEAVER"
-msgstr ""
+msgstr "งานใหม่: สร้างกระท่อมของคนทอผ้า"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Now the wool production is set up, you still need a weaver to produce cloth "
 "out of this wool."
 msgstr ""
+"ตอนนี้มีสายการผลิตผ้าขนสัตว์ของคุณยังต้องการใช้งานช่างทอผ้าเพื่อผลิตผ้าขนสัตว"
+"์."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1153,64 +1259,81 @@ msgid ""
 "where you can build it - either close to the Farm or close to a Storage Tent "
 "(or the Warehouse)."
 msgstr ""
+"กระท่อมของคนทอผ้าก็คือสถานที่ที่ช่างทอผ้าอาศัยอยู่ "
+"มีสองจุดที่คุณสามารถสร้างได้ - "
+"ใกล้กับฟาร์มหรือใกล้กับเต็นท์เก็บของ(หรือคลังสินค้า)."
 
 #. This is the text body of a logbook page.
 msgid "In both cases you should ensure the connection to a Trail as well."
-msgstr ""
+msgstr "ในทั้งสองกรณีคุณควรเชื่อมต่อเข้ากับเส้นทางด้วยเช่นกัน."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can place the Weaver's Hut close to the Farm and tear down any Trail to "
 "the Farm to see that it will still fetch the wool and produce."
 msgstr ""
+"คุณสามารถวางกระท่อมของคนทอผ้าไว้ใกล้ๆกับฟาร์มแล้วลากเส้นทางเชื่อมต่อไปที่ฟาร์"
+"มเพื่อเช็คดูว่ามันยังคงไปรับขนแกะและทำการผลิต."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
-msgstr ""
+msgstr "งาน: สร้างกระท่อมของคนทอผ้าให้อยู่ในตำแหน่งที่สามารถไปรับขนสัตว์ได้."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "House a total of 50 or more inhabitants in your city to complete the "
 "tutorial. You need a positive balance."
 msgstr ""
+"เพื่อให้บทช่วยสอนนี้เสร็จสมบูรณ์คุณจะต้องมีผู้อยู่อาศัยภายในเมืองทั้งหมด 50 "
+"คนขึ้นไป และคุณต้องมีความสมดุลในเชิงบวก."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: COMPLETE TUTORIAL"
-msgstr ""
+msgstr "งานใหม่: ทำให้บทช่วยสอนเสร็จสมบูรณ์"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Try to house a total of 50 or more inhabitants in your city by providing "
 "more residential buildings."
 msgstr ""
+"พยายามทำให้มีผู้อยู่อาศัยภายในเมืองของคุณ 50 คนหรือมากกว่านี้ "
+"โดยการจัดหาที่พักอาศัยเพิ่มมากขึ้น."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you are able to keep an economy running which can satisfy this amount "
 "of consumers, you are ready to discover new Unknown Horizons!"
 msgstr ""
+"หลังจากที่คุณสามารถทำให้เศรษฐกิจดำเนินต่อไปเพื่อตอบสนองผู้บริโภคในจำนวนนี้ได้"
+" คุณก็พร้อมที่จะค้นพบสิ่งใหม่ๆใน Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You also need enough money to keep this economy running, so a positive "
 "balance (check in the Warehouse tab 'Account') is required."
 msgstr ""
+"นอกจากนี้คุณยังต้องการเงินมากพอที่จะทำให้เศรษฐกิจทำงานต่อไปได้ "
+"ดังนั้นจึงจำเป็นต้องมีสมดุล(ดูที่แถบบัญชีในคลังสินค้า)ในเชิงบวก."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Reach a total number of 50 inhabitants and a positive balance to "
 "complete this tutorial."
 msgstr ""
+"งาน: มีผู้อยู่อาศัยทั้งหมด 50 "
+"คนและสร้างสมดุลที่ดีเพื่อให้บทช่วยสอนนี้เสร็จสมบูรณ์."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Congratulations! You have reached the end of this tutorial and are ready to "
 "meet new challenges!"
 msgstr ""
+"ขอแสดงความยินดี! คุณมาถึงจุดสิ้นสุดของบทช่วยสอนนี้แล้ว "
+"และพร้อมที่จะพบกับความท้าทายใหม่!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NO TASKS LEFT"
-msgstr ""
+msgstr "ไม่มีงานที่ต้องทำแล้ว"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1218,38 +1341,44 @@ msgid ""
 "is now at your command, waiting for your free aspirations and brave "
 "explorations!"
 msgstr ""
+"คุณทำภารกิจทั้งหมดที่มอบให้สำเร็จแล้ว ตอนนี้โลกอยู่ภายใต้คำสั่งของคุณ, "
+"รอให้เกิดแรงบันดาลใจแล้วเริ่มทำการสำรวจครั้งใหม่อย่างกล้าหาญ!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "If you have any suggestions on what we could or should improve, add or leave "
 "out:"
 msgstr ""
+"หากคุณมีข้อเสนอแนะใดๆเกี่ยวกับสิ่งที่เราสามารถทำได้หรือควรปรับปรุง, "
+"เพิ่มเข้ามาหรือนำออกไป:"
 
 #. This is the text body of a logbook page.
 msgid "www.unknown-horizons.org"
-msgstr ""
+msgstr "www.unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 msgid "#unknown-horizons @ irc.freenode.net"
-msgstr ""
+msgstr "#unknown-horizons @ irc.freenode.net"
 
 #. This is the text body of a logbook page.
 msgid "team@unknown-horizons.org"
-msgstr ""
+msgstr "team@unknown-horizons.org"
 
 #. This is the text body of a logbook page.
 msgid "Our forums are open to you as well!"
-msgstr ""
+msgstr "ฟอรั่มของเราก็เปิดต้อนรับคุณด้วยเช่นกัน!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The best results until now were achieved by joining our IRC channel, so you "
 "could try that out first (-;"
 msgstr ""
+"วิธีที่ดีที่สุดในตอนนี้ทำได้โดยการเข้าร่วมช่องทาง IRC ของเรา "
+"คุณสามารถลองใช้ช่องทางนี้ได้ทันที (-;"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Thanks!"
-msgstr ""
+msgstr "ขอขอบคุณ!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1262,3 +1391,11 @@ msgid ""
 "\n"
 "Your UH-Team"
 msgstr ""
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"ขอบคุณที่ได้เล่นบทช่วยสอน!\n"
+"\n"
+"ทีมผู้พัฒนา Unknown Horizons."

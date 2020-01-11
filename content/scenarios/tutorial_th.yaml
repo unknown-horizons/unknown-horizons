@@ -213,176 +213,176 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     ดังนั้นมูลค่าของสินค้าหนึ่งหน่วยจะมีความแตกต่างกัน และไม่สามารถเปลี่ยนแปลงราคาด้วยตนเองได้!'
   - คุณสามารถดูดุลการค้าของคุณได้ในแถบ 'บัญชี' เพื่อเปรียบเทียบมูลค่าระหว่าง 'ขาย' และ 'ซื้อ' ได้ที่นั่น.
   - ''
-  - [BoldLabel, 'Task: Buy as many tools as you need to have 30 tools in stock!']
+  - [BoldLabel, 'งาน:ซื้อเครื่องมือให้ได้ครบ 30 ชิ้นในสต็อก!']
   - - Gallery
     - [content/gui/icons/resources/32/006.png]
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
-  - [Headline, 'NEW TASK: BUILD A PAVILION']
+  - [Message, สร้างศาลาและเชื่อมต่อเข้ากับเต็นท์ที่พัก.]
+  - [Headline, 'งานใหม่: สร้างศาลา']
   - [Image, content/gui/images/background/hr.png]
-  - Those tools will be enough for the moment. Well done!
-  - You now provide housing, a main square and food to your inhabitants.
-  - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
-  - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
-  - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
+  - เรามีเครื่องมือเหล่านั้นสำรองไว้เพียงพอแล้ว ทำได้ดีมาก!
+  - ตอนนี้คุณได้จัดหาที่อยู่อาศัย, จัตุรัสหลัก และอาหาร ให้กับผู้อยู่อาศัยของคุณเรียบร้อยแล้ว.
+  - 'แต่ยังคงมีข้อเรียกร้องเดียวที่เรายังไม่พอใจจนถึงตอนนี้ (คุณสามารถตรวจสอบได้โดยคลิกที่เต็นท์ใดๆ): ลูกเรือของคุณต้องการสิ่งปลูกสร้างพื้นฐานที่พวกเขาสามารถเข้าไปอธิษฐานได้.'
+  - การแก้ปัญหาเบื้องต้นคือสร้างศาลา ซึ่งคนในหมู่บ้านสามารถทำขึ้นได้อย่างรวดเร็วเพื่อใช้เป็นที่พักพิงหลบแสงจากดวงอาทิตย์.
+  - สิ่งปลูกสร้างประเภทนี้ต้องการเชื่อมต่อกับเต็นท์ที่พักด้วยเส้นทาง ไม่เช่นนั้นผู้อยู่อาศัยของคุณจะไม่สามารถเข้าถึงได้.
   - [Pagebreak]
   - '
 
-    Note that faith is treated like a physical resource!'
-  - This means that your inhabitants need a road connection to the producer (Pavilion) to pick up faith there.
-  - After some time, they will have consumed it and then again look for a producer to collect more faith.
-  - 'Important:
+    โปรดทราบว่าศรัทธาจะได้รับการปฏิบัติเช่นเดียวกับทรัพยากรทางกายภาพ!'
+  - ซึ่งหมายความว่าผู้อยู่อาศัยของคุณต้องการการเชื่อมต่อเส้นทางกับผู้ผลิต(ศาลา) เพื่อรับศรัทธาจากที่นั่น.
+  - หลังจากเวลาผ่านไปเมื่อพวกเขาเริ่มรู้สึกสูญเสียความศรัทธา พวกเขาก็จะเริ่มมองหาผู้ผลิตเพื่อรวบรวมศรัทธาขึ้นมาใหม่อีกครั้ง.
+  - 'สิ่งสำคัญ:
 
-    It is NOT enough that the building is merely within a certain range of the Tents.
+    สิ่งปลูกสร้างบางชนิดเพียงแค่สร้างให้อยู่บริเวณเต็นท์ยังคงไม่เพียงพอต่อความต้องการ
 
-    The road connection is required as well.'
+    การเชื่อมต่อเส้นทางถนนเข้าไปที่นั่นก็จำเป็นเช่นกัน.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - [BoldLabel, 'งาน: สร้างศาลาพร้อมด้วยเชื่อมต่อเส้นทางกับเต็นท์ที่พัก เพื่อช่วยเติมเต็มความต้องการของลูกเรือในด้านของความเชื่อ.']
   - - Gallery
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Set the tax level to Low (left end) and wait for your sailors to upgrade.]
-  - [Headline, 'NEW TASK: NEXT TIER']
+  - [Message, ตั้งระดับของภาษีให้เป็นระดับต่ำ(ซ้ายสุด) แล้วรอให้กะลาสีของคุณอัพเกรด.]
+  - [Headline, 'งานใหม่: ก้าวสู่ระดับต่อไป']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
-  - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - ความต้องการทั้งหมดได้รับการเติมเต็มแล้วในขณะนี้ ผู้อยู่อาศัยของคุณสามารถเยี่ยมชมจัตุรัสหลักและศาลาเป็นประจำ และแหล่งอาหารของคุณก็มีอยู่อย่างเพียงพอแล้ว.
+  - หากลูกเรือมีความสุขมากพอพวกเขาต้องการก้าวไปสู่ระดับถัดไปที่เรียกว่าผู้บุกเบิก.
+  - เพื่อให้พวกเขาได้มีความสุขไม่มีอะไรให้คุณทำนอกจากตั้งค่าภาษีให้อยู่ในระดับที่ต่ำ เนื่องจากคุณได้ทำตามความต้องการทั้งหมดของผู้อยู่อาศัยไปแล้ว.
+  - คุณควรพยายามหลีกเลี่ยงอัตราภาษีระดับต่ำเป็นเวลานาน เพราะอาจทำให้เกิดการล้มละลายในไม่ช้าก็เร็ว แค่เพียงชั่วระยะเวลาหนึ่งหรือถ้าคุณรู้ว่าคุณกำลังทำอะไรอยู่มันก็ใช้ได้แล้ว.
+  - หลังจากเวลาผ่านไปผู้อยู่อาศัยชุดแรกจะเดินไปที่จัตุรัสหลักและมองหาวัสดุก่อสร้างใหม่เพื่อสร้างบ้านไม้ บ้านประเภทนี้จะเปลี่ยนสภาพเต็นท์เก่าๆให้น่าอยู่อาศัยมากขึ้น.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
-  - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
-  - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
+    การอัพเกรดที่อยู่อาศัยดังกล่าวมีค่าใช้จ่ายและสามารถถูกจำกัดได้จากจัตุรัสหลัก.'
+  - นอกจากนี้ยังมีการอัพเกรดสิ่งปลูกสร้างแบบไม่มีค่าใช้จ่าย เช่นเดียวกับที่คุณเห็นจากเต็นท์ของคนตัดไม้ ในกรณีนี้เกิดขึ้นเฉพาะการเปลี่ยนแปลงของภาพกราฟิก.
+  - ที่อยู่อาศัยที่ได้รับการอัพเกรดจะรองรับผู้อยู่อาศัยได้มากขึ้น และผู้บุกเบิกต้องจ่ายภาษีมากกว่าลูกเรือด้วยเช่นกัน.
+  - ในตอนนี้คุณอาจจะคิดออกแล้ว ข้อเสียคือผู้บุกเบิกต้องการสินค้าบางอย่างเพิ่มเติมซึ่งเป็นสิ่งที่ลูกเรือไม่ต้องการ - ดังนั้นคุณจะต้องใช้เงินพิเศษที่ได้มานี้เพื่อทำให้พวกเขาได้มีความสุขด้วยเช่นกัน.
   - ''
-  - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']
+  - [BoldLabel, 'งาน: ตั้งค่าระดับภาษีเป็นระดับต่ำ(ซ้ายสุด) แล้วรอให้กะลาสีได้อัพเกรด.']
   - - Gallery
     - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, 'NEW TASK: BUILD A FARM']
+  - [Message, สร้างฟาร์มและรักษาพื้นที่รอบๆให้เป็นพื้นที่ว่างเอาไว้.]
+  - [Headline, 'งานใหม่: สร้างฟาร์ม']
   - [Image, content/gui/images/background/hr.png]
-  - Congratulations! Some of your inhabitants have reached tier II!
-  - Now you have access to new buildings, take a look at the Build menu again.
+  - ขอแสดงความยินดี! ผู้อยู่อาศัยของคุณบางคนมาถึงระดับที่สองแล้ว!
+  - ตอนนี้คุณสามารถเข้าถึงสิ่งปลูกสร้างชนิดใหม่ ลองกลับไปดูที่เมนูสร้างอีกครั้ง.
   - - Gallery
     - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
-  - A shiny new tab appeared there.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
-  - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
-  - The output of Farms depends on what kind of fields you build around it.
+  - มีแท็บใหม่ที่เป็นประกายปรากฏขึ้นที่นั่น.
+  - ผู้บุกเบิกมีความต้องการเสื้อผ้า ดังนั้นคุณต้องตั้งสายการผลิตผ้าที่เริ่มต้นด้วยขนแกะ(ซึ่งเป็นหนึ่งในสินค้าที่ผลิตได้จากฟาร์ม).
+  - ฟาร์มเป็นสิ่งปลูกสร้างที่พิเศษมากเพราะมันสามารถผลิตสินค้าได้ไม่ใช่แค่เพียงอย่างเดียว แต่ยังมีสินค้ามากมาย(และแตกต่างกัน) หากคุณเลือก.
+  - ผลผลิตของฟาร์มขึ้นอยู่กับพื้นที่ทางการเกษตรที่คุณได้สร้างขึ้น.
   - [Pagebreak]
   - '
 
-    We will have a closer look at this later.'
-  - Farms, like all companies producing raw materials, do not necessarily need to be connected to storage or a Warehouse.
-  - As long as units of the final production company can reach the Farm, and collectors from the Warehouse or Storage Tent can reach the final company everything's fine.
-  - If you, however, plan to do some processing on different parts of the island (which can make sense) or even on different islands, you will need a connection to collectors.
-  - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
+    เราจะไปดูเรื่องนี้กันอย่างละเอียดในภายหลัง.'
+  - ฟาร์มก็เป็นเช่นเดียวกับทุกๆแหล่งผลิตวัตถุดิบ มันไม่จำเป็นต้องเชื่อมต่อกับโกดังหรือคลังสินค้า.
+  - ตราบใดที่ยูนิตจากฝ่ายผลิตขั้นสุดท้ายสามารถไปถึงฟาร์มได้ และคนงานจากคลังหรือเต็นท์เก็บของสามารถไปถึงแหล่งผลิตสุดท้ายได้ ทุกอย่างก็สามารถดำเนินไปได้ด้วยดี.
+  - อย่างไรก็ตามหากคุณวางแผนที่จะทำการผลิตบางส่วนในพื้นที่ส่วนอื่นของเกาะ(ซึ่งอาจสมเหตุสมผล) หรือแม้กระทั่งบนเกาะอื่นๆคุณจะต้องเชื่อมต่อกับคนงานจากคลังสินค้า.
+  - ลองสร้างฟาร์มให้ห่างจากชายฝั่งหรือสิ่งปลูกสร้างอื่นๆที่คุณมีอยู่ เพราะมันจะต้องใช้พื้นที่รอบๆเพื่อให้สามารถทำงานได้ดี.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - [BoldLabel, 'งาน: สร้างฟาร์ม.']
   - - Gallery
     - [content/gui/icons/buildmenu/020.png]
 
 - &FIELDS
-  - [Message, Build at least one pasture and add potato fields if you like.]
-  - [Headline, 'NEW TASK: BUILD FIELDS']
+  - [Message, สร้างทุ่งเลี้ยงสัตว์อย่างน้อยหนึ่งแห่ง และเพิ่มไร่มันเทศหากคุณต้องการ.]
+  - [Headline, 'งานใหม่: สร้างพื้นที่ทำการเกษตร']
   - [Image, content/gui/images/background/hr.png]
-  - The Farm itself is not going to produce anything without some fields.
-  - You currently have the choice between pastures, potato and sugar fields.
-  - 'Let''s have a short overview:
+  - โดยตัวฟาร์มเองแล้วมันจะไม่ผลิตอะไรเลยหากไม่มีพื้นที่สำหรับทำการเกษตร.
+  - ในตอนนี้คุณมีตัวเลือกระหว่างไร่มันฝรั่งกับไร่อ้อย.
+  - 'มาดูภาพรวมคร่าวๆ:
 
-    * Pasture: Sheep live here, producing lamb wool.
+    * ทุ่งเลี้ยงสัตว์: แกะถูกเลี้ยงที่นี่เพื่อผลิตขนแกะ.
 
-    * Potato Field: Grows potatoes which are currently treated as food.
+    * ไร่มันฝรั่ง: ปลูกมันฝรั่งซึ่งปัจจุบันถือว่าเป็นอาหารชนิดหนึ่ง.
 
-    * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
-  - We now only need pastures, but in case your food supply chain is too small (maybe many residential buildings) you can also produce some potatoes.
-  - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
+    * ไร่อ้อย: ปลูกอ้อยเพื่อใช้ในการกลั่นเหล้าและน้ำตาล เพื่อนำไปผลิตเป็นขนมในภายหลัง.'
+  - ตอนนี้เราต้องการเพียงทุ่งเลี้ยงสัตว์ แต่หลังจากที่ห่วงโซ่อาหารของคุณเริ่มมีน้อยเกินไป(อาจเป็นหลังจากมีที่พักอาศัยจำนวนมาก) คุณสามารถเริ่มผลิตมันฝรั่งได้.
+  - โปรดทราบว่าสำหรับมันฝรั่งคุณจะต้องเชื่อมต่อเส้นทางกับฟาร์ม(ไม่ใช่ไปที่ไร่!) เนื่องจากเป็นแหล่งผลิตเดียวที่ทำหน้าที่เกี่ยวกับการผลิตสินค้า.
   - [Pagebreak]
   - '
 
-    Make sure that all fields you build are in the area covered by the Farm.'
-  - You can have combined production - one pasture will not lead to 100 percent efficiency of the Farm - but you need to check how many fields one Farm can serve.
-  - Different classes of fields require the farm units to spend more or less time there (to seed, harvest, herd, etc…) and because of that, the farm may be unable to serve all of the fields you built for it in time.
-  - For now, you do not need to care about these issues a lot since you haven't built any fields. Let's change that!
+    ตรวจสอบให้แน่ใจว่าไร่ที่คุณสร้างอยู่ในพื้นที่ที่ครอบคลุมโดยฟาร์ม.'
+  - คุณสามารถรวมการผลิตได้ เช่น ทุ่งเลี้ยงสัตว์หนึ่งแห่งจะไม่นำไปสู่การผลิตของฟาร์ม 100 เปอร์เซ็นต์ แต่คุณต้องตรวจสอบว่าฟาร์มสามารถให้บริการได้กี่พื้นที่การเกษตร.
+  - พื้นที่ทางการเกษตรประเภทต่างๆต้องการคนงานจากฟาร์มและต้องใช้เวลาเมื่ออยู่ที่นั่น(เพาะเมล็ด, เก็บเกี่ยว, เลี้ยงสัตว์ ฯลฯ) ด้วยเหตุนี้ฟาร์มจึงไม่สามารถให้บริการพื้นที่การเกษตรทั้งหมดที่คุณสร้างได้ทันเวลา.
+  - ในตอนนี้คุณไม่จำเป็นต้องสนใจปัญหาเหล่านี้มากนัก เนื่องจากคุณยังไม่ได้สร้างพื้นที่การเกษตรใดๆ มาเปลี่ยนกันเถอะ!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - [BoldLabel, 'งาน: สร้างทุ่งเลี้ยงสัตว์อย่างน้อยหนึ่งแห่งในระยะของฟาร์มและเพิ่มไร่มันฝรั่งหากคุณต้องการ.']
   - - Gallery
     - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
 
 - &STORAGE
-  - [Message, Build a storage tent (tier I tab) where it makes sense.]
-  - [Headline, 'NEW TASK: BUILD STORAGE']
+  - [Message, สร้างเต็นท์จัดเก็บ(แถบระดับ I) บนพื้นที่ที่เหมาะสม.]
+  - [Headline, 'งานใหม่: สร้างโกดังเก็บของ']
   - [Image, content/gui/images/background/hr.png]
-  - Did you watch your lumberjack recently?
-  - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
-  - So if no sailors recently wanted to upgrade their tents, you probably have a lot of boards and in that case, the lumberjack may idle.
-  - We can improve this situation in two different ways, and we will have a look at both of them below.
-  - 'All companies offer to do no work at all.
+  - คุณได้ลองแวะไปดูคนตัดไม้เมื่อเร็วๆนี้ไหม?
+  - เนื่องจากคลังสินค้าของคุณมีพื้นที่จำกัดในการจัดเก็บสินค้า คนงานจะหยุดรับสินค้าจากแหล่งผลิตเมื่อสต็อกสินค้าเต็ม.
+  - ดังนั้นหากไม่มีกะลาสีที่ต้องการอัพเกรดเต็นท์ของพวกเขาเมื่อเร็วๆนี้ คุณอาจมีไม้กระดานเหลืออยู่มากและในกรณีนั้นคนตัดไม้จะหยุดทำงาน.
+  - เราสามารถแก้ไขสถานการณ์นี้ได้สองวิธีแตกต่างกัน และเราจะได้ดูทั้งสองวิธีด้านล่างนี้.
+  - 'แหล่งผลิตทั้งหมดเสนอว่าจะไม่ทำงานเลย.
 
-    This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
-  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+    นี่อาจฟังดูแปลก แต่ลองคลิกที่เฟืองที่คุณเห็นในส่วนภาพรวมของแหล่งตัดไม้.'
+  - หากเปิดใช้งานโหมด 'หยุด' (เราเรียกมันว่า 'การเพิกถอน') ค่าใช้จ่ายที่ต้องใช้สำหรับบำรุงสิ่งปลูกสร้างจะลดลง พวกมันจะไม่เป็นศูนย์แต่ก็ถือว่าต่ำกว่าถ้าคุณยังต้องการให้แหล่งผลิตทำงาน.
   - - Gallery
     - [content/gui/icons/templates/production/toggle_inactive_h.png]
   - [Pagebreak]
   - '
 
-    This means that you can save money when you temporarily do not need a company and do not want to tear it down, either.'
-  - 'Another solution is to build the last tier-I building which has not been mentioned so far: the Storage Tent.'
-  - 'This building has two purposes. It:
+    ซึ่งหมายความว่าคุณสามารถประหยัดเงินได้เมื่อคุณไม่จำเป็นต้องใช้แหล่งผลิตนั้นชั่วคราว และไม่ต้องการรื้อถอนแหล่งผลิตด้วยเช่นกัน.'
+  - 'อีกวิธีหนึ่งคือการสร้างสิ่งปลูกสร้างระดับ I สุดท้าย ซึ่งยังไม่ได้ถูกกล่าวถึง: เต็นท์เก็บของ.'
+  - 'สิ่งปลูกสร้างนี้มีวัตถุประสงค์สองประการ, มันจะ:
 
-    * Offers more storage for your goods, and
+    * มอบพื้นที่เก็บของเพิ่มให้กับคลังสินค้า และ
 
-    * sends its own collectors to fetch goods, just like the Warehouse does.'
-  - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
+    * ส่งคนงานออกไปเพื่อเก็บสินค้าเหมือนที่คลังสินค้าทำ.'
+  - โปรดทราบว่าแหล่งผลิตต่างๆสามารถเชื่อมต่อกับที่เก็บของเพื่อเก็บทรัพยากรที่รวบรวมได้และถ้าหากคลังสินค้ามีงานสะสมอยู่มากมาย คุณสามารถวางเต็นท์เก็บของไว้เพื่อช่วยแบ่งงานจากคลัง.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - [BoldLabel, 'งาน: สร้างเต็นท์เก็บของจำเป็นอย่างยิ่งหากคุณต้องการพื้นที่เก็บของเพิ่ม.']
   - - Gallery
     - [content/gui/icons/buildmenu/002.png]
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
-  - [Headline, 'NEW TASK: BUILD A WEAVER']
+  - [Message, สร้างกระท่อมของคนทอผ้าที่สามารถเข้าไปรับขนแกะได้จากฟาร์มของคุณ.]
+  - [Headline, 'งานใหม่: สร้างกระท่อมของคนทอผ้า']
   - [Image, content/gui/images/background/hr.png]
-  - Now the wool production is set up, you still need a weaver to produce cloth out of this wool.
-  - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
-  - In both cases you should ensure the connection to a Trail as well.
-  - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
+  - ตอนนี้มีสายการผลิตผ้าขนสัตว์ของคุณยังต้องการใช้งานช่างทอผ้าเพื่อผลิตผ้าขนสัตว์.
+  - กระท่อมของคนทอผ้าก็คือสถานที่ที่ช่างทอผ้าอาศัยอยู่ มีสองจุดที่คุณสามารถสร้างได้ - ใกล้กับฟาร์มหรือใกล้กับเต็นท์เก็บของ(หรือคลังสินค้า).
+  - ในทั้งสองกรณีคุณควรเชื่อมต่อเข้ากับเส้นทางด้วยเช่นกัน.
+  - คุณสามารถวางกระท่อมของคนทอผ้าไว้ใกล้ๆกับฟาร์มแล้วลากเส้นทางเชื่อมต่อไปที่ฟาร์มเพื่อเช็คดูว่ามันยังคงไปรับขนแกะและทำการผลิต.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - [BoldLabel, 'งาน: สร้างกระท่อมของคนทอผ้าให้อยู่ในตำแหน่งที่สามารถไปรับขนสัตว์ได้.']
   - - Gallery
     - [content/gui/icons/buildmenu/007.png]
 
 - &GOALS
-  - [Message, House a total of 50 or more inhabitants in your city to complete the tutorial. You need a positive balance.]
-  - [Headline, 'NEW TASK: COMPLETE TUTORIAL']
+  - [Message, เพื่อให้บทช่วยสอนนี้เสร็จสมบูรณ์คุณจะต้องมีผู้อยู่อาศัยภายในเมืองทั้งหมด 50 คนขึ้นไป และคุณต้องมีความสมดุลในเชิงบวก.]
+  - [Headline, 'งานใหม่: ทำให้บทช่วยสอนเสร็จสมบูรณ์']
   - [Image, content/gui/images/background/hr.png]
-  - Try to house a total of 50 or more inhabitants in your city by providing more residential buildings.
-  - Once you are able to keep an economy running which can satisfy this amount of consumers, you are ready to discover new Unknown Horizons!
-  - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
+  - พยายามทำให้มีผู้อยู่อาศัยภายในเมืองของคุณ 50 คนหรือมากกว่านี้ โดยการจัดหาที่พักอาศัยเพิ่มมากขึ้น.
+  - หลังจากที่คุณสามารถทำให้เศรษฐกิจดำเนินต่อไปเพื่อตอบสนองผู้บริโภคในจำนวนนี้ได้ คุณก็พร้อมที่จะค้นพบสิ่งใหม่ๆใน Unknown Horizons!
+  - นอกจากนี้คุณยังต้องการเงินมากพอที่จะทำให้เศรษฐกิจทำงานต่อไปได้ ดังนั้นจึงจำเป็นต้องมีสมดุล(ดูที่แถบบัญชีในคลังสินค้า)ในเชิงบวก.
   - ''
-  - [BoldLabel, 'Task: Reach a total number of 50 inhabitants and a positive balance to complete this tutorial.']
+  - [BoldLabel, 'งาน: มีผู้อยู่อาศัยทั้งหมด 50 คนและสร้างสมดุลที่ดีเพื่อให้บทช่วยสอนนี้เสร็จสมบูรณ์.']
   - - Gallery
     - [content/gui/icons/widgets/cityinfo/inhabitants.png]
 
 - &WON
-  - [Message, Congratulations! You have reached the end of this tutorial and are ready to meet new challenges!]
-  - [Headline, NO TASKS LEFT]
+  - [Message, ขอแสดงความยินดี! คุณมาถึงจุดสิ้นสุดของบทช่วยสอนนี้แล้ว และพร้อมที่จะพบกับความท้าทายใหม่!]
+  - [Headline, ไม่มีงานที่ต้องทำแล้ว]
   - [Image, content/gui/images/background/hr.png]
-  - You have successfully completed all tasks that were handed to you. The world is now at your command, waiting for your free aspirations and brave explorations!
-  - 'If you have any suggestions on what we could or should improve, add or leave out:'
+  - คุณทำภารกิจทั้งหมดที่มอบให้สำเร็จแล้ว ตอนนี้โลกอยู่ภายใต้คำสั่งของคุณ, รอให้เกิดแรงบันดาลใจแล้วเริ่มทำการสำรวจครั้งใหม่อย่างกล้าหาญ!
+  - 'หากคุณมีข้อเสนอแนะใดๆเกี่ยวกับสิ่งที่เราสามารถทำได้หรือควรปรับปรุง, เพิ่มเข้ามาหรือนำออกไป:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
-  - Our forums are open to you as well!
-  - The best results until now were achieved by joining our IRC channel, so you could try that out first (-;
+  - ฟอรั่มของเราก็เปิดต้อนรับคุณด้วยเช่นกัน!
+  - วิธีที่ดีที่สุดในตอนนี้ทำได้โดยการเข้าร่วมช่องทาง IRC ของเรา คุณสามารถลองใช้ช่องทางนี้ได้ทันที (-;
   - [Pagebreak]
-  - [Headline, Thanks!]
+  - [Headline, ขอขอบคุณ!]
   - [Image, content/gui/images/background/hr.png]
   - '
 
@@ -390,10 +390,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Thanks for playing the tutorial!
+    ขอบคุณที่ได้เล่นบทช่วยสอน!
 
 
-    Your UH-Team'
+    ทีมผู้พัฒนา Unknown Horizons.'
   - - Gallery
     - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
 
@@ -657,4 +657,4 @@ metadata:
   locale: th
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 100 translated messages, 88 untranslated messages.
+  translation_status: 188 translated messages.
