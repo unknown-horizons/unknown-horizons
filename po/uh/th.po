@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2020-01-09 13:21+0000\n"
+"PO-Revision-Date: 2020-01-13 05:52+0000\n"
 "Last-Translator: Chaowalit Phochan <siamese.cf@gmail.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/uh/uh/th/>\n"
 "Language: th\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10.1-dev\n"
+"X-Generator: Weblate 3.10.1\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -2193,28 +2193,30 @@ msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
+"การเรียกคืนการตั้งค่าเริ่มต้นจะลบการเปลี่ยนแปลงการตั้งค่าทั้งหมดที่คุณได้ทำไว"
+"้."
 
 #: horizons/gui/modules/settings.py:139
 msgid "Do you want to continue?"
-msgstr ""
+msgstr "คุณต้องการจะดำเนินการต่อหรือไม่?"
 
 #: horizons/gui/modules/settings.py:260
 msgid "Invalid network port"
-msgstr ""
+msgstr "พอร์ตของเครือข่ายไม่ถูกต้อง."
 
 #: horizons/gui/modules/settings.py:261
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
-msgstr ""
+msgstr "พอร์ตที่คุณระบุไม่ถูกต้อง ค่าที่ใช้ต้องเป็นตัวเลขระหว่าง 1 ถึง 65535."
 
 #: horizons/gui/modules/settings.py:262
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
+msgstr "โปรดตรวจสอบพอร์ตที่คุณป้อนและตรวจสอบให้แน่ใจว่าอยู่ในช่วงที่ระบุ."
 
 #: horizons/gui/modules/settings.py:273
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "ไม่สามารถใช้การตั้งค่าเครือข่ายใหม่."
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
@@ -2223,149 +2225,151 @@ msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
 msgstr ""
+"บางครั้งหมายเลขพอร์ตที่ต่ำจำเป็นต้องมีสิทธิ์การเข้าถึงพิเศษ ลองตั้งให้เป็น 0 "
+"หรือลองตัวเลขที่มากกว่า 1024."
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "Invalid player name"
-msgstr ""
+msgstr "ชื่อผู้เล่นไม่ถูกต้อง"
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "คุณป้อนชื่อผู้เล่นที่ไม่ถูกต้อง."
 
 #: horizons/gui/modules/singleplayermenu.py:156
 msgid "Resource density:"
-msgstr ""
+msgstr "ความหนาแน่นของทรัพยากร:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Map size:"
-msgstr ""
+msgstr "ขนาดของแผนที่:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Water:"
-msgstr ""
+msgstr "ระดับน้ำ:"
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Max island size:"
-msgstr ""
+msgstr "ขนาดสูงสุดของเกาะ:"
 
 #: horizons/gui/modules/singleplayermenu.py:233
 msgid "Preferred island size:"
-msgstr ""
+msgstr "ขนาดเกาะที่ต้องการ:"
 
 #: horizons/gui/modules/singleplayermenu.py:234
 msgid "Island size deviation:"
-msgstr ""
+msgstr "การเบี่ยงเบนขนาดเกาะ:"
 
 #: horizons/gui/modules/singleplayermenu.py:353
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "คลิกเพื่อสร้างแผนที่แบบสุ่มอื่น"
 
 #: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "ไฟล์จำลองเนื้อเรื่องไม่ถูกต้อง"
 
 #: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "ไฟล์ที่เลือกไม่ใช่ไฟล์จำลองเนื้อเรื่องของเกมที่ถูกต้อง."
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
-msgstr ""
+msgstr "ข้อความผิดพลาด:"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
-msgstr ""
+msgstr "กรุณารายงานสิ่งนี้ให้กับผู้พัฒนา."
 
 #: horizons/gui/modules/singleplayermenu.py:590
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "ความยาก: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:593
 #, python-brace-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "ผู้พัฒนา: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:596
 #, python-brace-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "รายละเอียด: {desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:237
 #, python-brace-format
 msgid "Build {building}"
-msgstr ""
+msgstr "สร้าง {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "กด H เพื่อลบคำแนะนำนี้"
 
 #: horizons/gui/mousetools/tearingtool.py:114
 msgid "Destroy all buildings"
-msgstr ""
+msgstr "ทำลายสิ่งปลูกสร้างทั้งหมด"
 
 #: horizons/gui/mousetools/tearingtool.py:115
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr ""
+msgstr "สิ่งนี้จะทำลายสิ่งปลูกสร้างทั้งหมดที่อยู่นอกช่วงการตั้งถิ่นฐาน."
 
 #: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
+msgstr[0] "%s สิ่งปลูกสร้างจะถูกทำลายเพิ่มเติม"
 
 #: horizons/gui/tabs/barrackstabs.py:38
 msgid "Barracks overview"
-msgstr ""
+msgstr "ภาพรวมของที่พักทหาร"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
-msgstr ""
+msgstr "นักดาบ"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
 msgid "Overview"
-msgstr ""
+msgstr "ภาพรวม"
 
 #: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (วางลงในคิว: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
-msgstr ""
+msgstr "ภาพรวมของผู้สร้างเรือ"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
-msgstr ""
+msgstr "เรือหาปลา"
 
 #: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
-msgstr ""
+msgstr "เรือการค้า"
 
 #: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
-msgstr ""
+msgstr "เรือสงคราม"
 
 #: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
-msgstr ""
+msgstr "เรือรบ"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr ""
+msgstr "ภาพรวมของทาวเวอร์"
 
 #: horizons/gui/tabs/buildrelatedtab.py:43
 msgid "Build related buildings"
-msgstr ""
+msgstr "สร้างสิ่งปลูกสร้างที่เกี่ยวข้อง"
 
 #: horizons/gui/tabs/buyselltab.py:135
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr ""
+msgstr "คลิกที่หนึ่งในช่องทรัพยากรเพื่อเพิ่มข้อเสนอทางการค้า."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:178
@@ -2373,6 +2377,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"ตั้งค่าเป็นซื้อหรือขายโดยคลิกที่ป้ายกำกับ "
+"หลังจากนั้นปรับจำนวนเงินผ่านทางตัวเลื่อนไปทางขวา."
 
 #: horizons/gui/tabs/buyselltab.py:322
 #, python-brace-format
@@ -2380,6 +2386,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"จะซื้อ {resource_name} ในราคา {price} ทอง/ตัน "
+"ทุกครั้งที่เหลืออยู่ในสต็อกน้อยกว่า {limit} ตัน."
 
 #: horizons/gui/tabs/buyselltab.py:325
 #, python-brace-format
@@ -2387,859 +2395,869 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"จะขาย {resource_name} ในราคา {price} ทอง/ตัน ทุกครั้งที่มีเหลืออยู่มากกว่า "
+"{limit} ตัน."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr ""
+msgstr "ภาพรวมของคลังสินค้า"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr ""
+msgstr "บัญชี"
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
-msgstr ""
+msgstr "ภาพรวมจัตุรัสหลัก"
 
 #: horizons/gui/tabs/mainsquaretabs.py:150
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "ไม่สามารถอัพเกรดได้:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:153
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "นี่เป็นระดับที่เล่นได้สูงสุดในตอนนี้!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "ไม่อนุญาตให้อัพเกรด"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr ""
+msgstr "อนุญาตให้อัพเกรด"
 
 #: horizons/gui/tabs/overviewtab.py:100
 msgid "Unit overview"
-msgstr ""
+msgstr "ภาพรวมของยูนิต"
 
 #: horizons/gui/tabs/productiontabs.py:46
 #: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
-msgstr ""
+msgstr "ภาพรวมการผลิต"
 
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "เติมในพื้นที่ด้วยต้นไม้ {how_many} ต้น"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
-msgstr ""
+msgstr "ยูนิตที่ได้เลือก"
 
 #: horizons/gui/tabs/shiptabs.py:40 horizons/gui/tabs/shiptabs.py:178
 #: horizons/gui/tabs/shiptabs.py:205 horizons/gui/tabs/shiptabs.py:210
 msgid "Ship overview"
-msgstr ""
+msgstr "ภาพรวมของเรือ"
 
 #: horizons/gui/tabs/shiptabs.py:56
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "เรือลำนี้จะต้องอยู่ใกล้กับเกาะเพื่อค้นหาพื้นที่สำหรับตั้งถิ่นฐาน."
 
 #: horizons/gui/tabs/shiptabs.py:61
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "คุณได้ตั้งถิ่นฐานบนเกาะนี้ไปแล้ว."
 
 #: horizons/gui/tabs/shiptabs.py:92
 msgid "Load/Unload"
-msgstr ""
+msgstr "โหลดขึ้น/โหลดลง"
 
 #: horizons/gui/tabs/shiptabs.py:94
 msgid "Buy/Sell"
-msgstr ""
+msgstr "ซื้อ/ขาย"
 
 #: horizons/gui/tabs/shiptabs.py:103
 msgid "Too far from the nearest tradeable warehouse"
-msgstr ""
+msgstr "อยู่ห่างจากคลังสินค้าที่ใกล้ที่สุดที่สามารถซื้อขายได้."
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "ไม่สามารถติดตั้งอาวุธบนเรือการค้า."
 
 #: horizons/gui/tabs/shiptabs.py:110
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "มันเป็นไปไม่ได้ที่จะติดตั้งอาวุธบนเรือเพื่อการค้า."
 
 #: horizons/gui/tabs/shiptabs.py:149
 msgid "Equip weapon"
-msgstr ""
+msgstr "ติดตั้งอาวุธ"
 
 #: horizons/gui/tabs/shiptabs.py:153
 msgid "Unequip weapon"
-msgstr ""
+msgstr "ปลดอาวุธออก"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:74
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} ทอง"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:79
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "ซื้อในราคา {buyprice} ทอง"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:81
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "ขายในราคา {sellprice} ทอง"
 
 #: horizons/gui/widgets/inventory.py:174
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "จำกัด: {amount}ตันต่อช่อง"
 
 #: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
-msgstr ""
+msgstr "สมุดบันทึก"
 
 #: horizons/gui/widgets/logbook.py:190
 msgid "Emptiness"
-msgstr ""
+msgstr "สิ่งที่ว่างเปล่า"
 
 #: horizons/gui/widgets/logbook.py:193
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "ยังไม่มีอะไรถูกเขียนลงในสมุดบันทึกของคุณในตอนนี้!"
 
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-brace-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "การตั้งถิ่นฐานของ {player}"
 
 #: horizons/gui/widgets/playersships.py:45
 #, python-brace-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "เรือของ {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:95
 msgid "None"
-msgstr ""
+msgstr "ไม่มี"
 
 #: horizons/gui/widgets/playersships.py:97
 msgid "N/A"
-msgstr ""
+msgstr "ไม่มี"
 
 #: horizons/gui/widgets/productionoverview.py:121
 #, python-brace-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "ภาพรวมการผลิตของ {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "คลิกเพื่อแสดงสถิติ"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "คลิกเพื่อเพิ่มช่องใหม่"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "รีเซ็ตการกำหนดค่านี้เป็นค่าเริ่มต้นจากโรงงาน."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
+"รีเซ็ตทรัพยากรที่แสดงของการตั้งถิ่นฐานนี้เป็นการตั้งค่าเริ่มต้นที่คุณได้บันทึ"
+"กไว้."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"รีเซ็ตการกำหนดค่าเริ่มต้น(ที่คุณได้เห็นที่นี่) "
+"เป็นค่าเริ่มต้นจากโรงงานสำหรับการตั้งถิ่นฐานทั้งหมด."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr ""
+msgstr "เสียไปจากการซื้อ"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr ""
+msgstr "รายได้จากการขาย"
 
 #: horizons/gui/widgets/routeconfig.py:122
 msgid "Stop route"
-msgstr ""
+msgstr "หยุดเส้นทาง"
 
 #: horizons/gui/widgets/routeconfig.py:129
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "ต้องการการตั้งถิ่นฐานอย่างน้อยสองแห่ง"
 
 #: horizons/gui/widgets/routeconfig.py:130
 msgid "You need at least two different settlements in your route."
 msgstr ""
+"คุณต้องมีปลายทางเป็นสถานที่ที่มีการตั้งถิ่นฐานอย่างน้อยสองแห่งในเส้นทางของคุณ"
+"."
 
 #: horizons/gui/widgets/routeconfig.py:159
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "คลิกบนการตั้งถิ่นฐานเพื่อเพิ่มลงในเส้นทาง!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
-msgstr ""
+msgstr "โหลดขึ้นมาที่เรือ"
 
 #: horizons/gui/widgets/routeconfig.py:202
 msgid "Unloading from ship"
-msgstr ""
+msgstr "โหลดลงไปจากเรือ"
 
 #: horizons/gui/widgets/routeconfig.py:399
 msgid "You are not allowed to trade with this player"
-msgstr ""
+msgstr "คุณไม่ได้รับอนุญาตให้ทำการค้ากับผู้เล่นนี้"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:120
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:125
 msgid "none"
-msgstr ""
+msgstr "ไม่มี"
 
 #: horizons/gui/windows.py:413
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "รายละเอียด: {error_details}"
 
 #: horizons/gui/windows.py:415
 #, python-brace-format
 msgid "Error: {error_message}"
-msgstr ""
+msgstr "ข้อผิดพลาด: {error_message}"
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:47
 msgid "Bakery"
-msgstr ""
+msgstr "เบเกอรี่"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:49
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "ใช้งานแป้งเพื่อนำไปผลิตอาหาร."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:53
 msgid "Barracks"
-msgstr ""
+msgstr "ที่พักทหาร"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:55
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "รับสมัครยูนิตที่เหมาะสมสำหรับการต่อสู้บนพื้นดิน."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:59
 msgid "Wooden barrier"
-msgstr ""
+msgstr "เครื่องกีดขวางไม้"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
-msgstr ""
+msgstr "ผนังดิน"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:63
 msgid "Provides security."
-msgstr ""
+msgstr "ให้ความปลอดภัย."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:67
 msgid "Blender"
-msgstr ""
+msgstr "เครื่องบด"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:69
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "ผลิตเครื่องปรุงรสออกมาจากเครื่องเทศ."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:73
 msgid "Boat Builder"
-msgstr ""
+msgstr "นักต่อเรือ"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:75
 msgid "Builds boats and small ships. Built on coast."
-msgstr ""
+msgstr "สร้างเรือสำเภาและเรือขนาดเล็กบนชายฝั่ง."
 
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:79
 msgid "Brewery"
-msgstr ""
+msgstr "โรงหมัก"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:81
 msgid "Consumes hops. Produces Beer."
-msgstr ""
+msgstr "ใช้งานฮอปส์เพื่อผลิตเบียร์."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:85
 msgid "Brickyard"
-msgstr ""
+msgstr "โรงอิฐ"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:87
 msgid "Turns clay into bricks."
-msgstr ""
+msgstr "ปั้นดินเหนียวให้เป็นก้อนอิฐ."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
-msgstr ""
+msgstr "โรงแล่เนื้อ"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "ต้องการหมูหรือวัวแล่เป็นเนื้อเพื่อนำไปใช้เป็นอาหาร."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "โรงหล่อปืนใหญ่"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
 msgid "Produces Cannons."
-msgstr ""
+msgstr "ผลิตปืนใหญ่."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:103
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "โรงเผาถ่าน"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:105
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "เผาไม้เพื่อผลิตถ่านสำหรับใช้เป็นเชิ้อเพลิง."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:109
 msgid "Clay Deposit"
-msgstr ""
+msgstr "โรงรับฝากดิน"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:113
 msgid "Clay Pit"
-msgstr ""
+msgstr "หลุมดิน"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:115
 msgid "Gets clay from deposit."
-msgstr ""
+msgstr "รับดินจากการฝาก."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
 msgid "Distillery"
-msgstr ""
+msgstr "โรงต้มกลั่น"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:121
 msgid "Turns sugar into liquor."
-msgstr ""
+msgstr "กลั่นน้ำตาลให้เป็นเหล้า."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:125
 msgid "Doctor"
-msgstr ""
+msgstr "หมอรักษา"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:127
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "รักษาโรคภัยด้วยการใช้สมุนไพร."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
-msgstr ""
+msgstr "ฟาร์ม"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
-msgstr ""
+msgstr "ปลูกพืชไร่และเลี้ยงปศุสัตว์."
 
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:137
 msgid "Alvearies"
-msgstr ""
+msgstr "โรงเลี้ยงผึ้ง"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:139
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
-msgstr ""
+msgstr "เลี้ยงผึ้งเพื่อผลิตน้ำผึ้งที่ใช้สำหรับทำขนม ต้องการใช้งานโดยฟาร์ม."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:143
 msgid "Cattle Run"
-msgstr ""
+msgstr "ทุ่งเลี้ยงวัว"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Raises cattle. Needs a farm."
-msgstr ""
+msgstr "พื้นที่สำหรับเลี้ยงวัว ต้องการฟาร์ม."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:149
 msgid "Cocoa Field"
-msgstr ""
+msgstr "ไร่โกโก้"
 
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:151
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
-msgstr ""
+msgstr "ผลิตเมล็ดโกโก้ที่ใช้สำหรับทำขนม ต้องการฟาร์ม."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:155
 msgid "Corn Field"
-msgstr ""
+msgstr "ไร่ข้าวโพด"
 
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:157
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "ไร่สำหรับปลูกข้าวโพด ต้องการฟาร์ม."
 
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:161
 msgid "Herbary"
-msgstr ""
+msgstr "โรงปลูกสมุนไพร"
 
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:163
 msgid "Produces herbs. Needs a farm."
-msgstr ""
+msgstr "ผลิตสมุนไพร ต้องการฟาร์ม."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:167
 msgid "Hop Field"
-msgstr ""
+msgstr "ไร่ฮอปส์"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:169
 msgid "Yields hop. Needs a farm."
-msgstr ""
+msgstr "ไร่สำหรับปลูกต้นฮอปส์ ต้องการฟาร์ม."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
 msgid "Pasture"
-msgstr ""
+msgstr "ทุ่งเลี้ยงสัตว์"
 
 #. tooltip_text of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:175
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "ทุ่งสำหรับเลี้ยงแกะเพื่อนำไปตัดขน ต้องการฟาร์ม."
 
 #. name of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:179
 msgid "Pigsty"
-msgstr ""
+msgstr "คอกหมู"
 
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:181
 msgid "Raises pigs. Needs a farm."
-msgstr ""
+msgstr "คอกสำหรับเลี้ยงหมู ต้องการฟาร์ม."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:185
 msgid "Potato Field"
-msgstr ""
+msgstr "ไร่มันฝรั่ง"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
 msgid "Yields food. Needs a farm."
-msgstr ""
+msgstr "ให้ผลผลิตที่เป็นอาหาร ต้องการฟาร์ม."
 
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:191
 msgid "Spice Field"
-msgstr ""
+msgstr "ไร่เครื่องเทศ"
 
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:193
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "ไร่สำหรับปลูกเครื่องเทศ ต้องการฟาร์ม."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:197
 msgid "Sugar Field"
-msgstr ""
+msgstr "ไร่อ้อย"
 
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:199
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "ใช้สำหรับโรงกลั่น ต้องการฟาร์ม."
 
 #. name of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:203
 msgid "Tobacco Field"
-msgstr ""
+msgstr "ไร่ยาสูบ"
 
 #. tooltip_text of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:205
 msgid "Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "ผลิตใบยาสูบ ต้องการฟาร์ม."
 
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:209
 msgid "Vineyard"
-msgstr ""
+msgstr "ไร่องุ่น"
 
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:211
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
-msgstr ""
+msgstr "ผลิตองุ่นสำหรับใช้หมักเป็นไวน์และใช้ทำขนม ต้องการฟาร์ม."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:215
 msgid "Fire Station"
-msgstr ""
+msgstr "สถานีระวังไฟ"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:217
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "ช่วยในการดับไฟ."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:221
 msgid "Fish Deposit"
-msgstr ""
+msgstr "ที่ฝากปลา"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:225
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "เต็นท์คนหาปลา"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:227
 msgid "Fishes the sea, produces food."
-msgstr ""
+msgstr "ที่พักสำหรับคนหาปลาในทะเล เพื่อใช้เป็นอาหาร."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:231
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "เต็นท์คนล่าสัตว์"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:233
 msgid "Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "ล่าสัตว์ที่อยู่ในป่า เพื่อนำไปใช้เป็นอาหาร."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:237
 msgid "Lookout"
-msgstr ""
+msgstr "หอเฝ้าระวัง"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:239
 msgid "Expands settlement range."
-msgstr ""
+msgstr "ขยายอาณาเขตของการตั้งถิ่นฐาน."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:243
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "เต็นท์คนตัดไม้"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:245
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "กระท่อมคนตัดไม้"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:247
 msgid "Chops down trees and turns them into boards."
-msgstr ""
+msgstr "ตัดต้นไม้เพื่อแปรรูปเป็นไม้กระดาน."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:251
 msgid "Main Square"
-msgstr ""
+msgstr "จัตุรัสหลัก"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:253
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "จัดหาทรัพยากรให้กับผู้อยู่อาศัย เพื่ออำนวยความสะดวกให้กับชุมชน."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:257
 msgid "Mine"
-msgstr ""
+msgstr "เหมือง"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:259
 msgid "Gets iron ore from deposit."
-msgstr ""
+msgstr "สกัดแร่เหล็กจากการรับฝาก."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:263
 msgid "Mountain"
-msgstr ""
+msgstr "ภูเขา"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:267
 msgid "Pastry Shop"
-msgstr ""
+msgstr "ร้านขนมอบ"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:269
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "ผลิตอาหารหลายๆอย่างประเภทขนม."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:273
 msgid "Pavilion"
-msgstr ""
+msgstr "ศาลา"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:275
 msgid "Fulfills religious needs of sailors."
-msgstr ""
+msgstr "ตอบสนองความต้องการทางศาสนาของลูกเรือ."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:279
 msgid "Ruined Tent"
-msgstr ""
+msgstr "เต็นท์ที่ถูกทิ้งล้าง"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:283
 msgid "Salt Ponds"
-msgstr ""
+msgstr "บ่อเกลือ"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:285
 msgid "Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "บ่อสำหรับระเหยน้ำเกลือ ต้องสร้างขึ้นบนชายฝั่งทะเล."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:289
 msgid "Signal Fire"
-msgstr ""
+msgstr "ไฟสัญญาณ"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:291
 msgid "Allows the player to trade with the free trader."
-msgstr ""
+msgstr "อนุญาตให้อาณานิคมทำการค้ากับพ่อค้าอิสระ."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:295
 msgid "Smeltery"
-msgstr ""
+msgstr "โรงหล่อ"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:297
 msgid "Refines all kind of ores."
-msgstr ""
+msgstr "กลั่นแร่ทุกชนิด."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:301
 msgid "Stone Deposit"
-msgstr ""
+msgstr "รับฝากหิน"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:305
 msgid "Stonemason"
-msgstr ""
+msgstr "ช่างก่อหิน"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:307
 msgid "Carver"
-msgstr ""
+msgstr "ช่างแกะสลัก"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:309
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "ช่างแกะสลักหินให้เป็นก้อนอิฐ."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:313
 msgid "Stone Pit"
-msgstr ""
+msgstr "หลุมหิน"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:315
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "สกัดหินออกมาจากภูเขา."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:319
 msgid "Storage Tent"
-msgstr ""
+msgstr "เต็นท์เก็บของ"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:321
 msgid "Storage Hut"
-msgstr ""
+msgstr "โรงเก็บของ"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:323
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr ""
+"ขยายพื้นที่ให้กับคลังสินค้าและช่วยขยายขอบเขตให้กับการตั้งถิ่นฐาน "
+"และยังช่วยเพิ่มจำนวนคนงานขนของ."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:327
 msgid "Tavern"
-msgstr ""
+msgstr "โรงเหล้า"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:329
 msgid "Provides get-together."
-msgstr ""
+msgstr "สถานที่รวมตัวกันเพื่อจัดงานสังสรรค์."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:333
 msgid "Tent"
-msgstr ""
+msgstr "เต็นท์"
 
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:335
 msgid "Hut"
-msgstr ""
+msgstr "กระท่อม"
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:337
 msgid "House"
-msgstr ""
+msgstr "บ้าน"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Stone house"
-msgstr ""
+msgstr "บ้านหิน"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:341
 msgid "Estate"
-msgstr ""
+msgstr "ที่ดิน"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:343
 msgid "Manor"
-msgstr ""
+msgstr "คฤหาสน์และที่ดิน"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "Houses your inhabitants."
-msgstr ""
+msgstr "ที่พักสำหรับผู้อยู่อาศัยของคุณ."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:349
 msgid "Tobacconist"
-msgstr ""
+msgstr "พ่อค้ายาสูบ"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:351
 msgid "Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "ทำผลิตภัณฑ์ยาสูบออกมาจากโรงงานยาสูบ."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:355
 msgid "Toolmaker"
-msgstr ""
+msgstr "โรงผลิตเครื่องมือ"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:357
 msgid "Produces tools out of iron."
-msgstr ""
+msgstr "ผลิตเครื่องมือที่ทำจากเหล็ก."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:361
 msgid "Trail"
-msgstr ""
+msgstr "เส้นทาง"
 
 #. name_1 of buildings:trail
 #: horizons/i18n/objecttranslations.py:363
 msgid "Gravel Path"
-msgstr ""
+msgstr "เส้นทางกรวด"
 
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:365
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "ถนนหินกรวด"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:367
 msgid "Needed for collecting goods."
-msgstr ""
+msgstr "จำเป็นสำหรับการรวบรวมสินค้า."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:371
 msgid "Tree"
-msgstr ""
+msgstr "ต้นไม้"
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:373
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "ให้ผลผลิตเป็นไม้แปรรูป ตัดลงมาโดยคนตัดไม้."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:377
 msgid "Village School"
-msgstr ""
+msgstr "โรงเรียนของหมู่บ้าน"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:379
 msgid "Provides education."
-msgstr ""
+msgstr "มอบการศึกษาให้กับเด็กรุ่นใหม่."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:383
 msgid "Warehouse"
-msgstr ""
+msgstr "คลังสินค้า"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:387
 msgid "Weaponsmith"
-msgstr ""
+msgstr "ช่างตีอาวุธ"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:389
 msgid "Produces weapons out of iron."
-msgstr ""
+msgstr "ผลิตอาวุธจากเหล็ก."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:393
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "กระท่อมคนทอผ้า"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:395
 msgid "Turns lamb wool into cloth."
-msgstr ""
+msgstr "เปลี่ยนขนแกะให้กลายเป็นผ้า."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:399
 msgid "Windmill"
-msgstr ""
+msgstr "กังหันลม"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:401
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "บดข้าวโพดไปเป็นแป้ง."
 
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
-msgstr ""
+msgstr "โรงกลั่นไวน์"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:407
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "ผลิตไวน์จากองุ่น."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:411
 msgid "Wooden Tower"
-msgstr ""
+msgstr "หอคอยไม้"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:413
 msgid "Defends your settlement."
-msgstr ""
+msgstr "ป้องกันอาณานิคมของคุณ."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3249,7 +3267,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:423
 #: horizons/i18n/objecttranslations.py:495
 msgid "Companies"
-msgstr ""
+msgstr "ส่วนการผลิต"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3259,7 +3277,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:431
 #: horizons/i18n/objecttranslations.py:491
 msgid "Fields"
-msgstr ""
+msgstr "พื้นที่การเกษตร"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab5_headline of gui_buildmenu:build_menu_per_type
@@ -3267,21 +3285,21 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:435
 #: horizons/i18n/objecttranslations.py:497
 msgid "Military"
-msgstr ""
+msgstr "การทหาร"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:437
 #: horizons/i18n/objecttranslations.py:463
 msgid "Mining"
-msgstr ""
+msgstr "การทำเหมือง"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:439
 #: horizons/i18n/objecttranslations.py:489
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "ผู้อยู่อาศัยและโครงสร้างพื้นฐาน"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
@@ -3290,61 +3308,61 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:445
 #: horizons/i18n/objecttranslations.py:473
 msgid "Services"
-msgstr ""
+msgstr "บริการ"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:449
 #: horizons/i18n/objecttranslations.py:451
 msgid "Citizens"
-msgstr ""
+msgstr "ประชากร"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:453
 msgid "Food"
-msgstr ""
+msgstr "อาหาร"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:455
 msgid "Fortifications"
-msgstr ""
+msgstr "ป้อมปราการ"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:457
 #: horizons/i18n/objecttranslations.py:459
 msgid "Infrastructure"
-msgstr ""
+msgstr "โครงสร้างพื้นฐาน"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:461
 msgid "Military Service"
-msgstr ""
+msgstr "การเกณฑ์ทหาร"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:465
 msgid "Pioneers"
-msgstr ""
+msgstr "ผู้บุกเบิก"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:467
 msgid "Precaution"
-msgstr ""
+msgstr "การเฝ้าระวัง"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:469
 msgid "Residential"
-msgstr ""
+msgstr "ที่อยู่อาศัย"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:471
 msgid "Sea"
-msgstr ""
+msgstr "ทะเล"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Wood"
-msgstr ""
+msgstr "ไม้"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
@@ -3352,46 +3370,46 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:483
 #: horizons/i18n/objecttranslations.py:485
 msgid "Workshops"
-msgstr ""
+msgstr "โรงปฏิบัติงาน"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Settlement"
-msgstr ""
+msgstr "การตั้งถิ่นฐาน"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:493
 msgid "Agriculture"
-msgstr ""
+msgstr "การเกษตร"
 
 #: horizons/main.py:366
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "ไม่สามารถ เริ่ม/โหลด เกมได้."
 
 #: horizons/main.py:367
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "เกมที่คุณเลือกไม่สามารถเริ่มได้."
 
 #: horizons/main.py:368
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr ""
+msgstr "ไฟล์เซฟเกมอาจเสียหายหรือถูกบันทึกด้วยเวอร์ชั่นก่อนหน้าที่เก่ากว่ามาก."
 
 #: horizons/main.py:516
 msgid "No quicksaves found"
-msgstr ""
+msgstr "ไม่พบบันทึกอย่างรวดเร็ว."
 
 #: horizons/main.py:517
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "คุณต้องบันทึกอย่างรวดเร็วก่อนจึงจะสามารถโหลดได้อย่างรวดเร็ว."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
-msgstr ""
+msgstr "เปิดใช้งานการบันทึก"
 
 #: horizons/main.py:606
 #, python-brace-format
 msgid "Logs are written to {directory}."
-msgstr ""
+msgstr "บันทึกจะถูกเขียนลงใน {directory}."
 
 #. if this is reached, we are screwed. Something went wrong in the simulation,
 #. but we don't know what. Stop the game.
@@ -3400,38 +3418,42 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"เกมหลุดออกจากการซิงค์ ข้อความนี้ระบุถึงข้อผิดพลาดภายในที่ไม่รู้จัก "
+"เกมไม่สามารถดำเนินการต่อไปได้."
 
 #: horizons/manager.py:179
 msgid "We are very sorry and hope to have this bug fixed in a future version."
-msgstr ""
+msgstr "เราเสียใจมากและหวังว่าจะสามารถแก้ไขข้อบกพร่องนี้ได้ในรุ่นต่อไป."
 
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Not possible"
-msgstr ""
+msgstr "เป็นไปไม่ได้"
 
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "ไม่สามารถ บันทึก/โหลด เกมแบบหลายผู้เล่นได้ในตอนนี้"
 
 #: horizons/mpsession.py:105
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
+"ชื่อไฟล์จะต้องประกอบด้วยตัวอักษร, ตัวเลข, ช่องว่าง "
+"และตัวอักษรต่อไปนี้เท่านั้น: _ . -"
 
 #: horizons/network/connection.py:88 horizons/network/connection.py:94
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์."
 
 #: horizons/network/connection.py:89
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "อาจเป็นที่อยู่ของเซิร์ฟเวอร์ที่ไม่ถูกต้องหรือไม่สามารถแก้ไขที่อยู่ได้."
 
 #: horizons/network/networkinterface.py:531
 msgid "Not Ready"
-msgstr ""
+msgstr "ยังไม่พร้อม"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -3534,50 +3556,50 @@ msgstr ""
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
-msgstr ""
+msgstr "คุณชนะ!"
 
 #: horizons/scenario/actions.py:92
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "คุณได้ทำเนื้อเรื่องนี้เสร็จสมบูรณ์แล้ว."
 
 #: horizons/scenario/actions.py:93
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "คุณต้องการเล่นต่อหรือไม่?"
 
 #: horizons/scenario/scenarioeventhandler.py:173
 msgid "unknown"
-msgstr ""
+msgstr "ไม่ทราบ"
 
 #. usually invalid filename
 #: horizons/session.py:400
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "ไม่สามารถสร้างไฟล์เซฟเกม"
 
 #: horizons/session.py:401
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "เกิดข้อผิดพลาดในขณะที่สร้างไฟล์เซฟเกมของคุณ."
 
 #: horizons/session.py:402
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
-msgstr ""
+msgstr "อาจเป็นไปได้ว่าชื่อของไฟล์เซฟเกมมีอักขระพิเศษที่ไม่รองรับ."
 
 #: horizons/session.py:409
 msgid "Access is denied"
-msgstr ""
+msgstr "การเข้าถึงถูกปฏิเสธ"
 
 #: horizons/session.py:410
 msgid "The savegame file could be read-only or locked by another process."
-msgstr ""
+msgstr "ไฟล์เซฟเกมอาจเป็นแบบอ่านได้อย่างเดียวหรือกำลังถูกล็อกจากโปรเซสอื่น."
 
 #: horizons/spsession.py:67
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "เกมของคุณยังไม่ได้รับการบันทึก."
 
 #: horizons/util/checkupdates.py:89
 msgid "New version of Unknown Horizons"
-msgstr ""
+msgstr "เวอร์ชั่นใหม่ของ Unknown Horizons"
 
 #: horizons/util/checkupdates.py:90
 #, python-brace-format
@@ -3585,164 +3607,166 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"มีตัวเกม Unknown Horizons เวอร์ชั่นล่าสุด ({new_version}) "
+"ซึ่งเป็นรุ่นใหม่กว่าที่คุณใช้อยู่ในขณะนี้ ({old_version})."
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
-msgstr ""
+msgstr "คลิกเพื่อดาวน์โหลด"
 
 #: horizons/util/checkupdates.py:104
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "จะมีการเปิดหน้าเว็บไซต์ในเบราว์เซอร์ของคุณ."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:283
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} ช่อง, {limit}ตัน"
 
 #: horizons/util/uhdbaccessor.py:291
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "สุขภาพ: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:178
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "สิ่งปลูกสร้างนี้จะต้องสร้างบนเกาะ."
 
 #: horizons/world/building/buildable.py:43
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "พื้นที่นี้ไม่เหมาะสำหรับสิ่งปลูกสร้างนี้."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "สิ่งปลูกสร้างนี้จะต้องสร้างขึ้นภายในอาณานิคมของคุณ."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "บริเวณนี้ถูกครอบครองโดยผู้เล่นอื่นแล้ว."
 
 #: horizons/world/building/buildable.py:46
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "บริเวณนี้ถูกครอบครองโดยสิ่งปลูกสร้างอื่นแล้ว."
 
 #: horizons/world/building/buildable.py:47
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "พื้นที่นี้ถูกครอบครองโดยยูนิต."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "สิ่งปลูกสร้างนี้จะต้องสร้างบนชายฝั่ง."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "สิ่งปลูกสร้างนี้จะต้องถูกวางไว้ในมหาสมุทร."
 
 #: horizons/world/building/buildable.py:50
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "จุดนี้อยู่ไกลจากเรือของคุณมากเกินไป."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "สิ่งปลูกสร้างนี้สามารถสร้างได้บนแหล่งทรัพยากรเท่านั้น."
 
 #: horizons/world/building/buildable.py:52
 msgid "You have already settled this island."
-msgstr ""
+msgstr "คุณได้ตั้งถิ่นฐานที่เกาะนี้ไปแล้ว."
 
 #: horizons/world/building/buildable.py:53
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "สิ่งปลูกสร้างนี้จะต้องสร้างอยู่บนพื้นที่ราบ."
 
 #: horizons/world/status.py:73
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "ผู้อยู่อาศัยได้รับเชื้อไข้ดำ!"
 
 #: horizons/world/status.py:79
 msgid "This building is on fire!"
-msgstr ""
+msgstr "อาคารหลังนี้กำลังถูกไฟไหม้!"
 
 #: horizons/world/status.py:86
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "ผู้อยู่อาศัยเหล่านี้ไม่มีความสุข."
 
 #: horizons/world/status.py:92
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "ผู้อยู่อาศัยเหล่านี้ไม่สามารถเข้าถึงจัตุรัสหลักได้."
 
 #: horizons/world/status.py:98
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "ช่องเก็บของในอาคารหลังนี้เต็มแล้ว."
 
 #: horizons/world/status.py:113
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "อาคารหลังนี้มีผลผลิตที่ต่ำมาก."
 
 #: horizons/world/status.py:119
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "อาคารหลังนี้ถูกรื้อถอน."
 
 #: horizons/world/traderoute.py:336
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "เส้นทางการค้า: กำลังไปยัง {location}"
 
 #: horizons/world/traderoute.py:340
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "เส้นทางการค้า: กำลังรออยู่ที่ {position}"
 
 #: horizons/world/units/ship.py:214
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "กำลังไปที่ {location}"
 
 #: horizons/world/units/ship.py:215
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "กำลังไปที่ {x}, {y}"
 
 #: horizons/world/units/ship.py:219
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "อยู่นิ่งๆที่ {location}"
 
 #: horizons/world/units/ship.py:220
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "อยู่นิ่งๆที่ {x}, {y}"
 
 #: horizons/world/units/ship.py:231
 msgid "Trader"
-msgstr ""
+msgstr "พ่อค้า"
 
 #: horizons/world/units/weaponholder.py:436
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "ทำการโจมตี {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "ทำการโจมตี {owner}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr ""
+msgstr "เกมของคุณถูกบันทึกอัตโนมัติ."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr ""
+msgstr "สิ่งปลูกสร้างของคุณถูกไฟไหม้!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3750,511 +3774,515 @@ msgid ""
 "{player1} and {player2} have ended their alliance and are now in a state of "
 "war."
 msgstr ""
+"{player1} และ {player2} "
+"ได้ยุติการเป็นพันธมิตรของพวกเขาและขณะนี้อยู่ในภาวะสงคราม."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr ""
+msgstr "{player1} กับ {player2} ได้ยกเลิกการเป็นพันธมิตรของพวกเขา."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} และ {player2} ได้ยุติสงครามและเป็นพันธมิตรกันแล้ว."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} กับ {player2} ได้ตัดสินความเป็นศัตรูของพวกเขา."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} กับ {player2} มีกองกำลังพันธมิตรของพวกเขา."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} will fight each other to the death."
-msgstr ""
+msgstr "{player1} กับ {player2} จะสู้กันเองจนกว่าจะตายกันไปข้าง."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr ""
+msgstr "คุณสามารถลากถนนได้."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr ""
+msgstr "หนึ่งในพื้นที่ทางการเกษตรของคุณต้องการฟาร์มเพื่อเก็บเกี่ยวพืชผล."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr ""
+msgstr "เหมืองของคุณไม่มีทรัพยากรเหลือแล้ว."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
-msgstr ""
+msgstr "คุณมาถึงระดับสูงสุดในปัจจุบัน ผู้อยู่อาศัยของคุณจะไม่อัพเกรดอีกต่อไป."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
-msgstr ""
+msgstr "ไม่สามารถไปที่นี่."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr ""
+msgstr "ลูกเรือของคุณปฏิเสธที่จะออกจากแผนที่นี้."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr ""
+msgstr "คุณต้องการ {resource} มากกว่านี้เพื่อสร้างสิ่งปลูกสร้างนี้."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new settlement was founded by {player}."
-msgstr ""
+msgstr "อาณานิคมใหม่ถูกก่อตั้งขึ้นโดย {player}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr ""
+msgstr "เรือใหม่ที่ชื่อ {name} ถูกต่อสำเร็จแล้ว."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr ""
+msgstr "ทหารที่ชื่อ {name} พร้อมที่จะออกรบ."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr ""
+msgstr "ผู้อยู่อาศัยที่ใช้ชื่อ {name} นั้นมีอยู่แล้ว."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr ""
+msgstr "โลกใหม่ได้ถูกสร้างขึ้น."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "ผู้อยู่อาศัยบางคนของคุณไม่สามารถเข้าถึงจัตุรัสหลักได้."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr ""
+msgstr "เกมของคุณถูกบันทึกอย่างรวดเร็วแล้ว."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"เส้นทางได้ถูกกำหนดแล้ว คุณสามารถเริ่มใช้งานได้จากปุ่ม \"เริ่มเส้นทาง\" ในเมนู"
+" \"กำหนดเส้นทาง\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr ""
+msgstr "เกมของคุณได้รับการบันทึกแล้ว."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "ภาพหน้าจอถูกบันทึกไปที่ {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr ""
+msgstr "ผู้อยู่อาศัยของคุณถึงระดับ {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "ชาวเมืองบางคนเพิ่งย้ายออกไป."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "คุณไม่สามารถรื้อถอนคลังสินค้าได้ อาณานิคมของคุณต้องใช้มัน."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr ""
+msgstr "คุณชนะ!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "คุณล้มเหลวในบทเนื้อเรื่อง."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "ผู้ที่อาศัยอยู่ในอาคารหลังนี้กำลังติดเชื้อไข้ดำ!"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
-msgstr ""
+msgstr "เหรียญ"
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr ""
+msgstr "ขนแกะ"
 
 #. This is a database entry: the name of a resource
 msgid "textile"
-msgstr ""
+msgstr "สิ่งทอ"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "ไม้กระดาน"
 
 #. This is a database entry: the name of a resource
 msgid "food"
-msgstr ""
+msgstr "อาหาร"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "เครื่องมือ"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "ก้อนอิฐ"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "ต้นไม้"
 
 #. This is a database entry: the name of a resource
 msgid "grass"
-msgstr ""
+msgstr "หญ้า"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "ขนสัตว์"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "ความเชื่อ"
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "อาหารกวาง"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "เนื้อกวาง"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
-msgstr ""
+msgstr "ความสุข"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "มันฝรั่ง"
 
 #. This is a database entry: the name of a resource
 msgid "education"
-msgstr ""
+msgstr "การศึกษา"
 
 #. This is a database entry: the name of a resource
 msgid "sugar cane"
-msgstr ""
+msgstr "ต้นอ้อย"
 
 #. This is a database entry: the name of a resource
 msgid "sugar"
-msgstr ""
+msgstr "น้ำตาล"
 
 #. This is a database entry: the name of a resource
 msgid "community"
-msgstr ""
+msgstr "ชุมชน"
 
 #. This is a database entry: the name of a resource
 msgid "clay deposit"
-msgstr ""
+msgstr "ฝากดิน"
 
 #. This is a database entry: the name of a resource
 msgid "clay"
-msgstr ""
+msgstr "ดิน"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
-msgstr ""
+msgstr "เหล้าหวาน"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "ถ่าน"
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr ""
+msgstr "ฝากเหล็ก"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr ""
+msgstr "แร่เหล็ก"
 
 #. This is a database entry: the name of a resource
 msgid "iron ingots"
-msgstr ""
+msgstr "แท่งเหล็ก"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr ""
+msgstr "งานสังสรรค์"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "ปลา"
 
 #. This is a database entry: the name of a resource
 msgid "salt"
-msgstr ""
+msgstr "เกลือ"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "ต้นยาสูบ"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr ""
+msgstr "ใบยาสูบ"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "ยาสูบ"
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "วัว"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "หมู"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "วัวเพื่อเชือด"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "หมูเพื่อเชือด"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
-msgstr ""
+msgstr "สมุนไพร"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "สมุนไพรทางการแพทย์"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "ลูกโอ๊ก"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr ""
+msgstr "ปืนใหญ่"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "ดาบ"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "เมล็ดข้าว"
 
 #. This is a database entry: the name of a resource
 msgid "corn"
-msgstr ""
+msgstr "ข้าวโพด"
 
 #. This is a database entry: the name of a resource
 msgid "flour"
-msgstr ""
+msgstr "แป้ง"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "ต้นเครื่องเทศ"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
-msgstr ""
+msgstr "เครื่องเทศ"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "เครื่องปรุงรส"
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr ""
+msgstr "ฝากหินอ่อน"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "เนื้อหินอ่อน"
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
-msgstr ""
+msgstr "ฝากถ่านหิน"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
-msgstr ""
+msgstr "ฝากหิน"
 
 #. This is a database entry: the name of a resource
 msgid "stone tops"
-msgstr ""
+msgstr "เนื้อหิน"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr ""
+msgstr "เมล็ดโกโก้"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
-msgstr ""
+msgstr "โกโก้"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr ""
+msgstr "ลูกกวาด"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "เทียน"
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "เถาองุ่น"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
-msgstr ""
+msgstr "องุ่น"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
+msgstr "กรงผึ้ง"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
-msgstr ""
+msgstr "รังผึ้ง"
 
 #. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr ""
+msgstr "ฝากทอง"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr ""
+msgstr "แร่ทอง"
 
 #. This is a database entry: the name of a resource
 msgid "gold ingots"
-msgstr ""
+msgstr "แท่งทอง"
 
 #. This is a database entry: the name of a resource
 msgid "gem deposit"
-msgstr ""
+msgstr "ฝากอัญมนี"
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "อัญมณีหยาบ"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "อัญมณี"
 
 #. This is a database entry: the name of a resource
 msgid "coffee plants"
-msgstr ""
+msgstr "ต้นกาแฟ"
 
 #. This is a database entry: the name of a resource
 msgid "coffee beans"
-msgstr ""
+msgstr "เมล็ดกาแฟ"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "กาแฟ"
 
 #. This is a database entry: the name of a resource
 msgid "tea plants"
-msgstr ""
+msgstr "ต้นชา"
 
 #. This is a database entry: the name of a resource
 msgid "tea leaves"
-msgstr ""
+msgstr "ใบชา"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
-msgstr ""
+msgstr "ชา"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "ทุ่งดอกไม้"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "บุปผชาติ"
 
 #. This is a database entry: the name of a resource
 msgid "brine deposit"
-msgstr ""
+msgstr "ฝากน้ำเกลือ"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "น้ำเกลือ"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "ปลาวาฬ"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "อำพันขี้ปลาวาฬ"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "ตะเกียงน้ำมัน"
 
 #. This is a database entry: the name of a resource
 msgid "cotton plants"
-msgstr ""
+msgstr "ต้นฝ้าย"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "ฝ้าย"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr ""
+msgstr "ต้นสกุลคราม"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "สกุลคราม"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "เสื้อผ้า"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "น้ำหอม"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr ""
+msgstr "ต้นฮอปส์"
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "ฮอปส์"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "เบียร์"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "สุขภาพ"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
-msgstr ""
+msgstr "นันทนาการ"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "ไข้ดำ(กาฬโรค)"
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "ไฟ"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr ""
+msgstr "กะลาสี"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
-msgstr ""
+msgstr "วาณิช"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Aristocrats"
-msgstr ""
+msgstr "ผู้ดี"
