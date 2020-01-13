@@ -243,7 +243,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/005.png]
 
 - &NEXTTIER
-  - [Message, Zet het belasting niveau op laag (linkerkant) en wacht totdat de zeelui promoveren.]
+  - [Message, Zet het belasting niveau laag (links) en wacht totdat de zeelui promoveren.]
   - [Headline, 'OPDRACHT: VOLGENDE NIVEAU']
   - [Image, content/gui/images/background/hr.png]
   - Alle eisen zijn ingewilligd als jouw inwoners de marktplein en het paviljoen regelmatig kunnen bezoeken en als er voldoende voedsel voorhanden is.
