@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-12-28 12:21+0000\n"
+"PO-Revision-Date: 2020-02-14 01:50+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/uh/uh/hr/>\n"
 "Language: hr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 3.11-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -3470,23 +3470,25 @@ msgstr "Nije spremno"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "Star ili nepodržan protokol za više igrača. Provjeri verziju igre"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Premašio/la si globalnu veličinu paketa."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Ovo se nikada ne bi trebalo dogoditi. Kontaktiraj nas ili pošalji izvještaj "
+"o grešci."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Premašio/la si veličinu po paketima."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Nepoznat ili neispravan paket. Provjeri verziju igre"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
