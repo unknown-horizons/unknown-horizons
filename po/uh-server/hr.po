@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2019-12-28 12:21+0000\n"
+"PO-Revision-Date: 2020-02-14 01:50+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/uh/uh-server/hr/"
 ">\n"
@@ -18,30 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 3.11-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
-"Stari ili nepodržani protokol za više igrača. Molimo provjerite verziju igre"
+msgstr "Star ili nepodržan protokol za više igrača. Provjeri verziju igre"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr "Premašili ste globalnu veličinu paketa."
+msgstr "Premašio/la si globalnu veličinu paketa."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Ovo se nije smijelo nikad dogoditi. Molimo da nam se javite ili pošaljite "
-"dokument za zapisom o greškama."
+"Ovo se nikada ne bi trebalo dogoditi. Kontaktiraj nas ili pošalji izvještaj "
+"o grešci."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Premašili ste veličinu paketa."
+msgstr "Premašio/la si veličinu po paketima."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Nepoznat ili neispravan paket. Molimo provjerite verziju igre"
+msgstr "Nepoznat ili neispravan paket. Provjeri verziju igre"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
