@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-03-17 12:04+0000\n"
+"PO-Revision-Date: 2020-02-27 10:49+0000\n"
 "Last-Translator: k ks <kmshts@naver.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/uh/uh/ko/>\n"
 "Language: ko\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.6-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "이를 해결 하기 위해서는, 로그파일안에 있는 정보가 필요합니다:"
+msgstr "이를 해결 하기 위해서는, 로그 파일안에 있는 정보가 필요합니다:"
 
 #: run_uh.py:192
 msgid ""
@@ -87,7 +87,7 @@ msgstr "(중지 하려면 마우스 오른쪽 클릭)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "게임 시작"
+msgstr "놀이 시작"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
@@ -121,12 +121,12 @@ msgstr "주민"
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "게임 속도 상승 ({key})"
+msgstr "놀이 속도 상승 ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "게임 속도 감소 ({key})"
+msgstr "놀이 속도 감소 ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
@@ -170,7 +170,7 @@ msgstr "외교"
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
 msgid "Game menu ({key})"
-msgstr "게임 메뉴 ({key})"
+msgstr "놀이 메뉴 ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:6
 msgid "Change name"
@@ -192,7 +192,7 @@ msgstr "새 이름을 적용"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "채팅"
+msgstr "대화"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
@@ -755,7 +755,7 @@ msgstr "내 정착지"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:48
 msgid "Game messages"
-msgstr "게임 메시지"
+msgstr "놀이 메시지"
 
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:52
@@ -775,12 +775,12 @@ msgstr "모든 선수에게 메시지를 보냅니다."
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "메시지 입력"
+msgstr "여기에 메시지를 입력"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
 msgid "Return to game"
-msgstr "게임으로 돌아가기"
+msgstr "놀이로 돌아가기"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
 msgid "Island Name:"
@@ -971,7 +971,7 @@ msgstr "지도 선택:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr "저장된 게임의 지도 선택:"
+msgstr "저장된 놀이의 지도 선택:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
@@ -983,11 +983,11 @@ msgstr "새로운 지도 생성"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "기존 지도 로드"
+msgstr "기존 지도 불러오기"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "저장된 게임의 지도 로드"
+msgstr "저장된 놀이의 지도 불러오기"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -1027,15 +1027,15 @@ msgstr "건물이나 지도를 시계반대방향으로 회전"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr "게임 속도 증가"
+msgstr "놀이 속도 증가"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr "게임 속도 감소"
+msgstr "놀이 속도 감소"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
-msgstr "게임 멈춤"
+msgstr "놀이 멈춤"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Show build menu"
@@ -1138,18 +1138,18 @@ msgstr "기본 키로 초기화"
 #: content/gui/xml/mainmenu/ingamemenu.xml:15
 #: horizons/gui/modules/select_savegame.py:51
 msgid "Save game"
-msgstr "게임 저장"
+msgstr "놀이 저장"
 
 #. Open a widget to select which game to load
 #: content/gui/xml/mainmenu/ingamemenu.xml:16
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:53
 msgid "Load game"
-msgstr "게임 불러오기"
+msgstr "놀이 불러오기"
 
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
 msgid "Cancel game"
-msgstr "게임 취소"
+msgstr "놀이 취소"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:6
 msgid "Loading…"
@@ -1186,7 +1186,7 @@ msgstr "크레딧"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:6
 msgid "Create game - Multiplayer"
-msgstr "게임 만들기 - 함께 놀기"
+msgstr "놀이 만들기 - 함께 놀기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:12
 msgid "Player limit:"
@@ -1238,11 +1238,11 @@ msgstr "대기방 나가기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:23
 msgid "The game will start as soon as all players are ready."
-msgstr "선수들이 전부 준비되면 바로 게임을 시작합니다."
+msgstr "선수들이 전부 준비되면 바로 놀이를 시작합니다."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:25
 msgid "Game details:"
-msgstr "게임 상세 정보:"
+msgstr "놀이 상세 정보:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:34
 msgid "Color"
@@ -1254,23 +1254,23 @@ msgstr "준비:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "준비 상태를 설정 합니다(게임 시작을 위해 필요한)"
+msgstr "준비 상태를 설정 합니다(놀이 시작을 위해 필요한)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr "새 게임 - 다중 사용자"
+msgstr "새로운 놀이 - 다중 사용자"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 msgid "Load game:"
-msgstr "게임 불러오기:"
+msgstr "놀이 불러오기:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load a saved game"
-msgstr "저장된 게임을 불러오기"
+msgstr "저장된 놀이를 불러오기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:27
 msgid "Active games:"
-msgstr "활성 게임:"
+msgstr "활성화된 놀이:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:29
 msgid "Refresh list:"
@@ -1278,23 +1278,23 @@ msgstr "목록 새로고침:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:32
 msgid "Refresh list of active games"
-msgstr "활성 게임의 목록 새로 고침"
+msgstr "활성 놀이의 목록 새로 고침"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:51
 msgid "Create game:"
-msgstr "게임 생성:"
+msgstr "놀이 생성:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:52
 msgid "Create a new game"
-msgstr "이 새로운 게임을 만들기"
+msgstr "새로운 놀이 만들기"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:53
 msgid "Join game:"
-msgstr "게임 참여:"
+msgstr "놀이 참여:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:54
 msgid "Join the selected game"
-msgstr "선택한 게임에 참여하기"
+msgstr "선택한 놀이에 참여하기"
 
 #: content/gui/xml/mainmenu/multiplayer/set_player_details.xml:6
 msgid "Change player details"
@@ -1431,8 +1431,8 @@ msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
-"정상적인 게임 세션에서 사용 하지 마십시오. 사용자 디렉토리의 로그 디렉토리에 "
-"디버그 정보를 기록할건지 여부를 결정합니다. 게임 속도가 느려집니다."
+"정상적인 놀이 세션에서 사용 하지 마십시오. 사용자 디렉토리의 로그 디렉토리에 디버그 정보를 기록할건지 여부를 결정합니다. 놀이 속도가 "
+"느려집니다."
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
@@ -1461,7 +1461,7 @@ msgstr "견적 유형을 선택:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr "게임을 로드하는 동안 표시할 견적의 종류"
+msgstr "놀이를 로드하는 동안 표시할 견적의 종류"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
@@ -1489,11 +1489,11 @@ msgstr "변경 사항 저장"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
-msgstr "저장된 게임:"
+msgstr "저장된 놀이:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
-msgstr "게임 암호. 참여하는데 필요합니다"
+msgstr "놀이 암호. 참여하는데 필요합니다"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
@@ -1510,7 +1510,7 @@ msgstr "세부사항:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:53
 msgid "Delete selected savegame"
-msgstr "선택한 저장된 게임 삭제"
+msgstr "선택한 저장된 놀이 삭제"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
@@ -1530,7 +1530,7 @@ msgstr "자유롭게 놀기"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr "게임 시작"
+msgstr "놀이 시작"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
@@ -1556,7 +1556,7 @@ msgstr "인공지능 선수:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr "게임 설정:"
+msgstr "놀이 설정:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
@@ -1655,11 +1655,11 @@ msgstr "이 오류가 또 다시 발생하면, 개발모임에게 연락주십�
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "게임을 종료 하시겠습니까?"
+msgstr "놀이를 종료 하시겠습니까?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr "게임 종료"
+msgstr "놀이 종료"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
@@ -1712,7 +1712,7 @@ msgstr "놀이 방법 도움말"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr "게임 메뉴를 접근하려면 'ESC'를 누르십시오."
+msgstr "놀이 메뉴를 접근하려면 'ESC'를 누르십시오."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
@@ -1726,7 +1726,7 @@ msgstr "현재 처음 {tier} 계층만 사용할수 있습니다."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr "'P'를 눌러서 게임을 일시 정지 할 수 있습니다."
+msgstr "'P'를 눌러서 놀이를 일시 정지 할 수 있습니다."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
@@ -1779,9 +1779,7 @@ msgstr ""
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
-msgstr ""
-"새로운 게임을 시작할 때 '인공지능 놀사람'을 증가시켜 컴퓨터 놀사람을 추가하"
-"여 혼자 놀사람과 즐기십시오."
+msgstr "새로운 놀이를 시작할 때 '인공지능 놀사람'을 증가시켜 컴퓨터 놀사람을 추가하여 혼자 놀사람과 즐기십시오."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
@@ -1794,9 +1792,7 @@ msgstr ""
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
-msgstr ""
-"재미있는 따옴표만 원하십니까? 게임 페이지의 설정 메뉴에서 여기에 표시된 따옴"
-"표 유형을 변경하십시오."
+msgstr "재미있는 따옴표만 원하십니까? 놀이 페이지의 설정 메뉴에서 여기에 표시된 따옴표 유형을 변경하십시오."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
@@ -1828,7 +1824,7 @@ msgstr "타이머를 활성화하는중…"
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Chomping game data…"
-msgstr "게임 데이터를 쩝쩝거리며 먹고 있는중…"
+msgstr "놀이 데이터를 쩝쩝거리며 먹고 있는중…"
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Shaping islands…"
@@ -1946,12 +1942,12 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"놀이 버전이 당신이 가지고 있는것과 다릅니다. 함께 놀기 게임의 모든 선수가 같은 버전을 사용해야 합니다. 모든 선수가 최신 버전으로 "
-"갱신하면 해결됩니다. 놀이 버전: {game_version} 당신 버전 {own_version}"
+"놀이 버전이 당신이 가지고 있는것과 다릅니다. 함께 놀기 놀이의 모든 선수가 같은 버전을 사용해야 합니다. 모든 선수가 최신 버전으로 "
+"갱신하면 해결됩니다. 놀이 버전: {game_version} 당신 버전: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
-msgstr "게임 암호"
+msgstr "놀이 암호"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
@@ -2040,7 +2036,7 @@ msgstr "강퇴되었습니다"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
-msgstr "방장에 의해 게임에서 강퇴되었습니다"
+msgstr "방장에 의해 놀이에서 강퇴 되었습니다"
 
 #: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
@@ -2057,11 +2053,11 @@ msgstr "세션 종료"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "No saved games"
-msgstr "세이브한 게임이 없음"
+msgstr "저장된 놀이가 없음"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "There are no saved games to load."
-msgstr "불러오기할 저장된 게임이 없습니다."
+msgstr "불러오기할 저장된 놀이가 없습니다."
 
 #: horizons/gui/modules/select_savegame.py:146
 msgid "No filename given"
@@ -2074,7 +2070,7 @@ msgstr "올바른 파일이름을 입력하십시오."
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "{name} 이름으로 저장 게임이 이미 존재합니다."
+msgstr "{name} 이름으로 저장된 놀이가 이미 존재합니다."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-brace-format
@@ -2087,7 +2083,7 @@ msgstr "덮어쓰시겠습니까?"
 
 #: horizons/gui/modules/select_savegame.py:218
 msgid "Unknown savedate"
-msgstr "알수없는 저장 날짜"
+msgstr "알 수 없는 저장 날짜"
 
 #: horizons/gui/modules/select_savegame.py:221
 #, python-brace-format
@@ -2104,7 +2100,7 @@ msgstr[0] "{amount} 시간 저장되었습니다.- 확인요망"
 #: horizons/gui/modules/select_savegame.py:232
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr "저장 게임 버전 {version}"
+msgstr "저장된 놀이 버전 {version}"
 
 #: horizons/gui/modules/select_savegame.py:236
 msgid "(probably incompatible)"
@@ -2122,12 +2118,12 @@ msgstr "선택한 파일이 없습니다"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "You need to select a savegame to delete."
-msgstr "삭제할 저장게임을 선택해야합니다."
+msgstr "삭제할 저장된 놀이를 선택해야합니다."
 
 #: horizons/gui/modules/select_savegame.py:256
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "정말로 저장게임 '{name}'를 삭제 하시겠습니까?"
+msgstr "정말로 저장된 놀이 '{name}'를 삭제 하시겠습니까?"
 
 #: horizons/gui/modules/select_savegame.py:258
 msgid "Confirm deletion"
@@ -2147,7 +2143,7 @@ msgstr "단축키"
 
 #: horizons/gui/modules/settings.py:57
 msgid "Game"
-msgstr "게임"
+msgstr "놀이"
 
 #: horizons/gui/modules/settings.py:77
 msgid "Disabled"
@@ -2161,8 +2157,7 @@ msgstr "다시 시작이 필요"
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
-msgstr ""
-"변경 사항중 일부는 재시작이 필요합니다. 지금 게임을 다시 시작하시겠습니까?"
+msgstr "변경 사항중 일부는 재시작이 필요합니다. 지금 놀이를 다시 시작하시겠습니까?"
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
@@ -3358,15 +3353,15 @@ msgstr "농업"
 
 #: horizons/main.py:366
 msgid "Failed to start/load the game"
-msgstr "게임을 시작/불러오기 실패"
+msgstr "놀이를 시작/불러오기 실패"
 
 #: horizons/main.py:367
 msgid "The game you selected could not be started."
-msgstr "선택한 게임을 시작할 수 없습니다."
+msgstr "선택한 놀이를 시작할 수 없습니다."
 
 #: horizons/main.py:368
 msgid "The savegame might be broken or has been saved with an earlier version."
-msgstr "저장된 게임은 깨졌거나 이전 버전으로 저장되었습니다."
+msgstr "저장된 놀이가 깨졌거나 이전 버전으로 저장되었습니다."
 
 #: horizons/main.py:516
 msgid "No quicksaves found"
@@ -3391,9 +3386,7 @@ msgstr "로그는 {directory}에 기록 됩니다."
 msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
-msgstr ""
-"동기화 없이 게임을 실행되었습니다. 알수없는 내부 오류를 나타냅니다, 게임을 계"
-"속할 수 없습니다."
+msgstr "동기화 없이 놀이를 실행되었습니다. 알수없는 내부 오류를 나타냅니다, 놀이를 계속할 수 없습니다."
 
 #: horizons/manager.py:179
 msgid "We are very sorry and hope to have this bug fixed in a future version."
@@ -3407,7 +3400,7 @@ msgstr "가능 하지 않음"
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "다중 사용자 게임에서 저장하기/불러오기는 아직 가능하지 않습니다"
+msgstr "다중 사용자 놀이에서 저장하기/불러오기는 아직 가능하지 않습니다"
 
 #: horizons/mpsession.py:105
 msgid ""
@@ -3446,7 +3439,7 @@ msgstr "패킷 크기를 초과했습니다."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "알 수 없거나 잘못된 패킷입니다. 게임 버전을 확인 하시기 바랍니다"
+msgstr "알 수 없거나 잘못된 패킷입니다. 놀이 버전을 확인 하시기 바랍니다"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
@@ -3530,7 +3523,7 @@ msgstr "이 시나리오를 완료하였습니다."
 
 #: horizons/scenario/actions.py:93
 msgid "Do you want to continue playing?"
-msgstr "게임을 계속 하시겠습니까?"
+msgstr "놀이를 계속 하시겠습니까?"
 
 #: horizons/scenario/scenarioeventhandler.py:173
 msgid "unknown"
@@ -3539,19 +3532,17 @@ msgstr "알수 없음"
 #. usually invalid filename
 #: horizons/session.py:400
 msgid "Failed to create savegame file"
-msgstr "저장게임 파일 생성 실패"
+msgstr "저장된 놀이 파일 생성 실패"
 
 #: horizons/session.py:401
 msgid "There has been an error while creating your savegame file."
-msgstr "저장게임 파일을 만드는 동안 오류가 발생했습니다."
+msgstr "저장된 놀이 파일을 만드는 동안 오류가 발생했습니다."
 
 #: horizons/session.py:402
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
-msgstr ""
-"이것은 일반적으로 저장게임 이름이 지원되지 않는 특수 문자가 포함되어 있음을 "
-"의미합니다."
+msgstr "이것은 일반적으로 저장된 놀이 이름이 지원되지 않는 특수 문자가 포함되어 있음을 의미합니다."
 
 #: horizons/session.py:409
 msgid "Access is denied"
@@ -3559,13 +3550,11 @@ msgstr "접근이 거부되었습니다"
 
 #: horizons/session.py:410
 msgid "The savegame file could be read-only or locked by another process."
-msgstr ""
-"이 저장 게임 파일은 읽기 전용이거나 다른 프로세스에 의해 잠겨있을 수 있습니"
-"다."
+msgstr "이 저장 놀이 파일은 읽기 전용이거나 다른 프로세스에 의해 잠겨있을 수 있습니다."
 
 #: horizons/spsession.py:67
 msgid "Your game has not been saved."
-msgstr "게임이 저장되지 않았습니다."
+msgstr "놀이가 저장되지 않았습니다."
 
 #: horizons/util/checkupdates.py:89
 msgid "New version of Unknown Horizons"
@@ -3582,7 +3571,7 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
-msgstr "클릭하여 다운로드"
+msgstr "클릭하여 내려받기"
 
 #: horizons/util/checkupdates.py:104
 msgid "A page has been opened in your browser."
@@ -3727,7 +3716,7 @@ msgstr "{owner}를 공격중"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr "게임이 자동 저장되었습니다."
+msgstr "놀이가 자동 저장되었습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
@@ -3834,7 +3823,7 @@ msgstr "주민중 일부가 중앙광장에 접근할 수 없습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr "게임이 빠른 저장이 되었습니다."
+msgstr "놀이가 빠른 저장이 되었습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
@@ -3846,7 +3835,7 @@ msgstr ""
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr "게임이 저장되었습니다."
+msgstr "놀이가 저장되었습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3856,7 +3845,7 @@ msgstr "스크린샷이 {file}로 저장되었습니다."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr "주민들이 {level} 레벨에 도달했습니다."
+msgstr "주민들이 {level} 수준에 도달했습니다."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
@@ -4072,7 +4061,7 @@ msgstr "대리석 매장층"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr "대리석 상판-- 상판"
+msgstr "대리석 상판"
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
