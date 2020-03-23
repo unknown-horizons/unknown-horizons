@@ -24,7 +24,7 @@ logbook-data:
 - &INTRO
   - [Headline, 20. marraskuuta 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Neljän päivän jälkeen myrsky viimein hellittää ja me voimme levätä, mutta meillä ei ole paljoa ruokaa ja meidän laivamme on huonossa kunnossa. Meidän navigointivälineemme ja merikarttamme ovat kaadonneet.
+  - Neljän päivän jälkeen myrsky viimein hellittää ja me voimme levätä, mutta meillä ei ole paljoa ruokaa ja meidän laivamme on huonossa kunnossa. Meidän navigointivälineemme ja merikarttamme ovat kadonneet.
   - Meidän täytyy tulla rantaan kohta. Yksi miehistöni jäsen näki lintuja kalastamassa, joten ranta ei voi olla kaukana. Onneksi meillä on aina työkaluja ja lautoja mukana, että voimme rakentaa suojan.
   - 'Tehtävä:
 
@@ -55,10 +55,10 @@ logbook-data:
   - [Headline, 25. marraskuuta 1740]
   - [Image, content/gui/images/background/hr.png]
   - Me olemme nyt keränneet tarpeeksi ruokaa ja puuta, jotta voimme kasvattaa uutta siirtokuntaamme. Meidän kansalaisemme vaativat paikkaa, jossa asua ja vaihtaa tuotteita heidän jokapäiväisiin tarpeisiinsa.
-  - On aika rakentaa muutama teltta joissa asua ja pieni keskusta antaaksemme tavaroita kansalaisille.
+  - On aika rakentaa muutama teltta joissa asua ja pieni pääaukio antaaksemme tavaroita kansalaisille.
   - 'Tehtävä:
 
-    Rakenna keskusta ja ainakin 10 telttaa.'
+    Rakenna pääaukio ja ainakin 10 telttaa.'
   - [Pagebreak]
   - ''
 
