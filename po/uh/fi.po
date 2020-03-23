@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-04-24 09:49+0000\n"
-"Last-Translator: mrtr33 <aalovuorinen@gmail.com>\n"
+"PO-Revision-Date: 2020-03-23 14:08+0000\n"
+"Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -3885,7 +3885,7 @@ msgstr "Uusi maailma luotu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr "Jotkin asukkaatsi eivät pääse keskustorille."
+msgstr "Jotkin asukkaasi eivät pääse keskustorille."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
