@@ -24,40 +24,40 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
     '
-  - Tämä on päiväkirjasi, johon on tallennetu tärkeää tietoa nykyisestä scenaariosta. Tiivistelmä jokaisesta uudesta tehtävästä tulee näkymään myös ilmoituspainikkeina näytön vasempaan reunaan. Voit lukea tiivistelmän viemällä hiiren kursorin näiden ilmoutuspainikkeiden päälle tai avata päiväkirjan painamalla ilmoituspainiketta hiirellä.
-  - You can also re-open the Journal at any time by clicking the button below the mini-map, at the top right of your screen. From now on, we'll refer to this area containing the mini-map, various buttons and tabs as the 'Overview'.
+  - Tämä on päiväkirjasi, johon on tallennetu tärkeää tietoa nykyisestä skenaariosta. Tiivistelmä jokaisesta uudesta tehtävästä tulee näkymään myös ilmoituspainikkeina näytön vasempaan reunaan. Voit lukea tiivistelmän viemällä hiiren kursorin näiden ilmoutuspainikkeiden päälle tai avata päiväkirjan painamalla ilmoituspainiketta hiirellä.
+  - Voit myös avata päiväkirjan uudelleen milloin tahansa napsauttamalla minikartan alla olevaa painiketta näytön oikeassa yläkulmassa. Tästä eteenpäin nimitämme tätä minikarttaa, erilaisia painikkeita ja välilehtiä sisältävää aluetta 'yleiskatsaukseksi'.
   - - Gallery
     - [content/gui/icons/widgets/minimap/captainslog.png]
   - '
 
-    To see your first task, turn to the next page of the Journal using the button at the bottom of the opposite page - it looks like this:'
+    Tutustu ensimmäiseen tehtävään napsauttamalla Seuraava merkintä -kuvaketta päiväkirjan alalaidassa. Kuvake näyttää tältä:'
   - - Gallery
     - [content/gui/images/buttons/parrow_right.png]
   - [Pagebreak]
   - '
 
-    If you have any suggestions about how this tutorial can be improved, or if you encounter any errors, please tell us.'
+    Kerro meille, jos sinulla on ehdotuksia tämän oppaan parantamiseksi tai jos ilmenee virheitä.'
   - '
 
-    Visit www.unknown-horizons.org to find out how to contact the team.'
+    Kehitysryhmämme yhteystiedot löytyvät verkkosivuiltamme osoitteesta www.unknown-horizons.org'
   - ''
-  - And now, let's start the game!
+  - Ja nyt viimeinkin, aloitetaan itse peli.
   - [Pagebreak]
-  - [Headline, 'NEW TASK: CREATE A SETTLEMENT']
+  - [Headline, 'UUSI TEHTÄVÄ: LUO ASUTUS']
   - [Image, content/gui/images/background/hr.png]
-  - Your ship is at sea, loaded with the supplies you'll need to establish a new settlement.
-  - To move your ship, select it with a left-click then right-click on the location you want it to sail to.
-  - Once you're near the coast, the 'Build Settlement' button in the overview will become active.
+  - Aluksesi on merellä, ladattu tarvikkeilla, jotta sinun täytyy perustaa uusi asutus.
+  - Liikuta laivaasi valitsemalla se hiiren vasemmalla painikkeella ja oikealla sijainti, johon haluat sen menevän.
+  - Kun olet lähellä rannikkoa, 'Rakenna Asutus' -painike yleiskatsauksessa aktivoituu.
   - - Gallery
     - [content/gui/icons/ship/anchor.png]
-  - Clicking this button will show a preview of the Warehouse, the first building required to found a new settlement. As you move the cursor around, you'll notice that the preview is shaded red when the building is in an unsuitable area.
-  - The Warehouse needs to be positioned on the coast to allow ships to dock. So, find a good location then left-click to place this important building.
+  - Napsauttamalla tätä painiketta, näyttöön tulee esikatselu Varastosta, joka on ensimmäinen rakennus, jota tarvitaan uuden asutuksen löytämiseen. Kun siirrät kohdistinta ympäri, huomaat, että esikatselu on punainen tummennettuna, kun rakennus on sopimaton alue.
+  - Varasto on sijoitettava rannikolle, jotta alukset voivat saapua satamaan. Joten, etsi hyvä sijainti ja napsauta sitten hiiren vasemmalla painikkeella sijoittaaksesi tämä tärkeä rakennus.
   - ''
-  - [BoldLabel, 'Task: Build a Warehouse on the coast.']
+  - [BoldLabel, 'Tehtävä: Rakenna varasto rannikolle.']
 
 - &LUMBERJACK
-  - [Message, Build a Lumberjack's Tent and connect it to the Warehouse.]
-  - [Headline, 'NEW TASK: BUILD A LUMBERJACKS TENT']
+  - [Message, Rakenna puunhakkaajan teltta ja yhdistä se varastoon polulla.]
+  - [Headline, 'UUSI TEHTÄVÄ: RAKENNA PUUNHAKKAAJAN TELTTA']
   - [Image, content/gui/images/background/hr.png]
   - The supplies and construction materials have been unloaded from your ship and safely stored in your new Warehouse. Now it's time to construct some basic buildings, beginning with a Lumberjack's Tent.
   - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
@@ -101,8 +101,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
-  - [Headline, KESKUSTORI]
+  - [Message, 'Rakenna keskustori. Valitse alue, jolla ei ole liian montaa tuotantorakennusta.']
+  - [Headline, 'UUSI TEHTÄVÄ: KESKUSTORI']
   - [Image, content/gui/images/background/hr.png]
   - Asukkaasi tarvitsevat keskustorin, jolta he voivat hankkia elintarvikkeensa.
   - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
@@ -112,11 +112,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Vältä telttojen sijoittamista puunhakkaajan läheisyyteen, sillä teltan pystyttäminen raivaa paikalla olevat puut (ja et pääse sahaamaan niitä laudoiksi hyötykäyttöön).
   - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
+  - [BoldLabel, 'Tehtävä: Rakenna keskustori.']
   - [Pagebreak]
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    Tutustutaan kuitenkin nyt tarkemmin keskustoriin.'
   - - Gallery
     - [content/gui/icons/tabwidget/warehouse/account_a.png]
   - Yleiskatsauksessa näet siirtokuntasi taloudellisen tilan, kuten ansaitsemasi verot ja rakennuksien ylläpitoon kuluvat juoksevat kulut.
@@ -127,7 +127,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Eri tasojen mukaan ryhmitellystä yleiskatsauksesta näkee tietoja asukkaista. Voit määritellä siirtokuntatasokohtaisen veroprosentin ja sallia tai kieltää asukkailta oikeuden tasonsa päivittämiseen.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
+  - [Message, Rakenna teltta ja yhdistä se polulla keskustoriin.]
   - [Headline, ASUINRAKENNUKSET]
   - [Image, content/gui/images/background/hr.png]
   - Uudisasukkaat haluavat katon päänsä päälle, muuten he eivät tule lähellekään siirtokuntaasi! Sinun pitää siis pystyttää telttoja.
@@ -138,10 +138,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Harkitse päivitysten kieltämistä, jos materiaalit ovat vähissä.
   - Uudisasukkaat eivät välttämättä vaikuta hyödyllisiltä, sillä he kuluttavat tuottamiasi elintarvikkeita. He kuitenkin maksavat veroja, ja se on tällä hetkellä ainoa tapa, jolla saat rahaa!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - [BoldLabel, 'Tehtävä: Rakenna teltta ja yhdistä se tiellä keskustoriin. Telttoja ei tarvitse yhdistää yrityksiin.']
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - [Message, Rakenna vähintään kolme telttaa lisää ja yhdistä ne keskustoriin.]
   - '
 
     Let''s have a look at the Tent overview tab.'
@@ -246,15 +246,15 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - [Message, Laske verotasosi alas (palkin vasempaan päähän) ja odota merimiestesi päivittyvän seuraavalle tasolle.]
   - [Headline, 'UUSI TEHTÄVÄ: SEURAAVA TASO']
   - [Image, content/gui/images/background/hr.png]
-  - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
+  - Kaikki vaatimukset on nyt täytetty, kunhan asukkaasi voivat säännöllisesti vierailla keskustorilla ja kirkossa ja ruokavarantosi on riittävät.
   - Jos merimiehesi ovat riittävän onnellisia, he haluavat kehittyä seuraavalle tasolle, kansoittajiksi.
   - Voit tehdä asukkaistasi onnellisempia laskemalla veroprosenttia. Muuta sinun ei tarvitse tehdä, sillä olet jo täyttänyt asukkaidesi kaikki vaatimukset.
   - Veroprosenttia ei kannata kuitenkaan koko aikaa pitää alhaalla, sillä tästä todennäköisesti aiheutuu konkurssi ennemmin tai myöhemmin. Voit kuitenkin laskea prosenttia huoletta pieniksi ajoiksi.
-  - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
+  - Jonkin ajan jälkeen ensimmäisen yksikön pitäisi kävellä keskustorille ja etsiä sieltä uusia rakennustarvikkeita rakentaakseen hirsitalon. Tämä talo korvaa vanhan teltan.
   - [Pagebreak]
   - '
 
-    Such residential upgrades cost resources and can thus be restricted at the Main Square.'
+    Asuinrakennusten päivitykset ovat ainoat, jotka maksavat resursseja, joten niitä voidaan rajoittaa keskusaukiolla.'
   - Jotkut päivitykset ovat kuitenkin maksuttomia, kuten esimerkiksi puunhakkaaja (jolloin vain ulkoasu muuttuu).
   - Päivitettyyn asumukseen mahtuu enemmän asukkaita ja lisäksi kansoittajat maksavat myös enemmän veroja kuin merimiehet.
   - Kuten olet jo saattanut huomata, huonona puolena kansoittajat vaativat myös tavaroita, joita merimiehet eivät tarvinneet - sinun pitää siis käyttää nämä ylimääräiset tuotot myös heidän onnellisena pitämiseen.
@@ -658,4 +658,4 @@ metadata:
   locale: fi
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 96 translated messages, 77 fuzzy translations, 15 untranslated messages.
+  translation_status: 119 translated messages, 59 fuzzy translations, 10 untranslated messages.

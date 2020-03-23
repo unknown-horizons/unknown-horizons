@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2019-12-24 02:21+0000\n"
+"PO-Revision-Date: 2020-03-23 14:08+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/tutorial/fi/>"
 "\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -50,7 +50,7 @@ msgid ""
 "the Journal."
 msgstr ""
 "Tämä on päiväkirjasi, johon on tallennetu tärkeää tietoa nykyisestä "
-"scenaariosta. Tiivistelmä jokaisesta uudesta tehtävästä tulee näkymään myös "
+"skenaariosta. Tiivistelmä jokaisesta uudesta tehtävästä tulee näkymään myös "
 "ilmoituspainikkeina näytön vasempaan reunaan. Voit lukea tiivistelmän "
 "viemällä hiiren kursorin näiden ilmoutuspainikkeiden päälle tai avata "
 "päiväkirjan painamalla ilmoituspainiketta hiirellä."
@@ -62,13 +62,12 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"Voit myös avata päiväkirjan uudelleen milloin tahansa napsauttamalla "
+"minikartan alla olevaa painiketta näytön oikeassa yläkulmassa. Tästä "
+"eteenpäin nimitämme tätä minikarttaa, erilaisia painikkeita ja välilehtiä "
+"sisältävää aluetta 'yleiskatsaukseksi'."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To see your first task, click on the button \"Read next entries\" in the "
-#| "navigation panel! It looks like this:"
 msgid ""
 "\n"
 "To see your first task, turn to the next page of the Journal using the "
@@ -84,43 +83,36 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"Kerro meille, jos sinulla on ehdotuksia tämän oppaan parantamiseksi tai jos "
+"ilmenee virheitä."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"Kehitysryhmämme yhteystiedot löytyvät verkkosivuiltamme osoitteesta www."
-"unknown-horizons.org!"
+"Kehitysryhmämme yhteystiedot löytyvät verkkosivuiltamme osoitteesta www"
+".unknown-horizons.org"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
-msgstr "Ja nyt viimeinkin, aloitetaanpas itse peli."
+msgstr "Ja nyt viimeinkin, aloitetaan itse peli."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: SETTLE ON AN ISLAND"
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "ASETU SAARELLE"
+msgstr "UUSI TEHTÄVÄ: LUO ASUTUS"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Aluksesi on merellä, ladattu tarvikkeilla, jotta sinun täytyy perustaa uusi "
+"asutus."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "To move your ship, select it with a left click and right click on the "
-#| "location you want it to go to."
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
@@ -129,16 +121,12 @@ msgstr ""
 "sijainti, johon haluat sen menevän."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Once you are near the coast, the anchor-like button you see in the "
-#| "overview tab will become active."
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
-"Kun olet rannikon lähellä, ankkurin kuvake laivan yleiskatsauksessa muuttuu "
-"aktiiviseksi."
+"Kun olet lähellä rannikkoa, 'Rakenna Asutus' -painike yleiskatsauksessa "
+"aktivoituu."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -147,30 +135,31 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Napsauttamalla tätä painiketta, näyttöön tulee esikatselu Varastosta, joka "
+"on ensimmäinen rakennus, jota tarvitaan uuden asutuksen löytämiseen. Kun "
+"siirrät kohdistinta ympäri, huomaat, että esikatselu on punainen "
+"tummennettuna, kun rakennus on sopimaton alue."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Varasto on sijoitettava rannikolle, jotta alukset voivat saapua satamaan. "
+"Joten, etsi hyvä sijainti ja napsauta sitten hiiren vasemmalla painikkeella "
+"sijoittaaksesi tämä tärkeä rakennus."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a warehouse at the coast."
 msgid "Task: Build a Warehouse on the coast."
-msgstr "Tehtävä: Rakenna sivutoimisto rannikolle."
+msgstr "Tehtävä: Rakenna varasto rannikolle."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a lumberjack and connect it to the warehouse using a trail."
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr "Rakenna puunhakkaaja ja yhdistä se sivutoimistoon polulla."
+msgstr "Rakenna puunhakkaajan teltta ja yhdistä se varastoon polulla."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
-#, fuzzy
-#| msgid "NEW TASK: BUILD A LUMBERJACK"
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr "RAKENNA PUUNHAKKAAJA"
+msgstr "UUSI TEHTÄVÄ: RAKENNA PUUNHAKKAAJAN TELTTA"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -364,8 +353,6 @@ msgid "Don't forget to connect them to your Warehouse with Trails!"
 msgstr "Älä unohda yhdistää niitä polulla sivutoimistoosi!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a main square. Choose an area without many economy buildings."
 msgid "Build a Main Square. Choose an area without many economy buildings."
 msgstr ""
 "Rakenna keskustori. Valitse alue, jolla ei ole liian montaa "
@@ -373,7 +360,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr "KESKUSTORI"
+msgstr "UUSI TEHTÄVÄ: KESKUSTORI"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -390,7 +377,7 @@ msgid ""
 "This means that they need a trail connection from their home to the Main "
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
-msgstr "Keskustorille pitää siis olla kulkuyhteys asukkaiden asunnoilta."
+msgstr "Keskustorille pitää olla kulkuyhteys asukkaiden asunnoilta."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -429,16 +416,10 @@ msgstr ""
 "keskustorille."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "Task: Build a main square."
 msgid "Task: Build a Main Square."
 msgstr "Tehtävä: Rakenna keskustori."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Now let's have a closer look at the main square."
 msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
@@ -477,8 +458,6 @@ msgstr ""
 "asukkailta oikeuden tasonsa päivittämiseen."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid "Build a tent and connect it to the main square."
 msgid "Build a Tent and connect it to the Main Square if necessary."
 msgstr "Rakenna teltta ja yhdistä se polulla keskustoriin."
 
@@ -526,10 +505,6 @@ msgstr ""
 "hetkellä ainoa tapa, jolla saat rahaa!"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "Task: Build a tent and connect it to the main square. Tents dont need to "
-#| "be connected to any of the companies."
 msgid ""
 "Task: Build a Tent and connect it to the Main Square if necessary. Tents "
 "don't need to be connected to any of the companies."
@@ -538,9 +513,6 @@ msgstr ""
 "tarvitse yhdistää yrityksiin."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
-#, fuzzy
-#| msgid ""
-#| "Build at least three additional tents and connect them to the main square."
 msgid ""
 "Build at least three additional Tents and connect them to the Main Square."
 msgstr "Rakenna vähintään kolme telttaa lisää ja yhdistä ne keskustoriin."
@@ -981,10 +953,6 @@ msgid "NEW TASK: NEXT TIER"
 msgstr "UUSI TEHTÄVÄ: SEURAAVA TASO"
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "All demands are fulfilled now if your inhabitants can regularly visit the "
-#| "main square & pavilion and your food supply is adequate."
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square and the Pavilion and your food supply is adequate."
@@ -1019,11 +987,6 @@ msgstr ""
 "laskea prosenttia huoletta pieniksi ajoiksi."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "After some time, the first unit should walk to the main square and have a "
-#| "look for new construction material there to build a log house. This house "
-#| "will replace the old tent."
 msgid ""
 "After some time, the first unit should walk to the Main Square and have a "
 "look for new construction material there to build a log house. This house "
@@ -1034,19 +997,14 @@ msgstr ""
 "korvaa vanhan teltan."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Such residential upgrades cost resources and can thus be restricted at "
-#| "the main square."
 msgid ""
 "\n"
 "Such residential upgrades cost resources and can thus be restricted at the "
 "Main Square."
 msgstr ""
 "\n"
-"Asuinrakennusten päivitykset ovat ainoat, jotka maksavat resursseja ja joita "
-"voidaan rajoittaa."
+"Asuinrakennusten päivitykset ovat ainoat, jotka maksavat resursseja, joten "
+"niitä voidaan rajoittaa keskusaukiolla."
 
 #. This is the text body of a logbook page.
 msgid ""
