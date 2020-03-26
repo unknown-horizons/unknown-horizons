@@ -35,13 +35,13 @@ logbook-data:
 - &FOOD_BOARDS
   - [Headline, 22. marraskuuta 1740]
   - [Image, content/gui/images/background/hr.png]
-  - Satama on rakennettu ja uusi toivo herää, mutta minä olen silti huolissani tulevista päivistä... Ruoka ja tavalliset rakennusmateriaalit ovat loppumaassa.
+  - Satama on rakennettu ja uusi toivo herää, mutta minä olen silti huolissani tulevista päivistä... Ruoka ja tavalliset rakennusmateriaalit ovat loppumassa.
   - Meidän täytyy turvata pakollisten tarvikkeiden saanti pysyäksemme hengissä. On aika lähettää ihmiset keräämään ruokaa ja puita, että me voimme selvitä ja rakentaa suojan.
   - 'Tehtävät:
 
     Rakenna ainakin yksi jokaista:
 
-    * Metsuri
+    * Puunhakkaaja
 
     * Kalastaja
 
@@ -55,10 +55,10 @@ logbook-data:
   - [Headline, 25. marraskuuta 1740]
   - [Image, content/gui/images/background/hr.png]
   - Me olemme nyt keränneet tarpeeksi ruokaa ja puuta, jotta voimme kasvattaa uutta siirtokuntaamme. Meidän kansalaisemme vaativat paikkaa, jossa asua ja vaihtaa tuotteita heidän jokapäiväisiin tarpeisiinsa.
-  - On aika rakentaa muutama teltta joissa asua ja pieni pääaukio antaaksemme tavaroita kansalaisille.
+  - On aika rakentaa muutama teltta joissa asua ja pieni keskustori antaaksemme tavaroita kansalaisille.
   - 'Tehtävä:
 
-    Rakenna pääaukio ja ainakin 10 telttaa.'
+    Rakenna keskustori ja ainakin 10 telttaa.'
   - [Pagebreak]
   - ''
 
