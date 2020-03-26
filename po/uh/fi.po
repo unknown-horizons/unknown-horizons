@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2020-03-23 14:08+0000\n"
+"PO-Revision-Date: 2020-03-27 12:46+0000\n"
 "Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh/fi/>\n"
 "Language: fi\n"
@@ -27,7 +27,7 @@ msgstr "Unknown Horizons kaatui."
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Olemme tästä pahoillamme, ja haluamme korjata tämän virheen."
+msgstr "Olemme tästä pahoillamme ja haluamme korjata tämän virheen."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
@@ -332,7 +332,7 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr "Sloop-o'-war"
+msgstr "Sluuppi"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
@@ -390,8 +390,8 @@ msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Rakenna vene napsauttamalla yhtä välilehdistä, valitsemalla haluttu alus ja "
-"vahvistamalla päätös."
+"Voit rakentaa veneen napsauttamalla yhtä luokan välilehdistä, valitse "
+"haluamasi laiva ja vahvista tilaus."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -432,7 +432,7 @@ msgstr "Käyttöosuus"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr "Vaihda aluksen nimi napsauttamalla tästä"
+msgstr "Napsauta muuttaaksesi tämän maayksikön nimeä"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
@@ -488,7 +488,7 @@ msgstr "Onnellinen"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Näin tyytyväisten talojen lukumäärä"
+msgstr "Talojen onnellisuus määrä"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -538,7 +538,7 @@ msgstr "Nimi:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_groundunit.xml:13
 msgid "Weapons:"
-msgstr "Aseistettu:"
+msgstr "Aseet:"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:9
 msgid "Resource deposit"
@@ -583,7 +583,7 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Merkkituli näyttää vapaakauppiaalle reitin sivutoimistollesi, jonka ansiosta "
+"Merkkituli näyttää vapaakauppiaille reitin siirtokunnallesi, jonka ansiosta "
 "voit myydä ja ostaa tavaraa."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
@@ -754,11 +754,11 @@ msgstr "Pelaajat"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:40
 msgid "My ships"
-msgstr "Alukset"
+msgstr "Minun laivani"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:41
 msgid "My settlements"
-msgstr "Siirtokunnat"
+msgstr "Minun siirtokuntani"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:48
 msgid "Game messages"
@@ -767,7 +767,7 @@ msgstr "Peli-ilmoitukset"
 #. Displays all notifications and game messages
 #: content/gui/xml/ingame/widgets/captains_log.xml:52
 msgid "Whole world"
-msgstr "Maailma"
+msgstr "Koko maailma"
 
 #. Sends the chat messages to all players (default)
 #: content/gui/xml/ingame/widgets/captains_log.xml:72
@@ -827,7 +827,7 @@ msgstr "Poistu"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr "Mene edelliselle siulle"
+msgstr "Mene edelliselle sivulle"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
@@ -930,7 +930,7 @@ msgstr "Tyyppi"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
-msgstr "Aseistus"
+msgstr "Aseet"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:14
 msgid "Health"
@@ -1255,7 +1255,7 @@ msgstr "Pelin yksityiskohdat:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:34
 msgid "Color"
-msgstr "Peliväri"
+msgstr "Väri"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:40
 msgid "Ready:"
@@ -1384,7 +1384,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
-msgstr "Palauta oletusasetukset"
+msgstr "0 on oletusasetukset"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Mouse sensitivity:"
@@ -1561,7 +1561,7 @@ msgstr "Kartan asetukset:"
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr "Kartta:"
+msgstr "Siemen:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
@@ -1792,7 +1792,7 @@ msgid ""
 "neighborhood."
 msgstr ""
 "Nähdäksesi helpommin kattaako teltta-alue kaikki telttasi, valitse se "
-"rakennusvalikosta, ja vei se nykyisen alueesi päälle. Ulkopuolelle jäävät "
+"rakennusvalikosta ja vie se nykyisen alueesi päälle. Ulkopuolelle jäävät "
 "teltat näkyvät keltaisena. Uuden alueen rakentaminen naapurustoon on hyvä "
 "idea."
 
@@ -1858,7 +1858,7 @@ msgstr "Piirretään pelisaaria…"
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Preparing blueprints…"
-msgstr "Valmistellaan virheraportteja…"
+msgstr "Valmistellaan suunnitelmia…"
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Filling world with water…"
@@ -2414,7 +2414,7 @@ msgstr ""
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr "Sivutoimiston yleiskatsaus"
+msgstr "Varaston yleiskatsaus"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
@@ -2482,7 +2482,7 @@ msgstr "Osta/Myy"
 
 #: horizons/gui/tabs/shiptabs.py:103
 msgid "Too far from the nearest tradeable warehouse"
-msgstr "Liian kaukana lähimmästä omasta tai liittolaisen sivutoimistosta"
+msgstr "Liian kaukana lähimmästä omasta tai liittolaisen varastosta"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "Cannot equip trade ship with weapons"
@@ -2673,7 +2673,7 @@ msgstr "Puinen este"
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
-msgstr "Saviseinä"
+msgstr "Savi seinä"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:63
@@ -2693,7 +2693,7 @@ msgstr "Tuottaa valmiita mausteita raakamausteista."
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:73
 msgid "Boat Builder"
-msgstr "Veneenveistämö"
+msgstr "Veneveistämö"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:75
@@ -2713,7 +2713,7 @@ msgstr "Valmistaa maltaasta olutta."
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:85
 msgid "Brickyard"
-msgstr "Savenvalamo"
+msgstr "Tiilivalimo"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:87
@@ -2733,7 +2733,7 @@ msgstr "Tarvitsee sikoja tai karjaa. Tuottaa ruokaa."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr "Tykkitehdas"
+msgstr "Tykkivalimo"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
@@ -2743,7 +2743,7 @@ msgstr "Tuottaa tykkejä."
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:103
 msgid "Charcoal Burning"
-msgstr "Puuhiilen polttamo"
+msgstr "Miilu"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:105
@@ -2779,7 +2779,7 @@ msgstr "Käyttää sokeria viinanpolttoon."
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:125
 msgid "Doctor"
-msgstr "Sairaala"
+msgstr "Lääkäri"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:127
@@ -2974,7 +2974,7 @@ msgstr "Vartiotorni"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:239
 msgid "Expands settlement range."
-msgstr "Laajentaa ratkaisun alueen."
+msgstr "Laajentaa siirtokunnan aluetta."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:243
@@ -3064,7 +3064,7 @@ msgstr "Päästää pelaajan käymään kauppaa vapaakauppiaan kanssa."
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:295
 msgid "Smeltery"
-msgstr "Sulattamo"
+msgstr "Sulatto"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:297
@@ -3084,7 +3084,7 @@ msgstr "Kivenhakkaaja"
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:307
 msgid "Carver"
-msgstr "Kivenhakkaaja"
+msgstr "Kivenveistäjä"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:309
@@ -3114,13 +3114,12 @@ msgstr "Varastomökki"
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:323
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr ""
-"Asiakkaansa varastossa, laajentaa ratkaisun alueen ja tarjoaa kerääjät."
+msgstr "Laajentaa varastoa, siirtokunnan aluetta ja lisää kerääjiä."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:327
 msgid "Tavern"
-msgstr "Kapakka"
+msgstr "Krouvi"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:329
@@ -3165,7 +3164,7 @@ msgstr "Tarjoaa asuinpaikan uudisasukkaillesi."
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:349
 msgid "Tobacconist"
-msgstr "Tupakkatehdas"
+msgstr "Tupakkakauppias"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:351
@@ -3175,7 +3174,7 @@ msgstr "Valmistaa tupakkaa tupakanlehdistä."
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:355
 msgid "Toolmaker"
-msgstr "Työkalunvalmistaja"
+msgstr "Työkaluvalmistaja"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:357
@@ -3225,27 +3224,27 @@ msgstr "Järjestää opetusta."
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:383
 msgid "Warehouse"
-msgstr "Sivutoimisto"
+msgstr "Varasto"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:387
 msgid "Weaponsmith"
-msgstr "Aseistus"
+msgstr "Aseseppä"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:389
 msgid "Produces weapons out of iron."
-msgstr "Tuottaa aseita ulos iron."
+msgstr "Tuottaa aseita raudasta."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:393
 msgid "Weaver's Hut"
-msgstr "Kutojan mökki"
+msgstr "Kutojan maja"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:395
 msgid "Turns lamb wool into cloth."
-msgstr "Valmistaa lampaanvillasta vaatteita."
+msgstr "Valmistaa lampaanvillasta kankaaksi."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:399
@@ -3260,7 +3259,7 @@ msgstr "Jauhaa maissia jauhoksi."
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
-msgstr "Viinitehdas"
+msgstr "Viinin valmistaja"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:407
@@ -3380,7 +3379,7 @@ msgstr "Meri"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Wood"
-msgstr "Puuteollisuus"
+msgstr "Puu"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
@@ -3388,7 +3387,7 @@ msgstr "Puuteollisuus"
 #: horizons/i18n/objecttranslations.py:483
 #: horizons/i18n/objecttranslations.py:485
 msgid "Workshops"
-msgstr "Tuotantolaitokset"
+msgstr "Työpajat"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
@@ -3943,7 +3942,7 @@ msgstr "lampaanvilla"
 
 #. This is a database entry: the name of a resource
 msgid "textile"
-msgstr "kankaita"
+msgstr "kankaat"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
@@ -3963,7 +3962,7 @@ msgstr "tiilet"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr "puut"
+msgstr "puita"
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -4027,7 +4026,7 @@ msgstr "puuhiili"
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
-msgstr "raakarautaa"
+msgstr "rauta esiintymä"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
@@ -4055,7 +4054,7 @@ msgstr "tupakkakasveja"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
-msgstr "tupakanlehdet"
+msgstr "tupakanlehtiä"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
@@ -4123,7 +4122,7 @@ msgstr "kastikkeita"
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
-msgstr "marmoriesiintymä"
+msgstr "marmori esiintymä"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
@@ -4235,7 +4234,7 @@ msgstr "suolaesiintymä"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr "suolaliuos"
+msgstr "suolaliemi"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
@@ -4267,7 +4266,7 @@ msgstr "indigo"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr "pukineet"
+msgstr "vaatekappaleet"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
@@ -4299,7 +4298,7 @@ msgstr "musta surma"
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr "fuli"
+msgstr "tuli"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
