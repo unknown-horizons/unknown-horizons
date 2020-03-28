@@ -2,21 +2,22 @@
 # Copyright (C) YEAR The Unknown Horizons Team
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# mrtr33 <aalovuorinen@gmail.com>, 2019
+# Tuomas Lähteenmäki <lahtis@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2019-04-24 09:49+0000\n"
-"Last-Translator: mrtr33 <aalovuorinen@gmail.com>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh-server/fi/>"
-"\n"
+"PO-Revision-Date: 2020-03-28 12:47+0200\n"
+"Last-Translator: Tuomas Lähteenmäki <lahtis@gmail.com>\n"
+"Language-Team: Finnish <https://hosted.weblate.org/projects/uh/uh-server/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -26,7 +27,8 @@ msgstr "Vanha tai ei tuettu moninpeli protokolla. Tarkista pelisi versio"
 msgid "You've exceeded the global packet size."
 msgstr "Olet ylittänyt globaalin paketti koon."
 
-#: horizons/network/server.py:285 horizons/network/server.py:304
+#: horizons/network/server.py:285,
+#: horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
 "Näin ei koskaan olisi pitänyt käydä. Ota meihin yhteyttä tai tee virhe "
@@ -65,7 +67,8 @@ msgstr "Peli on jo täynnä"
 msgid "Wrong password"
 msgstr "Väärä salasana"
 
-#: horizons/network/server.py:434 horizons/network/server.py:547
+#: horizons/network/server.py:434,
+#: horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
 msgstr "Siellä on jo pelaaja samalla nimellä."
 
@@ -73,7 +76,8 @@ msgstr "Siellä on jo pelaaja samalla nimellä."
 msgid "Please change your name."
 msgstr "Vaihda nimesi."
 
-#: horizons/network/server.py:438 horizons/network/server.py:576
+#: horizons/network/server.py:438,
+#: horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
 msgstr "Siellä on jo pelaaja samalla värillä kun sinulla."
 
@@ -97,14 +101,6 @@ msgstr "Et ole enää pelissä"
 msgid "The game has been terminated. The creator has left the game."
 msgstr "Peli on lopetettu. Tekijä poistui pelistä."
 
-#: horizons/network/server.py:494
-msgid ""
-"One player has terminated their game. For technical reasons, this currently "
-"means the game cannot continue. We are very sorry about that."
-msgstr ""
-"Yksi pelaaja on lopettanut pelinsä. Teknisistä syistä tämä tarkoittaa että "
-"peli ei voi jatkua. Olemme pahoillamme."
-
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
 msgstr "Nimeäsi ei voi muuttaa."
@@ -116,3 +112,11 @@ msgstr "Väriäsi ei voi muuttaa."
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
 msgstr "Et voi noutaa peliä, kun olet toisessa pelissä"
+
+#: horizons/network/server.py:494
+msgid ""
+"One player has terminated their game. For technical reasons, this currently "
+"means the game cannot continue. We are very sorry about that."
+msgstr ""
+"Yksi pelaaja on lopettanut pelinsä. Teknisistä syistä tämä tarkoittaa että "
+"peli ei voi jatkua. Olemme pahoillamme."
