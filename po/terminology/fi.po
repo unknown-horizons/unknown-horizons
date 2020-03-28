@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Finnish (Unknown Horizons)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-28 13:03+0200\n"
+"POT-Creation-Date: 2020-03-28 13:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/dictionaries/uh/fi/>\n"
@@ -584,6 +584,9 @@ msgstr "koko"
 
 msgid "slider"
 msgstr "vieritin"
+
+msgid "Sloop-o'-war"
+msgstr "Sluuppi"
 
 msgid "slot"
 msgstr "paikka, tavararuutu"
