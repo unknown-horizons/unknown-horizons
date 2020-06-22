@@ -303,6 +303,7 @@ msgstr "(مثل ما في تبويبات التحديد)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:23
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
+#, fuzzy
 msgid "$res"
 msgstr "$res"
 
