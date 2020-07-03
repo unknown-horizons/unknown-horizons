@@ -112,7 +112,7 @@ def tearDown(run):
 
     # If the -r or --run arg is passed we start the app after build
     if run:
-        os.popen("open ./dist/Unknown\ Horizons.app")
+        os.popen("open ./dist/Unknown\\ Horizons.app")
 
 
 def build(pyver):

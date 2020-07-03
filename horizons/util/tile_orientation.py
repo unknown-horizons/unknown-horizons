@@ -43,7 +43,7 @@ def get_tile_alignment_action(origin, is_similar_tile):
 	  \   ..\     \/      \/..      \/..
 	  /   ../     /         ..      /\..
 	 /    ./     /           .     /..\.
-	/     /     /                 /....\
+	/     /     /                 /....\ 
 
 	ad    adh   abde   abf (im-   abcdfg
 			   possible)
