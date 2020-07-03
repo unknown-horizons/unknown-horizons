@@ -401,10 +401,13 @@ class AtlasGenerator:
 
 		# delete everything
 		for path in paths:
-			if not os.path.exists(path):
-				continue
 			cls.log.info('Deleting %s', path)
-			os.unlink(path)
+			try:
+				os.unlink(path)
+			except FileNotFoundError:
+				# file was already gone
+				# and that is the state we wanted anyway
+				pass
 
 
 if __name__ == '__main__':
