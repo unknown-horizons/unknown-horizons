@@ -47,7 +47,7 @@ class TileSetLoader:
 	def _find_tile_sets(cls, dir):
 		"""Traverses recursively starting from dir to find action sets.
 		It is similar to os.walk, but more optimized for this use case."""
-		for entry in os.listdir(dir):
+		for entry in sorted(os.listdir(dir)):
 			full_path = os.path.join(dir, entry)
 			if entry.startswith("ts_"):
 				cls.tile_sets[entry] = GeneralLoader._load_action(full_path)
