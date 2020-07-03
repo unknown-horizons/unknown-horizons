@@ -141,5 +141,5 @@ class GeneralLoader:
 		Discards everything else that we found living there in the past.
 		"""
 		junk = set(('.DS_Store', ))
-		return [d for d in os.listdir(directory)
+		return [d for d in sorted(os.listdir(directory))
 		          if d not in junk]
