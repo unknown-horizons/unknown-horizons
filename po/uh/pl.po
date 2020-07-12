@@ -2679,7 +2679,7 @@ msgstr "Rekrutuje jednostki do walki lądowej."
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:59
 msgid "Wooden barrier"
-msgstr "Drewniana bariera"
+msgstr "Drewniana wieża"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
