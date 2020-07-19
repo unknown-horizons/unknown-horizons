@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>unknown-horizons.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>APL-1.0 AND CC-BY-SA-3.0 AND GPL-2.0-with-font-exception AND MIT AND OFL-1.1</project_license>
+  <name>Unknown Horizons</name>
+  <summary>Open Source Real-Time Economy Simulation Game</summary>
+  <description>
+    <p>
+      Unknown Horizons is a 2D real-time strategy simulation with an emphasis on economy and city building. Expand your small settlement to a strong and wealthy colony, collect taxes and supply your inhabitants with valuable goods. Increase your power with a well balanced economy and with strategic trade and diplomacy.
+    </p>
+  </description>
+  <screenshots>
+    <screenshot>
+      <image>http://unknown-horizons.org/static/screenshots/2019-01-11.23-36-47.502394.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">http://unknown-horizons.org/</url>
+  <update_contact>http://unknown-horizons.org/support/</update_contact>
+  <content_rating type="oars-1.0">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+</component>
