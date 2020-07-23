@@ -68,7 +68,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - 'NOVÝ ÚKOL: POSTAVTE DŘEVORUBCUV STAN'
   - - Image
     - content/gui/images/background/hr.png
-  - Zásoby a konstrukční materiály byly vyloženy z Vaší lodi a bezpečně doručeny do Vašeho nového přístavu. Nyní je čas postavit pár základních budov. Začněme s budovou dřevorubce.
+  - Zásoby a konstrukční materiály byly vyloženy z Vaší lodi a bezpečně doručeny do Vašeho nového přístavu. Nyní je čas postavit pár základních budov. Začněme s dřevorubcovým stanem.
   - Dřevorubec bude kácet stromy z okolí jeho stanu a bude je opracovávat do podoby desek potřebných pro výstavbu či pro obchodování.
   - Pro postavení dřevorubeckého stanu, otevřete stavební menu kliknutím na tlačítko pod minimapou nebo stisknutím klávesy 'B', přednastavenou skratkou.
   - - Gallery
