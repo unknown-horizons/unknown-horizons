@@ -69,17 +69,17 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Image
     - content/gui/images/background/hr.png
   - Zásoby a konstrukční materiály byly vyloženy z Vaší lodi a bezpečně doručeny do Vašeho nového přístavu. Nyní je čas postavit pár základních budov. Začněme s budovou dřevorubce.
-  - Lumberjacks will fell trees from the woodland around their tent and process the timber to produce boards, for use in construction or as a trade resource.
+  - Dřevorubec bude kácet stromy z okolí jeho stanu a bude je opracovávat do podoby desek potřebných pro výstavbu či pro obchodování.
   - Pro postavení dřevorubeckého stanu, otevřete stavební menu kliknutím na tlačítko pod minimapou nebo stisknutím klávesy 'B', přednastavenou skratkou.
   - - Gallery
     - - content/gui/icons/widgets/minimap/build.png
-  - The Build Menu is sorted by tiers and, as yours is a new settlement, First Tier buildings are the only ones available to you; as your civilization advances, you will obtain access to higher tiers and be able to construct a much wider range of buildings.
+  - Stavební menu je rozdělené do úrovní. Budovy první úrovně jsou jediné prozatím dostupné v této hře. S pokrokem Vaší civilizace se budou zpřístupňovat další a další úrovně a Vy budete schopni stavět mnohem více druhů budov.
   - - Pagebreak
   - ''
   - Najděte dobře zalesněnou oblast pro dřevorubce, pak vyberte 'Dřevorubcův stan' ze seznamu budov v přehledu a umístěte budovu.
-  - Later in the game you might want to create woodland by planting trees, but since that costs money, you should use what nature has provided for the time being!
+  - Později ve hře můžete vytvářet lesy sázením stromků, ale to stojí peníze. Proto byste měl prozatím vystačit s tím, co poskytuje zdejší příroda.
   - Každá budova produkující suroviny musí být připojena cestou k obchodnímu přístavu, nebo jiné formě skladiště, jinak nebude produkované zboží odebíráno.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Čili jakmile bude Váš dřevorubecký stan umístěn, připojte jej pomocí nástroje 'Cesta' ze stavební menu k obchodnímu přístavu. Cesta se tvoří stisknutím a tažením tlačítka myši.
   - ''
   - - BoldLabel
     - 'Úkol: Postavte dřevorubcuv stan v zalesněné oblasti a propojte ho cestou k Obchodnímu přístavu.'
@@ -728,4 +728,4 @@ metadata:
   locale: cs
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 131 translated messages, 53 fuzzy translations, 4 untranslated messages.
+  translation_status: 135 translated messages, 53 fuzzy translations.
