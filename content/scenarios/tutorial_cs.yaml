@@ -77,7 +77,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Pagebreak
   - ''
   - Najděte dobře zalesněnou oblast pro dřevorubce, pak vyberte 'Dřevorubcův stan' ze seznamu budov v přehledu a umístěte budovu.
-  - Později ve hře můžete vytvářet lesy sázením stromků, ale to stojí peníze. Proto byste měl prozatím vystačit s tím, co poskytuje zdejší příroda.
+  - Později ve hře můžete vytvářet lesy sázením stromků, ale to stojí peníze. Proto byste měl prozatím vystačit s tím, co poskytuje zdejší příroda!
   - Každá budova produkující suroviny musí být připojena cestou k obchodnímu přístavu, nebo jiné formě skladiště, jinak nebude produkované zboží odebíráno.
   - Čili jakmile bude Váš dřevorubecký stan umístěn, připojte jej pomocí nástroje 'Cesta' ze stavební menu k obchodnímu přístavu. Cesta se tvoří stisknutím a tažením tlačítka myši.
   - ''
@@ -141,7 +141,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Nyní se blíže podívejme na tržiště.'
   - - Gallery
     - - content/gui/icons/tabwidget/warehouse/account_a.png
-  - V záložce "Účet" můžete vidět přehled financí  Vašeho ostrova, který zahrnuje všechny platby, které platíte, a všechny daně, které dostáváte.
+  - V záložce "Účet" můžete vidět přehled financí Vašeho ostrova, který zahrnuje všechny platby, které platíte, a všechny daně, které dostáváte.
   - Položky "Nákup" a "Prodej" ukazují Vaši obchodní bilanci a budou vysvětleny později.
   - Pokud je Vaše bilance kladná, vykazujete zisk.
   - - Gallery
