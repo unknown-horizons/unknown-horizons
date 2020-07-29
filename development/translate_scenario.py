@@ -94,7 +94,7 @@ def setup_gettext(scenario, language):
 		      'Exiting.'.format(scenario, language, MO_OUTPUT))
 		sys.exit(1)
 	else:
-		translation.install(unicode=True)
+		translation.install()
 
 
 def compile_scenario_po(output_mo):
@@ -109,7 +109,7 @@ def compile_scenario_po(output_mo):
 			'--check-format',
 			input_po,
 			'-o', output_mo,
-		], stderr=subprocess.STDOUT)
+		], stderr=subprocess.STDOUT, universal_newlines=True)
 	except subprocess.CalledProcessError:
 		# TODO handle
 		print('Error while compiling translation `{}`, probably malformed `.po`. '
@@ -154,7 +154,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 		loaded_yaml = yaml.safe_load(''.join(yamlish))
 		all_events = []
 		for event in loaded_yaml:
-			if isinstance(event, basestring):
+			if isinstance(event, str):
 				if event.strip():
 					event = translate(event)
 			if isinstance(event, list):
@@ -162,7 +162,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 				if widget in ('Gallery', 'Image', 'Pagebreak'):
 					pass
 				if widget in ('Headline', 'Label', 'BoldLabel', 'Message'):
-					event = [widget] + map(translate, event[1:])
+					event = [widget] + [translate(e) for e in event[1:]]
 
 			all_events.append(event)
 
