@@ -9,35 +9,34 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 무역상선들이 정착지에 방문할 수 있도록 해안에 창고를 건설하십시오.]
+  - - Message
+    - 무역상선들이 정착지에 방문할 수 있도록 해안에 창고를 건설하십시오.
   - '
 
 
 
     '
   - - Gallery
-    - [content/gfx/uh.png]
-  - [Pagebreak]
-  - [Headline, 이곳에 오신것을 환영합니다!]
-  - [Image, content/gui/images/background/hr.png]
+    - - content/gfx/uh.png
+  - - Pagebreak
+  - - Headline
+    - 이곳에 오신것을 환영합니다!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
     '
-  - '이것은 현재 시나리오에 대한 중요한 정보가 저장되는 일기입니다.
-
-    새로운 작업의 요약은 화면의 왼쪽 가장자리 근처에 ''알림 버튼''으로 나타납니다.
-
-    이러한 알림 위에 마우스를 올려 놓으면 요약을 읽을 수 있고, 버튼을 클릭하면 일기가 열립니다.'
+  - 이것은 현재 시나리오에 대한 중요한 정보가 저장되는 일기입니다. 새로운 작업의 요약은 화면의 왼쪽 가장자리 근처에 '알림 버튼'으로 나타납니다. 이러한 알림 위에 마우스를 올려 놓으면 요약을 읽을 수 있고, 버튼을 클릭하면 일기가 열립니다.
   - 화면 오른쪽 상단의 미니 맵 아래에있는 버튼을 클릭하여 언제든지 일기를 다시 열 수도 있습니다. 이제부터는 작은 지도, 다양한 버튼, '개요' 탭에 포함 된이 영역을 참조 할 것입니다.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/captainslog.png]
+    - - content/gui/icons/widgets/minimap/captainslog.png
   - '
 
     첫 번째 임무를 확인하려면, 반대 페이지의 하단에 있는 버튼을 사용하여 일기의 다음 페이지로 넘기십시오.- 다음과 같습니다:'
   - - Gallery
-    - [content/gui/images/buttons/parrow_right.png]
-  - [Pagebreak]
+    - - content/gui/images/buttons/parrow_right.png
+  - - Pagebreak
   - '
 
     이 자습서의 개선 방안이나 오류가 발생할 경우 우리에게 알려주십시오.'
@@ -46,52 +45,64 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     팀에 문의하는 방법을 찾으려면 www.unknown-horizons.org에 방문하십시오.'
   - ''
   - 그러면 이제, 게임을 시작합니다!
-  - [Pagebreak]
-  - [Headline, '새로운 임무: 정착지 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - '새로운 임무: 정착지 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 배가 바다에있고, 새로운 정착촌을 세우는 데 필요한 공급품을 배에 적재 하십시오.
   - 배를 이동하려면, 왼쪽 클릭으로 선택하고, 항해할 위치에서 오른쪽 클릭합니다.
   - 일단 해안 근처에 있으면, 요약에있는 '정착지 건설' 버튼이 활성화됩니다.
   - - Gallery
-    - [content/gui/icons/ship/anchor.png]
+    - - content/gui/icons/ship/anchor.png
   - 이 버튼을 클릭하면 창고의 미리보기가 표시되고, 첫 건물은 새로운 정착지가 필요합니다. 커서를 움직이다보면 건물이 부적합한 지역에있을 때 미리보기가 빨간색으로 나타납니다.
   - 창고는 배를 부두에 댈수있도록 해안에 위치해야합니다. 그래서 좋은 장소를 찾고, 왼쪽 버튼을 클릭하여 중요한 건물을 배치하십시오.
   - ''
-  - [BoldLabel, '임무: 해안선 근처에 창고 건설하십시오.']
+  - - BoldLabel
+    - '임무: 해안선 근처에 창고 건설하십시오.'
 
 - &LUMBERJACK
-  - [Message, '나무꾼의 천막을 건설하고, 창고와 연결하십시오.']
-  - [Headline, '새로운 임무: 나무꾼의 천막 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 나무꾼의 천막을 건설하고, 창고와 연결하십시오.
+  - - Headline
+    - '새로운 임무: 나무꾼의 천막 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 공급품 및 건축 자재는 선박에서 하역되어 새로운 창고에 안전하게 보관되었습니다. 이제 나무꾼의 천막을 시작으로 몇 가지 기본적인 건물을 건설 할 차례입니다.
   - 나무꾼은 천막 주변의 삼림 지대에서 벌목하고 판자를 생산하기위해 목재를 가공하고, 건축물이나 무역 자원으로 사용합니다.
   - 나무꾼의 천막을 지으려면, 작은지도 아래 버튼을 클릭거나 기본 단축키인 'B' 키를 눌러하여 건설 메뉴를 여십시오.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/build.png]
+    - - content/gui/icons/widgets/minimap/build.png
   - 건설 메뉴는 계층별로 정렬되고, 새로운 정착지이므로 첫번째 계층 건물 만 사용할 수 있습니다. 문명이 발전함에 따라 상위 계층에 대한 접근 권한을 얻고 훨씬 더 넓은 범위의 건물을 건설 할 수 있게 됩니다.
-  - [Pagebreak]
+  - - Pagebreak
   - ''
   - 나무꾼이 제대로 일을 하려면 먼저 나무가 울창한 지역을 찾고, 다음 개요에있는 건물 목록에서 '나무꾼의 천막'을 선택하고 건물을 배치하십시오.
   - 나중에 게임을 할 때 나무 심기로 삼림 지대를 만들고 싶을 지 모르지만 돈이 들어가기 때문에 당분간 자연이 제공 한 것을 사용해야합니다!
   - 자원을 모으거나 생산 시설은 창고 또는 다른 형태의 저장소와 연결되는 경로가 필요합니다. 그렇지 않으면 생산한 물품이 수집되지 않습니다.
   - 따라서 일단 나무꾼의 천막이 위치에 있으면 건설 메뉴를 열고 '경로' 버튼을 클릭하여 창고와 연결하십시오. 마우스를 클릭하여 끌면 나무꾼의 천막과 창고 사이의 경로가 그려집니다.
   - ''
-  - [BoldLabel, '임무: 나무꾼의 천막을 숲속지역에 건설하고 창고와 길을 연결하십시오.']
+  - - BoldLabel
+    - '임무: 나무꾼의 천막을 숲속지역에 건설하고 창고와 길을 연결하십시오.'
   - 건물이 연결되면 새로 생산된 판자를 들고 창고로 보내어 건설 또는 무역에 사용할 수 있도록 수집자가 도착하는 것을 볼 수 있습니다.
   - - Gallery
-    - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
+    - - content/gui/icons/buildmenu/008.png
+      - content/gui/icons/buildmenu/015.png
+      - content/gui/icons/resources/32/004.png
 
 - &FOOD
-  - [Message, '사냥꾼의 천막과 낚시꾼의 천막을 건설하고, 창고와 연결하십시오.']
-  - [Headline, '새로운 임무: 식량 공급']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 사냥꾼의 천막과 낚시꾼의 천막을 건설하고, 창고와 연결하십시오.
+  - - Headline
+    - '새로운 임무: 식량 공급'
+  - - Image
+    - content/gui/images/background/hr.png
   - 일반적으로 사람들(특히 선원)이 매우 식욕이 왕성하기 때문에, 식량을 생산하는 생산시설도 약간은 필요할것입니다.
   - 첫번째 단계에서 사용할수있는 생산시설은 사냥꾼의 천막과 낚시꾼의 천막입니다.
   - 사냥꾼은 숲속에서 동물들을 사냥하므로 근처에 나무가 필요합니다.
   - 나무꾼의 숲 근처에 사냥꾼의 천막을 배치할수 있습니다.
   - 동물들의 번식속도가 빠르지 않거나 단순하게 찾기 어려울 수 있습니다.
   - '결론: 안정적인 공급이 필요하다면 사냥꾼의 천막은 안정적이지 않습니다.'
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     어부는 창고와 물고기 떼 범위 내와 같은 해안 건축 부지를 필요로 합니다.'
@@ -99,53 +110,65 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 유닛 식량 당 약간 긴 생산시간의 비용으로 매우 안정적인 공급입니다.
   - 이같은 소규모 정착지는 생산시설 모두를 사용할 수 있고 직접 비교하여 더 나은 장단점을 확인하는것이 좋습니다.
   - ''
-  - [BoldLabel, '임무: 사냥꾼의 천막과 낚시꾼의 천막을 건설하십시오.']
+  - - BoldLabel
+    - '임무: 사냥꾼의 천막과 낚시꾼의 천막을 건설하십시오.'
   - 길과 창고를 연결하는것을 잊지마십시오!
   - - Gallery
-    - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
+    - - content/gui/icons/buildmenu/011_h.png
+      - content/gui/icons/buildmenu/009_h.png
+      - content/gui/icons/resources/32/005.png
 
 - &MAINSQUARE
-  - [Message, 중앙광장을 건설하십시오. 경제 활동을 하는 건물이 많지 않은 곳으로 선택하십시오.]
-  - [Headline, '새로운 임무: 중앙광장']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 중앙광장을 건설하십시오. 경제 활동을 하는 건물이 많지 않은 곳으로 선택하십시오.
+  - - Headline
+    - '새로운 임무: 중앙광장'
+  - - Image
+    - content/gui/images/background/hr.png
   - 주민들은 그들의 물품을 가져올 수 있는 중앙광장을 필요로 합니다.
   - 즉, 그들의 집에서 중앙광장까지 연결된 길을 필요로 하다는 뜻입니다. 중앙광장은 길로서의 역할을 합니다. 따라서 인접한 집들은 별도의 길이 필요하지 않습니다.
   - 주민들은 낚시꾼의 천막이나 창고까지 걸어갈 필요 없이 창고에 있는 모든 물품들은 '시장'에서 이용할 수 있습니다.
   - - Gallery
-    - [content/gui/icons/buildmenu/004_h.png]
+    - - content/gui/icons/buildmenu/004_h.png
   - 건설 천막은 벌목소가 판자를 만드는데 필요한 나무들을 제거해버리기 때문에 주요 정착지 천막에 벌목소가 너무 가까운걸 피해야 합니다.
   - 나무꾼의 천막같은 생산시설들은 천막과 연결되지 않아도 일을 하므로 중앙광장과 길을 연결할 필요가 없습니다.
   - ''
-  - [BoldLabel, '임무: 중앙광장을 건설하십시오.']
-  - [Pagebreak]
+  - - BoldLabel
+    - '임무: 중앙광장을 건설하십시오.'
+  - - Pagebreak
   - '
 
     이제, 중앙광장을 자세히 살펴 봅시다.'
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - - content/gui/icons/tabwidget/warehouse/account_a.png
   - '"회계" 탭에서, 이 섬의 지불한 모든 비용과 획득한 모든 세금같은 대차 대조표를 얻으십시오.'
   - 항목의 '판매'와 '구매'는 무역 수지를 참조하고 나중에 설명될 것입니다.
   - 흑자라면, 대체로 이익을 만듭니다.
   - - Gallery
-    - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - - content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png
   - 다른 계층의 요약 탭에서 주민들에 대한 통계를 볼 수 있습니다. 또한 여기에서 계층별 전체 세금을 설정하고, 이 계층의 주민들을 다음의 더 높은 단계로 상향하는데 허용 하거나 거부할 수 있습니다.
 
 - &FIRSTTENT
-  - [Message, 필요하다면 천막을 건설하고 중앙광장과 연결하십시오.]
-  - [Headline, '새로운 임무: 주택']
-  - [Image, content/gui/images/background/hr.png]
-  - 정착민들은 자신들의 머리를 덮어줄 지붕을 원합니다. 그들은 당신의 도시에 살고 싶은생각이 없습니다! 천막을  제공해야 합니다.
+  - - Message
+    - 필요하다면 천막을 건설하고 중앙광장과 연결하십시오.
+  - - Headline
+    - '새로운 임무: 주택'
+  - - Image
+    - content/gui/images/background/hr.png
+  - 정착민들은 자신들의 머리를 덮어줄 지붕을 원합니다. 그들은 당신의 도시에 살고 싶은생각이 없습니다! 천막을 제공해야 합니다.
   - - Gallery
-    - [content/gui/icons/buildmenu/003_h.png]
+    - - content/gui/icons/buildmenu/003_h.png
   - 천막은 기본적인 거주 건물입니다. 주민들은 부유해질때 천막이 더 향상되길 바랍니다.
   - 각 건물의 향상은 최초 향상때는 목재와 같은 건축자재가 필요합니다.
   - 만약 이러한 재료의 재고가 부족한경우, 향상을 하지않는것이 좋습니다.
   - 정착민들은 생산하는 모든 물품을 소비하려하기 때문에 정착민들은 매우 유용해 보이지 않을수 있습니다. -하지만 그들은 최소한의 세금을 지불하므로 지금 돈을 벌 수있는 유일한 방법입니다!
   - ''
-  - [BoldLabel, '임무: 필요하다면 천막을 건설하고 중앙광장에 연결하십시오. 천막은 어떠한 생산시설과도 연결할 필요가 없습니다.']
+  - - BoldLabel
+    - '임무: 필요하다면 천막을 건설하고 중앙광장에 연결하십시오. 천막은 어떠한 생산시설과도 연결할 필요가 없습니다.'
 
 - &MORETENTS
-  - [Message, '최소 세 개의 천막을 세우고, 중앙광장과 연결하십시오.']
+  - - Message
+    - 최소 세 개의 천막을 세우고, 중앙광장과 연결하십시오.
   - '
 
     천막 요약 탭을 살펴봅시다.'
@@ -160,40 +183,48 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 그렇지 않는경우 행복도와 수입이 감소합니다. 언젠가 주민들이 정말로 뽀로통해지고, 마을을 두고 가버리고, 부폐 퇴락될것입니다.
   - 여기서 전체 세금 설정도 바꿀 수 있습니다.
   - ''
-  - [BoldLabel, '임무: 추가적으로 최소한 3개의 천막을 건설하십시오.']
+  - - BoldLabel
+    - '임무: 추가적으로 최소한 3개의 천막을 건설하십시오.'
   - '
 
     팁: Shift 키를 누르고 있으면 같은 종류의 여러 건물을 건설하는데 쉽습니다.'
 
 - &SIGNALFIRE
-  - [Message, 창고 근처 해안에 봉화대를 건설하십시오.]
-  - [Headline, '새로운 임무: 봉화대 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 창고 근처 해안에 봉화대를 건설하십시오.
+  - - Headline
+    - '새로운 임무: 봉화대 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 이따금 섬을 통과하는 배를 볼수있나요? 그배는 자유 무역상이며, 이 열도의 첫정착민중 하나입니다.
   - 무역상선은 아직 생산할수 없는 필수 물품과 정착지를 제공 할 것입니다.
   - 또한 생산하고 남은 물품은 판매할수 있지만, 일반적으로 (더 많은 천막을 세워서) 소비하는것이 판매하는것 보다 더 많은 이익을 줄수 있습니다.
   - 일반적으로 무역상선은 주변을 항해하고 거래처를 찾고있지만 이를 좀 더 빠르게 할 수 있습니다.
   - - Gallery
-    - [content/gui/icons/buildmenu/006_h.png]
+    - - content/gui/icons/buildmenu/006_h.png
   - 이것의 목적은, 창고 근처 해안에 봉화대를 건설하십시오. 선박들이 당신의 정착지로 가는 길을 보여줄것입니다.
   - 봉화대는 선박들이 항구를 발견하기 위해 그들이 통과하는 해역에 있어야 합니다.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     이 작은 광고 후에 무역상선이 지나가고 항해 할 계획이 있다 하더라도 창고에 잠시들러 들여다 보게됩니다.'
   - 창고 탭의 "구매/판매" 를 통해 거래를 제안할 수 있습니다.
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - - content/gui/icons/tabwidget/warehouse/buysell_a.png
   - '''선원'' 계층에서 3개의 무역 칸을 갖고있습니다.'
   - '''구매''에서 ''판매''로 또는 반대의 경우에도 칸모드를 바꾸기 위해 작은 아이콘을 클릭하십시오.'
   - 무역하고자하는 칸의 물품을 선택하십시오. 무역 준비가 되면 더 설명하겠습니다.
   - ''
-  - [BoldLabel, '임무: 창고 근처 해안에 봉화대를 건설하십시오.']
+  - - BoldLabel
+    - '임무: 창고 근처 해안에 봉화대를 건설하십시오.'
 
 - &TRADING
-  - [Message, 최소 도구30개의 섬 비축품을 확보하십시오. 약간의 시간이 걸릴수있다는것을 알고계십시오.]
-  - [Headline, '새로운 임무: 교역 배우기']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 최소 도구30개의 섬 비축품을 확보하십시오. 약간의 시간이 걸릴수있다는것을 알고계십시오.
+  - - Headline
+    - '새로운 임무: 교역 배우기'
+  - - Image
+    - content/gui/images/background/hr.png
   - '훌륭합니다! 자유 무역상선이 창고에 자주 들를 것입니다.
 
 
@@ -204,7 +235,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '''구입''과 ''판매''의 다른 의미를 가진 ''목표 값''을 결정할 각칸의 오른쪽 슬라이더에 끌어놓기 하십시오.'
   - 구입할때, 재고에서 '목표 값'을 고정하기위해 충분히 구입하십시오.
   - 판매할때, '목표 값'은 다시 그 자원을 좀더 많이 얻을때까지 항상 판매를 중단할 수 있는 재고 양입니다.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     예 :
@@ -217,20 +248,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     값은 수동적으로 변할수 없습니다!'
   - '''구매''와 ''판매''''회계''탭에서 무역수지를 볼 수 있습니다.'
   - ''
-  - [BoldLabel, '임무: 도구의 재고가 30개가 될때까지 구입하십시오!']
+  - - BoldLabel
+    - '임무: 도구의 재고가 30개가 될때까지 구입하십시오!'
   - - Gallery
-    - [content/gui/icons/resources/32/006.png]
+    - - content/gui/icons/resources/32/006.png
 
 - &PAVILION
-  - [Message, 교회를 건설하고 천막과 연결하십시오.]
-  - [Headline, '새로운 임무 : 교회 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 교회를 건설하고 천막과 연결하십시오.
+  - - Headline
+    - '새로운 임무 : 교회 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 이러한 도구는 바로 충분할것입니다. 잘 하셨습니다!
   - 지금 주민들에게 집과 중앙광장과 식량을 제공하십시오.
   - 아직도 우리가 만족하지 못했던 한 가지 요구가 있습니다. (아무 천막이나 클릭하면 확인할 수 있습니다.) 선원들은 기도를 드릴 수 있는 기본 건물을 원합니다.
   - 이 해결책은 마을 목사가 태양을 피하기 위해 신속하게 지을수 있는 교회 입니다.
   - 이 같은 봉사형 건물도 길을 천막과 연결되어 있지 않으면 주민들은 그곳에 갈 수 없다고 생각할것입니다.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     신앙은 물리적 자원과 같이 취급됩니다!'
@@ -242,20 +277,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     또한 도로 연결도 필요합니다.'
   - ''
-  - [BoldLabel, '임무: 선원들의 신앙에 대한 요구를 충족시키기 위해 천막과 연결된 길에 교회를 건설하십시오.']
+  - - BoldLabel
+    - '임무: 선원들의 신앙에 대한 요구를 충족시키기 위해 천막과 연결된 길에 교회를 건설하십시오.'
   - - Gallery
-    - [content/gui/icons/buildmenu/005.png]
+    - - content/gui/icons/buildmenu/005.png
 
 - &NEXTTIER
-  - [Message, 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리십시오.]
-  - [Headline, '새로운 임무 : 다음 시대']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 세금 수준을 낮게(왼쪽 끝) 설정하고 업그레이드하기위해 선원을 기다리십시오.
+  - - Headline
+    - '새로운 임무 : 다음 시대'
+  - - Image
+    - content/gui/images/background/hr.png
   - 주민들이 정기적으로 중앙광장과 교회를 방문 할 수 있고 식량 공급이 적절하다면 이제 모든 요구가 충족됩니다.
   - 선원들이 충분히 행복하면 '개척자'라고 불리는 단계로 진급할 수 있습니다.
   - 당신은 주민들의 모든 요구를 충족시켰으므로 주민들을 더욱 행복하게 하려면 세금을 낮추는 방법 밖에 없습니다.
   - 아마 조만간 파산으로 이어질 것 때문에, 항상 낮은 세금으로 지속하지 마십시오. 당분간은 무엇을하는지 아는 경우는 그래도 괜찮습니다.
   - 얼마 후, 첫 번째 유닛이 중앙광장으로 걸어가서 통나무 집을 짓기위해 건축 자재를 찾을 것입니다. 이 집이 오래된 천막을 대체 할 것입니다.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     이러한 주택 개선은 자원을 소비하기때문에 중앙광장에서 제한 될 수 있습니다.'
@@ -263,23 +302,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 재건축된 주택은 더 많은 주민들을 수용합니다, 그리고 개척자도 선원보다 더 많은 세금을 지불합니다.
   - 이미 눈치 챘는지 모르겠지만, 단점은 개척자가 선원을 필요로 하지 않은 추가 물품을 요구하는 것입니다. - 그래서 그들을 행복하게 만들게 할뿐만아니라 이 여분의 돈을 소비해야합니다.
   - ''
-  - [BoldLabel, '임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 재건축할 선원을 기다리십시오.']
+  - - BoldLabel
+    - '임무: 세금 수준을 낮게(왼쪽 끝) 설정하고 재건축할 선원을 기다리십시오.'
   - - Gallery
-    - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
+    - - content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png
 
 - &FARM
-  - [Message, 주위에 빈 공터를 확보할수 있는 곳에 농장을 지으십시오.]
-  - [Headline, '새로운 임무: 농장 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 주위에 빈 공터를 확보할수 있는 곳에 농장을 지으십시오.
+  - - Headline
+    - '새로운 임무: 농장 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 축하합니다! 주민들의 일부가 계층II에 도달했습니다!
   - 이젠 지금 새로운 건물에 접근할수 있습니다, 건설 메뉴를 다시 봐보십시오.
   - - Gallery
-    - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
+    - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - 그곳에 빛나는 새로운 탭이 나타났습니다.
   - 개척자들이 옷감을 요구하기 때문에 양털(농장에서 생산되는 물품중의 하나)로 만드는 옷감 생산라인을 구축해야 합니다.
   - 농장은 한가지만 생산하지 않고 다양한 물품을 생산할 수 있기때문에 매우 특별한 생산시설입니다.
   - 농장의 수확물은 주위에 어떤 밭을 만들었는지에 따라 다릅니다.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     이제, 이 것을 자세히 살펴 봅시다.'
@@ -288,14 +331,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 그러나 섬의 다른 부분 (일부 의미가 있을 수 있음)이나 다른 섬에서도 일부 처리를 계획하고 있다면 수집자와의 연결이 필요합니다.
   - 농장은 주변에 공터를 필요로 하기때문에 해안이나 기존 건물과 너무 가깝게 건설하지 않는것이 좋은 방법입니다.
   - ''
-  - [BoldLabel, '임무: 농장을 건설하십시오.']
+  - - BoldLabel
+    - '임무: 농장을 건설하십시오.'
   - - Gallery
-    - [content/gui/icons/buildmenu/020.png]
+    - - content/gui/icons/buildmenu/020.png
 
 - &FIELDS
-  - [Message, '최소 하나 이상의 목장을 건설하고, 좋아 하신다면 감자밭도 추가하십시오.']
-  - [Headline, '새로운 임무: 농지 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 최소 하나 이상의 목장을 건설하고, 좋아 하신다면 감자밭도 추가하십시오.
+  - - Headline
+    - '새로운 임무: 농지 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 농장 자체는 어떠한 밭도 근처에 없다면 아무것도 생산하지 않습니다.
   - 지금은 목장, 감자 밭, 사탕수수 밭을 선택할 수 있습니다.
   - '간단하게 정리해 보겠습니다:
@@ -307,7 +354,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * 사탕수수 밭 : 술을 양조하고 (나중에) 과자를 만드는 데 사용되는 사탕수수를 재배합니다.'
   - 이제는 목장만 있으면 되지만 식량 공급 과정이 소규모이면 (주거용 건물이 너무 많을 경우) 감자를 생산할 수도 있습니다.
   - 감자에 대해서는 이 물품을 취급하는 생산시설은 농장이 유일하므로 농장(밭이 아니라!)에 길이 연결되어야 합니다.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     밭들은 농장의 범위 내에 만들어야 합니다.'
@@ -315,14 +362,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 다른 종류의 밭들은 농장 단위는 거의 그곳에서 시간을 보내야 하기때문에(씨를 뿌리고 수확하고 가축을 기르는 등...) 만들어진 모든 밭들이 제 시간에 제공하지 못할 수도 있습니다.
   - 지금은 밭을 없기 때문에 이런 문제에 신경 쓸 필요가 없습니다. 이제 상황을 바꿉시다!
   - ''
-  - [BoldLabel, '임무: 적어도 하나 이상의 목장을 건설하고, 좋아 한다면 감자밭도 추가하십시오.']
+  - - BoldLabel
+    - '임무: 적어도 하나 이상의 목장을 건설하고, 좋아 한다면 감자밭도 추가하십시오.'
   - - Gallery
-    - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
+    - - content/gui/icons/buildmenu/018.png
+      - content/gui/icons/buildmenu/019.png
 
 - &STORAGE
-  - [Message, 그럴듯한 곳에 저장소 천막(제 1 시대 탭)을 건설하십시오.]
-  - [Headline, '새로운 임무: 저장소 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 그럴듯한 곳에 저장소 천막(제 1 시대 탭)을 건설하십시오.
+  - - Headline
+    - '새로운 임무: 저장소 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 최근에 나무꾼을 본적 있습니까?
   - 창고는 물품 보관 장소가 한정되어 있기 때문에, 재고가 가득 차면, 수집자는 생산시설에서 물품을 가져오는것을 멈춥니다.
   - 따라서 최근에 선원들이 천막 재건축을 원하지 않을 경우, 판자가 많이 모여 있을 수 있고 이 경우 나무꾼의 천막은 쉬고 있을 것입니다.
@@ -332,8 +384,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     이상하게 생각될 수도 있겠지만, 어쨌든 나무꾼의 오두막의 개요에서 볼 수있는 톱니 바퀴를 클릭하십시오.'
   - 이 '휴식'모드가 활성화 된 경우 (우리는 '조업중지'라고 부름) 건물의 운영 비용이 감소합니다. 비용이 0은 아니지만 생산시설이 계속 생산하는 것보다는 저렴합니다.
   - - Gallery
-    - [content/gui/icons/templates/production/toggle_inactive_h.png]
-  - [Pagebreak]
+    - - content/gui/icons/templates/production/toggle_inactive_h.png
+  - - Pagebreak
   - '
 
     즉, 생산시설이 일시적으로 필요하지 않을 때도 해체하지 않고, 비용을 절약할 수 있다는 것입니다.'
@@ -345,39 +397,51 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * 창고처럼 자체 수집자가 물품을 가져옵니다.'
   - 생산시설은 물품을 수집하기 위해 저장소와 연결할 수 있으며 창고가 가득차면 그것을 돕기위해 저장소 천막을 배치할 수 있습니다.
   - ''
-  - [BoldLabel, '임무: 가급적이면 수집자가 필요한 곳에 저장소 천막을 건설하십시오.']
+  - - BoldLabel
+    - '임무: 가급적이면 수집자가 필요한 곳에 저장소 천막을 건설하십시오.'
   - - Gallery
-    - [content/gui/icons/buildmenu/002.png]
+    - - content/gui/icons/buildmenu/002.png
 
 - &WEAVER
-  - [Message, 어떻게든 농장의 양털을 생산할 수 있도록 방직공의 오두막을 건설하십시오.]
-  - [Headline, '새로운 임무: 방직소 건설']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 어떻게든 농장의 양털을 생산할 수 있도록 방직공의 오두막을 건설하십시오.
+  - - Headline
+    - '새로운 임무: 방직소 건설'
+  - - Image
+    - content/gui/images/background/hr.png
   - 이제 양털을 생산 할 수 있으므로, 이 양털로 옷감을 만드는데 방직공이 필요합니다.
   - 방직공의 오두막은 방직공이 사는 곳입니다. 농장 근처나 저장소 천막(또는 창고) 근처 두 곳에 지을수 있습니다.
   - 두 경우 모두 길에 연결해야합니다.
   - 방직공의 오두막을 농장 근처에 짓고 농장과 연결된 길을 제거하더라도 여전히 양모를 생산하고 운반하는것을 확인할 수 있습니다.
   - ''
-  - [BoldLabel, '임무: 양털을 얻을 수 있는 위치에 방직소를 건설하십시오.']
+  - - BoldLabel
+    - '임무: 양털을 얻을 수 있는 위치에 방직소를 건설하십시오.'
   - - Gallery
-    - [content/gui/icons/buildmenu/007.png]
+    - - content/gui/icons/buildmenu/007.png
 
 - &GOALS
-  - [Message, 자습서을 완료하기 위해서는 도시에서 총 50명 이상의 주민들이 있어야 합니다. 흑자가 되도록 하십시오.]
-  - [Headline, '새로운 임무: 자습서 완료']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 자습서을 완료하기 위해서는 도시에서 총 50명 이상의 주민들이 있어야 합니다. 흑자가 되도록 하십시오.
+  - - Headline
+    - '새로운 임무: 자습서 완료'
+  - - Image
+    - content/gui/images/background/hr.png
   - 더 많은 주택을 제공하여 도시에 50 명 이상의 주민이 살게 하십시오.
   - 일단 이 정도 규모의 소비자를 만족시킬 수 있는 경제 운영을 유지할 수 있다면, 새로운 미지의 지평선을 탐험 할 준비가 된 것입니다!
   - 또한 이 경제를 유지하기에 충분한 돈이 필요하므로 흑자 상태가 필요합니다 (창고의 '회계'탭 에서 확인 할수있습니다).
   - ''
-  - [BoldLabel, '임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야합니다.']
+  - - BoldLabel
+    - '임무: 이 자습서를 완료하려면 50명의 주민들과 보유금이 흑자가 되어야합니다.'
   - - Gallery
-    - [content/gui/icons/widgets/cityinfo/inhabitants.png]
+    - - content/gui/icons/widgets/cityinfo/inhabitants.png
 
 - &WON
-  - [Message, 축하합니다! 자습서를 완료했습니다. 이제 새로운 것에 도전해 봅시다!]
-  - [Headline, 남은 임무 없음]
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - 축하합니다! 자습서를 완료했습니다. 이제 새로운 것에 도전해 봅시다!
+  - - Headline
+    - 남은 임무 없음
+  - - Image
+    - content/gui/images/background/hr.png
   - 전달된 모든 임무를 성공적으로 완료하였습니다. 세계는 지금 자유로운 열망과 용감한 탐험을 위해여러분의 명령을 기다리고 있고 있습니다!
   - '우리가 할수있거나 개선, 추가, 삭제해야 하는 제안 사항이 있다면:'
   - www.unknown-horizons.org
@@ -385,9 +449,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - team@unknown-horizons.org
   - 우리 포럼은 당신에게도 열려있습니다!
   - 지금까지 가장 좋은 결과들은 우리의 IRC 채널에 접속을 통해서 이뤄졌습니다,그렇기 때문에 여러분도 IRC에서 좋은결과를 위해 시도해보십시오 (-;
-  - [Pagebreak]
-  - [Headline, 고맙습니다!]
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - 고맙습니다!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -399,7 +465,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     여러분의 UH 팀'
   - - Gallery
-    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - - content/packages/unknown-horizons.xpm
+      - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
 
 events:
 - # Show a message after starting the game (how to move)
