@@ -22,19 +22,23 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 1740년 11월 20일]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1740년 11월 20일
+  - - Image
+    - content/gui/images/background/hr.png
   - 4일후, 마침내 폭풍우는 사라지고 우리는 휴식을 취할 수 있었다. 하지만 우리의 식량은 거의 남아 있지 않았고 배는 형편없게 되었다. 항해도구와 바다 표가 유실되었다.
   - 조만간 우리는 해변에 도착할것이다. 선원중 하나가 물고기를 사냥하는 새들을 보았다고하니, 육지는 멀리 있지 않은것 같다. 다행히도 우리에겐 항상 약간의 도구와 판자들을 가지고 있어서, 기본적인 피난처를 만들수 있다.
   - '임무:
 
     육지를 찾아 항구를 건설하십시오.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 1740년 11월 22일]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1740년 11월 22일
+  - - Image
+    - content/gui/images/background/hr.png
   - 항구가 건설되었고 새로운 희망이 생겼다. 나는 아직도 다음날들에 대해 걱정하고 있다… 우리는 식량과 기본적인 건축 자재가 부족하다.
   - 우리는 생존하기위해 필요한 기본적인것들을 확보해야 한다. 우리가 생존하고 피난처를 건설 할 수 있도록 식량과 목재를 모으는 사람들을 보내야 할때가 왔다.
   - '임무:
@@ -48,23 +52,27 @@ logbook-data:
     * 사냥꾼의 천막
 
     5개의 식량과 5개의 판자를 수집하십시오.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &TENTS
-  - [Headline, 1740년 11월 25일]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1740년 11월 25일
+  - - Image
+    - content/gui/images/background/hr.png
   - 우리는 기본적인 식량을 확보했고 새 정착지의 성장을 지속하기위해 약간을 목재들을 모았다. 사람들은 살수있는 곳과 일상 생활용품을 교환할 수 있는 곳을 요구했다.
   - 이젠 거주할 천막과 시민들에게 물품을 공급할 작은 중앙광장을 지어야할 때입니다.
   - '임무:
 
     중앙광장과 최소 10개 이상의 천막을 건설하십시오.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1740년 12월 1일]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1740년 12월 1일
+  - - Image
+    - content/gui/images/background/hr.png
   - 마침내 우리는 먹을 것과 다시 살 수 있는 곳이 충분해졌다. 내 천막은 썩 편안하지는 않지만 비를 피할수있었고 밤마다 내 머리 위에 지붕이 있음을 느끼게 해 주었다.
   - '나는 밤마다 별자리를 조사해왔지만 해도와 측량기가 없어서 그 의미를 알수 없었다. 나는 당분간 이곳에 갇혀있을것이라는 느낌이들었다. 그러니까 우리는 최선을 다해야 한다.
 
@@ -72,18 +80,20 @@ logbook-data:
   - '임무:
 
     최소 250명 이상의 주민과 이익이 흑자가 되도록 마을을 성장시키십시오.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &WON
-  - [Headline, 1745년 8월 27일]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1745년 8월 27일
+  - - Image
+    - content/gui/images/background/hr.png
   - 우리 마을은 잘 운영되고 있고, 도시는 주민들이 250명 이상으로 성장 했습니다. 내 새 집에 익숙해 시작하지만, 이 섬은 영원히 머물기엔 너무 작습니다.
   - 우리는 사람들을 위해 집과 자원을 제공할 더큰 섬을 찾기위해 배를 싯고 출발해야 한다. 나는 밤에 볼수있는 별자리를 이용하여 기본적인 항해도를 다시 만들었다. 그것은 완벽하지 않지만, 나는 이곳으로 되돌아 오는데 충분할것이라 희망한다.
   - '임무:
 
     알 수없는 지평선 팀 (www.unknown-horizons.org)에 연락하여 이 시나리오를 더 길고 잘 만들기 위해 당신이 어떻게 기여할 수 있는지 알아보십시오!'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 events:
@@ -142,7 +152,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: '1740년, 당신은 영국령 배의 선장입니다. 당신과 승무원들은  태평양에 있는 영국의 식민지로 가고 있었습니다.
+  description: '1740년, 당신은 영국령 배의 선장입니다. 당신과 승무원들은 태평양에 있는 영국의 식민지로 가고 있었습니다.
 
     폭풍이 몰아치기 전 까지는 모든것이 순조롭게 진행되었습니다…'
   difficulty: 쉬움
