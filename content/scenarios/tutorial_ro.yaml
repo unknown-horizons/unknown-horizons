@@ -287,8 +287,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Image
     - content/gui/images/background/hr.png
   - Toate nevoile locuitorilor tăi au fost îndeplinite dacă pot vizit regulat Piața Principală, Pavilionul și dacă rezervele de mâncare sunt decente.
-  - If the sailors are happy enough, they want to advance to the next tier called Pioneers.
-  - To make them happy, there is nothing else for you to do but setting taxes to a lower level since you have fulfilled all the demands of your inhabitants.
+  - Dacă marinarii sunt destul de fericiți, vor vrea să avanseze la următorul nivel numit Pionieri.
+  - Pentru ai face fericiți, nu este nimic altceva pentru tine de făcut decât să pui taxele la un nivel mai mic din moment ce ai indeplinit toate cererile locuitorilor tăi.
   - You should try to not always run on low taxes since this will probably lead to bankruptcy sooner or later. For a period of time and if you know what you are doing, it is fine though.
   - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
   - - Pagebreak
@@ -725,4 +725,4 @@ metadata:
   locale: ro
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 116 translated messages, 72 untranslated messages.
+  translation_status: 118 translated messages, 70 untranslated messages.
