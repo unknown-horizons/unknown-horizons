@@ -9,17 +9,20 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Construisez un comptoir sur la côte pour rendre votre colonie accessible aux navires marchands.]
+  - - Message
+    - Construisez un comptoir sur la côte pour rendre votre colonie accessible aux navires marchands.
   - '
 
 
 
     '
   - - Gallery
-    - [content/gfx/uh.png]
-  - [Pagebreak]
-  - [Headline, Bienvenue dans Unknown Horizons !]
-  - [Image, content/gui/images/background/hr.png]
+    - - content/gfx/uh.png
+  - - Pagebreak
+  - - Headline
+    - Bienvenue dans Unknown Horizons !
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -27,13 +30,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ceci est votre journal de bord, où sont enregistrées les informations importantes du scénario en cours. Un aperçu de chaque nouvelle tâche apparaîtra sous la forme d'une "bouton de notification" sur le bord gauche de l'écran. Vous pouvez pointer votre souris sur ces notifications pour lire l'aperçu, ou bien cliquer dessus pour ouvrir le journal de bord.
   - Vous pouvez aussi ouvrir à nouveau le Journal de Bord à n'importe quel moment en cliquant sur le bouton situé sous la mini-carte, en haut à droite de l'écran. Dorénavant, nous appellerons cette zone contenant la mini-carte et divers boutons et données la "Vue d'ensemble".
   - - Gallery
-    - [content/gui/icons/widgets/minimap/captainslog.png]
+    - - content/gui/icons/widgets/minimap/captainslog.png
   - '
 
     Pour voir votre première tâche, tournez la page du Journal de Bord en utilisant le bouton en bas de la page que vous voulez tourner - ça ressemble à ça :'
   - - Gallery
-    - [content/gui/images/buttons/parrow_right.png]
-  - [Pagebreak]
+    - - content/gui/images/buttons/parrow_right.png
+  - - Pagebreak
   - '
 
     Si vous avez des suggestions sur l''amélioration de ce didacticiel, ou bien si des erreurs se produisent, s''il vous plaît, dîtes-le nous.'
@@ -42,52 +45,64 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Visitez www.unknown-horizons.org pour trouver comment contacter l''équipe.'
   - ''
   - Et maintenant, commençons à jouer !
-  - [Pagebreak]
-  - [Headline, 'MISSION : CREER UNE COLONIE']
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - 'MISSION : CREER UNE COLONIE'
+  - - Image
+    - content/gui/images/background/hr.png
   - Votre navire est à flot, chargé des ressources nécessaires à l'établissement d'une nouvelle colonie.
-  - Pour déplacer votre navire, sélectionnez le avec un clic gauche puis cliquez droit sur l'endroit où vous voulez que ce dernier vogue.
+  - Pour déplacer votre navire, sélectionnez-le avec un clic gauche puis faites un clic droit sur l’endroit où vous voulez que ce dernier vogue.
   - Une fois que vous êtes près de la côte, le bouton "Construire une colonie" de la Vue d'Ensemble deviendra actif.
   - - Gallery
-    - [content/gui/icons/ship/anchor.png]
+    - - content/gui/icons/ship/anchor.png
   - Cliquer sur ce bouton montrera un aperçu de l'Entrepôt, le premier bâtiment requis pour fonder une nouvelle colonie. En déplaçant le curseur, vous remarquerez que l'aperçu du bâtiment est teinté de rouge quand ce dernier se trouve sur une zone inadéquate.
   - L'Entrepôt doit se trouver sur la côte pour permettre aux navires d'accoster. Alors, trouvez un endroit qui convienne puis faites un clic gauche pour placer ce bâtiment important.
   - ''
-  - [BoldLabel, 'Mission: Construisez un Entrepôt sur la côte.']
+  - - BoldLabel
+    - 'Mission : Construisez un Entrepôt sur la côte.'
 
 - &LUMBERJACK
-  - [Message, Construisez un Campement de Bûcherons et reliez-le à l'Entrepôt.]
-  - [Headline, 'MISSION : LE CAMP DE BÛCHERONS']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez un Campement de Bûcherons et reliez-le à l'Entrepôt.
+  - - Headline
+    - 'MISSION : LE CAMP DE BÛCHERONS'
+  - - Image
+    - content/gui/images/background/hr.png
   - Les ressources et matériaux de construction ont été déchargés de votre navire et mis à l’abri dans votre nouvel Entrepôt. Il est maintenant temps de construire quelques bâtiments de base, en commençant par un Camp de Bûcherons.
   - Les bûcherons vont abattre des arbres des zones boisées autour de leur camp et transformer le bois obtenu en planches, qui peuvent être utilisées dans la construction ou bien vendues.
   - Pour construire un Camp de Bûcherons, ouvrez le Menu Construction en cliquant sur le bouton sous la mini-carte, ou en appuyant sur "B" par défaut.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/build.png]
-  - Le Menu Construction est trié par paliers et comme votre colonie est nouvelle, seuls les bâtiments du Premier Palier vous sont accessibles; au fur et à mesure que votre civilisation avance, vous accéderez aux paliers supérieurs et aurez accès à une plus large variété de bâtiments.
-  - [Pagebreak]
+    - - content/gui/icons/widgets/minimap/build.png
+  - Le Menu Construction est trié par paliers et comme votre colonie est nouvelle, seuls les bâtiments du Premier Palier vous sont accessibles ; au fur et à mesure que votre civilisation avance, vous accéderez aux paliers supérieurs et aurez accès à une plus large variété de bâtiments.
+  - - Pagebreak
   - ''
   - Trouvez une jolie zone boisée pour faire travailler les bûcherons, puis sélectionnez "Camp de bûcherons" dans la liste des bâtiments de la Vue d'ensemble et placez le bâtiment.
   - Plus tard dans la partie, vous pourriez vouloir créer des zones boisées en plantant des arbres, mais, étant donné que cela coûte de l'argent, vous devriez utiliser ce que la nature fournit pour l'instant !
   - N'importe quel bâtiment de récolte de ressources ou bien de production nécessite d'être connecté par un chemin à l'Entrepôt ou à une autre forme de stockage, autrement, les biens qu'il produit ne seront pas récupérés.
   - Alors, une fois votre Camp de Bûcherons en place, connectez le à l'Entrepôt en ouvrant le Menu Construction puis en cliquant sur le bouton "Chemin". Vous pouvez maintenant cliquer-déplacer votre souris pour dessiner l'itinéraire de votre chemin entre le Camp de Bûcherons et l'Entrepôt.
   - ''
-  - [BoldLabel, 'Mission: Construisez un Camp de Bûcherons dans une zone boisée et reliez-le à l''Entrepôt.']
+  - - BoldLabel
+    - 'Mission : Construisez un Camp de Bûcherons dans une zone boisée et reliez-le à l’Entrepôt.'
   - Une fois les bâtiments reliés, vous verrez un transporteur arriver pour embarquer les planches fraîchement produites et les livrer à l'Entrepôt, prêtes pour la construction ou la vente.
   - - Gallery
-    - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
+    - - content/gui/icons/buildmenu/008.png
+      - content/gui/icons/buildmenu/015.png
+      - content/gui/icons/resources/32/004.png
 
 - &FOOD
-  - [Message, Établissez une hutte de chasseur et une hutte de pêcheur. Connectez-les à votre entrepôt.]
-  - [Headline, 'MISSION : LA NOURRITURE']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Établissez une hutte de chasseur et une hutte de pêcheur. Connectez-les à votre entrepôt.
+  - - Headline
+    - 'MISSION : LA NOURRITURE'
+  - - Image
+    - content/gui/images/background/hr.png
   - Vous allez également avoir besoin d'entreprises productrices de nourriture, car, en général, les gens ont toujours faim, surtout les marins.
   - Au premier niveau, les bâtiments disponibles sont les huttes du chasseur et du pêcheur.
   - Le chasseur chasse le gibier dans la forêt et a donc besoin de bois autour de lui.
   - Notez que vous pouvez placer la hutte du chasseur à coté de la forêt du bûcheron.
   - Il peut arriver que le gibier ne se reproduise pas assez rapidement ou qu'il soit bien caché.
   - 'Conclusion : la hutte de chasseur n''est pas très fiable si vous avez besoin d''un approvisionnement constant.'
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Le pêcheur a besoin d''un bâtiment côtier comme un entrepôt et d''un banc de poisson à proximité.'
@@ -95,53 +110,65 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - C'est une source de nourriture très constante mais d'un temps de production par unité de nourriture légèrement plus long.
   - Une petite colonie comme la votre peut utiliser ces deux types d'entreprises, et vous pourrez mieux en évaluer les avantages et les inconvénients en les comparant directement.
   - ''
-  - [BoldLabel, 'Mission : ériger une hutte de chasseur et une hutte de pêcheur.']
+  - - BoldLabel
+    - 'Mission : ériger une hutte de chasseur et une hutte de pêcheur.'
   - Et n'oubliez pas les sentiers les reliant à votre entrepôt !
   - - Gallery
-    - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
+    - - content/gui/icons/buildmenu/011_h.png
+      - content/gui/icons/buildmenu/009_h.png
+      - content/gui/icons/resources/32/005.png
 
 - &MAINSQUARE
-  - [Message, Construisez une place principale. Choisissez un endroit peu chargé en bâtiments économiques.]
-  - [Headline, 'MISSION : LA PLACE PRINCIPALE']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez une place principale. Choisissez un endroit peu chargé en bâtiments économiques.
+  - - Headline
+    - 'MISSION : LA PLACE PRINCIPALE'
+  - - Image
+    - content/gui/images/background/hr.png
   - Vos habitants ont besoin d'une place principale où ils trouveront des biens de consommation.
   - 'Cela signifie qu''il leur faudra un sentier reliant leurs habitations à la place principale. Notez que la place principale agit elle-même comme un chemin : ainsi, les tentes adjacentes n''ont pas besoin d''un sentier séparé.'
   - Toutes les marchandises de votre entrepôt sont disponibles dans ce « marché », vos habitants n'ont donc pas besoin d'aller jusqu'à la hutte du pêcheur ou même l'entrepôt.
   - - Gallery
-    - [content/gui/icons/buildmenu/004_h.png]
+    - - content/gui/icons/buildmenu/004_h.png
   - Vous devriez éviter de fonder votre campement trop prés des bûcherons car les tentes prennent la place du bois dont les bûcherons ont besoin afin de produire des planches.
   - Les entreprises fonctionnent sans être connectées aux tentes, vous n'avez donc pas besoin de construire une route entre la place principale et, par exemple, la tente du bûcheron.
   - ''
-  - [BoldLabel, 'Mission : construire une place principale.']
-  - [Pagebreak]
+  - - BoldLabel
+    - 'Mission : construire une place principale.'
+  - - Pagebreak
   - '
 
     Maintenant, nous allons regarder de plus près la place principale.'
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - - content/gui/icons/tabwidget/warehouse/account_a.png
   - Dans l'onglet « Finances » vous obtenez un bilan de cette île, avec tous les frais que vous payez ainsi que tous les impôts que vous gagnez.
   - Les points « Vendre » et « Acheter » font référence à votre balance commerciale et seront expliqués plus tard.
   - Si votre solde est positif, tout compte tenu vous faites un profit.
   - - Gallery
-    - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - - content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png
   - Dans les différents onglets de sélection de niveaux vous pouvez voir des statistiques sur vos habitants. Vous pouvez également définir le niveau global de taxe spécifique et autoriser ou refuser aux habitants de ce niveau de passer au niveau suivant.
 
 - &FIRSTTENT
-  - [Message, Construisez une tente et connectez-la à la place principale si nécessaire.]
-  - [Headline, 'MISSION : LES HABITATIONS']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez une tente et connectez-la à la place principale si nécessaire.
+  - - Headline
+    - 'MISSION : LES HABITATIONS'
+  - - Image
+    - content/gui/images/background/hr.png
   - Les colons veulent avoir un toit au dessus de la tête, autrement ils ne penseront même pas à venir vivre dans votre ville ! Vous devez leurs fournir des tentes.
   - - Gallery
-    - [content/gui/icons/buildmenu/003_h.png]
+    - - content/gui/icons/buildmenu/003_h.png
   - Les tentes constituent l'habitation de base. Vos habitants voudront les améliorer quand ils atteindront des niveaux supérieurs.
   - Notez que l'amélioration de chaque bâtiment nécessite des matériaux de construction, par exemple du bois pour la première évolution.
   - Envisagez d'interdire les améliorations si vos stocks de matériaux sont faibles.
   - Les colons peuvent sembler peu ou pas très utiles dans la mesure où ils essaieront de consommer tout les biens que vous produirez mais, au moins, ils paient les taxes et c'est votre seule façon de gagner de l'argent pour le moment !
   - ''
-  - [BoldLabel, 'Mission : construisez une tente et reliez-la à la place principale si nécessaire. Les tentes n''ont pas besoin d''être reliées aux bâtiments de production.']
+  - - BoldLabel
+    - 'Mission : construisez une tente et reliez-la à la place principale si nécessaire. Les tentes n''ont pas besoin d''être reliées aux bâtiments de production.'
 
 - &MORETENTS
-  - [Message, Construisez 3 tentes supplémentaires et reliez-les à la place principale.]
+  - - Message
+    - Construisez 3 tentes supplémentaires et reliez-les à la place principale.
   - '
 
     Regardons maintenant l''onglet sommaire d''une tente.'
@@ -156,40 +183,48 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sinon, la satisfaction et les revenus diminuent. Parfois, les habitants peuvent en avoir vraiment marre, ils tournent alors le dos à votre village.
   - Notez que vous pouvez régler les taxes ici aussi.
   - ''
-  - [BoldLabel, 'Mission : construisez au moins trois tentes supplémentaires.']
+  - - BoldLabel
+    - 'Mission : construisez au moins trois tentes supplémentaires.'
   - '
 
     ASTUCE : Il est plus simple de construire plusieurs bâtiments du même type en gardant la touche SHIFT enfoncée.'
 
 - &SIGNALFIRE
-  - [Message, 'Construisez un phare sur la côte, près de l''entrepôt.']
-  - [Headline, 'MISSION : CONSTRUIRE UN PHARE']
-  - [Image, content/gui/images/background/hr.png]
-  - Avez-vous remarqué le navire qui passe de temps en temps devant votre île? C'est le navire du marchand indépendant, l'un des premiers colons de cet archipel.
+  - - Message
+    - Construisez un phare sur la côte, près de l'entrepôt.
+  - - Headline
+    - 'MISSION : CONSTRUIRE UN PHARE'
+  - - Image
+    - content/gui/images/background/hr.png
+  - Avez-vous remarqué le navire qui passe de temps en temps devant votre île ? C’est le navire du marchand indépendant, l’un des premiers colons de cet archipel.
   - Il peut approvisionner votre colonie en marchandises que vous ne pouvez pas encore produire.
   - Vous pouvez également vendre vos surplus de production, mais en général il est plus profitable de les consommer (en construisant plus de tentes).
   - Normalement, les marchands ne font que chercher des opportunités, mais vous pouvez un peu accélérer les choses.
   - - Gallery
-    - [content/gui/icons/buildmenu/006_h.png]
+    - - content/gui/icons/buildmenu/006_h.png
   - À cette fin, construisez un phare sur la côte près de votre entrepôt. Il montrera aux navires le chemin vers votre colonie.
   - Le phare doit couvrir la zone où les navires passent afin de les guider.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Après cette annonce, le marchand fera une escale chez vous pour regarder votre entrepôt, même s''il avait prévu de l''ignorer.'
   - Vous pouvez faire des offres dans l'onglet « Achat/vente » de votre entrepôt.
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - - content/gui/icons/tabwidget/warehouse/buysell_a.png
   - Au niveau « marins » vous disposez de trois emplacements de commerce.
   - Cliquez sur le petit symbole afin de changer le mode de « Achat » à « Vente » et vice versa.
   - Cliquez sur l'emplacement de commerce pour choisir la marchandise que vous voulez vendre ou acheter. Nous expliquerons ce procédé plus précisément lorsque vous serez prêt à faire affaire.
   - ''
-  - [BoldLabel, 'Mission : construisez un feu de signalisation sur la côte, près de l''entrepôt.']
+  - - BoldLabel
+    - 'Mission : construisez un feu de signalisation sur la côte, près de l''entrepôt.'
 
 - &TRADING
-  - [Message, Atteignez un stock d'au moins 30 outils. Ceci pourra vous prendre du temps.]
-  - [Headline, 'MISSION : COMMERCER']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Atteignez un stock d'au moins 30 outils. Ceci pourra vous prendre du temps.
+  - - Headline
+    - 'MISSION : COMMERCER'
+  - - Image
+    - content/gui/images/background/hr.png
   - 'Excellent ! Le bateau-marchand va maintenant s''arrêter à votre entrepôt de temps en temps.
 
 
@@ -200,7 +235,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Bouger le régleur à droite de chaque emplacement détermine sa « valeur cible » qui a un sens différent pour « acheter » ou « vendre ».
   - Quand vous achetez, vous allez acheter suffisamment pour atteindre votre « valeur cible » de stock.
   - Quand vous vendez, la « valeur cible » est la quantité de produit que vous voulez garder en réserve et ne pas vendre.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Par exemple :
@@ -213,20 +248,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Il n''est PAS possible de changer les prix manuellement !'
   - Vous pouvez voir votre bilan commercial dans l'onglet « Finances » mettant en relief « Vente » et « Achat ».
   - ''
-  - [BoldLabel, 'Mission : Achetez autant d''outils que nécessaire pour en avoir 30 en stock !']
+  - - BoldLabel
+    - 'Mission : Achetez autant d''outils que nécessaire pour en avoir 30 en stock !'
   - - Gallery
-    - [content/gui/icons/resources/32/006.png]
+    - - content/gui/icons/resources/32/006.png
 
 - &PAVILION
-  - [Message, Construisez un pavillon connecté aux tentes.]
-  - [Headline, 'MISSION : LE PAVILLON']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez un pavillon connecté aux tentes.
+  - - Headline
+    - 'MISSION : LE PAVILLON'
+  - - Image
+    - content/gui/images/background/hr.png
   - Ces outils seront suffisants pour le moment. Bien joué !
   - Vous fournissez maintenant des logements, une place principale et de la nourriture à vos habitants.
   - 'Pourtant, il y a une demande que nous ne satisfaisons pas à ce jour (vérifiez-le en cliquant sur une tente ou la place principale) : vos marins veulent un bâtiment où ils pourront prier.'
   - La solution est un pavillon que le curé du village mettra rapidement en place.
   - Les bâtiments de service comme celui-ci doivent également être connecté aux tentes avec un sentier, sinon vos habitants ne pourront pas les atteindre.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Notez que la foi est traitée comme un bien physique !'
@@ -238,20 +277,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     La connexion routière est également requise.'
   - ''
-  - [BoldLabel, 'Mission : édifiez un pavillon avec un sentier vers les tentes pour qu''il puisse combler la demande en foi des marins.']
+  - - BoldLabel
+    - 'Mission : édifiez un pavillon avec un sentier vers les tentes pour qu''il puisse combler la demande en foi des marins.'
   - - Gallery
-    - [content/gui/icons/buildmenu/005.png]
+    - - content/gui/icons/buildmenu/005.png
 
 - &NEXTTIER
-  - [Message, Réglez les taxes sur Bas (côté gauche du régleur) et attendez que vos marins se développent.]
-  - [Headline, 'NOUVELLE MISSION : NIVEAU SUIVANT']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Réglez les taxes sur Bas (côté gauche du régleur) et attendez que vos marins se développent.
+  - - Headline
+    - 'NOUVELLE MISSION : NIVEAU SUIVANT'
+  - - Image
+    - content/gui/images/background/hr.png
   - Toutes les demandes sont maintenant satisfaites si vos habitants peuvent visiter régulièrement la place principale et le pavillon et si vos ressources alimentaires sont suffisantes.
   - Si vos marins sont assez heureux, ils voudront avancer au prochain niveau et deviendront des pionniers.
   - Pour les rendre heureux, il n'y a rien d'autre à faire que de fixer des impôts plus bas puisque vous avez répondu à toutes leurs demandes.
   - Vous devriez essayer de ne pas toujours jouer avec un niveau d'impôt trop bas puisque ceci vous mènerais à la faillite tôt ou tard. Mais pour une période de temps limité et si vous savez que vous faites, ce n'est pas un problème.
   - Après quelque temps, un premier pionnier devrait aller à la place principale y chercher le matériel nécessaire à la construction d'une maison en rondins. Cette maison remplacera la vieille tente.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     L''amélioration de l''habitation coûte des ressources et peut être limitée depuis la place principale.'
@@ -259,23 +302,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Les logements améliorés peuvent héberger plus d'habitants et, de plus, les pionniers paient plus de taxes que les marins.
   - Comme vous l'avez peut-être constaté, le désavantage est que les pionniers demandent des biens supplémentaires dont les marins n'ont pas besoin - vous devrez donc dépenser cet argent supplémentaire pour les satisfaire également.
   - ''
-  - [BoldLabel, 'Mission : Baissez les taxes (côté gauche du régleur) et attendez que les marins se développent.']
+  - - BoldLabel
+    - 'Mission : Baissez les taxes (côté gauche du régleur) et attendez que les marins se développent.'
   - - Gallery
-    - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
+    - - content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png
 
 - &FARM
-  - [Message, Construisez une ferme et laissez de l'espace libre autour d'elle.]
-  - [Headline, 'MISSION : CONSTRUIRE UNE FERME']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez une ferme et laissez de l'espace libre autour d'elle.
+  - - Headline
+    - 'MISSION : CONSTRUIRE UNE FERME'
+  - - Image
+    - content/gui/images/background/hr.png
   - Félicitations ! Certains de vos habitants ont atteint le deuxième niveau de développement !
   - Vous avez maintenant accès à de nouveaux bâtiments, regardez de nouveau le menu de construction.
   - - Gallery
-    - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
+    - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - Un joli nouvel onglet vient d'y apparaître.
   - Les pionniers demanderont du tissu, vous devrez créer une ligne de production en commençant par la laine de mouton (l'un des biens produits à la ferme).
   - La ferme est un bâtiment de production très spécial, puisqu'elle peut produire plusieurs biens (différents) si vous le voulez.
   - La production d'une ferme dépend du type de champ que vous placez autour d'elle.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Nous regarderons cela de plus près plus tard.'
@@ -284,14 +331,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Cependant si vous pensez affiner ces biens brut sur une autre partie de l'île ou même sur une autre île, vous devrez les connecter à un dépôt ou à un entrepôt.
   - Essayez de construire une ferme, mais pas trop près de la côte ou d'autres bâtiments, puisqu'elle aura besoin d'espace autour d'elle pour bien fonctionner.
   - ''
-  - [BoldLabel, 'Mission : construire une ferme.']
+  - - BoldLabel
+    - 'Mission : construire une ferme.'
   - - Gallery
-    - [content/gui/icons/buildmenu/020.png]
+    - - content/gui/icons/buildmenu/020.png
 
 - &FIELDS
-  - [Message, Construisez au moins un pré et ajoutez des champs de pommes de terre si vous voulez.]
-  - [Headline, 'MISSION : LES CHAMPS']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez au moins un pré et ajoutez des champs de pommes de terre si vous voulez.
+  - - Headline
+    - 'MISSION : LES CHAMPS'
+  - - Image
+    - content/gui/images/background/hr.png
   - La ferme elle-même ne produira rien sans champs.
   - Pour l'instant vous avez le choix entre des prés, des champs de pommes de terre et des champs de canne à sucre.
   - 'Voyons ce qu''ils produisent :
@@ -303,7 +354,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * champs de canne à sucre : de la canne à sucre qui sert à produire de l''alcool et (plus tard) des confiseries.'
   - Pour l'instant nous avons seulement besoin de prés mais si vos ressources alimentaires ne sont pas suffisantes (beaucoup d'habitations) vous pouvez aussi produire des pommes de terre.
   - Notez que, dans le cas des pommes de terre, vous devrez connecter la ferme (pas les champs !) au réseau routier, puisque c'est la seule entreprise de cette chaîne de production.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Assurez-vous que tous les champs sont dans l''espace couvert par la ferme.'
@@ -311,14 +362,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Les différents types de champs nécessitent plus ou moins de temps pour être cultivés (planter, récolter, etc…) et à cause de cela une ferme peut ne pas être en mesure de s'occuper de tous les champs à temps.
   - Mais pour l'instant vous n'avez pas besoin de penser à ce genre de problème vu que vous n'avez pas encore construit de champs. Nous devons changer cela !
   - ''
-  - [BoldLabel, 'Mission : construisez au moins un pré dans le rayon d''action de la ferme et ajoutez des champs de pommes de terre si vous le souhaitez.']
+  - - BoldLabel
+    - 'Mission : construisez au moins un pré dans le rayon d''action de la ferme et ajoutez des champs de pommes de terre si vous le souhaitez.'
   - - Gallery
-    - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
+    - - content/gui/icons/buildmenu/018.png
+      - content/gui/icons/buildmenu/019.png
 
 - &STORAGE
-  - [Message, Construisez un entrepôt (dans l'onglet niveau I) à un emplacement approprié.]
-  - [Headline, 'MISSION : L''ENTREPÔT']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Construisez un entrepôt (dans l'onglet niveau I) à un emplacement approprié.
+  - - Headline
+    - 'MISSION : L''ENTREPÔT'
+  - - Image
+    - content/gui/images/background/hr.png
   - Avez vous observé le bûcheron récemment ?
   - Puisque votre entrepôt n'a qu'une capacité limitée, les collecteurs arrêteront d'aller chercher les biens dans les entreprises lorsqu'il sera plein.
   - Donc si aucun marin n'a amélioré sa tente, vous avez probablement beaucoup de planches et dans ce cas le bûcheron est peut-être inactif.
@@ -328,8 +384,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Cela peut paraître étrange, mais essayez de cliquer sur les engrenages que vous voyez dans le sommaire du bûcheron, par exemple.'
   - Si ce mode « pause » est disponible (nous l'appelons « désaffection »), les coûts de fonctionnements de ce bâtiment baisseront. Il ne baisseront pas à zéro, mais ils seront déjà plus bas que si le bâtiment fonctionnait.
   - - Gallery
-    - [content/gui/icons/templates/production/toggle_inactive_h.png]
-  - [Pagebreak]
+    - - content/gui/icons/templates/production/toggle_inactive_h.png
+  - - Pagebreak
   - '
 
     Cela veut dire que vous pouvez économiser de l''argent en désactivant des bâtiments que vous ne voulez pas détruire mais dont vous n''avez pas besoin pour l''instant.'
@@ -337,61 +393,76 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - "Ce bâtiment a deux fonctions :\n* il offre plus d'espace de stockage pour vos biens ; \n* il envoie ses propres collecteurs pour aller chercher des biens, tout comme le entrepôt."
   - Notez que les entreprises peuvent également être connectées à un dépôt à la place d'un entrepôt et, si l'entrepôt est surchargé, vous pouvez l'aider à tout collecter en construisant un dépôt.
   - ''
-  - [BoldLabel, 'Mission : construisez un dépôt, de préférence quelque part où vous avez besoin de collecteurs.']
+  - - BoldLabel
+    - 'Mission : construisez un dépôt, de préférence quelque part où vous avez besoin de collecteurs.'
   - - Gallery
-    - [content/gui/icons/buildmenu/002.png]
+    - - content/gui/icons/buildmenu/002.png
 
 - &WEAVER
-  - [Message, Établissez un tisserand qui pourra accéder à la laine de votre ferme.]
-  - [Headline, 'MISSION : LE TISSERAND']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Établissez un tisserand qui pourra accéder à la laine de votre ferme.
+  - - Headline
+    - 'MISSION : LE TISSERAND'
+  - - Image
+    - content/gui/images/background/hr.png
   - Maintenant que la production de laine est prête vous avez encore besoin d'un tisserand pour produire du tissu à partir de cette laine.
   - 'La hutte du tisserand est l''endroit où vit le tisserand. Il y a deux emplacements où vous pouvez le construire : près de la ferme ou près du dépôt (ou de l''entrepôt).'
   - Dans tous les cas, vous devriez également assurer la connexion à un sentier.
   - 'Vous pouvez placer le tisserand près de la ferme et détruire tous les sentiers vers la ferme : le tisserand ira quand-même chercher la laine pour en faire du tissu.'
   - ''
-  - [BoldLabel, 'Mission : installer un tisserand à proximité de la laine.']
+  - - BoldLabel
+    - 'Mission : installer un tisserand à proximité de la laine.'
   - - Gallery
-    - [content/gui/icons/buildmenu/007.png]
+    - - content/gui/icons/buildmenu/007.png
 
 - &GOALS
-  - [Message, Logez un total de 50 habitants au moins dans votre ville pour compléter ce didacticiel. Il vous faut un bilan positif.]
-  - [Headline, 'MISSION : FINIR LE DIDACTICIEL']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Logez un total de 50 habitants au moins dans votre ville pour compléter ce didacticiel. Il vous faut un bilan positif.
+  - - Headline
+    - 'MISSION : FINIR LE DIDACTICIEL'
+  - - Image
+    - content/gui/images/background/hr.png
   - Essayez de loger au moins 50 habitants dans votre ville en fournissant plus de résidences.
   - Dès que votre économie pourra satisfaire ce nombre de consommateurs vous serez prêt à découvrir d'autres territoires !
   - Vous avez aussi besoin de suffisamment d'argent pour maintenir l'économie, une balance positive est nécessaire (voir l'onglet « Finances »).
   - ''
-  - [BoldLabel, 'Mission : Atteindre un nombre total de 50 habitants et un bilan positif afin de terminer ce didacticiel.']
+  - - BoldLabel
+    - 'Mission : Atteindre un nombre total de 50 habitants et un bilan positif afin de terminer ce didacticiel.'
   - - Gallery
-    - [content/gui/icons/widgets/cityinfo/inhabitants.png]
+    - - content/gui/icons/widgets/cityinfo/inhabitants.png
 
 - &WON
-  - [Message, 'Félicitations ! Vous avez atteint la fin de ce didacticiel, vous êtes maintenant prêt à relever de nouveaux défis !']
-  - [Headline, AUCUNE MISSION RESTANTE]
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Félicitations ! Vous avez atteint la fin de ce didacticiel, vous êtes maintenant prêt à relever de nouveaux défis !
+  - - Headline
+    - AUCUNE MISSION RESTANTE
+  - - Image
+    - content/gui/images/background/hr.png
   - Vous avez terminé toutes les tâches qui vous ont été assigné. Le monde est maintenant à vos ordres, dans l'attente de vos aspirations et de vos courageuses explorations !
   - 'Si vous avez des suggestions au sujet de ce que nous pourrions ou devrions améliorer, contactez-nous :'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Nos forums vous sont également ouvert !
-  - Les meilleurs résultats ont jusqu'à présent été obtenus en joignant notre canal IRC, essayez-le en premier (-;
-  - [Pagebreak]
-  - [Headline, Merci !]
-  - [Image, content/gui/images/background/hr.png]
+  - Les meilleurs résultats ont jusqu’à présent été obtenus en joignant notre canal IRC, essayez-le en premier (-;
+  - - Pagebreak
+  - - Headline
+    - Merci !
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
 
 
 
-    Merci d''avoir suivi ce didacticiel!
+    Merci d’avoir suivi ce didacticiel !
 
 
-    L''équipe d''UH'
+    L’équipe d’UH'
   - - Gallery
-    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - - content/packages/unknown-horizons.xpm
+      - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
 
 events:
 - # Show a message after starting the game (how to move)
@@ -646,9 +717,9 @@ events:
 
 metadata:
   author: The UH team
-  description: 'Didacticiel:
+  description: 'Le didacticiel :
 
-    Établissez votre première colonie et apprenez à jouer !'
+    Établissez votre première colonie et apprenez à jouer !'
   difficulty: Didacticiel
   locale: fr
   mapfile: development.sqlite
