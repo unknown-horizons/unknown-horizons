@@ -22,21 +22,25 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20. november 1740]
-  - [Image, content/gui/images/background/hr.png]
-  - Etter fire dager har stormen endelig løyet og vi kan slappe av.  Men vi har bare litt mat igjen og skipet vårt er i dårlig stand.  Navigasjonsinstrumentene og sjøkartene er tapt.
-  - Vi må i land snart.  En av våre utkikkere så noen fugler som jaktet på fisk, så det kan ikke være langt til land. Heldigvis har vi alltid noen enkle verktøy og planker ombord, så vi kan bygge noen enkle ly.
+  - - Headline
+    - 20. november 1740
+  - - Image
+    - content/gui/images/background/hr.png
+  - Etter fire dager har stormen endelig løyet og vi kan slappe av. Men vi har bare litt mat igjen og skipet vårt er i dårlig stand. Navigasjonsinstrumentene og sjøkartene er tapt.
+  - Vi må i land snart. En av våre utkikkere så noen fugler som jaktet på fisk, så det kan ikke være langt til land. Heldigvis har vi alltid noen enkle verktøy og planker ombord, så vi kan bygge noen enkle ly.
   - 'Oppgave:
 
     Finn land og bygg en havn.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22. november 1740]
-  - [Image, content/gui/images/background/hr.png]
-  - Havnen er bygget og nytt håp sprer seg.  Jeg er fortsatt bekymret for de kommende dager... vi går fri for mat og mangler grunnleggende byggematerialer.
-  - Vi må sikre våre grunnleggende behov for å holde oss i live.  Det er på tide å sende folk for å samle mat og tømmer slik at vi kan overlevere og bygge litt ly.
+  - - Headline
+    - 22. november 1740
+  - - Image
+    - content/gui/images/background/hr.png
+  - Havnen er bygget og nytt håp sprer seg. Jeg er fortsatt bekymret for de kommende dagene... vi går fri for mat og mangler grunnleggende byggematerialer.
+  - Vi må sikre våre grunnleggende behov for å holde oss i live. Det er på tide å sende folk for å samle mat og tømmer slik at vi kan overlevere og bygge litt ly.
   - 'Oppgave:
 
     Bygg minst en av hver av disse:
@@ -48,40 +52,48 @@ logbook-data:
     * Jeger
 
     Samle 5 mat og 5 planker.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &TENTS
-  - [Headline, 25. november 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 25. november 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Vi har sikret våre grunnleggende behov for mat og samlet noe ved for å sikre veksten for vår nye bosetning. Folkene våre krever et sted å leve og å bytte varer for sine hverdagslige behov.
   - Det er på tide å bygge noen telt å bo i og en liten markedsplass for å sikre våre innbyggere varer.
   - 'Task:
 
     Bygg en markedsplass og minst 10 telt.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1. desember 1740]
-  - [Image, content/gui/images/background/hr.png]
-  - Endelig har vi nok mat og et sted å bo igjen.  Teltet mitt er ikke veldig komfortabelt men holder meg tørr og jeg opplever å ha et tak over hodet om nettene.
-  - Jeg har forsket på stjernene om natten, men uten mine sjøkart og instrumenter forblir deres betydning ukjent.  Jeg har følelsen av at vi ikke kommer herfra på en stund, så vi får gjøre det beste ut av situasjonen.  Vi kan bare forsøke å bygge opp en sivilisasjon og finne en vei hjem…
+  - - Headline
+    - 1. desember 1740
+  - - Image
+    - content/gui/images/background/hr.png
+  - Endelig har vi nok mat og et sted å bo igjen. Teltet mitt er ikke veldig komfortabelt men holder meg tørr og jeg opplever å ha et tak over hodet om nettene.
+  - 'Jeg har forsket på stjernene om natten, men uten mine sjøkart og instrumenter forblir deres betydning ukjent. Jeg har følelsen av at vi ikke kommer herfra på en stund, så vi får gjøre det beste ut av situasjonen.
+
+    Vi kan bare forsøke å bygge opp en sivilisasjon og finne en vei hjem…'
   - 'Task:
 
     Få landsbyen til å vokse til du har minst 250 innbyggere og en positiv balanse.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &WON
-  - [Headline, 27. august 1745]
-  - [Image, content/gui/images/background/hr.png]
-  - Landsbyen vår gjør det godt, og byen har vokst til over 250 innbyggere.  Jeg har begynt å venne meg til vårt nye hjem, men øyen er for liten til at vi kan bli til evig tid.
-  - Vi bør laste opp i skipet vårt og dra ut for å finne en større øy med mer plass og ressurser for folket mitt.  Jeg har laget et grunnleggende navigasjonskart igjen, ved hjelp av stjernene jeg ser om natten.  Det er ikke perfekt, men jeg håper det gjør det mulig å finne veien tilbake hit.
+  - - Headline
+    - 27. august 1745
+  - - Image
+    - content/gui/images/background/hr.png
+  - Landsbyen vår gjør det godt, og byen har vokst til over 250 innbyggere. Jeg har begynt å venne meg til vårt nye hjem, men øyen er for liten til at vi kan bli til evig tid.
+  - Vi bør laste opp i skipet vårt og dra ut for å finne en større øy med mer plass og ressurser for folket mitt. Jeg har laget et grunnleggende navigasjonskart igjen, ved hjelp av stjernene jeg ser om natten. Det er ikke perfekt, men jeg håper det gjør det mulig å finne veien tilbake hit.
   - 'Task:
 
     Ta kontakt med Unknown Horizons-laget (www.unknown-horizons.org) og finn ut hvordan du kan bidra til å gjøre dette scenarioet lengre og bedre!'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 events:
@@ -140,7 +152,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Du er kaptein på et skip under engelsk flagg i 1740.  Du og manskapet ditt var på vei til en engelsk koloni i stillehavet.
+  description: 'Du er kaptein på et skip under engelsk flagg i 1740. Du og manskapet ditt var på vei til en engelsk koloni i stillehavet.
 
     Alt gikk fint helt til du havnet i en storm…'
   difficulty: enkel
