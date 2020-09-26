@@ -9,31 +9,34 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Zbuduj magazyn na wybrzeżu, tak aby statki handlowe mogły odwiedzić twoją osadę.']
+  - - Message
+    - Zbuduj magazyn na wybrzeżu, tak aby statki handlowe mogły odwiedzić twoją osadę.
   - '
 
 
 
     '
   - - Gallery
-    - [content/gfx/uh.png]
-  - [Pagebreak]
-  - [Headline, Witaj w grze Unknown Horizons!]
-  - [Image, content/gui/images/background/hr.png]
+    - - content/gfx/uh.png
+  - - Pagebreak
+  - - Headline
+    - Witaj w grze Unknown Horizons!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
     '
   - To jest Twój dziennik, gdzie są przechowywane ważne informacje na temat obecnej sytuacji. Podsumowanie każdego nowego zadania pojawi się również jako "przycisk powiadomień" w pobliżu lewej krawędzi ekranu. Możesz najechaniu myszką na te powiadomienia aby przeczytać podsumowania lub kliknąć przycisk, aby otworzyć dziennik.
-  - Można również ponownie otworzyć dziennik w dowolnej chwili, klikając przycisk poniżej mini-mapy, w prawym górnym rogu ekranu. Od teraz będziemy odnosić się do tego obszaru zawierającego mini-mapę, różnych przycisków i zakładki jako "Przegląd".
+  - Można również ponownie otworzyć dziennik w dowolnej chwili, klikając przycisk poniżej mini-mapy, w prawym górnym rogu ekranu. Od teraz będziemy odnosić się do tego obszaru zawierającego mini-mapę, różne przyciski i zakładki jako "Przegląd".
   - - Gallery
-    - [content/gui/icons/widgets/minimap/captainslog.png]
+    - - content/gui/icons/widgets/minimap/captainslog.png
   - '
 
     Aby zobaczyć swoje pierwsze zadanie, przejdź do następnej strony Dziennika i za pomocą przycisku na dole strony - wygląda to tak:'
   - - Gallery
-    - [content/gui/images/buttons/parrow_right.png]
-  - [Pagebreak]
+    - - content/gui/images/buttons/parrow_right.png
+  - - Pagebreak
   - '
 
     Jeżeli masz jakieś sugestie jak ten tutorial może być polepszony, lub jeśli napotkasz jakieś błędy, proszę zgłoś to.'
@@ -42,52 +45,64 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Odwiedź www.unknown-horizons.org, aby skontaktować się z twórcami.'
   - ''
   - A teraz rozpocznijmy zabawę!
-  - [Pagebreak]
-  - [Headline, 'NOWE ZADANIE: ZAŁÓŻ OSADĘ']
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - 'NOWE ZADANIE: STWÓRZ OSADĘ'
+  - - Image
+    - content/gui/images/background/hr.png
   - Twój statek jest na morzu i ma na pokładzie zaopatrzenie, którego potrzebujesz do założenia osady.
   - Aby poruszyć statkiem, wybierz go klikając na nim lewym przyciskiem myszki a następnie kliknij prawym przyciskiem w miejscu do którego ma się udać.
   - Jak tylko zbliżysz się do wybrzeża, przycisk 'Buduj port' zostanie odblokowany.
   - - Gallery
-    - [content/gui/icons/ship/anchor.png]
+    - - content/gui/icons/ship/anchor.png
   - Kliknięcie tego przycisku umożliwi Ci podgląd Składu, pierwszego budynku, który umożliwi Ci stworzenie osady. Jeśli poruszysz kursorem, zobaczysz, że podgląd jest czerwony, gdy budynek znajduje się na nieodpowiednim terenie.
   - Skład musi być umieszczony na wybrzeżu, aby umożliwić statkom przycumowanie i wyładowanie towarów. Znajdź więc odpowiednią lokalizację i kliknij lewym przyciskiem myszy, aby umieścić Skład.
   - ''
-  - [BoldLabel, 'Zadanie: Wybuduj port na wybrzeżu.']
+  - - BoldLabel
+    - 'Zadanie: Wybuduj Skład na wybrzeżu.'
 
 - &LUMBERJACK
-  - [Message, Wybuduj chatę drwala i poprowadź drogę od chaty do portu.]
-  - [Headline, 'NOWE ZADANIE: Wybuduj chatę drwala']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Wybuduj chatę drwala oraz drogę łączącą ją ze składem.
+  - - Headline
+    - 'NOWE ZADANIE: Wybuduj chatę drwala'
+  - - Image
+    - content/gui/images/background/hr.png
   - Zapasy i materiały budowlane zostały rozładowane ze statku i bezpiecznie przechowywane w nowym magazynie. Nadszedł czas, aby zbudować kilka podstawowych budynków, zaczynając od namiotu drwala.
-  - Drwale powalają drzewa z lasu wokół swojego namiotu i przetwarzają drewno w celu wyprodukowania desek, do wykorzystania w budownictwie lub jako zasób handlowy.
+  - Drwale będą ścinać drzewa z lasu wokół namiotu i przetwarzać drewno do produkcji desek, do wykorzystania w budownictwie lub jako zasób handlowy.
   - Aby zbudować chatę drwala, otwórz menu budowy klikając wielką ikonę poniżej mini mapy lub naciskając klawisz 'B'.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/build.png]
+    - - content/gui/icons/widgets/minimap/build.png
   - Menu kompilacji jest posortowane według poziomów, a ponieważ twoja osada jest nowa, budynki pierwszego poziomu są jedynymi dostępnymi dla ciebie; wraz z postępem cywilizacji uzyskasz dostęp do wyższych poziomów i będziesz mógł budować znacznie szerszy zakres budynków.
-  - [Pagebreak]
+  - - Pagebreak
   - ''
   - Znajdź ładny zalesiony obszar do działania naszego drwala, a następnie wybierz „Namiot drwala” z listy budynków w Przeglądzie i umieść budynek.
-  - W dalszej części gry możesz chcieć tworzyć lasy, sadząc drzewa, ale ponieważ to kosztuje, powinieneś wykorzystać to, co natura dała na razie!
+  - Później w czasie gry możesz posadzić samodzielnie las, ale to kosztuje, więc powinieneś korzystać z tego co natura przynosi!
   - Każdy budynek gromadzący zasoby lub budynek produkcyjny potrzebuje ścieżki łączącej go z magazynem lub inną formą magazynowania, w przeciwnym razie wytwarzane przez niego towary nie zostaną odebrane.
-  - So, once your Lumberjack's Tent is in position, connect it to your Warehouse by opening the Build Menu then clicking the 'Path' button. You can now click and drag with the mouse to draw the route of your path between the Lumberjack's Tent and the Warehouse.
+  - Kiedy więc namiot drwala znajdzie się na swoim miejscu, podłącz go do swojego magazynu, otwierając menu budowy, a następnie klikając przycisk „Ścieżka”. Możesz teraz kliknąć i przeciągnąć myszą, aby wyznaczyć trasę swojej ścieżki między namiotem drwala a magazynem.
   - ''
-  - [BoldLabel, 'Task: Build a Lumberjack''s Tent in a wooded area and connect it to your Warehouse.']
-  - Once the buildings are connected you'll see a collector arrive to pick up your newly produced boards and deliver them to the Warehouse, ready for use in construction or trade.
+  - - BoldLabel
+    - 'Zadanie: zbuduj Namiot Drwala w zalesionym obszarze i podłącz go do swojego Magazynu.'
+  - Po połączeniu budynków zobaczysz kolekcjonera, który odbierze nowo wyprodukowane deski i dostarczy je do magazynu, gotowe do użycia w budownictwie lub handlu.
   - - Gallery
-    - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
+    - - content/gui/icons/buildmenu/008.png
+      - content/gui/icons/buildmenu/015.png
+      - content/gui/icons/resources/32/004.png
 
 - &FOOD
-  - [Message, Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse.]
-  - [Headline, 'NOWE ZADANIE: Zaopatrzenie w żywność']
-  - [Image, content/gui/images/background/hr.png]
-  - You will need to have some food-producing companies too, because people in general (and especially sailors) are very hungry.
+  - - Message
+    - Zbuduj Namiot Myśliwego i Namiot Rybaka. Połącz je z Magazynem.
+  - - Headline
+    - 'NOWE ZADANIE: Zaopatrzenie w żywność'
+  - - Image
+    - content/gui/images/background/hr.png
+  - Przyszła kolej na produkcję żywności, aby ludzie (a w szczególności żeglarze) nie chodzili głodni.
   - Available companies in the first tier are the Hunter's Tent and Fisherman's Tent.
-  - The hunter hunts animals in the forest, thus needs trees nearby.
+  - Myśliwy poluje na zwierzęta w lesie, więc potrzebuje drzew w pobliżu.
   - Note that you can place your Hunter's Tent close to the lumberjack's forest.
   - Może się zdażyć, że zwierzęta nie będą rozmnażać się zbyt szybko albo będą bardzo dobrze się ukrywały.
   - 'Conclusion: the Hunter''s Tent is not too reliable if you need continuous supply.'
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     The Fisher needs a coastal building site like the Warehouse and a fish school in range.'
@@ -95,53 +110,65 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - To bardzo pewne źródło żywności, ceną jest jednak nieznacznie dłuższa produkcja.
   - Taka mała osada jak twoja może wykorzystać oba sposoby pozyskiwania żywności, powinieneś je jednaki zbalansować jzgodnie z ich zaletami i wadami.
   - ''
-  - [BoldLabel, 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.']
+  - - BoldLabel
+    - 'Task: Build a Hunter''s Tent and a Fisherman''s Tent.'
   - Don't forget to connect them to your Warehouse with Trails!
   - - Gallery
-    - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
+    - - content/gui/icons/buildmenu/011_h.png
+      - content/gui/icons/buildmenu/009_h.png
+      - content/gui/icons/resources/32/005.png
 
 - &MAINSQUARE
-  - [Message, Build a Main Square. Choose an area without many economy buildings.]
-  - [Headline, 'NOWE ZADANIE: Rynek główny']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Build a Main Square. Choose an area without many economy buildings.
+  - - Headline
+    - 'NOWE ZADANIE: Rynek główny'
+  - - Image
+    - content/gui/images/background/hr.png
   - Osadnicy potrzebują rynku głównego, na którym będą mogli nabyć niezbędne towary.
   - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
   - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
-    - [content/gui/icons/buildmenu/004_h.png]
+    - - content/gui/icons/buildmenu/004_h.png
   - Nie powinieneś rozstawiać namiotów w pobliżu chaty drwala, gdyż niszczysz w ten sposób drzewa, które potrzebne są drwalowi do produkcji desek.
   - Companies work without being connected to the tents, so you don't need to build a road between the Main Square and e.g. your Lumberjack's Tent.
   - ''
-  - [BoldLabel, 'Task: Build a Main Square.']
-  - [Pagebreak]
+  - - BoldLabel
+    - 'Task: Build a Main Square.'
+  - - Pagebreak
   - '
 
     Now let''s have a closer look at the Main Square.'
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - - content/gui/icons/tabwidget/warehouse/account_a.png
   - W zakładce 'Finanse' możesz sprawdzić stan finansów wyspy, włączając w to wszystkie koszta jakie ponosisz oraz podatki jakie zbierasz.
   - Pozycje 'Sprzedaż' i 'Kupno' odnoszą się do bilansu handlowego i zostaną wytłumaczone później.
   - Jeżeli Twoje saldo jest dodatnie, odnosisz zyski.
   - - Gallery
-    - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - - content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png
   - W różnych zakładkach rozwoju osadników możesz zobaczyć statystyki o twoich mieszkańcach. Możesz też ustalić podatki - osobno dla każdego stadium rozwoju - a także pozwolić lub zabronić swym podwładnym na przejście na wyższy poziom rozwoju.
 
 - &FIRSTTENT
-  - [Message, Build a Tent and connect it to the Main Square if necessary.]
-  - [Headline, 'NOWE ZADANIE: Budynki mieszkalne']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Build a Tent and connect it to the Main Square if necessary.
+  - - Headline
+    - 'NOWE ZADANIE: Budynki mieszkalne'
+  - - Image
+    - content/gui/images/background/hr.png
   - Osadnicy muszą mieć dach nad głowami, inaczej nie będą nawet myśleć o zamieszkaniu w wiosce. Powinienś wybudować namioty.
   - - Gallery
-    - [content/gui/icons/buildmenu/003_h.png]
+    - - content/gui/icons/buildmenu/003_h.png
   - Namioty są podstawowymi budynkami mieszkalnymi. Mieszkańcy będą chcieli je ulepszać wraz ze zwiększaniem stadium rozwoju.
   - Należy pamiętać, że modernizacja każdego budynku wymaga materiałów budowlanych, takich jak drewno do ich pierwszej modernizacji.
   - Uniemożliwienie modernizacji jest zazwyczaj dobrym pomysłem w sytuacji gdy nie posiadasz zbyt wielu materiałów.
   - Ponieważ osadnicy konsumują wszystkie dobra, które produkujesz, mogą nie wydawać się zbyt przydatni - pamiętaj, że płacone przez nich podatnki to obecnie jedyny sposób zdobywania pieniędzy!
   - ''
-  - [BoldLabel, 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.']
+  - - BoldLabel
+    - 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.'
 
 - &MORETENTS
-  - [Message, Build at least three additional Tents and connect them to the Main Square.]
+  - - Message
+    - Build at least three additional Tents and connect them to the Main Square.
   - '
 
     Let''s have a look at the Tent overview tab.'
@@ -156,51 +183,59 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - W przeciwnym przypadku szczęście oraz wpływy zmniejszą się. Po pewnym czasie rezydenci mogą poważnie się zawieść i opuścić wioskę, zostawiając za sobą rozpadające się ruiny.
   - Pamiętaj, że możesz tutaj zmienić globalną wysokość podatku.
   - ''
-  - [BoldLabel, 'Task: Build at least three additional Tents.']
+  - - BoldLabel
+    - 'Task: Build at least three additional Tents.'
   - '
 
     Wskazówka: przytrzymanie klawisza ''SHIFT'' ułatwia budowanie wielu budynków tego samego typu.'
 
 - &SIGNALFIRE
-  - [Message, Build a Signal Fire at the coast close to your Warehouse.]
-  - [Headline, 'NOWE ZADANIE: Wybuduj sygnał świetlny']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Build a Signal Fire at the coast close to your Warehouse.
+  - - Headline
+    - 'NOWE ZADANIE: Wybuduj sygnał świetlny'
+  - - Image
+    - content/gui/images/background/hr.png
   - Widzisz statek przepływający w pobliżu wyspy od czasu do czasu? Należy do Wolnych Kupców, jednych z pierwszych osadników archipelagu.
   - Kupcy dostarczą osadzie niezbędnych dóbr, których nie jesteś w stanie jeszcze wyprodukować.
   - You can also sell surpluses of your production, but in general consuming them (by building more Tents) instead of selling them yields more profit.
   - Normally the trader just sails around and looks for deals, but you can speed things up a bit.
   - - Gallery
-    - [content/gui/icons/buildmenu/006_h.png]
+    - - content/gui/icons/buildmenu/006_h.png
   - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
   - The Signal Fire has to cover the area which the ships pass through to catch them.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     After this little advertisement, the trader will also stop by and look into your Warehouse, even if he had planned to sail past it.'
   - You can propose deals via the Warehouse tab "Buy/Sell".
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - - content/gui/icons/tabwidget/warehouse/buysell_a.png
   - Na poziomie rozwoju "żeglarze", możesz handlować trzema różnymi towarami.
   - Kliknij na małej ikonie, by zmienić tryb z "Kup" na "Sprzedaj" i na odwrót.
   - Kliknij na kwadracie, by wybrać towar, którym chcesz handlować. Później to wyjaśnimy, gdy będziesz gotów do handlu.
   - ''
-  - [BoldLabel, 'Task: Build a Signal Fire at the coast close to your Warehouse.']
+  - - BoldLabel
+    - 'Task: Build a Signal Fire at the coast close to your Warehouse.'
 
 - &TRADING
-  - [Message, Zdobądź co najmniej 30 sztuk narzędzi.]
-  - [Headline, 'NOWE ZADANIE: Naucz się handlować']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Zdobądź co najmniej 30 sztuk narzędzi.
+  - - Headline
+    - 'NOWE ZADANIE: Naucz się handlować'
+  - - Image
+    - content/gui/images/background/hr.png
   - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
 
 
     Let''s continue our tutorial on how to trade.'
-  - First click on your own Warehouse and click on the third tab.
+  - Najpierw kliknij na swój własny skład i kliknij na trzecią zakładkę.
   - Then click on one of the 3 slots, then select a good you want to buy or sell.
   - Po wybraniu określonego towaru, zielony pasek na dole (jeśli będzie widoczny) wskaże jak duże masz jego zapasy.
   - Przeciągając suwak po prawej, ustalasz "docelową ilość", która ma inne znaczenie przy kupnie a inne przy sprzedaży towaru.
   - Jeżeli kupujesz, będziesz się starał osiągnąć "docelową ilość" towaru poprzez kupno.
   - W przypadku sprzedaży, będziesz się starał sprzedać nadwyżkę towaru, ustaloną przez "ilość docelową". Jeżeli będziesz miał mniej tego towaru niż "ilość docelowa", sprzedaż zostanie wstrzymana aż do ponownego przekroczenia tego limitu.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Przykład kupowania:
@@ -213,20 +248,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Nie ma możliwości samodzielnego ustalania cen!'
   - Możesz zobaczyć swój bilans handlowy w zakładce "Konto", gdzie porównano wartości "Kupna" i "Sprzedaży".
   - ''
-  - [BoldLabel, 'ZADANIE: Kup tyle narzędzi, by mieć 30 ton w magazynie!']
+  - - BoldLabel
+    - 'ZADANIE: Kup tyle narzędzi, by mieć 30 ton w magazynie!'
   - - Gallery
-    - [content/gui/icons/resources/32/006.png]
+    - - content/gui/icons/resources/32/006.png
 
 - &PAVILION
-  - [Message, Build a Pavilion with connection to the Tents.]
-  - [Headline, 'NOWE ZADANIE: Wybuduj kaplicę']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Build a Pavilion with connection to the Tents.
+  - - Headline
+    - 'NOWE ZADANIE: Wybuduj kaplicę'
+  - - Image
+    - content/gui/images/background/hr.png
   - Te narzędzia wystarczą na jakiś czas. Dobra robota!
   - Twoi osadnicy mają teraz dostęp do mieszkań, rynku i jedzenia.
   - 'Still there is one demand which we have not satisfied so far (you may check that by clicking on any Tent): your sailors want a basic building where they can pray.'
   - The solution is a Pavilion which the village parson quickly puts up as shelter from the sun.
   - Service buildings like this also need to be connected to the Tents with a Trail, else your inhabitants feel unable to reach them.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Zauważ, że wiara jest traktowana jak fizyczny surowiec!'
@@ -238,20 +277,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     The road connection is required as well.'
   - ''
-  - [BoldLabel, 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.']
+  - - BoldLabel
+    - 'Task: Build a Pavilion with a Trail to the Tents in order to fulfill your sailors'' demand for faith.'
   - - Gallery
-    - [content/gui/icons/buildmenu/005.png]
+    - - content/gui/icons/buildmenu/005.png
 
 - &NEXTTIER
-  - [Message, Ustaw poziom podatków na niski i poczekaj aż twoi marynarze przejdą na następny poziom.]
-  - [Headline, 'NOWE ZADANIE: Następny poziom']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ustaw poziom podatków na niski i poczekaj aż twoi marynarze przejdą na następny poziom.
+  - - Headline
+    - 'NOWE ZADANIE: Następny poziom'
+  - - Image
+    - content/gui/images/background/hr.png
   - All demands are fulfilled now if your inhabitants can regularly visit the Main Square and the Pavilion and your food supply is adequate.
   - Jeśli marynarze są szczęśliwi, to będą chcieli przejść do kolejnego stadium rozwoju "Pionierzy".
   - Nie możesz już ich uszczęśliwić bardziej niż poprzez obniżenie podatków, gdyż wszystkie ich żądania zostały spełnione.
   - Ustanowienie niskich podatków na dłuższy okres czasu prędzej czy później doprowadzi do bankructwa i nie powinno się tego robić. Jeśli jednak obniżone zostaną tylko na chwile i z określonych powodów to może to mieć pewne korzyści.
   - After some time, the first unit should walk to the Main Square and have a look for new construction material there to build a log house. This house will replace the old tent.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Such residential upgrades cost resources and can thus be restricted at the Main Square.'
@@ -259,23 +302,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Nowe mieszkanie może pomieścić większą ilość mieszkańców. Dodatkowo pionierzy płacą większe podatki niż marynarze.
   - Jak możesz się zapewne domyślić, pionierzy mają również więcej wymagań - potrzebujesz zatem więcej pieniędzy żeby ich uszczęśliwić.
   - ''
-  - [BoldLabel, 'ZADANIE: Ustaw poziom podatków na niski (lewy koniec suwaka) i poczekaj aż marynarze przejdą na wyższy poziom.']
+  - - BoldLabel
+    - 'ZADANIE: Ustaw poziom podatków na niski (lewy koniec suwaka) i poczekaj aż marynarze przejdą na wyższy poziom.'
   - - Gallery
-    - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
+    - - content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png
 
 - &FARM
-  - [Message, Build a Farm and keep some empty space around it.]
-  - [Headline, 'NOWE ZADANIE: Zbuduj farmę']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Build a Farm and keep some empty space around it.
+  - - Headline
+    - 'NOWE ZADANIE: Zbuduj farmę'
+  - - Image
+    - content/gui/images/background/hr.png
   - Gratulacje! Niektórzy z twoich mieszkańców przeszli na drugi poziom rozwoju!
   - Masz teraz dostęp do nowych budynków. Zajrzyj teraz do menu budowania.
   - - Gallery
-    - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
+    - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - Pojawiła się nowa, piękna zakładka.
   - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
   - The Farm is a very special production building since it can produce not only one, but many (and different) goods if you choose.
   - The output of Farms depends on what kind of fields you build around it.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Przyjrzymy się temu za chwilę.'
@@ -284,14 +331,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jeśli jednak planujesz przetwarzać i produkować na różnych częściach wyspy (co może mieć sens), a nawet na różnych wyspach, potrzebne będzie połączenie między zbieraczami.
   - Try to build the Farm not too close to the coast or your existing buildings since it will need some space around it to work well.
   - ''
-  - [BoldLabel, 'Task: Build a Farm.']
+  - - BoldLabel
+    - 'Task: Build a Farm.'
   - - Gallery
-    - [content/gui/icons/buildmenu/020.png]
+    - - content/gui/icons/buildmenu/020.png
 
 - &FIELDS
-  - [Message, Zbuduj co najmniej jedno pastwisko oraz dodaj kartoflisko jeżeli chcesz.]
-  - [Headline, 'NOWE ZADANIE: Wybuduj pola']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Zbuduj co najmniej jedno pastwisko oraz dodaj kartoflisko jeżeli chcesz.
+  - - Headline
+    - 'NOWE ZADANIE: Wybuduj pola'
+  - - Image
+    - content/gui/images/background/hr.png
   - The Farm itself is not going to produce anything without some fields.
   - Obecnie możesz wybrać pomiędzy pastwiskiem, polem ziemniaków lub polem cukrowym.
   - 'Let''s have a short overview:
@@ -303,7 +354,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Sugar Field: Grows sugar which is used to distill liquor and (later) produce confectionery.'
   - Teraz potrzeba tylko pastwisk, ale w przypadku, gdy łańcuch dostaw żywności jest zbyt mały (zbyt wiele budynków mieszkalnych) można również produkować niektóre ziemniaki.
   - Note that for potatoes you will need a road connection to the Farm (not to the field!), as it will be the only company to work on the goods.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Make sure that all fields you build are in the area covered by the Farm.'
@@ -311,14 +362,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Różne rodzaje pól wymagają od gospodarstw więcej lub mniej czasu na siew, żniwa, wypas stada, itp ...i dlatego gospodarstwo może być niezdolne do działania na wszystkicz zbudowanych w jego zasięgu polach.
   - Na razie nie musisz się martwić tymi sprawami, ponieważ nie zbudowalłeś żadnych pól. Zmieńmy to!
   - ''
-  - [BoldLabel, 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.']
+  - - BoldLabel
+    - 'Task: Build at least one Pasture in the Farm''s range and add Potato Fields if you like.'
   - - Gallery
-    - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
+    - - content/gui/icons/buildmenu/018.png
+      - content/gui/icons/buildmenu/019.png
 
 - &STORAGE
-  - [Message, Zbuduj namiot magazynowy (Zakładka poziomu I) tam gdzie może się przydać.]
-  - [Headline, 'NOWE ZADANIE: Zbuduj magazyn']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Zbuduj namiot magazynowy (Zakładka poziomu I) tam gdzie może się przydać.
+  - - Headline
+    - 'NOWE ZADANIE: Zbuduj magazyn'
+  - - Image
+    - content/gui/images/background/hr.png
   - Czy odwiedziłeś ostatnio drwala?
   - Since your Warehouse does not have unlimited space to store goods, collectors will stop fetching goods from companies when stock is full.
   - Jeśli żeglarze od dawna nie chcą uaktualnić swoich namiotów, prawdopodobnie masz wiele desek, więc możesz nakazać drwalowi zaprzestanie pracy.
@@ -328,8 +384,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     This may sound strange, but click on the gear wheel you see in the Lumberjack Hut''s overview.'
   - Jeśli ten tryb "przerwy" jest włączony (nazywamy go "Wycofanie z eksploatacji"), koszty bieżące budynku będą się zmniejszać. Nie wyniosą zero, ale będą niższe niż w przypadku kontynuowania produkcji.
   - - Gallery
-    - [content/gui/icons/templates/production/toggle_inactive_h.png]
-  - [Pagebreak]
+    - - content/gui/icons/templates/production/toggle_inactive_h.png
+  - - Pagebreak
   - '
 
     Oznacza to że możesz oszczędzać, gdy chwilowo nie potrzebujesz danego budynku, ale nie chcesz go burzyć.'
@@ -341,39 +397,51 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * sends its own collectors to fetch goods, just like the Warehouse does.'
   - Note that companies can also be connected to a storage in order to get their products collected, and if the Warehouse is overwhelmed with collector tasks, you can place a Storage Tent to help out there.
   - ''
-  - [BoldLabel, 'Task: Build a Storage Tent, preferably where you need collectors.']
+  - - BoldLabel
+    - 'Task: Build a Storage Tent, preferably where you need collectors.'
   - - Gallery
-    - [content/gui/icons/buildmenu/002.png]
+    - - content/gui/icons/buildmenu/002.png
 
 - &WEAVER
-  - [Message, Build a Weaver's Hut that can somehow reach the wool of your Farm.]
-  - [Headline, 'NOWE ZADANIE: Zbuduj tkalnie']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Build a Weaver's Hut that can somehow reach the wool of your Farm.
+  - - Headline
+    - 'NOWE ZADANIE: Zbuduj tkalnie'
+  - - Image
+    - content/gui/images/background/hr.png
   - Produkcja wełny ruszyła, potrzeba jeszcze warsztatu tkackiego do produkcji tkaniny.
   - The Weaver's Hut is the place where the weaver lives. There are two spots where you can build it - either close to the Farm or close to a Storage Tent (or the Warehouse).
   - In both cases you should ensure the connection to a Trail as well.
   - You can place the Weaver's Hut close to the Farm and tear down any Trail to the Farm to see that it will still fetch the wool and produce.
   - ''
-  - [BoldLabel, 'Task: Build a Weaver''s Hut positioned so it can get wool.']
+  - - BoldLabel
+    - 'Task: Build a Weaver''s Hut positioned so it can get wool.'
   - - Gallery
-    - [content/gui/icons/buildmenu/007.png]
+    - - content/gui/icons/buildmenu/007.png
 
 - &GOALS
-  - [Message, 'Spraw aby w twojej osadzie mieszkało 50 lub więcej mieszkańców, by ukończyć tutorial. Musisz mieć dodatnie saldo.']
-  - [Headline, 'NOWE ZADANIE: Ukończ samouczek']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Spraw aby w twojej osadzie mieszkało 50 lub więcej mieszkańców, by ukończyć tutorial. Musisz mieć dodatnie saldo.
+  - - Headline
+    - 'NOWE ZADANIE: Ukończ samouczek'
+  - - Image
+    - content/gui/images/background/hr.png
   - Spróbuj mieć 50 lub więcej mieszkańców w twoim mieście budując domy mieszkalne.
   - Gdy jesteś w stanie utrzymać gospodarkę, by mogła zaspokoić potrzeby takiej ilości konsumentów, jesteś gotowy, aby odkrywać nowe nieznane noryzonty!
   - You also need enough money to keep this economy running, so a positive balance (check in the Warehouse tab 'Account') is required.
   - ''
-  - [BoldLabel, 'Zadanie: Osiągnij liczbę 50 mieszkańców i dodatnie saldo, aby ukończyć ten samouczek.']
+  - - BoldLabel
+    - 'Zadanie: Osiągnij liczbę 50 mieszkańców i dodatnie saldo, aby ukończyć ten samouczek.'
   - - Gallery
-    - [content/gui/icons/widgets/cityinfo/inhabitants.png]
+    - - content/gui/icons/widgets/cityinfo/inhabitants.png
 
 - &WON
-  - [Message, Gratulacje! Ukończyłeś samouczek i jesteś gotowy stawić czoła nowym wyzwaniom!]
-  - [Headline, Wszystkie zadania zostały wykonane]
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Gratulacje! Ukończyłeś samouczek i jesteś gotowy stawić czoła nowym wyzwaniom!
+  - - Headline
+    - Wszystkie zadania zostały wykonane
+  - - Image
+    - content/gui/images/background/hr.png
   - Ukończyłeś pomyślnie wszystkie zadania, które zostały Ci przekazane. Świat jest teraz do twojej dyspozycji, czeka na twoje aspiracje i odważne poszukiwania!
   - 'Jeśli masz jakieś sugestie, co możemy lub powinniśmy poprawić, dodać lub pominąć:'
   - www.unknown-horizons.org
@@ -381,9 +449,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - team@unknown-horizons.org
   - Nasze fora są dla ciebie otwarte!
   - Najlepsze rezultaty do tej pory były osiągane poprzez dołączenie do naszego kanału IRC, więc możesz spróbować tego w pierwszej kolejności (-;
-  - [Pagebreak]
-  - [Headline, Dziękuję!]
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - Dziękuję!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -395,7 +465,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Zespół UH'
   - - Gallery
-    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - - content/packages/unknown-horizons.xpm
+      - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
 
 events:
 - # Show a message after starting the game (how to move)
@@ -657,4 +728,4 @@ metadata:
   locale: pl
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 117 translated messages, 67 fuzzy translations, 4 untranslated messages.
+  translation_status: 124 translated messages, 63 fuzzy translations, 1 untranslated message.
