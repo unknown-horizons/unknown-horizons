@@ -9,31 +9,34 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Bygg et varehus på kysten for å la handelsskip besøke bosetningen din.]
+  - - Message
+    - Bygg et varehus på kysten for å la handelsskip besøke bosetningen din.
   - '
 
 
 
     '
   - - Gallery
-    - [content/gfx/uh.png]
-  - [Pagebreak]
-  - [Headline, Velkommen til Unknown Horizons!]
-  - [Image, content/gui/images/background/hr.png]
+    - - content/gfx/uh.png
+  - - Pagebreak
+  - - Headline
+    - Velkommen til Unknown Horizons!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
     '
   - Dette er din loggbok, der viktig informasjon om det gjeldende scenariet er lagret. Et sammendrag av hver ny aktivitet vises også som en "meldingsknapp" nær den venstre kanten av skjermen. Du kan holde musen over disse meldingene til å lese sammendraget eller klikke på selve knappen for å åpne loggboken.
-  - Du kan også åpne journalen på nytt når som helst ved å klikke på knappen under mini-kartet, i øvre høyre hjørne av skjermen din.  Fra nå av vil vi referere til dette område som inneholder mini-kartet, forskjellige knapper og faner som «Oversikten».
+  - Du kan også åpne journalen på nytt når som helst ved å klikke på knappen under mini-kartet, i øvre høyre hjørne av skjermen din. Fra nå av vil vi referere til dette område som inneholder mini-kartet, forskjellige knapper og faner som «Oversikten».
   - - Gallery
-    - [content/gui/icons/widgets/minimap/captainslog.png]
+    - - content/gui/icons/widgets/minimap/captainslog.png
   - '
 
     For å se din første oppgave, bla om til neste side i journalen ved hjelp av knappen på bunnen av motstående side - den ser slik ut:'
   - - Gallery
-    - [content/gui/images/buttons/parrow_right.png]
-  - [Pagebreak]
+    - - content/gui/images/buttons/parrow_right.png
+  - - Pagebreak
   - '
 
     Hvis du har forslag til hvordan introduksjonen kan forbedres, eller du møter på en feil, ta kontakt.'
@@ -42,52 +45,64 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Besøk www.unknown-horizons.org for å finne ut hvordan du kontakter oss som står bak.'
   - ''
   - Nå er det på tide å gå i gang med spillet!
-  - [Pagebreak]
-  - [Headline, 'NY OPPGAVE: OPPRETT BOSETNING']
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - 'NY OPPGAVE: OPPRETT BOSETNING'
+  - - Image
+    - content/gui/images/background/hr.png
   - Båten din er til havs, lastet med forsyningene du trenger for å opprette en ny bosetning.
   - For å flytte båten din, velg den med venstreklikk og høyreklikk deretter på punktet du ønsker at den skal seile til.
   - Når du kommer nær kysten vil «Bygg bosetning»-knappen i oversikten bli aktiv.
   - - Gallery
-    - [content/gui/icons/ship/anchor.png]
-  - Når du klikker på denne knappen vil en forhåndsvisning av varehuset dukke opp.  Dette er den første byningen som kreves for å opprette en bosetning.  Mens du flytter muspekeren rundt vil du legge merke til at forhåndsvisningen blir farget rød når bygningen er i et område det ikke kan plasseres.
+    - - content/gui/icons/ship/anchor.png
+  - Når du klikker på denne knappen vil en forhåndsvisning av varehuset dukke opp. Dette er den første byningen som kreves for å opprette en bosetning. Mens du flytter muspekeren rundt vil du legge merke til at forhåndsvisningen blir farget rød når bygningen er i et område det ikke kan plasseres.
   - Varehuset må plasseres ved kysten for å la båter legge til kai.  Du bør finne en god plassering før du venstreklikker for å plassere denne viktige bygningen.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et varehus ved kysten.']
+  - - BoldLabel
+    - 'Oppgave: Bygg et varehus ved kysten.'
 
 - &LUMBERJACK
-  - [Message, Bygg et tømmerhuggertelt og koble det til varehuset.]
-  - [Headline, 'NY OPPGAVE: BYGG TØMMERHUGGERTELT']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg et tømmerhuggertelt og koble det til varehuset.
+  - - Headline
+    - 'NY OPPGAVE: BYGG TØMMERHUGGERTELT'
+  - - Image
+    - content/gui/images/background/hr.png
   - Forsyningene og konstruksjonsmaterialer er lastet ut av skipet ditt og trygt lagret i ditt nye varehus.  Nå er det på tide å sette opp noen grunnleggende bygninger, aller først et tømmerhuggertelt.
   - Tømmerhuggere vil kutte ned trær fra skogområdene rundt teltene sine og gjøre tømmeret om til bord, som kan brukes til bygging eller som en handelsvare.
   - For å bygge et tømmerhuggertelt, åpne bygge-menyen ved å klippe på knappen under mini-kartet eller trykk 'B', som er den vanlige hurtigtasten.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/build.png]
+    - - content/gui/icons/widgets/minimap/build.png
   - Byggemenyen er sortert i nivåkategorier, og ettersom ditt er en ny bosetning, så er førstenivås bygninger de eneste som er tilgjengelig for deg.  Etter hvert som sivilisasjonen din utvikler seg vil du få tilgang til høyere nivåer og bli i stand til å konstruere mange flere ulike bygninger.
-  - [Pagebreak]
+  - - Pagebreak
   - ''
   - Finn et fint skogområde der vår tømmerhugger kan jobbe og velg deretter «Tømmerhuggertelt» fra listen over bygninger i oversikten og plasser bygningen.
   - Senere i spillet kan det hende du vil lage skogområder ved å plante trær, men siden dette koster penger bør du foreløpig bruke det naturen tilbyr!
   - Enhver ressursinnsamlende eller produserende bygning trenger en sti som forbinder det til et varehus eller en annen type lagring.  Ellers vil ikke varene den produserer bli samlet inn.
   - Dermed, når tømmerhugger-teltet ditt er på plass må du koble det til varehuset ditt ved å åpne bygge-menyen og der trykke på «sti»-knappen.  Der kan du nå klikke og dra med musen for å tegne ruten til din sti mellom tømmerhuggertelstet og varehuset.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et tømmerhuggertelt i et skoglagt område og koble det til varehuset ditt.']
+  - - BoldLabel
+    - 'Oppgave: Bygg et tømmerhuggertelt i et skoglagt område og koble det til varehuset ditt.'
   - Så snart bygningene er koblet sammen vil du se en innsamler som ankommer for å hente dine nyproduserte plater og levere dem til varehuset, klar til bruk i konstruksjon eller handel.
   - - Gallery
-    - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
+    - - content/gui/icons/buildmenu/008.png
+      - content/gui/icons/buildmenu/015.png
+      - content/gui/icons/resources/32/004.png
 
 - &FOOD
-  - [Message, Bygg et jegertelt og et fiskertelt.  Koble dem til varehuset.]
-  - [Headline, 'NY OPPGAVE: MATFORSYNING']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg et jegertelt og et fiskertelt.  Koble dem til varehuset.
+  - - Headline
+    - 'NY OPPGAVE: MATFORSYNING'
+  - - Image
+    - content/gui/images/background/hr.png
   - Du kommer også til å trenge noen som produserer mat, da folk generelt (og sjøfolk spesielt) er veldig sultne.
   - Tilgjengelige kompanjonger i det første nivået er jegerteltet og fiskerteltet.
   - Jegeren jakter på dyr i skogen, og trenger dermed trær i nærheten.
   - Merk at dukan plassere jegerteltet ditt nær tømmerhuggerens skog.
   - Det hender at dyr ikke reproduserer seg selv raskt nok eller ganske enkelt skjuler seg godt.
   - 'Konklusjon: Jegerteltet er ikke veldig pålitelig hvis du trenger kontinuerlig levering.'
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Fiskeren må bygges ved kysten et sted innen rekkevidden til varehuset og en fiskeskole.'
@@ -95,53 +110,65 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Dette gir kontinuerlig forsyning der kostnaden er litt lengre produksjonstid per enhet mat.
   - En liten bosetting som din kan bruke begge selskapene, og du kan enklere balansere fordeler og ulemper hvis du ser en direkte sammenligning.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et jegertelt og et fiskertelt.']
+  - - BoldLabel
+    - 'Oppgave: Bygg et jegertelt og et fiskertelt.'
   - Husk å koble dem sammen med varehuset ditt med stier!
   - - Gallery
-    - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
+    - - content/gui/icons/buildmenu/011_h.png
+      - content/gui/icons/buildmenu/009_h.png
+      - content/gui/icons/resources/32/005.png
 
 - &MAINSQUARE
-  - [Message, Bygg et hovedtorg.  Velg et område uten for mange økonomibygg.]
-  - [Headline, 'NY OPPGAVE: HOVEDTORG']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg et hovedtorg.  Velg et område uten for mange økonomibygg.
+  - - Headline
+    - 'NY OPPGAVE: HOVEDTORG'
+  - - Image
+    - content/gui/images/background/hr.png
   - Innbyggerne dine trenger et hovedtorg der de kan hente varer fra.
   - Dette betyr at de trenger en stiforbindelse fra hjemmene sine til hovedmarkedet.  Merk at hovedtorget også fungerer som en sti, slik at telt som står inntil torget ikke trenger en egen sti.
   - Alle varene i varehuset ditt er tilgjengelig på dette «markedet», slik at dine innbyggere ikke trenger å gå til fiskerteltet eller til varehuset.
   - - Gallery
-    - [content/gui/icons/buildmenu/004_h.png]
+    - - content/gui/icons/buildmenu/004_h.png
   - Du bør unngå å plassere bosetningteltene dine for nære tømmerhuggerne dine, da teltbygninger vil fjerne trærne som tømmerhuggerne dine trenger for å lage bord.
   - Selskaper virker uten å være koblet til teltene, så du trenger for eksempel ikke bygge en vei mellom hovedtorget og dine tømmerhuggertelt.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et hovedtorg.']
-  - [Pagebreak]
+  - - BoldLabel
+    - 'Oppgave: Bygg et hovedtorg.'
+  - - Pagebreak
   - '
 
     Nå er det på tide å ta en nærmere titt på hovedtorget.'
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - - content/gui/icons/tabwidget/warehouse/account_a.png
   - I «Regnskap»-fanen får du frem balansen for denne øya, som viser alle kostnadene du betaler og alle skattene du tjener.
   - Oppføringene for «Salg» og  «Kjøp» refererer til din handelsbalanse og vil bli forklart senere.
   - Hvis balansen din er positiv, så har du alt i alt et overskudd.
   - - Gallery
-    - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - - content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png
   - I de ulike nivåoversiktsfaner kan du se statistikk om dine innbyggere.  Du kan også sette den nivåspesifikk globale skatten her og tillate eller nekte innbyggerne på dette nivået å oppgradere til neste høyere nivå.
 
 - &FIRSTTENT
-  - [Message, Bygg et telt og koble det til hovedtorget hvis det trengs.]
-  - [Headline, 'NY OPPGAVE: BOLIGHUS']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg et telt og koble det til hovedtorget hvis det trengs.
+  - - Headline
+    - 'NY OPPGAVE: BOLIGHUS'
+  - - Image
+    - content/gui/images/background/hr.png
   - Bosettere ønsker tak over hodene sine, ellers vil de ikke en gang vurdere å bo i byen din.  Du må tilby dem telt.
   - - Gallery
-    - [content/gui/icons/buildmenu/003_h.png]
+    - - content/gui/icons/buildmenu/003_h.png
   - Telt er grunnleggende bolighus.  Dine innbyggere kommer til å ønske å oppgradere dem når de når høyere nivå.
   - Merk at oppgraderingen av hver bygning krever byggematerialer, som treverk for første oppgradering.
   - Vurder om du vil fjerne muligheten for å oppgradere hvis lageret ditt har lite av disse materialene.
   - Bosettere virker kanskje ikke veldig nyttige i og med at de forbruker alle varene du produserer - men de betaler i hvert fall skatt, og det er nå den eneste måten du kan skaffe penger!
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et telt og koble det til hovedtorget hvis det trengs.  Telt trenger ikke være koblet til noen av selskapene.']
+  - - BoldLabel
+    - 'Oppgave: Bygg et telt og koble det til hovedtorget hvis det trengs.  Telt trenger ikke være koblet til noen av selskapene.'
 
 - &MORETENTS
-  - [Message, Bygg mist tre ekstra telt og koble dem til hovedtorget.]
+  - - Message
+    - Bygg mist tre ekstra telt og koble dem til hovedtorget.
   - '
 
     La oss ta en titt på oversikts-fanen for telt.'
@@ -156,40 +183,48 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Hvis ikke vil glede og inntekt reduseres.  På et punkt vil innbyggerne dine bli virkelige sure og ganske enkelt snu ryggen til landsbyen din og forlate en forfallende ruin.
   - Merk at du også kan endre det globale avgiftsnivået her.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg minst tre ekstra telt.']
+  - - BoldLabel
+    - 'Oppgave: Bygg minst tre ekstra telt.'
   - '
 
     TIPS: Ved å holde nede SHIFT kan en enkelt sette opp flere bygninger av samme type.'
 
 - &SIGNALFIRE
-  - [Message, Bygg et signalbål ved kysten nær varehuset ditt.]
-  - [Headline, 'NY OPPGAVE: BYGG SIGNALBÅL']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg et signalbål ved kysten nær varehuset ditt.
+  - - Headline
+    - 'NY OPPGAVE: BYGG SIGNALBÅL'
+  - - Image
+    - content/gui/images/background/hr.png
   - Har du sett skipet som passerer øya de av og til?  Skipet tilhører den frie handelsmann, en av de første bosetterne i denne øygruppen.
   - Handelsmannen kan forsyne bosetningen din med nødvendige varer som du ennå ikke kan produsere.
   - Du kan også selge produksjonsoverskudd, men generelt sett vil det gi større overskudd å forbruke varene (ved å bygge flere telt) i stedet for å selge dem.
   - Vanligvis seiler bare handelsmannen rundt og ser etter gode avtaler, men du kan sette opp farten litt.
   - - Gallery
-    - [content/gui/icons/buildmenu/006_h.png]
+    - - content/gui/icons/buildmenu/006_h.png
   - Dette er formålet med å bygge et signalbål på kysten nær varehuset ditt.  Det vil vise skip veien til bosetningen din.
   - Signalbålet må dekke området som skipene passerer igjennom for å få tak i dem.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Etter denne lille markedsføringen, så vil handelsmannen stoppe opp og ta en titt i varehuset ditt, selv om han hadde planlagt å seile forbi det.'
   - Du kan foreslå avtaler via varehusets fane «Kjøp/selg».
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - - content/gui/icons/tabwidget/warehouse/buysell_a.png
   - I «seiler»-nivået er du utstyrt med tre handelsfelter.
   - Klikk på det lille ikonet for å bytte feltmodus fra «Kjøp» til «Selg» og visa versa.
   - Klikk på feltet for å velge hvilke varer du ønsker å handle med.  Vi forklarer mer om dette når du er klar til å handle.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et signaltårn ved kysten i nærheten av varehuset ditt.']
+  - - BoldLabel
+    - 'Oppgave: Bygg et signaltårn ved kysten i nærheten av varehuset ditt.'
 
 - &TRADING
-  - [Message, Oppnå en lagerstatus på minst 30 verktøy på øya.  Merk at dette kan ta en stund.]
-  - [Headline, 'NY OPPGAVE: LÆR DEG HANDEL']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Oppnå en lagerstatus på minst 30 verktøy på øya.  Merk at dette kan ta en stund.
+  - - Headline
+    - 'NY OPPGAVE: LÆR DEG HANDEL'
+  - - Image
+    - content/gui/images/background/hr.png
   - 'Utmerket!  Den frie handelsmann vil nå stikke innom varehuset ditt fra tid til annen.
 
 
@@ -200,7 +235,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ved å dra på drafeltet på høyre siden av hvert felt bestemmer du din «målverdi», hvilket betyr forskjellige ting for «kjøp» og «selg».
   - Når du kjøper vil du kjøpe tilstrekkelig til å ha din «målverdi» på lager.
   - Når du selger er «målverdien» det nivået på varebeholdningen som gjør at du slutter å selge inntil du har mer igjen av denne ressursen.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     For eksempel:
@@ -213,20 +248,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Det er IKKE mulig å endre prisene manuelt!'
   - Du kan se handelsbalansen din i «Regnskap»-fanen ved å sammenligne «Salg»- og «Kjøp»-verdiene der.
   - ''
-  - [BoldLabel, 'Oppgave: Kjøp så mange verktøy du trenger for å ha 30 verktøy på lager!']
+  - - BoldLabel
+    - 'Oppgave: Kjøp så mange verktøy du trenger for å ha 30 verktøy på lager!'
   - - Gallery
-    - [content/gui/icons/resources/32/006.png]
+    - - content/gui/icons/resources/32/006.png
 
 - &PAVILION
-  - [Message, Bygg en paviljong med forbindelse til teltene.]
-  - [Headline, 'NY OPPGAVE: BYGG EN PAVILJONG']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg en paviljong med forbindelse til teltene.
+  - - Headline
+    - 'NY OPPGAVE: BYGG EN PAVILJONG'
+  - - Image
+    - content/gui/images/background/hr.png
   - De verktøyene er tilstrekkelig for øyeblikket.  Godt gjort!
   - Du sørger nå for husly, hovedtorg og mat til dine innbyggere.
   - 'Men det er fortsatt ett behov vi ikke har oppfylt så langt (du kan se det ved å klikke på et av teltene): dine seilere ønsker en enkel bygning der de kan be.'
   - Løsningen er en paviljong som landsbypastoren kjapt setter opp som ly for solen.
   - Tjenestebygninger som denne trenger også å kobles til telt med en sti, for at innbyggerne dine skal føle at de kan nå dem.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Merk at religiøs tro behandles som en fysisk ressurs!'
@@ -238,20 +277,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Det trengs en veiforbindelse i tillegg.'
   - ''
-  - [BoldLabel, 'Oppgave: Bygg en paviljong med en sti til teltene for å fylle seilerne dines behov for religiøs tro.']
+  - - BoldLabel
+    - 'Oppgave: Bygg en paviljong med en sti til teltene for å fylle seilerne dines behov for religiøs tro.'
   - - Gallery
-    - [content/gui/icons/buildmenu/005.png]
+    - - content/gui/icons/buildmenu/005.png
 
 - &NEXTTIER
-  - [Message, Endre avgiftsnivået til Lavt (helt til venstre) og vent til dine seilere har oppgradert.]
-  - [Headline, 'NY OPPGAVE: NESTE NIVÅ']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Endre avgiftsnivået til Lavt (helt til venstre) og vent til dine seilere har oppgradert.
+  - - Headline
+    - 'NY OPPGAVE: NESTE NIVÅ'
+  - - Image
+    - content/gui/images/background/hr.png
   - Alle behov er oppfylt nå hvis innbyggerne dine regelmessig kan besøke hovedtorget og paviljongen samt når matforsyningen din er tilstrekkelig.
   - Hvis seilerne er nok fornøyde så ønsker de å gå videre til neste nivå som heter Pionerene.
   - For å gjøre dem fornøyde er det intet annet du kan gjøre enn å sette ned avgiftene til et lavere nivå siden du har oppfylt alle behovene til innbyggerne dine.
   - Du bør forsøke å ikke ha lave avgifter hele tiden siden det antagelig vil føre til konkurs før eller senere.  Det går greit i en kort periode og når du vet hva du gjør.
   - Etter litt tid vil den første enheten gå innom hovedtorget og se etter nye konstruksjonsmaterialer der for å bygge et tømmerhus.  Dette huset vil erstatte det gamle teltet.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Slike bostedsoppgraderinger koster ressurser og kan dermed begrenset fra hovedtorget.'
@@ -259,23 +302,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Oppgraderte boliger kan ta imot flere innbyggere, og pionerene betaler i tillegg mer skatt enn seilere.
   - Som du kanskje har oppdaget allerede, er ulempen at pionerer krever ekstra varer som sjøfolk ikke grenger - så du må i tillegg bruke mer penger på å gjøre dem fornøyde.
   - ''
-  - [BoldLabel, 'Oppgave: Sett skattenivået til Lavt (helt til venstre) og vent til sjøfolkene oppgraderer.']
+  - - BoldLabel
+    - 'Oppgave: Sett skattenivået til Lavt (helt til venstre) og vent til sjøfolkene oppgraderer.'
   - - Gallery
-    - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
+    - - content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png
 
 - &FARM
-  - [Message, Bygg en gård og behold noe ubrukt areal rundt den.]
-  - [Headline, 'NY OPPGAVE: BYGG EN GÅRD']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg en gård og behold noe ubrukt areal rundt den.
+  - - Headline
+    - 'NY OPPGAVE: BYGG EN GÅRD'
+  - - Image
+    - content/gui/images/background/hr.png
   - Gratulerer!  Noen av dine innbyggere har oppnådd nivået!!!
   - Nå har du tilgang til to nye bygninger.  Ta en ny titt på byggemenyen.
   - - Gallery
-    - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
+    - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - En skinnende ny fane har dukket opp der.
   - Pionerene vil kreve tøy.  Du må dermet sette opp en produksjonslinje for tøy som starter med saueull (som er en av varene som produseres av gården).
   - Gården er en veldig spesiell produksjonsbygning siden den kan produsere ikke bare én, men mange (og forskjellige) varer hvis du velger det.
   - Produksjonen til gårder er avhengig av hvilke jorder du bygger rundt den.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Vi vil ta en nærmere titt på dette senere.'
@@ -284,14 +331,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Hvis du derimot planlegger å gjøre noe foredling i andre deler av øya (hvilket kan gi mening), eller på andre øyer, så vil du trenge en forbindelse til innsamlere.
   - Forsøk å bygge gården et stykke unna kysten og dine eksisterende bygninger, siden den trenger litt plass rundt seg for å fungere godt.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg en gård.']
+  - - BoldLabel
+    - 'Oppgave: Bygg en gård.'
   - - Gallery
-    - [content/gui/icons/buildmenu/020.png]
+    - - content/gui/icons/buildmenu/020.png
 
 - &FIELDS
-  - [Message, Bygg minst ett beiteland og legg til en potetåker hvis du har lyst.]
-  - [Headline, 'NY OPPGAVE: BYGG JORDER']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg minst ett beiteland og legg til en potetåker hvis du har lyst.
+  - - Headline
+    - 'NY OPPGAVE: BYGG JORDER'
+  - - Image
+    - content/gui/images/background/hr.png
   - Gården produserer ikke noe av seg selv uten noen jorder.
   - Du kan nå velge mellom beiteland, potet- og sukkeråker.
   - 'Her er en kort oversikt:
@@ -303,7 +354,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Sukkeråker: Gror sukker som brukes til å destillere sprit og (senere) produsere konfekt.'
   - Nå trenger vi kun beiteland, men hvis matforsyningskapasiteten din er for liten (kanskje mange bolighus) sa kan du også produsere noen poteter.
   - Merk at for poteter vil du trenge en veiforbindelse til gården (ikke til åkeren!), da det vil være det eneste kompaniet som arbeider på varene.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Påse at alle jordene du bygger er i innenfor rekkevidden til gården.'
@@ -311,14 +362,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ulike klasser av jorder krever at gårdens enheter tilbringer mer eller mindre tid der (for å så, høste, vokte, etc...) og på grunn av dette kan det hende gården ikke er i stand til å håndtere i tide alle jordene som du bygger til den.
   - Så langt har du ikke trengt å bry deg spesielt mye om disse tingene, siden du ikke har bygget noen jorder.  La oss gjøre noe med det!
   - ''
-  - [BoldLabel, 'Oppgave: Bygg minst et beiteland innenfor gårdens rekkevidde og legg til potetåkre hvis du har lyst.']
+  - - BoldLabel
+    - 'Oppgave: Bygg minst et beiteland innenfor gårdens rekkevidde og legg til potetåkre hvis du har lyst.'
   - - Gallery
-    - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
+    - - content/gui/icons/buildmenu/018.png
+      - content/gui/icons/buildmenu/019.png
 
 - &STORAGE
-  - [Message, Bygg et lagertelt (nivå I-fane) der det virker fornuftig.]
-  - [Headline, 'NY OPPGAVE: BYGG LAGRING']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg et lagertelt (nivå I-fane) der det virker fornuftig.
+  - - Headline
+    - 'NY OPPGAVE: BYGG LAGRING'
+  - - Image
+    - content/gui/images/background/hr.png
   - Har du sjekket dine tømmerhuggere i det siste?
   - Siden varehuset ditt ikke har ubegrenset med plass til å lagre varer, så vil innsamlerne slutte å hente varer fra kompanjonger når varelageret er fullt.
   - Dermed, med mindre noen seilere ønsket å oppgradere sine telt nylig, har du antagelig mye planger og i det tilfellet jobber kanskje ikke tømmerhuggerne.
@@ -328,8 +384,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Dette høres kanskje rart ut, men klikk på tannhjulet du ser i tømmerhuggerhyttens oversikt.'
   - Hvis denne «bremse»-modusen er aktiv (vi kaller den «å ta ut av drift»), så vil de løpende kostnadene du betaler for bygningen reduseres.  De vil ikke bli null, men de er uansett lavere enn om du lot kompanjongene fortsatt produsere.
   - - Gallery
-    - [content/gui/icons/templates/production/toggle_inactive_h.png]
-  - [Pagebreak]
+    - - content/gui/icons/templates/production/toggle_inactive_h.png
+  - - Pagebreak
   - '
 
     Dette betyr at du kan spare penger når du midlertidig ikke trenger en bedrift og heller ikke ønsker å rive den.'
@@ -341,49 +397,63 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * sender sine egne innsamlere for å hente varer, akkurat slik varehuset gjør.'
   - Merk at kompanjonger kan også kobles til lagring for å få sine produkter samlet inn, og hvis varehuset er overbelastet med innsamlingsoppgaver kan du plassere ut et lagertelt for å avhjelpe.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg et lagertelt, fortrinnsvis der du trenger innsamlere.']
+  - - BoldLabel
+    - 'Oppgave: Bygg et lagertelt, fortrinnsvis der du trenger innsamlere.'
   - - Gallery
-    - [content/gui/icons/buildmenu/002.png]
+    - - content/gui/icons/buildmenu/002.png
 
 - &WEAVER
-  - [Message, Bygg en veverhytte som kan nå ullen til gården din på en eller annen måte.]
-  - [Headline, 'NY OPPGAVE: BYGG EN VEVER']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bygg en veverhytte som kan nå ullen til gården din på en eller annen måte.
+  - - Headline
+    - 'NY OPPGAVE: BYGG EN VEVER'
+  - - Image
+    - content/gui/images/background/hr.png
   - Nå som ullproduksjonen er satt opp trenger du fortsatt en vever for å produsere tøy av denne ullen.
   - Veverhytten er stedet der veverne bor.  Det er to steder du kan bygge den - enten nær gården eller nær et lagertelt (eller varehuset).
   - I begge tilfeller bør du sikre en forbindelse til en sti.
   - Du kan plassere veverhytten nær gården og fjerne alle stier til gården for å se at den fortsatt skaffer seg ull og produserer.
   - ''
-  - [BoldLabel, 'Oppgave: Bygg en veverhytte plassert slik at den får tak i ull.']
+  - - BoldLabel
+    - 'Oppgave: Bygg en veverhytte plassert slik at den får tak i ull.'
   - - Gallery
-    - [content/gui/icons/buildmenu/007.png]
+    - - content/gui/icons/buildmenu/007.png
 
 - &GOALS
-  - [Message, Gi husrom til minst 50 innbyggere i byen din for å fullføre introduksjonen.  Du trenger en positiv balanse.]
-  - [Headline, 'NY OPPGAVE: FULLFØR INTRODUKSJONEN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Gi husrom til minst 50 innbyggere i byen din for å fullføre introduksjonen.  Du trenger en positiv balanse.
+  - - Headline
+    - 'NY OPPGAVE: FULLFØR INTRODUKSJONEN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Forsøk å gi husrom til minst 50 innbyggere i byen din ved å tilby flere bolighus.
   - Så snart du klarer å holde en økonomi i gang som kan tilfredsstille en slik mengde forbrukere er du klar til å oppdage nye ukjente horisonter!
   - Du trenger også nok penger til å holde denne økonomien gående, slik at en positiv balanse (sjekk varehus-fanen «Regnskap») er nødvendig.
   - ''
-  - [BoldLabel, 'Oppgave: Oppnå totalt 50 innbyggere og en positiv balanse for å fullføre denne introduksjonen.']
+  - - BoldLabel
+    - 'Oppgave: Oppnå totalt 50 innbyggere og en positiv balanse for å fullføre denne introduksjonen.'
   - - Gallery
-    - [content/gui/icons/widgets/cityinfo/inhabitants.png]
+    - - content/gui/icons/widgets/cityinfo/inhabitants.png
 
 - &WON
-  - [Message, Gratulerer! Du har nådd slutten av denne introduksjonen og er klar til å møte nye utfordringer!]
-  - [Headline, INGEN OPPGAVER IGJEN]
-  - [Image, content/gui/images/background/hr.png]
-  - Du har lykkes med å fullføre alle oppgaver du har fått utlevert.  Verden er nå under ditt styre, og venter på dine frie planer og modige ekspedisjoner!
+  - - Message
+    - Gratulerer! Du har nådd slutten av denne introduksjonen og er klar til å møte nye utfordringer!
+  - - Headline
+    - INGEN OPPGAVER IGJEN
+  - - Image
+    - content/gui/images/background/hr.png
+  - Du har lykkes med å fullføre alle oppgaver du har fått utlevert. Verden er nå under ditt styre, og venter på dine frie planer og modige ekspedisjoner!
   - 'Hvis du har noen forslag om hva vi kan eller bør forbedre, legge til eller ta bort:'
   - www.unknown-horizons.org
   - '#unknown-horizons @ irc.freenode.net'
   - team@unknown-horizons.org
   - Forumene våre er også åpne for deg!
   - De beste resultatene er hittil oppnådd ved å bli med på IRC-kanalen vår, så du kan forsøke det først. (-;
-  - [Pagebreak]
-  - [Headline, Tusen takk!]
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - Tusen takk!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -395,7 +465,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Ditt UH-lag'
   - - Gallery
-    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - - content/packages/unknown-horizons.xpm
+      - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
 
 events:
 - # Show a message after starting the game (how to move)
