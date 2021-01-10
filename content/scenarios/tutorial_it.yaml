@@ -39,7 +39,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Pagebreak
   - '
 
-    Se hai qualche consiglio riguardo questo questo tutorial, o hai incontrato dei problemi, non esitare a contattarci.'
+    Se hai qualche consiglio riguardo questo tutorial, o hai incontrato dei problemi, non esitare a contattarci.'
   - '
 
     Visita www.unknown-horizons.org per cercare aiuto e per contattare il team.'
@@ -126,7 +126,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Image
     - content/gui/images/background/hr.png
   - Gli abitanti hanno bisogno di una piazza principale da cui possano approvvigionarsi di beni.
-  - Questo significa che hanno bisogno di un collegamento dalla propria abitazione alla piazza principale. Nota che la piazza principale si comporta anche come un sentiero,  tende adiacenti non hanno bisogno di sentieri aggiuntivi.
+  - Questo significa che hanno bisogno di un collegamento dalla propria abitazione alla piazza principale. Nota che la piazza principale si comporta anche come un sentiero, tende adiacenti non hanno bisogno di sentieri aggiuntivi.
   - Tutti i beni raccolti sono disponibili in questo Edificio del mercato, così i tuoi abitanti non dovranno camminare fino alla Tenda del pescatore o fino al Magazzino.
   - - Gallery
     - - content/gui/icons/buildmenu/004_h.png
@@ -220,7 +220,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 - &TRADING
   - - Message
-    - Raggiungi una scorta  di almeno 30 attrezzi per isola. Nota che ci vorrà non poco tempo.
+    - Raggiungi una scorta di almeno 30 attrezzi per isola. Nota che ci vorrà non poco tempo.
   - - Headline
     - 'OBIETTIVO: IL COMMERCIO'
   - - Image
@@ -292,7 +292,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Tutte le richieste ora sono soddisfatte se i tuoi abitanti sono in grado di visitare regolarmente la piazza principale ed il padiglione, e se le scorte di cibo sono adeguate.
   - Se i marinai sono abbastanza felici, vogliono avanzare al prossimo livello chiamato Pionieri.
   - Per renderli felici, non c'è altro da fare per voi, inpostate le imposte ad un livello più basso da quando hai soddisfatto tutte le richieste dei vostri abitanti.
-  - Si dovrebbe cercare di impostare sempre le tasse non troppo basse in quanto questo porterà probabilmente al fallimento, prima o poi. Anche se, se si sa cosa si sta facendo e per un breve periodo puo essere utile.
+  - Si dovrebbe cercare di impostare sempre le tasse non troppo basse in quanto questo porterà probabilmente al fallimento, prima o poi. Anche, se si sa cosa si sta facendo e per un breve periodo puo essere utile.
   - Dopo qualche tempo, la prima unità dovrebbe raggiungere a piedi la piazza principale per avere nuovo materiale da costruzione per costruire una capanna di tronchi. Questa costruzione andrà a sostituire la vecchia tenda.
   - - Pagebreak
   - '
