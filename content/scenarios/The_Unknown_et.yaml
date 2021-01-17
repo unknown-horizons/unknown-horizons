@@ -22,19 +22,25 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20. november 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 20. november 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Torm kestis neli päeva ja viimaks saame me puhata. Kuid meil on ainult natukene toitu järgi ja me laev on saanud kannatada. Navigatsiooniseadmed ja merekaardid on kadunud.
   - Peame lähemal ajal maabuma. Keegi mu meeskonnast nägi linde kalastamas, rand ei ole seega kaugel. Õnneks on meil alles veel mõned tööriistad ja pardal on ka natuke laudu, et saaksime ehitada lihtsa varjualuse.
-  - Ülesanne:Leia maa ja ehita sadam.
-  - [Pagebreak]
+  - 'Ülesanne:
+
+    Leia maa ja ehita sadam.'
+  - - Pagebreak
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22. November 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 22. November 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Sadam on valmis ja uus lootus on tõusmas. Ma kardan siiski eelolevate päevade pärast... toit on otsakorral ja puuduvad lihtsaimadki ehitusmaterjalid.
-  - Me peame kindlustama oma põhivajadused, et ellu jääda.  On aeg saata inimesed tooma toitu ja puitu, et me jääksime ellu ja ehitaksime mingi varjualuse.
+  - Me peame kindlustama oma põhivajadused, et ellu jääda. On aeg saata inimesed tooma toitu ja puitu, et me jääksime ellu ja ehitaksime mingi varjualuse.
   - 'Ülesanne:
 
     Ehita vähemalt üks kõigist järgnevatest:
@@ -46,23 +52,27 @@ logbook-data:
     * Jahimees
 
     Kogu 5 ühikut toitu ja 5 planku.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &TENTS
-  - [Headline, 25. november 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 25. november 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Oleme kindlustanud oma põhitoidu ja kogunud ja natukene puitu, et uue asunduse kasvamist kindlustada. Me rahvas nõuab kohta, kus elada ja kaubelda igapäevaste vajaduste rahuldamiseks.
   - On aeg ehitada mõned telgid, kus elada ja väike peaväljak, et varustada elanikka kaupadega.
   - 'Ülesanne:
 
     Ehita Peaväljak ja vähemalt 10 telki.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1. Detsember 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1. Detsember 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Viimaks on meil piisavalt süüa ja koht, kus elada. Mu telk ei ole väga mugav, kuid ta hoiab mind kuivana ja mul on tunne, et öösel on mu pea kohal katus.
   - 'Ma olen öösiti uurinud tähti teavas, kuid merekaartide ja navigatsioonivahenditeta on jäänud nende tähendus tundmatuks. Mul on tunne, et me peame jääma siia pikemalt, seega peame andma endast parima.
 
@@ -70,18 +80,20 @@ logbook-data:
   - 'Ülesanne:
 
     Kasvata küla, kuni seal on vähemalt 250 elanikku ja positiivne iive.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &WON
-  - [Headline, 27. August 1745]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 27. August 1745
+  - - Image
+    - content/gui/images/background/hr.png
   - Me külal läheb hästi, linn on kasvanud üle 250 elanuku. Ma olen harjunud oma uue koduga, kuid see saar on liiga väike, et siia igaveseks jääda.
   - Me peaksime lastima oma laeva ja liikuma suuremale saarele, kus on rohkem ruumi ja ressursse mu rahvale. Ma olen uuesti loonud lihtsa merekaardi kasutades tähti, mida näen öösel. See ei ole täielik, kuid ma loodan, et temast piisab siia naasmiseks.
   - 'Ülesanne:
 
     Võta ühendust Unknown Horizonsi loojatega (www.unknown-horizons.org) ja vaata kuidas sa saad aidata, et tega see stsenaarium pikemaks ja paremaks!'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 events:
