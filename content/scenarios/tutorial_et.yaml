@@ -9,17 +9,20 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, 'Ehita rannikule ladu nii, et võimaldada kaubalaevadele oma koloonia külastamist.']
+  - - Message
+    - Ehita rannikule ladu nii, et võimaldada kaubalaevadele oma koloonia külastamist.
   - '
 
 
 
     '
   - - Gallery
-    - [content/gfx/uh.png]
-  - [Pagebreak]
-  - [Headline, Tere tulemast mängima Unknown Horizons!]
-  - [Image, content/gui/images/background/hr.png]
+    - - content/gfx/uh.png
+  - - Pagebreak
+  - - Headline
+    - Tere tulemast mängima Unknown Horizons!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -27,13 +30,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - See on sinu Logiraamat, kuhu on salvestatud praegust stsenaariumit puudutav oluline informatsioon. Iga ülesande kokkuvõte ilmub meeldetuletuse nupuna ekraani vasakpoolses servas. Jättes hiire kursori mõneks hetkeks meeldetuletusele saad seda lugeda. Samuti võid klõpsata, et avada Logiraamat vastavast kohast.
   - Logiraamatu saad alati avada ka klõpsates ekraani paremas ülanurgas asuva minikaardi all oleval nupul. Edaspidi viidatakse sellele alale kui minikaardile ning seal olevatele nuppudele ja vahekaartidele kui "Ülevaatele".
   - - Gallery
-    - [content/gui/icons/widgets/minimap/captainslog.png]
+    - - content/gui/icons/widgets/minimap/captainslog.png
   - '
 
     Oma esimese ülesande nägemiseks ava logiraamatus järgmine lehekülg. Selleks klõpsa nuppu vastaslehekülje alumises servas - see on selline:'
   - - Gallery
-    - [content/gui/images/buttons/parrow_right.png]
-  - [Pagebreak]
+    - - content/gui/images/buttons/parrow_right.png
+  - - Pagebreak
   - '
 
     Kui sul on ettepanekuid selle juhendi parendamiseks või kui sa leidsid mõne vea, siis palun anna meile teada.'
@@ -42,52 +45,64 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Tiimiga ühenduse võtmiseks külasta saiti www.unknown-horizons.org.'
   - ''
   - Ja nüüd alustagem mänguga!
-  - [Pagebreak]
-  - [Headline, 'ÜLESANNE: LOO KOLOONIA']
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - 'ÜLESANNE: LOO KOLOONIA'
+  - - Image
+    - content/gui/images/background/hr.png
   - Su laev on merel, lastiks vahendid, mida vajad uue koloonia rajamiseks.
   - Laeva liigutamiseks vali ta vasakklõpsuga ja tee paremklõps kohal, kuhu laev peaks seilama.
   - Ranniku läheduses muutub ülevaates nupp "Ehita koloonia" aktiivseks.
   - - Gallery
-    - [content/gui/icons/ship/anchor.png]
+    - - content/gui/icons/ship/anchor.png
   - Klõpsates sellel nupul kuvatakse Lao eelvaade. Ladu on esimese hoone, mis on vajalik koloonia asutamiseks. Liigutades kursorit märkad punase varjundiga eelvaateid, mis kuuluvad sellesse piirkonda sobimatutele hoonetele.
   - Ladu peab asuma rannikul, et laevad saaksid randuda. Seega otsi hea asukoht ja tee selle olulise hoone asetamiseks vasak-klõps.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita rannikule laohoone.']
+  - - BoldLabel
+    - 'Ülesanne: ehita rannikule laohoone.'
 
 - &LUMBERJACK
-  - [Message, Ehita puuraidurite telk ja ühenda see teeraja abil laohoonega.]
-  - [Headline, 'ÜLESANNE: EHITA PUURAIDURITE TELK']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita puuraidurite telk ja ühenda see teeraja abil laohoonega.
+  - - Headline
+    - 'ÜLESANNE: EHITA PUURAIDURITE TELK'
+  - - Image
+    - content/gui/images/background/hr.png
   - Varud ja ehitusmaterjalid on su laevalt lossitud ja asuvad turvaliselt su uues laos. Nüüd on aeg ehitada mõned lihtsad ehitised, alustades puuraidurite telgist.
   - Puuraidurid langetavad nende telki ümbritsevast metsaselt alat puid ja töötlevad selle puiduks, mida saab kasutada ehitamiseks või vahetuskaubana.
   - Puuraidurite telgi ehitamiseks ava menüü "Ehita". Selleks klõpsa kas minikaardi all oleval suurel ikoonil või vajuta klahvi 'B' (vaikimisi kiirklahv).
   - - Gallery
-    - [content/gui/icons/widgets/minimap/build.png]
+    - - content/gui/icons/widgets/minimap/build.png
   - Ehitamise menüü on sorteeritud tasemete kaupa. Kuna sul on uus koloonia, siis saad ehitada ainult esimese taseme ehitisi. Vastavalt sellele, kuidas su tsivilisatsioon areneb, saad võimaluse ehitada mitmesugustele kõrgemate tasemete ehitistele.
-  - [Pagebreak]
+  - - Pagebreak
   - ''
   - Otsi puuraidurite telgile sobilik metsane ala ja vali ülevaate menüüst ehitiste alt "Puuraidurite telk" ning aseta see valitud kohta.
   - Mängu hilisemas faasis võid luua puid istutades metsamaad, kuid see maksab. Hetkel pead sa kasutama looduse pakutud ressursse!
   - Igasugune ressursside kogumine või tootmine vajab teerada, mis ühendab ta laohoone või mõne muu ladustamise kohaga. Vastasel juhul ei koguta toodetavaid kaupu.
   - Seega, kui puuraidurite telk on valmis, pead sa ühendama ta laoga. Ava menüü ehita ja klõpsa nupul "Teerada". Sa saad nüüd klõpsata ja vedada hiirega teeraja puuraidurite telgi ja lao vahele.
   - ''
-  - [BoldLabel, 'Ülesanne: Ehita metsasele alale puuraidurite telk ja ühenda see laohoonega.']
+  - - BoldLabel
+    - 'Ülesanne: Ehita metsasele alale puuraidurite telk ja ühenda see laohoonega.'
   - Kui ehitised on ühendatud, näed kogujat, kes võtab kaasa äsja valmistatud lauad ja toimetab need lattu. Seal on need valmis ehitamiseks või kauplemiseks.
   - - Gallery
-    - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
+    - - content/gui/icons/buildmenu/008.png
+      - content/gui/icons/buildmenu/015.png
+      - content/gui/icons/resources/32/004.png
 
 - &FOOD
-  - [Message, Ehita jahimehe telk ja kaluri telk. Ühenda nad laohoonega.]
-  - [Headline, 'UUS ÜLESANNE: TOIDUGA VARUSTAMINE']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita jahimehe telk ja kaluri telk. Ühenda nad laohoonega.
+  - - Headline
+    - 'UUS ÜLESANNE: TOIDUGA VARUSTAMINE'
+  - - Image
+    - content/gui/images/background/hr.png
   - Sul on vaja ka mõningaid toitu tootvaid kompaniisid, sest inimesed on üldiselt (ja meremehed eriti) väga näljased.
   - Esimese taseme kompaniidest on võimalik luua jahimehe telk ja kaluri telk.
   - Jahimees jahib metsast ulukeid ning seetõttu peab nende lähedal olema puid.
   - Tähelepanu, sa võid oma jahimeeste telgi paigutada puuraiduri metsa lähedale.
   - Võib juhtuda, et loomad ei paljune piisavalt kiiresti või oksavad lihtsalt hästi peituda.
   - Järelikult ei ole jahimeeeste telk just väga usaldusväärne, kui vajad pidevat varustatust.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Kalur vajab rannikuehitist nagu ladu ja lähedusse jäävat kalakasvatust.'
@@ -95,53 +110,65 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kalastamine on väga pidev varustus allikas, kuid selle hinnaks on natuke pikem tootmise aeg toiduühiku kohta.
   - Väike koloonia nagu sul on võib kasutada mõlemat, mis võimaldab sul paremini tasakaalustada nende eelised ja puudused.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita jahimeeste telk ja kaluri telk.']
+  - - BoldLabel
+    - 'Ülesanne: ehita jahimeeste telk ja kaluri telk.'
   - Ära unusta ehitamast teerada oma laoni!
   - - Gallery
-    - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
+    - - content/gui/icons/buildmenu/011_h.png
+      - content/gui/icons/buildmenu/009_h.png
+      - content/gui/icons/resources/32/005.png
 
 - &MAINSQUARE
-  - [Message, 'Ehita peaväljak. Vali koht, kus ei ole palju majandusehitisi.']
-  - [Headline, 'ÜLESANNE: PEAVÄLJAK']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita peaväljak. Vali koht, kus ei ole palju majandusehitisi.
+  - - Headline
+    - 'ÜLESANNE: PEAVÄLJAK'
+  - - Image
+    - content/gui/images/background/hr.png
   - Su elanikud vajavad peaväljakut, kus nad saavad hankida omale kaupu.
   - See tähendab, et nad vajavad teerada, mis ühendab nende kodu peaväljakuga. Peaväljak on kasutatav ka teena ning seetõttu ei vaja temaga ühendatud telgid eraldi teerada.
   - Kõik kaubad su laos on sellel "turuplatsil" saadavad; seega ei pea su elanikud käima kaluri telgi juures või isegi laos.
   - - Gallery
-    - [content/gui/icons/buildmenu/004_h.png]
+    - - content/gui/icons/buildmenu/004_h.png
   - Peaksid vältima oma põhiasunduse telkide paigutamist saeveskitele väga lähedale, sest telkide püstitamisel kaovad puud, mida su saeveskida vajavad laudade tootmiseks.
   - Kompaniid töötavad isegi siis, kui nad ei ole telkidega ühendatud. Seega ei pea sa ehitama teed peaväljaku ja nt. saeveski vahele.
   - ''
-  - [BoldLabel, 'Ülesanne: Ehita peaväljak.']
-  - [Pagebreak]
+  - - BoldLabel
+    - 'Ülesanne: Ehita peaväljak.'
+  - - Pagebreak
   - '
 
     Vaatame nüüd lähemalt peaväljakut.'
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - - content/gui/icons/tabwidget/warehouse/account_a.png
   - Kaardil "Konto" näed sa selle saare bilanssi; nii tehtavaid kulutusi kui ka kogutavaid makse.
   - '"Müük" ja "Ost" vastavad su kauplemise bilansile, millest tuleb juttu hiljem.'
   - Kui su bilanss on positiivne, siis kokkuvõttes teenid sa kasumit.
   - - Gallery
-    - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - - content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png
   - Erinevate tasemete ülevaate kaardid võimaldavad sul näha su elanike statistikat. Samuti saad sa siin kehtestada ka tasemele vastava globaalse maksu ja lubada või keelata selle taseme elanikel tõusta järgmisele tasemele.
 
 - &FIRSTTENT
-  - [Message, Ehita telk ja vajadusel ühenda see peaväljakuga.]
-  - [Headline, 'UUS ÜLESANNE: ELAMUD']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita telk ja vajadusel ühenda see peaväljakuga.
+  - - Headline
+    - 'UUS ÜLESANNE: ELAMUD'
+  - - Image
+    - content/gui/images/background/hr.png
   - Asunikud tahavad pea kohale katust; vastasel korral nad isegi ei mõtle su linnas elamisele! Sa pead püstitama telgid.
   - - Gallery
-    - [content/gui/icons/buildmenu/003_h.png]
+    - - content/gui/icons/buildmenu/003_h.png
   - Telgid on lihtsad elamud. Su elanikud soovivad need asendada, kui nad tõusevad kõrgematele tasemetele.
   - Ära unusta, et iga ehitise uuendamine vajab ehitusmaterjale; näiteks esimesel uuendamisel on vaja puitu.
   - Kaalu uuendamise keelamist, kui materjalide varud on otsakorral.
   - Asunikud ei pruugi olla väga kasulikud, sest nad proovivad tarbida ära kõik kaubad, mis toodetakse, kui vähemalt maksavad nad makse ja see on hetkel ainus raha saamise viis!
   - ''
-  - [BoldLabel, 'Ülesanne: Ehita telk ja vajadusel ühenda see peaväljakuga. Telgid ei pea olema ühendatud ühegi kompaniiga.']
+  - - BoldLabel
+    - 'Ülesanne: Ehita telk ja vajadusel ühenda see peaväljakuga. Telgid ei pea olema ühendatud ühegi kompaniiga.'
 
 - &MORETENTS
-  - [Message, Ehita vähemalt kolm täiendavat telki ja ühenda need peaväljakuga.]
+  - - Message
+    - Ehita vähemalt kolm täiendavat telki ja ühenda need peaväljakuga.
   - '
 
     Heidame nüüd pilgu telgi ülevaate vahelehele.'
@@ -156,40 +183,48 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Vastasel korral kahanevad nii õnn kui ka sissetulekud. Mingil hetkel võivad su elanikud tõeliselt kibestuda ja asundusest lahkuda jättes maha alla käinud varemed.
   - Pane tähele, et sa saad muuta globaalseid makse ka siin.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita lisaks vähemalt kolm telki.']
+  - - BoldLabel
+    - 'Ülesanne: ehita lisaks vähemalt kolm telki.'
   - '
 
     VIHJE: Klahvi SHIFT all hoidmine lihtsustab mitme samasuguse ehitise püstitamist.'
 
 - &SIGNALFIRE
-  - [Message, Ehita oma lao lähedale kaldale signaaltuli.]
-  - [Headline, 'ÜLESANNE: EHITA SIGNAALTULI']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita oma lao lähedale kaldale signaaltuli.
+  - - Headline
+    - 'ÜLESANNE: EHITA SIGNAALTULI'
+  - - Image
+    - content/gui/images/background/hr.png
   - Kas sa näed laeva, mis möödub aeg-ajalt su saarest? See laev kuulub Vabale Kauplejale, selle arhipelaagi ühele esimesele asunikule.
   - Kauple varustab su kolooniat vajalike kaupadega, mida sa ise ei saa veel toota.
   - Samuti on sul võimalik müüa oma liigne toodang, kuid tavaliselt on toodangu ise tarbimine (täiendavaid telke ehitades) mõistlikum, sest nii on saadav kasum suurem.
   - Tavaliselt seilab kaupleja niisama ringi ja otsib häid tehinguid, kuid sa saad asju pisut kiirendada.
   - - Gallery
-    - [content/gui/icons/buildmenu/006_h.png]
+    - - content/gui/icons/buildmenu/006_h.png
   - Selleks on vaja ehitada su lao lähedale signaaltuli. See juhatab laevad su kolooniasse.
   - Signaaltuli peab laevade kohale juhatamiseks katma kogu ala, mida laevad läbivad.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Selle väikese reklaami tulemusel teeb kaupleja su lao juures peatuse, kuigi tal oli algselt plaan mööda sõita.'
   - Lao kaardil "Müü/Osta" saad sa algatada tehinguid.
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - - content/gui/icons/tabwidget/warehouse/buysell_a.png
   - Tasemel "Meremees" on sul kasutada kolm kauplemispesa.
   - Klõpsa väikesel ikoonidel, et lülitada "Müü" ja "Osta" režiimide vahel.
   - Klõpsa pesal, et valida kaup, millega sa soovid äri teha. Me seletame seda täiendavalt siis, kui sa oled kaplemiseks valmis.
   - ''
-  - [BoldLabel, 'Ülesanne: Ehita rannikule oma lao naabrusesse signaaltuli.']
+  - - BoldLabel
+    - 'Ülesanne: Ehita rannikule oma lao naabrusesse signaaltuli.'
 
 - &TRADING
-  - [Message, 'Veendu, et varuks on  vähemalt 30 tööriista. Selleks võib kuluda natuke aega.']
-  - [Headline, 'ÜLESANNE: ÕPI KAUPLEMA']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Veendu, et varuks on vähemalt 30 tööriista. Selleks võib kuluda natuke aega.
+  - - Headline
+    - 'ÜLESANNE: ÕPI KAUPLEMA'
+  - - Image
+    - content/gui/images/background/hr.png
   - 'Imeline! Vaba Kaupleja peatub nüüd su lao lähedal aeg-ajalt.
 
 
@@ -200,7 +235,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Sikutades liuguri iga pesa parempoolsesse serva määrab "vajaliku koguse", mis omab erinevat tähendust kaartidel "Ost" ja "Müük".
   - Ostmisel ostad sa piisavalt, et hoida laos oleks varus "vajalik kogus" kaupa.
   - Müümisel lõppeb müük "vajaliku koguseni" jõudmisel. Selleni jõudes lõppeb müümine alati vastavat ressurssi lisandumiseni.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Näiteks:
@@ -213,20 +248,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Hinna määramine käsitsi EI OLE võimalik!'
   - Sa saad vaadata oma müügi bilanssi kaardil "Konto" ning võrrelda seal "Müügi" ja "Ostu" tulemusi.
   - ''
-  - [BoldLabel, 'Ülesanne: osta nii palju tööriistu, et laovaru oleks vähemalt 30!']
+  - - BoldLabel
+    - 'Ülesanne: osta nii palju tööriistu, et laovaru oleks vähemalt 30!'
   - - Gallery
-    - [content/gui/icons/resources/32/006.png]
+    - - content/gui/icons/resources/32/006.png
 
 - &PAVILION
-  - [Message, 'Ehita paviljon, mis on ühendatud telkidega.']
-  - [Headline, 'ÜLESANNE: EHITA PAVILJON']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita paviljon, mis on ühendatud telkidega.
+  - - Headline
+    - 'ÜLESANNE: EHITA PAVILJON'
+  - - Image
+    - content/gui/images/background/hr.png
   - Neist tööriistadest hetkel piisab. Hästi tehtud!
   - Nüüd võimaldad oma elanikele eluaseme, peaväljaku ja toidu.
   - 'Siiski on veel üks nõudmine, mis ei ole hetkel rahuldatud (kontrolliks klõpsa ühel telkidest): su meremehed vajavad lihtsat ehitist, kus nad saaksid palvetada.'
   - Lahenduseks on paviljon, mille küla hingekarjane püstitab kiirelt päikesevarjuks.
   - Pühakodadest peavad samuti viima rajad telkideni, sest muidu ei jõua su elanikud nendeni.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Arvesta sellega, et usku käsitletakse kui füüsilist resurssi!'
@@ -238,20 +277,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Nõutav on ka ühendav tee.'
   - ''
-  - [BoldLabel, 'Ülesanne: ehita paviljon ja teerada sellest telkideni, et rahuldada meremeeste usunälg.']
+  - - BoldLabel
+    - 'Ülesanne: ehita paviljon ja teerada sellest telkideni, et rahuldada meremeeste usunälg.'
   - - Gallery
-    - [content/gui/icons/buildmenu/005.png]
+    - - content/gui/icons/buildmenu/005.png
 
 - &NEXTTIER
-  - [Message, 'Määra madal maksude tase (vasak serv) ja oota, et su meremehed jõuaks järgmisele tasemele.']
-  - [Headline, 'UUS ÜLESANNE: JÄRGMINE TASE']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Määra madal maksude tase (vasak serv) ja oota, et su meremehed jõuaks järgmisele tasemele.
+  - - Headline
+    - 'UUS ÜLESANNE: JÄRGMINE TASE'
+  - - Image
+    - content/gui/images/background/hr.png
   - Kõik nõudmised on nüüd täidetud, kui su elanikud külastavad regulaarselt peaväljakut ja paviljoni ja su toiduga varustamine on piisav.
   - Kui meremehed on piisavalt õnnelikud, siis soovivad nad jõuda järgmisele tasemele, mida kutsutakse Avastajad.
   - Nende õnnelikuks tegemiseks on sul vaja ainult alandada makse, sest sa oled täitnud oma elanike kõik nõudmised.
   - Sa ei tohiks jääda madalate maksude juurde pikaks ajaks, sest see viib su varem või hiljem üsna kindlalt pankrotti. Mõneks ajaks on teadlik maksude alandamine siiski mõistlik samm.
   - Mõne aja möödudes peaks esimene üksus tulema keskväljakule ja otsima seal uut ehitusmaterjali, et ehitada palkmaja. See maja asendab vana telgi.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Selline elamute uuendamine nõuab ressursse ja seetõttu saab seda peaväljakul piirata.'
@@ -259,23 +302,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Uuendatud elamusse mahub rohkem elanikke ja avastajad maksavad meremeestest ka rohkem makse.
   - Ilmselt oled juba taibanud, et avastajad nõuavad täiendavaid kaupu, mida meremehed ei vaja. Seega pead kulutama rohkem raha, et ka luurajad oleksid õnnelikud.
   - ''
-  - [BoldLabel, 'Ülesanne: määra maksu tasemeks Madal (vasak serv) ja oota, et meremehed jõuaks uuele tasemele.']
+  - - BoldLabel
+    - 'Ülesanne: määra maksu tasemeks Madal (vasak serv) ja oota, et meremehed jõuaks uuele tasemele.'
   - - Gallery
-    - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
+    - - content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png
 
 - &FARM
-  - [Message, Ehita farm ja jäta selle ümbrusesse natuke tühja maad.]
-  - [Headline, 'ÜLESANNE: EHITA FARM']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita farm ja jäta selle ümbrusesse natuke tühja maad.
+  - - Headline
+    - 'ÜLESANNE: EHITA FARM'
+  - - Image
+    - content/gui/images/background/hr.png
   - Palju õnne! Mõned su elaniukd on jõudnud järgmisele tasemele!!!
   - Nüüd on sul võimalid ehitada uusi ehitisi. Vaata uuesti menüüd "Ehita".
   - - Gallery
-    - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
+    - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - Sinna on lisandunud uus vahekaart.
   - Avastajad vajavad kangast. Seega pead üles seadma kanga tootmisliini, mille sisendiks on lambavill (see on üks kaupadest, mida farm toodab).
   - Farm on väga eriline tootmishoone, sest ta saab soovi korral toota mitte ühte, vaid mitmeid (ja erinevaid) kaupu.
   - Farmi toodang sõltub tema ümber rajatud põldudest.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Lähemalt vaatame seda hiljem.'
@@ -284,14 +331,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Kui sa siiski kavatsed teha mingit töötlemist saare erinevates osades (mõnikord on see mõislik) või isegi teis(t)el saar(t)el, siis on sul vaja ühendust kogujatega.
   - Proovi ehitada farm nii rannikust kui ka teistest ehitistest natuke kaugemale, sest edukaks tööks on vaja seni kasutamata maad.
   - ''
-  - [BoldLabel, 'ÜLESANNE: Ehita farm.']
+  - - BoldLabel
+    - 'ÜLESANNE: Ehita farm.'
   - - Gallery
-    - [content/gui/icons/buildmenu/020.png]
+    - - content/gui/icons/buildmenu/020.png
 
 - &FIELDS
-  - [Message, Ehita vähemalt üks karjamaa ja lisa soovi korral ka kartupõld või kaks.]
-  - [Headline, 'UUS ÜLESANNE: EHITA PÕLLUD']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita vähemalt üks karjamaa ja lisa soovi korral ka kartupõld või kaks.
+  - - Headline
+    - 'UUS ÜLESANNE: EHITA PÕLLUD'
+  - - Image
+    - content/gui/images/background/hr.png
   - Põldudeta farm ei tooda iseenesest mitte midagi.
   - Sul on hetkel valida karjamaa ning kartuli- ja suhkrupõllu vahel.
   - 'Kiire ülevaade:
@@ -303,7 +354,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * Suhkrupõllult saab suhkrut, millest destillerritakse alkoholi ja (hiljem) valmistatakse maiustusi.'
   - Hetkel on vaja ainult karjamaad, kuid kui sul toidust on puudus (võib-olla on sul liiga palju elamuid), siis võid ehitada ka kartulipõlde.
   - Selleks, et kartulid jõuaks tarbijateni, pead farmi ühendama teedega (mitte põllu), sest kaupadega tegeleb ainult kompanii.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Veendu, et kõik rajatavad põllud on farmi maa-alal.'
@@ -311,14 +362,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Erinevad põldude liigid vajavad farmi üksustelt rohkem või vähem aega (külvamine, koristamine, karjatamine, jne.) ja seetõttu ei pruugi farm teenindada kõiki põlde, mis sa talle oled juba rajanud.
   - Praegu ei pea sa sellepärast muretsema, sest sa ei ole ehitanud mitte ühtegi põldu. Aga muutkem nüüd seda!
   - ''
-  - [BoldLabel, 'Ülesanne: ehita farmi maadele vähemalt üks karjamaa ja soovi korral ka kartulipõllud.']
+  - - BoldLabel
+    - 'Ülesanne: ehita farmi maadele vähemalt üks karjamaa ja soovi korral ka kartulipõllud.'
   - - Gallery
-    - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
+    - - content/gui/icons/buildmenu/018.png
+      - content/gui/icons/buildmenu/019.png
 
 - &STORAGE
-  - [Message, 'Ehita lao telk (taseme 1 kaart) sinna, kus see on mõistlik.']
-  - [Headline, 'UUS ÜLESANNE: EHITA LADU']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita lao telk (taseme 1 kaart) sinna, kus see on mõistlik.
+  - - Headline
+    - 'UUS ÜLESANNE: EHITA LADU'
+  - - Image
+    - content/gui/images/background/hr.png
   - Kas sa oled hiljuti oma saeveskit jälginud?
   - Kuna su laohoone ei ole lõputult suur, et kaupu hoida, siis lõpetavad kogujad lao täitumisel kaupade kogumise.
   - Kui meremehed ei ole hiljuti soovinud oma telkide uuendamist, siis on sul ilmselt palju laudu ja saeveski ei tööta.
@@ -328,8 +384,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     See võib kõlada imelikult, kuid klõpsa hammasrattal, mis on puuraiduri hüti ülevaatel.'
   - Kui seal on "puhkuse" olek lubatud, siis on ehitise käituskulud madalamad. Need ei lange nulli, kuid nad on siiski väiksemad, kui sa hoiad kompanii kaupu tootmas.
   - - Gallery
-    - [content/gui/icons/templates/production/toggle_inactive_h.png]
-  - [Pagebreak]
+    - - content/gui/icons/templates/production/toggle_inactive_h.png
+  - - Pagebreak
   - '
 
     See tähendab, et sa saad raha koguda, kui sa ajutiselt ei kompaniid ei vaja ja ei soovi ka seda lammutada.'
@@ -341,39 +397,51 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     * saadab oma enda kogujad kapuadele järgi, nii nagu seda teevad laod.'
   - Kõik kompaniid võivad olla ühendatud ka laoga, et nende toodangut kogutaks ja kui lao kogujad on ülekoormatud, siis saab laotelk sind ladustamisel aidata.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita laotelk, eelistatult kohta, kuhu vajad kogujaid.']
+  - - BoldLabel
+    - 'Ülesanne: ehita laotelk, eelistatult kohta, kuhu vajad kogujaid.'
   - - Gallery
-    - [content/gui/icons/buildmenu/002.png]
+    - - content/gui/icons/buildmenu/002.png
 
 - &WEAVER
-  - [Message, 'Ehita kangru hütt, mis saab kuidagi töödelda su farmi villa.']
-  - [Headline, 'UUS ÜLESANNE: EHITA KETRUSVABRIK']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Ehita kangru hütt, mis saab kuidagi töödelda su farmi villa.
+  - - Headline
+    - 'UUS ÜLESANNE: EHITA KETRUSVABRIK'
+  - - Image
+    - content/gui/images/background/hr.png
   - Nüüd, kus villatootmine on käivitatud, on sul vaja veel kangrut, et toota villast kangast.
   - 'Kangru hütt on koht, kus elab kangur. Ehitamiseks mõistlikke kohti on kaks: kas farmi või lao (-telgi) naabrusesse.'
   - Mõlemal juhul pead rajama ka ühendava teeraja.
   - Kangru hüti võid paigutada farmi lähedale ja samas hävitada farmi ühendusteed, kuid villa varumine ja töötlemine jätkub ikkagi.
   - ''
-  - [BoldLabel, 'Ülesanne: ehita kangru hütt nii, et ta saaks hankida villa.']
+  - - BoldLabel
+    - 'Ülesanne: ehita kangru hütt nii, et ta saaks hankida villa.'
   - - Gallery
-    - [content/gui/icons/buildmenu/007.png]
+    - - content/gui/icons/buildmenu/007.png
 
 - &GOALS
-  - [Message, 'Linnas olev maja, milles on vähemalt 50 elanikku, lõpetab selle õpetuse. Bilanns peab polema positiivne.']
-  - [Headline, 'UUS ÜLESANNE: LÕPETA ÕPETUS']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Linnas olev maja, milles on vähemalt 50 elanikku, lõpetab selle õpetuse. Bilanns peab polema positiivne.
+  - - Headline
+    - 'UUS ÜLESANNE: LÕPETA ÕPETUS'
+  - - Image
+    - content/gui/images/background/hr.png
   - Proovi majutada oma linnas vähemalt 50 elanikku ehitades rohkem elamuid.
   - Kui su majandus töötab piisavalt, et rahuldada sellist elanike arvu, siis oled sa valmis avastama mängu "Unknown Horizons"!
   - Sul on vaja piisavalt raha, et hoida majandus toimimas, seega on positiivne bilanss vajalik (kontrolli lao kaarti "Konto").
   - ''
-  - [BoldLabel, 'Ülesanne: Jõua vähemalt 50 elanikuni ja positiivse bilansini, et see õpetus lõpetada.']
+  - - BoldLabel
+    - 'Ülesanne: Jõua vähemalt 50 elanikuni ja positiivse bilansini, et see õpetus lõpetada.'
   - - Gallery
-    - [content/gui/icons/widgets/cityinfo/inhabitants.png]
+    - - content/gui/icons/widgets/cityinfo/inhabitants.png
 
 - &WON
-  - [Message, Palju õnne! Oled jõudnud selle õpetuse lõppu ja valmis kohtuma järgmiste väljakutsetega!]
-  - [Headline, ROHKEM ÜLESANDEID EI OLE]
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Palju õnne! Oled jõudnud selle õpetuse lõppu ja valmis kohtuma järgmiste väljakutsetega!
+  - - Headline
+    - ROHKEM ÜLESANDEID EI OLE
+  - - Image
+    - content/gui/images/background/hr.png
   - Sa oled edukalt lõpetanud kõik sulle antud ülesanded. Maailm on nüüd sulle valla, oodates su suuri tegusid ja vapraid avastusi!
   - 'Kui sul on ettepanekuid parandusteks, täiendusteks aga ka eemaldamiseks, siis anna sellest meile teada:'
   - www.unknown-horizons.org
@@ -381,9 +449,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - team@unknown-horizons.org
   - Meie foorumid on sulle samuti avatud!
   - Senised parimad tulemused arhiveeriti liitudes me IRC kanaliga, nii et sa võiksid hakatuseks proovida seda (-;
-  - [Pagebreak]
-  - [Headline, Suur aitäh!]
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - Suur aitäh!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -395,7 +465,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Tervitavad Unknown Horizonsi loojad'
   - - Gallery
-    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - - content/packages/unknown-horizons.xpm
+      - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
 
 events:
 - # Show a message after starting the game (how to move)
