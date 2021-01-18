@@ -159,7 +159,7 @@ def get_content_dir_parent_path():
 	# Unknown Horizons.app/Contents/Resources/contents
 	options.append(os.getcwd())
 	# Try often-used paths on Linux.
-	for path in ('/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
+	for path in ('/app/share', '/usr/share/games', '/usr/share', '/usr/local/share/games', '/usr/local/share'):
 		options.append(os.path.join(path, 'unknown-horizons'))
 
 	for path in options:
