@@ -595,7 +595,6 @@ msgstr ""
 "kan sette opp farten litt."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."
@@ -958,7 +957,6 @@ msgid "NEW TASK: BUILD A FARM"
 msgstr "NY OPPGAVE: BYGG EN GÅRD"
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid "Congratulations! Some of your inhabitants have reached tier II!"
 msgstr "Gratulerer! Noen av dine innbyggere har oppnådd nivå II!"
 
@@ -973,7 +971,6 @@ msgid "A shiny new tab appeared there."
 msgstr "En skinnende ny fane har dukket opp der."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "Pioneers will demand cloth, so you need to set up a production line for "
 "cloth starting with lambs wool (which is one of the goods produced at the "
@@ -1182,7 +1179,6 @@ msgstr ""
 "tømmerhuggerhyttens oversikt."
 
 #. This is the text body of a logbook page.
-#, fuzzy
 msgid ""
 "If this 'break' mode is enabled (we call it 'Decommissioning'), the running "
 "costs you pay for the building will decrease. They won't be zero, but still "

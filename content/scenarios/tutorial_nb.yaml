@@ -202,7 +202,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Vanligvis seiler bare handelsmannen rundt og ser etter gode avtaler, men du kan sette opp farten litt.
   - - Gallery
     - - content/gui/icons/buildmenu/006_h.png
-  - For this purpose, build a Signal Fire at the coast near your Warehouse. It will show ships the way to your settlement.
+  - Dette er poenget med å bygge et signalbål på kysten nær varehuset ditt. Det viser skip hvor bosetningen din er.
   - Signalbålet må dekke området som skipene passerer igjennom for å få tak i dem.
   - - Pagebreak
   - '
@@ -314,12 +314,12 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - 'NY OPPGAVE: BYGG EN GÅRD'
   - - Image
     - content/gui/images/background/hr.png
-  - Congratulations! Some of your inhabitants have reached tier II!
+  - Gratulerer! Noen av dine innbyggere har oppnådd nivå II!
   - Nå har du tilgang til to nye bygninger. Ta en ny titt på byggemenyen igjen.
   - - Gallery
     - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - En skinnende ny fane har dukket opp der.
-  - Pioneers will demand cloth, so you need to set up a production line for cloth starting with lambs wool (which is one of the goods produced at the Farm).
+  - Pionerene vil kreve tøy. Du må dermed sette opp en produksjonslinje for tøy som starter med saueull (som er en av varene som produseres av gården).
   - Gården er en veldig spesiell produksjonsbygning siden den kan produsere ikke bare én, men mange (og forskjellige) varer hvis du velger det.
   - Produksjonen til gårder er avhengig av hvilke jorder du bygger rundt den.
   - - Pagebreak
@@ -382,7 +382,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - 'Alle kompanjonger tilbyr å ikke jobbe i det hele tatt.
 
     Dette høres kanskje rart ut, men klikk på tannhjulet du ser i tømmerhuggerhyttens oversikt.'
-  - If this 'break' mode is enabled (we call it 'Decommissioning'), the running costs you pay for the building will decrease. They won't be zero, but still lower than if you keep the company producing.
+  - Hvis denne «bremse»-modusen er aktiv (vi kaller den «å ta ut av drift»), så vil de løpende kostnadene du betaler for bygningen reduseres. De vil ikke bli null, men de er uansett lavere enn om du lot selskapet fortsette å produsere.
   - - Gallery
     - - content/gui/icons/templates/production/toggle_inactive_h.png
   - - Pagebreak
@@ -728,4 +728,4 @@ metadata:
   locale: nb
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 184 translated messages, 4 fuzzy translations.
+  translation_status: 188 translated messages.
