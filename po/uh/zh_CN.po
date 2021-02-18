@@ -859,6 +859,7 @@ msgid "Resources"
 msgstr "资源"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
+#, fuzzy
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
