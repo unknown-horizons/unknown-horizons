@@ -37,4 +37,4 @@ class JsonDecoder:
 			return newdict
 
 		with open(path, "r") as f:
-			return json.load(f, encoding="ascii", object_hook=_decode_dict)
+			return json.load(f, object_hook=_decode_dict)

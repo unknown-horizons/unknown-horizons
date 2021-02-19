@@ -79,9 +79,9 @@ class PreloadingThread(threading.Thread):
 		"""
 		self.lock.acquire()
 		# wait until it finished its current action
-		if self.isAlive():
+		if self.is_alive():
 			self.join()
-			assert not self.isAlive()
+			assert not self.is_alive()
 		else:
 			try:
 				self.lock.release()
