@@ -60,6 +60,7 @@ msgid "We've been informed that one of our rivals snared new land."
 msgstr "我们被告知一个竞争对手抢到了新的土地。"
 
 #. Founding settlement - Rival found settlement
+#, fuzzy
 msgid "One of our opponents is said to have expanded."
 msgstr "据说我们的一个对手已经扩张了领地。"
 
