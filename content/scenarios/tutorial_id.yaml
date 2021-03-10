@@ -9,17 +9,20 @@
 logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logbook, arguments: *ANCHOR}
 # All anchors are replaced by the YAML parser upon file load, there is no UH code related to this magic.
 - &WELCOME
-  - [Message, Bangun sebuah gudang di pantai untuk mengijinkan kapal dagang untuk berkunjung di pemukiman kamu.]
+  - - Message
+    - Bangun sebuah gudang di pantai untuk mengijinkan kapal dagang untuk berkunjung di pemukiman kamu.
   - '
 
 
 
     '
   - - Gallery
-    - [content/gfx/uh.png]
-  - [Pagebreak]
-  - [Headline, Selamat datang di Unknown Horizons!]
-  - [Image, content/gui/images/background/hr.png]
+    - - content/gfx/uh.png
+  - - Pagebreak
+  - - Headline
+    - Selamat datang di Unknown Horizons!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -27,13 +30,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ini jurnal kamu, dimana informasi penting mengenai skenario berlangsung disimpan. Sebuah ringkasan dari setiap tugas baru akan muncul sebagai sebuah tombol notifikasi dekat sebelah kiri tangan dari layar. Anda dapat mengarahkan mouse di atas notifikasi untuk membaca ringkasan, atau klik tombol tersebut untuk membuka jurnal.
   - Anda dapat juga membuka kembali jurnal kapan saja dengan mengklik tombol di bawah peta kecil, di atas kanan layar Anda. Sekarang, kita akan menunjukan ke area ini yang berisi peta kecil, bermacam tombol dan tab sebagai gambaran ikhtisari.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/captainslog.png]
+    - - content/gui/icons/widgets/minimap/captainslog.png
   - '
 
     Untuk melihat tugas pertama kamu, beralih ke halaman selanjutnya dari Jurnal Anda menggunakan tombol di bagian bawah halaman yang berlawanan - terlihat seperti ini :'
   - - Gallery
-    - [content/gui/images/buttons/parrow_right.png]
-  - [Pagebreak]
+    - - content/gui/images/buttons/parrow_right.png
+  - - Pagebreak
   - '
 
     Jika Anda mempunyai beberapa masukan mengenai bagaimana tutorial ini dapat dikembangkan, atau jika Anda menemukan beberapa kesalahan, Mohon beritahu kami.'
@@ -42,52 +45,64 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Kunjungi www.unknown-horizons.org untuk menemukan bagaimana menghubungi tim kami.'
   - ''
   - Dan sekarang, Ayo mulai permainannya!
-  - [Pagebreak]
-  - [Headline, 'TUGAS BARU: Buat sebuah bangunan pemukiman']
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - 'TUGAS BARU: Buat sebuah bangunan pemukiman'
+  - - Image
+    - content/gui/images/background/hr.png
   - Kapal kamu berada di laut, dimuat suplai yang kamu akan butuhkan untuk mendirikan sebuah bangunan pemukiman baru.
   - Untuk mengerakan kapal kamu, pilih kapal dengan klik kiri kemudian klik kanan pada lokasi kamu inginkan untuk berlayar.
-  - Sekali kamu mendekati pantai, tombol 'Pembangunan Pemukiman'  di gambaran ikhtisari akan menjadi aktif.
+  - Saat mendekati pantai, tombol 'Pembangunan Pemukiman' di gambaran ikhtisari akan menjadi aktif.
   - - Gallery
-    - [content/gui/icons/ship/anchor.png]
-  - Mengklik tombol ini akan menampilkan sebuah pratinjau dari gudang, Bangunan pertama memerlukan sebuah pemukiman baru. Dengan kamu menggerakan kursor sekitar, kamu akan melihat sebuah pratinjau  yang berarsir merah ketika bangunan tersebut berada di daerah yang tidak cocok.
+    - - content/gui/icons/ship/anchor.png
+  - Mengklik tombol ini akan menampilkan sebuah pratinjau dari gudang, Bangunan pertama memerlukan sebuah pemukiman baru. Dengan kamu menggerakan kursor, kamu akan melihat sebuah pratinjau yang berarsir merah ketika bangunan tersebut berada di daerah yang tidak cocok.
   - Gudang membutuhkan untuk diposisi di pantai agar kapal bisa ke dermaga. Jadi, cari lokasi bagus kemudian klik kiri to menempatkan bangunan penting ini.
   - ''
-  - [BoldLabel, 'Task: Bangun sebuah gudang di pantai.']
+  - - BoldLabel
+    - 'Task: Bangun sebuah gudang di pantai.'
 
 - &LUMBERJACK
-  - [Message, Bangun sebuah tenda penebang pohon dan hubungkan itu menuju ke gudang.]
-  - [Headline, 'TUGAS BARU: BANGUN SEBUAH TENDA PENEBANG POHON']
-  - [Image, content/gui/images/background/hr.png]
-  - Persedian dan material konstrusi dapat dibongkar dari kapal kamu dan taruh secara aman di gudang baru kamu. Sekarang  waktu untuk membangun beberapa bangunan dasar, memulai dengan sebuah tenda penebang pohon.
+  - - Message
+    - Bangun sebuah tenda penebang pohon dan hubungkan itu menuju ke gudang.
+  - - Headline
+    - 'TUGAS BARU: BANGUN SEBUAH TENDA PENEBANG POHON'
+  - - Image
+    - content/gui/images/background/hr.png
+  - Persedian dan material konstrusi dapat dibongkar dari kapal kamu dan taruh secara aman di gudang baru kamu. Saatnya untuk membangun beberapa bangunan dasar, memulai dengan sebuah tenda penebang pohon.
   - Para penebang akan menebang pohon dari daerah berhutan sekitar tenda mereka dan memulai proses pengolahan kayu untuk memproduksi papan, untuk kegunaan di konstruksi atau sebagai sumber daya perdagangan.
   - Untuk membangun sebuah tenda penebang pohon, buka Menu Bangunan dengan mengklik tombol di bawah peta mini atau tekan 'B' sebagai pintasan default.
   - - Gallery
-    - [content/gui/icons/widgets/minimap/build.png]
+    - - content/gui/icons/widgets/minimap/build.png
   - Menu bangunan diurut berdasarkan beberapa tingkatan dan seperti keadaan kamu sekarang adalah sebuah pemukiman baru, Bangunan tingkat pertama hanya satu jenis tersedia untuk kamu; Dengan peradaban kamu maju, kamu akan memperoleh akses ke tingkat yang lebih tinggi dan mampu membangun bangunan yang jenis lebih luas.
-  - [Pagebreak]
+  - - Pagebreak
   - ''
   - Cari sebuah lokasi yang bagus untuk para penebang kita berkerja kemudian pilih 'tenda penebang pohon' dari list bangunan di gambaran ikhtisari dan tempatkan bangunan tersebut.
   - Kemudian di dalam permaina kamu mungkin ingin membuat daerah hutang dengan menanam pohon - pohon, tapi karena itu membutuhkan uang, kamu sebaiknya menggunakan apa alam yang telah sediakan untuk sementara waktu!
   - Ada beberapa sumber daya yang dikumpulkan atau bangunan produksi membutuhkan sebuah jalur yang terhubung ke sebuah gudang atau bentuk penyimpanan lainnya, jika tidak, barang yang diproduksi tidak akan diambil.
-  - Jadi, sekali tenda penebang pohon kamu berada diposisinya, hubungkan bangunan tersebut ke gudang kamu denga membuka bangunan menu kemudian mengklik  tombol 'Jalur'. Sekarang kamu dapat mengklik dan menyeret dengan mouse untuk menggambar rute dari jalur kamu diantara tenda penebang pohon dan gudang kamu.
+  - Saat tenda penebang pohon kamu berada diposisinya, hubungkan bangunan tersebut ke gudang kamu dengan membuka menu bangunan kemudian mengklik tombol 'Jalur'. Sekarang kamu dapat mengklik dan menyeret dengan tetikus untuk menggambar rute dari jalur kamu diantara tenda penebang pohon dan gudang kamu.
   - ''
-  - [BoldLabel, 'Task:  Bangun sebuah tenda penebng pohon di sebuah daerah berhutan dan hubungkan bangunan tersebut ke gudang kamu.']
+  - - BoldLabel
+    - 'Tugas: Bangun sebuah tenda penebang pohon di sebuah daerah berhutan dan hubungkan bangunan tersebut ke gudang kamu.'
   - Sekali bangunan - bangunan tersebut terhubung. Kamu akan melihat pengumpul tiba untuk mengambil papan - papan kamu yang baru diproduksi dan kirim beberapa papan tersebut ke gudang, siap untuk digunakan di konstruksi atau dagang.
   - - Gallery
-    - [content/gui/icons/buildmenu/008.png, content/gui/icons/buildmenu/015.png, content/gui/icons/resources/32/004.png]
+    - - content/gui/icons/buildmenu/008.png
+      - content/gui/icons/buildmenu/015.png
+      - content/gui/icons/resources/32/004.png
 
 - &FOOD
-  - [Message, Bangun sebuah tenda pemburu dan sebuah tenda nelayan. hubungkan keduanya ke gudang.]
-  - [Headline, 'TUGAS BARU: PERSEDIAN MAKANAN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangun sebuah tenda pemburu dan sebuah tenda nelayan. hubungkan keduanya ke gudang.
+  - - Headline
+    - 'TUGAS BARU: PERSEDIAN MAKANAN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Kamu akan membutuhkan beberapa kumpulan tempat produksi makanan juga, karena orang secara umum (dan pada khususnya para pelaut) sangat lapar.
   - Kumpulan tempat produksi makanan pada tingkat pertama adalah tenda pemburu dan tenda nelayan.
   - Pemburu memburu binatang di dalam hutan, jadi ini membutuhkan pohon - pohon dekatnya.
   - Catat yang kamu dapat menaruh tenda pemburu dekat dengan hutan para penebang kayu.
   - Ini bisa dilakukan kalau para binatang tidak berkembang biak cukup cepat atau hanya bersembunyi dengan baik.
   - 'Kesimpulan: Tenda pemburu tidak terlalu handal jika kamu ingin persedian berkelanjutan.'
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Nelayan membutuhkan sebuah letak bangunan pantai seperti gudang dan kumpulan ikan di jangkuannya.'
@@ -95,57 +110,65 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Ini sebuah persedian sangat konstan pada biaya dari sebuah waktu produksi yang sedikit lama per unit dari makanan.
   - Sebuah pemukiman kecil seperit kamu punya dapat mengunakan kedua pengumpulan tempat makanan tersebut, dan kamu dapat lebih menyeimbangkan pro dan kontra jika kamu melihat arahan perbandingan tersebut.
   - ''
-  - [BoldLabel, 'Tugas: Bangun sebuah tenda pemburu dan sebuah tenda nelayan.']
+  - - BoldLabel
+    - 'Tugas: Bangun sebuah tenda pemburu dan sebuah tenda nelayan.'
   - Jangan lupa untuk menghubungkan keduany ke gudang kamu dengan jalanan kecil!
   - - Gallery
-    - [content/gui/icons/buildmenu/011_h.png, content/gui/icons/buildmenu/009_h.png, content/gui/icons/resources/32/005.png]
+    - - content/gui/icons/buildmenu/011_h.png
+      - content/gui/icons/buildmenu/009_h.png
+      - content/gui/icons/resources/32/005.png
 
 - &MAINSQUARE
-  - [Message, Bangun sebuah alun - alun. Pilih sebuah area tanpa bangunan perekonomian.]
-  - [Headline, 'TUGAS BARU: ALUN - ALUN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangun sebuah alun - alun. Pilih sebuah area tanpa bangunan perekonomian.
+  - - Headline
+    - 'TUGAS BARU: ALUN - ALUN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Para penduduk kamu membutuhkan sebuah alun - alun dimana mereka dapat mengambil barang mereka dari situ.
   - 'Ini berarti mereka membutuhkan sebuah jalan kecil yang menghubungkan dari rumah mereka ke alun - alun. Catatan: Alun - alun tersebut bertindak sebagai jalan juga, karena itu tenda berdekatan alun - alun tidak membutuhkan sebuah jalan setapak pemisah.'
-  - Semua barang - barang di dalam gudang kamu tersedia di 'plaza' ini, jadi para penduduk kamu tidak membutuhkan berjalan kaki ke tenda nelayan  atau bahkan ke gudang.
+  - Semua barang di dalam gudang kamu tersedia di 'plaza' ini, jadi para penduduk kamu tak perlu berjalan kaki ke tenda nelayan atau bahkan ke gudang.
   - - Gallery
-    - [content/gui/icons/buildmenu/004_h.png]
+    - - content/gui/icons/buildmenu/004_h.png
   - Seharusnya kamu menjauhkan tenda-tenda penduduk dari bangunan penebang pohon, karena membangun tenda-tenda penduduk didekat penebang pohon akan menghilangkan pepohonan yang penebang pohon butuhkan untuk memproduksi papan-papan kayu.
   - Perusahaan bekerja tanpa harus terhubung ke tenda pemukiman, jadi kamu tidak perlu membangun jalan diantara alun-alun dan misalnya penebang pohon.
   - ''
-  - [BoldLabel, 'Tugas:
-
-      Bangunlah sebuah alun-alun.']
-  - [Pagebreak]
+  - - BoldLabel
+    - 'Tugas: Bangunlah sebuah alun-alun.'
+  - - Pagebreak
   - '
 
     Sekarang mari lihat lebih dekat ke alun-alun.'
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/account_a.png]
+    - - content/gui/icons/tabwidget/warehouse/account_a.png
   - Di tab 'Akun' kamu akan melihat lembar keseimbangan dari pulau ini, disana menampilkan semua pembayaran yang kamu bayar dan pajak yang kamu dapat.
   - Barang-barang 'Jual' dan 'Beli' merujuk pada keseimbangan perdagangan milikmu dan akan dijelaskan nanti.
   - Jika keseimbanganmu bernilai positif, kamu akan mendapatkan keuntungan seutuhnya.
   - - Gallery
-    - [content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png]
+    - - content/gui/icons/tabwidget/mainsquare/inhabitants0_a.png
   - Di tab ikhtisar tingkatan kamu dapat melihat statistik mengenai pendudukmu. Kamu juga dapat menentukan pajak disini dan dapat mengizinkan atau melarang penduduk meningkatkan rumah-rumah mereka.
 
 - &FIRSTTENT
-  - [Message, Bangunlah sebuah tenda penduduk dan hubungkan ke alun-alun jika memungkinkan.]
-  - [Headline, 'TUGAS BARU: BANGUNLAH PERUMAHAN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangunlah sebuah tenda penduduk dan hubungkan ke alun-alun jika memungkinkan.
+  - - Headline
+    - 'TUGAS BARU: BANGUNLAH PERUMAHAN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Penduduk ingin ada atap diatas mereka (rumah), jika tidak mereka tidak ingin tinggal dikotamu! Kamu perlu menyediakan tenda.
   - - Gallery
-    - [content/gui/icons/buildmenu/003_h.png]
+    - - content/gui/icons/buildmenu/003_h.png
   - Tenda adalah bangunan perumahan dasar. Pendudukmu akan segera menginginkan tenda-tenda mereka ditingkatkan ketika mereka mencapai ikhtisar tertinggi.
   - Catat! Peningkatan dari beberapa bangunan membutuhkan bahan baku konstruksi, seperti kayu untuk peningkatan pertama mereka.
   - Pertimbangkan untuk menonaktifkan Peningkatan jika persediaan bahan bakumu rendah.
   - Para penduduk mungkin terlihat tidak terlalu berguna sejak mereka sesegera mungkin mencoba mengonsumsi semua barang yang kamu produksi - tapi pada akhirnya mereka akan membayar pajak, dan itu cara satu-satunya untuk menghasilkan uang saat ini!
   - ''
-  - [BoldLabel, 'Tugas:
-
-      Bangunlah sebuah tenda penduduk dan hubungkan ke alun-alun jika memungkinkan. Tenda penduduk tidak perlu dihubungkan ke perusahaan apapun.']
+  - - BoldLabel
+    - 'Tugas: Bangunlah sebuah tenda penduduk dan hubungkan ke alun-alun jika memungkinkan. Tenda penduduk tidak perlu dihubungkan ke perusahaan apapun.'
 
 - &MORETENTS
-  - [Message, Bangunlah setidaknya 3 tenda penduduk tambahan dan hubungkan ke alun-alun.]
+  - - Message
+    - Bangunlah setidaknya 3 tenda penduduk tambahan dan hubungkan ke alun-alun.
   - '
 
     Mari kita lihat ke tab ikhtisar tenda penduduk.'
@@ -160,42 +183,48 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jika tidak, kebahagiaan dan pendapatan akan menurun. Pada saat-saat tertentu pendudukmu akan muram dan dengan mudah mengacuhkan desamu dan meninggalkan kehancuran yang membusuk.
   - Catat! kamu juga dapat mengubah pengaturan pajak global disini.
   - ''
-  - [BoldLabel, 'Tugas:
-
-      Bangunlah setidaknya 3 tenda penduduk.']
+  - - BoldLabel
+    - 'Tugas: Bangunlah setidaknya 3 tenda penduduk.'
   - '
 
     Tips: Tahan tombol SHIFT ketika membangun bangunan yang sama.'
 
 - &SIGNALFIRE
-  - [Message, Bangunlah sebuah Sinyal Api di bibir pantai dekat dengan gudang milikmu.]
-  - [Headline, 'TUGAS BARU: BANGUNLAH SINYAL API']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangunlah sebuah Sinyal Api di bibir pantai dekat dengan gudang milikmu.
+  - - Headline
+    - 'TUGAS BARU: BANGUNLAH SINYAL API'
+  - - Image
+    - content/gui/images/background/hr.png
   - Dapat kamu lihat kapal melewati pulau mu dari waktu ke waktu? Kapal-kapal itu merupakan Pedagang Bebas, salah satu pemukim pertama di kepulauan ini.
   - Pedagang akan menyediakan pemukimanmu dengan barang-barang kebutuhan yang mana tidak dapat kamu produksi.
   - Kamu juga dapat menjual kelebihan produksimu, tapi secara umum kamu mengkonsumsinya (dengan membangun lebih banyak Tenda) alih-alih menjualnya menghasilkan lebih banyak keuntungan.
   - Normalnya pedagang hanya berlayar disekitar dan mencari penawaran, tapi kamu dapat mempercepatnya sedikit.
   - - Gallery
-    - [content/gui/icons/buildmenu/006_h.png]
+    - - content/gui/icons/buildmenu/006_h.png
   - Untuk ini, bangunlah sinyal api di tepi pantai dekat gudangmu. Itu akan menunjukkan kapal, jalan ke pemukimanmu.
   - Sinyal Api dapat menjangkau area yang mana banyak kapal berlalu begitu saja untuk menarik mereka.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Setelah iklan kecil ini, pedagang akan berlabuh dan melihat-lihat gudangmu, bahkan jika ia berencana melewatinya.'
   - Kamu dapat mengatur penawaran lewat tab "Jual/Beli" di gudang.
   - - Gallery
-    - [content/gui/icons/tabwidget/warehouse/buysell_a.png]
+    - - content/gui/icons/tabwidget/warehouse/buysell_a.png
   - Di tingkatan 'pelaut', kamu hanya dapat menggunakan 3 petak penjualan.
   - Ketuk pada ikon kecil untuk mengubah mode petak dari 'Jual' ke 'Beli' dan sebaliknya.
   - Ketuk pada petak dagang untuk memilih barang yang ingin kamu perdagangkan. Kami akan jelaskan ini ketika kamu sudah siap untuk berdagang.
   - ''
-  - [BoldLabel, 'Tugas: Bangunlah sebuah sinya api di tepi pantai dekat dengan gudangmu.']
+  - - BoldLabel
+    - 'Tugas: Bangunlah sebuah sinya api di tepi pantai dekat dengan gudangmu.'
 
 - &TRADING
-  - [Message, Capai persediaan pulau setidaknya 30 alat. Catat! ini butuh waktu.]
-  - [Headline, 'TUGAS BARU: PELAJARI PERDAGANGAN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Capai persediaan pulau setidaknya 30 alat. Catat! ini butuh waktu.
+  - - Headline
+    - 'TUGAS BARU: PELAJARI PERDAGANGAN'
+  - - Image
+    - content/gui/images/background/hr.png
   - 'Bagus! Sekarang pedagang bebas akan berlabuh di gudangmu seiring waktu.
 
 
@@ -206,7 +235,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Seret penggeser dikanan petak dagangmu untuk menentukan 'Jumlah/Nilai Target' yang mana berbeda dengan istilah 'Jual/Beli'.
   - Ketika membeli, kamu akan cukup/selesai membeli sesuai 'Nilai Target' di persediaan.
   - Ketika menjual, 'Nilai Target' adalah jumlah persediaan yang dijadikan Nilai Batas Jual. ketika melebihi batas, sumberdaya akan dijual. Ketika jumlah sumberdaya dibawah ambang batas, makan barang tidak akan dijual sampai jumlah barangmu melebihi batas yang tadi kamu tentukan.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Sebagai contoh:
@@ -219,22 +248,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Tapi, Ini TIDAK memungkinkan kamu untuk mengubah harganya secara manual!'
   - Kamu dapat melihat keseimbangan perdaganganmu di opsi 'Akun', dan tab perbandingan 'jual' dan 'beli' ada disana.
   - ''
-  - [BoldLabel, 'Tugas: Belilah beberapa alat sesuai yang kamu butuhkan hingga persediaanmu mecapai 30 alat!']
+  - - BoldLabel
+    - 'Tugas: Belilah beberapa alat sesuai yang kamu butuhkan hingga persediaanmu mecapai 30 alat!'
   - - Gallery
-    - [content/gui/icons/resources/32/006.png]
+    - - content/gui/icons/resources/32/006.png
 
 - &PAVILION
-  - [Message, 'Bangunlah Paviliun dengan menghubungkannya ke tenda-tenda penduduk.
-
-      *KBBI : Paviliun berarti bangunan tambahan disebelah rumah induk.']
-  - [Headline, 'TUGAS BARU: BANGUNLAH SEBUAH PAVILIUN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangunlah Paviliun dengan menghubungkannya ke tenda-tenda penduduk.
+  - - Headline
+    - 'TUGAS BARU: BANGUNLAH SEBUAH PAVILIUN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Alat-alat itu akan cukup untuk saat ini, Selesai dengan baik!
   - Sekarang kamu sediakan perumahan, alun-alun dan makanan untuk pendudukmu.
   - 'Sampai disini ada satu permintaan yang belum kita penuhi dan tidak terlalu sulit (Kamu perlu memeriksanya, dengan mengetuk tenda penduduk): Pelautmu ingin bangunan dasar dimana ia dapat berdoa/beribadah.'
   - Solusinya adalah Paviliun yang pemuka agama cepat tempatkan di pemukiman dari matahari.
   - Pelayanan bangunan seperti ini juga butuh terhubung ke tenda penduduk dengan jalan, jika tidak para penduduk tidak dapat menjangkaunya.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Catat! Kepercayaan itu diperlukan, seperti sumberdaya jiwa!'
@@ -246,20 +277,24 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Cobalah untuk mengatur koneksi jalan sebaik-baiknya.'
   - ''
-  - [BoldLabel, 'Tugas: Buatlah Paviliun dengan jalan ke tenda penduduk dalam rangka memenuhi permintaam untuk kepercayaan (ibadah).']
+  - - BoldLabel
+    - 'Tugas: Buatlah Paviliun dengan jalan ke tenda penduduk dalam rangka memenuhi permintaam untuk kepercayaan (ibadah).'
   - - Gallery
-    - [content/gui/icons/buildmenu/005.png]
+    - - content/gui/icons/buildmenu/005.png
 
 - &NEXTTIER
-  - [Message, Tetapkan tingkatan pajak ke Paling Rendah (Pojok Kiri) dan tunggu hingga pelaut ditingkatkan.]
-  - [Headline, 'TUGAS BARU: TINGKATAN BERIKUTNYA']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Tetapkan tingkatan pajak ke Paling Rendah (Pojok Kiri) dan tunggu hingga pelaut ditingkatkan.
+  - - Headline
+    - 'TUGAS BARU: TINGKATAN BERIKUTNYA'
+  - - Image
+    - content/gui/images/background/hr.png
   - Semua permintaan telah dipenuhi, sekarang jika pendudukmu dapat mengunjungi alun-alun secara teratur dan paviliun serta pasokan makanan cukup.
   - Jika pelaut cukup senang, mereka ingin ditingkatkan lagi ke tingkatan berikutnya, yaitu Pelopor (Pioneers).
   - Untuk membuat mereka senang, Tidak ada cara lain selain menetapkan pajak ke paling rendah sejak kamu memenuhi semua kebutuhannya.
   - Seharusnya kamu tidak selalu mencoba menurunkan pajak hingga terendah sejak saat ini atau kita akan jatuh dalam kebankrutan kedepan atau nanti. Untuk periode ini dan jika kamu tau apa yang kamu lakukan, ya.. itu tidak mengapa.
   - Setelah beberapa waktu, Unit Pertama harus berjalan ke alun-alun dan mencari bahan baku kontruksi baru disana untuk membangun rumah kayu, untuk menggantikan tenda tua.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Seperti peningkatan perumahan, biaya sumberdaya dapat dibatasi di alun-alun.'
@@ -267,23 +302,27 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Meningkatkan perumahan mengakomodasikan lebih banyak penduduk, dan pelopor membayar lebih banyak pajak daripada pelaut.
   - Seperti yang mungkin sudah kamu ketahui, kelemahan permintaan pelopor adalah barang-barang tambahan yang mana pelaut tidak butuhkan - jadi kamu akan butuh meluangkan lebih banyak uang untuk membuat mereka senang.
   - ''
-  - [BoldLabel, 'Tugas: Tetapkan tingkatan pajak ke paling rendah (Pojok Kiri) dan tunggu hingga pelopor ditingkatkan.']
+  - - BoldLabel
+    - 'Tugas: Tetapkan tingkatan pajak ke paling rendah (Pojok Kiri) dan tunggu hingga pelopor ditingkatkan.'
   - - Gallery
-    - [content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png]
+    - - content/gfx/buildings/pioneers/residential/as_hut0/idle/45/0.png
 
 - &FARM
-  - [Message, Bangun perkebunan dan jaga supaya tempat disekelilingnya tetap kosong.]
-  - [Headline, 'TUGAS BARU: BANGUNLAH PERKEBUNAN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangun perkebunan dan jaga supaya tempat disekelilingnya tetap kosong.
+  - - Headline
+    - 'TUGAS BARU: BANGUNLAH PERKEBUNAN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Selamat! Beberapa pendudukmu sudah mencapai tingkatan 2!
   - Sekarang kamu punya akses ke bangunan yang baru, coba lihat ke daftar bangunan lagi.
   - - Gallery
-    - [content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png]
+    - - content/gui/icons/tabwidget/buildmenu/tier/tier2_u.png
   - Tab baru yang Berkilau muncul disana.
   - Pelopor akan menginginkan pakaian, jadi kamu perlu menetapkan produksi untuk pakaian, dengan memulainya dengan wool domba (yang mana merupakan barang produksi dari perkebunan).
   - Perkebunan merupakan bangunan produksi yang sangat spesial sejak ia dapat memproduksi lebih dari satu jenis barang, tapi banyak (dan berbeda) barang jika kamu memilihnya.
   - Pengeluaran dari perkebunan tergantung ladang apa saja yang kamu buat disekelilingnya.
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Kita akan melihat lebih dekat nanti.'
@@ -292,14 +331,18 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Jika kamu, mungkin, merencanakan proses dalam bagian yang berbeda di pulau (yang masuk akal) atau mungkin di pulau yang lain, kamu perlu menghubungkannya dengan pengumpul barang ; gudang atau gedung pengumpul barang.
   - Cobalah bangun perkebunan tidak terlalu dekat dengan bibir pantai atau bangunanmu lainnya, karena itu memerlukan ruang disekitarnya.
   - ''
-  - [BoldLabel, 'Tugas: Bangunlah Perkebunan.']
+  - - BoldLabel
+    - 'Tugas: Bangunlah Perkebunan.'
   - - Gallery
-    - [content/gui/icons/buildmenu/020.png]
+    - - content/gui/icons/buildmenu/020.png
 
 - &FIELDS
-  - [Message, Bangun setidaknya satu padang rumput dan tambahkan ladang kentang jika kamu suka.]
-  - [Headline, 'TUGAS BARU: BANGUN LADANG']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangun setidaknya satu padang rumput dan tambahkan ladang kentang jika kamu suka.
+  - - Headline
+    - 'TUGAS BARU: BANGUN LADANG'
+  - - Image
+    - content/gui/images/background/hr.png
   - Perkebunan sendiri tidak akan memproduksi sesuatu tanpa adanya ladang.
   - Sekarang kamu harus memilih diantara Padang Rumput, Kentang atau Ladang Tebu (gula).
   - 'Mari kita lihat ikhtisar singkatnya:
@@ -311,7 +354,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     *Ladang Tebu: menumbuhkan tebu, yang mana akan digunakan sebagai gula pada penyulingan minuman (bir) dan nantinya dapat pula memproduksi gula-gula/makanan manis.'
   - Sekarang kita hanya butuh padang rumput, tapi pada kasus menyediakan rantai makanan, ini terlalu kecil (mungkin banyak perumahan) kamu juga dapat memproduksi beberapa kentang.
   - Catat! Untuk produksi kentang, kamu perlu jalan yang menghubungkannya ke perkebunan bukan ke ladang, karena produksi kentang merupakan produksi akhir (tidak ada produksi selanjutnya yang mengelola kentang).
-  - [Pagebreak]
+  - - Pagebreak
   - '
 
     Pastikan semua ladangmu, kamu buat di area yang dapat dijangkau perkebunan.'
@@ -319,14 +362,19 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Berbeda jenis ladang diperlukan untuk mengisi waktu kosong perkebunan. Contohnya ketika habis masa panen, ia akan menunggu lama hingga masa panen berikutnya tiba, maka diperlukan ladang yang lain. Dan karenanya, perkebunan mungkin tidak dapat menghasilkan semuanya dalam satu waktu.
   - Untuk saat ini, kamu tidak perlu terlalu memperhatikan hal-hal tadi, karena kamu belum membangun ladang apapun, Ayo ubah itu!
   - ''
-  - [BoldLabel, 'Tugas: Bangun setidaknya satu padang rumput di jangkauan perkebunan dan tambahkan ladang kentang jikalau kamu suka.']
+  - - BoldLabel
+    - 'Tugas: Bangun setidaknya satu padang rumput di jangkauan perkebunan dan tambahkan ladang kentang jikalau kamu suka.'
   - - Gallery
-    - [content/gui/icons/buildmenu/018.png, content/gui/icons/buildmenu/019.png]
+    - - content/gui/icons/buildmenu/018.png
+      - content/gui/icons/buildmenu/019.png
 
 - &STORAGE
-  - [Message, Bangunlah sebuah tenda penyimpanan (terletak pada tab tingkatan pertama) yang mana masuk akal.]
-  - [Headline, 'TUGAS BARU: BANGUNLAH PENYIMPANAN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangunlah sebuah tenda penyimpanan (terletak pada tab tingkatan pertama) yang mana masuk akal.
+  - - Headline
+    - 'TUGAS BARU: BANGUNLAH PENYIMPANAN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Apakah kamu lihat penebang pohonmu baru-baru ini?
   - Sejak gudangmu tidak lagi memiliki ruang tersisa, kolektor/pengumpul sumberdaya akan berhenti mengambilnya dari tiap perusahaan.
   - Jadi, jika baru-baru ini tidak ada pelaut yang meningkatkan tenda-tenda mereka, mungkin kamu punya banyak papan dan dapat saja penebang pohon menganggur.
@@ -336,8 +384,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     Ini mungkin terdengar asing, tapi ketuk pada lambang roda bergerigi yang kamu lihat di opsi penebang pohon.'
   - Jika mode 'break' atau 'istirahat' diaktifkan (kita menyebutnya 'Decomissioning' berarti 'Penonaktifan'), pajak bangunan tersebut akan menurun. Tapi tidak sepenuhnya menjadi Nol '0'. Tapi pajaknya lebih rendah dari pada ketika kamu membiarkannya tetap memproduksi.
   - - Gallery
-    - [content/gui/icons/templates/production/toggle_inactive_h.png]
-  - [Pagebreak]
+    - - content/gui/icons/templates/production/toggle_inactive_h.png
+  - - Pagebreak
   - '
 
     Ini berarti kamu dapat menghemat uangmu ketika kamu tidak memerlukan suatu perusahaan dan tidak ingin menurunkan tingkatannya.'
@@ -349,39 +397,51 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     *mengirimkan orang-orang pengumpul sumber daya untuk mengumpulkan barang, seperti yang gudang lakukan.'
   - Catat! Perusahaan dapat juga terhubung ke penyimpanan dalam rangka mengumpulkan hasil produksi, dan jika gudang kewalahan dengan tugas mengumpulkan barang-barang, kamu dapat menempatkan tenda penyimpanan untuk membantunya.
   - ''
-  - [BoldLabel, 'Tugas: Bangunlah tenda penyimpanan, dimana kamu butuh pengumpul barang.']
+  - - BoldLabel
+    - 'Tugas: Bangunlah tenda penyimpanan, dimana kamu butuh pengumpul barang.'
   - - Gallery
-    - [content/gui/icons/buildmenu/002.png]
+    - - content/gui/icons/buildmenu/002.png
 
 - &WEAVER
-  - [Message, Bangunlah pondok penenun yang dapat menjangkau perkebunan wool kamu.]
-  - [Headline, 'TUGAS BARU: BANGUNLAH PENENUN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Bangunlah pondok penenun yang dapat menjangkau perkebunan wool kamu.
+  - - Headline
+    - 'TUGAS BARU: BANGUNLAH PENENUN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Sekarang produksi wool sudah diatur, kamu perlu penenun untuk meproduksi pakaian dari wool tersebut.
   - Pondok penenun adalah tempat dimana penenun tinggal. Ada 2 tempat dimana kamu dapat membangunya - ditempat dimana dekat perkebunan atau didekat penyimpanan atau gudang.
   - Dalam kasus yang lain, kamu perlu menghubungkannya dengan jalan.
   - Kamu dapat menempatkan pondok penenun dekat dengan perkebunan dan pastikan ada jalan yang menghubungkannya.
   - ''
-  - [BoldLabel, 'Tugas: Bangun pondok penenun dan posisikan ia sehingga dapat memperoleh wool.']
+  - - BoldLabel
+    - 'Tugas: Bangun pondok penenun dan posisikan ia sehingga dapat memperoleh wool.'
   - - Gallery
-    - [content/gui/icons/buildmenu/007.png]
+    - - content/gui/icons/buildmenu/007.png
 
 - &GOALS
-  - [Message, Raih Rumah dengan jumlah 50 atau lebih banyak penduduk di kotamu untuk menyelesaikan pembelajaran atau tutorial. Dan kamu butuh keseimbangan yang positif.]
-  - [Headline, 'TUGAS BARU: SELESAIKAN PEMBELAJARAN']
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Raih Rumah dengan jumlah 50 atau lebih banyak penduduk di kotamu untuk menyelesaikan pembelajaran atau tutorial. Dan kamu butuh keseimbangan yang positif.
+  - - Headline
+    - 'TUGAS BARU: SELESAIKAN PEMBELAJARAN'
+  - - Image
+    - content/gui/images/background/hr.png
   - Coba bangun rumah dengan jumlah 50 atau lebih penduduk di kotamu dengan menyediakan lebih banyak bangunan perumahan.
   - Selagi kamu dapat menjaga perekonomian berjalan yang dapat membuat pelanggan puas, kamu siap menjelajahi Unknown Horizon yang baru!
   - Kamu juga butuh cukup uang untuk menjaga perekonomian tetap berjalan, jadi keseimbangan yang positif diperlukan (coba periksa di gudang, lalu ketuk tab 'Akun').
   - ''
-  - [BoldLabel, 'Tugas: Capai jumlah 50 penduduk dan keseimbangan ekonomi yang positif untuk menyelesikan pembelajaran.']
+  - - BoldLabel
+    - 'Tugas: Capai jumlah 50 penduduk dan keseimbangan ekonomi yang positif untuk menyelesikan pembelajaran.'
   - - Gallery
-    - [content/gui/icons/widgets/cityinfo/inhabitants.png]
+    - - content/gui/icons/widgets/cityinfo/inhabitants.png
 
 - &WON
-  - [Message, Selamat! Kamu sudah mencapai akhir dari pembelajaran ini dan kamu sudah siap untuk bertemu tantangan baru!]
-  - [Headline, TIDAK ADA TUGAS TERSISA]
-  - [Image, content/gui/images/background/hr.png]
+  - - Message
+    - Selamat! Kamu sudah mencapai akhir dari pembelajaran ini dan kamu sudah siap untuk bertemu tantangan baru!
+  - - Headline
+    - TIDAK ADA TUGAS TERSISA
+  - - Image
+    - content/gui/images/background/hr.png
   - Kamu sudah menyelesaikaikan semua tugas yang dibebankan kepadamu. Sekarang dunia ada dalam genggamanmu, menunggu aspirasimu yang bebas dan keberanianmu menjelajah!
   - 'Jika kamu punya beberapa saran yang perlu kita lakukan atau beberapa perbaikan, tambahkan atau tinggalkan :'
   - www.unknown-horizon.org
@@ -389,9 +449,11 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - team@unknown-horizons.org
   - Forum kami terbuka untukmu!
   - Hasil terbaik sampai sekarang yang diraih dengan bergabung channel kit IRC, jadi kamu dapat mencobanya pertama kali (-;
-  - [Pagebreak]
-  - [Headline, Terimakasih!]
-  - [Image, content/gui/images/background/hr.png]
+  - - Pagebreak
+  - - Headline
+    - Terimakasih!
+  - - Image
+    - content/gui/images/background/hr.png
   - '
 
 
@@ -403,7 +465,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Your UH-Team'
   - - Gallery
-    - [content/packages/unknown-horizons.xpm, content/gfx/misc/status_icons/as_book_flip/idle/45/003.png]
+    - - content/packages/unknown-horizons.xpm
+      - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
 
 events:
 - # Show a message after starting the game (how to move)
@@ -658,7 +721,9 @@ events:
 
 metadata:
   author: The UH team
-  description: Bangun pemukiman pertama kamu dan belajar bagaimana cara bermain!
+  description: 'Panduan:
+
+    Bangun pemukiman pertama Anda dan pelajari cara bermain!'
   difficulty: Tutorial
   locale: id
   mapfile: development.sqlite
