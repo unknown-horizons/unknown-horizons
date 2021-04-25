@@ -22,68 +22,78 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 1740年11月20日]
-  - [Image, content/gui/images/background/hr.png]
-  - 在四天的风暴过后我们终于获得了喘息的机会。但是我们现在只剩下少许的食物与破损的船只。导航设备与航海图已经遗失了。
-  - We have to come ashore soon. One of my jacks saw some birds hunting for fish, so land can't be far. Fortunately we always have some tools and boards onboard, so we can build some basic shelter.
+  - - Headline
+    - 1740 年，11 月 20 日
+  - - Image
+    - content/gui/images/background/hr.png
+  - 四天的风暴过后，我们终于获得了喘息的机会。但现在的我们只剩下些许食物，和破损的船只，而导航设备和海图都已遗失。
+  - 我们必须尽快靠岸。 手下看到有鸟类在捕鱼，这预示着陆地就在不远处。 很幸运，船上还有一些工具和木板，能够建立起简易的庇护所。
   - '任务：
 
-    寻找陆地和建立一个港口。'
-  - [Pagebreak]
+    寻找陆地，并建立一座港口。'
+  - - Pagebreak
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 1740年11月22日]
-  - [Image, content/gui/images/background/hr.png]
-  - The port is built and a new hope arises. I am still worried about the next days… we are running out of food and lack basic building material.
-  - We need to secure our basic needs to keep us alive. It is time to send people gathering food and lumber so that we can survive and build some shelter.
+  - - Headline
+    - 1740 年，11 月 22 日
+  - - Image
+    - content/gui/images/background/hr.png
+  - 港口建成了，我们有希望了。 不过我还是担心接下来的日子…...我们的食物告罄，又缺少基本的建材。
+  - 要确保活下去。 是时候让大家收集食物和木材了。
   - '任务：
 
-    建立每个至少一个：
+    每样至少一个：
 
-    *伐木工
+    * 伐木工
 
-    *渔夫
+    * 渔夫
 
-    *猎人
+    * 猎人
 
-    收集5样食物和5块木板。'
-  - [Pagebreak]
+    收集 5 样食物，和 5 块木板。'
+  - - Pagebreak
   - ''
 
 - &TENTS
-  - [Headline, 1740年11月25号]
-  - [Image, content/gui/images/background/hr.png]
-  - We have secured our basic needs of food and gathered some wood to continue the growth of our new settlement. Our people demand a place to live and exchange goods for their everyday needs.
-  - It is time to build some tents to live in and a small main square to supply our citizens with goods.
+  - - Headline
+    - 1740 年，11 月 25 日
+  - - Image
+    - content/gui/images/background/hr.png
+  - 食物已满足，木材也够定居点的增长需求。 人民还要求有一处居住和贸易的地方，来满足日常需求。
+  - 是该建造一些帐篷了。再修建一处中央广场，为市民提供货物。
   - '任务：
 
-    建造一座主要广场和至少10间的帐篷。'
-  - [Pagebreak]
+    建造一座中央广场，和不少于10 间的帐篷。'
+  - - Pagebreak
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1740年12月1号]
-  - [Image, content/gui/images/background/hr.png]
-  - Finally we have enough to eat and a place to live again. My tent is not very comfortable but it keeps me dry and I have the feeling of having a roof over my head at night.
-  - 'I have been researching the stars at night, but without my sea charts and instruments their meaning remains unknown. I have the feeling we will be stuck here for a while, so we''ll have to make the best of situation.
+  - - Headline
+    - 1740 年，12 月 1 号
+  - - Image
+    - content/gui/images/background/hr.png
+  - 我们终于有吃住的地方了。 尽管帐篷住得不太舒服，但也让我们免于风吹雨打。
+  - '每晚我都在观测星空。不过少了海图和仪器，我的脑子还是一头雾水。 我总感觉，得在这里呆上很久，有必要充分了解周遭。
 
-    We can only try to to build up a civilisation and find a way home…'
-  - 'Task:
+    我们会试着建立文明，并找到回家的路……'
+  - '任务：
 
-    Grow the village until you have at least 250 inhabitants and a positive balance.'
-  - [Pagebreak]
+    发展村庄，至少得有 250 名居民，并保持村庄正增长。'
+  - - Pagebreak
   - ''
 
 - &WON
-  - [Headline, 1745年8月27号]
-  - [Image, content/gui/images/background/hr.png]
-  - Our village is doing well, the city has grown to over 250 inhabitants. I have started getting used to my new home, but this island is too small to stay here forever.
-  - We should load our ship and move out to find a bigger island offering room and resources for my people. I have created a basic navigational map again, using the stars I see at night. It is not perfect, but I hope it will suffice to return here.
-  - 'Task:
+  - - Headline
+    - 1745 年，8 月 27 日
+  - - Image
+    - content/gui/images/background/hr.png
+  - 村庄整体发展良好，人口已过 250 人。 我已习惯了新家，不过这个岛太小了，不能久困于此。
+  - 我们要乘船，外出寻找更大的岛屿，来提供足够的空间和资源。 夜晚观星也有了收获，创建了基本的导航图。 尽管它不太完美，但我希望它能帮助我离开这里。
+  - '任务：
 
-    Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out how you can contribute to making this scenario longer and better!'
-  - [Pagebreak]
+    和“未知地平线”团队（www.unknown-horizons.org）联系，为游戏后续发展添砖加瓦！'
+  - - Pagebreak
   - ''
 
 events:
@@ -142,11 +152,11 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: '你是一位1740年英格兰旗下的船长。你和你的水手前往到太平洋的英格兰殖民地。
+  description: '1740年，作为船长，你将率领船队前往位于太平洋的英格兰殖民地。
 
-    一开始一切正常直到暴风来临的那一刻…'
+    开局顺风顺水，直到一场暴风雨来袭……'
   difficulty: 简单
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/The_Unknown_en.yaml
-  translation_status: 11 translated messages, 11 untranslated messages.
+  translation_status: 22 translated messages.
