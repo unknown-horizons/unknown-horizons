@@ -98,8 +98,8 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - content/gui/images/background/hr.png
   - 您还将需要一些生产粮食的公司，因为人们（尤其是水手）非常饥饿。
   - 最初可供选择的公司有猎人帐篷和渔夫帐篷。
-  - 猎人在森林中狩猎动物，因此需要附近有树林。
-  - 注意，你可以将猎人的帐篷放在靠近伐木工人森林的地方。
+  - 猎人在森林里狩猎，附近需要有树林。
+  - 注意，可将猎人帐篷建在靠近伐木工工作的森林旁。
   - 可能会发生动物繁殖速度不够快，或者干脆躲得远远的。
   - 结论：如果需要持续补给的话，猎人的帐篷不太靠谱。
   - - Pagebreak
@@ -125,7 +125,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
     - 新任务：中央广场
   - - Image
     - content/gui/images/background/hr.png
-  - Your residents need a main square where they can fetch their goods from.
+  - 居民需要一座中央广场，来满足货物供应。
   - This means that they need a trail connection from their home to the Main Square. Note that the Main Square acts as trail as well, therefore adjacent Tents do not need a separate Trail.
   - All goods in your Warehouse are available at this 'market place', so your residents do not need to walk to the Fisherman's Tent or even to the Warehouse.
   - - Gallery
@@ -138,7 +138,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Pagebreak
   - '
 
-    Now let''s have a closer look at the Main Square.'
+    我们近距离接触一下中央广场。'
   - - Gallery
     - - content/gui/icons/tabwidget/warehouse/account_a.png
   - In the 'Account' tab you get a balance sheet of this island, featuring all costs you pay and all taxes you earn.
@@ -164,21 +164,21 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Settlers may not look very useful since they will try to consume all goods you produce - but they at least pay taxes, and that's the only way you can make money for now!
   - ''
   - - BoldLabel
-    - 'Task: Build a Tent and connect it to the Main Square if necessary. Tents don''t need to be connected to any of the companies.'
+    - 任务：建立一所帐篷，必要时可连接到中央广场。 帐篷不需要连接到公司。
 
 - &MORETENTS
   - - Message
-    - Build at least three additional Tents and connect them to the Main Square.
+    - 至少再修建三所帐篷，并连接到中央广场。
   - '
 
-    Let''s have a look at the Tent overview tab.'
-  - 'You can see
+    我们研究一下帐篷的概述栏。'
+  - '可以看到有：
 
-    * the happiness of these residents,
+    * 居民幸福度，
 
-    * the taxes they pay and
+    * 税款
 
-    * the resources they demand.'
+    * 及所需资源。'
   - If their demands are fulfilled, happiness and thus your tax income increase.
   - If not, happiness and income decrease. At some time your residents may get really sour and simply turn their back on your village, leaving behind a decaying ruin.
   - Note that you can also change the global tax settings here, too.
@@ -193,7 +193,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Message
     - Build a Signal Fire at the coast close to your Warehouse.
   - - Headline
-    - 新任务：建造烽火
+    - 新任务：建造烽火台
   - - Image
     - content/gui/images/background/hr.png
   - Can you see the ship passing your island from time to time? That ship belongs to the Free Trader, one of the first settlers in this archipelago.
@@ -216,13 +216,13 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - Click in the slot to choose the good you want to trade with. We will further explain this once you are ready to trade.
   - ''
   - - BoldLabel
-    - 'Task: Build a Signal Fire at the coast close to your Warehouse.'
+    - 任务：在靠近仓库的海岸处建造烽火台。
 
 - &TRADING
   - - Message
     - Reach an island stock of at least 30 tools. Note that this might take a while.
   - - Headline
-    - 新任务：学贸易
+    - 新任务：研究贸易
   - - Image
     - content/gui/images/background/hr.png
   - 'Excellent! The Free Trader will now stop by at your Warehouse from time to time.
@@ -257,7 +257,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - - Message
     - Build a Pavilion with connection to the Tents.
   - - Headline
-    - 新任务：建造一个帐篷
+    - 'NEW TASK: BUILD A PAVILION'
   - - Image
     - content/gui/images/background/hr.png
   - Those tools will be enough for the moment. Well done!
@@ -460,10 +460,10 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
 
 
-    Thanks for playing the tutorial!
+    感谢体验游戏教程！
 
 
-    Your UH-Team'
+    Unknown Horizons 团队敬奉'
   - - Gallery
     - - content/packages/unknown-horizons.xpm
       - content/gfx/misc/status_icons/as_book_flip/idle/45/003.png
@@ -728,4 +728,4 @@ metadata:
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 51 translated messages, 137 untranslated messages.
+  translation_status: 58 translated messages, 130 untranslated messages.
