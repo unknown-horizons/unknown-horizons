@@ -106,7 +106,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
   - '
 
     渔民需要一个像仓库一样的沿海建筑工地和一个范围内的鱼群。'
-  - He will build a small rowing vessel and catch some fish.
+  - 他会造一艘小艇来钓鱼。
   - This is a very constant supply at the cost of a slightly longer production time per unit of food.
   - A small settlement like yours can use both companies, and you can better balance pros and cons if you see the direct comparison.
   - ''
@@ -728,4 +728,4 @@ metadata:
   locale: zh_CN
   mapfile: development.sqlite
   original: content/scenarios/tutorial_en.yaml
-  translation_status: 58 translated messages, 130 untranslated messages.
+  translation_status: 59 translated messages, 129 untranslated messages.
