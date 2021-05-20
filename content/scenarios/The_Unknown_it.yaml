@@ -22,19 +22,23 @@
 
 logbook-data:
 - &INTRO
-  - [Headline, 20 novembre 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 20 novembre 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Dopo quattro giorni la tempesta è finalmente cessata e possiamo riposarci. Nonostante ciò, abbiamo poche scorte di cibo e la nave è ridotta malamente. Abbiamo perso gli strumenti di navigazione e le nostre mappe.
   - Dobbiamo assolutamente raggiungere la costa il più presto possibile. Una vedetta ha visto degli uccelli a caccia di pesce, quindi la costa non può essere lontana. Per fortuna abbiamo alcuni strumenti da lavoro e delle tavole di legno, quindi possiamo costruirci un riparo.
   - 'Obiettivo:
 
     Raggiungi la costa e costruisci un porto.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &FOOD_BOARDS
-  - [Headline, 22 novembre 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 22 novembre 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Il porto è stato costruito e le speranze dei miei uomini si sono risollevate. Sono ancora preoccupato per i giorni a venire... il nostro cibo è quasi terminato e ci servono materiali da costruzione.
   - Dobbiamo soddisfare le nostre necessità per sopravvivere. È tempo di mandare degli uomini a caccia e a fare legna così potremo sopravvivere.
   - 'Obiettivi:
@@ -48,23 +52,27 @@ logbook-data:
     * Capanna del cacciatore
 
     Raccogli 5 unità di cibo e 5 tavole di legno.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &TENTS
-  - [Headline, 25 novembre 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 25 novembre 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Abbiamo risolto le nostre necessità di cibo e raccolto del legname per poterci espandere. La gente chiede un posto dove poter vivere e dove potersi scambiare le merci per soddisfare i propri bisogni quotidiani.
   - È tempo di costruire alcune tende dove vivere e una piccola piazza princiaple che si possa fornire con i prodotti di prima necessità.
   - 'Obiettivo:
 
     Costruisci una piazza principale e almeno 10 tende.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &GROW_SETTLEMENT
-  - [Headline, 1 Dicembre 1740]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 1 Dicembre 1740
+  - - Image
+    - content/gui/images/background/hr.png
   - Alla fine abbiamo abbastanza cibo e un posto dove vivere. La mia tenda non'è molto comoda ma almeno mi tiene asciutto e da la sensazione di avere un tetto sopra la testa la notte.
   - 'Ho iniziato a studiare le stelle durante la notte, ma senza gli strumenti di navigazione e le mappe il loro significato rimane sconosciuto. Credo che rimarremo bloccati qui per un pò di tempo, quindi sarà meglio darsi da fare e migliorare le nostre condizioni.
 
@@ -72,18 +80,20 @@ logbook-data:
   - 'Obiettivo:
 
     Espandi il villaggio fino a raggiungere quota 250 abitanti e un bilancio positivo.'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 - &WON
-  - [Headline, 27 agosto 1745]
-  - [Image, content/gui/images/background/hr.png]
+  - - Headline
+    - 27 agosto 1745
+  - - Image
+    - content/gui/images/background/hr.png
   - Il villaggio procede bene, la città è cresciuta ed ha più di 250 abitanti. Mi sto abituando alla nuova casa, ma quest'isola è troppo piccola per restarci per sempre.
   - Dobbiamo caricare la nave e partire per cercare un'isola più grande, che abbia spazio e risorse per la mia gente. Ho creato un'altra mappa di navigazione, seguendo le stelle visibili di notte. Non è perfetta, ma spero che basti per tornare qui.
   - 'Obiettivo:
 
     Contattare il team di Unknown Horizons (www.unknown-horizons.org) e scopri come aiutare a rendere questo scenario migliore e più lungo!'
-  - [Pagebreak]
+  - - Pagebreak
   - ''
 
 events:
@@ -142,7 +152,7 @@ events:
 
 metadata:
   author: Kikody, UH-Team
-  description: 'Sei il capitano di un vascello sotto bandiera inglese nel 1740. Tu e il tuo equipaggio eravate in viaggio verso una colonia inglese nell''oceano Pacifico.
+  description: 'Sei il capitano di un vascello battente bandiera Britannica nel 1740. Tu e il tuo equipaggio eravate in viaggio verso una colonia Inglese nell''Oceano Pacifico.
 
     Tutto stava andando bene, quando finiste in una violenta tempesta…'
   difficulty: facile
