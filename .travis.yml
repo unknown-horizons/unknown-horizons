@@ -46,6 +46,6 @@ notifications:
   email: false
   irc:
     channels:
-      - "chat.freenode.net#unknown-horizons"
+      - "irc.libera.chat#unknown-horizons"
     skip_join: false
     use_notice: false
