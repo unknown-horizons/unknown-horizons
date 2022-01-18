@@ -23,7 +23,7 @@ from horizons.constants import BUILDINGS
 
 
 def get_tile_alignment_action(origin, is_similar_tile):
-	r"""
+	"""
 	ROAD/WALL ORIENTATION CHEATSHEET
 	================================
 	a       b
