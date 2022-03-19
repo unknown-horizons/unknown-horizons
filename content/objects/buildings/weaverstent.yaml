@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 2
 size_y: 2
 inhabitants: 2
-tooltip_text: _ Turns lamb wool into cloth.
+tooltip_text: _ Turns lamb wool into textile.
 tier: TIER.PIONEERS
 buildingcosts: {RES.GOLD: 250, RES.BOARDS: 3, RES.TOOLS: 2}
 components:

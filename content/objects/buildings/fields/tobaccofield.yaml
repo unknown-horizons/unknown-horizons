@@ -7,7 +7,7 @@ cost_inactive: 0
 size_x: 3
 size_y: 3
 inhabitants: 0
-tooltip_text: _ Produces tobacco. Needs a farm.
+tooltip_text: _ Produces tobacco plants. Needs a farm.
 tier: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 150}
 show_status_icons: false

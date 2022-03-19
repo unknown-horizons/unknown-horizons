@@ -7,7 +7,7 @@ cost_inactive: 5
 size_x: 2
 size_y: 2
 inhabitants: 2
-tooltip_text: _ Treats diseases. Consumes herbs.
+tooltip_text: _ Treats diseases. Consumes medical herbs.
 tier: TIER.SETTLERS
 buildingcosts: {RES.GOLD: 500, RES.BOARDS: 3, RES.TOOLS: 3, RES.BRICKS: 3}
 components:

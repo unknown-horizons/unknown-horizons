@@ -124,7 +124,7 @@ T("Turns sugar into liquor.")
 # name of buildings:doctor
 T("Doctor")
 # tooltip_text of buildings:doctor
-T("Treats diseases. Consumes herbs.")
+T("Treats diseases. Consumes medical herbs.")
 
 """content/objects/buildings/farm.yaml"""
 # name of buildings:farm
@@ -202,7 +202,7 @@ T("Used in liquor production. Needs a farm.")
 # name of buildings:fields:tobaccofield
 T("Tobacco Field")
 # tooltip_text of buildings:fields:tobaccofield
-T("Produces tobacco. Needs a farm.")
+T("Produces tobacco plants. Needs a farm.")
 
 """content/objects/buildings/fields/vineyard.yaml"""
 # name of buildings:fields:vineyard
@@ -348,7 +348,7 @@ T("Houses your inhabitants.")
 # name of buildings:tobacconist
 T("Tobacconist")
 # tooltip_text of buildings:tobacconist
-T("Produces tobaccos out of tobacco.")
+T("Produces tobaccos out of tobacco leaves.")
 
 """content/objects/buildings/toolmaker.yaml"""
 # name of buildings:toolmaker
@@ -392,7 +392,7 @@ T("Produces weapons out of iron.")
 # name of buildings:weaverstent
 T("Weaver's Hut")
 # tooltip_text of buildings:weaverstent
-T("Turns lamb wool into cloth.")
+T("Turns lamb wool into textile.")
 
 """content/objects/buildings/windmill.yaml"""
 # name of buildings:windmill
