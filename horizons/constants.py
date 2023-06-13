@@ -55,9 +55,8 @@ def get_git_version():
 			git = "git.exe"
 
 		# Note that this uses glob patterns, not regular expressions.
-		# TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
-		# describe = [git, "describe", "--tags", TAG_STRUCTURE]
-		describe = [git, "describe", "--tags"]
+		TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
+		describe = [git, "describe", "--tags", "--match", TAG_STRUCTURE]
 		git_string = subprocess.check_output(describe, cwd=uh_path, universal_newlines=True).rstrip('\n')
 		return git_string
 	except (subprocess.CalledProcessError, RuntimeError):
