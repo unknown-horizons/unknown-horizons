@@ -41,7 +41,7 @@ from horizons.ext import polib
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
 
-if distro.linux_distribution(full_distribution_name=False)[0] in ('debian', 'mint', 'ubuntu'):
+if distro.id() in ('debian', 'linuxmint', 'ubuntu'):
 	executable_path = 'games'
 else:
 	executable_path = 'bin'
