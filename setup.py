@@ -236,20 +236,20 @@ class _build_i18n(distutils.cmd.Command):
 build.sub_commands.append(('build_i18n', None))
 
 cmdclass = {
-    'build_i18n': _build_i18n,
+	'build_i18n': _build_i18n,
 }
 
 setup(
-    name='UnknownHorizons',
-    version=VERSION.RELEASE_VERSION,
-    description='Realtime Economy Simulation and Strategy Game',
-    author='The Unknown Horizons Team',
-    author_email='team@unknown-horizons.org',
-    url='http://www.unknown-horizons.org',
-    packages=packages,
-    package_data=package_data,
-    data_files=data,
-    cmdclass=cmdclass)
+	name='UnknownHorizons',
+	version=VERSION.RELEASE_VERSION,
+	description='Realtime Economy Simulation and Strategy Game',
+	author='The Unknown Horizons Team',
+	author_email='team@unknown-horizons.org',
+	url='http://www.unknown-horizons.org',
+	packages=packages,
+	package_data=package_data,
+	data_files=data,
+	cmdclass=cmdclass)
 
 # after installation remove gitversion.txt
 if os.path.exists('.git'):
