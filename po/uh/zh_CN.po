@@ -859,7 +859,6 @@ msgid "Resources"
 msgstr "资源"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:14
-#, fuzzy
 msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
@@ -2809,7 +2808,7 @@ msgstr "饲养猪。需要一个农场。"
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:185
 msgid "Potato Field"
-msgstr "土豆农场"
+msgstr "土豆田"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
@@ -3139,7 +3138,7 @@ msgstr "提供木材。伐木工负责砍树。"
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:377
 msgid "Village School"
-msgstr "农村学校"
+msgstr "乡村学校"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:379
