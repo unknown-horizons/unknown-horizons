@@ -26,6 +26,7 @@ import glob
 import json
 import os
 import platform
+import re
 import sys
 from distutils.command.build import build
 from distutils.core import setup
@@ -239,9 +240,18 @@ cmdclass = {
 	'build_i18n': _build_i18n,
 }
 
+
+def _get_pep440_compliant_version(git_describe_output):
+	pattern = r'(20[\d]{2}\.[\d]+)(?:-([\d]+)-g[0-f]+)?'
+	if '-g' in git_describe_output:
+		return re.sub(pattern, r'\1.dev\2', git_describe_output)  # git revision count since tag
+	else:
+		return re.sub(pattern, r'\1', git_describe_output)  # just the tag itself, no suffix
+
+
 setup(
 	name='UnknownHorizons',
-	version=VERSION.RELEASE_VERSION,
+	version=_get_pep440_compliant_version(VERSION.RELEASE_VERSION),
 	description='Realtime Economy Simulation and Strategy Game',
 	author='The Unknown Horizons Team',
 	author_email='team@unknown-horizons.org',
