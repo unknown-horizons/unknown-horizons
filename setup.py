@@ -26,6 +26,7 @@ import glob
 import json
 import os
 import platform
+import re
 import sys
 from distutils.command.build import build
 from distutils.core import setup
@@ -41,7 +42,7 @@ from horizons.ext import polib
 # Ensure we are in the correct directory
 os.chdir(os.path.realpath(os.path.dirname(__file__)))
 
-if distro.linux_distribution(full_distribution_name=False)[0] in ('debian', 'mint', 'ubuntu'):
+if distro.id() in ('debian', 'linuxmint', 'ubuntu'):
 	executable_path = 'games'
 else:
 	executable_path = 'bin'
@@ -236,20 +237,29 @@ class _build_i18n(distutils.cmd.Command):
 build.sub_commands.append(('build_i18n', None))
 
 cmdclass = {
-    'build_i18n': _build_i18n,
+	'build_i18n': _build_i18n,
 }
 
+
+def _get_pep440_compliant_version(git_describe_output):
+	pattern = r'(20[\d]{2}\.[\d]+)(?:-([\d]+)-g[0-f]+)?'
+	if '-g' in git_describe_output:
+		return re.sub(pattern, r'\1.dev\2', git_describe_output)  # git revision count since tag
+	else:
+		return re.sub(pattern, r'\1', git_describe_output)  # just the tag itself, no suffix
+
+
 setup(
-    name='UnknownHorizons',
-    version=VERSION.RELEASE_VERSION,
-    description='Realtime Economy Simulation and Strategy Game',
-    author='The Unknown Horizons Team',
-    author_email='team@unknown-horizons.org',
-    url='http://www.unknown-horizons.org',
-    packages=packages,
-    package_data=package_data,
-    data_files=data,
-    cmdclass=cmdclass)
+	name='UnknownHorizons',
+	version=_get_pep440_compliant_version(VERSION.RELEASE_VERSION),
+	description='Realtime Economy Simulation and Strategy Game',
+	author='The Unknown Horizons Team',
+	author_email='team@unknown-horizons.org',
+	url='http://www.unknown-horizons.org',
+	packages=packages,
+	package_data=package_data,
+	data_files=data,
+	cmdclass=cmdclass)
 
 # after installation remove gitversion.txt
 if os.path.exists('.git'):
