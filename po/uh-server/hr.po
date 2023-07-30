@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2020-02-14 01:50+0000\n"
+"PO-Revision-Date: 2021-12-25 16:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/uh/uh-server/hr/"
 ">\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Premašio/la si veličinu po paketima."
+msgstr "Premašio/la si veličinu paketa."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
@@ -53,11 +53,11 @@ msgstr "Ne možeš se pridružiti jednoj igri dok se nalaziš u jednoj drugoj ig
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr "Nepoznata igra ili je igra pokrenuta s drugačijom verzijom"
+msgstr "Nepoznata igra ili igra koja je pokrenuta s drugačijom verzijom"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr "Igra je započela. Nitko se više ne može pridružiti"
+msgstr "Igra je već započela. Nitko se više ne može pridružiti"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
@@ -88,8 +88,8 @@ msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"U igri se već nalazi igrač s tvojim jedinstvenim ID-om igrača. To se nikada "
-"ne bi smjelo dogoditi."
+"U igri se već nalazi igrač s tvojom jedinstvenom ID oznakom igrača. To se "
+"nikada ne bi smjelo dogoditi."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
@@ -104,7 +104,7 @@ msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Jedan je igrač prekinuo igru. Iz tehničkih razloga, to trenutačno znači, da "
+"Jedan igrač je prekinuo igru. Iz tehničkih razloga, to trenutačno znači, da "
 "se igra ne može nastaviti. Žao nam je."
 
 #: horizons/network/server.py:548

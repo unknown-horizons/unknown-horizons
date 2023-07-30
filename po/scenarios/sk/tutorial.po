@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 9e3f16e\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2018-09-25 17:36+0000\n"
-"Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
+"PO-Revision-Date: 2022-03-31 22:09+0000\n"
+"Last-Translator: Pexauteau Santander <pexauteau@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/tutorial/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.2-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -28,14 +28,14 @@ msgid ""
 "Build your first settlement and learn how to play!"
 msgstr ""
 "Výučba:\n"
-"Postavte sovju prvú osadu a naučte sa hrať!"
+"Postav sovju prvú osadu a nauč sa hrať!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
-"Postavte na pobreží obchodný prístav, aby ste povolili ostatným lodiam "
-"navštíviť vašu osadu."
+"Postav na pobreží obchodný prístav, aby si tak povolil ostatným lodiam "
+"navštíviť tvoju osadu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
@@ -49,7 +49,10 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
-"Toto je tvoj denník, tu sú uložené dôležité informácie o momentálnom scenáre."
+"Toto je tvoj Denník, kde sú uložené dôležité informácie o prebiehajúcej "
+"kapitole. Súhrn každej novej úlohy sa tiež objaví ako 'notifikačné tlačítko' "
+"blízko ľavého okraja obrazovky. Prejdi myšou ponad tieto upozornenia a "
+"prečítaj si ich zhrnutie, alebo klikni na toto tlačítko a otvoríš Denník."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -58,9 +61,9 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
-"Taktiež môžeš tento denník otvoriť kedykoľvek chceš tlačidlom pod mini-mapov "
-"v pravom hornom rohu obrazovky. Odteraz sa okolie minimapy bude volať "
-"\"Prehľad\"."
+"Taktiež môžeš tento Denník otvoriť kedykoľvek kliknutím na tlačítko pod mini "
+"mapou v pravom hornom rohu obrazovky. Odteraz budeme odkazovať na oblasť, "
+"ktorá obsahuje mini mapu, rôzne tlačítka a záložky, ako na 'Prehľad'."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -69,8 +72,8 @@ msgid ""
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
 "\n"
-"Pre zobrazenie vášej prvej úlohy obráťte na ďalšiu stranu denníku použitím "
-"tlačidla v dolnej časti - Vyzerá to takto:"
+"Pre zobrazenie tvojej prvej úlohy, prejdi na nasledujúcu stranu Denníka "
+"pomocou tlačidla v dolnej časti náprotivnej strany - vyzerá takto:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -79,8 +82,8 @@ msgid ""
 "you encounter any errors, please tell us."
 msgstr ""
 "\n"
-"Ak máte nejaké nápady o tom ako tento tutorial môže byť vylepšený alebo ste "
-"narazili na nejakú chybu, prosím povedzte nám."
+"Ak máš nejaké nápady, ako by sme mohli túto výučbu vylepšiť, alebo si "
+"postrehol nejakú chybu, prosím povedz nám o tom."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -88,7 +91,7 @@ msgid ""
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"Navštívte nás na www.unknown-horizons.org pre kontaktovanie tímu."
+"Navštív www.unknown-horizons.org a zisti, ako kontaktovať náš tím."
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
@@ -96,14 +99,14 @@ msgstr "A teraz, poďme hrať!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr "NOVÁ ÚLOHA: VYTVORTE OSADU"
+msgstr "NOVÁ ÚLOHA: ZALOŽ OSADU"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
-"Tvoja loď je na mori, naložená tovarom ktoré budeš potrebovať na založenie "
+"Tvoja loď je na mori, naložená zásobami, ktoré budeš potrebovať na založenie "
 "novej osady."
 
 #. This is the text body of a logbook page.
@@ -111,16 +114,16 @@ msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
-"Pre pohyb lode ju najprv vyberte pomocou ľavého tlačidla myši a pravým "
-"tlačidlom myši zadajte miesto, kde sa chcete plaviť."
+"Aby sa loď pohla, klikni na ňu ľavým tlačítkom myši, potom klikni pravým "
+"tlačítkom myši na oblasť, kam chceš aby sa loď doplavila."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
-"Akonáhle budete v blízkosti pobrežia, tlačidlo postaviť osadu na karte "
-"pohľadu, bude aktívne."
+"Keď už budeš blízko pobrežia, tlačidlo 'Postaviť osadu' v náhľade sa "
+"aktivuje."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -129,17 +132,17 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
-"Kliknutím tohto tlačidla vám ukáže prehľad prístavu, prvej budovy, ktorá je "
-"potrebná na postavenie osady."
+"Kliknutím na toto tlačidlo sa zobrazí náhľad skladu, prvej budovy, ktorá je "
+"potrebná na zakoženie osady. Keď budeš pohybovať kurzorom po okolí, všimni "
+"si, ža náhľad je načervenalý, keď je budova na nevhodnej oblasti."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
-"Prístav musí byť postavený na pobreží aby povolil lodia navštíviť dok. "
-"Nájdite dobrú lokáciu a potom kliknite ľavým tlačidlom myši pre postavenie "
-"dôležitej budovy."
+"Sklad musí byť umiestnený na pobreží, aby mohli lode zakotviť. Nájdi vhodné "
+"miesto, potom klikni ľavým tlačidlom myši a umiestni túto dôležitú budovu."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
@@ -436,6 +439,8 @@ msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
+"Stany sú základné obytné budovy. Tvoji obyvatelia ich budú chcieť vylepšiť "
+"keď dosiahnu vyššiu úroveň."
 
 #. This is the text body of a logbook page.
 msgid ""

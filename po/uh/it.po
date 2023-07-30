@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-08-28 05:23+0000\n"
-"Last-Translator: Swann Martinet <swann.ranskassa@laposte.net>\n"
+"PO-Revision-Date: 2021-05-21 11:31+0000\n"
+"Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/uh/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1810,8 +1810,8 @@ msgstr "Premere 'T' per rendere gli alberi trasparenti."
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
-"Costruisci tende di stoccaggio e punti di osservazione per espandere il tuo "
-"territorio."
+"Costruisci tende di stoccaggio e punti di osservazione per estendere il "
+"raggio del tuo insediamento."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1831,9 +1831,8 @@ msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
-"Rendi le partite in singolo più divertenti con l'aggiunta di giocatori "
-"controllati dal computer aumentando 'Giocatori COM' quando si inizia una "
-"nuova partita."
+"Rendi le partite in singolo più divertenti con più giocatori controllati dal "
+"computer aumentando 'Giocatori COM' quando si inizia una nuova partita."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
@@ -3008,7 +3007,7 @@ msgstr "Belvedere"
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:239
 msgid "Expands settlement range."
-msgstr "Estendi l'area dell'insediamento."
+msgstr "Estende l'area dell'insediamento."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:243
@@ -3272,7 +3271,7 @@ msgstr "Fabbricante d'armi"
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:389
 msgid "Produces weapons out of iron."
-msgstr "Produce armi utilizzando ferro."
+msgstr "Produce armi dal ferro."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:393

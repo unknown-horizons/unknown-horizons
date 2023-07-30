@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2015-06-04 12:21+0200\n"
-"Last-Translator: Slobodan Simić <slsimic@gmail.com>\n"
+"PO-Revision-Date: 2021-01-27 14:32+0000\n"
+"Last-Translator: Слободан Симић(Slobodan Simić) <slsimic@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/uh/voices/sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -53,7 +53,7 @@ msgstr "Пријатељски играч је основао насеље."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr "Противник је изгледа осново насеље."
+msgstr "Противник је изгледа основао насеље."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
@@ -121,7 +121,7 @@ msgstr "За овај грађевински подухват треба још 
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr "Градња је немогућа без довољно материјала."
+msgstr "Градња није могућа без довољно материјала."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."

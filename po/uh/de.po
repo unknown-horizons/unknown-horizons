@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-11-25 09:04+0000\n"
-"Last-Translator: Wuzzy <almikes@aol.com>\n"
+"PO-Revision-Date: 2023-07-30 12:26+0000\n"
+"Last-Translator: Thomas Kowaliczek-Schmer <t.kowaliczekschmer@icloud.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/uh/uh/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -2767,7 +2767,7 @@ msgstr "Verarbeitet Lehm zu Ziegeln."
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
-msgstr "Metzgerei"
+msgstr "Schlachter / Metzger"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
@@ -2814,7 +2814,7 @@ msgstr "Fördert Lehm aus Lehmvorkommen."
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
 msgid "Distillery"
-msgstr "Brennerei"
+msgstr "Destillerie"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:121
@@ -3645,7 +3645,7 @@ msgstr "Ihr habt das Szenario bewältigt."
 
 #: horizons/scenario/actions.py:93
 msgid "Do you want to continue playing?"
-msgstr "Möchtet Ihr fortfahren?"
+msgstr "Möchtest du weiterspielen?"
 
 #: horizons/scenario/scenarioeventhandler.py:173
 msgid "unknown"
@@ -4162,7 +4162,7 @@ msgstr "Eicheln"
 # "Kanonen" is plural form, singular is "Kanone"
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr "Kanonen"
+msgstr "Kanone"
 
 #. This is a database entry: the name of a resource
 msgid "sword"

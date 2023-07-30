@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 747c5c5\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2017-05-27 17:13+0000\n"
+"PO-Revision-Date: 2021-02-02 04:44+0000\n"
 "Last-Translator: Слободан Симић(Slobodan Simić) <slsimic@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/uh/tutorial/sr/>"
 "\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14.1\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -81,23 +81,17 @@ msgid ""
 msgstr ""
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Visit www.unknown-horizons.org for help on how to contact the team!"
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
 "\n"
-"Посетите www.unknown-horizons.org ради помоћи како да контактирате развојни "
-"тим!"
+"Посетите www.unknown-horizons.org да видите како да контактирате развојни "
+"тим."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid "And now, let's start the actual game."
 msgid "And now, let's start the game!"
-msgstr "А сада, започнимо игру."
+msgstr "А сада, започнимо игру!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 #, fuzzy

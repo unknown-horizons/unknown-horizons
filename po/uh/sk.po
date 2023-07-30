@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d2bbe58\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2018-07-16 21:43+0000\n"
-"Last-Translator: Jakub Janek <shaman.janek@gmail.com>\n"
+"PO-Revision-Date: 2022-03-31 22:09+0000\n"
+"Last-Translator: Pexauteau Santander <pexauteau@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/uh/uh/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 3.1-dev\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Ďakujeme Vám za hranie Unknown Horizons!"
+msgstr "Ďakujeme, že hraješ Unknown Horizons!"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
@@ -32,15 +32,15 @@ msgstr "Úprimne sa za to ospravedlňujeme a chceme túto chybu opraviť."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "K tejto veci potrebujeme informácie z logovacieho súboru:"
+msgstr "K tomu potrebujeme informácie z logovacieho súboru:"
 
 #: run_uh.py:192
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Prosím ozvite sa nám cez IRC, alebo cez naše fórum, obidve nájdete na http://"
-"uknown-horizons.org ."
+"Prosím, ozvi sa nám cez IRC, alebo cez naše fórum, oboje nájdeš na http"
+"://uknown-horizons.org ."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -107,7 +107,7 @@ msgstr "Postaviť"
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:17
 msgid "Running costs:"
-msgstr "Náklady na prevádzku:"
+msgstr "Prevádzkové náklady:"
 
 #: content/gui/xml/ingame/buildmenu/related_buildings.xml:9
 msgid "Related buildings"
@@ -126,7 +126,7 @@ msgstr "Zrýchliť rýchlosť hry ({key})"
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Zpomaliť rýchlosť hry ({key})"
+msgstr "Spomaliť rýchlosť hry ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
@@ -161,7 +161,7 @@ msgstr "Kapitánov denník ({key})"
 #: content/gui/xml/ingame/hud/minimap.xml:43
 #, python-brace-format
 msgid "Build menu ({key})"
-msgstr "Stavebné menu ({key})"
+msgstr "Stavebná ponuka ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:45
 msgid "Diplomacy"
@@ -170,7 +170,7 @@ msgstr "Diplomacia"
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
 msgid "Game menu ({key})"
-msgstr "Herné menu ({key})"
+msgstr "Herná ponuka ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:6
 msgid "Change name"
@@ -182,7 +182,7 @@ msgstr "Pôvodné meno:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
-msgstr "Zadajte nové meno:"
+msgstr "Zadaj nové meno:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:18
 msgid "Apply the new name"
@@ -192,11 +192,11 @@ msgstr "Použiť nové meno"
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Chat"
+msgstr "Komunikácia"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Vaša správa:"
+msgstr "Tvoja správa:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -212,7 +212,7 @@ msgstr "Vaša správa:"
 #: content/gui/xml/ingame/widgets/players_settlements.xml:14
 #: horizons/gui/widgets/resourceoverviewbar.py:614
 msgid "Running costs"
-msgstr "Náklady na prevádzku"
+msgstr "Prevádzkové náklady"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
 msgid ""
@@ -4201,7 +4201,7 @@ msgstr "soľanka"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr "velryby"
+msgstr "veľryby"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
@@ -4221,7 +4221,7 @@ msgstr "bavlna"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr "rastliny indiga"
+msgstr "sadenice indiga"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
@@ -4229,19 +4229,19 @@ msgstr "indigo"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr "šaty"
+msgstr "odevy"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr "parfém"
+msgstr "voňavka"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr "rastliny chmelu"
+msgstr "chmeľové sadenice"
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr "chmel"
+msgstr "chmeľ"
 
 #. This is a database entry: the name of a resource
 msgid "beer"

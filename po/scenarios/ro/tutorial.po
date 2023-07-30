@@ -8,34 +8,40 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2015-12-02 23:38+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-09-19 22:39+0000\n"
+"Last-Translator: Alexandru Mituchi <mituchi.alexandru@gmail.com>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/uh/tutorial/ro/>"
+"\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutorial"
 
 #. scenario description
 msgid ""
 "The tutorial:\n"
 "Build your first settlement and learn how to play!"
 msgstr ""
+"Tutorialul:\n"
+"Construiește primul tău așezământ și învață cum să joci!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Warehouse on the coast to allow trade ships to visit your settlement."
 msgstr ""
+"Construiește un depozit pe coastă pentru a putea lăsa vapoarele de comerț să "
+"viziteze așezarea ta."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "Welcome to Unknown Horizons!"
-msgstr ""
+msgstr "Bine ai venit în Unknown Horizons!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -45,6 +51,11 @@ msgid ""
 "these notifications to read the summary, or click the button itself to open "
 "the Journal."
 msgstr ""
+"Acesta este jurnalul tău, unde informații importante despre scenariul curent "
+"sunt stocate. Un sumar despre fiecare task nou va apărea ca un 'buton de "
+"notificare' aproape de marginea dreaptă a ecranului. Poți pune cursorul "
+"mouse-ului peste aceste notificări pentru a citi sumarul, sau să apesi pe "
+"buton pentru a deschide jurnalul."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -53,6 +64,10 @@ msgid ""
 "this area containing the mini-map, various buttons and tabs as the "
 "'Overview'."
 msgstr ""
+"De asemenea poți re-deschide Jurnalul în orice moment apăsând pe butonul de "
+"sub mini-harta jocului, aflată în stânga sus al ecranului. De acum încolo, "
+"ne vom referii la această zonă ce conține mini-harta, diverse butoane si tab-"
+"uri ca și 'Overview'."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -60,6 +75,9 @@ msgid ""
 "To see your first task, turn to the next page of the Journal using the "
 "button at the bottom of the opposite page - it looks like this:"
 msgstr ""
+"\n"
+"Pentru a vedea primul tău task, treci la pagina următoare din Jurnalul tău "
+"folosind butonul de jos a paginii opuse - arată așa:"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -67,38 +85,49 @@ msgid ""
 "If you have any suggestions about how this tutorial can be improved, or if "
 "you encounter any errors, please tell us."
 msgstr ""
+"\n"
+"Dacă ai orice sugestie despre cum acest tutorial poate fi îmbunătățit, sau "
+"dacă ai întâmpinat orice eroare, te rugăm să ne spui."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Visit www.unknown-horizons.org to find out how to contact the team."
 msgstr ""
+"\n"
+"Vizitează www.unknown-horizons.org pentru a afla cum poți contacta echipa."
 
 #. This is the text body of a logbook page.
 msgid "And now, let's start the game!"
-msgstr ""
+msgstr "Și acum, hai să începem jocul!"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: CREATE A SETTLEMENT"
-msgstr ""
+msgstr "NOU TASK: CREAZĂ UN NOU AȘEZĂMÂNT"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your ship is at sea, loaded with the supplies you'll need to establish a new "
 "settlement."
 msgstr ""
+"Corabia ta este pe mare, plină cu resursele necesare tu trebuie sa "
+"stabilești un nou așezământ."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To move your ship, select it with a left-click then right-click on the "
 "location you want it to sail to."
 msgstr ""
+"Pentru a muta corabia ta, selectează corabia, apoi folosind click dreapta și "
+"apoi click stânga pe locația unde dorești să navigheze."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Once you're near the coast, the 'Build Settlement' button in the overview "
 "will become active."
 msgstr ""
+"Odată ajuns aproape de coastă, butonul de 'Construiește Așezământ' din meniu "
+"va deveni activ."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -107,24 +136,31 @@ msgid ""
 "you'll notice that the preview is shaded red when the building is in an "
 "unsuitable area."
 msgstr ""
+"Apăsând acest buton îți va arăta o pre-vizualizare a Depozitului, prima "
+"clădire necesară pentru a fonda așezământul. Când miști cursorul pe ecran, "
+"vei observa că pre-vizualizarea este colorată cu roșu când această clădire "
+"nu este potrivită pe zona selectată."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Warehouse needs to be positioned on the coast to allow ships to dock. "
 "So, find a good location then left-click to place this important building."
 msgstr ""
+"Depozitul trebuie să fie poziționat pe coastă pentru a putea permite "
+"corăbiilor să andocheze. Așa că, găsește o locație bună și apasă click "
+"dreapta pentru a plasa această clădire importantă."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Warehouse on the coast."
-msgstr ""
+msgstr "Task: Construiește un depozit pe coastă."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Lumberjack's Tent and connect it to the Warehouse."
-msgstr ""
+msgstr "Construiește Cortul Tăietorului de Lemne și leagăl cu Depozitul."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A LUMBERJACKS TENT"
-msgstr ""
+msgstr "NOU TASK: CONSTRUIEȘTE UN CORT PENTRU TĂIETORUL DE LEMNE"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -132,18 +168,27 @@ msgid ""
 "and safely stored in your new Warehouse. Now it's time to construct some "
 "basic buildings, beginning with a Lumberjack's Tent."
 msgstr ""
+"Resursele și materialele de construcție au fost descărcate de pe corabia ta "
+"și depozitate în siguranță în noul tău Depozit. Acum este timpul pentru "
+"construcția câtorva construcții de bază, să începem cu un Cort pentru "
+"Tăietorul de Lemne."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Tăietorii de lemne vor tăia copacii din pădurea din jurul cortului și vor "
+"procesa lemnul pentru a produce cherestea, folosită pentru construcții sau "
+"ca resursă de comerț."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"Pentru a contrui Cortul Tăietorului de Lemne, deschide Meniul de Construcție "
+"apăsând pe butonul de sub mini-harta sau apăsând 'B', hotkey-ul de bază."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -152,12 +197,19 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Meniul de Construcție este sortat pe nivele, și cum așezământul tău este "
+"nou, doar primul nivel de clădiri este valabil pentru tine; când civilizația "
+"ta avansează, vei obține access la nivele mai mari și vei putea construi o "
+"varietate mai mare de clădiri."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Găsește o zona forestieră bună pentru Tăietorul de Lemne și apoi alege "
+"'Cortul Tăietorului de Lemne' în lista construcțiilor din meniu și plasează "
+"clădirea."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -165,6 +217,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Mai târziu în joc vei dori să creezi o pădure plantând copaci, dar din "
+"moment ce asta costă bani, momentan ar trebui să te folosești de ce îți este "
+"oferit în natură!"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -172,6 +227,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Orice clădire de colectare resurse sau de producție necesită un drum către "
+"Depozit sau orice altă formă de depozitare, altfel bunurile produse nu vor "
+"putea fi colectate."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -180,12 +238,18 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"Deci, îndată ce Cortul Tăietorului de Lemne este în poziție, leagăl cu "
+"Depozitul deschizând Meniul de Construcție și apoi apăsând butonul 'Cărare'. "
+"Acuma apăsa click și să trage de mouse pentru a desena ruta cărarii tale "
+"dintre Cortul Tăietorului de Lemne și Depozit."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Lumberjack's Tent in a wooded area and connect it to your "
 "Warehouse."
 msgstr ""
+"Task: Construiește Cortul Tăietorului de Lemne intr-o zona de pădure și "
+"leagăl de Depozit."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -193,48 +257,63 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"Îndată ce clădirile sunt legate vei vedea un cărăuș venind să ridice noile "
+"placi de cherestea pe care le va livra către Depozit, pregătite pentru uz în "
+"construcții sau comerț."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build a Hunter's Tent and a Fisherman's Tent. Connect them to the Warehouse."
 msgstr ""
+"Construiește Cortul Vânătorului și Cortul Pescarului. Leagăle către Depozit."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: FOOD SUPPLY"
-msgstr ""
+msgstr "NOU TASK: RESURSE DE HRANĂ"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You will need to have some food-producing companies too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Va trebui să ai niște companii de producție pentru hrană, deoarece oamenii "
+"în general (și în special marinarilor) le este foame."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
 msgstr ""
+"Companiile valabile din primul nivel sunt Cortul Vânătorului și Cortul "
+"Pescarului."
 
 #. This is the text body of a logbook page.
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
 msgstr ""
+"Vânătorii vânează animale în pădure, deci sunt necesari copaci prin preajmă."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that you can place your Hunter's Tent close to the lumberjack's forest."
 msgstr ""
+"Notează că poți plasa Cortul Vânătorului aproape de pădurea Tăietorului de "
+"Lemne."
 
 #. This is the text body of a logbook page.
 msgid ""
 "It can happen that the animals don't reproduce fast enough or simply hide "
 "well."
 msgstr ""
+"Se poate întâmpla ca animalele să nu se poată reproduce destul de rapid sau "
+"ca ele să se ascundă foarte bine."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Conclusion: the Hunter's Tent is not too reliable if you need continuous "
 "supply."
 msgstr ""
+"Concluzie: Cortul Vânătorului nu este prea de bază când vine vorba de "
+"aprovizionare continuă."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -242,43 +321,51 @@ msgid ""
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"Pescarul necesită de o clădire coastală precum Depozitul sau un banc de "
+"pești prin preajmă."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "El va construi un mic vas cu vasle și va prinde niște pești."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Aceasta este o metodă de aprovizionare foarte constantă, dar costul timpul "
+"de producție per unitate de hrană este mai lung."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"Un mic așezământ ca al tău se poate folosi de ambele companii, astfel tu "
+"poți balansa beneficiile și dezavantajele dacă vezi comparația directă."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Hunter's Tent and a Fisherman's Tent."
-msgstr ""
+msgstr "Task: Construiește Cortul Vânătorului și Cortul Pescarului."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
-msgstr ""
+msgstr "Nu uita să le conectezi cu Depozitul prin cărări!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Main Square. Choose an area without many economy buildings."
-msgstr ""
+msgstr "Construiește Piața Principală. Alege o zona cu multe clădiri economice."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: MAIN SQUARE"
-msgstr ""
+msgstr "NOU TASK: PIAȚA PRINCIPALĂ"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
 msgstr ""
+"Rezidenții tăi au nevoie de o piață principală de unde pot procura bunuri."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -286,6 +373,9 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
+"Asta înseamnă că au nevoie de o cărare trasată de la casele lor până la "
+"Piața Principală. Notează că Piața Principală de asemenea se comportă ca o "
+"cărare, prin urmare corturile adiacente nu necesită o cărare separată."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -293,6 +383,8 @@ msgid ""
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
+"Toate bunurile din Depozit sunt valabile la acest 'Loc de Comerț', deci "
+"rezidenții tăi nu trebuie să meargă la Cortul Pescarului sau la Depozit."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -300,38 +392,50 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Ar trebui să eviți plasarea caselor principale prea aproape de Tăietorul de "
+"Lemne pentru că vor sta în calea copacilor necesari pentru producerea de "
+"cherestea."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the Main Square and e.g. your Lumberjack's Tent."
 msgstr ""
+"Companiile merg fără să fie conectate la corturi, deci nu este necesar să "
+"construiești un drum între Piața Principală și de exemplu Cortul Tăietorului "
+"de Lemne."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Main Square."
-msgstr ""
+msgstr "Task: Construiește o Piață Principală."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
 msgstr ""
+"\n"
+"Acuma hai să ne uităm mai atent la Piața Principală."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"În tabul 'Cont' ai o foaie de balanță a acestei insule, ce conține toate "
+"costurile pe care le ai și taxele pe care le primești."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Tab-urile 'Vinde' și 'Cumpără' se referă la balanța ta comercială și va fi "
+"explicată mai târziu."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Dacă balanța ta este pozitivă, tu în definitiv faci profit."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -339,37 +443,48 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"În diferitele nivele de taburi sumar poți vedea statistici despre locuitori. "
+"De asemenea aici poți seta taxe globale specifice nivelului și poți lăsa sau "
+"opri locuitorii din acest nivel să avanseze la următorul nivel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Tent and connect it to the Main Square if necessary."
-msgstr ""
+msgstr "Construiește un Cort și leagăl de Piața Principală dacă este necesar."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: RESIDENTIAL BUILDINGS"
-msgstr ""
+msgstr "NOU TASK: CLĂDIRI REZIDENȚIALE"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Coloniștii vor să aibe un acoperiș deasupra capului, altfel nici nu se vor "
+"gândi să locuiască în orașul tău! Trebuie să oferi corturi."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
+"Corturile sunt clădirile rezidențiale de bază. Locuitorii tăi vor vrea să "
+"își îmbunătățească casa când vor ajunge la nivele mai mari."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Notează că îmbunătățirea fiecărei clădiri necesită noi materiale de "
+"construcție, cum ar fi lemnul pentru prima lor îmbunătățire."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Consideră să dezactivezi imbunătățirea dacă stocul de aceste materiale este "
+"scăzut."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -377,23 +492,32 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Coloniștii pot părea nu prea folositori din moment ce vor consuma toate "
+"bunurile produse - dar măcar plătesc taxe, și este singura modalitate prin "
+"care poți face bani, cel puțin pentru moment!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Tent and connect it to the Main Square if necessary. Tents "
 "don't need to be connected to any of the companies."
 msgstr ""
+"Task: Construiește un Cort și leagăl de Piața Principală dacă este necesar. "
+"Corturile nu necesită să fie conectate de companii."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Build at least three additional Tents and connect them to the Main Square."
 msgstr ""
+"Construiește cel puțin trei corturi adiționale și leagăle de Piața "
+"Principală."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Let's have a look at the Tent overview tab."
 msgstr ""
+"\n"
+"Hai să ne uităm la tabul sumar al Corturilor."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -402,11 +526,17 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Poți vedea\n"
+"* fericirea acestor rezidenți,\n"
+"* taxele pe care le plătesc și\n"
+"* resursele pe care le cer."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
 msgstr ""
+"Dacă cererile lor sunt indeplinite, fericirea și astfel venitul de pe taxe "
+"crește."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -414,14 +544,17 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Dacă nu, fericirea și venitul va scade. La un moment dat rezidenții tăi se "
+"vor supăra și își vor întoarce spatele satului tău, lăsând în urmă o ruină "
+"în descompunere."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Notează că și aici poți schimba setarea taxelor globale."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build at least three additional Tents."
-msgstr ""
+msgstr "Task: Construiește cel puțin trei Corturi adiționale."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -429,50 +562,67 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"PONT: Ținând apăsat pe butonul SHIFT ajută la construirea mai multor clădiri "
+"de acelaș fel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Signal Fire at the coast close to your Warehouse."
-msgstr ""
+msgstr "Construiește un Foc de Semnal la coastă lângă Depozit."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD SIGNAL FIRE"
-msgstr ""
+msgstr "NOU TASK: CONSTRUIEȘTE UN FOC DE SEMNALIZARE"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Can you see the ship passing your island from time to time? That ship "
 "belongs to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Poți vedea o corăbie trecând pe lângă insula ta din când în când ? Ei bine "
+"acestă corabie aparține Comerciantului Independent, unul dintre primii "
+"coloniști din acest arhipeleag."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Comerciantul va aproviziona așezământul tău cu bunurile necesare pe care nu "
+"le poți produce încă."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
 msgstr ""
+"De asemena poți vinde surplusul de producție, dar în general folosind acest "
+"surplus consumândul (construind mai multe Corturi) în loc să îl vinzi va "
+"genera mai mult profit."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
+"În mod normal comerciantul va naviga prin preajmă și va căuta oferte, dar "
+"poți grăbii lucrurile puțin."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"Pentru acest scop, construind un Foc de Semnalizare pe coastă lângă Depozit. "
+"Va arăta corăbiilor calea către așezarea ta."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Signal Fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Focul de Semnalizare trebuie să acopere zona pe unde vor trece corăbiile "
+"pentru a le putea prinde."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -480,40 +630,50 @@ msgid ""
 "After this little advertisement, the trader will also stop by and look into "
 "your Warehouse, even if he had planned to sail past it."
 msgstr ""
+"\n"
+"După acestă mică atenționare, comerciantul se va opri și se va uita la "
+"Depozitul tău, chiar dacă el plănuia să treacă de el."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
 msgstr ""
+"De asemnea poți propune oferte prin tabul Depozitului \"Cumpără/Vinde\"."
 
 #. This is the text body of a logbook page.
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
-msgstr ""
+msgstr "La nivelul marinarilor, ești echipat cu trei sloturi de comerț."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
 "vice versa."
 msgstr ""
+"Apasă pe icoana mică pentru a schimba modul slotului de la 'Cumpără' la "
+"'Vinde' și vice versa."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Apasă pe slot pentru a alege ce bun vrei să fie folosit pentru comerț. Îți v-"
+"om explica în continuare după ce ești gata de comerț."
 
 #. This is the text body of a logbook page.
 msgid "Task: Build a Signal Fire at the coast close to your Warehouse."
-msgstr ""
+msgstr "Task: Construiește un Foc de Semnalizare pe coastă aproape de Depozit."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
 msgstr ""
+"Atinge un stoc al insulei de cel puțin 30 de unelte. Notează că asta va dura "
+"ceva timp."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: LEARN TO TRADE"
-msgstr ""
+msgstr "NOU TASK: ÎNVAȚĂ SĂ FACI COMERȚ"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -522,38 +682,52 @@ msgid ""
 "\n"
 "Let's continue our tutorial on how to trade."
 msgstr ""
+"Excelent! Acum Comerciantul Independent se va opri din când în când pe la "
+"Depozitul tău.\n"
+"...\n"
+"Să continuăm tutorialul nostru despre cum să facem comerț."
 
 #. This is the text body of a logbook page.
 msgid "First click on your own Warehouse and click on the third tab."
-msgstr ""
+msgstr "Întâi apăsăm pe Depozitul nostru și apoi apăsăm pe al treilea tab."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
+"Apoi apăsăm pe unul din cele 3 sloturi, și selectăm un bun pe care vrei să "
+"îl cumperi sau să îl vinzi."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After selecting a particular type of good, the green bar across the bottom "
 "of the slot (if visible) shows you how much you have in stock of this good."
 msgstr ""
+"După selectarea unui tip de bun, bara verde de pe fundul slotului (dacă este "
+"vizibilă) arată cât de mult din acest bun ai pe stoc."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Dragging the slider on the right of each slot determines your 'target value' "
 "which has a different meaning on 'Buy' and 'Sell'."
 msgstr ""
+"Trăgând de slider în dreapta fiecărui slot determinăm 'valoarea țintită' de "
+"tine ce are un înțeles diferit pentru 'Cumpără' și 'Vinde'."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When buying, you will buy sufficient to hold your 'target value' in stock."
 msgstr ""
+"Când cumperi, vei cumpăra suficient pentru a păstra 'valorea țintită' de "
+"tine pe stoc."
 
 #. This is the text body of a logbook page.
 msgid ""
 "When selling, the 'target value' is the stock amount at which you will "
 "always stop selling until you get more of that resource again."
 msgstr ""
+"Când vinzi, 'valoarea țintită' este cantitate de stoc la care te vei opri "
+"din vândut până când ai mai multe resurse din nou."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -562,50 +736,65 @@ msgid ""
 "Having a 'Buy' slot and 5 tons in stock, a slider positioned at 9 tons will "
 "cause you to buy 4 additional tons at most."
 msgstr ""
+"\n"
+"De exemplu:\n"
+"Având un slot 'Cumpără' și 5 tone pe stoc, un slider poziționat la 9 tone va "
+"face ca tu să cumperi cel mult 4 tone adiționale."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Selling works similarly. A 'Sell' slot with 18 tons in stock and the slider "
 "positioned at 13 will sell up to 5 tons."
 msgstr ""
+"Vânzarea funcționează similar. Un slot 'Vânzare' cu 18 tone pe stoc și un "
+"slider poziționat la 13 va vinde până la 5 tone."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
+"Dacă Comerciantul Independent dorește doar să cumpere sau să vândă mai puțin "
+"decât îi permiți , va trebui să trăiești cu asta și să îl aștepți să revină."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Unknown Horizons features smart pricing, so the value of one unit can vary.\n"
 "It is NOT possible to change prices manually!"
 msgstr ""
+"Unknown Horizons oferă prețuri inteligent, deci valoarea unei unități poate "
+"varia.\n"
+"NU este posibil să schimbăm prețurile manual!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can see your trade balance in the 'Account' tab comparing the 'Sale' and "
 "'Buy' values there."
 msgstr ""
+"Îți poți vedea balansul comercial în tabul 'Cont' acolo comparând valorile "
+"de la 'Vanzare' și 'Cumpărare'."
 
 #. This is the text body of a logbook page.
 msgid "Task: Buy as many tools as you need to have 30 tools in stock!"
 msgstr ""
+"Task: Cumpără pe cât de multe unelte ai nevoie pentru a avea 30 de unelte pe "
+"stoc!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a Pavilion with connection to the Tents."
-msgstr ""
+msgstr "Construiește un Pavilion cu legătură către Corturi."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: BUILD A PAVILION"
-msgstr ""
+msgstr "NOU TASK: CONSTRUIEȘTE UN PAVILION"
 
 #. This is the text body of a logbook page.
 msgid "Those tools will be enough for the moment. Well done!"
-msgstr ""
+msgstr "Aceste unelte vor fi îndeajuns pentru moment. Felicitări!"
 
 #. This is the text body of a logbook page.
 msgid "You now provide housing, a main square and food to your inhabitants."
-msgstr ""
+msgstr "Acuma oferi case, o piață principală și mâncare pentru locuitorii tăi."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -613,36 +802,49 @@ msgid ""
 "that by clicking on any Tent): your sailors want a basic building where they "
 "can pray."
 msgstr ""
+"Totuși este o singură cerință pe care nu am satisfăcut-o încă (poți verifica "
+"asta apăsând pe orice Cort): marinarii tăi doresc o clădire simplă unde să "
+"se poată ruga."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The solution is a Pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
+"Soluția este un Pavilion pe care preotul orașului îl folosește ca și adăpost "
+"de soare."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Service buildings like this also need to be connected to the Tents with a "
 "Trail, else your inhabitants feel unable to reach them."
 msgstr ""
+"Clădirile de serviciu ca aceasta necesită să fie conectată la Corturi cu o "
+"Cărare, altfel locuitorii tăi nu pot ajunge la ele."
 
 #. This is the text body of a logbook page.
 msgid ""
 "\n"
 "Note that faith is treated like a physical resource!"
 msgstr ""
+"\n"
+"Notează că, credința este tratată ca o resursă fizică!"
 
 #. This is the text body of a logbook page.
 msgid ""
 "This means that your inhabitants need a road connection to the producer "
 "(Pavilion) to pick up faith there."
 msgstr ""
+"Asta înseamnă că locuitorii tăi au nevoie de drumuri conectate către "
+"producător (Pavilion) pentru a ridica credință de acolo."
 
 #. This is the text body of a logbook page.
 msgid ""
 "After some time, they will have consumed it and then again look for a "
 "producer to collect more faith."
 msgstr ""
+"După ceva timp, îl vor fi consumat și din nou vor căuta un producător pentru "
+"a strange mai multă credință."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -651,39 +853,53 @@ msgid ""
 "Tents.\n"
 "The road connection is required as well."
 msgstr ""
+"Important: \n"
+"NU este îndeajuns ca, clădirile să fie în raza de acțiune a corturilor.\n"
+"Un drum conectat este de asemenea necesar."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Task: Build a Pavilion with a Trail to the Tents in order to fulfill your "
 "sailors' demand for faith."
 msgstr ""
+"Task: Construiește un Pavilion cu o Cărare către Corturi pentru a satisface "
+"nevoia marinarilor pentru credință."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid ""
 "Set the tax level to Low (left end) and wait for your sailors to upgrade."
 msgstr ""
+"Setează nivelul taxelor la Scăzut (Capăt Dreapta) și așteaptă ca marinarii "
+"tăi să facă o îmbunătățire."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "NEW TASK: NEXT TIER"
-msgstr ""
+msgstr "NOU TASK: URMĂTORUL NIVEL"
 
 #. This is the text body of a logbook page.
 msgid ""
 "All demands are fulfilled now if your inhabitants can regularly visit the "
 "Main Square and the Pavilion and your food supply is adequate."
 msgstr ""
+"Toate nevoile locuitorilor tăi au fost îndeplinite dacă pot vizit regulat "
+"Piața Principală, Pavilionul și dacă rezervele de mâncare sunt decente."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If the sailors are happy enough, they want to advance to the next tier "
 "called Pioneers."
 msgstr ""
+"Dacă marinarii sunt destul de fericiți, vor vrea să avanseze la următorul "
+"nivel numit Pionieri."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To make them happy, there is nothing else for you to do but setting taxes to "
 "a lower level since you have fulfilled all the demands of your inhabitants."
 msgstr ""
+"Pentru ai face fericiți, nu este nimic altceva pentru tine de făcut decât să "
+"pui taxele la un nivel mai mic din moment ce ai indeplinit toate cererile "
+"locuitorilor tăi."
 
 #. This is the text body of a logbook page.
 msgid ""

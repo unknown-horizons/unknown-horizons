@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-06-10 03:36+0000\n"
-"Last-Translator: Андрій Бандура <andriykopanytsia@gmail.com>\n"
+"PO-Revision-Date: 2022-07-01 07:14+0000\n"
+"Last-Translator: Artem <artem@molotov.work>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/uh/uh/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.15-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -91,8 +91,7 @@ msgstr "Почати гру"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr ""
-"Ви повинні заснувати поселення  перед тим, як зможете будувати споруди!"
+msgstr "Ви повинні заснувати поселення перед тим, як зможете будувати споруди!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
@@ -1054,15 +1053,15 @@ msgstr "Показати меню будівництва"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable destruct mode"
-msgstr "Включити режим знищення"
+msgstr "Увімкнути режим знищення"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Enable road building mode"
-msgstr "Включити режим будівництва доріг"
+msgstr "Увімкнути режим будівництва доріг"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Enable pipette mode (clone buildings)"
-msgstr "Включити режим піпетки (клонує будівлі)"
+msgstr "Увімкнути режим піпетки (клонує будівлі)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show player scores"
@@ -1452,7 +1451,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
-msgstr "Включити журналювання:"
+msgstr "Увімкнути журналювання:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid "Production indicators:"
@@ -1495,7 +1494,7 @@ msgstr "Мережевий порт:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr "Відмінити поточні зміни"
+msgstr "Скасувати поточні зміни"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
@@ -2314,7 +2313,7 @@ msgstr "Будувати {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "Натисніть  H, щоб забрати підказку"
+msgstr "Натисніть H, щоб забрати підказку"
 
 #: horizons/gui/mousetools/tearingtool.py:114
 msgid "Destroy all buildings"
@@ -3456,8 +3455,8 @@ msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
-"Назва файлу повинна складатися лише з літер, цифр, пропусків та символів:  "
-"_ . -"
+"Назва файлу повинна складатися лише з літер, цифр, пропусків та символів: _ "
+". -"
 
 #: horizons/network/connection.py:88 horizons/network/connection.py:94
 msgid "Unable to connect to server."
@@ -3699,7 +3698,7 @@ msgstr "Ця будівля може бути споруджена лише на
 
 #: horizons/world/building/buildable.py:52
 msgid "You have already settled this island."
-msgstr "Ви вже  заселили цей острів."
+msgstr "Ви вже заселили цей острів."
 
 #: horizons/world/building/buildable.py:53
 msgid "This building must be partly on flat land."

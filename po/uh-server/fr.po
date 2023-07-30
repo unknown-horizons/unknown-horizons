@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2017-08-05 13:12+0000\n"
-"Last-Translator: juan juan juan <vespejo3@gmail.com>\n"
+"PO-Revision-Date: 2020-09-14 07:36+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/uh/uh-server/fr/>"
 "\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.16-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
@@ -37,7 +37,7 @@ msgstr ""
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr "Tu a excedé  la taille par paquet."
+msgstr "Tu a excédé la taille par paquet."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"

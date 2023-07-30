@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2018-01-18 00:27+0000\n"
-"Last-Translator: Sinapse X <sinapsex13@gmail.com>\n"
+"PO-Revision-Date: 2021-01-11 13:32+0000\n"
+"Last-Translator: Hakuchi <heimlikloh@mail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/uh/tutorial/it/>"
 "\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 4.4.1-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -84,8 +84,8 @@ msgid ""
 "you encounter any errors, please tell us."
 msgstr ""
 "\n"
-"Se hai qualche consiglio riguardo questo questo tutorial, o hai incontrato "
-"dei problemi, non esitare a contattarci."
+"Se hai qualche consiglio riguardo questo tutorial, o hai incontrato dei "
+"problemi, non esitare a contattarci."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -378,7 +378,7 @@ msgid ""
 msgstr ""
 "Questo significa che hanno bisogno di un collegamento dalla propria "
 "abitazione alla piazza principale. Nota che la piazza principale si comporta "
-"anche come un sentiero,  tende adiacenti non hanno bisogno di sentieri "
+"anche come un sentiero, tende adiacenti non hanno bisogno di sentieri "
 "aggiuntivi."
 
 #. This is the text body of a logbook page.
@@ -678,7 +678,7 @@ msgid ""
 "Reach an island stock of at least 30 tools. Note that this might take a "
 "while."
 msgstr ""
-"Raggiungi una scorta  di almeno 30 attrezzi per isola. Nota che ci vorrà non "
+"Raggiungi una scorta di almeno 30 attrezzi per isola. Nota che ci vorrà non "
 "poco tempo."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -761,18 +761,13 @@ msgstr ""
 "magazzino e il cursore posizionato a 13 venderà fino a 5 tonnellate."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "If the free trader however only wants to buy or sell less than your "
-#| "settings would allow him, you need to live with that and wait for him to "
-#| "return."
 msgid ""
 "If the Free Trader however only wants to buy or sell less than your settings "
 "would allow him, you need to live with that and wait for him to return."
 msgstr ""
-"Se il commerciante libero però vuole solo comprare o vendere meno che le "
-"impostazioni gli avrebbero permesso, è necessario vivere con quello e "
-"aspettare il suo ritorno."
+"Tuttavia, se il commerciante libero vuole solo comprare o vendere meno di "
+"quel che la tua configurazione gli permette, ci devi convivere e aspettare "
+"che ritorni."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -825,16 +820,12 @@ msgstr ""
 "costruzione in cui possano pregare."
 
 #. This is the text body of a logbook page.
-#, fuzzy
-#| msgid ""
-#| "The solution is a pavilion which the village parson quickly puts up as "
-#| "shelter from the sun."
 msgid ""
 "The solution is a Pavilion which the village parson quickly puts up as "
 "shelter from the sun."
 msgstr ""
-"La soluzione è un padiglione che il parroco del villaggio pone rapidamente "
-"come riparo dal sole."
+"La soluzione è un padiglione che il parroco del villaggio costruisce "
+"rapidamente come riparo dal sole."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -932,7 +923,7 @@ msgid ""
 "are doing, it is fine though."
 msgstr ""
 "Si dovrebbe cercare di impostare sempre le tasse non troppo basse in quanto "
-"questo porterà probabilmente al fallimento, prima o poi. Anche se, se si sa "
+"questo porterà probabilmente al fallimento, prima o poi. Anche, se si sa "
 "cosa si sta facendo e per un breve periodo puo essere utile."
 
 #. This is the text body of a logbook page.

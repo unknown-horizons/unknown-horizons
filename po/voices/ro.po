@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Voices ded3d0901d\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2013-08-18 01:00+0200\n"
-"PO-Revision-Date: 2017-09-17 23:08+0000\n"
-"Last-Translator: Thomas Kowaliczek <linuxdonald@posteo.de>\n"
+"PO-Revision-Date: 2020-09-14 07:36+0000\n"
+"Last-Translator: Alexandru Mituchi <mituchi.alexandru@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/uh/voices/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #. Founding settlement - Player found settlement"
 msgid "Strive so that this settlement shall evolve stately."
@@ -49,15 +49,15 @@ msgstr "Un jucător isi creează o nouă asezare."
 
 #. Founding settlement - Somebody not player found settlement
 msgid "One of your fellow players founded a settlement."
-msgstr "Unul dintre amicii tai a fondat un asezamant"
+msgstr "Unul dintre amicii tăi a fondat un așezământ."
 
 #. Founding settlement - Rival found settlement
 msgid "A rival of ours seems to have founded a settlement."
-msgstr "Un rival a fondat o nouă așezare!"
+msgstr "Un rival a fondat o nouă așezare."
 
 #. Founding settlement - Rival found settlement
 msgid "We've been informed that one of our rivals snared new land."
-msgstr ""
+msgstr "Am fost informați că unul din rivalii tăi a prins un nou pămant."
 
 #. Founding settlement - Rival found settlement
 msgid "One of our opponents is said to have expanded."
@@ -65,11 +65,11 @@ msgstr "Unul dintre oponenți se află in expansiune."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally settles on another island."
-msgstr "Aliatul nostru a descălecat pe o altă insulă."
+msgstr "Aliatul nostru s-a instalat pe o altă insulă."
 
 #. Founding settlement - Ally found settlement
 msgid "One of our allies cultivates an islnd."
-msgstr ""
+msgstr "Unul din aliații tăi cultivă o insulă."
 
 #. Founding settlement - Ally found settlement
 msgid "Our ally passes news about successfully founding a settlement."
@@ -82,6 +82,7 @@ msgstr "Aceasta insula nu ne mai apartine in intregime."
 #. Founding settlement - Somebody found settlement on your island
 msgid "Scouts found out that guests settled on one of our islands."
 msgstr ""
+"Cercetașii au aflat că musafirii s-au instalat pe una din insulele tale."
 
 #. Founding settlement - Somebody found settlement on your island
 msgid "We got new neighbors on this island!"
@@ -93,15 +94,17 @@ msgstr ""
 
 #. Founding settlement - Rival found settlement on your island
 msgid "Should we really accept our rival as new neighbor?"
-msgstr ""
+msgstr "Chiar ar trebui să aceptăm rivalul nostru ca și vecin ?"
 
 #. Founding settlement - Rival found settlement on your island
 msgid "One of our enemies settles on our ground!"
-msgstr ""
+msgstr "Unul dintre inamicii nostrii sa instalat pe pământul nostru!"
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "One of our allies seems in desperate need of your ground."
 msgstr ""
+"Unul din aliații nostrii par să se afle intr-o nevoie disperată de a folosi "
+"pământurile noastre."
 
 #. Founding settlement -  Ally found settlement on your island
 msgid "We share this ground with our ally for now."
@@ -117,12 +120,12 @@ msgstr "Ai nevoie de mai multe resurse pentru a construi asta."
 
 #. Resources - Construction material missing
 msgid "This construction project needs more resources."
-msgstr ""
+msgstr "Acest proiect de construcție necesită mai multe resurse."
 
 #. Resources - Construction material missing
 msgid "Construction is impossible without sufficient material."
-msgstr ""
+msgstr "Construcția este imposibilă fără materiale suficiente."
 
 #. Resources - Construction material missing
 msgid "The resources in your inventory are not sufficient to build this."
-msgstr ""
+msgstr "Resursele din inventarul tău nu sunt suficiente pentru a construi asta."

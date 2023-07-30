@@ -7,20 +7,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2020-02-14 01:50+0000\n"
+"PO-Revision-Date: 2021-12-25 16:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/uh/uh/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.11-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Hvala što koristite Unknown Horizons!"
+msgstr "Hvala što koristiš Unknown Horizons!"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
@@ -34,17 +34,15 @@ msgstr ""
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr ""
-"Kako bi to učinili potrebne su nam neke informacije iz datoteke dnevničkog "
-"zapisa:"
+msgstr "Za to trebamo neke informacije iz datoteke dnevničkog zapisa:"
 
 #: run_uh.py:192
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Molimo vas da nam ju date preko IRC-a ili našeg foruma, za oboje pogledajte "
-"na http://unknown-horizons.org."
+"Pošalji nam informacije putem IRC-a ili našeg foruma, za oboje pogledaj "
+"stranicu http://unknown-horizons.org."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -53,11 +51,11 @@ msgstr "Povratak na uređivač"
 #: content/gui/xml/editor/editor_pause_menu.xml:15
 #: horizons/gui/modules/select_savegame.py:55
 msgid "Save map"
-msgstr "Spremi mapu"
+msgstr "Spremi kartu"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Učitaj mapu"
+msgstr "Učitaj kartu"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -87,7 +85,7 @@ msgstr "Odaberi teren:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(desni klik za zaustavljanje)"
+msgstr "(pritisni desnu tipku miša za prekid)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -95,16 +93,16 @@ msgstr "Pokreni igru"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Moraš prvo osnovati naseobinu kako bi mogao graditi zgrade!"
+msgstr "Za gradnju zgrada najprije moraš osnovati naselje!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Odaberite svoj brod i približite se obali pritiskom desnog klika."
+msgstr "Odaberi svoj brod i približi se obali pritiskom desne tipke miša."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:21
 msgid "Afterwards, press the large button in the ship overview tab."
 msgstr ""
-"Nakon toga, pritisnite veliki gumb koji se nalazi na kartici pregleda broda."
+"Nakon toga, pritisni veliki gumb koji se nalazi na kartici pregleda broda."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -126,32 +124,32 @@ msgstr "Stanovnci"
 #: content/gui/xml/ingame/hud/minimap.xml:14
 #, python-brace-format
 msgid "Increase game speed ({key})"
-msgstr "Povećaj brzinu igre ({key})"
+msgstr "Ubrzaj igru ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:16
 #, python-brace-format
 msgid "Decrease game speed ({key})"
-msgstr "Smanji brzinu igre ({key})"
+msgstr "Uspori igru ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:19
 #, python-brace-format
 msgid "Rotate map counterclockwise ({key})"
-msgstr "Zakreni mapu suprotno od kazaljke na satu ({key})"
+msgstr "Okreni kartu nalijevo ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:21
 #, python-brace-format
 msgid "Rotate map clockwise ({key})"
-msgstr "Zakreni mapu u smjeru kazaljke na satu ({key})"
+msgstr "Okreni kartu nadesno ({key})"
 
 #: content/gui/xml/ingame/hud/minimap.xml:24
 #: content/gui/xml/mainmenu/hotkeys.xml:19
 msgid "Zoom in"
-msgstr "Približi"
+msgstr "Povećaj prikaz"
 
 #: content/gui/xml/ingame/hud/minimap.xml:26
 #: content/gui/xml/mainmenu/hotkeys.xml:20
 msgid "Zoom out"
-msgstr "Udalji"
+msgstr "Smanji prikaz"
 
 #: content/gui/xml/ingame/hud/minimap.xml:39
 #, python-brace-format
@@ -175,7 +173,7 @@ msgstr "Diplomacija"
 #: content/gui/xml/ingame/hud/minimap.xml:47
 #, python-brace-format
 msgid "Game menu ({key})"
-msgstr "Glavni izbornik ({key})"
+msgstr "Izbornik igre ({key})"
 
 #: content/gui/xml/ingame/popups/change_name.xml:6
 msgid "Change name"
@@ -187,21 +185,21 @@ msgstr "Staro ime:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
-msgstr "Unesi novo ime:"
+msgstr "Upiši novo ime:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:18
 msgid "Apply the new name"
-msgstr "Prihvati novo ime"
+msgstr "Primijeni novo ime"
 
 #: content/gui/xml/ingame/popups/chat.xml:6
 #: content/gui/xml/ingame/widgets/captains_log.xml:67
 #: content/gui/xml/mainmenu/hotkeys.xml:29 horizons/gui/widgets/logbook.py:54
 msgid "Chat"
-msgstr "Pričati"
+msgstr "Razgovaraj"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Napiši svoju poruku:"
+msgstr "Upiši svoju poruku:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -224,8 +222,8 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Kako bi izgradili jedinicu imanja, kliknite na karticu klase, odaberite "
-"željenu jedinicu imanja i potvrdite odabir."
+"Za izgradnju jedinicu imanja pritisni karticu klase, odaberi željenu "
+"jedinicu imanja i potvrdi odabir."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -234,14 +232,14 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "Trenutno u izgradnji:"
+msgstr "Trenutačno u gradnji:"
 
 #. Pauses the current ship production, can be resumed later
 #. Pauses the current groundunit production, can be resumed later
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:40
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:40
 msgid "Pause"
-msgstr "Pauziraj"
+msgstr "Zaustavi"
 
 #. Resumes the currently paused ship production
 #. Resumes the currently paused groundunit production
@@ -269,28 +267,28 @@ msgstr "Resursi koji još fale:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr "Otkaži izgradnju:"
+msgstr "Otkaži gradnju:"
 
 #. abort construction of a ship, lose invested resources
 #. abort construction of a groundunit, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:67
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:67
 msgid "(lose all resources)"
-msgstr "(izgubiti sve resurse)"
+msgstr "(izgubi sve resurse)"
 
 #. abort construction of a ship, lose invested resources
 #. abort construction of a groundunit, lose invested resources
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:70
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:70
 msgid "Cancel all building progress"
-msgstr "Otkazati sav napredak izgradnje"
+msgstr "Otkaži sav napredak gradnje"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:8
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:8
 #: horizons/gui/tabs/barrackstabs.py:130
 #: horizons/gui/tabs/boatbuildertabs.py:342
 msgid "Confirm order"
-msgstr "Potvrdi naredbu"
+msgstr "Potvrdi naruđbu"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
@@ -381,29 +379,29 @@ msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
-msgstr "Izgradi jedinicu imanja:"
+msgstr "Sagradi jedinicu imanja:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
 msgid "Build this groundunit!"
-msgstr "Izgradi ovu jedinicu imanja!"
+msgstr "Sagradi ovu jedinicu imanja!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
 msgstr ""
-"Kako bi izgradili brod, kliknite na karticu klase, odaberite željeni brod i "
-"potvrdite odabir."
+"Za izgradnju broda pritisni na karticu klase, odaberi željeni brod i potvrdi "
+"odabir."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
-msgstr "Izgradi brod:"
+msgstr "Sagradi brod:"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
-msgstr "Izgradi ovaj brod!"
+msgstr "Sagradi ovaj brod!"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -434,7 +432,7 @@ msgstr "Iskorištenost kapaciteta"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr "Kliknite kako bi promijenili ime ove jedinice imanja"
+msgstr "Pritisni za mijenjanje imena ove jedinice imanja"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
@@ -490,7 +488,7 @@ msgstr "sretan"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:55
 msgid "Amount of houses with this happiness"
-msgstr "Kuće sa tom količinom sreće"
+msgstr "Kuće s ovom srećom"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:62
 msgid "Residents per house"
@@ -502,7 +500,7 @@ msgstr "Broj naseljenika po kući"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:66
 msgid "Houses with this amount of inhabitants"
-msgstr "Kuće sa tom količinom naseljenika"
+msgstr "Kuće s ovom količinom stanovnika"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:71
 msgid "Summary"
@@ -518,7 +516,7 @@ msgstr "stanovnici"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
-msgstr "Pruža sigurnost tvojem naselju."
+msgstr "Pruža sigurnost vašem naselju."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -531,7 +529,7 @@ msgstr "Prodaja"
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:36
 #: horizons/gui/tabs/buyselltab.py:343
 msgid "Buying"
-msgstr "Kupovina"
+msgstr "Kupovanje"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:15
 #: content/gui/xml/ingame/tabwidget/overview/overview_tower.xml:17
@@ -563,7 +561,7 @@ msgstr "Sadrži ove resurse:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "Kliknite kako bi promjenili ime naseobine"
+msgstr "Pritisni za mijenjanje imena naselja"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -584,8 +582,8 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Signalna vatra pokazuje svim slobodnim trgovcima kako doći do vaše naseobine "
-"u slučaju da želite kupiti ili prodati robu."
+"Signalna vatra pokazuje svim slobodnim trgovcima kako doći do tvog naselja u "
+"slučaju da želiš kupiti ili prodati robu."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
@@ -600,7 +598,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
-msgstr "Kliknite kako bi promijenili ime ovog broda"
+msgstr "Pritisni za mijenjanje imena ovog broda"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -608,14 +606,14 @@ msgstr "Kliknite kako bi promijenili ime ovog broda"
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:8
 #: horizons/gui/tabs/buyselltab.py:89 horizons/gui/tabs/tradetab.py:41
 msgid "Trade"
-msgstr "Trgovati"
+msgstr "Trgovanje"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:25
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:27
 #: horizons/gui/tabs/shiptabs.py:69
 msgid "Build settlement"
-msgstr "Izgradi naseobinu"
+msgstr "Sagradi naselje"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:32
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:32
@@ -645,7 +643,7 @@ msgstr "Kupi ili prodaj resurse"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/buysellmenu.xml:18
 msgid "Trade history"
-msgstr "Povijest kupoprodaje"
+msgstr "Povijest trgovanja"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
@@ -682,7 +680,7 @@ msgstr "Saldo:"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:46
 msgid "Show resources produced in this settlement"
-msgstr "Prikaži mi resurse koji se proizvode u ovoj naseobini"
+msgstr "Pokaži resurse koji se proizvode u ovom naselju"
 
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:15
 #: content/gui/xml/ingame/templates/overview_productionline.xml:15
@@ -692,7 +690,7 @@ msgstr "Pauziraj proizvodnju"
 #: content/gui/xml/ingame/templates/overview_farmproductionline.xml:18
 #: content/gui/xml/ingame/templates/overview_productionline.xml:18
 msgid "Start production"
-msgstr "Pokreni proizvodnju"
+msgstr "Započni proizvodnju"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -707,16 +705,16 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"Resurs koji označite je prikazan umjesto onog sadašnjeg. Izprazniti tako da "
-"kliknete na X."
+"Odabrani resurs se prikazuje umjesto trenutačnog resursa. Izprazni pritiskom "
+"tipke X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
-msgstr "Spremi trenutnu konfiguraciju resursa kao zadanu za sve naseobine."
+msgstr "Spremi trenutačnu konfiguraciju resursa kao zadanu za sva naselja."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Resetiraj zadanu konfiguraciju resursa za sve naseobine."
+msgstr "Vrati na zadanu konfiguraciju resursa za sva naselja."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -726,7 +724,7 @@ msgstr "Pomakni gore"
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:12
 msgid "Delete entry"
-msgstr "Obriši unos"
+msgstr "Izbriši unos"
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:16
@@ -758,7 +756,7 @@ msgstr "Moji brodovi"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:41
 msgid "My settlements"
-msgstr "Moje naseobine"
+msgstr "Moja naselja"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:48
 msgid "Game messages"
@@ -782,7 +780,7 @@ msgstr "Šalje poruku svim igračima."
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Unesite svoju poruku ovdje"
+msgstr "Ovdje upiši svoju poruku"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -800,12 +798,12 @@ msgstr "Ime igrača:"
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
 msgid "Wait at load:"
-msgstr "Čekati na ukrcavanje:"
+msgstr "Čekanje pri utovaru:"
 
 #. Trade route setting: Whether to wait until all goods could be unloaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:20
 msgid "Wait at unload:"
-msgstr "Čekati na iskrcavanje:"
+msgstr "Čekanje pri istovaru:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Select a resource:"
@@ -819,7 +817,7 @@ msgstr "Aktivnost rute:"
 #: content/gui/xml/ingame/widgets/configure_route.xml:47
 #: horizons/gui/widgets/routeconfig.py:118
 msgid "Start route"
-msgstr "Pokreni rutu"
+msgstr "Započni rutu"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:49
 msgid "Exit"
@@ -857,7 +855,7 @@ msgstr "Novac"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Trenutna riznica igrača + očekivani dohodak u bližoj budućnosti"
+msgstr "Trenutačna riznica igrača + očekivani dohodak u bliskoj budućnosti"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -879,7 +877,7 @@ msgid ""
 "Value of resources generated from all the possible sources in the player's "
 "settlement(s)"
 msgstr ""
-"Vrijednost resursa stvorenih iz svih mogućih izvora unutar igračevih nasobina"
+"Vrijednost resursa stvorenih iz svih mogućih izvora unutar igračevih naselja"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Buildings"
@@ -887,7 +885,7 @@ msgstr "Zgrade"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:15
 msgid "Value of all the buildings in the player's settlement(s)"
-msgstr "Vrijednost svih građevina unutar igračevih naseobina"
+msgstr "Vrijednost svih zgrada unutar igračevih naselja"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -901,12 +899,12 @@ msgid ""
 "Value denoting the progress of the settlement(s) in terms of inhabitants, "
 "buildings and overall happiness"
 msgstr ""
-"Vrijednost koja prikazuje napredak naseobina u smislu koliko ima stanovnika, "
-"zgrada i sveukupnu sreću"
+"Vrijednost koja prikazuje napredak naselja u smislu broja stanovnika, zgrada "
+"i sveukupne sreće"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Units"
-msgstr "jedinice"
+msgstr "Jedinice"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
@@ -930,7 +928,7 @@ msgstr "Saldo"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:12
 msgid "Type"
-msgstr "Tip"
+msgstr "Vrsta"
 
 #: content/gui/xml/ingame/widgets/ships_list.xml:13
 msgid "Weapons"
@@ -958,7 +956,7 @@ msgstr "Zadrži poziciju"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
 msgid "Passive"
-msgstr "Nepokretan"
+msgstr "Pasivno"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:17
@@ -971,36 +969,36 @@ msgstr "Bježati"
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:21
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:26
 msgid "Exit to main menu"
-msgstr "Izađi do glavnog izbornika"
+msgstr "Izađi na glavni izbornik"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr "Odaberi veličinu mape:"
+msgstr "Odaberi veličinu karte:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
 msgid "Choose a map:"
-msgstr "Izaberi mapu:"
+msgstr "Odaberi kartu:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr "Odaberi mapu spremljene igre:"
+msgstr "Odaberi kartu spremljene igre:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr "Odaberi izvor mape"
+msgstr "Odaberi izvor karte"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
-msgstr "Stvori novu mapu"
+msgstr "Stvori novu kartu"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "Učitaj postojeću mapu"
+msgstr "Učitaj postojeću kartu"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "Učitaj spremljene mape igre"
+msgstr "Učitaj spremljenu kartu igre"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -1032,19 +1030,19 @@ msgstr "Pomakni dolje"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:14
 msgid "Rotate building or map clockwise"
-msgstr "Zakreni građevinu ili mapu u desno"
+msgstr "Okreni zgradu ili kartu nadesno"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:15
 msgid "Rotate building or map counterclockwise"
-msgstr "Zakreni građevinu ili mapu u lijevo"
+msgstr "Okreni zgradu ili kartu nalijevo"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:16
 msgid "Increase game speed"
-msgstr "Povećaj brzinu igre"
+msgstr "Ubrzaj igru"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:17
 msgid "Decrease game speed"
-msgstr "Smanji brzinu igre"
+msgstr "Uspori igru"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:18
 msgid "Pause game"
@@ -1052,7 +1050,7 @@ msgstr "Pauziraj igru"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:21
 msgid "Show build menu"
-msgstr "Prikaži izbornik za izgradnju"
+msgstr "Pokaži izbornik za gradnju"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:22
 msgid "Enable destruct mode"
@@ -1060,19 +1058,19 @@ msgstr "Uključi način rada za uništavanje"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:23
 msgid "Enable road building mode"
-msgstr "Uključi način rada za izgradnju cesta"
+msgstr "Uključi način rada za gradnju cesta"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:24
 msgid "Enable pipette mode (clone buildings)"
-msgstr "Uključi način rada na kapaljku (kloniranje građevina)"
+msgstr "Uključi način rada s kapaljkom (kloniranje zgrada)"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:25
 msgid "Show player scores"
-msgstr "Prikaži bodove igrača"
+msgstr "Pokaži bodove igrača"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:26
 msgid "Show settlement list"
-msgstr "Pokaži popis naseobina"
+msgstr "Pokaži popis naselja"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:27
 msgid "Show ship list"
@@ -1092,7 +1090,7 @@ msgstr "Brzo učitavanje"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle translucency of ambient buildings"
-msgstr "Uključi ili isključi prozirnost okolnih građevina"
+msgstr "Uključi ili isključi prozirnost okolnih zgrada"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:33
 msgid "Highlight tile ownership"
@@ -1108,7 +1106,7 @@ msgstr "Fokusiraj kameru na označeni dio"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:36
 msgid "Remove selected units / buildings"
-msgstr "Ukloni odabrane jedinice / građevine"
+msgstr "Ukloni odabrane jedinice / zgrade"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:37
 msgid "Display help"
@@ -1128,7 +1126,7 @@ msgstr "Uključi ili isključi mrežu na mapi"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:41
 msgid "Show coordinate values (Debug)"
-msgstr "Prikaži vrijednosti koordinata (ispravljanje greški)"
+msgstr "Pokaži vrijednosti koordinata (ispravljanje greški)"
 
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:45
@@ -1186,7 +1184,7 @@ msgstr "Igra s više igrača"
 #. Completely shut down UH
 #: content/gui/xml/mainmenu/mainmenu.xml:28
 msgid "Quit"
-msgstr "Izađi"
+msgstr "Zatvori program"
 
 #. Map editor
 #: content/gui/xml/mainmenu/mainmenu.xml:32
@@ -1207,7 +1205,7 @@ msgstr "Maksimalni broj igrača:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:19
 msgid "Exit to multiplayer menu"
-msgstr "Vrati se u više igrača izbornik"
+msgstr "Izađi na izbornik za više igrača"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:39
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:18
@@ -1236,7 +1234,7 @@ msgstr "Ovo je lozinka igre. Neophodna je za pristup igri."
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:50
 msgid "Create this new game"
-msgstr "Kreiraj ovu novu igru"
+msgstr "Stvori ovu novu igru"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:6
 msgid "Gamelobby"
@@ -1268,11 +1266,12 @@ msgstr "Spreman:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "Promijeni tvoj status u spreman (neophodno kako bi igra mogla početi)"
+msgstr ""
+"Promijeni tvoje stanje u „spremno” (neophodno kako bi igra mogla početi)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
-msgstr "Nova igra - igra s više igrača"
+msgstr "Nova igra – igra s više igrača"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 msgid "Load game:"
@@ -1296,7 +1295,7 @@ msgstr "Osviježi listu aktivnih igara"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:51
 msgid "Create game:"
-msgstr "Kreiraj igru:"
+msgstr "Stvori igru:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:52
 msgid "Create a new game"
@@ -1324,7 +1323,7 @@ msgstr "Rezolucija ekrana:"
 
 #: content/gui/xml/mainmenu/settings.xml:25
 msgid "Full screen:"
-msgstr "Puni ekran:"
+msgstr "Cjeloekranski prikaz:"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Frame rate limit:"
@@ -1340,7 +1339,7 @@ msgstr "Zvuk"
 
 #: content/gui/xml/mainmenu/settings.xml:52
 msgid "Music volume:"
-msgstr "Jačina glazbe:"
+msgstr "Glasnoća glazbe:"
 
 #: content/gui/xml/mainmenu/settings.xml:61
 msgid "Effects volume:"
@@ -1356,14 +1355,12 @@ msgstr "Miš"
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid "Scroll at map edge:"
-msgstr "Pomakni na rubu mape:"
+msgstr "Pomakni pri rubu karte:"
 
 #: content/gui/xml/mainmenu/settings.xml:79
 msgid ""
 "Whether to move the viewport when the mouse pointer is close to map edges"
-msgstr ""
-"Opcija koja određuje način pomicanja ekrana na mapi, u ovom slučaju ako "
-"priđete mišem rubovima mape"
+msgstr "Da li pomaknuti pogled kad se pokazivač miša nalazi blizu rubova karte"
 
 #: content/gui/xml/mainmenu/settings.xml:85
 msgid "Cursor centered zoom:"
@@ -1374,9 +1371,9 @@ msgid ""
 "When enabled, mouse wheel zoom will use the cursor position as new viewport "
 "center. When disabled, always zoom to current viewport center."
 msgstr ""
-"Opcija koja određuje način zumiranja na mapi. Ako je opcija uključena mapa "
-"će se zumirati na strelicu miša, a ako je isključena onda zumira na trenutni "
-"pogled."
+"Opcija koja određuje način zumiranja na karti. Ako je opcija uključena karta "
+"će se zumirati na strelicu miša, a ako je isključena onda zumira na središte "
+"trenutačnog pogleda."
 
 #: content/gui/xml/mainmenu/settings.xml:91
 msgid "Middle mouse button pan:"
@@ -1390,7 +1387,7 @@ msgstr ""
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "0 is default system settings"
-msgstr "0 je zadana postavka sistema"
+msgstr "0 je zadana postavka sustava"
 
 #: content/gui/xml/mainmenu/settings.xml:99
 msgid "Mouse sensitivity:"
@@ -1418,15 +1415,15 @@ msgstr "Jezik"
 
 #: content/gui/xml/mainmenu/settings.xml:156
 msgid "General"
-msgstr "Opći"
+msgstr "Opće"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Rotate minimap with map:"
-msgstr "Zakreni mini mapu zajedno s gl. mapom:"
+msgstr "Okreni malu kartu zajedno s kartom:"
 
 #: content/gui/xml/mainmenu/settings.xml:161
 msgid "Whether to also rotate the minimap whenever the regular map is rotated"
-msgstr "Postavka određuje dali da se rotira mini mapa zajedno s glavnom mapom"
+msgstr "Da li okretati malu kartu kadgod se okrene glavna karta"
 
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "Uninterrupted building:"
@@ -1435,8 +1432,8 @@ msgstr "Neprekidna izgradnja:"
 #: content/gui/xml/mainmenu/settings.xml:167
 msgid "When enabled, do not exit the build mode after successful construction"
 msgstr ""
-"Postavka određuje dali da igra automatski izađe iz \"gradnje\" načina rada "
-"nakon uspiješne konstrukcije"
+"Kad je uključeno, nemoj prekinuti načina rada gradnje nakon uspješne "
+"konstrukcije"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Auto-unload ship:"
@@ -1444,9 +1441,7 @@ msgstr "Automatski istovari brod:"
 
 #: content/gui/xml/mainmenu/settings.xml:173
 msgid "Whether to unload the ship after founding a settlement"
-msgstr ""
-"Postavka određuje dali da se brod automatski istovari nakon osnivanja "
-"naseobine"
+msgstr "Da li brod automatski istovariti nakon osnivanja naselja"
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid ""
@@ -1454,7 +1449,7 @@ msgid ""
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
 "Nemoj koristiti normalnu sesiju igre. Određuje dali da piše informacije o "
-"popravljanju grešaka u tvoj korisnički direktorij zapisa. Neznatno uspori "
+"popravljanju grešaka u tvoj korisnički direktorij zapisa. Neznatno usporava "
 "igru."
 
 #: content/gui/xml/mainmenu/settings.xml:179
@@ -1468,9 +1463,7 @@ msgstr "Indikatori proizvodnje:"
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr ""
-"Postavka određuje dali će se prilikom završetka proizvodnje pojaviti sličica "
-"iznad građevine"
+msgstr "Da li pokazati ikone resursa iznad zgrade nakon završetka proizvodnje"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
@@ -1482,11 +1475,11 @@ msgstr "Odgoda pomicanja ekrana:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr "Odaberi tip citiranja:"
+msgstr "Odaberi vrstu citiranja:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr "Koje vrste citiranja prikazati prilikom učitavanja igre"
+msgstr "Koju vrstu citiranja prikazati prilikom učitavanja igre"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
@@ -1502,15 +1495,15 @@ msgstr "Mrežni ulaz:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr "Odbaci trenutne promjene"
+msgstr "Odbaci trenutačne promjene"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr "Resetiraj na početne vrijednosti"
+msgstr "Vrati na zadane postavke"
 
 #: content/gui/xml/mainmenu/settings.xml:237
 msgid "Save changes"
-msgstr "Spremi promijene"
+msgstr "Spremi promjene"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
@@ -1518,7 +1511,7 @@ msgstr "Tvoje spremljene igre:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
-msgstr "Lozinka igre. Neophodna je ako se želite pridružiti ovoj igri"
+msgstr "Lozinka igre. Neophodna je za pridruživanje ovoj igri"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
@@ -1526,7 +1519,7 @@ msgstr "Odustani"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
-msgstr "Unesite ime datoteke:"
+msgstr "Upiši ime datoteke:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:46
@@ -1535,11 +1528,11 @@ msgstr "Detalji:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:53
 msgid "Delete selected savegame"
-msgstr "Obriši odabranu spremljenu igru"
+msgstr "Izbriši odabranu spremljenu igru"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr "Nova igra - Igra s jednim igračem"
+msgstr "Nova igra – igra s jednim igračem"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
@@ -1547,7 +1540,7 @@ msgstr "Scenarij"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr "Nasumična mapa"
+msgstr "Slučajna karta"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
@@ -1560,11 +1553,11 @@ msgstr "Započni igru"
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr "Odaberi mapu za igranje:"
+msgstr "Odaberi kartu za igranje:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr "Postavke mape:"
+msgstr "Postavke karte:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
@@ -1577,7 +1570,7 @@ msgstr "Odaberi jezik:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr "Umjetni igrači:"
+msgstr "UI igrači:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
@@ -1646,7 +1639,7 @@ msgstr "Trgovački partner ne kupuje ovo."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr "Ne posjedujete to."
+msgstr "Ovo ne posjeduješ."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
@@ -1666,26 +1659,25 @@ msgstr "Neuspješno brzo spremanje."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:67
 msgid "An error happened during quicksave."
-msgstr "Greška se dogodila prilikom brzog spremanja."
+msgstr "Dogodila se greška prilikom brzog spremanja."
 
 #: horizons/editor/session.py:71
 msgid "Your map has not been saved."
-msgstr "Tvoja mapa nije spremljena."
+msgstr "Tvoja karta nije spremljena."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr ""
-"Ako se ovo dogodi opet, molimo da kontaktirate razvijajući tim: {website}"
+msgstr "Ako se ovo dogodi opet, kontaktiraj tim programera: {website}"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Jeste li sigurni da želite izaći iz Unknown Horizons?"
+msgstr "Stvarno želiš prekinuti Unknown Horizons?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr "Odustani od igre"
+msgstr "Prekini igru"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
@@ -1693,11 +1685,11 @@ msgstr "Diplomacija nije moguća"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "Nemogu započeti diplomaciju jer nema drugih igrača."
+msgstr "Nije moguće započeti diplomaciju jer nema drugih igrača."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
-msgstr "Zaista želite izbrisati ove objekte?"
+msgstr "Stvarno želiš izbrisati ove objekte?"
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
@@ -1707,7 +1699,7 @@ msgstr "Izbriši"
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr "{size}x{size} granica"
+msgstr "{size} × {size} pločice"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
@@ -1720,13 +1712,13 @@ msgstr "{key} je već namješten na {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:148
 msgid "Would you like to overwrite it?"
-msgstr "Da li želite spremiti preko postojeće?"
+msgstr "Želiš li prepisati postojeće?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:149
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr "Potvrdi za spremanje preko postojećeg"
+msgstr "Potvrda za prepisivanje postojećeg"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
@@ -1734,64 +1726,63 @@ msgstr "Citati"
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "Gameplay Tips"
-msgstr "Gameplay savjeti"
+msgstr "Savjeti za igranje igre"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Pritisnite 'ESC' kako bi ušli u izbornik igre."
+msgstr "Pritisni 'ESC' za pristup izborniku igre."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Pritisnite 'SHIFT' kako bi postavili više građevina."
+msgstr "Koristi 'SHIFT' za postavljenje više zgrada."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Trenutno su samo prvih {tier} razina dostupni za igru."
+msgstr "Trenutačno su samo prvih {tier} razina dostupni za igru."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr "Igru možete pauzirati sa tipkom 'P'."
+msgstr "Igru može zaustaviti s tipkom 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Možete vući ceste držeći lijevu tipku miša."
+msgstr "Možeš vući ceste držeći lijevu tipku miša."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "Možete izgraditi više zgrada držeći tipku 'SHIFT'."
+msgstr "Možeš izgraditi više zgrada držeći tipku 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr ""
-"Možete povećati razinu sreće svojih stanovnika tako da smanjite poreze."
+msgstr "Možeć povećati razinu sreće svojih stanovnika tako da smanjiš poreze."
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
-"Izgradite vatrogasnu stanicu i doktore kako bi zaštitili svoje stanovnike od "
-"vatre i bolesti."
+"Sagradi vatrogasnu stanicu i doktore za zaštitu tvojih stanovnike od vatre i "
+"bolesti."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Izgradite skaldišne šatore kako bi povećali kapacitet skladišta."
+msgstr "Sagradi skaldišne šatore kako bi se povećao kapacitet skladišta."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Budite sigurni da je svaka kuća u dometu tržnice."
+msgstr "Osiguraj da je svaka kuća u dometu tržnice."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr "Pritisnite 'T' kako bi stabla postala prozirna."
+msgstr "Pritisni 'T' kako bi stabla postala prozirna."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
-"Izgradite skaldišne šatore i stražarnice kako bi povećali područje naselja."
+"Sagradi skaldišne šatore i stražarnice kako bi se povećalo područje naselja."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1800,28 +1791,37 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Za jednostavno prikazivanje pokriva li područje paviljona sve tvoje šatore, "
+"odaberi ga iz izbornika za gradnju i prijeđi s njim preko postojećeg "
+"paviljona. Nepokriveni šatori prikazani su žutom bojom. Dobra je ideja "
+"izgraditi novi paviljon u njihovom susjedstvu."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Učini igru s jednim igračem zabavnijom s dodatnim računalnim igračima "
+"povećanjem broja „UI igrača” pri pokretanju nove igre."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Prvi koraci su lakši, ako pogledaš kako UI igrači postavljaju svoje naselje."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Želiš samo smiješne citate? Promijeni vrste citata prikazane ovdje u "
+"izborniku postavki na stranici igre."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Tržnica povezuje tvoje zgrade poput ceste."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -1833,63 +1833,63 @@ msgstr "Miješano"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr "Pokrećem mehanizam…"
+msgstr "Pokretanje uređaja …"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
-msgstr "Pecam ribe…"
+msgstr "Pecanje ribe …"
 
 #: horizons/gui/modules/loadingscreen.py:113
 msgid "Drawing user interface…"
-msgstr "Crtam korisničko sučelje…"
+msgstr "Crtanje korisničkog sučelja …"
 
 #: horizons/gui/modules/loadingscreen.py:114
 msgid "Activating timer…"
-msgstr "Aktiviram mjerač vremena…"
+msgstr "Aktiviranje mjerača vremena …"
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Chomping game data…"
-msgstr "Pripremam podatke…"
+msgstr "Pripremanje podataka igre …"
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Shaping islands…"
-msgstr "Oblikujem otoke…"
+msgstr "Oblikovanje otoka …"
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Preparing blueprints…"
-msgstr "Pripremam nacrte…"
+msgstr "Pripremanje nacrta …"
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Filling world with water…"
-msgstr "Punim svijet vodom…"
+msgstr "Punjenje svijeta vodom …"
 
 #: horizons/gui/modules/loadingscreen.py:119
 msgid "Raising animals…"
-msgstr "Uzgajam životinje…"
+msgstr "Uzgajanje životinja …"
 
 #: horizons/gui/modules/loadingscreen.py:120
 msgid "Convincing AI…"
-msgstr "Uvjeravam umjetnu inteligenciju…"
+msgstr "Uvjeravanje umjetne inteligencije …"
 
 #: horizons/gui/modules/loadingscreen.py:121
 msgid "Burying treasures…"
-msgstr "Zakapam blago…"
+msgstr "Zakapanje blaga …"
 
 #: horizons/gui/modules/multiplayermenu.py:126
 msgid "Unable to find pyenet"
-msgstr "Ne mogu pronaći pyenet"
+msgstr "Nije moguće pronaći pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:127
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
-"Igra s više igrača zahtjeva \"pyenet\" biblioteku, a ona nije pronađena u "
-"tvom sistemu."
+"Funkcija za igru s više igrača zahtijeva „pyenet” biblioteku, međutim ta "
+"biblioteka nije pronađena u tvom sustavu."
 
 #: horizons/gui/modules/multiplayermenu.py:129
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr "Linuks korisnici: Pokušajte instalirati pyenet kroz upravitelj paketa."
+msgstr "Linuks korisnici: Pokušajte instalirati pyenet kroz upravljač paketa."
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Failed to initialize networking."
@@ -1899,7 +1899,7 @@ msgstr "Neuspješno iniciranje mrežnog povezivanja."
 #: horizons/gui/modules/settings.py:274
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr "Mrežne mogućnosti nisu mogle biti pokrenute sa trenutnim postavkama."
+msgstr "Nije bilo moguće pokrenuti mrežne funkcije s trenutnom konfiguracijom."
 
 #: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:275
@@ -1909,33 +1909,33 @@ msgstr "Provjeri postavke koje si odredio u mrežnim postavkama."
 #: horizons/gui/modules/multiplayermenu.py:149
 #: horizons/gui/modules/multiplayermenu.py:168 horizons/mpsession.py:53
 msgid "Fatal Network Error"
-msgstr "Kobna greška mreže"
+msgstr "Kobna mrežna greška"
 
 #: horizons/gui/modules/multiplayermenu.py:150
 msgid "Could not connect to master server."
-msgstr "Neuspješno povezivanje na glavni poslužitelj."
+msgstr "Nije bilo moguće povezati se na glavni poslužitelj."
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Molimo provjerite internet vezu. Ukoliko je ona u redu, onda su vjerojatno "
-"naši poslužitelji privremeno neaktivni."
+"Provjeri internetsku vezu. Ukoliko je ona u redu, onda su vjerojatno naši "
+"poslužitelji privremeno neaktivni."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
-msgstr "Nešto se krivo dogodilo s mrežom:"
+msgstr "Dogodila se greška s mrežom:"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Version differs!"
-msgstr "Verzija nije ista!"
+msgstr "Verzija se razlikuje!"
 
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/gui/modules/multiplayermenu.py:482
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr "Mapa: {map_name}"
+msgstr "Karta: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/gui/modules/multiplayermenu.py:483
@@ -1957,7 +1957,7 @@ msgstr "Igrači: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Wrong version"
-msgstr "Pogrešna verzija"
+msgstr "Kriva verzija"
 
 #: horizons/gui/modules/multiplayermenu.py:237
 #, python-brace-format
@@ -1967,7 +1967,7 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Vrezija igre je različita od tvoje verzije. U igri s više igrača je nužno da "
+"Vrezija igre se razlikuje od tvoje verzije. U igri s više igrača nužno je da "
 "sve verzije igre budu iste. Ovo se popravlja tako da svi igrači nadograde "
 "igru na najnoviju verziju. Verzija igre: {game_version} Tvoja verzija: "
 "{own_version}"
@@ -1978,7 +1978,7 @@ msgstr "Lozinka igre"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr "Unesite lozinku:"
+msgstr "Upiši lozinku:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
@@ -1998,12 +1998,12 @@ msgstr "Nije spremno"
 
 #: horizons/gui/modules/multiplayermenu.py:445
 msgid "Enter your message"
-msgstr "Napiši svoju poruku"
+msgstr "Upiši svoju poruku"
 
 #: horizons/gui/modules/multiplayermenu.py:503
 #: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
-msgstr "Kliknite ovdje kako bi promijenili svoje ime i/ili boju"
+msgstr "Pritisni ovdje za mijenjanje svog imena i/ili boje"
 
 #: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
@@ -2041,16 +2041,16 @@ msgstr "{player} nije više spreman"
 #: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr "Sada te svi znaju kao {new_name}"
+msgstr "Sada te svi poznaju kao {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:618
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr "{player} je sada znan kao {new_name}"
+msgstr "{player} je sada poznat kao {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:622
 msgid "You changed your color"
-msgstr "Promijenili ste svoju boju"
+msgstr "Promijenio/la si svoju boju"
 
 #: horizons/gui/modules/multiplayermenu.py:624
 #, python-brace-format
@@ -2063,24 +2063,24 @@ msgstr "Izbačen"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
-msgstr "Kreator igre vas je izbacio iz mape"
+msgstr "Stvaratelj igre te je izbacio iz karte"
 
 #: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr "{player} je izbačen od strane kreatora igre"
+msgstr "Stvaratelj igre je izbacio igrača {player}"
 
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jeste li sigurni da želite prekinuti pokrenutu sesiju?"
+msgstr "Stvarno želiš prekinuti pokrenutu sesiju?"
 
 #: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
-msgstr "Odustani od sesije"
+msgstr "Prekini sesiju"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "No saved games"
-msgstr "Nema sačuvanih igara"
+msgstr "Nema spremljenih igara"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "There are no saved games to load."
@@ -2088,29 +2088,29 @@ msgstr "Nema spremljenih igara za učitavanje."
 
 #: horizons/gui/modules/select_savegame.py:146
 msgid "No filename given"
-msgstr "Nije dato ime datoteke"
+msgstr "Ime datoteke nije zadano"
 
 #: horizons/gui/modules/select_savegame.py:147
 msgid "Please enter a valid filename."
-msgstr "Molimo unesite ispravno ime datoteke."
+msgstr "Upiši ispravno ime datoteke."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr "Spremljena igra sa imenom {name} već postoji."
+msgstr "Spremljena igra s imenom {name} već postoji."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr "Mapa sa imenom {name} već postoji."
+msgstr "Karta s imenom {name} već postoji."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
-msgstr "Prepiši preko toga?"
+msgstr "Prepisati postojeće?"
 
 #: horizons/gui/modules/select_savegame.py:218
 msgid "Unknown savedate"
-msgstr "Nepoznat datum spremljene igre"
+msgstr "Nepoznat datum spremanja"
 
 #: horizons/gui/modules/select_savegame.py:221
 #, python-brace-format
@@ -2122,9 +2122,9 @@ msgstr "Spremljeno {time}"
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] "Spremljeno {amount} vremena"
-msgstr[1] "Spremljenih {amount} vremena"
-msgstr[2] "Spremljena {amount} vremena"
+msgstr[0] "Spremljeno {amount} put"
+msgstr[1] "Spremljeno {amount} puta"
+msgstr[2] "Spremljeno {amount} puta"
 
 #: horizons/gui/modules/select_savegame.py:232
 #, python-brace-format
@@ -2133,26 +2133,26 @@ msgstr "Verzija spremljene igre {version}"
 
 #: horizons/gui/modules/select_savegame.py:236
 msgid "(probably incompatible)"
-msgstr "(vjerojatno nekompatibilan)"
+msgstr "(vjerojatno nekompatibilna)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:240
 msgid "Incompatible version"
-msgstr "Inkompatibilna verzija"
+msgstr "Nekompatibilna verzija"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "No file selected"
-msgstr "Datoteka nije odabrana"
+msgstr "Nijedna datoteka nije odabrana"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "You need to select a savegame to delete."
-msgstr "Morate odabrati spremljenu igru kako bi obrisali."
+msgstr "Za brisanje moraš odabrati jednu spremljenu igru."
 
 #: horizons/gui/modules/select_savegame.py:256
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Dali stvarno želite obrisati spremljenu igru '{name}'?"
+msgstr "Stvarno želiš izbrisati spremljenu igru '{name}'?"
 
 #: horizons/gui/modules/select_savegame.py:258
 msgid "Confirm deletion"
@@ -2168,7 +2168,7 @@ msgstr "Neuspješno brisanje spremljene datoteke!"
 
 #: horizons/gui/modules/settings.py:56 horizons/gui/modules/settings.py:119
 msgid "Hotkeys"
-msgstr "Kratice"
+msgstr "Tipkovnički prečaci"
 
 #: horizons/gui/modules/settings.py:57
 msgid "Game"
@@ -2180,7 +2180,7 @@ msgstr "Isključeno"
 
 #: horizons/gui/modules/settings.py:131
 msgid "Restart required"
-msgstr "Potrebno restartirati"
+msgstr "Zahtijeva ponovo pokretanje"
 
 #: horizons/gui/modules/settings.py:132
 msgid ""
@@ -2192,37 +2192,33 @@ msgstr ""
 
 #: horizons/gui/modules/settings.py:137
 msgid "Restore default settings"
-msgstr "Povrati zadane vrijednosti"
+msgstr "Obnovi zadane vrijednosti"
 
 #: horizons/gui/modules/settings.py:138
 msgid ""
 "Restoring the default settings will delete all changes to the settings you "
 "made so far."
 msgstr ""
-"Vraćanje zadanih vrijednosti će obrisati sve promijene koje ste napravili do "
-"sada."
+"Obnavljanje zadanih vrijednosti obrisat će sve do sada učinjene promijene."
 
 #: horizons/gui/modules/settings.py:139
 msgid "Do you want to continue?"
-msgstr "Želite li nastaviti?"
+msgstr "Želiš li nastaviti?"
 
 #: horizons/gui/modules/settings.py:260
 msgid "Invalid network port"
-msgstr "Neispravan mrežni ulaz"
+msgstr "Neispravan mrežni priključak"
 
 #: horizons/gui/modules/settings.py:261
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
-"Port koji ste unijeli je neispravan. Broj mora biti u rasponu između 1 i "
-"65535."
+"Uneseni priključak je neispravan. Broj mora biti u rasponu od 1 do 65535."
 
 #: horizons/gui/modules/settings.py:262
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
-msgstr ""
-"Molimo provjerite ulaz koji ste unijeli i budite sigurni da se nalazi u "
-"naznačenom rasponu."
+msgstr "Provjeri upisani priključak i pazi da se nalazi u zadanom rasponu."
 
 #: horizons/gui/modules/settings.py:273
 msgid "Failed to apply new network settings."
@@ -2235,16 +2231,16 @@ msgid ""
 "Low port numbers sometimes require special access privileges, try 0 or a "
 "number greater than 1024."
 msgstr ""
-"Niske vrijednosti ulaza ponekad zahtjevaju specijalne dozvole, probaj 0 ili "
-"broj veći od 1024."
+"Niske vrijednosti priključka ponekad zahtijevaju specijalne dozvole, probaj "
+"0 ili broj veći od 1024."
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "Invalid player name"
-msgstr "Nevažeće ime igrača"
+msgstr "Neispravno ime igrača"
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "You entered an invalid playername."
-msgstr "Unijeli ste neispravno ime igrača."
+msgstr "Upisao/la si neispravno ime igrača."
 
 #: horizons/gui/modules/singleplayermenu.py:156
 msgid "Resource density:"
@@ -2252,7 +2248,7 @@ msgstr "Gustoća resursa:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Map size:"
-msgstr "Veličina mape:"
+msgstr "Veličina karte:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Water:"
@@ -2272,7 +2268,7 @@ msgstr "Odstupanje veličine otoka:"
 
 #: horizons/gui/modules/singleplayermenu.py:353
 msgid "Click to generate a different random map"
-msgstr "Kliknite kako bi stvorili nasumičnu mapu"
+msgstr "Pritisni za stvaranje slučajne karte"
 
 #: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
@@ -2288,7 +2284,7 @@ msgstr "Poruka greške:"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
-msgstr "Molimo prijavite ovo autoru."
+msgstr "Ovo prijavi autoru."
 
 #: horizons/gui/modules/singleplayermenu.py:590
 #, python-brace-format
@@ -2313,7 +2309,7 @@ msgstr "Sagradi {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr "Pritisni H kako bi uklonio savjet"
+msgstr "Za uklanjanje ovog savjeta pritisni H"
 
 #: horizons/gui/mousetools/tearingtool.py:114
 msgid "Destroy all buildings"
@@ -2357,19 +2353,19 @@ msgstr "Pregled graditelja broda"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
-msgstr "Ribolovni brodovi"
+msgstr "Ribolovni čamci"
 
 #: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
-msgstr "Plovila za razmjenu"
+msgstr "Trgovački čamci"
 
 #: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
-msgstr "Plovila za rat"
+msgstr "Ratni čamci"
 
 #: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
-msgstr "Brodovi za rat"
+msgstr "Ratni brodovi"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
@@ -2377,11 +2373,11 @@ msgstr "Pregled tornja"
 
 #: horizons/gui/tabs/buildrelatedtab.py:43
 msgid "Build related buildings"
-msgstr "Sagradi srodne građevine"
+msgstr "Sagradi srodne zgrade"
 
 #: horizons/gui/tabs/buyselltab.py:135
 msgid "Click on one of the resource slots to add a trade offer."
-msgstr "Odaberite jedno od mjesta za resurse kako bi dodali trgovačku ponudu."
+msgstr "Pritisni jedno od mjesta za resurse za dodavanje trgovačke ponude."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:178
@@ -2389,8 +2385,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
-"Klikajući na taj naziv podešavate akciju kupnje ili prodaje, nakon toga "
-"namjestite količinu sa klizačem."
+"Pritiskajući taj naziv postavi kupnju ili prodaju, nakon toga odredi "
+"količinu pomoću klizača."
 
 #: horizons/gui/tabs/buyselltab.py:322
 #, python-brace-format
@@ -2463,11 +2459,11 @@ msgstr "Pregled broda"
 
 #: horizons/gui/tabs/shiptabs.py:56
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr "Brod mora biti blizu otoka kako bi osnovao naseobinu."
+msgstr "Za osnivanje naselja, brod mora biti blizu otoka."
 
 #: horizons/gui/tabs/shiptabs.py:61
 msgid "You already have a settlement on this island."
-msgstr "Već imate naseobinu na ovom otoku."
+msgstr "Već imaš naselje na ovom otoku."
 
 #: horizons/gui/tabs/shiptabs.py:92
 msgid "Load/Unload"
@@ -2537,7 +2533,7 @@ msgstr "Još ništa nije napisano u tvoju knjigu zapisa!"
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-brace-format
 msgid "Settlements of {player}"
-msgstr "{player} naseobine"
+msgstr "Naselja od {player}"
 
 #: horizons/gui/widgets/playersships.py:45
 #, python-brace-format
@@ -2560,22 +2556,22 @@ msgstr "Pregled proizvodnje u {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr "Kliknite za prikaz statistike"
+msgstr "Pritisni za prikaz statistike"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr "Kliknite kako bi dodali novo mjesto"
+msgstr "Pritisni za dodavanje novog mjesta"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr "Vrati ovu konfiguraciju na početne postavke."
+msgstr "Vrati ovu konfiguraciju na tvorničke postavke."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
-"Povrati sistem prikazivanja resursa naseobine na tvoju spremljenu "
+"Vrati prikazane resurse ovog naselja na tvoju spremljenu zadanu "
 "konfiguraciju."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
@@ -2583,8 +2579,8 @@ msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
-"Podesi zadanu konfiguraciju (onu koju vidiš ovdje) na tvorničku za sve "
-"naseobine."
+"Vrati na zadanu konfiguraciju (onu koju vidiš ovdje) na tvorničku za sva "
+"naselja."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
@@ -2596,19 +2592,19 @@ msgstr "Dohodak od prodaje"
 
 #: horizons/gui/widgets/routeconfig.py:122
 msgid "Stop route"
-msgstr "Ruta zaustavljanja"
+msgstr "Zaustavi rutu"
 
 #: horizons/gui/widgets/routeconfig.py:129
 msgid "Need at least two settlements"
-msgstr "Potrebno je barem dvije naseobine"
+msgstr "Potrebna su barem dva naselja"
 
 #: horizons/gui/widgets/routeconfig.py:130
 msgid "You need at least two different settlements in your route."
-msgstr "Potrebne su ti barem dvije različite naseobine u tvojoj ruti."
+msgstr "Na tvojoj ruti trebaš barem dva različita naselja."
 
 #: horizons/gui/widgets/routeconfig.py:159
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Kliknite na naseobinu kako bi dodali radnu točku!"
+msgstr "Pritisni naselje za dodavanje točke na putu!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
@@ -2620,7 +2616,7 @@ msgstr "Iskrcavanje sa broda"
 
 #: horizons/gui/widgets/routeconfig.py:399
 msgid "You are not allowed to trade with this player"
-msgstr "Nije vam dozvoljeno trgovanje s ovim igračem"
+msgstr "Ne smiješ trgovati s ovim igračem"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:120
@@ -2690,12 +2686,12 @@ msgstr "Proizvodi začinska sredstva od začina."
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:73
 msgid "Boat Builder"
-msgstr "Brodogradilište"
+msgstr "Graditelja čamaca"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:75
 msgid "Builds boats and small ships. Built on coast."
-msgstr "Gradi čamce i manje brodove. Sagraditi na obali."
+msgstr "Gradi čamce i manje brodove. Sagradi na obali."
 
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:79
@@ -2730,7 +2726,7 @@ msgstr "Potrebene su joj svinje ili goveda. Proizvodi hranu."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr "Kovačnica topova"
+msgstr "Proizvođač topova"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
@@ -2795,7 +2791,7 @@ msgstr "Uzgaja usjeve i stoku."
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:137
 msgid "Alvearies"
-msgstr "Pčelinjak"
+msgstr "Pčelinjaci"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:139
@@ -2810,7 +2806,7 @@ msgstr "Pašnjak"
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Raises cattle. Needs a farm."
-msgstr "Uzgaja goveda. Zahtjeva farmu."
+msgstr "Uzgaja goveda. Zahtijeva farmu."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:149
@@ -2840,7 +2836,7 @@ msgstr "Biljni vrt"
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:163
 msgid "Produces herbs. Needs a farm."
-msgstr "Proizvodi bilje. Zahtjeva farmu."
+msgstr "Proizvodi bilje. Zahtijeva farmu."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:167
@@ -2850,7 +2846,7 @@ msgstr "Polje hmelja"
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:169
 msgid "Yields hop. Needs a farm."
-msgstr "Pridonosi hmelj. Treba farmu."
+msgstr "Pridonosi hmelj. Zahtijeva farmu."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
@@ -2991,7 +2987,7 @@ msgstr "Glavni trg"
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:253
 msgid "Supplies citizens with goods. Provides community."
-msgstr "Snabdjeva stanovnike ss potrepštinama. Održava zajednicu."
+msgstr "Snabdjeva stanovnike s potrepštinama. Održava zajednicu."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:257
@@ -3026,7 +3022,7 @@ msgstr "Paviljon"
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:275
 msgid "Fulfills religious needs of sailors."
-msgstr "Ispunjava potrebe mornara za religijom."
+msgstr "Ispunjava vjerske potrebe mornara."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:279
@@ -3051,7 +3047,7 @@ msgstr "Signalna vatra"
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:291
 msgid "Allows the player to trade with the free trader."
-msgstr "Omogućava igraču trgovinu sa slobodnim trgovcem."
+msgstr "Omogućava igraču trgovati sa slobodnim trgovcem."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:295
@@ -3081,7 +3077,7 @@ msgstr "Kamenolom"
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:309
 msgid "Carves stone tops into bricks."
-msgstr "Oblikuje kamene komade u cigle."
+msgstr "Oblikuje komade kamena u cigle."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:313
@@ -3191,7 +3187,7 @@ msgstr "Kamena cesta"
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:367
 msgid "Needed for collecting goods."
-msgstr "Neophodan za skupljanje dobara."
+msgstr "Neophodno za skupljanje dobara."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:371
@@ -3201,7 +3197,7 @@ msgstr "Drvo"
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:373
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr "Proizvodi klade. Posječene od strane drvosječa."
+msgstr "Proizvodi klade. Posječene od drvosječa."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:377
@@ -3231,7 +3227,7 @@ msgstr "Proizvodi željezno oružje."
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:393
 msgid "Weaver's Hut"
-msgstr "Tkalački stan"
+msgstr "Tkalačka koliba"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:395
@@ -3266,7 +3262,7 @@ msgstr "Drveni toranj"
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:413
 msgid "Defends your settlement."
-msgstr "Brani tvoju naseobinu."
+msgstr "Brani tvoje naselje."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3384,25 +3380,25 @@ msgstr "Radionice"
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Settlement"
-msgstr "Naseobina"
+msgstr "Naselje"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:493
 msgid "Agriculture"
-msgstr "Agrokultura"
+msgstr "Poljoprivreda"
 
 #: horizons/main.py:366
 msgid "Failed to start/load the game"
-msgstr "Neuspješno startanje/učitavanje igre"
+msgstr "Neuspješno pokretanje/učitavanje igre"
 
 #: horizons/main.py:367
 msgid "The game you selected could not be started."
-msgstr "Igru koju ste odabrali se ne može pokrenuti."
+msgstr "Odabrana igra se ne može pokrenuti."
 
 #: horizons/main.py:368
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
-"Spremljena igra je možda neispravna ili je napravljena sa ranijom verzijom "
+"Spremljena igra je možda neispravna ili je spremljena s ranijom verzijom "
 "igre."
 
 #: horizons/main.py:516
@@ -3411,7 +3407,7 @@ msgstr "Nema brzo spremljenih igara"
 
 #: horizons/main.py:517
 msgid "You need to quicksave before you can quickload."
-msgstr "Morate prvo napraviti brzo spremanje kako bi mogao brzo učitati igru."
+msgstr "Za brzo učitavanje igre najprije moraš brzo spremiti igru."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
@@ -3429,7 +3425,7 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
-"Igre su izašle iz sinkronizma. Ovo ukazuje na nepoznatu internu grešku, igra "
+"Igre više nisu sinkronizirane. Ovo ukazuje na nepoznatu internu grešku, igra "
 "se ne može nastaviti."
 
 #: horizons/manager.py:179
@@ -3454,15 +3450,15 @@ msgid ""
 "characters: _ . -"
 msgstr ""
 "Ime datoteke se mora sastojati samo od slova, brojeva, razmaka i ovih "
-"simbola: _.-"
+"znakova: _.-"
 
 #: horizons/network/connection.py:88 horizons/network/connection.py:94
 msgid "Unable to connect to server."
-msgstr "Ne mogu se spojiti na poslužitelj."
+msgstr "Nije moguće spojiti se na poslužitelj."
 
 #: horizons/network/connection.py:89
 msgid "Maybe invalid or irresolvable server address."
-msgstr "Možda neispravna ili nepopravljiva adresa poslužitelja."
+msgstr "Možda je adresa poslužitelja neispravna ili nepopravljiva."
 
 #: horizons/network/networkinterface.py:531
 msgid "Not Ready"
@@ -3484,7 +3480,7 @@ msgstr ""
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr "Premašio/la si veličinu po paketima."
+msgstr "Premašio/la si veličinu paketa."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
@@ -3500,11 +3496,11 @@ msgstr "Ne možeš se pridružiti jednoj igri dok se nalaziš u jednoj drugoj ig
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr "Nepoznata igra ili je igra pokrenuta s drugačijom verzijom"
+msgstr "Nepoznata igra ili igra koja je pokrenuta s drugačijom verzijom"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr "Igra je započela. Nitko se više ne može pridružiti"
+msgstr "Igra je već započela. Nitko se više ne može pridružiti"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
@@ -3535,8 +3531,8 @@ msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"U igri se već nalazi igrač s tvojim jedinstvenim ID-om igrača. To se nikada "
-"ne bi smjelo dogoditi."
+"U igri se već nalazi igrač s tvojom jedinstvenom ID oznakom igrača. To se "
+"nikada ne bi smjelo dogoditi."
 
 #: horizons/network/server.py:496
 msgid "You are not inside a game"
@@ -3563,20 +3559,20 @@ msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Jedan je igrač prekinuo igru. Iz tehničkih razloga, to trenutačno znači, da "
+"Jedan igrač je prekinuo igru. Iz tehničkih razloga, to trenutačno znači, da "
 "se igra ne može nastaviti. Žao nam je."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
-msgstr "Pobijedili ste!"
+msgstr "Pobijedio/la si!"
 
 #: horizons/scenario/actions.py:92
 msgid "You have completed this scenario."
-msgstr "Završili ste ovaj scenarij."
+msgstr "Završio/la si ovaj scenarij."
 
 #: horizons/scenario/actions.py:93
 msgid "Do you want to continue playing?"
-msgstr "Želite li nastaviti igrati?"
+msgstr "Želiš li nastaviti igrati?"
 
 #: horizons/scenario/scenarioeventhandler.py:173
 msgid "unknown"
@@ -3589,15 +3585,15 @@ msgstr "Neuspješno stvaranje datoteke za spremanje igre"
 
 #: horizons/session.py:401
 msgid "There has been an error while creating your savegame file."
-msgstr "Dogodila se pogreška prilikom stvaranja datoteke za spremanje igre."
+msgstr "Dogodila se greška prilikom stvaranja datoteke za spremanje igre."
 
 #: horizons/session.py:402
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
-"Ovo obično znači da se ime spremljene igre sastoji od nedozvoljenih "
-"specijalnih znakova."
+"Ovo obično znači da se ime spremljene igre sastoji od nepodržanih posebnih "
+"znakova."
 
 #: horizons/session.py:409
 msgid "Access is denied"
@@ -3606,16 +3602,16 @@ msgstr "Pristup odbijen"
 #: horizons/session.py:410
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
-"Datoteka spremljene igre možda ima atribute koji onemogućavaju zapisivanje u "
-"nju ili je zaključana od strane nekog drugog procesa."
+"Datoteka spremljene igre je možda samo-za-čitanje ili je zaključana od nekog "
+"drugog procesa."
 
 #: horizons/spsession.py:67
 msgid "Your game has not been saved."
-msgstr "Vaša igra nije spremljena."
+msgstr "Tvoja igra nije spremljena."
 
 #: horizons/util/checkupdates.py:89
 msgid "New version of Unknown Horizons"
-msgstr "Nova verzija Unknown Horizons"
+msgstr "Nova „Unknown Horizons” verzija"
 
 #: horizons/util/checkupdates.py:90
 #, python-brace-format
@@ -3623,22 +3619,22 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
-"Postoji novija verzija Unknown Horizons ({new_version}) od one koju trenutno "
-"koristite ({old_version})."
+"Postoji novija verzija za „Unknown Horizons” ({new_version}) od one koju "
+"trenutačno koristiš ({old_version})."
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
-msgstr "Kliknite sa preuzimanje"
+msgstr "Pritisni za preuzimanje"
 
 #: horizons/util/checkupdates.py:104
 msgid "A page has been opened in your browser."
-msgstr "Stranica je trenutno otvara u vašem pretraživaču."
+msgstr "Stranica je otvarena u tvom pregledniku."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:283
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr "{slotnum} utora, {limit}t"
+msgstr "{slotnum} mjesto, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:291
 #, python-brace-format
@@ -3653,15 +3649,15 @@ msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building must be built on an island."
-msgstr "Ova građevina mora biti izgrađena na otoku."
+msgstr "Ova zgrada mora biti sagrađena na otoku."
 
 #: horizons/world/building/buildable.py:43
 msgid "This ground is not suitable for this building."
-msgstr "Ovo zemljište ne odgovara za ovu građevinu."
+msgstr "Ovaj teren nije pogodan za ovu zgradu."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building has to be built within your settlement."
-msgstr "Ova građevina mora biti izgrađena unutar vaše naseobine."
+msgstr "Ova se zgrada mora sagraditi unutar tvog naselja."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by another player."
@@ -3669,35 +3665,35 @@ msgstr "Ovo područje je već zauzeto od strane drugog igrača."
 
 #: horizons/world/building/buildable.py:46
 msgid "This area is already occupied by another building."
-msgstr "Ovo područje je već zauzeto od strane druge građevine."
+msgstr "Ovo područje već zauzima jedna druge zgrada."
 
 #: horizons/world/building/buildable.py:47
 msgid "This area is already occupied by a unit."
-msgstr "Ovo područje je već zauzeto od strane druge jedinice."
+msgstr "Ovo područje već zauzima jedna druge jedinica."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building must be built on the coastline."
-msgstr "Ova građevina mora biti izgrađena na obali."
+msgstr "Ova zgrada mora biti sagrađena na obali."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building has to be placed at the ocean."
-msgstr "Ova građevina mora biti postavljena na oceanu."
+msgstr "Ova zgrada mora biti postavljena na oceanu."
 
 #: horizons/world/building/buildable.py:50
 msgid "This spot is too far away from your ship."
-msgstr "Ova točka je predaleko od tvog broda."
+msgstr "Ovo mjesto je predaleko od tvog broda."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building can only be built on a resource source."
-msgstr "Ova građevina može biti izgrađena samo na resursnom izvorištu."
+msgstr "Ova zgrada može biti sagrađena samo na izvoru resursa."
 
 #: horizons/world/building/buildable.py:52
 msgid "You have already settled this island."
-msgstr "Već ste naselili ovaj otok."
+msgstr "Već si naselio/la ovaj otok."
 
 #: horizons/world/building/buildable.py:53
 msgid "This building must be partly on flat land."
-msgstr "Ova građevina mora biti na djelomično ravnom tlu."
+msgstr "Ova zgrada mora biti na djelomično ravnom tlu."
 
 #: horizons/world/status.py:73
 msgid "The inhabitants are infected by the Black Death!"
@@ -3705,7 +3701,7 @@ msgstr "Stanovnici su zaraženi kugom!"
 
 #: horizons/world/status.py:79
 msgid "This building is on fire!"
-msgstr "Ova zgradu je zahvatio požar!"
+msgstr "Ovu zgradu je zahvatio požar!"
 
 #: horizons/world/status.py:86
 msgid "These residents are unhappy."
@@ -3721,11 +3717,11 @@ msgstr "Skladište ove zgrade je puno."
 
 #: horizons/world/status.py:113
 msgid "This building has a very low productivity."
-msgstr "Ova građevina ima veoma lošu produktvnost."
+msgstr "Ova zgrada ima veoma lošu produktvnost."
 
 #: horizons/world/status.py:119
 msgid "This building is decommissioned."
-msgstr "Ova građevina je uništena."
+msgstr "Ova zgrada je uništena."
 
 #: horizons/world/traderoute.py:336
 #, python-brace-format
@@ -3735,7 +3731,7 @@ msgstr "Trgovačka ruta: idem prema {location}"
 #: horizons/world/traderoute.py:340
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr "Trgovačka ruta: čekam kod {position}"
+msgstr "Trgovačka ruta: čekam pri {position}"
 
 #: horizons/world/units/ship.py:214
 #, python-brace-format
@@ -3750,12 +3746,12 @@ msgstr "Idem prema {x}, {y}"
 #: horizons/world/units/ship.py:219
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr "Besposlen kod {location}"
+msgstr "Besposlen pri {location}"
 
 #: horizons/world/units/ship.py:220
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr "Besposlen na {x}, {y}"
+msgstr "Besposlen pri {x}, {y}"
 
 #: horizons/world/units/ship.py:231
 msgid "Trader"
@@ -3773,11 +3769,11 @@ msgstr "Napadam {owner}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
-msgstr "Vaša igra je spremljena automatski."
+msgstr "Tvoja je igra automatski spremljena."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your building has caught fire!"
-msgstr "Vašu zgradu je zahvatio požar!"
+msgstr "Tvoju zgradu je zahvatio požar!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3794,7 +3790,7 @@ msgstr "{player1} i {player2} su raskinuli savezništvo i proglasili rat."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have terminated their alliance."
-msgstr "{player1} i {player2} su prekinuli svoje savezništvo."
+msgstr "{player1} i {player2} su prekinuli savezništvo."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3818,22 +3814,23 @@ msgstr "{player1} i {player2} će se boriti do smrti."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr "Također možete vući ceste."
+msgstr "Također možeš vući ceste."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
-msgstr "Vaše polje zahtijeva farmu kako bi se pokupili usjevi."
+msgstr "Za skupljanje usjeva jedno od tvojih polja zahtijeva farmu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr "Vaš rudnik je ostao bez resursa."
+msgstr "Tvoj rudnik je ostao bez resursa."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
-"Došli ste do trenutno najviše razine. Vaši stanovnici više neće napredovati."
+"Dosegnuo/la si trenutačno najvišu razinu. Tvoji stanovnici više neće "
+"napredovati."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3841,12 +3838,12 @@ msgstr "Ne mogu ići tamo."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your crew refuses to leave this map."
-msgstr "Vaša posada odbija napustiti ovu mapu."
+msgstr "Tvoja posada odbija napustiti ovu kartu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "You need more {resource} to build this building."
-msgstr "Potrebno vam je još {resource} za izradu ove građevine."
+msgstr "Za sagradnju ove zgrade trebaš još više {resource}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3856,7 +3853,7 @@ msgstr "Igrač {player} je osnovao novo naselje."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "A new ship by the name of {name} has been created."
-msgstr "Novi brod po imenu {name} je izgrađen."
+msgstr "Izgrađen je novi brod s imenom {name}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3870,7 +3867,7 @@ msgstr "Stanovnik zvan {name} je dostupan."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
-msgstr "Novi svijet je kreiran."
+msgstr "Novi svijet je stvoren."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
@@ -3878,19 +3875,19 @@ msgstr "Neki od tvojih stanovnika nemaju pristup glavnom trgu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
-msgstr "Vaša igra je brzo spremljena."
+msgstr "Tvoja igra je brzo spremljena."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
-"Ruta je podešena. Pokrenite ju pomoću gumba \"pokreni rutu\" u izborniku "
-"\"podesi rutu\"."
+"Ruta je podešena. Pokreni je pomoću gumba „pokreni rutu” u izborniku „podesi "
+"rutu”."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
-msgstr "Vaša igra je spremljena."
+msgstr "Tvoja igra je spremljena."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3900,7 +3897,7 @@ msgstr "Slika ekrana je spremljena u {file}."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Your inhabitants reached level {level}."
-msgstr "Vaši su stanovnici stigli do razine {level}."
+msgstr "Tvoji su stanovnici dostigli razinu {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
@@ -3908,19 +3905,19 @@ msgstr "Neki stanovnici su se upravo odselili."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Ne možete srušiti skladište, građevina je nophodna za naseobinu."
+msgstr "Ne možeš srušiti skladište, tvoje naselje ga treba."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
-msgstr "Pobijedio si!"
+msgstr "Pobijedio/la si!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr "Izgubili ste u ovom scenariju."
+msgstr "Nisi uspio/uspjela u scenariju."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr "Stanovnici ove građevine imaju kugu!"
+msgstr "Stanovnici ove zgrade imaju kugu!"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3936,7 +3933,7 @@ msgstr "tekstil"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr "daske"
+msgstr "ploče"
 
 #. This is a database entry: the name of a resource
 msgid "food"
@@ -3980,7 +3977,7 @@ msgstr "sreća"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr "krumpir"
+msgstr "krumpiri"
 
 #. This is a database entry: the name of a resource
 msgid "education"
@@ -4100,7 +4097,7 @@ msgstr "brašno"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr "začinsko bilje"
+msgstr "začinske biljke"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
@@ -4132,7 +4129,7 @@ msgstr "kameni komadi"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
-msgstr "kakao zrna"
+msgstr "zrna kakaoa"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa"
@@ -4148,7 +4145,7 @@ msgstr "svijeće"
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr "vinova loza"
+msgstr "vina"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -4156,7 +4153,7 @@ msgstr "grožđe"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr "pčelinje košnice"
+msgstr "pčelinjaci"
 
 #. This is a database entry: the name of a resource
 msgid "honeycombs"
@@ -4248,7 +4245,7 @@ msgstr "pamuk"
 
 #. This is a database entry: the name of a resource
 msgid "indigo plants"
-msgstr "začinsko bilje"
+msgstr "indigo biljke"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
@@ -4264,7 +4261,7 @@ msgstr "parfem"
 
 #. This is a database entry: the name of a resource
 msgid "hop plants"
-msgstr "hmelj"
+msgstr "hmelj biljke"
 
 #. This is a database entry: the name of a resource
 msgid "hops"

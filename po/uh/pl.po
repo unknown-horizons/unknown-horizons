@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-08-21 09:22+0000\n"
-"Last-Translator: Przemysław Szulc <psemeq@o2.pl>\n"
+"PO-Revision-Date: 2023-07-26 17:48+0000\n"
+"Last-Translator: TD <talentdev.keywords.montreal@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/uh/uh/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -87,7 +87,7 @@ msgstr "(aby zatrzymać, kliknij prawym przyciskiem myszy)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "Początek gry"
+msgstr "Rozpocznij grę"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
@@ -359,12 +359,12 @@ msgstr "Kadłub"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr "+ 24t"
+msgstr "+ 24 t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr "+ 14t"
+msgstr "+ 14 t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
@@ -385,7 +385,7 @@ msgstr "Zbuduj jednostkę lądową:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
 msgid "Build this groundunit!"
-msgstr "Zbuduj tę jednostkę lądową:"
+msgstr "Zbuduj tę jednostkę lądową!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -583,8 +583,8 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Ogień sygnałowy pokazuje wolnemu handlarzowi, że może podpłynąć do Twojej "
-"osady aby kupować i sprzedawać towary."
+"Latarnia pokazuje wolnemu kupcowi, że może podpłynąć do osady, aby kupować i "
+"sprzedawać towary."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
@@ -795,7 +795,7 @@ msgstr "Nazwa wyspy:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
 msgid "Player Name:"
-msgstr "Imię gracza"
+msgstr "Imię gracza:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -1777,11 +1777,11 @@ msgstr ""
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Buduj magazyny, by móc gromadzić więcej towarów na jednej wyspie."
+msgstr "Buduj składy, by móc gromadzić więcej towarów."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Upewnij się że każdy dom jest w zasięgu rynku."
+msgstr "Upewnij się, że każdy dom jest w zasięgu targowiska."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
@@ -1789,8 +1789,7 @@ msgstr "Naciśnij 'T', żeby drzewa stały się przezroczyste."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr ""
-"Buduj namioty magazynowe i punkty obserwacyjne, aby poszerzyć zasięg osiedli."
+msgstr "Buduj składy i punkty obserwacyjne, aby poszerzyć zasięg osiedli."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -2297,7 +2296,7 @@ msgstr "Wybrany plik nie jest poprawnym plikiem scenariusza."
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
-msgstr "Komunikat  błędu:"
+msgstr "Komunikat błędu:"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
@@ -2344,7 +2343,7 @@ msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] "%s dodatkowy budynek zostanie zniszczony."
 msgstr[1] "%s dodatkowe budynki zostaną zniszczone."
-msgstr[2] "%s dodatkowych budynków zostanie zniszczonych"
+msgstr[2] "%s dodatkowych budynków zostanie zniszczonych."
 
 # lub Rynku lub Rynku Miejskiego
 #: horizons/gui/tabs/barrackstabs.py:38
@@ -2623,7 +2622,7 @@ msgstr "Potrzebujesz przynajmniej dwóch osad na Twoim szlaku."
 
 #: horizons/gui/widgets/routeconfig.py:159
 msgid "Click on a settlement to add a waypoint!"
-msgstr "Kliknij na osadzie dodać ją jako punkt!"
+msgstr "Kliknij osadę, aby dodać ją jako punkt orientacyjny!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
@@ -2679,8 +2678,6 @@ msgstr "Rekrutuje jednostki do walki lądowej."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:59
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
 msgstr "Drewniana wieża"
 
@@ -3052,7 +3049,7 @@ msgstr "Pawilon"
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:275
 msgid "Fulfills religious needs of sailors."
-msgstr "Spełnia potrzeby religijne żeglarzy."
+msgstr "Spełnia potrzeby religijne marynarzy."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:279
@@ -3073,7 +3070,7 @@ msgstr "Pozyskuje sól z morskiej wody. Budowany na wybrzeżu."
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:289
 msgid "Signal Fire"
-msgstr "Ogień sygnałowy"
+msgstr "Latarnia"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:291
@@ -3124,13 +3121,13 @@ msgstr "Wydobywa kamień z góry."
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:319
 msgid "Storage Tent"
-msgstr "Magazyny"
+msgstr "Skład"
 
 # Building
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:321
 msgid "Storage Hut"
-msgstr "Namiot składowania"
+msgstr "Skład"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:323
@@ -3298,7 +3295,7 @@ msgstr "Drewniana wieża"
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:413
 msgid "Defends your settlement."
-msgstr "Chroni swoją osadę."
+msgstr "Chroni twoją osadę."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3791,7 +3788,7 @@ msgstr "Nieaktywny w {x}, {y}"
 
 #: horizons/world/units/ship.py:231
 msgid "Trader"
-msgstr "Handlowiec"
+msgstr "Kupiec"
 
 #: horizons/world/units/weaponholder.py:436
 #, python-brace-format
@@ -3947,7 +3944,7 @@ msgstr "Osadnicy zaczęli się wyprowadzać."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr "Nie możesz zburzyć składu, twoja osada go potrzebuje."
+msgstr "Nie możesz zburzyć magazynu, twoja osada go potrzebuje."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -4321,7 +4318,7 @@ msgstr "sadzonki chmielu"
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr "Chmiel"
+msgstr "chmiel"
 
 #. This is a database entry: the name of a resource
 msgid "beer"

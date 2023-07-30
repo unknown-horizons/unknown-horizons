@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-12-21 10:47+0000\n"
-"Last-Translator: Joenit S <joenit@hotmail.nl>\n"
+"PO-Revision-Date: 2021-04-06 14:26+0000\n"
+"Last-Translator: K Janssen <k.janssen1981@outlook.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/uh/uh/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 4.6-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -83,7 +83,7 @@ msgstr "Selecteer terrein:"
 
 #: content/gui/xml/editor/editor_settings.xml:27
 msgid "(right click to stop)"
-msgstr "(rechts klikken om te stoppen)"
+msgstr "(klik rechts om te stoppen)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
@@ -4265,7 +4265,7 @@ msgstr "walvissen"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr "ambergris"
+msgstr "ambergrijs"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"

@@ -8,19 +8,21 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons d0fc091\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2013-05-21 12:45+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2021-01-31 12:23+0000\n"
+"Last-Translator: Слободан Симић(Slobodan Simić) <slsimic@gmail.com>\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/uh/the-unknown/"
+"sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #. scenario difficulty
 msgid "easy"
-msgstr ""
+msgstr "лако"
 
 #. scenario description
 msgid ""
@@ -28,10 +30,13 @@ msgid ""
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
+"Ви сте капетан брода под енглеском заставом године 1740. Ви и ваша посада "
+"сте на путу до енглеске колоније у Тихом океану.\n"
+"Све је било лепо док нисте наишли на олују…"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr ""
+msgstr "20. новембар 1740."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -39,6 +44,9 @@ msgid ""
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
 msgstr ""
+"Након четири дана олуја је коначно ослабила и можемо да одахнемо. Међутим, "
+"хране је мало преостало а брод је у лошем стању. Навигациони инструменти и "
+"поморске карте су изгубљени."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -52,10 +60,12 @@ msgid ""
 "Task:\n"
 "Find land and build a port."
 msgstr ""
+"Задатак:\n"
+"Пронаћи копно и саградити луку."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr ""
+msgstr "22. новембар 1740"
 
 #. This is the text body of a logbook page.
 msgid ""

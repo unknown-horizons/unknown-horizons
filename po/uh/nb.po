@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-05-01 23:49+0000\n"
+"PO-Revision-Date: 2022-03-27 13:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/uh/uh/"
 "nb_NO/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1790,8 +1790,8 @@ msgid ""
 msgstr ""
 "For å enklere se hvorvidt paviljongens rekkevidde dekker alle teltene dine, "
 "velg den fra byggmenyen og la musa henge over den på din eksisterende "
-"paviljong.  Telt som ikke dekkes vil vises i gult.  Det er en god ide å "
-"bygge en ny paviliong i nabolaget deres."
+"paviljong. Telt som ikke dekkes vil vises i gult. Det er en god ide å bygge "
+"en ny paviliong i nabolaget deres."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
@@ -1814,8 +1814,8 @@ msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
-"Vil du ha kun morsomme sitater?  Endre sitat-type vist her i oppsettmenyen "
-"på spill-siden."
+"Vil du ha kun morsomme sitater? Endre sitat-type vist her i oppsettmenyen på "
+"spill-siden."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
@@ -2186,7 +2186,7 @@ msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
 msgstr ""
-"Noen av endringene krever at Unknown Horizons startes på nytt.  Ønsker du å "
+"Noen av endringene krever at Unknown Horizons startes på nytt. Ønsker du å "
 "starte Unknown Horizons på nytt nå?"
 
 #: horizons/gui/modules/settings.py:137
@@ -2612,7 +2612,7 @@ msgstr "Klikk på en bosetning for å legge til et stopp!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
-msgstr "Laster ombord på skipet"
+msgstr "Laster om bord på skipet"
 
 #: horizons/gui/widgets/routeconfig.py:202
 msgid "Unloading from ship"

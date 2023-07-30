@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 2017.2-731-g533abe7eb\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-11-20 21:04+0000\n"
+"PO-Revision-Date: 2021-10-04 10:35+0000\n"
 "Last-Translator: abidin toumi <abidin24@disroot.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/uh/uh/ar/>\n"
 "Language: ar\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 3.10-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -304,7 +304,7 @@ msgstr "(مثل ما في تبويبات التحديد)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
@@ -2243,8 +2243,9 @@ msgid "Preferred island size:"
 msgstr "حجم الجزيرة المستحسن:"
 
 #: horizons/gui/modules/singleplayermenu.py:234
+#, fuzzy
 msgid "Island size deviation:"
-msgstr ""
+msgstr "تباين حجم الجزر"
 
 #: horizons/gui/modules/singleplayermenu.py:353
 msgid "Click to generate a different random map"
@@ -2306,7 +2307,11 @@ msgstr "سيؤدي هذا إلى تدمير جميع المباني التي ت�
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
 msgstr[0] ""
-msgstr[1] ""
+msgstr[1] "مبنًا واحد سيدمر"
+msgstr[2] "مبنيان سيدمران"
+msgstr[3] "%s مبان ستدمر"
+msgstr[4] "%s مبنًا سيدمر"
+msgstr[5] "%s مبنًا سيدمر"
 
 #: horizons/gui/tabs/barrackstabs.py:38
 msgid "Barracks overview"
@@ -2360,7 +2365,6 @@ msgstr "أنقر على إحدى خانات الموارد لإضافة عرض �
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:178
-#, fuzzy
 msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
@@ -2381,7 +2385,6 @@ msgid ""
 msgstr "سيبييع {resource_name} بـ {price} ذهب /t اذا زاد المخزون عن {limit}."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
-#, fuzzy
 msgid "Warehouse overview"
 msgstr "نظرة عامة على مستودع"
 
@@ -2522,7 +2525,7 @@ msgstr "لا شيء"
 
 #: horizons/gui/widgets/playersships.py:97
 msgid "N/A"
-msgstr ""
+msgstr "لاشيء"
 
 #: horizons/gui/widgets/productionoverview.py:121
 #, python-brace-format
@@ -2595,7 +2598,7 @@ msgstr "لا يسمح لك بالتداول مع هذا اللاعب"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:120
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "{weapon}: {amount}"
 msgstr "{weapon}: {amount}"
 
@@ -2651,12 +2654,12 @@ msgstr "توفير الأمن."
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:67
 msgid "Blender"
-msgstr ""
+msgstr "الخلاط"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:69
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "ينتج البهارات من التوابل."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:73
@@ -2775,7 +2778,6 @@ msgstr "تربية النحل. تنتج العسل المستخدم في صنا�
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:143
-#, fuzzy
 msgid "Cattle Run"
 msgstr "زريبة ماشية"
 
@@ -2806,7 +2808,6 @@ msgstr "محاصيل الذرة.تحتاج الى مزرعة."
 
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:161
-#, fuzzy
 msgid "Herbary"
 msgstr "حقل أعشاب"
 
@@ -2933,7 +2934,7 @@ msgstr "يصطاد الحيوانات البرية.ينتج الغذاء."
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:237
 msgid "Lookout"
-msgstr ""
+msgstr "برج مراقبة"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:239
@@ -3027,7 +3028,6 @@ msgstr "يسمح للاعب بالتداول مع التاجر الحر."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:295
-#, fuzzy
 msgid "Smeltery"
 msgstr "دار سباكة"
 
@@ -3044,7 +3044,7 @@ msgstr "خام الحجارة"
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:305
 msgid "Stonemason"
-msgstr ""
+msgstr "مقلع حجارة"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:307
@@ -3323,8 +3323,9 @@ msgstr "الخدمة العسكرية"
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
 #: horizons/i18n/objecttranslations.py:465
+#, fuzzy
 msgid "Pioneers"
-msgstr ""
+msgstr "الرواد"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:467
@@ -3429,7 +3430,7 @@ msgstr "غير قادر على الإتصال بالخادم."
 
 #: horizons/network/connection.py:89
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "عنوان الخادم غير صالح."
 
 #: horizons/network/networkinterface.py:531
 msgid "Not Ready"
@@ -3578,11 +3579,11 @@ msgid "New version of Unknown Horizons"
 msgstr "إصدار جديد من Unknown Horizons"
 
 #: horizons/util/checkupdates.py:90
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
-msgstr "يتوفر إصدار {new_version} أحدث من الذي لديك {old_version}."
+msgstr "يتوفر إصدار {new_version} أحدث من المثبت {old_version}."
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
@@ -3693,7 +3694,7 @@ msgstr "الطريق التجاري: متوجهةالى {location}"
 #: horizons/world/traderoute.py:340
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "الطريق التجارية: ينتظر عند {position}"
 
 #: horizons/world/units/ship.py:214
 #, python-brace-format
@@ -3708,12 +3709,12 @@ msgstr "متوجه الى {x}،{y}"
 #: horizons/world/units/ship.py:219
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "متوقف عند {location}"
 
 #: horizons/world/units/ship.py:220
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "متوقف عند {x}،{y}"
 
 #: horizons/world/units/ship.py:231
 msgid "Trader"
@@ -3762,7 +3763,7 @@ msgstr "أنهى {player1} و{player2} الحرب وهما الآن في تحا�
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "أنهى {player1} و {player2} عداءهما."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3864,7 +3865,7 @@ msgstr "إنتقل بعض من سكانك."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "لا يمكنك تدمير المستودع فمستعمرتك بحاجته."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -3872,7 +3873,7 @@ msgstr "ربحتَ!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "فشلت في السيناريو."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
@@ -3924,7 +3925,7 @@ msgstr "إيمان"
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "طعام الغزلان أ"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
@@ -4044,7 +4045,7 @@ msgstr "سيف"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "حبوب"
 
 #. This is a database entry: the name of a resource
 msgid "corn"
@@ -4056,15 +4057,15 @@ msgstr "طحين"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
-msgstr ""
+msgstr "نبات توابل"
 
 #. This is a database entry: the name of a resource
 msgid "spices"
-msgstr ""
+msgstr "توابل"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "بهارات"
 
 #. This is a database entry: the name of a resource
 msgid "marble deposit"
@@ -4072,7 +4073,7 @@ msgstr "رواسب الرخام"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "قمم رخامية"
 
 #. This is a database entry: the name of a resource
 msgid "coal deposit"
@@ -4084,7 +4085,7 @@ msgstr "رواسب الحجارة"
 
 #. This is a database entry: the name of a resource
 msgid "stone tops"
-msgstr ""
+msgstr "قمم صخرية"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -4168,19 +4169,19 @@ msgstr "شاي"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "مروج مزهرة"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "زهور"
 
 #. This is a database entry: the name of a resource
 msgid "brine deposit"
-msgstr ""
+msgstr "بحيرة مالحة"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "أجاج"
 
 #. This is a database entry: the name of a resource
 msgid "whales"

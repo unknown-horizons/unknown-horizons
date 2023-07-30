@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2018-01-04 16:37+0000\n"
-"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
+"PO-Revision-Date: 2020-04-12 10:11+0000\n"
+"Last-Translator: Jonatan Nyberg <jonatan.nyberg.karl@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/uh/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19-dev\n"
+"X-Generator: Weblate 4.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -52,7 +52,7 @@ msgstr "Spara karta"
 
 #: content/gui/xml/editor/editor_pause_menu.xml:16
 msgid "Load map"
-msgstr "Ladda karta"
+msgstr "Läs in karta"
 
 #. Main / in-game menu entry
 #: content/gui/xml/editor/editor_pause_menu.xml:17
@@ -1002,11 +1002,11 @@ msgstr "Skapa ny karta"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:14
 msgid "Load existing map"
-msgstr "Ladda en karta som redan finns"
+msgstr "Läs in en karta som redan finns"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "Ladda en karta från ett sparat spel"
+msgstr "Läs in sparade spelets karta"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -1094,7 +1094,7 @@ msgstr "Snabbspara"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:31
 msgid "Quickload"
-msgstr "Snabbladda"
+msgstr "Snabbinläs"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:32
 msgid "Toggle translucency of ambient buildings"
@@ -1164,7 +1164,7 @@ msgstr "Spara spel"
 #: content/gui/xml/mainmenu/mainmenu.xml:41
 #: horizons/gui/modules/select_savegame.py:53
 msgid "Load game"
-msgstr "Ladda spel"
+msgstr "Läs in spel"
 
 # Avbryta spelet?
 #: content/gui/xml/mainmenu/ingamemenu.xml:19
@@ -1173,7 +1173,7 @@ msgstr "Avbryt spel"
 
 #: content/gui/xml/mainmenu/loadingscreen.xml:6
 msgid "Loading…"
-msgstr "Laddar…"
+msgstr "Läser in…"
 
 #: content/gui/xml/mainmenu/mainmenu.xml:7
 msgid "Change Background"
@@ -1282,11 +1282,11 @@ msgstr "Nytt spel - Flera spelare"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:16
 msgid "Load game:"
-msgstr "Ladda spel:"
+msgstr "Läs in spel:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:17
 msgid "Load a saved game"
-msgstr "Ladda ett sparat spel"
+msgstr "Läs in ett sparat spel"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:27
 msgid "Active games:"
@@ -1494,7 +1494,7 @@ msgstr "Välj en bana:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr "Vad för slags citat att visa när spelet laddas"
+msgstr "Vad för slags citat att visa när spelet läses in"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
@@ -1985,17 +1985,17 @@ msgid ""
 "{own_version}"
 msgstr ""
 "Spelets version skiljer sig från din nuvarande version. Varje spelare i ett "
-"multiplayerspel måste ha samma version. Detta kan fixas genom att varje "
+"flerspelarspel måste ha samma version. Detta kan fixas genom att varje "
 "spelare uppdaterar till den senaste versionen. Senaste versionen: "
 "{game_version} Din version: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
-msgstr "Spelets namn"
+msgstr "Spelets lösenord"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr "Ange prefix:"
+msgstr "Ange lösenord:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
@@ -2101,7 +2101,7 @@ msgstr "Inga sparade spel"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "There are no saved games to load."
-msgstr "Det finns inga sparade spel att ladda."
+msgstr "Det finns inga sparade spel att läsa in."
 
 #: horizons/gui/modules/select_savegame.py:146
 msgid "No filename given"
@@ -3421,7 +3421,7 @@ msgstr "Jordbruk"
 
 #: horizons/main.py:366
 msgid "Failed to start/load the game"
-msgstr "Misslyckades med att starta/ladda spelet"
+msgstr "Misslyckades med att starta/läsa in spelet"
 
 #: horizons/main.py:367
 msgid "The game you selected could not be started."
@@ -3439,7 +3439,7 @@ msgstr "Inga snabbsparade spel hittade"
 
 #: horizons/main.py:517
 msgid "You need to quicksave before you can quickload."
-msgstr "Du behöver snabbspara innan du kan snabbladda."
+msgstr "Du behöver snabbspara innan du kan snabbinläsa."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
@@ -3472,7 +3472,7 @@ msgstr "Inte möjligt"
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr "Spara/ladda för multiplayer spel är ännu inte möjligt"
+msgstr "Spara/läsa in spel med flera spelare är ännu inte möjligt"
 
 #: horizons/mpsession.py:105
 msgid ""
@@ -3497,7 +3497,7 @@ msgstr "Inte redo"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Gammalt multiplayer-protokoll eller så stöds det inte. Vänligen kontrollera "
+"Gammalt flerspelarprotokoll eller så stöds det inte. Vänligen kontrollera "
 "spelets version"
 
 #: horizons/network/server.py:339
@@ -3652,7 +3652,7 @@ msgstr ""
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
-msgstr "Klicka för att ladda ner"
+msgstr "Klicka för att hämta"
 
 #: horizons/util/checkupdates.py:104
 msgid "A page has been opened in your browser."

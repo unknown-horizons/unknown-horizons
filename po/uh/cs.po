@@ -7,19 +7,19 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-04-18 07:49+0000\n"
-"Last-Translator: Lukáš Doktor <ldoktor@redhat.com>\n"
+"PO-Revision-Date: 2021-07-15 18:32+0000\n"
+"Last-Translator: Jiri Zizkin Zizka <web@zizkin.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/uh/uh/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14-dev\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
-msgstr "Děkujeme Vám za hraní Unknown Horizons!"
+msgstr "Děkujeme, že hraješ Unknown Horizons!"
 
 #: run_uh.py:188
 msgid "Unknown Horizons has crashed."
@@ -31,15 +31,15 @@ msgstr "Moc se za toto omlouváme a chceme tuto chybu opravit."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "K této věci potřebujeme informace z logovacího souboru:"
+msgstr "K tomu potřebujeme informace ze souboru protokolu:"
 
 #: run_uh.py:192
 msgid ""
 "Please give it to us via IRC or our forum, for both see http://unknown-"
 "horizons.org ."
 msgstr ""
-"Prosím ozvěte se nám přes IRC, nebo naše fórum, oboje najdete na http://"
-"unknown-horizons.org ."
+"Pošli nám jej prosím přes IRC nebo naše fórum, obojí najdete na http"
+"://unknown-horizons.org ."
 
 #: content/gui/xml/editor/editor_pause_menu.xml:14
 msgid "Return to editor"
@@ -86,19 +86,19 @@ msgstr "(zastavit pravým tlačítkem myši)"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:8
 msgid "Game start"
-msgstr "Hra začala"
+msgstr "Začít hrát"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Musíte založit osadu než budete moci začít stavět!"
+msgstr "Musíš založit osadu dřív než budeš moci začít stavět!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Vyberte svou loď a pravým kliknutím se přibližte k pobřeží."
+msgstr "Vyber svou loď a pravým kliknutím se přibliž k pobřeží."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:21
 msgid "Afterwards, press the large button in the ship overview tab."
-msgstr "Následně stiskněte velké tlačítko na záložce přehledu lodi."
+msgstr "Následně stiskni velké tlačítko na záložce přehledu lodi."
 
 #: content/gui/xml/ingame/buildmenu/place_building.xml:7
 msgid "Build"
@@ -181,7 +181,7 @@ msgstr "Původní jméno:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
-msgstr "Zadejte nové jméno:"
+msgstr "Zadej nové jméno:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:18
 msgid "Apply the new name"
@@ -195,7 +195,7 @@ msgstr "Chat"
 
 #: content/gui/xml/ingame/popups/chat.xml:8
 msgid "Enter your message:"
-msgstr "Vaše zpráva:"
+msgstr "Tvoje zpráva:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:14
@@ -218,8 +218,8 @@ msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
 msgstr ""
-"Chcete-li postavit pozemní jednotku, klikněte na jednu ze záložek, vyberte "
-"jednotku a potvrďte objednávku."
+"Chceš-li postavit pozemní jednotku, klikni na jednu ze záložek, vyber "
+"jednotku a potvrď výběr."
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -228,7 +228,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:29
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:29
 msgid "Currently building:"
-msgstr "Právě stavíte:"
+msgstr "Právě stavíš:"
 
 #. Pauses the current ship production, can be resumed later
 #. Pauses the current groundunit production, can be resumed later
@@ -263,7 +263,7 @@ msgstr "Zbývající potřebné zdroje:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:65
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:65
 msgid "Cancel building:"
-msgstr "Zrušit Stavbu:"
+msgstr "Zrušit stavbu:"
 
 #. abort construction of a ship, lose invested resources
 #. abort construction of a groundunit, lose invested resources
@@ -302,24 +302,24 @@ msgstr "(stejně jako vybraných záložkách)"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
@@ -329,17 +329,17 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "Dělová Šalupa"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "Troj-stěžňová bitevní loď, s jednou kanónovou palubou."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
 msgid "Buy Upgrades"
-msgstr "Nakúpiť vylepšení"
+msgstr "Nakoupit vylepšení"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -354,41 +354,39 @@ msgstr "Trup"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
 msgid "Build groundunit:"
-msgstr "Postavit pozemní jednotky:"
+msgstr "Postavit pozemní jednotku:"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
 msgid "Build this groundunit!"
-msgstr "Postavit pozemní jednotku!"
+msgstr "Postavit tuto pozemní jednotku!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
 "To build a boat, click on one of the class tabs, select the desired ship and "
 "confirm the order."
-msgstr ""
-"Chcete-li postavit loď, klikněte na záložku, vyberte loď a potvrďte "
-"objednávku."
+msgstr "Chceš-li postavit loď, klikni na záložku, vyber loď a potvrď výběr."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -397,7 +395,7 @@ msgstr "Postavit loď:"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
 msgid "Build this ship!"
-msgstr "Postavit loď!"
+msgstr "Postavit tuto loď!"
 
 #. Diplomacy state of player
 #: content/gui/xml/ingame/tabwidget/diplomacy/diplomacy.xml:14
@@ -428,7 +426,7 @@ msgstr "Využití kapacity"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
 msgid "Click to change the name of this groundunit"
-msgstr "Klikněte pro změnu názvu jednotky"
+msgstr "Klikni pro změnu názvu jednotky"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
@@ -475,7 +473,7 @@ msgstr "smutný"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:51
 #: horizons/gui/util.py:62
 msgid "satisfied"
-msgstr "uspokojený"
+msgstr "spokojený"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:52
 #: horizons/gui/util.py:65
@@ -511,10 +509,8 @@ msgid "residents"
 msgstr "obyvatelé"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Protects your settlement."
 msgid "Provides security for your settlement."
-msgstr "Brání tvou osadu."
+msgstr "Poskytuje ochranu tvé osadě."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -546,8 +542,7 @@ msgstr "Ložisko surovin"
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Toto je naleziště surovin, kde můžete postavit důl, abyste mohli suroviny "
-"těžit."
+"Toto je naleziště surovin, kde můžeš postavit důl, abys mohl těžit suroviny."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
@@ -560,7 +555,7 @@ msgstr "Obsahuje následující suroviny:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "Klikněte pro změnu jména Vaší osady"
+msgstr "Klikni pro změnu jména Tvojí osady"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -581,7 +576,7 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Signální oheň ukazuje svobodným obchodníkům cestu do Vaší osady, aby mohli "
+"Signální oheň ukazuje svobodným obchodníkům cestu do Tvojí osady, aby mohli "
 "nakupovat a prodávat."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
@@ -589,7 +584,7 @@ msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Toto je loď svobodného obchodníka. Čas od času navštíví vaši osadu aby "
+"Toto je loď svobodného obchodníka. Čas od času navštíví Tvojí osadu, aby "
 "nakoupil či prodal své zboží."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
@@ -597,7 +592,7 @@ msgstr ""
 #: content/gui/xml/ingame/tabwidget/ships/overview_war_ship.xml:10
 #: horizons/gui/widgets/playersships.py:79
 msgid "Click to change the name of this ship"
-msgstr "Klikněte za účelem změny jména lodi"
+msgstr "Klikni za účelem změny jména lodi"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:19
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:19
@@ -646,14 +641,14 @@ msgstr "Historie obchodu"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/select_trade_resource.xml:6
 msgid "Select resources:"
-msgstr "Vyberte zboží:"
+msgstr "Vyber zboží:"
 
 #. Percentage describing how busy the collectors were (100% = always going
 #. for / already carrying full load of goods)
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:15
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:17
 msgid "Collector utilization"
-msgstr "Zaneprázdněnost sběrače"
+msgstr "Využití sběrače"
 
 #: content/gui/xml/ingame/tabwidget/warehouse/tab_account.xml:19
 msgid "Income:"
@@ -695,7 +690,7 @@ msgstr "Začít výrobu"
 #. tooltip is not well understood by players.
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:7
 msgid "Select resource:"
-msgstr "Vyberte zboží:"
+msgstr "Vyber zboží:"
 
 #. Please keep the translation similarly short and concise, else the
 #. tooltip is not well understood by players.
@@ -704,8 +699,8 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"Zboží, kkteré vyberete, je zobrazováno místo současného. Vynulujte stiknutím "
-"klávesy X."
+"Zboží, které vybereš, je zobrazováno místo současného. Vynuluj kliknutím na "
+"X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
@@ -779,7 +774,7 @@ msgstr "Poslat tuto zprávu chatu všem uživatelům."
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Zde napište vaši zprávu"
+msgstr "Zde napiš Tvou zprávu"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -787,16 +782,12 @@ msgid "Return to game"
 msgstr "Návrat do hry"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "Původní jméno:"
+msgstr "Název ostrova:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "Jméno hráče"
+msgstr "Jméno hráče:"
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -810,7 +801,7 @@ msgstr "Čekat na vyložení:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:32
 msgid "Select a resource:"
-msgstr "Vyberte zdroj:"
+msgstr "Vyber zboží:"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:38
 msgid "Route activity:"
@@ -828,11 +819,11 @@ msgstr "Konec"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "Přejít na předchozí stránku"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "Přejít na další stránku"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -952,7 +943,7 @@ msgstr "Agresivní"
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:11
 msgid "Hold ground"
-msgstr "Držet území"
+msgstr "Udržet pozici"
 
 #. Description of combat stance (how units behave when fighting)
 #: content/gui/xml/ingame/widgets/stancewidget.xml:14
@@ -974,7 +965,7 @@ msgstr "Odejít do hlavního menu"
 
 #: content/gui/xml/mainmenu/editor/editor_create_map.xml:3
 msgid "Choose a map size:"
-msgstr "Zvolte si velikost mapy:"
+msgstr "Zvol velikost mapy:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_map.xml:3
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_creategame.xml:31
@@ -983,11 +974,11 @@ msgstr "Vybrat mapu:"
 
 #: content/gui/xml/mainmenu/editor/editor_select_saved_game.xml:3
 msgid "Choose a saved game's map:"
-msgstr "Vyberte si mapu uložené hry:"
+msgstr "Vyber mapu z uložené hry:"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:8
 msgid "Select map source"
-msgstr "Vyberte si zdroj mapy"
+msgstr "Vyber zdroj mapy"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:13
 msgid "Create new map"
@@ -999,7 +990,7 @@ msgstr "Načíst existující mapu"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:15
 msgid "Load saved game's map"
-msgstr "Načíst mapu uložené hry"
+msgstr "Načíst mapu z uložené hry"
 
 #: content/gui/xml/mainmenu/editor/editor_start_menu.xml:24
 msgid "Start editor"
@@ -1132,12 +1123,12 @@ msgstr "Ukázat souřadnice"
 #. First hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:45
 msgid "Primary"
-msgstr "Primární"
+msgstr "Hlavní"
 
 #. Second hotkey assigned to this action
 #: content/gui/xml/mainmenu/hotkeys.xml:49
 msgid "Secondary"
-msgstr "Sekundární"
+msgstr "Podružný"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:56
 msgid "Reset to default"
@@ -1266,7 +1257,7 @@ msgstr "Připraven:"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:41
 msgid "Sets your state to ready (necessary for the game to start)"
-msgstr "Nastaví váš stav na připraven (nutno k odstartování hry)"
+msgstr "Nastaví tvůj stav na připraven (nutno k odstartování hry)"
 
 #: content/gui/xml/mainmenu/multiplayer/multiplayermenu.xml:7
 msgid "New game - Multiplayer"
@@ -1393,7 +1384,7 @@ msgstr "Citlivost myši:"
 
 #: content/gui/xml/mainmenu/settings.xml:115
 msgid "Saving"
-msgstr "Ukládám"
+msgstr "Ukládání"
 
 #: content/gui/xml/mainmenu/settings.xml:120
 msgid "Autosave interval in minutes:"
@@ -1458,11 +1449,12 @@ msgstr "Výrobní ukazatele:"
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
-msgstr "Jestli zobrazovat ikony surovin nad budovami kdykoliv dokončí produkci"
+msgstr ""
+"Zda se mají nad budovami zobrazovat ikony zdrojů vždy, když dokončí výrobu"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr "Nižší hodnoty zpomalují posouvání."
+msgstr "Vyšší hodnoty zpomalují posouvání."
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Scroll delay:"
@@ -1502,7 +1494,7 @@ msgstr "Uložit změny"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
-msgstr "Vaše uložené hry:"
+msgstr "Tvoje uložené hry:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
@@ -1514,7 +1506,7 @@ msgstr "Zrušit"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
-msgstr "Zadejte název souboru:"
+msgstr "Zadej název souboru:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:46
@@ -1548,7 +1540,7 @@ msgstr "Začít hru"
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr "Vyberte mapu k hře:"
+msgstr "Vyber si mapu, na které chceš hrát:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
@@ -1557,11 +1549,11 @@ msgstr "Nastavení mapy:"
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr "Osivo:"
+msgstr "Seed náhody:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr "Zvolte jazyk:"
+msgstr "Zvol jazyk:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
@@ -1622,11 +1614,11 @@ msgstr "Toto zboží není možné skladovat."
 
 #: horizons/component/tradepostcomponent.py:206
 msgid "You can not afford to buy this."
-msgstr "Toto zboží není možné koupit."
+msgstr "To si nemůžeš dovolit koupit."
 
 #: horizons/component/tradepostcomponent.py:212
 msgid "The trade partner does not sell more of this."
-msgstr "Obchodní partner větší množství tohoto zboží neprodá."
+msgstr "Obchodní partner toho neprodává více."
 
 #: horizons/component/tradepostcomponent.py:236
 msgid "The trade partner does not buy this."
@@ -1634,7 +1626,7 @@ msgstr "Obchodní partner toto zboží nekupuje."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr "Toto zboží nemáte."
+msgstr "Toto zboží nemáš."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
@@ -1642,7 +1634,7 @@ msgstr "Obchodní partner nemůže skladovat větší množství tohoto množstv
 
 #: horizons/component/tradepostcomponent.py:252
 msgid "The trade partner can not afford to buy this."
-msgstr "Obchodní partner nemůže toto zboží koupit."
+msgstr "Obchodní partner si to nemůže dovolit koupit."
 
 #: horizons/component/tradepostcomponent.py:257
 msgid "The trade partner does not buy more of this."
@@ -1658,17 +1650,17 @@ msgstr "Došlo k chybě během rychlého ukládání."
 
 #: horizons/editor/session.py:71
 msgid "Your map has not been saved."
-msgstr "Vaše mapa byla uložena."
+msgstr "Vaše mapa nebyla uložena."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
-msgstr "Pokud k ní dojte znovu, prosím kontaktujte vývojáře: {website}"
+msgstr "Pokud k této chybě dojte znovu, prosím kontaktujte vývojáře: {website}"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr "Opravdu chcete ukončit Unknown Horizons?"
+msgstr "Opravdu chceš ukončit Unknown Horizons?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
@@ -1676,15 +1668,15 @@ msgstr "Ukončit hru"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr "Diplomacie není použitelná"
+msgstr "Diplomacie je nedostupná"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr "Diplomacie není možná. Neexistují další hráči."
+msgstr "Nelze provádět diplomacii, protože zde nejsou žádní další hráči."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
-msgstr "Jste si jisti, že chcete odstranit tyto objekty?"
+msgstr "Opravdu chceš tyto objekty odstranit?"
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
@@ -1698,7 +1690,7 @@ msgstr "dlaždice {size}x{size}"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
-msgstr "Stiskněte klávesu…"
+msgstr "Stiskni klávesu…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
@@ -1707,13 +1699,13 @@ msgstr "{key} již bylo nastaveno na {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:148
 msgid "Would you like to overwrite it?"
-msgstr "Chcete toto přiřazení přepsat?"
+msgstr "Chceě toto přiřazení přepsat?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:149
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr "Potvrďte přepsání"
+msgstr "Potvrď přepsání"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
@@ -1725,11 +1717,11 @@ msgstr "Herní tipy"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr "Stiskněte 'ESC' pro otevření herního menu."
+msgstr "Stiskni 'ESC' pro otevření herního menu."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr "Použijte 'SHIFT' pro umístění více budov."
+msgstr "Použij 'SHIFT' pro umístění více budov."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
@@ -1739,45 +1731,44 @@ msgstr "Momentálně jsou hratelné jen první {tier} stupně."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr "Klávesou 'P' pozastavíte hru."
+msgstr "Klávesou 'P' pozastavíš hru."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
-msgstr "Silnice můžete natáhnout držením levého tlačítka myši."
+msgstr "Silnice můžeš natáhnout držením levého tlačítka myši."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr "Držením klávesy 'SHIFT' můžete postavit více budov najednou."
+msgstr "Podržením klávesy 'SHIFT' můžeš postavit více budov."
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
-msgstr "Obyvatele můžete udělat šťastnější snížením daní."
+msgstr "Snížením daní můžeš zvýšit spokojenost svých obyvatel."
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
-"Ochraňte své obyvatele proti ohni a nemocím stavěním požárních stanic a "
-"doktorů."
+"Postav hasičské stanice a lékaře, abys ochránil své obyvatele před požáry a "
+"nemocemi."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr "Stavte skladištní stany pro zvýšení kapacity vašeho skladu."
+msgstr "Postav si skladovací stany, abys zvýšil svou skladovací kapacitu."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr "Ujistěte se, že každá budova je v dosahu tržiště."
+msgstr "Ujisti se, že každá budova je v dosahu tržiště."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr "Zmáčknutím klávesy 'T' zprůhledníte stromy."
+msgstr "Zmáčknutím klávesy 'T' zprůhledníš stromy."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr ""
-"Stavte skladištní stany a vyhlídkovou věž pro zvýšení rozsahu vaší osady."
+msgstr "Postav skladovací stany a rozhledny, abys rozšířil oblast osídlení."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1786,28 +1777,37 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Chceš-li snadno zjistit, zda rozsah pavilonu pokrývá všechny tvoje stany, "
+"vyber jej v nabídce sestavení a najeď na stávající pavilon. Nepokryté stany "
+"jsou zobrazeny žlutě. Je dobré postavit nový pavilon v jejich sousedství."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Zvýšením počtu hráčů s umělou inteligencí (AI) při spuštění nové hry můžeš "
+"zvýšit zábavnost hry jednoho hráče proti počítači."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"První kroky si můžeš usnadnit tak, když se podíváš, jak hráči s umělou "
+"inteligencí zakládají své osady."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Chceš pouze vtipné citáty? Změň zde zobrazené typy citátů v nabídce "
+"nastavení na stránce hry."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Tržiště propojuje budovy jako silnice."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -1819,7 +1819,7 @@ msgstr "Různé"
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr "Startování motoru…"
+msgstr "Startování herního systému…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
@@ -1870,7 +1870,7 @@ msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
-"Hra pro více hráčů vyžaduje knihovnu \"pyenet\", která nebyla na vašem "
+"Hra pro více hráčů vyžaduje knihovnu \"pyenet\", která nebyla na tvém "
 "systému nalezena."
 
 #: horizons/gui/modules/multiplayermenu.py:129
@@ -1890,7 +1890,7 @@ msgstr "Síť nemůže být inicializována s aktuálním nastavením."
 #: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:275
 msgid "Check the settings you specified in the network section."
-msgstr "Zkontrolujte nastavení sítě."
+msgstr "Zkontroluj nastavení sítě."
 
 #: horizons/gui/modules/multiplayermenu.py:149
 #: horizons/gui/modules/multiplayermenu.py:168 horizons/mpsession.py:53
@@ -1906,8 +1906,8 @@ msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
-"Prosím, zkontrolujte Vaše připojení k internetu. Pokud je v pořádku, je "
-"možné, že hlavní server je dočasně mimo provoz."
+"Prosím, zkontroluj připojení k internetu. Pokud je v pořádku, je možné, že "
+"hlavní server je dočasně mimo provoz."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
@@ -1953,9 +1953,8 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
-"Rozdílné verze hry! Hráči musí používat stejnou verzi hry, prosím "
-"aktualizujte na nejnovější verzi. Verze hry: {game_version} Vaše verze: "
-"{own_version}"
+"Rozdílné verze hry! Hráči musí používat stejnou verzi hry, prosím aktualizuj "
+"na nejnovější verzi. Verze hry: {game_version} Vaše verze: {own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
@@ -1963,7 +1962,7 @@ msgstr "Heslo hry"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr "Zadejte heslo:"
+msgstr "Zadej heslo:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
@@ -1983,12 +1982,12 @@ msgstr "Nepřipraveno"
 
 #: horizons/gui/modules/multiplayermenu.py:445
 msgid "Enter your message"
-msgstr "Vaše zpráva"
+msgstr "Zadej zprávu"
 
 #: horizons/gui/modules/multiplayermenu.py:503
 #: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
-msgstr "Klikněte zde pro změnu vašeho jména nebo barvy"
+msgstr "Klikni zde pro změnu tvého jména nebo barvy"
 
 #: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
@@ -1998,66 +1997,66 @@ msgstr "Kopnout {player}"
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr "{player} se připojil do hry"
+msgstr "{player} se připojil/a do hry"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr "{player} odešel ze hry"
+msgstr "{player} odešel/odešla ze hry"
 
 #: horizons/gui/modules/multiplayermenu.py:605
 msgid "You are now ready"
-msgstr "Nyní jste připraven"
+msgstr "Nyní jsi připraven/a"
 
 #: horizons/gui/modules/multiplayermenu.py:607
 msgid "You are not ready anymore"
-msgstr "Už nejste připraven"
+msgstr "Už nejsi připraven/a"
 
 #: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr "{player} je nyní připraven"
+msgstr "{player} je nyní připraven/a"
 
 #: horizons/gui/modules/multiplayermenu.py:612
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr "{player} už není připraven"
+msgstr "{player} už není připravena"
 
 #: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr "Nyní jste znám jako {new_name}"
+msgstr "Nyní jsi znám/a jako {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:618
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr "{player} je nyní znám jako {new_name}"
+msgstr "{player} je nyní znám/a jako {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:622
 msgid "You changed your color"
-msgstr "Změnil jste barvu"
+msgstr "Změnil/a jsi barvu"
 
 #: horizons/gui/modules/multiplayermenu.py:624
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr "{player} změnil barvu"
+msgstr "{player} změnil/a barvu"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "Kicked"
-msgstr "Vyhozen"
+msgstr "Vyhozen/a"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
-msgstr "Byl jste vyhozen ze hry tvůrcem"
+msgstr "Byl jsi vyhozen/a ze hry tvůrcem"
 
 #: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr "{player} byl vyhozen ze hry tvůrcem"
+msgstr "{player} byl/a vyhozen/a ze hry tvůrcem"
 
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
-msgstr "Jste si jisti, že chcete přerušit aktuální hru?"
+msgstr "Opravdu chceš přerušit aktuální hru?"
 
 #: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
@@ -2077,7 +2076,7 @@ msgstr "Nebyl zadán název souboru"
 
 #: horizons/gui/modules/select_savegame.py:147
 msgid "Please enter a valid filename."
-msgstr "Zadejte prosím platný název souboru."
+msgstr "Zadej prosím platný název souboru."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
@@ -2132,16 +2131,16 @@ msgstr "Nebyl vybrán žádný soubor"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "You need to select a savegame to delete."
-msgstr "Vyberte hru ke smazání."
+msgstr "Vyber hru ke smazání."
 
 #: horizons/gui/modules/select_savegame.py:256
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr "Opravdu chcete smazat hru '{name}'?"
+msgstr "Opravdu chceš smazat hru '{name}'?"
 
 #: horizons/gui/modules/select_savegame.py:258
 msgid "Confirm deletion"
-msgstr "Potvrďte smazání"
+msgstr "Potvrď smazání"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Error!"
@@ -2642,10 +2641,8 @@ msgstr "Poskytuje jednotky vhodné pro pozemní souboje."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:59
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "Dřevěná věž"
+msgstr "Dřevěná zábrana"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
@@ -2654,10 +2651,8 @@ msgstr ""
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:63
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "Poskytuje vzdělání."
+msgstr "Poskytuje ochranu."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:67
@@ -3450,104 +3445,100 @@ msgstr "Nepřipraveno"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Zastaralý či nepodporovaný protokol pro hru po síti. Prosím zkontroluj verzi "
+"hry"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Překročil jsi globální maximální velikost packetu."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Toto by nikdy nemělo nastat. Prosím kontaktuj nás, nebo podej hlášení o "
+"chybě."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Překročil jsi maximální velikost konkrétního packetu."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "Neznámý, či poškozený packet. Prosím zkontroluj verzi tvojí hry"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Chybné/Neznámé sezení"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Nemůžeš vstoupit do hry, pokud již v nějaké hře jsi"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Neznámá hra, nebo hra běží na jiné verzi"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Hra začala. Již se nejde připojit"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "Hra je obsazena"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Zadejte heslo:"
+msgstr "Nesprávné heslo"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "V této hře již je hráč s tvým jménem."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Změň si prosím své jméno."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "V této hře již je hráč s tvojí barvou."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Změnil jste barvu"
+msgstr "Změň si prosím svou barvu."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "Ve hře již je hráč s tvým unikátním ID. Toto by se nemělo nikdy stát."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Už nejste připraven"
+msgstr "Nejsi ve hře"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Nepodařilo se připojit k serveru."
+msgstr "Tvoje jméno nelze změnit."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Změnil jste barvu"
+msgstr "Tvoji barvu nelze změnit."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "Nemůžeš se připojit do jiné hry pokud již v nějaké hře jsi"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "Hra byla ukončena. Zakládající hráč ji opustil."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Jeden z hráčů ukončil hru. Z technických důvodů tato hra nemůže pokračovat, "
+"za což se velice omlouváme."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"

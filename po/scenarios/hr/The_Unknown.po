@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2019-12-28 12:21+0000\n"
+"PO-Revision-Date: 2021-12-26 17:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/uh/the-unknown/"
 "hr/>\n"
@@ -16,13 +16,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.10\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.10.1\n"
 
 #. scenario difficulty
 msgid "easy"
-msgstr "lagano"
+msgstr "lako"
 
 #. scenario description
 msgid ""
@@ -30,14 +30,14 @@ msgid ""
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
-"Vi ste kapetan broda pod engleskom zastavom 1740. godine. Vi i vaša posada "
+"Ti si kapetan broda pod engleskom zastavom 1740. godine. Ti i tvoja posada "
 "bili ste na putu prema Engleskoj koloniji koja se nalazi negdje u pacifičkom "
 "oceanu.\n"
 "Sve je bilo u redu dok vas nije zatekla strašna oluja …"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr "20. studeni 1740"
+msgstr "20. studenoga 1740."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -46,8 +46,8 @@ msgid ""
 "instruments and sea charts are lost."
 msgstr ""
 "Nakon četiri dana oluja se napokon stišala i posada se može odmoriti. "
-"Međutim imamo jako malo hrane i naš brod je u dosta lošem stanju. Također "
-"naši navigacijski instrumenti i morske karte su izgubljeni."
+"Međutim preostalo nam je malo hrane i naš brod je u dosta lošem stanju. "
+"Navigacijski instrumenti i morske karte su izgubljeni."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -56,7 +56,7 @@ msgid ""
 "onboard, so we can build some basic shelter."
 msgstr ""
 "Moramo uskoro doći do obale. Jedan od mojih mornara je vidio nekoliko ptica "
-"koje love ribu što ukazuje na kopno u blizini. Na sreću uvijek imamo nešto "
+"koje love ribu, što ukazuje na kopno u blizini. Na sreću uvijek imamo nešto "
 "alata i dasaka na brodu kako bi mogli izgraditi sklonište."
 
 #. This is the text body of a logbook page.
@@ -65,20 +65,20 @@ msgid ""
 "Find land and build a port."
 msgstr ""
 "Zadatak:\n"
-"Pronađi kopno i izgradi luku."
+"Pronađi kopno i sagradi luku."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr "22. studeni 1740g"
+msgstr "22. studenoga 1740."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
 msgstr ""
-"Luka je izgrađena i nova nada se budi. Još uvijek sam zabrinut oko sljedećih "
-"par dana... uskoro ćemo ostati bez hrane i nedostaje nam osnovnih "
-"građevinskih materijala."
+"Luka je izgrađena i budi se nova nada. Još uvijek sam zabrinut oko sljedećih "
+"par dana … uskoro ćemo ostati bez hrane i nedostaje nam osnovni građevinski "
+"materijal."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -86,9 +86,9 @@ msgid ""
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
 msgstr ""
-"Moramo osigurati osnovne potrebe ljudi kako bi preživjeli. Vrijeme je da "
-"pošaljemo ljude kako bi sakupili hranu i drvo te time bi preživjeli i "
-"izgradili nekakav zaklon."
+"Moramo osigurati osnovne potrebe ljudi kako bismo preživjeli. Vrijeme je da "
+"pošaljemo ljude da sakupe hranu i drvo kako bismo preživjeli i izgradili "
+"neku vrstu zaklona."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -108,7 +108,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr "25. studeni 1740"
+msgstr "25. studenoga 1740."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -116,9 +116,9 @@ msgid ""
 "the growth of our new settlement. Our people demand a place to live and "
 "exchange goods for their everyday needs."
 msgstr ""
-"Osigurali smo naše osnovne potrebe za hranom i skupili nešto drva kako bi "
-"nastavili sa rastom naše naseobine. Naši ljudi zahtjevaju mjesto za život i "
-"razmjenu dobara kako bi zadovoljili svoje potrebe."
+"Osigurali smo naše osnovne potrebe za hranom i skupili nešto drva kako bismo "
+"nastavili s daljnjom izgradnjom našeg naselja. Naši ljudi zahtijevaju mjesto "
+"za život i razmjenu dobara kako bi zadovoljili vlastite svakodnevne potrebe."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -126,7 +126,7 @@ msgid ""
 "our citizens with goods."
 msgstr ""
 "Vrijeme je da izgradimo šatore za život i mali glavni trg za snabdjevanje "
-"stanovnika sa potrepštinama."
+"stanovnika s potrepštinama."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -138,7 +138,7 @@ msgstr ""
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr "1. prosinac 1740"
+msgstr "1. prosinca 1740."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -147,7 +147,7 @@ msgid ""
 "my head at night."
 msgstr ""
 "Napokon imamo dovoljno za jesti i mjesto za život. Moj šator nije baš udoban "
-"ali održava me suhim i imam osjećaj krova nad glavom noću."
+"ali održava me suhim i noću imam osjećaj krova nad glavom."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -156,10 +156,11 @@ msgid ""
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
-"Istraživao sam  zvijezde noću, ali bez mojih morskih karata i instrumenata "
-"njihovo značenje je nejasno. Imam osjećaj da ćemo biti zaglavljeni ovdje "
-"neko vrijeme, moramo iskoristiti ovu novonastalu situaciju maksimalno.\n"
-"Možemo samo probati izgraditi civilizaciju pa pronaći put kući…"
+"Istraživao sam zvijezde noću, ali bez mojih morskih karata i instrumenata "
+"njihovo značenje je nejasno. Imam osjećaj da ćemo neko vrijeme ovdje ostati "
+"zaglavljeni, stoga moramo živjeti s ovom situacijom na najbolji mogući način."
+"\n"
+"Možemo samo pokušati izgraditi civilizaciju te pronaći put kući …"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -168,12 +169,11 @@ msgid ""
 "balance."
 msgstr ""
 "Zadatak:\n"
-"Izgradi svoju naseobinu dok populacija ne dosegne 250 stanovnika i pozitivnu "
-"bilancu."
+"Izgradi naselje dok populacija ne dosegne 250 stanovnika i pozitivnu bilancu."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr "27. kolovoz 1745"
+msgstr "27. kolovoza 1745."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -181,9 +181,9 @@ msgid ""
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
 msgstr ""
-"Naše selo dobro napreduje, naseobina ima preko 250 stanovnika. Počeo sam se "
-"navikavati na naš novi dom ali ovaj otok je pre mali kako bi ostali ovdije "
-"zauvjek."
+"Naše selo dobro napreduje, naselje ima preko 250 stanovnika. Počeo sam se "
+"navikavati na moj novi dom, ali je ovaj otok pre mali da bismo ovdje "
+"zauvijek ostali."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -192,10 +192,10 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
-"Trebali bi natovariti naš brod i pronaći veći otok koji nudi više mjesta za "
-"moje ljude. Napravio sam novu osnovnu navigacijsku mapu koristeći zvijezde "
-"koje vidim noću. Nije savršena ali se nadam da će biti dovoljna za povratak "
-"ovdije."
+"Moramo natovariti naš brod i pronaći veći otok koji nudi više mjesta i "
+"resursa za moje ljude. Napravio sam novu osnovnu navigacijsku mapu koristeći "
+"zvijezde koje vidim noću. Nije savršena, ali se nadam da će biti dovoljna za "
+"povratak ovamo."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -204,5 +204,5 @@ msgid ""
 "how you can contribute to making this scenario longer and better!"
 msgstr ""
 "Zadatak:\n"
-"Kontaktirajte Unknown Horizons ekipu (www.unknown-horizons.org) i otkrij "
-"kako možeš pomoći u stvaranju ovog scenarija da bude duži i bolji!"
+"Kontaktiraj Unknown Horizons tim (www.unknown-horizons.org) i otkrij kako "
+"možeš pomoći u stvaranju ovog scenarija dužim i boljim!"

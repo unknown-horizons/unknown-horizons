@@ -7,16 +7,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-09-04 21:23+0000\n"
-"Last-Translator: shprot <shprot@mail.ua>\n"
+"PO-Revision-Date: 2021-07-19 09:33+0000\n"
+"Last-Translator: Anna Malinovskaia <tacitcoast@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/uh/uh/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.7.2-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -1472,9 +1472,7 @@ msgstr "Сеть"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr ""
-"Если установлен 0, то используется маршрутизатор\n"
-"по умолчанию"
+msgstr "Если установлен 0, то используется маршрутизатор по умолчанию"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
@@ -1502,7 +1500,7 @@ msgstr "Пароль. Требуется для присоединения к и
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
-msgstr "Отменить"
+msgstr "Отмена"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
@@ -1792,7 +1790,7 @@ msgid ""
 "'AI players' when starting a new game."
 msgstr ""
 "Сделайте одиночную игру более увлекательной с помощью дополнительных "
-"компьютерных игроков, увеличив  «Игроки ИИ» при запуске новой игры."
+"компьютерных игроков, увеличив «Игроки ИИ» при запуске новой игры."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
@@ -2912,7 +2910,7 @@ msgstr "Производит виноград для вина и кондите�
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:215
 msgid "Fire Station"
-msgstr "Пожарное депо"
+msgstr "Пожарная часть"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:217
@@ -3459,108 +3457,101 @@ msgstr "Не готов"
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Старый или не поддерживаемый протокол сетевой игры. Пожалуйста, проверьте "
-"версию вашей игры"
+"Старый или неподдерживаемый многопользовательский протокол. Пожалуйста, "
+"проверьте версию вашей игры"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Вы превысили глобальный размер пакета."
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Этого никогда не должно происходить. Пожалуйста, свяжитесь с нами или "
+"отправьте сообщение об ошибке."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Превышен размер пакета."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
+"Неизвестный или испорченный пакет. Пожалуйста, проверьте Вашу версию игры"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Недействительная/неизвестная сессия"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Вы не можете присоединиться к игре, находясь в другой игре"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Неизвестная модификация или версия игры отличается"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Игра уже началась. Присоединиться больше нельзя"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "Сервер заполнен"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "Введите пароль:"
+msgstr "Неправильный пароль"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "В игре уже есть игрок с таким именем."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "Пожалуйста, смените Ваше имя."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "В игре уже есть игрок с Вашим цветом."
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "Вы поменяли свой цвет"
+msgstr "Пожалуйста, смените Ваш цвет."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "Игрок с вашим уникальным ID уже в игре. Такое не должно происходить."
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "Вы пока не готовы"
+msgstr "Вы не в игре"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "Невозможно подключиться к серверу."
+msgstr "Невозможно изменить Ваше имя."
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "Вы поменяли свой цвет"
+msgstr "Невозможно изменить Ваш цвет."
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "Вы не можете изменять скорость в сетевой игре"
+msgstr "Вы не можете войти в игру, пока Вы в другой игре"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "Игра была завершена. Создатель покинул игру."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Один из игроков завершил игру и она не может быть продолжена по техническим "
+"причинам. Мы очень сожалеем об этом."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"

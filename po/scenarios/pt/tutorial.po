@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2019-09-28 00:54+0000\n"
-"Last-Translator: Manuela Silva <mmsrs@sky.com>\n"
+"PO-Revision-Date: 2021-05-10 16:32+0000\n"
+"Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/uh/tutorial/"
 "pt/>\n"
 "Language: pt\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.9-dev\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -693,8 +693,7 @@ msgstr "Primeiro, clique no seu armazém e então clique na terceira aba."
 msgid ""
 "Then click on one of the 3 slots, then select a good you want to buy or sell."
 msgstr ""
-"Então clique em um dos 3 slots e selecione um bem que você queira comprar ou "
-"vender."
+"Então clique num dos 3 slots e selecione um bem que queira comprar ou vender."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -952,9 +951,8 @@ msgid ""
 "additional goods which sailors do not need - so you will need to spend this "
 "extra money to make them happy as well."
 msgstr ""
-"Como você já deve supor, a desvantagem é que os pioneiros necessitam de mais "
-"mercadorias - sendo assim você deverá então investir a receita extra para "
-"satisfazê-los."
+"Como já deve supor, a desvantagem é que os pioneiros necessitam de mais "
+"mercadorias - assim deverá então investir a receita extra para satisfazê-los."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -1158,7 +1156,7 @@ msgstr ""
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 msgid "Build a storage tent (tier I tab) where it makes sense."
 msgstr ""
-"Construa uma tenda de armazenamento (aba nível 1) em um local onde possa ser "
+"Construa uma tenda de armazenamento (aba nível 1) num local onde possa ser "
 "útil."
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
@@ -1303,7 +1301,7 @@ msgstr ""
 #. This is the text body of a logbook page.
 msgid "Task: Build a Weaver's Hut positioned so it can get wool."
 msgstr ""
-"Tarefa: Construir uma cabana de tecelão posicionada em um local onde possa "
+"Tarefa: Construir uma cabana de tecelão posicionada num local onde possa "
 "obter lã."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!

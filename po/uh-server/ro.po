@@ -8,105 +8,116 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons Server e124229\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2016-10-30 16:06+0100\n"
-"PO-Revision-Date: 2015-12-02 23:34+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2020-09-14 07:36+0000\n"
+"Last-Translator: Alexandru Mituchi <mituchi.alexandru@gmail.com>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/uh/uh-server/ro/"
+">\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3-dev\n"
 
 #: horizons/network/server.py:249
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
+"Protocol multiplayer vechi sau fără suport. Te rugăm să verifici versiunea "
+"jocului tău"
 
 #: horizons/network/server.py:284
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "Ai depășit mărimea pachetului global."
 
 #: horizons/network/server.py:285 horizons/network/server.py:304
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
+"Acest lucru nu ar trebui să se întâmple. Te rugăm să ne contactezi sau să ne "
+"trimiți un bug report."
 
 #: horizons/network/server.py:303
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "Ai depășit mărimea per pachet."
 
 #: horizons/network/server.py:311
 msgid "Unknown or malformed packet. Please check your game version"
 msgstr ""
+"Pachet necunoscut sau malformat. Te rugăm să verifici versiunea jocului tău"
 
 #. this will trigger ondisconnect() for cleanup
 #: horizons/network/server.py:320
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "Sesiune invalidă/necunoscută"
 
 #: horizons/network/server.py:403
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "Nu poți intra intr-un joc în timp ce ești în alt joc"
 
 #: horizons/network/server.py:408
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "Joc necunoscut sau jocul rulează altă versiune de joc"
 
 #: horizons/network/server.py:411
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "Jocul deja a inceput. Nu mai poți intra"
 
 #: horizons/network/server.py:414
 msgid "Game is full"
-msgstr ""
+msgstr "Jocul este plin"
 
 #: horizons/network/server.py:417
 msgid "Wrong password"
-msgstr ""
+msgstr "Parolă greșită"
 
 #: horizons/network/server.py:434 horizons/network/server.py:547
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "Există deja un jucător cu numele tău în acest joc."
 
 #: horizons/network/server.py:435
 msgid "Please change your name."
-msgstr ""
+msgstr "Te rugăm să îți schimbi numele."
 
 #: horizons/network/server.py:438 horizons/network/server.py:576
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "Există deja un jucător cu aceași culoare ca și tine in acest joc."
 
 #: horizons/network/server.py:439
 msgid "Please change your color."
-msgstr ""
+msgstr "Te rugăm să îți schimbi culoarea."
 
 #: horizons/network/server.py:442
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
+"Există deja un jucător cu ID-ul tău unic în acest joc. Acest lucru nu ar "
+"trebui să se întample."
 
 #: horizons/network/server.py:458
 msgid "You are not inside a game"
-msgstr ""
+msgstr "Nu ești într-un joc"
 
 #: horizons/network/server.py:489
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "Jocul a fost terminat. Creatorul jocului a ieșit din joc."
 
 #: horizons/network/server.py:494
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
+"Unul din jucători și-a închis jocul. Din motive tehnice, asta înseamnă că "
+"jocul nu poate continua. Ne pare rău pentru asta."
 
 #: horizons/network/server.py:548
 msgid "Unable to change your name."
-msgstr ""
+msgstr "Nu îți poți schimba numele."
 
 #: horizons/network/server.py:577
 msgid "Unable to change your color."
-msgstr ""
+msgstr "Nu îți poți schimba culoarea."
 
 #: horizons/network/server.py:665
 msgid "You can't fetch a game while in another game"
-msgstr ""
+msgstr "Nu poți intra în joc în timpul altui joc."

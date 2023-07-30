@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2019-04-19 11:34+0000\n"
-"Last-Translator: Rui Mendes <xz9@protonmail.com>\n"
+"PO-Revision-Date: 2023-06-16 16:47+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/uh/uh/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6-dev\n"
+"X-Generator: Weblate 4.18.1\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -917,7 +917,7 @@ msgstr "Unidades"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:17
 msgid "Value of all the units owned by the player"
-msgstr "Valor de todas la unidades adquiridas por el  jugador"
+msgstr "Valor de todas las unidades propiedad del jugador"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:18
 msgid ""
@@ -2756,7 +2756,7 @@ msgstr "Necesita cerdos o ganado. Produce alimento."
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr "Fundición de Cañones"
+msgstr "Fundición de cañones"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
@@ -3902,7 +3902,7 @@ msgstr "El soldado con el nombre de {name} ha está listo para la batalla."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "El habitante por el nombre de  {name} está disponible."
+msgstr "El habitante con el nombre de {name} está disponible."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."

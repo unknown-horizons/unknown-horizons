@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2017-09-06 19:27+0000\n"
+"PO-Revision-Date: 2021-01-18 07:32+0000\n"
 "Last-Translator: Kristjan Räts <kristjanrats@gmail.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/uh/uh/et/>\n"
 "Language: et\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.17-dev\n"
+"X-Generator: Weblate 4.5-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -851,7 +851,7 @@ msgstr "Raha"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:12
 msgid "Player's current treasury + income expected in near future"
-msgstr "Mängija praegune varandus +  eeldatav sissetulek lähemal ajal"
+msgstr "Mängija praegune varandus + eeldatav sissetulek lähemal ajal"
 
 #: content/gui/xml/ingame/widgets/players_overview.xml:13
 msgid "Land"
@@ -1733,7 +1733,7 @@ msgstr "Mitme ehitise paigutamiseks hoia all 'SHIFT'."
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr "Hetkel on on mängitavad ainult esimesed {tier} taset."
+msgstr "Hetkel on mängitavad ainult esimesed {tier} taset."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."

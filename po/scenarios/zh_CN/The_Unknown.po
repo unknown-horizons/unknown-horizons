@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Unknown Horizons 802a2c6\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-08-25 19:10+0200\n"
-"PO-Revision-Date: 2019-06-29 21:00+0000\n"
-"Last-Translator: Elizabeth Sherrock <lizzyd710@gmail.com>\n"
+"PO-Revision-Date: 2021-04-26 07:32+0000\n"
+"Last-Translator: liu lizhi <kz-xy@163.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/uh/"
 "the-unknown/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 4.7-dev\n"
 
 #. scenario difficulty
 msgid "easy"
@@ -29,26 +29,26 @@ msgid ""
 "your crew were on the way to a colony of England in the Pacific Ocean.\n"
 "Everything went fine until you came into a storm…"
 msgstr ""
-"你是一位1740年英格兰旗下的船长。你和你的水手前往到太平洋的英格兰殖民地。\n"
-"一开始一切正常直到暴风来临的那一刻…"
+"1740年，作为船长，你将率领船队前往位于太平洋的英格兰殖民地。\n"
+"开局顺风顺水，直到一场暴风雨来袭……"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "20th November 1740"
-msgstr "1740年11月20日"
+msgstr "1740 年，11 月 20 日"
 
 #. This is the text body of a logbook page.
 msgid ""
 "After four days the storm finally fades and we can take a rest. But we only "
 "have little food left and our ship is in a bad shape. The navigational "
 "instruments and sea charts are lost."
-msgstr "在四天的风暴过后我们终于获得了喘息的机会。但是我们现在只剩下少许的食物与破损的船只。导航设备与航海图已经遗失了。"
+msgstr "四天的风暴过后，我们终于获得了喘息的机会。但现在的我们只剩下些许食物，和破损的船只，而导航设备和海图都已遗失。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "We have to come ashore soon. One of my jacks saw some birds hunting for "
 "fish, so land can't be far. Fortunately we always have some tools and boards "
 "onboard, so we can build some basic shelter."
-msgstr ""
+msgstr "我们必须尽快靠岸。 手下看到有鸟类在捕鱼，这预示着陆地就在不远处。 很幸运，船上还有一些工具和木板，能够建立起简易的庇护所。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -56,24 +56,24 @@ msgid ""
 "Find land and build a port."
 msgstr ""
 "任务：\n"
-"寻找陆地和建立一个港口。"
+"寻找陆地，并建立一座港口。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "22nd November 1740"
-msgstr "1740年11月22日"
+msgstr "1740 年，11 月 22 日"
 
 #. This is the text body of a logbook page.
 msgid ""
 "The port is built and a new hope arises. I am still worried about the next "
 "days… we are running out of food and lack basic building material."
-msgstr ""
+msgstr "港口建成了，我们有希望了。 不过我还是担心接下来的日子…...我们的食物告罄，又缺少基本的建材。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "We need to secure our basic needs to keep us alive. It is time to send "
 "people gathering food and lumber so that we can survive and build some "
 "shelter."
-msgstr ""
+msgstr "要确保活下去。 是时候让大家收集食物和木材了。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -85,28 +85,28 @@ msgid ""
 "Collect 5 food and 5 boards."
 msgstr ""
 "任务：\n"
-"建立每个至少一个：\n"
-"*伐木工\n"
-"*渔夫\n"
-"*猎人\n"
-"收集5样食物和5块木板。"
+"每样至少一个：\n"
+"* 伐木工\n"
+"* 渔夫\n"
+"* 猎人\n"
+"收集 5 样食物，和 5 块木板。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "25th November 1740"
-msgstr "1740年11月25号"
+msgstr "1740 年，11 月 25 日"
 
 #. This is the text body of a logbook page.
 msgid ""
 "We have secured our basic needs of food and gathered some wood to continue "
 "the growth of our new settlement. Our people demand a place to live and "
 "exchange goods for their everyday needs."
-msgstr ""
+msgstr "食物已满足，木材也够定居点的增长需求。 人民还要求有一处居住和贸易的地方，来满足日常需求。"
 
 #. This is the text body of a logbook page.
 msgid ""
 "It is time to build some tents to live in and a small main square to supply "
 "our citizens with goods."
-msgstr ""
+msgstr "是该建造一些帐篷了。再修建一处中央广场，为市民提供货物。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -114,18 +114,18 @@ msgid ""
 "Build a Main Square and at least 10 Tents."
 msgstr ""
 "任务：\n"
-"建造一座主要广场和至少10间的帐篷。"
+"建造一座中央广场，和不少于10 间的帐篷。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "1st December 1740"
-msgstr "1740年12月1号"
+msgstr "1740 年，12 月 1 号"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Finally we have enough to eat and a place to live again. My tent is not very "
 "comfortable but it keeps me dry and I have the feeling of having a roof over "
 "my head at night."
-msgstr ""
+msgstr "我们终于有吃住的地方了。 尽管帐篷住得不太舒服，但也让我们免于风吹雨打。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -134,6 +134,8 @@ msgid ""
 "stuck here for a while, so we'll have to make the best of situation.\n"
 "We can only try to to build up a civilisation and find a way home…"
 msgstr ""
+"每晚我都在观测星空。不过少了海图和仪器，我的脑子还是一头雾水。 我总感觉，得在这里呆上很久，有必要充分了解周遭。\n"
+"我们会试着建立文明，并找到回家的路……"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -141,17 +143,19 @@ msgid ""
 "Grow the village until you have at least 250 inhabitants and a positive "
 "balance."
 msgstr ""
+"任务：\n"
+"发展村庄，至少得有 250 名居民，并保持村庄正增长。"
 
 #. This is a logbook page heading. Space is VERY short, please only translate to strings that fit (roughly 30 characters max).
 msgid "27th August 1745"
-msgstr "1745年8月27号"
+msgstr "1745 年，8 月 27 日"
 
 #. This is the text body of a logbook page.
 msgid ""
 "Our village is doing well, the city has grown to over 250 inhabitants. I "
 "have started getting used to my new home, but this island is too small to "
 "stay here forever."
-msgstr ""
+msgstr "村庄整体发展良好，人口已过 250 人。 我已习惯了新家，不过这个岛太小了，不能久困于此。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -160,6 +164,7 @@ msgid ""
 "using the stars I see at night. It is not perfect, but I hope it will "
 "suffice to return here."
 msgstr ""
+"我们要乘船，外出寻找更大的岛屿，来提供足够的空间和资源。 夜晚观星也有了收获，创建了基本的导航图。 尽管它不太完美，但我希望它能帮助我离开这里。"
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -167,3 +172,5 @@ msgid ""
 "Contact the Unknown Horizons Team (www.unknown-horizons.org) and find out "
 "how you can contribute to making this scenario longer and better!"
 msgstr ""
+"任务：\n"
+"和“未知地平线”团队（www.unknown-horizons.org）联系，为游戏后续发展添砖加瓦！"

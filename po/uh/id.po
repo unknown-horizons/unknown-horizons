@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2020-01-05 21:21+0000\n"
-"Last-Translator: Dhimas Wnz <dhi.mas26wnz@gmail.com>\n"
+"PO-Revision-Date: 2023-07-15 10:54+0000\n"
+"Last-Translator: Taufik Adi Wicaksono <taufikadi.wicaksono@tutamail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/uh/uh/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -27,11 +27,13 @@ msgstr "Unknown Horizons mengalami kerusakan."
 
 #: run_uh.py:189
 msgid "We are very sorry for this and want to fix the underlying error."
-msgstr "Kami mohon maaf untuk hal ini dan ingin memperbaiki error berikut."
+msgstr ""
+"Kami sangat menyesal untuk hal ini dan ingin memperbaiki kesalahan yang "
+"mendasarinya."
 
 #: run_uh.py:190
 msgid "In order to do this, we need the information from the logfile:"
-msgstr "Oleh sebab itu, kami membutuhkan informasi dari logfile:"
+msgstr "Oleh sebab itu, kami membutuhkan informasi dari berkas log:"
 
 #: run_uh.py:192
 msgid ""
@@ -90,11 +92,11 @@ msgstr "Mulai bermain"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:15
 msgid "You need to found a settlement before you can construct buildings!"
-msgstr "Anda perlu menemukan pemukiman sebelum anda dapat membangun bangunan!"
+msgstr "Anda perlu menemukan pemukiman sebelum Anda dapat membangun bangunan!"
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:18
 msgid "Select your ship and approach the coast via right-click."
-msgstr "Pilih kapal anda dan dekatkan ke pantai dengan klik kanan."
+msgstr "Pilih kapal Anda dan dekatkanlah ke pantai dengan klik kanan."
 
 #: content/gui/xml/ingame/buildmenu/buildtab_no_settlement.xml:21
 msgid "Afterwards, press the large button in the ship overview tab."
@@ -177,7 +179,7 @@ msgstr "Ganti nama"
 
 #: content/gui/xml/ingame/popups/change_name.xml:9
 msgid "Old name:"
-msgstr "Nama lama:"
+msgstr "Nama sebelumnya:"
 
 #: content/gui/xml/ingame/popups/change_name.xml:13
 msgid "Enter new name:"
@@ -329,14 +331,14 @@ msgstr "2500"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr "Perang Sekoci-Kapal"
+msgstr "Sloop-o'-war"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
 msgstr ""
-"Kapal bertiang tiga pada umumnya diklasifikasikan kapal perang dengan satu "
-"dek senjata."
+"Kapal bertiang tiga pada umumnya diklasifikasikan sebagai kapal perang "
+"dengan satu dek senjata."
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
@@ -382,7 +384,7 @@ msgstr "Bangun unit darat:"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
 msgid "Build this groundunit!"
-msgstr "Bangaun unit darat ini!"
+msgstr "Bangun unit darat ini!"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -390,7 +392,7 @@ msgid ""
 "confirm the order."
 msgstr ""
 "Untuk membangun sebuah kapal, klik pada salah satu tab, pilih kapal yang "
-"diinginkan dan konfirmasi pesanan."
+"diinginkan, dan konfirmasi pesanan."
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
 msgid "Build ship:"
@@ -419,7 +421,7 @@ msgstr "lawan"
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:12
 #: content/gui/xml/ingame/tabwidget/overview/overview_generic.xml:10
 msgid "Building overview"
-msgstr "Gambaran bangunan"
+msgstr "Ikhtisar bangunan"
 
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:24
 #: content/gui/xml/ingame/tabwidget/farm/overview_farm.xml:25
@@ -440,7 +442,7 @@ msgstr "Persediaan pemukiman"
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:14
 #: horizons/gui/tabs/residentialtabs.py:36
 msgid "Settler overview"
-msgstr "Keterangan pemukiman"
+msgstr "Ikhtisar penduduk"
 
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:25
 #: content/gui/xml/ingame/tabwidget/overview/mainsquare_inhabitants.xml:28
@@ -514,7 +516,7 @@ msgstr "penduduk"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
 msgid "Provides security for your settlement."
-msgstr "Menyediakan keamanan untuk pemukiman kamu."
+msgstr "Memberikan keamanan untuk pemukiman Anda."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -546,8 +548,8 @@ msgstr "Deposit Sumber Daya"
 msgid ""
 "This is a resource deposit where you can build a mine to dig up resources."
 msgstr ""
-"Ini adalah Deposit sumber daya anda bisa membangun tambang untuk menggali "
-"sumber daya."
+"Ini adalah deposit sumber daya di mana Anda dapat membangun tambang untuk "
+"menggali sumber daya."
 
 #. It == The resource deposit
 #: content/gui/xml/ingame/tabwidget/overview/overview_resourcedeposit.xml:17
@@ -560,7 +562,7 @@ msgstr "Mengandung sumber daya ini:"
 #: horizons/gui/tabs/mainsquaretabs.py:123
 #: horizons/gui/widgets/playerssettlements.py:97
 msgid "Click to change the name of your settlement"
-msgstr "Klik untuk mengubah nama kolonialisasi"
+msgstr "Klik untuk mengubah nama pemukiman Anda"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:23
 #: content/gui/xml/ingame/tabwidget/overview/overview_settler.xml:25
@@ -581,15 +583,15 @@ msgid ""
 "The signal fire shows the free trader how to reach your settlement in case "
 "you want to buy or sell goods."
 msgstr ""
-"Sinyal api menunjukkan cara pedagang bebas mencapai kolonialisasi anda dalam "
-"keadaan anda ingin membeli atau menjual barang."
+"Api sinyal menunjukkan kepada pedagang bebas bagaimana mencapai pemukiman "
+"Anda jika Anda ingin membeli atau menjual barang."
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_tradership.xml:20
 msgid ""
 "This is the free trader's ship. It will visit you from time to time to buy "
 "or sell goods."
 msgstr ""
-"Ini adalah kapal pedagang bebas. Ini akan mengunjungi anda dari waktu ke "
+"Ini adalah kapal pedagang bebas. Ini akan mengunjungi Anda dari waktu ke "
 "waktu untuk membeli atau menjual barang."
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_ship.xml:10
@@ -704,17 +706,18 @@ msgid ""
 "The resource you select is displayed instead of the current one. Empty by "
 "clicking on X."
 msgstr ""
-"Sumberdaya yang kamu pilih bukan yang ditampikan saat ini. Kosongkan dengan "
-"mengetuk tanda X."
+"Sumber daya yang Anda pilih telah ditampilkan, namun bukan sumber daya yang "
+"sekarang. Kosongkan dengan mengeklik X."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:20
 msgid "Save current resource configuration as default for all settlements."
 msgstr ""
-"Simpan konfigurasi sumberdaya saat ini sebagai standar untuk semua pemukiman."
+"Simpan konfigurasi sumber daya saat ini sebagai standar untuk semua "
+"pemukiman."
 
 #: content/gui/xml/ingame/templates/resbar_resource_selection.xml:22
 msgid "Reset default resource configuration for all settlements."
-msgstr "Setel ulang konfigurasi standar sumberdaya untuk semua pemukiman"
+msgstr "Setel ulang konfigurasi standar sumber daya untuk semua pemukiman."
 
 #. Trade route entry
 #: content/gui/xml/ingame/templates/route_entry.xml:8
@@ -780,7 +783,7 @@ msgstr "Kirim pesan obrolan ke semua pemain."
 #: content/gui/xml/ingame/widgets/captains_log.xml:86
 #: content/gui/xml/mainmenu/multiplayer/multiplayer_gamelobby.xml:14
 msgid "Enter your message here"
-msgstr "Masukkan pesan anda disini"
+msgstr "Masukkan pesan Anda di sini"
 
 #: content/gui/xml/ingame/widgets/captains_log.xml:90
 #: content/gui/xml/mainmenu/ingamemenu.xml:14
@@ -1118,11 +1121,11 @@ msgstr "Cuplikan Layar"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:39
 msgid "Toggle showing FPS on/off"
-msgstr "Mengaktifkan / menonaktifkan FPS"
+msgstr "Mengaktifkan/menonaktifkan FPS"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:40
 msgid "Toggle grid on/off"
-msgstr "Matikan / hidupkan grid"
+msgstr "Matikan/hidupkan kisi"
 
 #: content/gui/xml/mainmenu/hotkeys.xml:41
 msgid "Show coordinate values (Debug)"
@@ -1329,9 +1332,7 @@ msgstr "Batas Nilai Bingkai (framerate):"
 
 #: content/gui/xml/mainmenu/settings.xml:33
 msgid "Set the maximum frame rate used. Default: 60 fps."
-msgstr ""
-"Atur batas maksimum pengunaan nilai bingkai atau frame rate. standar : 60 "
-"fps."
+msgstr "Atur frame rate maksimum yang digunakan. Asali: 60 fps."
 
 #: content/gui/xml/mainmenu/settings.xml:46
 msgid "Sound"
@@ -1448,155 +1449,157 @@ msgid ""
 "Don't use in normal game session. Decides whether to write debug information "
 "in the logging directory of your user directory. Slows the game down."
 msgstr ""
+"Jangan gunakan dalam sesi permainan normal. Putuskan apakah akan menulis "
+"informasi debug di direktori log pengguna. Memperlambat permainan."
 
 #: content/gui/xml/mainmenu/settings.xml:179
 msgid "Enable logging:"
-msgstr ""
+msgstr "Aktifkan pencatatan:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid "Production indicators:"
-msgstr ""
+msgstr "Indikator produksi:"
 
 #: content/gui/xml/mainmenu/settings.xml:185
 msgid ""
 "Whether to show resource icons over buildings whenever they finish production"
 msgstr ""
+"Apakah akan menampilkan ikon sumber daya di atas bangunan setiap kali mereka "
+"menyelesaikan produksi"
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Higher values slow down scrolling."
-msgstr ""
+msgstr "Nilai yang lebih tinggi dapat memperlambat pengguliran."
 
 #: content/gui/xml/mainmenu/settings.xml:193
 msgid "Scroll delay:"
-msgstr ""
+msgstr "Penundaan pengguliran:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "Choose a quote type:"
-msgstr ""
+msgstr "Pilih jenis kutipan:"
 
 #: content/gui/xml/mainmenu/settings.xml:202
 msgid "What kind of quote to display while loading a game"
-msgstr ""
+msgstr "Kutipan seperti apa yang akan ditampilkan saat memuat gim"
 
 #: content/gui/xml/mainmenu/settings.xml:210
 msgid "Network"
-msgstr ""
+msgstr "Jaringan"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "If set to 0, use the router default"
-msgstr ""
+msgstr "Jika diatur ke 0, gunakan bawaan perute"
 
 #: content/gui/xml/mainmenu/settings.xml:214
 msgid "Network port:"
-msgstr ""
+msgstr "Porta Jaringan:"
 
 #: content/gui/xml/mainmenu/settings.xml:235
 msgid "Discard current changes"
-msgstr ""
+msgstr "Buang perubahan saat ini"
 
 #: content/gui/xml/mainmenu/settings.xml:236
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Reset ke pengaturan asali"
 
 #: content/gui/xml/mainmenu/settings.xml:237
-#, fuzzy
-#| msgid "Save map"
 msgid "Save changes"
-msgstr "Simpan peta"
+msgstr "Simpan perubahan"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:9
 msgid "Your saved games:"
-msgstr ""
+msgstr "Gim yang Anda simpan:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:23
 msgid "Password of the game. Required to join this game"
-msgstr ""
+msgstr "Kata sandi permainan. Diperlukan untuk bergabung dengan gim ini"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:31
 msgid "Cancel"
-msgstr ""
+msgstr "Batalkan"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:38
 msgid "Enter filename:"
-msgstr ""
+msgstr "Masukkan nama berkas:"
 
 #. More text describing the savegame
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:46
 msgid "Details:"
-msgstr ""
+msgstr "Detail:"
 
 #: content/gui/xml/mainmenu/singleplayer/select_savegame.xml:53
 msgid "Delete selected savegame"
-msgstr ""
+msgstr "Hapus gim tersimpan yang dipilih"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:6
 msgid "New game - Singleplayer"
-msgstr ""
+msgstr "Permainan baru - Pemain tunggal"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:9
 msgid "Scenario"
-msgstr ""
+msgstr "Skenario"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:10
 msgid "Random map"
-msgstr ""
+msgstr "Peta acak"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:11
 msgid "Free play"
-msgstr ""
+msgstr "Permainan bebas"
 
 #: content/gui/xml/mainmenu/singleplayer/singleplayermenu.xml:32
 msgid "Start game"
-msgstr ""
+msgstr "Mulai permainan"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_free_maps.xml:3
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:6
 msgid "Choose a map to play:"
-msgstr ""
+msgstr "Pilih peta untuk dimainkan:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:3
 msgid "Map settings:"
-msgstr ""
+msgstr "Pengaturan peta:"
 
 #. String to initialize random number generator with
 #: content/gui/xml/mainmenu/singleplayer/sp_random.xml:7
 msgid "Seed:"
-msgstr ""
+msgstr "Benih:"
 
 #: content/gui/xml/mainmenu/singleplayer/sp_scenario.xml:13
 msgid "Select a language:"
-msgstr ""
+msgstr "Pilih bahasa:"
 
 #: content/gui/xml/mainmenu/templates/aidataselection.xml:4
 msgid "AI players:"
-msgstr ""
+msgstr "Pemain AI:"
 
 #: content/gui/xml/mainmenu/templates/game_settings.xml:3
 msgid "Game settings:"
-msgstr ""
+msgstr "Pengaturan gim:"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:14
 msgid "Free Trader"
-msgstr ""
+msgstr "Pedagang Bebas"
 
 #. Whether to create this kind of player in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:18
 msgid "Pirates"
-msgstr ""
+msgstr "Bajak Laut"
 
 #. Whether there should be disasters in the game.
 #: content/gui/xml/mainmenu/templates/game_settings.xml:22
 msgid "Disasters"
-msgstr ""
+msgstr "Bencana"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:4
 msgid "Player name:"
-msgstr ""
+msgstr "Nama pemain:"
 
 #: content/gui/xml/mainmenu/templates/playerdataselection.xml:9
 msgid "Color:"
-msgstr ""
+msgstr "Warna:"
 
 #: horizons/command/game.py:38
 msgid "Invalid filename"
@@ -1618,35 +1621,35 @@ msgstr "Gagal melakukan penyimpanan."
 
 #: horizons/component/tradepostcomponent.py:194
 msgid "The trade partner does not sell this."
-msgstr ""
+msgstr "Mitra dagang tidak menjual ini."
 
 #: horizons/component/tradepostcomponent.py:202
 msgid "You can not store this."
-msgstr ""
+msgstr "Anda tidak dapat menyimpan ini."
 
 #: horizons/component/tradepostcomponent.py:206
 msgid "You can not afford to buy this."
-msgstr ""
+msgstr "Anda tidak mampu membeli ini."
 
 #: horizons/component/tradepostcomponent.py:212
 msgid "The trade partner does not sell more of this."
-msgstr ""
+msgstr "Mitra dagang tidak menjual lebih banyak dari ini."
 
 #: horizons/component/tradepostcomponent.py:236
 msgid "The trade partner does not buy this."
-msgstr ""
+msgstr "Mitra dagang tidak membeli ini."
 
 #: horizons/component/tradepostcomponent.py:244
 msgid "You do not possess this."
-msgstr ""
+msgstr "Anda tidak memiliki ini."
 
 #: horizons/component/tradepostcomponent.py:248
 msgid "The trade partner can not store more of this."
-msgstr ""
+msgstr "Mitra dagang tidak dapat menyimpan lebih dari ini."
 
 #: horizons/component/tradepostcomponent.py:252
 msgid "The trade partner can not afford to buy this."
-msgstr ""
+msgstr "Mitra dagang tidak mampu untuk membeli ini."
 
 #: horizons/component/tradepostcomponent.py:257
 msgid "The trade partner does not buy more of this."
@@ -1654,131 +1657,137 @@ msgstr "Partner dagang Anda tidak bersedia membeli lebih untuk ini."
 
 #: horizons/editor/session.py:70 horizons/spsession.py:66
 msgid "Failed to quicksave."
-msgstr ""
+msgstr "Gagal menyimpan cepat."
 
 #: horizons/editor/session.py:71 horizons/spsession.py:67
 msgid "An error happened during quicksave."
-msgstr ""
+msgstr "Terjadi kesalahan selama penyimpanan cepat."
 
 #: horizons/editor/session.py:71
 msgid "Your map has not been saved."
-msgstr ""
+msgstr "Peta Anda belum disimpan."
 
 #: horizons/editor/session.py:72 horizons/spsession.py:68
 #, python-brace-format
 msgid ""
 "If this error happens again, please contact the development team: {website}"
 msgstr ""
+"Jika kesalahan ini terjadi lagi, silakan hubungi tim pengembangan: {website}"
 
 #: horizons/gui/gui.py:86
 msgid "Are you sure you want to quit Unknown Horizons?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin keluar dari Unknown Horizons?"
 
 #: horizons/gui/gui.py:87
 msgid "Quit Game"
-msgstr ""
+msgstr "Keluar dari Gim"
 
 #: horizons/gui/ingamegui.py:237
 msgid "No diplomacy possible"
-msgstr ""
+msgstr "Tidak ada diplomasi yang mungkin"
 
 #: horizons/gui/ingamegui.py:238
 msgid "Cannot do diplomacy as there are no other players."
-msgstr ""
+msgstr "Tidak bisa melakukan diplomasi karena tidak ada pemain lain."
 
 #: horizons/gui/ingamegui.py:475
 msgid "Are you sure you want to delete these objects?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin menghapus objek ini?"
 
 #: horizons/gui/ingamegui.py:476
 msgid "Delete"
-msgstr ""
+msgstr "Hapus"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
 #, python-brace-format
 msgid "{size}x{size} tiles"
-msgstr ""
+msgstr "{size}x{size} petak"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
 msgid "Press key…"
-msgstr ""
+msgstr "Tekan tombol…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
 msgid "{key} is already set to {action}."
-msgstr ""
+msgstr "{key} sudah diatur ke {action}."
 
 #: horizons/gui/modules/hotkeys_settings.py:148
 msgid "Would you like to overwrite it?"
-msgstr ""
+msgstr "Apakah Anda ingin menimpanya?"
 
 #. keep the pop-up non-modal because otherwise it is double-modal (#1876)
 #: horizons/gui/modules/hotkeys_settings.py:149
 #: horizons/gui/modules/select_savegame.py:157
 msgid "Confirmation for overwriting"
-msgstr ""
+msgstr "Konfirmasi untuk menimpa"
 
 #: horizons/gui/modules/loadingscreen.py:36
 msgid "Quotes"
-msgstr ""
+msgstr "Kutipan"
 
 #: horizons/gui/modules/loadingscreen.py:66
 msgid "Gameplay Tips"
-msgstr ""
+msgstr "Kiat Permainan"
 
 #: horizons/gui/modules/loadingscreen.py:68
 msgid "Press 'ESC' to access Game Menu."
-msgstr ""
+msgstr "Tekan 'ESC' untuk mengakses Menu Gim."
 
 #: horizons/gui/modules/loadingscreen.py:69
 msgid "Use 'SHIFT' to place multiple buildings."
-msgstr ""
+msgstr "Gunakan 'SHIFT' untuk menempatkan beberapa bangunan."
 
 #. TODO: This tip should be removed when all tiers are playable!!
 #: horizons/gui/modules/loadingscreen.py:71
 #, python-brace-format
 msgid "Currently only the first {tier} tiers are playable."
-msgstr ""
+msgstr "Saat ini hanya {tier} tingkatan pertama yang dapat dimainkan."
 
 #: horizons/gui/modules/loadingscreen.py:72
 msgid "You can pause the game with 'P'."
-msgstr ""
+msgstr "Anda dapat menjeda permainan dengan 'P'."
 
 #: horizons/gui/modules/loadingscreen.py:73
 msgid "You can drag roads by holding the left mouse button."
-msgstr ""
+msgstr "Anda dapat menyeret jalan dengan menahan tombol kiri mouse."
 
 #: horizons/gui/modules/loadingscreen.py:74
 msgid "You can build multiple buildings by holding the 'SHIFT' key."
-msgstr ""
+msgstr "Anda dapat membangun beberapa bangunan dengan menahan tombol 'SHIFT'."
 
 #: horizons/gui/modules/loadingscreen.py:75
 msgid ""
 "You can increase the happiness of your inhabitants by lowering the taxes."
 msgstr ""
+"Anda dapat meningkatkan kebahagiaan penduduk Anda dengan menurunkan pajak."
 
 #: horizons/gui/modules/loadingscreen.py:76
 msgid ""
 "Build fire stations and doctors to protect your inhabitants from fire and "
 "disease."
 msgstr ""
+"Bangun pos pemadam kebakaran dan dokter untuk melindungi penghuni Anda dari "
+"kebakaran dan penyakit."
 
 #: horizons/gui/modules/loadingscreen.py:77
 msgid "Build storage tents to increase your storage capacity."
-msgstr ""
+msgstr "Bangun tenda penyimpanan untuk meningkatkan kapasitas penyimpanan Anda."
 
 #: horizons/gui/modules/loadingscreen.py:78
 msgid "Make sure every house is in range of a marketplace."
-msgstr ""
+msgstr "Pastikan setiap rumah berada dalam jangkauan pasar."
 
 #: horizons/gui/modules/loadingscreen.py:79
 msgid "Press 'T' to make trees transparent."
-msgstr ""
+msgstr "Tekan 'T' untuk membuat pohon transparan."
 
 #: horizons/gui/modules/loadingscreen.py:80
 msgid "Build storage tents and lookouts to expand your settlement range."
 msgstr ""
+"Bangun tenda penyimpanan dan menara pengintai untuk memperluas jangkauan "
+"pemukiman Anda."
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1787,104 +1796,116 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"Untuk melihat dengan mudah apakah jangkauan paviliun mencakup semua tenda "
+"Anda, pilih dari menu bangun dan arahkan ke paviliun yang ada. Tenda yang "
+"tidak tertutup ditampilkan dengan warna kuning. Sangat bagus untuk membangun "
+"paviliun baru di sekitaran mereka."
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
 msgstr ""
+"Jadikan pemain tunggal lebih menyenangkan dengan tambahan pemain komputer "
+"dengan meningkatkan 'pemain AI' saat memulai permainan baru."
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
 msgstr ""
+"Langkah pertama menjadi lebih mudah dengan melihat bagaimana pemain AI "
+"menyiapkan pemukiman mereka."
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
 msgstr ""
+"Ingin kutipan lucu saja? Ubah jenis kutipan yang ditampilkan di sini di menu "
+"pengaturan di halaman gim."
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "Pasar dapat menghubungkan bangunan Anda seperti jalan."
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
 #. displayed during load
 #: horizons/gui/modules/loadingscreen.py:91
 msgid "Mixed"
-msgstr ""
+msgstr "Campuran"
 
 #. translators: these are descriptions of the current task while loading a game
 #: horizons/gui/modules/loadingscreen.py:111
 msgid "Starting engine…"
-msgstr ""
+msgstr "Memulai mesin…"
 
 #: horizons/gui/modules/loadingscreen.py:112
 msgid "Catching fish…"
-msgstr ""
+msgstr "Menangkap ikan…"
 
 #: horizons/gui/modules/loadingscreen.py:113
 msgid "Drawing user interface…"
-msgstr ""
+msgstr "Membuat antarmuka pengguna…"
 
 #: horizons/gui/modules/loadingscreen.py:114
 msgid "Activating timer…"
-msgstr ""
+msgstr "Mengaktifkan pengatur waktu…"
 
 #: horizons/gui/modules/loadingscreen.py:115
 msgid "Chomping game data…"
-msgstr ""
+msgstr "Memotong data gim…"
 
 #: horizons/gui/modules/loadingscreen.py:116
 msgid "Shaping islands…"
-msgstr ""
+msgstr "Membentuk pulau…"
 
 #: horizons/gui/modules/loadingscreen.py:117
 msgid "Preparing blueprints…"
-msgstr ""
+msgstr "Menyiapkan cetak biru…"
 
 #: horizons/gui/modules/loadingscreen.py:118
 msgid "Filling world with water…"
-msgstr ""
+msgstr "Mengisi dunia dengan air…"
 
 #: horizons/gui/modules/loadingscreen.py:119
 msgid "Raising animals…"
-msgstr ""
+msgstr "Memelihara hewan…"
 
 #: horizons/gui/modules/loadingscreen.py:120
 msgid "Convincing AI…"
-msgstr ""
+msgstr "Meyakinkan AI…"
 
 #: horizons/gui/modules/loadingscreen.py:121
 msgid "Burying treasures…"
-msgstr ""
+msgstr "Mengubur harta karun …"
 
 #: horizons/gui/modules/multiplayermenu.py:126
 msgid "Unable to find pyenet"
-msgstr ""
+msgstr "Tidak dapat menemukan pyenet"
 
 #: horizons/gui/modules/multiplayermenu.py:127
 msgid ""
 "The multiplayer feature requires the library \"pyenet\", which could not be "
 "found on your system."
 msgstr ""
+"Fitur multipemain memerlukan pustaka \"pyenet\", yang mana tidak dapat "
+"ditemukan di sistem Anda."
 
 #: horizons/gui/modules/multiplayermenu.py:129
 msgid "Linux users: Try to install pyenet through your package manager."
-msgstr ""
+msgstr "Pengguna Linux: Coba pasang pyenet melalui pengelola paket Anda."
 
 #: horizons/gui/modules/multiplayermenu.py:138
 msgid "Failed to initialize networking."
-msgstr ""
+msgstr "Gagal menginisialisasi jaringan."
 
 #: horizons/gui/modules/multiplayermenu.py:139
 #: horizons/gui/modules/settings.py:274
 msgid ""
 "Network features could not be initialized with the current configuration."
-msgstr ""
+msgstr "Fitur jaringan tidak dapat diinisialisasi dengan konfigurasi saat ini."
 
 #: horizons/gui/modules/multiplayermenu.py:140
 #: horizons/gui/modules/settings.py:275
@@ -1894,53 +1915,55 @@ msgstr "Periksa pengaturan yang Anda buat di bagian jaringan."
 #: horizons/gui/modules/multiplayermenu.py:149
 #: horizons/gui/modules/multiplayermenu.py:168 horizons/mpsession.py:53
 msgid "Fatal Network Error"
-msgstr ""
+msgstr "Kesalahan Fatal Pada Jaringan"
 
 #: horizons/gui/modules/multiplayermenu.py:150
 msgid "Could not connect to master server."
-msgstr ""
+msgstr "Tidak dapat terhubung ke server master."
 
 #: horizons/gui/modules/multiplayermenu.py:151
 msgid ""
 "Please check your Internet connection. If it is fine, it means our master "
 "server is temporarily down."
 msgstr ""
+"Silakan periksa koneksi internet Anda. Jika baik-baik saja, itu berarti "
+"server master kami sedang kacau untuk sementara waktu."
 
 #: horizons/gui/modules/multiplayermenu.py:169 horizons/mpsession.py:54
 msgid "Something went wrong with the network:"
-msgstr ""
+msgstr "Ada yang tidak beres dengan jaringan:"
 
 #: horizons/gui/modules/multiplayermenu.py:184
 msgid "Version differs!"
-msgstr ""
+msgstr "Versi berbeda!"
 
 #: horizons/gui/modules/multiplayermenu.py:213
 #: horizons/gui/modules/multiplayermenu.py:482
 #, python-brace-format
 msgid "Map: {map_name}"
-msgstr ""
+msgstr "Peta: {map_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:214
 #: horizons/gui/modules/multiplayermenu.py:483
 #, python-brace-format
 msgid "Name: {game_name}"
-msgstr ""
+msgstr "Nama: {game_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:215
 #: horizons/gui/modules/multiplayermenu.py:484
 #, python-brace-format
 msgid "Creator: {game_creator}"
-msgstr ""
+msgstr "Pencipta: {game_creator}"
 
 #: horizons/gui/modules/multiplayermenu.py:216
 #: horizons/gui/modules/multiplayermenu.py:485
 #, python-brace-format
 msgid "Players: {player_amount}/{player_limit}"
-msgstr ""
+msgstr "Pemain: {player_amount}/{player_limit}"
 
 #: horizons/gui/modules/multiplayermenu.py:236
 msgid "Wrong version"
-msgstr ""
+msgstr "Versi yang salah"
 
 #: horizons/gui/modules/multiplayermenu.py:237
 #, python-brace-format
@@ -1950,30 +1973,34 @@ msgid ""
 "to the latest version. Game version: {game_version} Your version: "
 "{own_version}"
 msgstr ""
+"Versi gim ini berbeda dengan versi Anda. Setiap pemain dalam gim multipemain "
+"harus menggunakan versi yang sama. Ini dapat diperbaiki oleh setiap pemain "
+"yang memperbarui ke versi terbaru. Versi gim: {game_version} Versi Anda: "
+"{own_version}"
 
 #: horizons/gui/modules/multiplayermenu.py:275
 msgid "Password of the game"
-msgstr ""
+msgstr "Kata sandi permainan"
 
 #: horizons/gui/modules/multiplayermenu.py:276
 msgid "Enter password:"
-msgstr ""
+msgstr "Masukkan kata sandi:"
 
 #: horizons/gui/modules/multiplayermenu.py:361
 #: horizons/gui/modules/singleplayermenu.py:415
 #, python-brace-format
 msgid "Recommended number of players: {number}"
-msgstr ""
+msgstr "Jumlah pemain yang disarankan: {number}"
 
 #. TODO: add support for selecting difficulty levels to the GUI
 #: horizons/gui/modules/multiplayermenu.py:407
 #: horizons/network/networkinterface.py:531
 msgid "Ready"
-msgstr ""
+msgstr "Siap"
 
 #: horizons/gui/modules/multiplayermenu.py:409
 msgid "Not ready"
-msgstr ""
+msgstr "Belum siap"
 
 #: horizons/gui/modules/multiplayermenu.py:445
 msgid "Enter your message"
@@ -1982,178 +2009,178 @@ msgstr "Masukkan pesan Anda"
 #: horizons/gui/modules/multiplayermenu.py:503
 #: horizons/gui/modules/multiplayermenu.py:511
 msgid "Click here to change your name and/or color"
-msgstr ""
+msgstr "Klik di sini untuk mengubah nama dan/atau warna Anda"
 
 #: horizons/gui/modules/multiplayermenu.py:529
 #, python-brace-format
 msgid "Kick {player}"
-msgstr ""
+msgstr "Usir {player}"
 
 #: horizons/gui/modules/multiplayermenu.py:596
 #, python-brace-format
 msgid "{player} has joined the game"
-msgstr ""
+msgstr "{player} telah bergabung ke dalam gim"
 
 #: horizons/gui/modules/multiplayermenu.py:599
 #, python-brace-format
 msgid "{player} has left the game"
-msgstr ""
+msgstr "{player} telah meninggalkan gim"
 
 #: horizons/gui/modules/multiplayermenu.py:605
 msgid "You are now ready"
-msgstr ""
+msgstr "Anda sekarang siap"
 
 #: horizons/gui/modules/multiplayermenu.py:607
 msgid "You are not ready anymore"
-msgstr ""
+msgstr "Anda sudah tidak siap lagi"
 
 #: horizons/gui/modules/multiplayermenu.py:610
 #, python-brace-format
 msgid "{player} is now ready"
-msgstr ""
+msgstr "{player} sekarang sudah siap"
 
 #: horizons/gui/modules/multiplayermenu.py:612
 #, python-brace-format
 msgid "{player} not ready anymore"
-msgstr ""
+msgstr "{player} tidak siap lagi"
 
 #: horizons/gui/modules/multiplayermenu.py:616
 #, python-brace-format
 msgid "You are now known as {new_name}"
-msgstr ""
+msgstr "Anda sekarang dikenal sebagai {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:618
 #, python-brace-format
 msgid "{player} is now known as {new_name}"
-msgstr ""
+msgstr "{player} sekarang dikenal sebagai {new_name}"
 
 #: horizons/gui/modules/multiplayermenu.py:622
 msgid "You changed your color"
-msgstr ""
+msgstr "Anda mengubah warna Anda"
 
 #: horizons/gui/modules/multiplayermenu.py:624
 #, python-brace-format
 msgid "{player} changed their color"
-msgstr ""
+msgstr "{player} mengubah warnanya"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "Kicked"
-msgstr ""
+msgstr "Diusir"
 
 #: horizons/gui/modules/multiplayermenu.py:628
 msgid "You have been kicked from the game by creator"
-msgstr ""
+msgstr "Anda telah diusir dari gim oleh pencipta"
 
 #: horizons/gui/modules/multiplayermenu.py:631
 #, python-brace-format
 msgid "{player} got kicked by creator"
-msgstr ""
+msgstr "{player} diusir oleh pencipta"
 
 #: horizons/gui/modules/pausemenu.py:89
 msgid "Are you sure you want to abort the running session?"
-msgstr ""
+msgstr "Apakah Anda yakin ingin membatalkan sesi yang sedang berjalan?"
 
 #: horizons/gui/modules/pausemenu.py:90
 msgid "Quit Session"
-msgstr ""
+msgstr "Keluar dari Sesi"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "No saved games"
-msgstr ""
+msgstr "Tidak ada gim yang disimpan"
 
 #: horizons/gui/modules/select_savegame.py:77
 msgid "There are no saved games to load."
-msgstr ""
+msgstr "Tidak ada gim yang tersimpan untuk dimuat."
 
 #: horizons/gui/modules/select_savegame.py:146
 msgid "No filename given"
-msgstr ""
+msgstr "Tidak ada nama berkas yang diberikan"
 
 #: horizons/gui/modules/select_savegame.py:147
 msgid "Please enter a valid filename."
-msgstr ""
+msgstr "Harap masukkan nama berkas yang valid."
 
 #: horizons/gui/modules/select_savegame.py:151
 #, python-brace-format
 msgid "A savegame with the name {name} already exists."
-msgstr ""
+msgstr "Gim tersimpan dengan nama {name} sudah ada."
 
 #: horizons/gui/modules/select_savegame.py:153
 #, python-brace-format
 msgid "A map with the name {name} already exists."
-msgstr ""
+msgstr "Peta dengan nama {name} sudah ada."
 
 #: horizons/gui/modules/select_savegame.py:155
 msgid "Overwrite it?"
-msgstr ""
+msgstr "Timpa?"
 
 #: horizons/gui/modules/select_savegame.py:218
 msgid "Unknown savedate"
-msgstr ""
+msgstr "Tanggal penyimpanan tidak diketahui"
 
 #: horizons/gui/modules/select_savegame.py:221
 #, python-brace-format
 msgid "Saved at {time}"
-msgstr ""
+msgstr "Disimpan pada {time}"
 
 #. NT takes care of plural forms for different languages
 #: horizons/gui/modules/select_savegame.py:225
 #, python-brace-format
 msgid "Saved {amount} time"
 msgid_plural "Saved {amount} times"
-msgstr[0] ""
+msgstr[0] "Disimpan {amount} kali"
 
 #: horizons/gui/modules/select_savegame.py:232
 #, python-brace-format
 msgid "Savegame version {version}"
-msgstr ""
+msgstr "Versi gim tersimpan {version}"
 
 #: horizons/gui/modules/select_savegame.py:236
 msgid "(probably incompatible)"
-msgstr ""
+msgstr "(mungkin tidak kompatibel)"
 
 #. this should only happen for very old savegames, so having this unfriendly
 #. error is ok (savegame is quite certainly fully unusable).
 #: horizons/gui/modules/select_savegame.py:240
 msgid "Incompatible version"
-msgstr ""
+msgstr "Versi tidak kompatibel"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "No file selected"
-msgstr ""
+msgstr "Tak ada berkas yang dipilih"
 
 #: horizons/gui/modules/select_savegame.py:253
 msgid "You need to select a savegame to delete."
-msgstr ""
+msgstr "Anda harus memilih satu gim tersimpan untuk dihapus."
 
 #: horizons/gui/modules/select_savegame.py:256
 #, python-brace-format
 msgid "Do you really want to delete the savegame '{name}'?"
-msgstr ""
+msgstr "Apakah Anda sungguh ingin menghapus gim tersimpan '{name}'?"
 
 #: horizons/gui/modules/select_savegame.py:258
 msgid "Confirm deletion"
-msgstr ""
+msgstr "Konfirmasi penghapusan"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Error!"
-msgstr ""
+msgstr "Galat!"
 
 #: horizons/gui/modules/select_savegame.py:263
 msgid "Failed to delete savefile!"
-msgstr ""
+msgstr "Gagal menghapus berkas penyimpanan!"
 
 #: horizons/gui/modules/settings.py:56 horizons/gui/modules/settings.py:119
 msgid "Hotkeys"
-msgstr ""
+msgstr "Tombol pintasan"
 
 #: horizons/gui/modules/settings.py:57
 msgid "Game"
-msgstr ""
+msgstr "Gim"
 
 #: horizons/gui/modules/settings.py:77
 msgid "Disabled"
-msgstr ""
+msgstr "Nonaktif"
 
 #: horizons/gui/modules/settings.py:131
 msgid "Restart required"
@@ -2185,21 +2212,25 @@ msgstr "Apakah Anda ingin melanjutkan?"
 
 #: horizons/gui/modules/settings.py:260
 msgid "Invalid network port"
-msgstr ""
+msgstr "Porta jaringan tidak valid"
 
 #: horizons/gui/modules/settings.py:261
 msgid ""
 "The port you specified is not valid. It must be a number between 1 and 65535."
 msgstr ""
+"Porta yang Anda tentukan tidak valid. Seharusnya itu berupa angka antara 1 "
+"hingga 65535."
 
 #: horizons/gui/modules/settings.py:262
 msgid ""
 "Please check the port you entered and make sure it is in the specified range."
 msgstr ""
+"Silakan periksa porta yang Anda masukkan dan pastikan itu berada dalam "
+"rentang yang sudah ditentukan."
 
 #: horizons/gui/modules/settings.py:273
 msgid "Failed to apply new network settings."
-msgstr ""
+msgstr "Gagal untuk menerapkan pengaturan jaringan yang baru."
 
 #. i18n This is advice for players seeing a network error with the current
 #. config
@@ -2213,80 +2244,80 @@ msgstr ""
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "Invalid player name"
-msgstr ""
+msgstr "Nama pemain tidak valid"
 
 #: horizons/gui/modules/singleplayermenu.py:114
 msgid "You entered an invalid playername."
-msgstr ""
+msgstr "Anda memasukkan nama pemain yang tidak valid."
 
 #: horizons/gui/modules/singleplayermenu.py:156
 msgid "Resource density:"
-msgstr ""
+msgstr "Kepadatan sumber daya:"
 
 #: horizons/gui/modules/singleplayermenu.py:230
 msgid "Map size:"
-msgstr ""
+msgstr "Ukuran peta:"
 
 #: horizons/gui/modules/singleplayermenu.py:231
 msgid "Water:"
-msgstr ""
+msgstr "Air:"
 
 #: horizons/gui/modules/singleplayermenu.py:232
 msgid "Max island size:"
-msgstr ""
+msgstr "Ukuran pulau maksimum:"
 
 #: horizons/gui/modules/singleplayermenu.py:233
 msgid "Preferred island size:"
-msgstr ""
+msgstr "Ukuran pulau yang disukai:"
 
 #: horizons/gui/modules/singleplayermenu.py:234
 msgid "Island size deviation:"
-msgstr ""
+msgstr "Penyimpangan ukuran pulau:"
 
 #: horizons/gui/modules/singleplayermenu.py:353
 msgid "Click to generate a different random map"
-msgstr ""
+msgstr "Klik untuk membuat peta acak yang berbeda"
 
 #: horizons/gui/modules/singleplayermenu.py:503
 msgid "Invalid scenario file"
-msgstr ""
+msgstr "Berkas skenario tidak valid"
 
 #: horizons/gui/modules/singleplayermenu.py:504
 msgid "The selected file is not a valid scenario file."
-msgstr ""
+msgstr "Berkas yang dipilih bukan berkas skenario yang valid."
 
 #: horizons/gui/modules/singleplayermenu.py:505
 msgid "Error message:"
-msgstr ""
+msgstr "Pesan kesalahan:"
 
 #: horizons/gui/modules/singleplayermenu.py:506
 msgid "Please report this to the author."
-msgstr ""
+msgstr "Tolong laporkan hal ini kepada pencipta gim."
 
 #: horizons/gui/modules/singleplayermenu.py:590
 #, python-brace-format
 msgid "Difficulty: {difficulty}"
-msgstr ""
+msgstr "Tingkat kesulitan: {difficulty}"
 
 #: horizons/gui/modules/singleplayermenu.py:593
 #, python-brace-format
 msgid "Author: {author}"
-msgstr ""
+msgstr "Pencipta: {author}"
 
 #: horizons/gui/modules/singleplayermenu.py:596
 #, python-brace-format
 msgid "Description: {desc}"
-msgstr ""
+msgstr "Deskripsi: {desc}"
 
 #. set translated building name in gui
 #: horizons/gui/mousetools/buildingtool.py:237
 #, python-brace-format
 msgid "Build {building}"
-msgstr ""
+msgstr "Bangun {building}"
 
 #: horizons/gui/mousetools/navigationtool.py:95
 msgid "Press H to remove this hint"
-msgstr ""
+msgstr "Tekan H untuk menghapus petunjuk ini"
 
 #: horizons/gui/mousetools/tearingtool.py:114
 msgid "Destroy all buildings"
@@ -2297,63 +2328,66 @@ msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
 msgstr ""
+"Ini akan menghancurkan semua bangunan yang berada di luar jangkauan "
+"pemukiman."
 
 #: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
+msgstr[0] "%s bangunan tambahan akan dihancurkan."
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
 msgid "Barracks overview"
-msgstr "Keterangan pemukiman"
+msgstr "Gambaran barak"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
-msgstr ""
+msgstr "Pendekar pedang"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
 msgid "Overview"
-msgstr ""
+msgstr "Ikhtisar"
 
 #: horizons/gui/tabs/boatbuildertabs.py:159
 #, python-brace-format
 msgid "{ship} (place in queue: {place})"
-msgstr ""
+msgstr "{ship} (taruh dalam antrian: {place})"
 
 #: horizons/gui/tabs/boatbuildertabs.py:209
 msgid "Boat builder overview"
-msgstr ""
+msgstr "Ikhtisar pembuat kapal"
 
 #: horizons/gui/tabs/boatbuildertabs.py:288
 msgid "Fisher boats"
-msgstr ""
+msgstr "Perahu nelayan"
 
 #: horizons/gui/tabs/boatbuildertabs.py:300
 msgid "Trade boats"
-msgstr ""
+msgstr "Kapal dagang"
 
 #: horizons/gui/tabs/boatbuildertabs.py:312
 msgid "War boats"
-msgstr ""
+msgstr "Kapal perang"
 
 #: horizons/gui/tabs/boatbuildertabs.py:324
 msgid "War ships"
-msgstr ""
+msgstr "Kapal perang"
 
 #: horizons/gui/tabs/buildingtabs.py:33
 msgid "Tower overview"
-msgstr ""
+msgstr "Ikhtisar menara"
 
 #: horizons/gui/tabs/buildrelatedtab.py:43
 msgid "Build related buildings"
-msgstr ""
+msgstr "Bangun bangunan terkait"
 
 #: horizons/gui/tabs/buyselltab.py:135
 msgid "Click on one of the resource slots to add a trade offer."
 msgstr ""
+"Klik pada salah satu slot sumber daya untuk menambahkan penawaran "
+"perdagangan."
 
 #. new res
 #: horizons/gui/tabs/buyselltab.py:178
@@ -2361,6 +2395,8 @@ msgid ""
 "Set to buy or sell by clicking on that label, then adjust the amount via the "
 "slider to the right."
 msgstr ""
+"Atur untuk membeli atau menjual dengan mengeklik label tersebut, lalu "
+"sesuaikan jumlahnya melalui penggeser di sebelah kanan."
 
 #: horizons/gui/tabs/buyselltab.py:322
 #, python-brace-format
@@ -2368,6 +2404,8 @@ msgid ""
 "Will buy {resource_name} for {price} gold/t whenever less than {limit}t are "
 "in stock."
 msgstr ""
+"Akan membeli {resource_name} seharga {price} emas/t bila stok kurang dari "
+"{limit}t."
 
 #: horizons/gui/tabs/buyselltab.py:325
 #, python-brace-format
@@ -2375,863 +2413,872 @@ msgid ""
 "Will sell {resource_name} for {price} gold/t whenever more than {limit}t are "
 "available."
 msgstr ""
+"Akan menjual {resource_name} seharga {price} emas/t kapan pun bila tersedia "
+"lebih dari {limit}t."
 
 #: horizons/gui/tabs/enemybuildingtabs.py:39
 msgid "Warehouse overview"
-msgstr ""
+msgstr "Ikhtisar gudang"
 
 #: horizons/gui/tabs/mainsquaretabs.py:69
 msgid "Account"
-msgstr ""
+msgstr "Akun"
 
 #: horizons/gui/tabs/mainsquaretabs.py:118
 msgid "Main square overview"
-msgstr ""
+msgstr "Ikhtisar alun-alun utama"
 
 #: horizons/gui/tabs/mainsquaretabs.py:150
 msgid "Upgrade not possible:"
-msgstr ""
+msgstr "Peningkatan tidak memungkinkan:"
 
 #: horizons/gui/tabs/mainsquaretabs.py:153
 msgid "This is the highest playable tier for now!"
-msgstr ""
+msgstr "Ini adalah tingkat tertinggi yang dapat dimainkan untuk saat ini!"
 
 #: horizons/gui/tabs/mainsquaretabs.py:199
 msgid "Don't allow upgrades"
-msgstr ""
+msgstr "Jangan izinkan peningkatan"
 
 #: horizons/gui/tabs/mainsquaretabs.py:202
 msgid "Allow upgrades"
-msgstr ""
+msgstr "Izinkan peningkatan"
 
 #: horizons/gui/tabs/overviewtab.py:100
 msgid "Unit overview"
-msgstr ""
+msgstr "Ikhtisar unit"
 
 #: horizons/gui/tabs/productiontabs.py:46
 #: horizons/gui/tabs/productiontabs.py:321
 msgid "Production overview"
-msgstr ""
+msgstr "Ikhtisar produksi"
 
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "Isi rentang dengan {how_many} pohon"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
-msgstr ""
+msgstr "Unit yang Dipilih"
 
 #: horizons/gui/tabs/shiptabs.py:40 horizons/gui/tabs/shiptabs.py:178
 #: horizons/gui/tabs/shiptabs.py:205 horizons/gui/tabs/shiptabs.py:210
 msgid "Ship overview"
-msgstr ""
+msgstr "Ikhtisar kapal"
 
 #: horizons/gui/tabs/shiptabs.py:56
 msgid "The ship needs to be close to an island to found a settlement."
-msgstr ""
+msgstr "Kapal harus dekat dengan sebuah pulau untuk menemukan pemukiman."
 
 #: horizons/gui/tabs/shiptabs.py:61
 msgid "You already have a settlement on this island."
-msgstr ""
+msgstr "Anda sudah memiliki pemukiman di pulau ini."
 
 #: horizons/gui/tabs/shiptabs.py:92
 msgid "Load/Unload"
-msgstr ""
+msgstr "Muat/Bongkar"
 
 #: horizons/gui/tabs/shiptabs.py:94
 msgid "Buy/Sell"
-msgstr ""
+msgstr "Jual/Beli"
 
 #: horizons/gui/tabs/shiptabs.py:103
 msgid "Too far from the nearest tradeable warehouse"
-msgstr ""
+msgstr "Terlalu jauh dari gudang perdagangan terdekat"
 
 #: horizons/gui/tabs/shiptabs.py:109
 msgid "Cannot equip trade ship with weapons"
-msgstr ""
+msgstr "Tidak dapat melengkapi kapal dagang dengan senjata"
 
 #: horizons/gui/tabs/shiptabs.py:110
 msgid "It is not possible to equip a trade ship with weapons."
-msgstr ""
+msgstr "Tidak mungkin untuk melengkapi kapal dagang dengan senjata."
 
 #: horizons/gui/tabs/shiptabs.py:149
 msgid "Equip weapon"
-msgstr ""
+msgstr "Memasang senjata"
 
 #: horizons/gui/tabs/shiptabs.py:153
 msgid "Unequip weapon"
-msgstr ""
+msgstr "Melepas senjata"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:74
 #, python-brace-format
 msgid "{resource_name}: {price} gold"
-msgstr ""
+msgstr "{resource_name}: {price} emas"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:79
 #, python-brace-format
 msgid "buy for {buyprice} gold"
-msgstr ""
+msgstr "beli seharga {buyprice} emas"
 
 #: horizons/gui/widgets/imagefillstatusbutton.py:81
 #, python-brace-format
 msgid "sell for {sellprice} gold"
-msgstr ""
+msgstr "jual seharga {sellprice} emas"
 
 #: horizons/gui/widgets/inventory.py:174
 #, python-brace-format
 msgid "{stored}/{limit}"
-msgstr ""
+msgstr "{stored}/{limit}"
 
 #: horizons/gui/widgets/inventory.py:176
 #, python-brace-format
 msgid "Limit: {amount}t per slot"
-msgstr ""
+msgstr "Batas: {amount}t per slot"
 
 #: horizons/gui/widgets/logbook.py:52
 msgid "Logbook"
-msgstr ""
+msgstr "Buku catatan"
 
 #: horizons/gui/widgets/logbook.py:190
 msgid "Emptiness"
-msgstr ""
+msgstr "Kekosongan"
 
 #: horizons/gui/widgets/logbook.py:193
 msgid "There is nothing written in your logbook yet!"
-msgstr ""
+msgstr "Belum ada yang tertulis di buku catatan Anda!"
 
 #: horizons/gui/widgets/playerssettlements.py:40
 #, python-brace-format
 msgid "Settlements of {player}"
-msgstr ""
+msgstr "Pemukiman milik {player}"
 
 #: horizons/gui/widgets/playersships.py:45
 #, python-brace-format
 msgid "Ships of {player}"
-msgstr ""
+msgstr "Kapal milik {player}"
 
 #. i18n There are no weapons equipped at the moment.
 #: horizons/gui/widgets/playersships.py:95
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 #: horizons/gui/widgets/playersships.py:97
 msgid "N/A"
-msgstr ""
+msgstr "–"
 
 #: horizons/gui/widgets/productionoverview.py:121
 #, python-brace-format
 msgid "Production overview of {settlement}"
-msgstr ""
+msgstr "Ikhtisar produksi {settlement}"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:113
 msgid "Click to show statistics"
-msgstr ""
+msgstr "Klik untuk menampilkan statistik"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:245
 msgid "Click to add a new slot"
-msgstr ""
+msgstr "Klik untuk menambahkan slot baru"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:467
 msgid "Reset this configuration to the factory default."
-msgstr ""
+msgstr "Reset konfigurasi ke versi pabrik."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:471
 msgid ""
 "Reset this settlement's displayed resources to the default configuration you "
 "have saved."
 msgstr ""
+"Reset tampilan sumber daya pemukiman ini ke konfigurasi asali yang telah "
+"Anda simpan."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:475
 msgid ""
 "Reset the default configuration (which you see here) to the factory default "
 "for all settlements."
 msgstr ""
+"Reset konfigurasi asali (yang Anda lihat di sini) ke versi pabrik untuk "
+"semua pemukiman."
 
 #: horizons/gui/widgets/resourceoverviewbar.py:616
 msgid "Buy expenses"
-msgstr ""
+msgstr "Biaya pembelian"
 
 #: horizons/gui/widgets/resourceoverviewbar.py:617
 msgid "Sell income"
-msgstr ""
+msgstr "Pendapatan penjualan"
 
 #: horizons/gui/widgets/routeconfig.py:122
 msgid "Stop route"
-msgstr ""
+msgstr "Hentikan rute"
 
 #: horizons/gui/widgets/routeconfig.py:129
 msgid "Need at least two settlements"
-msgstr ""
+msgstr "Membutuhkan setidaknya dua pemukiman"
 
 #: horizons/gui/widgets/routeconfig.py:130
 msgid "You need at least two different settlements in your route."
-msgstr ""
+msgstr "Anda membutuhkan setidaknya dua pemukiman yang berbeda di rute Anda."
 
 #: horizons/gui/widgets/routeconfig.py:159
 msgid "Click on a settlement to add a waypoint!"
-msgstr ""
+msgstr "Klik pada pemukiman untuk menambahkan titik acuan!"
 
 #: horizons/gui/widgets/routeconfig.py:196
 msgid "Loading into ship"
-msgstr ""
+msgstr "Muat ke kapal"
 
 #: horizons/gui/widgets/routeconfig.py:202
 msgid "Unloading from ship"
-msgstr ""
+msgstr "Bongkar dari kapal"
 
 #: horizons/gui/widgets/routeconfig.py:399
 msgid "You are not allowed to trade with this player"
-msgstr ""
+msgstr "Anda tidak diizinkan untuk berdagang dengan pemain ini"
 
 #. You usually do not need to change anything here when translating
 #: horizons/gui/widgets/unitoverview.py:120
 #, python-brace-format
 msgid "{weapon}: {amount}"
-msgstr ""
+msgstr "{weapon}: {amount}"
 
 #: horizons/gui/widgets/unitoverview.py:125
 msgid "none"
-msgstr ""
+msgstr "tidak ada"
 
 #: horizons/gui/windows.py:413
 #, python-brace-format
 msgid "Details: {error_details}"
-msgstr ""
+msgstr "Detail: {error_details}"
 
 #: horizons/gui/windows.py:415
 #, python-brace-format
 msgid "Error: {error_message}"
-msgstr ""
+msgstr "Galat: {error_message}"
 
 #. name of buildings:bakery
 #: horizons/i18n/objecttranslations.py:47
 msgid "Bakery"
-msgstr ""
+msgstr "Toko roti"
 
 #. tooltip_text of buildings:bakery
 #: horizons/i18n/objecttranslations.py:49
 msgid "Consumes flour. Produces food."
-msgstr ""
+msgstr "Mengonsumsi tepung. Menghasilkan makanan."
 
 #. name of buildings:barracks
 #: horizons/i18n/objecttranslations.py:53
 msgid "Barracks"
-msgstr ""
+msgstr "Barak"
 
 #. tooltip_text of buildings:barracks
 #: horizons/i18n/objecttranslations.py:55
 msgid "Recruits units suitable for ground combat."
-msgstr ""
+msgstr "Merekrut unit yang cocok untuk pertempuran darat."
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:59
 msgid "Wooden barrier"
-msgstr ""
+msgstr "Penghalang kayu"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
-msgstr ""
+msgstr "Dinding tanah liat"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:63
 msgid "Provides security."
-msgstr ""
+msgstr "Memberikan keamanan."
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:67
 msgid "Blender"
-msgstr ""
+msgstr "Penggilingan Rempah"
 
 #. tooltip_text of buildings:blender
 #: horizons/i18n/objecttranslations.py:69
 msgid "Produces condiments out of spices."
-msgstr ""
+msgstr "Menghasilkan bumbu dari rempah-rempah."
 
 #. name of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:73
 msgid "Boat Builder"
-msgstr ""
+msgstr "Galangan Kapal"
 
 #. tooltip_text of buildings:boatbuilder
 #: horizons/i18n/objecttranslations.py:75
 msgid "Builds boats and small ships. Built on coast."
-msgstr ""
+msgstr "Membuat perahu dan kapal kecil. Dibangun di pantai."
 
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:79
 msgid "Brewery"
-msgstr ""
+msgstr "Pabrik Bir"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:81
 msgid "Consumes hops. Produces Beer."
-msgstr ""
+msgstr "Mengonsumsi hop. Menghasilkan bir."
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:85
 msgid "Brickyard"
-msgstr ""
+msgstr "Pabrik Batu Bata"
 
 #. tooltip_text of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:87
 msgid "Turns clay into bricks."
-msgstr ""
+msgstr "Mengubah tanah liat menjadi batu bata."
 
 #. name of buildings:butchery
 #: horizons/i18n/objecttranslations.py:91
 msgid "Butchery"
-msgstr ""
+msgstr "Penjagalan"
 
 #. tooltip_text of buildings:butchery
 #: horizons/i18n/objecttranslations.py:93
 msgid "Needs pigs or cattle. Produces food."
-msgstr ""
+msgstr "Membutuhkan babi atau sapi. Menghasilkan makanan."
 
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "Pabrik Meriam"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
 msgid "Produces Cannons."
-msgstr ""
+msgstr "Menghasilkan Meriam."
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:103
 msgid "Charcoal Burning"
-msgstr ""
+msgstr "Pembakaran Arang"
 
 #. tooltip_text of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:105
 msgid "Burns a lot of boards."
-msgstr ""
+msgstr "Membakar banyak papan."
 
 #. name of buildings:claydeposit
 #: horizons/i18n/objecttranslations.py:109
 msgid "Clay Deposit"
-msgstr ""
+msgstr "Deposit Tanah Liat"
 
 #. name of buildings:claypit
 #: horizons/i18n/objecttranslations.py:113
 msgid "Clay Pit"
-msgstr ""
+msgstr "Tambang Tanah Liat"
 
 #. tooltip_text of buildings:claypit
 #: horizons/i18n/objecttranslations.py:115
 msgid "Gets clay from deposit."
-msgstr ""
+msgstr "Mendapat tanah liat dari deposit."
 
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
 msgid "Distillery"
-msgstr ""
+msgstr "Penyulingan"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:121
 msgid "Turns sugar into liquor."
-msgstr ""
+msgstr "Mengubah gula menjadi minuman keras."
 
 #. name of buildings:doctor
 #: horizons/i18n/objecttranslations.py:125
 msgid "Doctor"
-msgstr ""
+msgstr "Dokter"
 
 #. tooltip_text of buildings:doctor
 #: horizons/i18n/objecttranslations.py:127
 msgid "Treats diseases. Consumes herbs."
-msgstr ""
+msgstr "Mengobati penyakit. Mengonsumsi tanaman herbal."
 
 #. name of buildings:farm
 #: horizons/i18n/objecttranslations.py:131
 msgid "Farm"
-msgstr ""
+msgstr "Lahan Pertanian"
 
 #. tooltip_text of buildings:farm
 #: horizons/i18n/objecttranslations.py:133
 msgid "Grows field crops and raises livestock."
-msgstr ""
+msgstr "Menanam tanaman dan memelihara ternak."
 
 #. name of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:137
 msgid "Alvearies"
-msgstr ""
+msgstr "Sarang Lebah"
 
 #. tooltip_text of buildings:fields:alvearies
 #: horizons/i18n/objecttranslations.py:139
 msgid "Keeps bees. Produces honeycombs used for confectionery. Needs a farm."
 msgstr ""
+"Memelihara lebah. Menghasilkan sarang madu yang digunakan untuk kembang "
+"gula. Butuh lahan pertanian."
 
 #. name of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:143
 msgid "Cattle Run"
-msgstr ""
+msgstr "Peternakan"
 
 #. tooltip_text of buildings:fields:cattlerun
 #: horizons/i18n/objecttranslations.py:145
 msgid "Raises cattle. Needs a farm."
-msgstr ""
+msgstr "Memelihara ternak. Butuh lahan pertanian."
 
 #. name of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:149
 msgid "Cocoa Field"
-msgstr ""
+msgstr "Ladang Kakao"
 
 #. tooltip_text of buildings:fields:cocoafield
 #: horizons/i18n/objecttranslations.py:151
 msgid "Produces cocoa beans used for confectionery. Needs a farm."
 msgstr ""
+"Menghasilkan biji kakao yang digunakan untuk kembang gula. Butuh lahan "
+"pertanian."
 
 #. name of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:155
 msgid "Corn Field"
-msgstr ""
+msgstr "Ladang Jagung"
 
 #. tooltip_text of buildings:fields:cornfield
 #: horizons/i18n/objecttranslations.py:157
 msgid "Yields corn. Needs a farm."
-msgstr ""
+msgstr "Menghasilkan jagung. Butuh lahan pertanian."
 
 #. name of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:161
 msgid "Herbary"
-msgstr ""
+msgstr "Kebun Tanaman Obat"
 
 #. tooltip_text of buildings:fields:herbary
 #: horizons/i18n/objecttranslations.py:163
 msgid "Produces herbs. Needs a farm."
-msgstr ""
+msgstr "Menghasilkan tanaman herbal. Butuh lahan pertanian."
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:167
 msgid "Hop Field"
-msgstr ""
+msgstr "Ladang Hop"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:169
 msgid "Yields hop. Needs a farm."
-msgstr ""
+msgstr "Menghasilkan hop. Butuh lahan pertanian."
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
 msgid "Pasture"
-msgstr ""
+msgstr "Padang Rumput"
 
 #. tooltip_text of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:175
 msgid "Raises sheep. Produces wool. Needs a farm."
-msgstr ""
+msgstr "Memelihara domba. Menghasilkan wol. Butuh lahan pertanian."
 
 #. name of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:179
 msgid "Pigsty"
-msgstr ""
+msgstr "Kandang Babi"
 
 #. tooltip_text of buildings:fields:pigsty
 #: horizons/i18n/objecttranslations.py:181
 msgid "Raises pigs. Needs a farm."
-msgstr ""
+msgstr "Memelihara babi. Butuh lahan pertanian."
 
 #. name of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:185
 msgid "Potato Field"
-msgstr ""
+msgstr "Ladang Kentang"
 
 #. tooltip_text of buildings:fields:potatofield
 #: horizons/i18n/objecttranslations.py:187
 msgid "Yields food. Needs a farm."
-msgstr ""
+msgstr "Menghasilkan makanan. Butuh lahan pertanian."
 
 #. name of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:191
 msgid "Spice Field"
-msgstr ""
+msgstr "Ladang Rempah-Rempah"
 
 #. tooltip_text of buildings:fields:spicefield
 #: horizons/i18n/objecttranslations.py:193
 msgid "Grows spices. Needs a farm."
-msgstr ""
+msgstr "Menanam rempah-rempah. Butuh lahan pertanian."
 
 #. name of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:197
 msgid "Sugar Field"
-msgstr ""
+msgstr "Ladang Tebu"
 
 #. tooltip_text of buildings:fields:sugarfield
 #: horizons/i18n/objecttranslations.py:199
 msgid "Used in liquor production. Needs a farm."
-msgstr ""
+msgstr "Digunakan dalam produksi minuman keras. Butuh lahan pertanian."
 
 #. name of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:203
 msgid "Tobacco Field"
-msgstr ""
+msgstr "Ladang Tembakau"
 
 #. tooltip_text of buildings:fields:tobaccofield
 #: horizons/i18n/objecttranslations.py:205
 msgid "Produces tobacco. Needs a farm."
-msgstr ""
+msgstr "Menghasilkan tembakau. Butuh lahan pertanian."
 
 #. name of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:209
 msgid "Vineyard"
-msgstr ""
+msgstr "Kebun Anggur"
 
 #. tooltip_text of buildings:fields:vineyard
 #: horizons/i18n/objecttranslations.py:211
 msgid "Produces grapes for use in wine and confectionery. Needs a farm."
 msgstr ""
+"Menghasilkan anggur untuk digunakan dalam minuman anggur dan gula-gula. "
+"Butuh lahan pertanian."
 
 #. name of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:215
 msgid "Fire Station"
-msgstr ""
+msgstr "Stasiun Pemadam Kebakaran"
 
 #. tooltip_text of buildings:fireservice
 #: horizons/i18n/objecttranslations.py:217
 msgid "Extinguishes fires."
-msgstr ""
+msgstr "Memadamkan api."
 
 #. name of buildings:fishdeposit
 #: horizons/i18n/objecttranslations.py:221
 msgid "Fish Deposit"
-msgstr ""
+msgstr "Deposit Ikan"
 
 #. name of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:225
 msgid "Fisherman's Tent"
-msgstr ""
+msgstr "Tenda Nelayan"
 
 #. tooltip_text of buildings:fishermanstent
 #: horizons/i18n/objecttranslations.py:227
 msgid "Fishes the sea, produces food."
-msgstr ""
+msgstr "Memancing di laut, menghasilkan makanan."
 
 #. name of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:231
 msgid "Hunter's Tent"
-msgstr ""
+msgstr "Tenda Pemburu"
 
 #. tooltip_text of buildings:hunterstent
 #: horizons/i18n/objecttranslations.py:233
 msgid "Hunts wild forest animals, produces food."
-msgstr ""
+msgstr "Berburu binatang liar, menghasilkan makanan."
 
 #. name of buildings:lookout
 #: horizons/i18n/objecttranslations.py:237
 msgid "Lookout"
-msgstr ""
+msgstr "Menara Pengawas"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:239
 msgid "Expands settlement range."
-msgstr ""
+msgstr "Memperluas jangkauan pemukiman."
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:243
 msgid "Lumberjack Tent"
-msgstr ""
+msgstr "Tenda Penebang Kayu"
 
 #. name_1 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:245
 msgid "Lumberjack Hut"
-msgstr ""
+msgstr "Pondok Penebang Kayu"
 
 #. tooltip_text of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:247
 msgid "Chops down trees and turns them into boards."
-msgstr ""
+msgstr "Menebang pohon dan mengubahnya menjadi papan."
 
 #. name of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:251
 msgid "Main Square"
-msgstr ""
+msgstr "Alun-Alun Utama"
 
 #. tooltip_text of buildings:mainsquare
 #: horizons/i18n/objecttranslations.py:253
 msgid "Supplies citizens with goods. Provides community."
-msgstr ""
+msgstr "Memasok barang-barang ke penduduk. Menyediakan komunitas."
 
 #. name of buildings:mine
 #: horizons/i18n/objecttranslations.py:257
 msgid "Mine"
-msgstr ""
+msgstr "Tambang"
 
 #. tooltip_text of buildings:mine
 #: horizons/i18n/objecttranslations.py:259
 msgid "Gets iron ore from deposit."
-msgstr ""
+msgstr "Mendapatkan bijih besi dari deposit."
 
 #. name of buildings:mountain
 #: horizons/i18n/objecttranslations.py:263
 msgid "Mountain"
-msgstr ""
+msgstr "Gunung"
 
 #. name of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:267
 msgid "Pastry Shop"
-msgstr ""
+msgstr "Toko Kue"
 
 #. tooltip_text of buildings:pastryshop
 #: horizons/i18n/objecttranslations.py:269
 msgid "Produces all kinds of confectionery."
-msgstr ""
+msgstr "Memproduksi semua jenis kembang gula."
 
 #. name of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:273
 msgid "Pavilion"
-msgstr ""
+msgstr "Paviliun"
 
 #. tooltip_text of buildings:pavilion
 #: horizons/i18n/objecttranslations.py:275
 msgid "Fulfills religious needs of sailors."
-msgstr ""
+msgstr "Memenuhi kebutuhan keagamaan para pelaut."
 
 #. name of buildings:ruinedtent
 #: horizons/i18n/objecttranslations.py:279
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Tenda Rusak"
 
 #. name of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:283
 msgid "Salt Ponds"
-msgstr ""
+msgstr "Tambak Garam"
 
 #. tooltip_text of buildings:saltponds
 #: horizons/i18n/objecttranslations.py:285
 msgid "Evaporates salt. Built on sea coast."
-msgstr ""
+msgstr "Menguapkan garam. Dibangun di pantai laut."
 
 #. name of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:289
 msgid "Signal Fire"
-msgstr ""
+msgstr "Sinyal Api"
 
 #. tooltip_text of buildings:signalfire
 #: horizons/i18n/objecttranslations.py:291
 msgid "Allows the player to trade with the free trader."
-msgstr ""
+msgstr "Memungkinkan pemain untuk berdagang dengan pedagang bebas."
 
 #. name of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:295
 msgid "Smeltery"
-msgstr ""
+msgstr "Pabrik Peleburan"
 
 #. tooltip_text of buildings:smeltery
 #: horizons/i18n/objecttranslations.py:297
 msgid "Refines all kind of ores."
-msgstr ""
+msgstr "Memurnikan semua jenis bijih."
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:301
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
 msgstr "Cadangan Batu"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:305
 msgid "Stonemason"
-msgstr ""
+msgstr "Tukang Batu"
 
 #. name_4 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:307
 msgid "Carver"
-msgstr ""
+msgstr "Pemahat"
 
 #. tooltip_text of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:309
 msgid "Carves stone tops into bricks."
-msgstr ""
+msgstr "Memahat papan batu menjadi batu bata."
 
 #. name of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:313
 msgid "Stone Pit"
-msgstr ""
+msgstr "Tambang Batu"
 
 #. tooltip_text of buildings:stonepit
 #: horizons/i18n/objecttranslations.py:315
 msgid "Gets stone from a mountain."
-msgstr ""
+msgstr "Mendapat batu dari gunung."
 
 #. name_0 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:319
 msgid "Storage Tent"
-msgstr ""
+msgstr "Tenda Penyimpanan"
 
 #. name_1 of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:321
 msgid "Storage Hut"
-msgstr ""
+msgstr "Pondok Penyimpanan"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:323
 msgid "Extends stock, expands settlement range and provides collectors."
 msgstr ""
+"Memperluas stok, memperluas jangkauan pemukiman, dan menyediakan kolektor."
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:327
 msgid "Tavern"
-msgstr ""
+msgstr "Kedai Minuman"
 
 #. tooltip_text of buildings:tavern
 #: horizons/i18n/objecttranslations.py:329
 msgid "Provides get-together."
-msgstr ""
+msgstr "Menyediakan tempat berkumpul."
 
 #. name_0 of buildings:tent
 #: horizons/i18n/objecttranslations.py:333
 msgid "Tent"
-msgstr ""
+msgstr "Tenda"
 
 #. name_1 of buildings:tent
 #: horizons/i18n/objecttranslations.py:335
 msgid "Hut"
-msgstr ""
+msgstr "Pondok"
 
 #. name_2 of buildings:tent
 #: horizons/i18n/objecttranslations.py:337
 msgid "House"
-msgstr ""
+msgstr "Rumah"
 
 #. name_3 of buildings:tent
 #: horizons/i18n/objecttranslations.py:339
 msgid "Stone house"
-msgstr ""
+msgstr "Rumah batu"
 
 #. name_4 of buildings:tent
 #: horizons/i18n/objecttranslations.py:341
 msgid "Estate"
-msgstr ""
+msgstr "Yasan"
 
 #. name_5 of buildings:tent
 #: horizons/i18n/objecttranslations.py:343
 msgid "Manor"
-msgstr ""
+msgstr "Rumah Bangsawan"
 
 #. tooltip_text of buildings:tent
 #: horizons/i18n/objecttranslations.py:345
 msgid "Houses your inhabitants."
-msgstr ""
+msgstr "Rumah bagi penduduk Anda."
 
 #. name of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:349
 msgid "Tobacconist"
-msgstr ""
+msgstr "Toko Tembakau"
 
 #. tooltip_text of buildings:tobacconist
 #: horizons/i18n/objecttranslations.py:351
 msgid "Produces tobaccos out of tobacco."
-msgstr ""
+msgstr "Menghasilkan tembakau."
 
 #. name of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:355
 msgid "Toolmaker"
-msgstr ""
+msgstr "Pembuat Perkakas"
 
 #. tooltip_text of buildings:toolmaker
 #: horizons/i18n/objecttranslations.py:357
 msgid "Produces tools out of iron."
-msgstr ""
+msgstr "Memproduksi alat dari besi."
 
 #. name_0 of buildings:trail
 #: horizons/i18n/objecttranslations.py:361
 msgid "Trail"
-msgstr ""
+msgstr "Jejak"
 
 #. name_1 of buildings:trail
 #: horizons/i18n/objecttranslations.py:363
 msgid "Gravel Path"
-msgstr ""
+msgstr "Jalan dari Kerikil"
 
 #. name_3 of buildings:trail
 #: horizons/i18n/objecttranslations.py:365
 msgid "Cobblestone Street"
-msgstr ""
+msgstr "Jalan dari Batu Kali"
 
 #. tooltip_text of buildings:trail
 #: horizons/i18n/objecttranslations.py:367
 msgid "Needed for collecting goods."
-msgstr ""
+msgstr "Dibutuhkan untuk mengumpulkan barang."
 
 #. name of buildings:tree
 #: horizons/i18n/objecttranslations.py:371
 msgid "Tree"
-msgstr ""
+msgstr "Pohon"
 
 #. tooltip_text of buildings:tree
 #: horizons/i18n/objecttranslations.py:373
 msgid "Provides lumber. Chopped down by lumberjacks."
-msgstr ""
+msgstr "Menyediakan kayu. Ditebang oleh penebang kayu."
 
 #. name of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:377
 msgid "Village School"
-msgstr ""
+msgstr "Sekolah Desa"
 
 #. tooltip_text of buildings:villageschool
 #: horizons/i18n/objecttranslations.py:379
 msgid "Provides education."
-msgstr ""
+msgstr "Menyediakan pendidikan."
 
 #. name of buildings:warehouse
 #: horizons/i18n/objecttranslations.py:383
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:387
-#, fuzzy
-#| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "Senjata"
+msgstr "Ahli senjata"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:389
 msgid "Produces weapons out of iron."
-msgstr ""
+msgstr "Memproduksi senjata dari besi."
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:393
 msgid "Weaver's Hut"
-msgstr ""
+msgstr "Pondok Penenun"
 
 #. tooltip_text of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:395
 msgid "Turns lamb wool into cloth."
-msgstr ""
+msgstr "Mengubah wol menjadi kain."
 
 #. name of buildings:windmill
 #: horizons/i18n/objecttranslations.py:399
 msgid "Windmill"
-msgstr ""
+msgstr "Kincir Angin"
 
 #. tooltip_text of buildings:windmill
 #: horizons/i18n/objecttranslations.py:401
 msgid "Grinds corn into flour."
-msgstr ""
+msgstr "Menggiling jagung menjadi tepung."
 
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
-msgstr ""
+msgstr "Kilang Anggur"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:407
 msgid "Produces wine out of grapes."
-msgstr ""
+msgstr "Menghasilkan minuman anggur dari buah anggur."
 
 #. name of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:411
 msgid "Wooden Tower"
-msgstr ""
+msgstr "Menara Kayu"
 
 #. tooltip_text of buildings:woodentower
 #: horizons/i18n/objecttranslations.py:413
 msgid "Defends your settlement."
-msgstr ""
+msgstr "Mempertahankan pemukiman Anda."
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab4_headline of gui_buildmenu:build_menu_per_type
@@ -3241,7 +3288,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:423
 #: horizons/i18n/objecttranslations.py:495
 msgid "Companies"
-msgstr ""
+msgstr "Industri"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab2_headline of gui_buildmenu:build_menu_per_type
@@ -3251,7 +3298,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:431
 #: horizons/i18n/objecttranslations.py:491
 msgid "Fields"
-msgstr ""
+msgstr "Ladang"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab5_headline of gui_buildmenu:build_menu_per_type
@@ -3259,21 +3306,21 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:435
 #: horizons/i18n/objecttranslations.py:497
 msgid "Military"
-msgstr ""
+msgstr "Militer"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:437
 #: horizons/i18n/objecttranslations.py:463
 msgid "Mining"
-msgstr ""
+msgstr "Pertambangan"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. tab1_helptext of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:439
 #: horizons/i18n/objecttranslations.py:489
 msgid "Residents and infrastructure"
-msgstr ""
+msgstr "Penduduk dan infrastruktur"
 
 #. headline of gui_buildmenu:build_menu_per_tier
 #. headline of gui_buildmenu:build_menu_per_type
@@ -3282,7 +3329,7 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:445
 #: horizons/i18n/objecttranslations.py:473
 msgid "Services"
-msgstr ""
+msgstr "Layanan Publik"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -3294,23 +3341,23 @@ msgstr "Penduduk"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:453
 msgid "Food"
-msgstr ""
+msgstr "Makanan"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:455
 msgid "Fortifications"
-msgstr ""
+msgstr "Benteng"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:457
 #: horizons/i18n/objecttranslations.py:459
 msgid "Infrastructure"
-msgstr ""
+msgstr "Infrastruktur"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:461
 msgid "Military Service"
-msgstr ""
+msgstr "Layanan Militer"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #. This is a database entry: the name of an inhabitant tier (level)
@@ -3321,22 +3368,22 @@ msgstr "Pelopor"
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:467
 msgid "Precaution"
-msgstr ""
+msgstr "Pencegahan"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:469
 msgid "Residential"
-msgstr ""
+msgstr "Perumahan"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:471
 msgid "Sea"
-msgstr ""
+msgstr "Laut"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:477
 msgid "Wood"
-msgstr ""
+msgstr "Kayu"
 
 #. headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:479
@@ -3344,37 +3391,38 @@ msgstr ""
 #: horizons/i18n/objecttranslations.py:483
 #: horizons/i18n/objecttranslations.py:485
 msgid "Workshops"
-msgstr ""
+msgstr "Lokakarya"
 
 #. tab1_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:487
 msgid "Settlement"
-msgstr ""
+msgstr "Pemukiman"
 
 #. tab3_headline of gui_buildmenu:build_menu_per_type
 #: horizons/i18n/objecttranslations.py:493
 msgid "Agriculture"
-msgstr ""
+msgstr "Pertanian"
 
 #: horizons/main.py:366
 msgid "Failed to start/load the game"
-msgstr ""
+msgstr "Gagal memulai/memuat gim"
 
 #: horizons/main.py:367
 msgid "The game you selected could not be started."
-msgstr ""
+msgstr "Permainan yang Anda pilih tidak dapat dimulai."
 
 #: horizons/main.py:368
 msgid "The savegame might be broken or has been saved with an earlier version."
 msgstr ""
+"Gim yang tersimpan mungkin rusak atau telah disimpan dengan versi sebelumnya."
 
 #: horizons/main.py:516
 msgid "No quicksaves found"
-msgstr ""
+msgstr "Tidak ada penyimpanan cepat yang ditemukan"
 
 #: horizons/main.py:517
 msgid "You need to quicksave before you can quickload."
-msgstr ""
+msgstr "Anda perlu menyimpan cepat sebelum dapat memuat cepat."
 
 #: horizons/main.py:605
 msgid "Logging enabled"
@@ -3392,44 +3440,49 @@ msgid ""
 "The games have run out of sync. This indicates an unknown internal error, "
 "the game cannot continue."
 msgstr ""
+"Permainan sudah tidak sinkron. Ini menunjukkan kesalahan internal yang tidak "
+"diketahui penyebabnya, permainan tidak dapat dilanjutkan."
 
 #: horizons/manager.py:179
 msgid "We are very sorry and hope to have this bug fixed in a future version."
 msgstr ""
+"Kami sangat menyesal dan berharap kesalahan ini diperbaiki di versi "
+"mendatang."
 
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Not possible"
-msgstr ""
+msgstr "Tidak mungkin"
 
 #: horizons/mpsession.py:81 horizons/mpsession.py:86 horizons/mpsession.py:91
 #: horizons/mpsession.py:94
 msgid "Save/load for multiplayer games is not possible yet"
-msgstr ""
+msgstr "Menyimpan/memuat permainan untuk gim multipemain belum memungkinkan"
 
 #: horizons/mpsession.py:105
 msgid ""
 "The filename must consist only of letters, numbers, spaces and these "
 "characters: _ . -"
 msgstr ""
+"Nama berkas hanya boleh terdiri dari huruf, angka, spasi, dan karakter "
+"berikut: _ . -"
 
 #: horizons/network/connection.py:88 horizons/network/connection.py:94
 msgid "Unable to connect to server."
-msgstr ""
+msgstr "Tidak dapat terhubung ke server."
 
 #: horizons/network/connection.py:89
 msgid "Maybe invalid or irresolvable server address."
-msgstr ""
+msgstr "Mungkin alamat server tidak valid atau tidak dapat dipecahkan."
 
 #: horizons/network/networkinterface.py:531
 msgid "Not Ready"
-msgstr ""
+msgstr "Belum Siap"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
 msgstr ""
-"Protokol permainan bersama sudah tua atau tidak didukung lagi. Mohon periksa "
-"versi permainan anda"
+"Protokol multipemain tidak didukung. Silakan periksa versi permainan Anda"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
@@ -3438,24 +3491,27 @@ msgstr "Anda sudah melebihi ukuran paket global."
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
 msgstr ""
-"Ini harusnya tak pernah terjadi. Mohon kontak kami atau ajukan laporan "
-"kesalahan."
+"Ini seharusnya tidak pernah terjadi. Silakan hubungi kami atau ajukan "
+"laporan kesalahan."
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr "Anda sudah melebihi setiap ukuran paket."
+msgstr "Anda telah melebihi ukuran per paket."
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr "Tidak diketahui atau paket malfungsi. Mohon cek versi permainan anda"
+msgstr ""
+"Paket tidak dikenal atau formatnya salah. Silakan periksa versi permainan "
+"Anda"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr "Tidak diperbolehkan/sesi tak diketahui"
+msgstr "Sesi tidak valid/tidak diketahui"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr "Anda tak bisa bergabung dengan permainan saat berada di permainan lain"
+msgstr ""
+"Anda tak bisa bergabung dengan permainan saat sedang berada di permainan lain"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
@@ -3475,11 +3531,11 @@ msgstr "Kata sandi salah"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr "Sudah ada pemain dengan nama anda di permainan ini."
+msgstr "Sudah ada pemain dengan nama Anda di dalam game ini."
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr "Mohon ganti nama anda."
+msgstr "Silakan ubah nama Anda."
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
@@ -3487,14 +3543,14 @@ msgstr "Sudah ada pemain dengan warna Anda di permainan ini."
 
 #: horizons/network/server.py:480
 msgid "Please change your color."
-msgstr "Mohon ganti warna anda."
+msgstr "Silakan ubah warna Anda."
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
 msgstr ""
-"Sudah ada pemain dengan ID unik anda di dalam permainan. Ini harusnya tak "
+"Sudah ada pemain dengan ID unik Anda di dalam permainan. Ini harusnya tak "
 "pernah terjadi."
 
 #: horizons/network/server.py:496
@@ -3503,7 +3559,7 @@ msgstr "Anda tidak ada di dalam permainan"
 
 #: horizons/network/server.py:541
 msgid "Unable to change your name."
-msgstr "Tidak bisa mengganti nama anda."
+msgstr "Tidak dapat mengubah nama Anda."
 
 #: horizons/network/server.py:573
 msgid "Unable to change your color."
@@ -3511,67 +3567,71 @@ msgstr "Tidak bisa mengubah warna Anda."
 
 #: horizons/network/server.py:649
 msgid "You can't fetch a game while in another game"
-msgstr "Anda tak bisa mencapai sebuah permainan saat ada di permainan lain"
+msgstr ""
+"Anda tak bisa bergabung dengan permainan saat sedang berada di permainan lain"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr "Permainan sudah dihentikan. Pembuatnya sudah meningalkan permainan."
+msgstr "Permainan telah dihentikan. Pembuatnya telah meninggalkan permainan."
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
 msgstr ""
-"Satu pemain telah menghentikan permainan mereka. Untuk alasan teknis, ini "
-"berarti saat ini permainan tidak bisa berlanjut. Kami benar-benar minta maaf "
-"tentang ini."
+"Satu pemain telah menghentikan permainan mereka. Untuk alasan teknis, saat "
+"ini permainan tidak dapat dilanjutkan. Kami sangat menyesal tentang hal ini."
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
-msgstr ""
+msgstr "Anda telah menang!"
 
 #: horizons/scenario/actions.py:92
 msgid "You have completed this scenario."
-msgstr ""
+msgstr "Anda telah menyelesaikan skenario ini."
 
 #: horizons/scenario/actions.py:93
 msgid "Do you want to continue playing?"
-msgstr ""
+msgstr "Apakah Anda ingin terus bermain?"
 
 #: horizons/scenario/scenarioeventhandler.py:173
 msgid "unknown"
-msgstr ""
+msgstr "tidak diketahui"
 
 #. usually invalid filename
 #: horizons/session.py:400
 msgid "Failed to create savegame file"
-msgstr ""
+msgstr "Gagal membuat berkas gim tersimpan"
 
 #: horizons/session.py:401
 msgid "There has been an error while creating your savegame file."
-msgstr ""
+msgstr "Terjadi kesalahan saat membuat berkas gim tersimpan Anda."
 
 #: horizons/session.py:402
 msgid ""
 "This usually means that the savegame name contains unsupported special "
 "characters."
 msgstr ""
+"Ini biasanya berarti bahwa nama gim tersimpan mengandung karakter khusus "
+"yang tidak didukung."
 
 #: horizons/session.py:409
 msgid "Access is denied"
-msgstr ""
+msgstr "Akses ditolak"
 
 #: horizons/session.py:410
 msgid "The savegame file could be read-only or locked by another process."
 msgstr ""
+"Berkas gim tersimpan mungkin hanya bisa dibaca saja atau dikunci oleh proses "
+"lain."
 
 #: horizons/spsession.py:67
 msgid "Your game has not been saved."
-msgstr ""
+msgstr "Permainan Anda belum disimpan."
 
 #: horizons/util/checkupdates.py:89
 msgid "New version of Unknown Horizons"
-msgstr ""
+msgstr "Versi baru dari Unknown Horizons"
 
 #: horizons/util/checkupdates.py:90
 #, python-brace-format
@@ -3579,151 +3639,153 @@ msgid ""
 "There is a more recent release of Unknown Horizons ({new_version}) than the "
 "one you are currently using ({old_version})."
 msgstr ""
+"Ada rilis Unknown Horizons yang lebih baru ({new_version}) daripada yang "
+"Anda gunakan saat ini ({old_version})."
 
 #: horizons/util/checkupdates.py:100
 msgid "Click to download"
-msgstr ""
+msgstr "Klik untuk mengunduh"
 
 #: horizons/util/checkupdates.py:104
 msgid "A page has been opened in your browser."
-msgstr ""
+msgstr "Halaman telah dibuka di peramban Anda."
 
 #. Ship storage properties
 #: horizons/util/uhdbaccessor.py:283
 #, python-brace-format
 msgid "{slotnum} slots, {limit}t"
-msgstr ""
+msgstr "{slotnum} slot, {limit}t"
 
 #: horizons/util/uhdbaccessor.py:291
 #, python-brace-format
 msgid "Health: {health}"
-msgstr ""
+msgstr "Kesehatan: {health}"
 
 #. You usually do not need to change anything here when translating
 #: horizons/world/building/__init__.py:178
 #, python-brace-format
 msgid "{building}: {description}"
-msgstr ""
+msgstr "{building}: {description}"
 
 #: horizons/world/building/buildable.py:42
 msgid "This building must be built on an island."
-msgstr ""
+msgstr "Bangunan ini harus dibangun di atas sebuah pulau."
 
 #: horizons/world/building/buildable.py:43
 msgid "This ground is not suitable for this building."
-msgstr ""
+msgstr "Tanah ini tidak cocok untuk bangunan ini."
 
 #: horizons/world/building/buildable.py:44
 msgid "This building has to be built within your settlement."
-msgstr ""
+msgstr "Bangunan ini harus dibangun di dalam area pemukiman Anda."
 
 #: horizons/world/building/buildable.py:45
 msgid "This area is already occupied by another player."
-msgstr ""
+msgstr "Area ini sudah ditempati oleh pemain lain."
 
 #: horizons/world/building/buildable.py:46
 msgid "This area is already occupied by another building."
-msgstr ""
+msgstr "Area ini sudah ditempati oleh bangunan lain."
 
 #: horizons/world/building/buildable.py:47
 msgid "This area is already occupied by a unit."
-msgstr ""
+msgstr "Area ini sudah ditempati oleh suatu unit."
 
 #: horizons/world/building/buildable.py:48
 msgid "This building must be built on the coastline."
-msgstr ""
+msgstr "Bangunan ini harus dibangun di garis pantai."
 
 #: horizons/world/building/buildable.py:49
 msgid "This building has to be placed at the ocean."
-msgstr ""
+msgstr "Bangunan ini harus ditempatkan di laut."
 
 #: horizons/world/building/buildable.py:50
 msgid "This spot is too far away from your ship."
-msgstr ""
+msgstr "Tempat ini terlalu jauh dari kapal Anda."
 
 #: horizons/world/building/buildable.py:51
 msgid "This building can only be built on a resource source."
-msgstr ""
+msgstr "Bangunan ini hanya dapat dibangun di atas sumber daya."
 
 #: horizons/world/building/buildable.py:52
 msgid "You have already settled this island."
-msgstr ""
+msgstr "Anda sudah menetap di pulau ini."
 
 #: horizons/world/building/buildable.py:53
 msgid "This building must be partly on flat land."
-msgstr ""
+msgstr "Sebagian bangunan ini harus berada di atas tanah datar."
 
 #: horizons/world/status.py:73
 msgid "The inhabitants are infected by the Black Death!"
-msgstr ""
+msgstr "Penduduk telah terinfeksi oleh Penyakit Pes!"
 
 #: horizons/world/status.py:79
 msgid "This building is on fire!"
-msgstr ""
+msgstr "Bangunan ini terbakar!"
 
 #: horizons/world/status.py:86
 msgid "These residents are unhappy."
-msgstr ""
+msgstr "Penduduk ini tidak bahagia."
 
 #: horizons/world/status.py:92
 msgid "These residents don't have access to a main square."
-msgstr ""
+msgstr "Penduduk ini tidak memiliki akses ke alun-alun."
 
 #: horizons/world/status.py:98
 msgid "The inventory of this building is full."
-msgstr ""
+msgstr "Tempat penyimpanan di bangunan ini sudah penuh."
 
 #: horizons/world/status.py:113
 msgid "This building has a very low productivity."
-msgstr ""
+msgstr "Bangunan ini memiliki produktivitas yang sangat rendah."
 
 #: horizons/world/status.py:119
 msgid "This building is decommissioned."
-msgstr ""
+msgstr "Bangunan ini dinonaktifkan."
 
 #: horizons/world/traderoute.py:336
 #, python-brace-format
 msgid "Trade route: going to {location}"
-msgstr ""
+msgstr "Rute perdagangan: pergi ke {location}"
 
 #: horizons/world/traderoute.py:340
 #, python-brace-format
 msgid "Trade route: waiting at {position}"
-msgstr ""
+msgstr "Rute perdagangan: menunggu di {position}"
 
 #: horizons/world/units/ship.py:214
 #, python-brace-format
 msgid "Going to {location}"
-msgstr ""
+msgstr "Pergi ke {location}"
 
 #: horizons/world/units/ship.py:215
 #, python-brace-format
 msgid "Going to {x}, {y}"
-msgstr ""
+msgstr "Pergi ke {x}, {y}"
 
 #: horizons/world/units/ship.py:219
 #, python-brace-format
 msgid "Idle at {location}"
-msgstr ""
+msgstr "Menganggur di {location}"
 
 #: horizons/world/units/ship.py:220
 #, python-brace-format
 msgid "Idle at {x}, {y}"
-msgstr ""
+msgstr "Menganggur di {x}, {y}"
 
 #: horizons/world/units/ship.py:231
 msgid "Trader"
-msgstr ""
+msgstr "Pedagang"
 
 #: horizons/world/units/weaponholder.py:436
 #, python-brace-format
 msgid "Attacking {target} '{name}' ({owner})"
-msgstr ""
+msgstr "Menyerang {target} '{name}' ({owner})"
 
 #: horizons/world/units/weaponholder.py:440
 #, python-brace-format
 msgid "Attacking {owner}"
-msgstr ""
+msgstr "Menyerang {owner}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been autosaved."
@@ -3736,7 +3798,7 @@ msgstr "Bangunan Anda terbakar!"
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player}: {message}"
-msgstr ""
+msgstr "{player}: {message}"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3755,17 +3817,17 @@ msgstr "{player1} dan {player2} telah mengakhiri aliansi."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have ended the war and are now allied."
-msgstr ""
+msgstr "{player1} dan {player2} telah mengakhiri perang dan sekarang bersekutu."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have settled their hostility."
-msgstr ""
+msgstr "{player1} dan {player2} telah berhenti bermusuhan."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "{player1} and {player2} have allied their forces."
-msgstr ""
+msgstr "{player1} dan {player2} telah menyatukan kekuatan mereka."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3774,7 +3836,7 @@ msgstr "{player1} dan {player2} akan bertarung sampai mati."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You can also drag roads."
-msgstr ""
+msgstr "Anda juga dapat menyeret jalan."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "One of your fields requires a farm to harvest its crops."
@@ -3782,13 +3844,15 @@ msgstr "Salah satu ladang Anda membutuhkan pertanian untuk melakukan panen."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your mine has run out of resources."
-msgstr "Sumberdaya tambang Anda telah habis."
+msgstr "Sumber daya di tambang Anda telah habis."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid ""
 "You have reached the current maximum tier. Your inhabitants will not upgrade "
 "further."
 msgstr ""
+"Anda telah mencapai tingkat maksimum saat ini. Penduduk Anda tidak akan naik "
+"tingkat lagi."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Cannot go here."
@@ -3814,16 +3878,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "Kapal baru bernama {name} telah selesai dibuat."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "Kapal baru bernama {name} telah selesai dibuat."
+msgstr "Prajurit dengan nama {name} siap untuk bertempur."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "Kapal baru bernama {name} telah selesai dibuat."
+msgstr "Penghuni dengan nama {name} tersedia."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -3831,7 +3893,7 @@ msgstr "Dunia baru telah berhasil dibuat."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants have no access to a main square."
-msgstr ""
+msgstr "Beberapa penduduk Anda tidak memiliki akses ke alun-alun utama."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been quicksaved."
@@ -3842,6 +3904,8 @@ msgid ""
 "The route is now configured. Start it via the \"start route\" button in the "
 "\"configure route\" menu."
 msgstr ""
+"Rute sudah diatur sekarang. Silakan memulainya lewat tombol \"mulai rute\" "
+"di menu \"konfigurasi rute\"."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Your game has been saved."
@@ -3850,7 +3914,7 @@ msgstr "Permainan Anda telah disimpan."
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
 msgid "Screenshot has been saved to {file}."
-msgstr ""
+msgstr "Tangkapan layar telah disimpan ke {file}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 #, python-brace-format
@@ -3859,11 +3923,11 @@ msgstr "Hunian Anda telah mencapai level {level}."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "Some of your inhabitants just moved out."
-msgstr ""
+msgstr "Beberapa penghuni Anda baru saja pindah."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You cannot tear the warehouse, your settlements needs it."
-msgstr ""
+msgstr "Anda tidak dapat menghancurkan gudang, pemukiman Anda membutuhkannya."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You won!"
@@ -3871,11 +3935,11 @@ msgstr "Anda menang!"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "You failed the scenario."
-msgstr ""
+msgstr "Anda gagal dalam skenario ini."
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "The inhabitants of this building are infected by the Black Death!"
-msgstr ""
+msgstr "Penghuni bangunan ini terinfeksi oleh Penyakit Pes!"
 
 #. This is a database entry: the name of a resource
 msgid "coins"
@@ -3883,7 +3947,7 @@ msgstr "koin"
 
 #. This is a database entry: the name of a resource
 msgid "lamb wool"
-msgstr ""
+msgstr "wol domba"
 
 #. This is a database entry: the name of a resource
 msgid "textile"
@@ -3891,23 +3955,23 @@ msgstr "tekstil"
 
 #. This is a database entry: the name of a resource
 msgid "boards"
-msgstr ""
+msgstr "papan"
 
 #. This is a database entry: the name of a resource
 msgid "food"
-msgstr ""
+msgstr "makanan"
 
 #. This is a database entry: the name of a resource
 msgid "tools"
-msgstr ""
+msgstr "peralatan"
 
 #. This is a database entry: the name of a resource
 msgid "bricks"
-msgstr ""
+msgstr "batu bata"
 
 #. This is a database entry: the name of a resource
 msgid "trees"
-msgstr ""
+msgstr "pohon"
 
 #. This is a database entry: the name of a resource
 msgid "grass"
@@ -3915,19 +3979,19 @@ msgstr "rumput"
 
 #. This is a database entry: the name of a resource
 msgid "wool"
-msgstr ""
+msgstr "wol"
 
 #. This is a database entry: the name of a resource
 msgid "faith"
-msgstr ""
+msgstr "keyakinan"
 
 #. This is a database entry: the name of a resource
 msgid "deer food A"
-msgstr ""
+msgstr "makanan rusa A"
 
 #. This is a database entry: the name of a resource
 msgid "deer meat"
-msgstr ""
+msgstr "daging rusa"
 
 #. This is a database entry: the name of a resource
 msgid "happiness"
@@ -3935,11 +3999,11 @@ msgstr "kebahagiaan"
 
 #. This is a database entry: the name of a resource
 msgid "potatoes"
-msgstr ""
+msgstr "kentang"
 
 #. This is a database entry: the name of a resource
 msgid "education"
-msgstr ""
+msgstr "pendidikan"
 
 #. This is a database entry: the name of a resource
 msgid "sugar cane"
@@ -3954,7 +4018,6 @@ msgid "community"
 msgstr "komunitas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
 msgid "clay deposit"
 msgstr "cadangan tanah liat"
 
@@ -3964,11 +4027,11 @@ msgstr "tanah liat"
 
 #. This is a database entry: the name of a resource
 msgid "liquor"
-msgstr ""
+msgstr "minuman keras"
 
 #. This is a database entry: the name of a resource
 msgid "charcoal"
-msgstr ""
+msgstr "arang"
 
 #. This is a database entry: the name of a resource
 msgid "iron deposit"
@@ -3976,7 +4039,7 @@ msgstr "cadangan besi"
 
 #. This is a database entry: the name of a resource
 msgid "iron ore"
-msgstr ""
+msgstr "bijih besi"
 
 #. This is a database entry: the name of a resource
 msgid "iron ingots"
@@ -3984,11 +4047,11 @@ msgstr "besi batangan"
 
 #. This is a database entry: the name of a resource
 msgid "get-together"
-msgstr ""
+msgstr "berkumpul"
 
 #. This is a database entry: the name of a resource
 msgid "fish"
-msgstr ""
+msgstr "ikan"
 
 #. This is a database entry: the name of a resource
 msgid "salt"
@@ -3996,7 +4059,7 @@ msgstr "garam"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco plants"
-msgstr ""
+msgstr "tanaman tembakau"
 
 #. This is a database entry: the name of a resource
 msgid "tobacco leaves"
@@ -4004,23 +4067,23 @@ msgstr "daun tembakau"
 
 #. This is a database entry: the name of a resource
 msgid "tobaccos"
-msgstr ""
+msgstr "tembakau"
 
 #. This is a database entry: the name of a resource
 msgid "cattle"
-msgstr ""
+msgstr "sapi"
 
 #. This is a database entry: the name of a resource
 msgid "pigs"
-msgstr ""
+msgstr "babi"
 
 #. This is a database entry: the name of a resource
 msgid "cattle for slaughter"
-msgstr ""
+msgstr "sapi untuk disembelih"
 
 #. This is a database entry: the name of a resource
 msgid "pigs for slaughter"
-msgstr ""
+msgstr "babi untuk disembelih"
 
 #. This is a database entry: the name of a resource
 msgid "herbs"
@@ -4028,23 +4091,23 @@ msgstr "herbal"
 
 #. This is a database entry: the name of a resource
 msgid "medical herbs"
-msgstr ""
+msgstr "ramuan herbal"
 
 #. This is a database entry: the name of a resource
 msgid "acorns"
-msgstr ""
+msgstr "kacang oak"
 
 #. This is a database entry: the name of a resource
 msgid "cannon"
-msgstr ""
+msgstr "meriam"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "pedang"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
-msgstr ""
+msgstr "gandum"
 
 #. This is a database entry: the name of a resource
 msgid "corn"
@@ -4052,7 +4115,7 @@ msgstr "jagung"
 
 #. This is a database entry: the name of a resource
 msgid "flour"
-msgstr ""
+msgstr "tepung"
 
 #. This is a database entry: the name of a resource
 msgid "spice plants"
@@ -4064,23 +4127,19 @@ msgstr "rempah-rempah"
 
 #. This is a database entry: the name of a resource
 msgid "condiments"
-msgstr ""
+msgstr "bumbu"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "clay deposit"
 msgid "marble deposit"
-msgstr "cadangan tanah liat"
+msgstr "deposit marmer"
 
 #. This is a database entry: the name of a resource
 msgid "marble tops"
-msgstr ""
+msgstr "papan marmer"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "clay deposit"
 msgid "coal deposit"
-msgstr "cadangan tanah liat"
+msgstr "deposit batubara"
 
 #. This is a database entry: the name of a resource
 msgid "stone deposit"
@@ -4088,7 +4147,7 @@ msgstr "cadangan batu"
 
 #. This is a database entry: the name of a resource
 msgid "stone tops"
-msgstr ""
+msgstr "papan batu"
 
 #. This is a database entry: the name of a resource
 msgid "cocoa beans"
@@ -4100,15 +4159,15 @@ msgstr "kakao"
 
 #. This is a database entry: the name of a resource
 msgid "confectionery"
-msgstr "konfeksi"
+msgstr "permen, gula-gula, kembang gula"
 
 #. This is a database entry: the name of a resource
 msgid "candles"
-msgstr ""
+msgstr "lilin"
 
 #. This is a database entry: the name of a resource
 msgid "vines"
-msgstr ""
+msgstr "tanaman merambat"
 
 #. This is a database entry: the name of a resource
 msgid "grapes"
@@ -4116,165 +4175,143 @@ msgstr "anggur"
 
 #. This is a database entry: the name of a resource
 msgid "alvearies"
-msgstr ""
-
-#. This is a database entry: the name of a resource
-msgid "honeycombs"
 msgstr "sarang lebah"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "clay deposit"
+msgid "honeycombs"
+msgstr "sarang madu"
+
+#. This is a database entry: the name of a resource
 msgid "gold deposit"
-msgstr "cadangan tanah liat"
+msgstr "cadangan emas"
 
 #. This is a database entry: the name of a resource
 msgid "gold ore"
-msgstr ""
+msgstr "bijih emas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "iron ingots"
 msgid "gold ingots"
-msgstr "besi batangan"
+msgstr "batangan emas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "stone deposit"
 msgid "gem deposit"
-msgstr "cadangan batu"
+msgstr "cadangan permata"
 
 #. This is a database entry: the name of a resource
 msgid "rough gems"
-msgstr ""
+msgstr "permata kasar"
 
 #. This is a database entry: the name of a resource
 msgid "gems"
-msgstr ""
+msgstr "permata"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "spice plants"
 msgid "coffee plants"
-msgstr "tanaman rempah-rempah"
+msgstr "tanaman kopi"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "cocoa beans"
 msgid "coffee beans"
-msgstr "biji kakao"
+msgstr "biji kopi"
 
 #. This is a database entry: the name of a resource
 msgid "coffee"
-msgstr ""
+msgstr "kopi"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "spice plants"
 msgid "tea plants"
-msgstr "tanaman rempah-rempah"
+msgstr "tanaman teh"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "tobacco leaves"
 msgid "tea leaves"
-msgstr "daun tembakau"
+msgstr "daun teh"
 
 #. This is a database entry: the name of a resource
 msgid "tea"
-msgstr ""
+msgstr "teh"
 
 #. This is a database entry: the name of a resource
 msgid "flower meadows"
-msgstr ""
+msgstr "padang rumput bunga"
 
 #. This is a database entry: the name of a resource
 msgid "blossoms"
-msgstr ""
+msgstr "bunga-bunga"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "iron deposit"
 msgid "brine deposit"
-msgstr "cadangan besi"
+msgstr "cadangan air garam"
 
 #. This is a database entry: the name of a resource
 msgid "brine"
-msgstr ""
+msgstr "air asin"
 
 #. This is a database entry: the name of a resource
 msgid "whales"
-msgstr ""
+msgstr "paus"
 
 #. This is a database entry: the name of a resource
 msgid "ambergris"
-msgstr ""
+msgstr "ambar"
 
 #. This is a database entry: the name of a resource
 msgid "lamp oil"
-msgstr ""
+msgstr "minyak lampu"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "spice plants"
 msgid "cotton plants"
-msgstr "tanaman rempah-rempah"
+msgstr "tanaman kapas"
 
 #. This is a database entry: the name of a resource
 msgid "cotton"
-msgstr ""
+msgstr "kapas"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "spice plants"
 msgid "indigo plants"
-msgstr "tanaman rempah-rempah"
+msgstr "tanaman indigo"
 
 #. This is a database entry: the name of a resource
 msgid "indigo"
-msgstr ""
+msgstr "nila"
 
 #. This is a database entry: the name of a resource
 msgid "garments"
-msgstr ""
+msgstr "pakaian"
 
 #. This is a database entry: the name of a resource
 msgid "perfume"
-msgstr ""
+msgstr "parfum"
 
 #. This is a database entry: the name of a resource
-#, fuzzy
-#| msgid "spice plants"
 msgid "hop plants"
-msgstr "tanaman rempah-rempah"
+msgstr "tanaman hop"
 
 #. This is a database entry: the name of a resource
 msgid "hops"
-msgstr ""
+msgstr "hop"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "bir"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
-msgstr ""
+msgstr "kebersihan"
 
 #. This is a database entry: the name of a resource
 msgid "recreation"
-msgstr ""
+msgstr "rekreasi"
 
 #. This is a database entry: the name of a resource
 msgid "blackdeath"
-msgstr ""
+msgstr "penyakit pes"
 
 #. This is a database entry: the name of a resource
 msgid "fire"
-msgstr ""
+msgstr "api"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Sailors"
-msgstr ""
+msgstr "Pelaut"
 
 #. This is a database entry: the name of an inhabitant tier (level)
 msgid "Merchants"
