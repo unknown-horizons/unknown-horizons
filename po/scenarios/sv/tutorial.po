@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@lists.unknown-horizons.org\n"
 "POT-Creation-Date: 2016-09-04 00:33+0200\n"
-"PO-Revision-Date: 2022-11-07 13:07+0000\n"
-"Last-Translator: Unlucky Luke <emil@nordicnode.com>\n"
+"PO-Revision-Date: 2023-08-05 18:49+0000\n"
+"Last-Translator: TD <talentdev.keywords.montreal@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/uh/tutorial/sv/>"
 "\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. scenario difficulty
 msgid "Tutorial"
@@ -174,12 +174,17 @@ msgid ""
 "Lumberjacks will fell trees from the woodland around their tent and process "
 "the timber to produce boards, for use in construction or as a trade resource."
 msgstr ""
+"Skogshuggare kommer att fälla träd i skogen runtomkring deras tält och "
+"använda timmret för att tillverka plankor, för användning i byggnation eller "
+"som handelsresurs."
 
 #. This is the text body of a logbook page.
 msgid ""
 "To build a Lumberjack's Tent, open the Build Menu by clicking the button "
 "below the mini map or pressing 'B', the default hotkey."
 msgstr ""
+"För att bygga ett skogshuggartält, öppna byggmenyn genom att klicka på "
+"knappen under minikartan eller på standardknappen B."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -188,12 +193,17 @@ msgid ""
 "advances, you will obtain access to higher tiers and be able to construct a "
 "much wider range of buildings."
 msgstr ""
+"Byggmenyn är sorterad i nivåer och eftersom din bosättning är ny, finns bara "
+"byggnader på första nivå tillgängliga. När din civilisation utvecklas får du "
+"tillgång till högre nivåer och kan då bygga många olika typer av byggnader."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Find a nice wooded area for our Lumberjack to work then select 'Lumberjack's "
 "Tent' from the list of buildings in the Overview and place the building."
 msgstr ""
+"Hitta en skogstät plats åt våran skogshuggare att arbeta på. Välj sen "
+"Skogshuggartält från listan av byggnader i Översikt och placera ut byggnaden."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -201,6 +211,9 @@ msgid ""
 "since that costs money, you should use what nature has provided for the time "
 "being!"
 msgstr ""
+"Senare i spelet kanske du vill skapa skog genom att plantera träd, men "
+"eftersom det kostar pengar borde du använda det som finns i naturen för "
+"tillfället."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -208,6 +221,9 @@ msgid ""
 "a Warehouse or other form of storage, otherwise the goods it produces will "
 "not be collected."
 msgstr ""
+"Varje resurssamling eller produktionsbyggnad behöver en väg som länkar den "
+"till en lagerlokal eller nån annan typ av lagring, annars samlas inte "
+"varorna som den producerar."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -216,6 +232,9 @@ msgid ""
 "and drag with the mouse to draw the route of your path between the "
 "Lumberjack's Tent and the Warehouse."
 msgstr ""
+"När ditt skogshuggartält är utplacerat, länka det till din lagerlokal genom "
+"att öppna Byggmenyn och klicka sen på Väg-knappen. Du kan nu klicka och dra "
+"med musen för att rita vägen mellan skogshuggartältet och lagerlokalen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -231,6 +250,9 @@ msgid ""
 "your newly produced boards and deliver them to the Warehouse, ready for use "
 "in construction or trade."
 msgstr ""
+"När byggnaderna är länkade kommer du att se en samlare som kommer och hämtar "
+"dina nyproducerade plankor som levereras till lagerlokalen, redo att "
+"användas i byggnation eller handel."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -248,12 +270,14 @@ msgid ""
 "You will need to have some food-producing companies too, because people in "
 "general (and especially sailors) are very hungry."
 msgstr ""
+"Du behöver några matproducerande företag också eftersom folk är generellt "
+"väldigt hungriga, speciellt seglare."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Available companies in the first tier are the Hunter's Tent and Fisherman's "
 "Tent."
-msgstr ""
+msgstr "Tillgängliga företäg på första nivå är Jägartältet och Fiskartältet."
 
 #. This is the text body of a logbook page.
 msgid "The hunter hunts animals in the forest, thus needs trees nearby."
@@ -286,22 +310,29 @@ msgid ""
 "The Fisher needs a coastal building site like the Warehouse and a fish "
 "school in range."
 msgstr ""
+"\n"
+"Fiskaren behöver en kustbyggnadsplats som Lagerlokalen och en fiskskola i "
+"närheten."
 
 #. This is the text body of a logbook page.
 msgid "He will build a small rowing vessel and catch some fish."
-msgstr ""
+msgstr "Han kommer att bygga en liten roddbåt och fånga fisk."
 
 #. This is the text body of a logbook page.
 msgid ""
 "This is a very constant supply at the cost of a slightly longer production "
 "time per unit of food."
 msgstr ""
+"Det här är en väldigt konstant tillgång till bekostnad av en lite längre "
+"produktionstid per enhet mat."
 
 #. This is the text body of a logbook page.
 msgid ""
 "A small settlement like yours can use both companies, and you can better "
 "balance pros and cons if you see the direct comparison."
 msgstr ""
+"En liten bosättning som din kan använda båda företagen och du kan bättre "
+"utvärdera fördelar och nackdelar när du ser en direkt jämförelse."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -311,7 +342,7 @@ msgstr "Bygg en jägare och en fiskare. Anslut dem till ditt handelskontor."
 
 #. This is the text body of a logbook page.
 msgid "Don't forget to connect them to your Warehouse with Trails!"
-msgstr ""
+msgstr "Glöm inte att länka dem till din lagerlokal med vägar!"
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -328,7 +359,7 @@ msgstr "NY UPPGIFT: MARKNADSPLATS"
 #. This is the text body of a logbook page.
 msgid ""
 "Your residents need a main square where they can fetch their goods from."
-msgstr ""
+msgstr "Dina invånare behöver en marknadsplats där de kan få sina varor."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -336,6 +367,9 @@ msgid ""
 "Square. Note that the Main Square acts as trail as well, therefore adjacent "
 "Tents do not need a separate Trail."
 msgstr ""
+"Det betyder att de behöver en väg från deras hem till marknadsplatsen. "
+"Notera att marknadsplatsen fungerar som väg också och intilliggande tält "
+"behöver därför inte en särskild väg."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -343,6 +377,8 @@ msgid ""
 "residents do not need to walk to the Fisherman's Tent or even to the "
 "Warehouse."
 msgstr ""
+"Alla varor i din lagerlokal finns tillgängliga på denna marknadsplats så "
+"dina invånare behöver inte gå till fiskartältet eller lagerlokalen."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -350,12 +386,17 @@ msgid ""
 "lumberjacks because building tents will clear away the trees that your "
 "lumberjack needs to produce boards."
 msgstr ""
+"Du borde undvika att placera din huvudbosättnings tält alltför nära dina "
+"skogshuggare eftersom tältbyggande rensar bort träden som din skogshuggare "
+"behöver för att producera plankor."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Companies work without being connected to the tents, so you don't need to "
 "build a road between the Main Square and e.g. your Lumberjack's Tent."
 msgstr ""
+"Företag behöver ej vara länkade till tälten, så du behöver inte bygga en väg "
+"mellan marknadsplatsen och Skogshuggartältet till exempel."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -368,22 +409,28 @@ msgid ""
 "\n"
 "Now let's have a closer look at the Main Square."
 msgstr ""
+"\n"
+"Nu ska vi ta en närmare titt på marknadsplatsen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "In the 'Account' tab you get a balance sheet of this island, featuring all "
 "costs you pay and all taxes you earn."
 msgstr ""
+"I kontofliken har du en balansräkning av ön där du kan se alla kostnader och "
+"skatteinkomster."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The items 'Sale' and 'Buy' refer to your trading balance and will be "
 "explained later on."
 msgstr ""
+"Föremålen Försäljning och Köp hänvisar till din handelsbalans och kommer att "
+"förklaras senare."
 
 #. This is the text body of a logbook page.
 msgid "If your balance is positive, you all-in-all make a profit."
-msgstr ""
+msgstr "Om din balansräkning är positiv går du med vinst."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -391,6 +438,9 @@ msgid ""
 "inhabitants. You also set the tier-specific global tax here and allow or "
 "deny inhabitants of this tier to upgrade to the next higher one."
 msgstr ""
+"I de olika nivåöversiktsflikarna kan du se statistik på dina invånare. Här "
+"lägger du även ut den nivåspecifika globala skatten och tillåter eller nekar "
+"invånarna på denna nivå att uppgradera till nästa."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -407,23 +457,31 @@ msgid ""
 "Settlers want to have a roof over their heads, else they won't even think of "
 "living in your city! You need to provide tents."
 msgstr ""
+"Invånare vill ha tak över huvudet annars kan de inte tänka sig att bo i din "
+"stad! Du behöver tält."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Tents are the basic residential buildings. Your inhabitants will want to "
 "upgrade it when they reach higher tiers."
 msgstr ""
+"Tält är de grundläggande bostadsbyggnaderna. Dina invånare vill uppgradera "
+"dem när de når högre nivåer."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Note that the upgrade of each building requires construction material, like "
 "wood for their first upgrade."
 msgstr ""
+"Notera att uppgraderingen av varje byggnad kräver byggnadsmaterial, som "
+"exempelvis trä för första uppgraderingen."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Consider to disable the upgrade if your stock of these materials is low."
 msgstr ""
+"Överväg att inaktivera uppgraderingen om du bara har lite av dessa material "
+"i lager."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -431,6 +489,9 @@ msgid ""
 "you produce - but they at least pay taxes, and that's the only way you can "
 "make money for now!"
 msgstr ""
+"Invånare kanske inte uppfattas som dugliga eftersom de kommer att försöka "
+"konsumera alla varor du producerar. Men de betalar i alla fall skatt och det "
+"är det enda sättet du kan tjäna pengar just nu!"
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -453,6 +514,8 @@ msgid ""
 "\n"
 "Let's have a look at the Tent overview tab."
 msgstr ""
+"\n"
+"Nu ska vi ta en titt på Tältöversiktsfliken."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -461,11 +524,15 @@ msgid ""
 "* the taxes they pay and\n"
 "* the resources they demand."
 msgstr ""
+"Du kan se\n"
+"* lyckan av dessa invånare,\n"
+"* skatterna som de betalar och\n"
+"* resurserna som de kräver."
 
 #. This is the text body of a logbook page.
 msgid ""
 "If their demands are fulfilled, happiness and thus your tax income increase."
-msgstr ""
+msgstr "Om deras krav är uppfyllda ökar deras lycka samt dina skatteinkomster."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -473,10 +540,12 @@ msgid ""
 "really sour and simply turn their back on your village, leaving behind a "
 "decaying ruin."
 msgstr ""
+"Om inte, då minskar lycka och inkomst. Vid nån tidpunkt kan möjligtvis "
+"invånarna bli sura och sticka, samt lämna bakom sig en förfallande ruin."
 
 #. This is the text body of a logbook page.
 msgid "Note that you can also change the global tax settings here, too."
-msgstr ""
+msgstr "Notera att du kan även ändra de globala skattinställningarna här också."
 
 #. This is the text body of a logbook page.
 #, fuzzy
@@ -491,6 +560,9 @@ msgid ""
 "TIP: Holding down SHIFT eases constructing multiple buildings of the same "
 "kind."
 msgstr ""
+"\n"
+"TIPS: Håll inne SHIFT så förenklar du byggandet av flera byggnader av samma "
+"typ."
 
 #. This message is displayed in the widget on the left screen part. Please keep it short enough to fit there!
 #, fuzzy
@@ -507,36 +579,48 @@ msgid ""
 "Can you see the ship passing your island from time to time? That ship "
 "belongs to the Free Trader, one of the first settlers in this archipelago."
 msgstr ""
+"Kan du se skeppet som passerar din ö ibland? Det skeppet tillhör "
+"frihandlaren, en av de första invånarna i den här skärgården."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The trader will supply your settlement with necessary goods which you can't "
 "produce yet."
 msgstr ""
+"Handlaren kommer att tillförse dina invånare med nödvändiga varor som du "
+"inte kan producera än."
 
 #. This is the text body of a logbook page.
 msgid ""
 "You can also sell surpluses of your production, but in general consuming "
 "them (by building more Tents) instead of selling them yields more profit."
 msgstr ""
+"Du kan även sälja överskott av din produktion, men generellt sett ökar "
+"profiten mer om du konsumerar det (genom att bygga fler tält) än om du "
+"säljer det."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Normally the trader just sails around and looks for deals, but you can speed "
 "things up a bit."
 msgstr ""
+"Vanligtvis seglar handlaren omkring och söker bra erbjudanden, men du kan "
+"öka hastigheten på processen lite."
 
 #. This is the text body of a logbook page.
 msgid ""
 "For this purpose, build a Signal Fire at the coast near your Warehouse. It "
 "will show ships the way to your settlement."
 msgstr ""
+"För det här syftet, bygg en brandsignal vid kusten i närheten av din "
+"lagerlokal. Det kommer visa skeppen vägen till din bosättning."
 
 #. This is the text body of a logbook page.
 msgid ""
 "The Signal Fire has to cover the area which the ships pass through to catch "
 "them."
 msgstr ""
+"Brandsignalen måste täcka hela området där skeppen passerar för att nå dem."
 
 #. This is the text body of a logbook page.
 msgid ""
@@ -544,26 +628,31 @@ msgid ""
 "After this little advertisement, the trader will also stop by and look into "
 "your Warehouse, even if he had planned to sail past it."
 msgstr ""
+"\n"
+"Efter den här annonseringen kommer handlaren även att stanna och titta in i "
+"lagerlokalen även om han hade planerat att bara segla förbi."
 
 #. This is the text body of a logbook page.
 msgid "You can propose deals via the Warehouse tab \"Buy/Sell\"."
-msgstr ""
+msgstr "Du kan föreslå erbjudanden via lagerlokalsfliken Köp/Sälj."
 
 #. This is the text body of a logbook page.
 msgid "At the 'sailors' tier, you are equipped with three trading slots."
-msgstr ""
+msgstr "När du når seglarnivån får du tre handelsplatser."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click on the small icon to change the slot mode from 'Buy' to 'Sell' and "
 "vice versa."
-msgstr ""
+msgstr "Klicka på den lilla ikonen för att bläddra mellan Köp och Sälj."
 
 #. This is the text body of a logbook page.
 msgid ""
 "Click in the slot to choose the good you want to trade with. We will further "
 "explain this once you are ready to trade."
 msgstr ""
+"Klicka i rutan för att välja varan du vill byta med. Vi kommer förklara "
+"detta i mer detalj när du är redo att byta."
 
 #. This is the text body of a logbook page.
 #, fuzzy
