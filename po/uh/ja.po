@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: team@unknown-horizons.org\n"
 "POT-Creation-Date: 2017-06-09 23:33+0200\n"
-"PO-Revision-Date: 2014-08-16 14:55+0200\n"
-"Last-Translator: Tatsuhiko Yamanoue <yokota33@gmail.com>\n"
+"PO-Revision-Date: 2023-08-05 18:49+0000\n"
+"Last-Translator: TD <talentdev.keywords.montreal@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/uh/uh/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: run_uh.py:132
 msgid "Thank you for using Unknown Horizons!"
@@ -214,16 +214,11 @@ msgid "Running costs"
 msgstr "維持費"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks.xml:21
-#, fuzzy
-#| msgid ""
-#| "To build a boat, click on one of the class tabs, select the desired ship "
-#| "and confirm the order."
 msgid ""
 "To build a groundunit, click on one of the class tabs, select the desired "
 "groundunit and confirm the order."
-msgstr ""
-"造船には、種別タブのいずれかをクリックし、希望する船を選択して、注文を確定し"
-"てください。"
+msgstr "地上ユニットの建築には、種別タブのいずれかをクリックし、希望するユニットを選"
+"択して、注文を確定してください。"
 
 #. Information about the ship currently under construction at the boat
 #. builder
@@ -292,10 +287,8 @@ msgstr "注文を確認"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:14
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:14
-#, fuzzy
-#| msgid "Join the selected game"
 msgid "(like in the selection tabs)"
-msgstr "選択したゲームに参加します"
+msgstr "(選択タブと同様)"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:19
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:21
@@ -308,46 +301,44 @@ msgstr "選択したゲームに参加します"
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:25
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:27
 msgid "$res"
-msgstr ""
+msgstr "$res"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:20
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:20
 msgid "24t"
-msgstr ""
+msgstr "24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:22
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:22
 msgid "14t"
-msgstr ""
+msgstr "14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:26
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:24
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:26
 msgid "06t"
-msgstr ""
+msgstr "06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:28
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:28
 msgid "2500"
-msgstr ""
+msgstr "2500"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:34
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:34
 msgid "Sloop-o'-war"
-msgstr ""
+msgstr "戦闘スループ"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:35
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:35
 msgid "Three-masted most common classified war ship with one gun deck."
-msgstr ""
+msgstr "1 つの砲甲板に3 本マストを備えた最も一般的な軍艦。"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:36
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:36
-#, fuzzy
-#| msgid "Allow upgrades"
 msgid "Buy Upgrades"
-msgstr "昇格を許可"
+msgstr "昇格を購入"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:43
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:43
@@ -359,42 +350,38 @@ msgstr "キャノン砲"
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:45
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:45
 msgid "Hull"
-msgstr ""
+msgstr "船体"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:50
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:50
 msgid "+ 24t"
-msgstr ""
+msgstr "+ 24t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:51
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:51
 msgid "+ 14t"
-msgstr ""
+msgstr "+ 14t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:53
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:52
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:53
 msgid "+ 06t"
-msgstr ""
+msgstr "+ 06t"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:54
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:54
 msgid "+ 1457"
-msgstr ""
+msgstr "+ 1457"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:60
-#, fuzzy
-#| msgid "Hold ground"
 msgid "Build groundunit:"
-msgstr "死守"
+msgstr "地上ユニットを建設"
 
 #: content/gui/xml/ingame/tabwidget/barracks/barracks_confirm.xml:61
 #: horizons/gui/tabs/barrackstabs.py:81
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build this groundunit!"
-msgstr "この船を建造します！"
+msgstr "この地上ユニットを建造します！"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder.xml:21
 msgid ""
@@ -405,10 +392,8 @@ msgstr ""
 "てください。"
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:60
-#, fuzzy
-#| msgid "Build this ship!"
 msgid "Build ship:"
-msgstr "この船を建造します！"
+msgstr "この船を建造します："
 
 #: content/gui/xml/ingame/tabwidget/boatbuilder/boatbuilder_confirm.xml:61
 #: horizons/gui/tabs/boatbuildertabs.py:252
@@ -443,10 +428,8 @@ msgid "Capacity utilization"
 msgstr "稼働率"
 
 #: content/gui/xml/ingame/tabwidget/groundunits/overview_war_groundunit.xml:10
-#, fuzzy
-#| msgid "Click to change the name of this ship"
 msgid "Click to change the name of this groundunit"
-msgstr "クリックすると、この船名を変更できます"
+msgstr "クリックすると、このユニット名を変更できます"
 
 #: content/gui/xml/ingame/tabwidget/island_inventory.xml:8
 #: horizons/gui/tabs/inventorytab.py:31
@@ -529,10 +512,8 @@ msgid "residents"
 msgstr "住民数"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_barrier.xml:20
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Provides security for your settlement."
-msgstr "入植地を防衛します。"
+msgstr "居住区を防衛します。"
 
 #: content/gui/xml/ingame/tabwidget/overview/overview_enemywarehouse.xml:18
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:73
@@ -635,10 +616,8 @@ msgid "Configure trading route"
 msgstr "交易路の調整"
 
 #: content/gui/xml/ingame/tabwidget/ships/overview_trade_ship.xml:38
-#, fuzzy
-#| msgid "(lose all resources)"
 msgid "Discard all resources"
-msgstr "（全資源を失います）"
+msgstr "全資源を失います"
 
 #: content/gui/xml/ingame/tabwidget/ships/tradetab.xml:16
 msgid "Ship:"
@@ -803,16 +782,12 @@ msgid "Return to game"
 msgstr "ゲームに戻る"
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:7
-#, fuzzy
-#| msgid "Old name:"
 msgid "Island Name:"
-msgstr "旧名称："
+msgstr "島の名称："
 
 #: content/gui/xml/ingame/widgets/configure_route.xml:8
-#, fuzzy
-#| msgid "Player Name"
 msgid "Player Name:"
-msgstr "プレイヤー名"
+msgstr "プレイヤー名："
 
 #. Trade route setting: Whether to wait until all goods could be loaded.
 #: content/gui/xml/ingame/widgets/configure_route.xml:15
@@ -844,11 +819,11 @@ msgstr "終了"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:13
 msgid "Go to previous page"
-msgstr ""
+msgstr "前のページに戻る"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:15
 msgid "Go to next page"
-msgstr ""
+msgstr "次のページへ"
 
 #: content/gui/xml/ingame/widgets/island_production.xml:18
 msgid "Close"
@@ -1697,16 +1672,12 @@ msgid "Cannot do diplomacy as there are no other players."
 msgstr "他にプレイヤーがいないので、外交を続けることができません。"
 
 #: horizons/gui/ingamegui.py:475
-#, fuzzy
-#| msgid "Are you sure you want to abort the running session?"
 msgid "Are you sure you want to delete these objects?"
-msgstr "本当に実行中のセッションを停止しますか？"
+msgstr "本当に削除しますか？"
 
 #: horizons/gui/ingamegui.py:476
-#, fuzzy
-#| msgid "Delete entry"
 msgid "Delete"
-msgstr "項目を削除"
+msgstr "削除"
 
 #. size of empty map in map editor
 #: horizons/gui/modules/editorstartmenu.py:92
@@ -1715,10 +1686,8 @@ msgid "{size}x{size} tiles"
 msgstr "{size}x{size}コマ"
 
 #: horizons/gui/modules/hotkeys_settings.py:98
-#, fuzzy
-#| msgid "Press desired key"
 msgid "Press key…"
-msgstr "お望みの鍵を押してください"
+msgstr "鍵を押す…"
 
 #: horizons/gui/modules/hotkeys_settings.py:147
 #, python-brace-format
@@ -1793,10 +1762,8 @@ msgid "Press 'T' to make trees transparent."
 msgstr "「T」を押せば木が透明になります。"
 
 #: horizons/gui/modules/loadingscreen.py:80
-#, fuzzy
-#| msgid "Build storage tents to increase your storage capacity."
 msgid "Build storage tents and lookouts to expand your settlement range."
-msgstr "貯蔵容量を増やすためには貯蔵テントを建設してください。"
+msgstr "居住範囲を増やすためには貯蔵テントを建設してください。"
 
 #: horizons/gui/modules/loadingscreen.py:81
 msgid ""
@@ -1805,28 +1772,34 @@ msgid ""
 "tents are shown in yellow. It's a good idea to build a new pavilion in their "
 "neighborhood."
 msgstr ""
+"建築メニューから、既存のパビリオンの上にマウスを置くと、パビリオンがすべての"
+"範囲のテントをカバーしているかどうかを簡単に確認できます。覆われていないテン"
+"トは黄色で表示されます。彼らの近所に新しいパビリオンを建てましょう。"
 
 #: horizons/gui/modules/loadingscreen.py:82
 msgid ""
 "Make singleplayer more fun with additional computer players by increasing "
 "'AI players' when starting a new game."
-msgstr ""
+msgstr "新しいゲームを開始するときに「AI プレイヤー」を増やすことで、コンピュータ "
+"プレイヤーを追加でき、シングルプレイをさらに楽しくします。"
 
 #: horizons/gui/modules/loadingscreen.py:83
 msgid ""
 "First steps are easier by looking at how AI players are setting up their "
 "settlement."
-msgstr ""
+msgstr "AI プレイヤーがどのように決済を設定しているかを確認することで、最初のステップ"
+"が簡単になります。"
 
 #: horizons/gui/modules/loadingscreen.py:84
 msgid ""
 "Want funny quotes only? Change the quote types shown here in the settings "
 "menu on the game page."
-msgstr ""
+msgstr "面白い引用文だけが必要ですか?ゲームページの設定メニューで、ここに表示される引"
+"用タイプを変更します。"
 
 #: horizons/gui/modules/loadingscreen.py:85
 msgid "A marketplace links your buildings like a road."
-msgstr ""
+msgstr "マーケットプレイスは道路のように建造物同士をつなぎます。"
 
 #. This are the options you can select in the Settings what type of quotes
 #. should be
@@ -2187,8 +2160,6 @@ msgid "Restart required"
 msgstr "再起動が必要です"
 
 #: horizons/gui/modules/settings.py:132
-#, fuzzy
-#| msgid "Some of your changes require a restart of Unknown Horizons."
 msgid ""
 "Some of your changes require a restart of Unknown Horizons. Do you want to "
 "restart Unknown Horizons now?"
@@ -2316,32 +2287,28 @@ msgid "Press H to remove this hint"
 msgstr "このヒントを消すにはHを押してください"
 
 #: horizons/gui/mousetools/tearingtool.py:114
-#, fuzzy
-#| msgid "Related buildings"
 msgid "Destroy all buildings"
-msgstr "関連する建築物"
+msgstr "すべての建築物を削除"
 
 #: horizons/gui/mousetools/tearingtool.py:115
 msgid ""
 "This will destroy all the buildings that fall outside of the settlement "
 "range."
-msgstr ""
+msgstr "これにより、決算範囲外の建造物はすべて破壊されます。"
 
 #: horizons/gui/mousetools/tearingtool.py:118
 #, python-format
 msgid "%s additional building will be destroyed."
 msgid_plural "%s additional buildings will be destroyed"
-msgstr[0] ""
+msgstr[0] "%s の建造物が追加で破壊されます。"
 
 #: horizons/gui/tabs/barrackstabs.py:38
-#, fuzzy
-#| msgid "Warehouse overview"
 msgid "Barracks overview"
-msgstr "倉庫の概要"
+msgstr "兵舎の概要"
 
 #: horizons/gui/tabs/barrackstabs.py:116
 msgid "Swordman"
-msgstr ""
+msgstr "剣士"
 
 #: horizons/gui/tabs/barriertab.py:33 horizons/gui/tabs/buildingtabs.py:41
 #: horizons/gui/tabs/overviewtab.py:30
@@ -2452,7 +2419,7 @@ msgstr "生産の概要"
 #: horizons/gui/tabs/productiontabs.py:300
 #, python-brace-format
 msgid "Fill range with {how_many} trees"
-msgstr ""
+msgstr "{how_many} 本の木で範囲を埋める"
 
 #: horizons/gui/tabs/selectmultitab.py:47
 msgid "Selected Units"
@@ -2662,22 +2629,18 @@ msgstr "陸地戦に適したユニットを募集します。"
 
 #. name_0 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:59
-#, fuzzy
-#| msgid "Wooden Tower"
 msgid "Wooden barrier"
-msgstr "木塔"
+msgstr "木製の障壁"
 
 #. name_1 of buildings:barrier
 #: horizons/i18n/objecttranslations.py:61
 msgid "Clay wall"
-msgstr ""
+msgstr "土壁"
 
 #. tooltip_text of buildings:barrier
 #: horizons/i18n/objecttranslations.py:63
-#, fuzzy
-#| msgid "Provides education."
 msgid "Provides security."
-msgstr "教育を提供します。"
+msgstr "セキュリティを強化します。"
 
 #. name of buildings:blender
 #: horizons/i18n/objecttranslations.py:67
@@ -2702,14 +2665,12 @@ msgstr "手漕ぎ船と小舟を作ります。海岸沿いに建造してくだ
 #. name of buildings:brewery
 #: horizons/i18n/objecttranslations.py:79
 msgid "Brewery"
-msgstr ""
+msgstr "醸造所"
 
 #. tooltip_text of buildings:brewery
 #: horizons/i18n/objecttranslations.py:81
-#, fuzzy
-#| msgid "Consumes flour. Produces food."
 msgid "Consumes hops. Produces Beer."
-msgstr "小麦粉を消費し、食糧を生産します。"
+msgstr "ホップを消費し、ビールを生産します。"
 
 #. name of buildings:brickyard
 #: horizons/i18n/objecttranslations.py:85
@@ -2734,14 +2695,12 @@ msgstr "豚か牛を必要とし、食糧を生産します。"
 #. name of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:97
 msgid "Cannon Foundry"
-msgstr ""
+msgstr "大砲鋳造所"
 
 #. tooltip_text of buildings:cannonfoundry
 #: horizons/i18n/objecttranslations.py:99
-#, fuzzy
-#| msgid "Produces tools out of iron."
 msgid "Produces Cannons."
-msgstr "鉄から工具を生産します。"
+msgstr "キャノン砲を生産します。"
 
 #. name of buildings:charcoalburning
 #: horizons/i18n/objecttranslations.py:103
@@ -2771,7 +2730,7 @@ msgstr "粘土層から粘土を採取します。"
 #. name of buildings:distillery
 #: horizons/i18n/objecttranslations.py:119
 msgid "Distillery"
-msgstr "醸造所"
+msgstr "蒸留所"
 
 #. tooltip_text of buildings:distillery
 #: horizons/i18n/objecttranslations.py:121
@@ -2850,17 +2809,13 @@ msgstr "薬草を生産します。農家が必要です。"
 
 #. name of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:167
-#, fuzzy
-#| msgid "Corn Field"
 msgid "Hop Field"
-msgstr "とうもろこし畑"
+msgstr "ホップ畑"
 
 #. tooltip_text of buildings:fields:hopfield
 #: horizons/i18n/objecttranslations.py:169
-#, fuzzy
-#| msgid "Yields corn. Needs a farm."
 msgid "Yields hop. Needs a farm."
-msgstr "とうもろこしを生産します。農家が必要です。"
+msgstr "ホップを生産します。農家が必要です。"
 
 #. name of buildings:fields:pasture
 #: horizons/i18n/objecttranslations.py:173
@@ -2974,10 +2929,8 @@ msgstr "見張り台"
 
 #. tooltip_text of buildings:lookout
 #: horizons/i18n/objecttranslations.py:239
-#, fuzzy
-#| msgid "Defends your settlement."
 msgid "Expands settlement range."
-msgstr "入植地を防衛します。"
+msgstr "居住範囲を拡張します。"
 
 #. name_0 of buildings:lumberjackcamp
 #: horizons/i18n/objecttranslations.py:243
@@ -3076,10 +3029,8 @@ msgstr "あらゆる種類の鉱石を精錬します。"
 
 #. name of buildings:stonedeposit
 #: horizons/i18n/objecttranslations.py:301
-#, fuzzy
-#| msgid "stone deposit"
 msgid "Stone Deposit"
-msgstr "岩石層"
+msgstr "石の堆積物"
 
 #. name_3 of buildings:stonemason
 #: horizons/i18n/objecttranslations.py:305
@@ -3118,10 +3069,8 @@ msgstr "貯蔵所"
 
 #. tooltip_text of buildings:storagetent
 #: horizons/i18n/objecttranslations.py:323
-#, fuzzy
-#| msgid "Extends stock and provides collectors."
 msgid "Extends stock, expands settlement range and provides collectors."
-msgstr "在庫容量を増やし、在庫を人夫に引き渡します。"
+msgstr "貯蔵、居住範囲を拡大し、コレクターを提供します。"
 
 #. name of buildings:tavern
 #: horizons/i18n/objecttranslations.py:327
@@ -3237,17 +3186,13 @@ msgstr "倉庫"
 
 #. name of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:387
-#, fuzzy
-#| msgid "Weapons"
 msgid "Weaponsmith"
-msgstr "武器"
+msgstr "武器鍛冶屋"
 
 #. tooltip_text of buildings:weaponsmith
 #: horizons/i18n/objecttranslations.py:389
-#, fuzzy
-#| msgid "Produces tools out of iron."
 msgid "Produces weapons out of iron."
-msgstr "鉄から工具を生産します。"
+msgstr "鉄から武器を生産します。"
 
 #. name of buildings:weaverstent
 #: horizons/i18n/objecttranslations.py:393
@@ -3272,7 +3217,7 @@ msgstr "とうもろこしを製粉します。"
 #. name of buildings:winery
 #: horizons/i18n/objecttranslations.py:405
 msgid "Winery"
-msgstr ""
+msgstr "ワイナリー"
 
 #. tooltip_text of buildings:winery
 #: horizons/i18n/objecttranslations.py:407
@@ -3487,107 +3432,100 @@ msgstr "準備中"
 
 #: horizons/network/server.py:303
 msgid "Old or unsupported multiplayer protocol. Please check your game version"
-msgstr ""
+msgstr "古いバージョンまたはマルチプレイヤー "
+"プロトコルがサポートされていません。ゲームのバージョンを確認してください"
 
 #: horizons/network/server.py:339
 msgid "You've exceeded the global packet size."
-msgstr ""
+msgstr "グローバル パケット サイズを超えました。"
 
 #: horizons/network/server.py:340 horizons/network/server.py:359
 msgid "This should never happen. Please contact us or file a bug report."
-msgstr ""
+msgstr "このようなことは決してあってはなりません。弊社までご連絡いただくか、バグレポ"
+"ートを提出してください。"
 
 #: horizons/network/server.py:358
 msgid "You've exceeded the per packet size."
-msgstr ""
+msgstr "パケットあたりのサイズを超えました。"
 
 #: horizons/network/server.py:366
 msgid "Unknown or malformed packet. Please check your game version"
-msgstr ""
+msgstr "不明なパケットまたは不正な形式のパケットです。ゲームのバージョンを確認してく"
+"ださい"
 
 #: horizons/network/server.py:374
 msgid "Invalid/Unknown session"
-msgstr ""
+msgstr "無効/不明なセッション"
 
 #: horizons/network/server.py:455
 msgid "You can't join a game while in another game"
-msgstr ""
+msgstr "別のゲームをプレイ中にはゲームに参加することはできません"
 
 #: horizons/network/server.py:460
 msgid "Unknown game or game is running a different version"
-msgstr ""
+msgstr "不明なゲーム、または別のバージョンのゲームが実行されています"
 
 #: horizons/network/server.py:463
 msgid "Game has already started. No more joining"
-msgstr ""
+msgstr "ゲームはすでに始まっています。参加できません"
 
 #: horizons/network/server.py:466
 msgid "Game is full"
-msgstr ""
+msgstr "ゲームは満員です"
 
 #: horizons/network/server.py:469
-#, fuzzy
-#| msgid "Enter password:"
 msgid "Wrong password"
-msgstr "パスワードを入力してください："
+msgstr "間違ったパスワード"
 
 #: horizons/network/server.py:475 horizons/network/server.py:540
 msgid "There's already a player with your name inside this game."
-msgstr ""
+msgstr "このゲーム内には同じ名前のプレイヤーがすでに存在します。"
 
 #: horizons/network/server.py:476
 msgid "Please change your name."
-msgstr ""
+msgstr "名前を変更してください。"
 
 #: horizons/network/server.py:479 horizons/network/server.py:572
 msgid "There's already a player with your color inside this game."
-msgstr ""
+msgstr "このゲームには同じ色のプレイヤーがすでに存在します。"
 
 #: horizons/network/server.py:480
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Please change your color."
-msgstr "あなたは色を変更しました"
+msgstr "色を変更してください。"
 
 #: horizons/network/server.py:483
 msgid ""
 "There's already a player with your unique player ID inside this game. This "
 "should never occur."
-msgstr ""
+msgstr "このゲーム内には、あなた特有のプレイヤー ID を持つプレイヤーがすでに存在しま"
+"す。このようなことは決して起こらないはずです。"
 
 #: horizons/network/server.py:496
-#, fuzzy
-#| msgid "You are not ready anymore"
 msgid "You are not inside a game"
-msgstr "あなたは準備完了ではなくなりました"
+msgstr "あなたはゲーム中ではありません"
 
 #: horizons/network/server.py:541
-#, fuzzy
-#| msgid "Unable to connect to server."
 msgid "Unable to change your name."
-msgstr "サーバーに接続することができません。"
+msgstr "名前を変更できません。"
 
 #: horizons/network/server.py:573
-#, fuzzy
-#| msgid "You changed your color"
 msgid "Unable to change your color."
-msgstr "あなたは色を変更しました"
+msgstr "色を変更できません。"
 
 #: horizons/network/server.py:649
-#, fuzzy
-#| msgid "You cannot change the speed of a multiplayer game"
 msgid "You can't fetch a game while in another game"
-msgstr "マルチプレイではゲームスピードは変更できません"
+msgstr "別のゲームをプレイしている間はゲームをフェッチすることはできません"
 
 #: horizons/network/server.py:716
 msgid "The game has been terminated. The creator has left the game."
-msgstr ""
+msgstr "ゲームは終了しました。作成者がゲームから離れました。"
 
 #: horizons/network/server.py:721
 msgid ""
 "One player has terminated their game. For technical reasons, this currently "
 "means the game cannot continue. We are very sorry about that."
-msgstr ""
+msgstr "1 人のプレイヤーがゲームを終了しました。技術的な理由により、現時点ではゲーム"
+"を続行できないことを意味します。誠に申し訳ございません。"
 
 #: horizons/scenario/actions.py:91
 msgid "You have won!"
@@ -3883,16 +3821,14 @@ msgid "A new ship by the name of {name} has been created."
 msgstr "{name}という名の新造船が造られました。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The Soldier by the name of {name} is ready to battle."
-msgstr "{name}という名の新造船が造られました。"
+msgstr "兵士の{name} は戦闘の準備ができています。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
-#, fuzzy, python-brace-format
-#| msgid "A new ship by the name of {name} has been created."
+#, python-brace-format
 msgid "The inhabitant by the name of {name} is available."
-msgstr "{name}という名の新造船が造られました。"
+msgstr "住人の{name} が利用可能です。"
 
 #. This is a database entry: a messagewidget message (left part of the screen)
 msgid "A new world has been created."
@@ -4110,7 +4046,7 @@ msgstr "キャノン砲"
 
 #. This is a database entry: the name of a resource
 msgid "sword"
-msgstr ""
+msgstr "剣"
 
 #. This is a database entry: the name of a resource
 msgid "grain"
@@ -4298,7 +4234,7 @@ msgstr "ホップ"
 
 #. This is a database entry: the name of a resource
 msgid "beer"
-msgstr ""
+msgstr "ビール"
 
 #. This is a database entry: the name of a resource
 msgid "hygiene"
