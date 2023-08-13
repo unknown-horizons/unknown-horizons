@@ -55,7 +55,7 @@ def generate_atlases():
 		window.maxsize(300, 150)
 
 		logo = Image.open(PATHS.UH_LOGO_FILE)
-		res_logo = logo.resize((116, 99), Image.ANTIALIAS)
+		res_logo = logo.resize((116, 99), Image.LANCZOS)
 		res_logo_image = ImageTk.PhotoImage(res_logo)
 		logo_label = tkinter.Label(window, image=res_logo_image)
 		logo_label.pack(side="left")
