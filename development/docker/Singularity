@@ -36,8 +36,7 @@ libpng-dev \
 libglew-dev \
 python3-enet \
 intltool \
-python3-pillow \
-python3-future
+python3-pillow
 
 # Install Fifengine and Fifechan
 git clone https://github.com/fifengine/fifechan.git && \

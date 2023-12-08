@@ -14,22 +14,12 @@ modify entries, comments or metadata, etc. or create new po files from scratch.
 
 import array
 import codecs
+import io
 import os
 import re
 import struct
 import sys
 import textwrap
-
-try:
-    import io
-except ImportError:
-    # replacement of io.open() for python < 2.6
-    # we use codecs instead
-    class io(object):
-        @staticmethod
-        def open(fpath, mode='r', encoding=None):
-            return codecs.open(fpath, mode, encoding)
-
 
 __author__ = 'David Jean Louis <izimobil@gmail.com>'
 __version__ = '1.1.0'
@@ -40,29 +30,9 @@ __all__ = ['pofile', 'POFile', 'POEntry', 'mofile', 'MOFile', 'MOEntry',
 # the default encoding to use when encoding cannot be detected
 default_encoding = 'utf-8'
 
-# python 2/3 compatibility helpers {{{
+def b(s):
+    return s.encode("latin-1")
 
-
-if sys.version_info[:2] < (3, 0):
-    PY3 = False
-    text_type = unicode
-
-    def b(s):
-        return s
-
-    def u(s):
-        return unicode(s, "unicode_escape")
-
-else:
-    PY3 = True
-    text_type = str
-
-    def b(s):
-        return s.encode("latin-1")
-
-    def u(s):
-        return s
-# }}}
 # _pofile_or_mofile {{{
 
 
@@ -190,7 +160,7 @@ def detect_encoding(file, binary_mode=False):
         boolean, set this to True if ``file`` is a mo file.
     """
     PATTERN = r'"?Content-Type:.+? charset=([\w_\-:\.]+)'
-    rxt = re.compile(u(PATTERN))
+    rxt = re.compile(PATTERN)
     rxb = re.compile(b(PATTERN))
 
     def charset_exists(charset):
@@ -208,20 +178,15 @@ def detect_encoding(file, binary_mode=False):
             if charset_exists(enc):
                 return enc
     else:
-        # For PY3, always treat as binary
-        if binary_mode or PY3:
-            mode = 'rb'
-            rx = rxb
-        else:
-            mode = 'r'
-            rx = rxt
+        mode = 'rb'
+        rx = rxb
         f = open(file, mode)
         for l in f.readlines():
             match = rx.search(l)
             if match:
                 f.close()
                 enc = match.group(1).strip()
-                if not isinstance(enc, text_type):
+                if not isinstance(enc, str):
                     enc = enc.decode('utf-8')
                 if charset_exists(enc):
                     return enc
@@ -338,18 +303,14 @@ class _BaseFile(list):
             ret.append(entry.__unicode__(self.wrapwidth))
         for entry in self.obsolete_entries():
             ret.append(entry.__unicode__(self.wrapwidth))
-        ret = u('\n').join(ret)
+        ret = '\n'.join(ret)
         return ret
 
-    if PY3:
-        def __str__(self):
-            return self.__unicode__()
-    else:
-        def __str__(self):
-            """
-            Returns the string representation of the file.
-            """
-            return unicode(self).encode(self.encoding)
+    def __str__(self):
+        """
+        Returns the string representation of the file.
+        """
+        return self.__unicode__()
 
     def __contains__(self, entry):
         """
@@ -444,7 +405,7 @@ class _BaseFile(list):
             fhandle = open(fpath, 'wb')
         else:
             fhandle = io.open(fpath, 'w', encoding=self.encoding)
-            if not isinstance(contents, text_type):
+            if not isinstance(contents, str):
                 contents = contents.decode(self.encoding)
         fhandle.write(contents)
         fhandle.close()
@@ -607,10 +568,7 @@ class _BaseFile(list):
             0, keystart
 
         )
-        if PY3 and sys.version_info.minor > 1:  # python 3.2 or superior
-            output += array.array("i", offsets).tobytes()
-        else:
-            output += array.array("i", offsets).tostring()
+        output += array.array("i", offsets).tobytes()
         output += ids
         output += strs
         return output
@@ -620,7 +578,7 @@ class _BaseFile(list):
         Encodes the given ``mixed`` argument with the file encoding if and
         only if it's an unicode string and returns the encoded string.
         """
-        if isinstance(mixed, text_type):
+        if isinstance(mixed, str):
             mixed = mixed.encode(self.encoding)
         return mixed
 # }}}
@@ -647,7 +605,7 @@ class POFile(_BaseFile):
             else:
                 ret += '# %s\n' % header
 
-        if not isinstance(ret, text_type):
+        if not isinstance(ret, str):
             ret = ret.decode(self.encoding)
 
         return ret + _BaseFile.__unicode__(self)
@@ -882,18 +840,14 @@ class _BaseEntry(object):
             ret += self._str_field("msgstr", delflag, "", self.msgstr,
                                    wrapwidth)
         ret.append('')
-        ret = u('\n').join(ret)
+        ret = '\n'.join(ret)
         return ret
 
-    if PY3:
-        def __str__(self):
-            return self.__unicode__()
-    else:
-        def __str__(self):
-            """
-            Returns the string representation of the entry.
-            """
-            return unicode(self).encode(self.encoding)
+    def __str__(self):
+        """
+        Returns the string representation of the entry.
+        """
+        return self.__unicode__()
 
     def __eq__(self, other):
         return str(self) == str(other)
@@ -1046,7 +1000,7 @@ class POEntry(_BaseEntry):
                 ret += self._str_field(f, prefix, "", val, wrapwidth)
 
         ret.append(_BaseEntry.__unicode__(self, wrapwidth))
-        ret = u('\n').join(ret)
+        ret = '\n'.join(ret)
         return ret
 
     def __cmp__(self, other):
@@ -1741,7 +1695,7 @@ class _MOFileParser(object):
                             v = tokens[1].decode(encoding)
                             metadata[k] = v.strip()
                         except IndexError:
-                            metadata[k] = u('')
+                            metadata[k] = ''
                 self.instance.metadata = metadata
                 continue
             # test if we have a plural entry

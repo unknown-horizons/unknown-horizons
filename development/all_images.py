@@ -27,7 +27,6 @@ in the repository and in a certain directory. Does not wite anything to a
 file, you will need to redirect output.
 Change `where` below to anything else as you see fit.
 '''
-from __future__ import print_function
 
 import os
 import os.path

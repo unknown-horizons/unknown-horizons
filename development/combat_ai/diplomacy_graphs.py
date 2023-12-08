@@ -29,7 +29,6 @@ Usage:
 3. After you close the plot window, next one should appear
 4. Uncomment functions from parameter_sets you don't want to have displayed
 """
-from __future__ import print_function
 
 import sys
 import pylab
