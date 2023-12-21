@@ -27,7 +27,6 @@ in human readable form.
 
 Run without arguments for help
 """
-from __future__ import print_function
 
 import inspect
 import pprint

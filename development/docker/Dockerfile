@@ -30,8 +30,7 @@ RUN apt-get update && \
                        libglew-dev \
                        python3-enet \
                        intltool \
-                       python3-pillow \
-                       python3-future
+                       python3-pillow
 
 # Install Fifengine and Fifechan
 RUN git clone https://github.com/fifengine/fifechan.git && \
