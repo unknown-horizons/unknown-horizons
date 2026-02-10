@@ -129,7 +129,7 @@ class _Tooltip:
 			# The underlying problem is that the cursor can not be repositioned
 			# on every mousemove because that causes frequent segfaults.
 			# If that problem would be fixed this workaround wouldn't be
-			# neccessary anymore.
+			# necessary anymore.
 
 			ypos = widget_position[1] + self.height + 10
 
