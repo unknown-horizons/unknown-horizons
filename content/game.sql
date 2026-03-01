@@ -324,6 +324,11 @@ INSERT INTO "resource" VALUES(89, 'hop plants',      2,     0,    0);
 INSERT INTO "resource" VALUES(90, 'hops',            2.5,   0,    1);
 INSERT INTO "resource" VALUES(91, 'beer',            6.5,   1,    1);
 -- vegetables, fruit, hemp, ropes
+--                            id   name            value  trade  show_inv
+INSERT INTO "resource" VALUES(92, 'vegetables',      2,     0,    0); -- unused -- (vegetable garden produce)
+INSERT INTO "resource" VALUES(93, 'legumes',         2,     0,    0); -- unused -- (lentils, beans, peas)
+INSERT INTO "resource" VALUES(94, 'hemp plants',     2,     0,    0); -- unused -- (called cannabis sativa)
+INSERT INTO "resource" VALUES(95, 'hemp seeds',      2.5,   0,    0); -- unused -- (pressed for oil or food)
 -- almonds, almond milk
 -- hides, leather, shoes, saddles
 -- tin ore, copper ore, tin, copper, bronze
