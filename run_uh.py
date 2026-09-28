@@ -343,12 +343,24 @@ def setup_fife():
 			exit_with_error('Failed to load module fife', 'Below directory paths were tested:\n' + directories)
 
 	from fife import fife
-	fife_version_major = fife.get_major() if hasattr(fife, 'get_major') else 'unknown'
-	fife_version_minor = fife.get_minor() if hasattr(fife, 'get_minor') else 'unknown'
-	fife_version_patch = fife.get_patch() if hasattr(fife, 'get_patch') else 'unknown'
+
+	def fife_version_part(*names):
+		# Released fifengine (0.4.x) spells these getMajor()/getMinor()/getPatch();
+		# fife's main branch renamed them to get_major()/get_minor()/get_patch().
+		for name in names:
+			getter = getattr(fife, name, None)
+			if getter is not None:
+				return getter()
+		return None
+
+	fife_version_major = fife_version_part('get_major', 'getMajor')
+	fife_version_minor = fife_version_part('get_minor', 'getMinor')
+	fife_version_patch = fife_version_part('get_patch', 'getPatch')
 
 	from horizons.constants import VERSION
-	if (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
+	if None in (fife_version_major, fife_version_minor, fife_version_patch):
+		logger.warning('Could not determine the fife version')
+	elif (fife_version_major, fife_version_minor, fife_version_patch) < VERSION.REQUIRED_FIFE_VERSION:
 		logger.warning('Unsupported fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
 	else:
 		logger.debug('Using fife version %s.%s.%s, at least %d.%d.%d required', fife_version_major, fife_version_minor, fife_version_patch, VERSION.REQUIRED_FIFE_MAJOR_VERSION, VERSION.REQUIRED_FIFE_MINOR_VERSION, VERSION.REQUIRED_FIFE_PATCH_VERSION)
