@@ -21,19 +21,17 @@
 # ###################################################
 
 
-import distutils.cmd
 import glob
 import json
 import os
 import platform
 import re
 import sys
-from distutils.command.build import build
-from distutils.core import setup
-from distutils.spawn import find_executable
-from shutil import copytree, rmtree
+from shutil import copytree, rmtree, which
 
 import distro
+from setuptools import Command, setup
+from setuptools.command.build import build
 
 import horizons
 from horizons.constants import VERSION
@@ -75,7 +73,7 @@ enetdir = "horizons/network/{!s}-x{!s}".format(systemtype, arch[-2:])
 package_data = {enetdir: ['*.so']}
 
 
-class _build_i18n(distutils.cmd.Command):
+class _build_i18n(Command):
 	"""
 	Derived from https://launchpad.net/python-distutils-extra
 	to avoid an additional dependency
@@ -100,7 +98,7 @@ class _build_i18n(distutils.cmd.Command):
 		if not os.path.isdir(po_dir):
 			return []
 		po_files = sorted(glob.glob("{}/*.po".format(po_dir)))
-		if po_files and not find_executable('msgfmt'):
+		if po_files and not which('msgfmt'):
 			raise RuntimeError(
 				"Can't generate language files, needs msgfmt. "
 				"Only native language (English) will be available. "
@@ -169,7 +167,7 @@ class _build_i18n(distutils.cmd.Command):
 		except:
 			pass
 
-		if self.desktop_files and not find_executable('intltool-merge'):
+		if self.desktop_files and not which('intltool-merge'):
 			self.warn(
 				"Can't generate desktop files, needs intltool-merge. "
 				"Try installing the package 'intltool'.")
