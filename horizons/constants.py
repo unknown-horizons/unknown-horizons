@@ -46,38 +46,41 @@ def get_git_version():
 		from run_uh import get_content_dir_parent_path
 		uh_path = get_content_dir_parent_path()
 	except ImportError:
-		return "<unknown>"
+		# An installed game does not ship run_uh as an importable module.
+		# The git lookups below need it, but gitversion.txt does not.
+		uh_path = None
 
-	# Try git describe
-	try:
-		git = "git"
-		if platform.system() == "Windows":
-			git = "git.exe"
+	if uh_path is not None:
+		# Try git describe
+		try:
+			git = "git"
+			if platform.system() == "Windows":
+				git = "git.exe"
 
-		# Note that this uses glob patterns, not regular expressions.
-		TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
-		describe = [git, "describe", "--tags", "--match", TAG_STRUCTURE]
-		git_string = subprocess.check_output(describe, cwd=uh_path, universal_newlines=True).rstrip('\n')
-		return git_string
-	except (subprocess.CalledProcessError, OSError, RuntimeError):
-		pass
+			# Note that this uses glob patterns, not regular expressions.
+			TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
+			describe = [git, "describe", "--tags", "--match", TAG_STRUCTURE]
+			git_string = subprocess.check_output(describe, cwd=uh_path, universal_newlines=True).rstrip('\n')
+			return git_string
+		except (subprocess.CalledProcessError, OSError, RuntimeError):
+			pass
 
-	# Read current HEAD out of .git manually
-	try:
-		git_head_path = Path(uh_path, '.git', 'HEAD')
-		if git_head_path.exists():
-			with git_head_path.open() as f:
-				head = f.readline().strip().partition(' ')
-			if head[2]:
-				head_file = Path(uh_path, '.git', head[2])
-			else:
-				head_file = git_head_path
+		# Read current HEAD out of .git manually
+		try:
+			git_head_path = Path(uh_path, '.git', 'HEAD')
+			if git_head_path.exists():
+				with git_head_path.open() as f:
+					head = f.readline().strip().partition(' ')
+				if head[2]:
+					head_file = Path(uh_path, '.git', head[2])
+				else:
+					head_file = git_head_path
 
-			if head_file.exists():
-				with head_file.open() as f:
-					return str(f.readline().strip()[0:7])
-	except ImportError:
-		pass
+				if head_file.exists():
+					with head_file.open() as f:
+						return str(f.readline().strip()[0:7])
+		except ImportError:
+			pass
 
 	# Try gitversion.txt
 	try:
