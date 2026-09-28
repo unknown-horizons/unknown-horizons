@@ -152,7 +152,7 @@ class _build_i18n(distutils.cmd.Command):
 		import subprocess
 		horizons_path = os.path.dirname(horizons.__file__)
 		args = [sys.executable, os.path.join(horizons_path, 'engine', 'generate_atlases.py'), str(size)]
-		process = subprocess.Popen(args)
+		subprocess.check_call(args)
 
 	def run(self):
 		"""
