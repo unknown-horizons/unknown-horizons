@@ -152,7 +152,7 @@ class _build_i18n(distutils.cmd.Command):
 		import subprocess
 		horizons_path = os.path.dirname(horizons.__file__)
 		args = [sys.executable, os.path.join(horizons_path, 'engine', 'generate_atlases.py'), str(size)]
-		process = subprocess.Popen(args)
+		subprocess.check_call(args)
 
 	def run(self):
 		"""
@@ -232,6 +232,18 @@ class _build_i18n(distutils.cmd.Command):
 			copytree(os.path.join("build", "mo"), os.path.join("content", "lang"))
 
 		self.generate_atlases(2048)
+
+		# data_files was collected by walking content/ when this file was
+		# imported, which happened before the atlases existed. Register them
+		# explicitly, or they are generated and then never installed.
+		# The generated files are the ones .gitignore lists.
+		share = os.path.join('share', 'unknown-horizons', 'content')
+		self.distribution.data_files.append(
+			(share, [os.path.join('content', name) for name in
+			         ('atlas.sql', 'actionsets.json', 'tilesets.json')]))
+		self.distribution.data_files.append(
+			(os.path.join(share, 'gfx', 'atlas'),
+			 sorted(glob.glob(os.path.join('content', 'gfx', 'atlas', '*.png')))))
 
 
 build.sub_commands.append(('build_i18n', None))
