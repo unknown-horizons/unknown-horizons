@@ -98,6 +98,9 @@ def find_available_languages(domain='unknown-horizons', update=False):
 
 	alternatives = ('content/lang',
 	                'build/mo',
+	                # Relative to the content dir we chdir'ed into, so this
+	                # resolves for any install prefix, /app/share included.
+	                '../locale',
 	                '/usr/share/locale',
 	                '/usr/share/games/locale',
 	                '/usr/local/share/locale',

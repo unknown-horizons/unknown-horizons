@@ -144,7 +144,8 @@ class _build_i18n(distutils.cmd.Command):
 		with open(stats_filename, 'w') as f:
 			json.dump(translation_stats, f)
 
-		self.distribution.data_files.append((os.path.join('share', 'locale'), [stats_filename]))
+		self.distribution.data_files.append(
+			(os.path.join('share', 'unknown-horizons', 'content', 'lang'), [stats_filename]))
 
 		return mo_files
 
