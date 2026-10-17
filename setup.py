@@ -249,12 +249,11 @@ def _get_pep440_compliant_version(git_describe_output):
 
 
 setup(
-	name='UnknownHorizons',
+	# Core metadata (name, description, authors, url, requires-python, ...)
+	# now lives in pyproject.toml [project]. setup.py keeps only the dynamic
+	# version (git-describe, PEP 440) and the packaging extras that are not
+	# [project] fields: packages, package_data, data_files and cmdclass.
 	version=_get_pep440_compliant_version(VERSION.RELEASE_VERSION),
-	description='Realtime Economy Simulation and Strategy Game',
-	author='The Unknown Horizons Team',
-	author_email='team@unknown-horizons.org',
-	url='http://www.unknown-horizons.org',
 	packages=packages,
 	package_data=package_data,
 	data_files=data,

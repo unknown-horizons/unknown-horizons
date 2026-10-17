@@ -463,7 +463,7 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
-		elif keyval == fife.Key.ENTER:
+		elif keyval == fife.Key.RETURN:
 			return self.on_return()
 
 		if action == _Actions.GRID:
@@ -523,8 +523,8 @@ class IngameGui(LivingObject):
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
 			self.session.world.toggle_owner_highlight()
-		elif fife.Key.NUM_0 <= keyval <= fife.Key.NUM_9:
-			num = int(keyval - fife.Key.NUM_0)
+		elif fife.Key._0 <= keyval <= fife.Key._9:
+			num = int(keyval - fife.Key._0)
 			self.handle_selection_group(num, evt.isControlPressed())
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave()

@@ -22,7 +22,6 @@
 from fife.extensions.pychan.widgets import ABox, Label
 
 import horizons.globals
-from horizons.engine import Fife
 from horizons.extscheduler import ExtScheduler
 
 

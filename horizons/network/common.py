@@ -214,7 +214,7 @@ class Game:
 
 	def find_player_by_sid(self, sid: str) -> Optional[Player]:
 		for player in self.players:
-			if player.sid == packet.kicksid:
+			if player.sid == sid:
 				return player
 
 	def is_full(self):

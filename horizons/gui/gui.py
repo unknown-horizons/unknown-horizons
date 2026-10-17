@@ -26,7 +26,6 @@ from collections import deque
 from fife.extensions.pychan.widgets import Container, Icon
 
 import horizons.globals
-import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.modules import (
@@ -85,6 +84,7 @@ class MainMenu(Window):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
 		message = T("Are you sure you want to quit Unknown Horizons?")
 		if self._windows.open_popup(T("Quit Game"), message, show_cancel_button=True):
+			import horizons.main
 			horizons.main.quit()
 
 	def mouse_entered_changebackground(self):
@@ -192,6 +192,7 @@ class Gui:
 			return False # user aborted dialog
 
 		options = StartGameOptions(saved_game)
+		import horizons.main
 		horizons.main.start_singleplayer(options)
 		return True
 

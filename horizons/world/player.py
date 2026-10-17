@@ -22,8 +22,14 @@
 import collections
 from typing import Any, Dict, Sequence, Union
 
-import horizons.main
 from horizons.component.componentholder import ComponentHolder
+from horizons.session import Session
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER
@@ -48,7 +54,7 @@ class Player(ComponentHolder, WorldObject):
 
 	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
 		"""
-		@type session: horizons.session.Session
+		@type session: Session
 		@param session: Session instance
 		@param worldid: player's worldid
 		@param name: user-chosen name
@@ -56,7 +62,7 @@ class Player(ComponentHolder, WorldObject):
 		@param clientid: id of client
 		@param inventory: {res: value} that are put in the players inventory
 		"""
-		assert isinstance(session, horizons.session.Session)
+		assert isinstance(session, Session)
 		self.session = session
 		super().__init__(worldid=worldid)
 		self.__init(name, color, clientid, difficulty_level, 0)

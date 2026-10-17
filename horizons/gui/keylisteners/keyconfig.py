@@ -29,6 +29,20 @@ from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
 
+# Some key names changed spelling in the Fifengine key enum. Older settings files
+# (and older templates) may still carry the legacy/alternate spellings, so map
+# them onto the names the current fife.Key enum exposes. Without this, bindings
+# like ZOOM_IN -> PAGE_DOWN silently fail to resolve.
+_KEY_NAME_ALIASES = {
+	'PAGE_DOWN': 'PAGEDOWN',
+	'PAGE_UP': 'PAGEUP',
+	'KEY_DELETE': 'DELETE',
+	'ENTER': 'RETURN',
+	# The digit row is exposed as _0 .. _9 (a bare digit is not an identifier).
+	**{f'NUM_{d}': f'_{d}' for d in range(10)},
+}
+
+
 class KeyConfig(object, metaclass=Singleton):
 	"""Class for storing key bindings.
 	The central function is translate().
@@ -89,6 +103,8 @@ class KeyConfig(object, metaclass=Singleton):
 			return action # all checks passed
 
 	def get_key_by_name(self, keyname):
+		keyname = keyname.upper()
+		keyname = _KEY_NAME_ALIASES.get(keyname, keyname)
 		return self.all_keys.get(keyname)
 
 	def get_keys_by_name(self):

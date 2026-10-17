@@ -29,14 +29,18 @@ function do_git_update
   langdir="content/lang"
 
   declare -A oldlangs
-  for lang in $(ls content/lang)
+  # glob instead of $(ls ...); keys must stay bare names, since the
+  # housekeeping loop below removes "$langdir/$i".
+  for langpath in "$langdir"/*
   do
+    lang=$(basename "$langpath")
     oldlangs[$lang]=$lang
   done
 
   echo -n "Updating translations..."
-  for file in $(ls po/uh-server/*.po)
+  for file in po/uh-server/*.po
   do
+    [ -f "$file" ] || continue   # glob stays literal when nothing matches
     pofile="${file##*/}"
     lang="${pofile%%.*}"
     mkdir -p "$langdir/$lang/LC_MESSAGES/"

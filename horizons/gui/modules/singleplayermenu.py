@@ -31,7 +31,6 @@ import tempfile
 from typing import List, Optional, Tuple
 
 import horizons.globals
-import horizons.main
 from horizons.constants import LANGUAGENAMES, PATHS, VERSION
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
@@ -45,9 +44,14 @@ from horizons.util.random_map import generate_random_map, generate_random_seed
 from horizons.util.shapes import Rect
 from horizons.util.startgameoptions import StartGameOptions
 from horizons.world import load_raw_world  # FIXME placing this import at the end results in a cycle
+from horizons.gui.modules.aidataselection import AIDataSelection
+from horizons.gui.modules.playerdataselection import PlayerDataSelection
 
-from .aidataselection import AIDataSelection
-from .playerdataselection import PlayerDataSelection
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 
 
 class SingleplayerMenu(Window):
@@ -220,7 +224,7 @@ class RandomMapWidget:
 		options.pirate_enabled = self._game_settings.pirates
 		options.disasters_enabled = self._game_settings.disasters
 		options.natural_resource_multiplier = self._game_settings.natural_resource_multiplier
-		horizons.main.start_singleplayer(options)
+		_get_horizons_main().start_singleplayer(options)
 
 	def show(self):
 		seed_string_field = self._gui.findChild(name='seed_string_field')
@@ -299,8 +303,8 @@ class RandomMapWidget:
 
 		args = [sys.executable, sys.argv[0], "--generate-minimap", params]
 		# We're running UH in a new process, make sure fife is setup correctly
-		if horizons.main.command_line_arguments.fife_path:
-			args.extend(["--fife-path", horizons.main.command_line_arguments.fife_path])
+		if _get_horizons_main().command_line_arguments.fife_path:
+			args.extend(["--fife-path", _get_horizons_main().command_line_arguments.fife_path])
 
 		handle, self._preview_output = tempfile.mkstemp()
 		os.close(handle)
@@ -391,7 +395,7 @@ class FreeMapsWidget:
 		options.pirate_enabled = self._game_settings.pirates
 		options.disasters_enabled = self._game_settings.disasters
 		options.natural_resource_multiplier = self._game_settings.natural_resource_multiplier
-		horizons.main.start_singleplayer(options)
+		_get_horizons_main().start_singleplayer(options)
 
 	def show(self):
 		self._files, maps_display = SavegameManager.get_maps()
@@ -469,7 +473,7 @@ class ScenarioMapWidget:
 		try:
 			options = StartGameOptions.create_start_scenario(map_file)
 			options.set_human_data(player_name, player_color)
-			horizons.main.start_singleplayer(options)
+			_get_horizons_main().start_singleplayer(options)
 		except InvalidScenarioFileFormat as e:
 			self._show_invalid_scenario_file_popup(e)
 
@@ -622,7 +626,7 @@ def generate_random_minimap(size, parameters):
 	"""Called as subprocess, calculates minimap data and passes it via string via stdout"""
 	# called as standalone basically, so init everything we need
 	from horizons.entities import Entities
-	from horizons.main import _create_main_db
+	from horizons.main import _create_main_db as _create_main_db_func
 
 	if not VERSION.IS_DEV_VERSION:
 		# Hack enable atlases.
@@ -635,7 +639,7 @@ def generate_random_minimap(size, parameters):
 		# These are always available in dev checkouts
 		PATHS.DB_FILES = PATHS.DB_FILES + (PATHS.ATLAS_DB_PATH, )
 
-	db = _create_main_db()
+	db = _create_main_db_func()
 	horizons.globals.db = db
 	horizons.globals.fife.init_animation_loader(not VERSION.IS_DEV_VERSION)
 	Entities.load_grounds(db, load_now=False) # create all references

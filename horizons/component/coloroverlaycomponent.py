@@ -98,7 +98,8 @@ class ColorOverlayComponent(Component):
 	@property
 	def identifier(self):
 		"""E.g. 'idle_as_lumberjack_barrack0' """
-		return self.fife_instance.getCurrentAction().getId()
+		# FIFE 0.5: Action.getId() renamed to getName()
+		return self.fife_instance.getCurrentAction().getName()
 
 	def initialize(self):
 		super().initialize()

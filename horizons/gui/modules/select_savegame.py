@@ -26,7 +26,6 @@ import time
 
 from fife import fife
 
-from horizons.engine import Fife
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, OkButton

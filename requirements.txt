@@ -1,15 +1,9 @@
-coverage==4.4.1
-coveralls==1.1
-crayons==0.1.2
+# Runtime dependencies for Unknown Horizons.
+# Development/test tooling lives in pyproject.toml [dependency-groups]
+# (install with: uv sync, or pip install -r requirements.txt for runtime only).
+crayons
 distro
-greenlet==0.4.15
-isort==4.3.4
-mypy==0.511
-Pillow>=7.1.0
-polib==1.0.8
-pycodestyle==2.5.0
-pytest==3.1.1
-pytest-cov==2.5.1
-pytest-mock==1.6.0
-pyyaml==5.4
-typing==3.6.1
+greenlet
+Pillow
+polib
+pyyaml

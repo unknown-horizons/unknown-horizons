@@ -200,7 +200,7 @@ class Dialog(Window):
 		if event.getKey().getValue() == fife.Key.ESCAPE:
 			self.trigger_close(CancelButton.DEFAULT_NAME)
 		# Convention says use ok action
-		elif event.getKey().getValue() == fife.Key.ENTER:
+		elif event.getKey().getValue() == fife.Key.RETURN:
 			self.trigger_close(OkButton.DEFAULT_NAME)
 
 	def trigger_close(self, event_name):

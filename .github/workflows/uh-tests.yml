@@ -1,0 +1,293 @@
+#
+# .github/workflows/uh-tests.yml
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2008 - 2026 The Unknown Horizons Team
+# This file is part of unknown-horizons/unknown-horizons.
+#
+
+# -----------------------------------------------------------------------------
+# Continuous Integration for Unknown Horizons against Fifengine.
+#
+# The workflow builds Fifengine from source and runs the UH test suite headless.
+#
+# NOTE: we replicate the Fifengine build. Once `libfife` is published to PyPI
+# (a fifengine TODO), we can replace it.
+# -----------------------------------------------------------------------------
+name: UH Tests (Linux)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Cancel outdated runs for the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Fifengine ref to build.
+  # swap 'main' for the 0.5 tag once it is released.
+  FIFE_REF: main
+  FIFE_BUILD_PRESET: clang18-x64-linux-rel
+  TRIPLET: x64-linux
+
+  # Fifengine source checkout + build locations (all under the UH workspace).
+  FIFE_DIR: ${{ github.workspace }}/fifengine
+  DEPS_DIR: ${{ github.workspace }}/fifengine/out/fife-dependencies
+  BUILD_DIR: ${{ github.workspace }}/fifengine/out/build/ci
+
+  # vcpkg
+  VCPKG_ROOT: /usr/local/share/vcpkg
+  VCPKG_INSTALLLED_DIR: ${{ github.workspace }}/fifengine/vcpkg_installed
+  VCPKG_DISABLE_METRICS: 1
+  VCPKG_FORCE_SYSTEM_BINARIES: 1
+  VCPKG_FEATURE_FLAGS: manifests,versions,binarycaching,registries
+
+jobs:
+
+# ---------------------------------------------------------------------------------------
+
+  uh-tests:
+
+# ---------------------------------------------------------------------------------------
+
+    name: "Linux | UH Tests | Py 3.13"
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: "🤘 Checkout Unknown Horizons"
+        uses: actions/checkout@v7 # https://github.com/actions/checkout
+
+      # -----------------------------------------------------------------------------
+      # 1. Acquire FIFE  (INTERIM: build from source).
+      #    Replace this whole section with `pip install libfife==<version>`
+      #    once `libfife` is on PyPI.
+      # -----------------------------------------------------------------------------
+      - name: "🤘 Checkout Fifengine (${{ env.FIFE_REF }})"
+        uses: actions/checkout@v7
+        with:
+          repository: fifengine/fifengine
+          ref: ${{ env.FIFE_REF }}
+          path: fifengine
+
+      - name: "🐍 Setup Python 3.13"
+        uses: actions/setup-python@v7 # https://github.com/actions/setup-python
+        with:
+          python-version: "3.13"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: "📦 Install required system packages"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            autoconf autoconf-archive automake libtool \
+            build-essential git make \
+            pkg-config ninja-build gnome-desktop-testing libasound2-dev libpulse-dev \
+            libaudio-dev libfribidi-dev libjack-dev libsndio-dev libx11-dev libxext-dev \
+            libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev \
+            libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev \
+            libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev libthai-dev \
+            libpipewire-0.3-dev libwayland-dev libdecor-0-dev liburing-dev libxft-dev \
+            libglu1-mesa-dev xvfb libgl1-mesa-dri mesa-utils intltool
+
+      - name: "🔧 Get latest CMake and Ninja"
+        uses: lukka/get-cmake@latest # https://github.com/lukka/get-cmake
+        with:
+          cmakeVersion: latest
+          ninjaVersion: latest
+
+      # --- vcpkg (Fifengine's SDL3 & co. come from vcpkg) ---
+      - name: "💾 Setup VCPKG Cache"
+        id: cache-vcpkg
+        uses: actions/cache@v6 # https://github.com/actions/cache
+        with:
+          path: |
+            ${{ env.VCPKG_INSTALLLED_DIR }}
+            ${{ env.VCPKG_ROOT }}/packages
+            /home/runner/.cache/vcpkg/archives/
+          key: cache-vcpkg-uh-${{ env.FIFE_REF }}-${{ github.ref }}-${{ hashFiles('fifengine/vcpkg.json') }}
+          restore-keys: |
+            cache-vcpkg-uh-${{ env.FIFE_REF }}-${{ github.ref }}-
+            cache-vcpkg-uh-${{ env.FIFE_REF }}-
+
+      - name: "📥 Bootstrap vcpkg"
+        run: |
+          if [ ! -x "${{ env.VCPKG_ROOT }}/vcpkg" ]; then
+            git clone https://github.com/microsoft/vcpkg "${{ env.VCPKG_ROOT }}"
+          fi
+          cd "${{ env.VCPKG_ROOT }}"
+          git pull || true
+          ./bootstrap-vcpkg.sh
+          ./vcpkg integrate install
+
+      - name: "⬇️ Install vcpkg packages"
+        if: steps.cache-vcpkg.outputs.cache-hit != 'true'
+        run: "${{ env.VCPKG_ROOT }}/vcpkg install --triplet ${{ env.TRIPLET }} --x-install-root=${{ env.VCPKG_INSTALLLED_DIR }}"
+
+      # --- Non-vcpkg dependencies (Fifengine fetches + builds fifechan and SWIG) ---
+      - name: "💾 Setup Dependencies Cache"
+        id: cache-deps
+        uses: actions/cache@v6
+        with:
+          # Do NOT cache the CMake build trees (a restored CMakeCache.txt pins
+          # absolute toolchain paths that only exist on the creating runner).
+          path: |
+            ${{ env.DEPS_DIR }}
+            !${{ env.DEPS_DIR }}/build
+            !${{ env.DEPS_DIR }}/extracted/src/*-build
+          key: cache-deps-uh-${{ env.FIFE_REF }}-${{ github.ref }}-${{ hashFiles('fifengine/dependencies/CMakeLists.txt', 'fifengine/cmake/get-fifechan.cmake', 'fifengine/cmake/get-swig.cmake') }}
+          restore-keys: |
+            cache-deps-uh-${{ env.FIFE_REF }}-${{ github.ref }}-
+
+      - name: "🧩 Configure non-vcpkg dependencies (fifechan, SWIG)"
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        working-directory: ${{ env.FIFE_DIR }}
+        run: |
+          cmake \
+            -S dependencies \
+            -B ${{ env.DEPS_DIR }}/build \
+            -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DFIFE_DEPENDENCIES_ROOT=${{ env.DEPS_DIR }} \
+            -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake \
+            -DVCPKG_TARGET_TRIPLET=${{ env.TRIPLET }} \
+            -DVCPKG_INSTALLED_DIR=${{ env.VCPKG_INSTALLLED_DIR }}
+
+      - name: "🏗️ Build non-vcpkg dependencies"
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        run: cmake --build ${{ env.DEPS_DIR }}/build --parallel
+
+      # --- Build Fifengine WITH Python bindings (UH needs the `fife` package) ---
+      - name: "🛠️ Configure Fifengine (python bindings ON)"
+        working-directory: ${{ env.FIFE_DIR }}
+        run: |
+          cmake \
+            --preset ${{ env.FIFE_BUILD_PRESET }} \
+            -B ${{ env.BUILD_DIR }} \
+            -DENABLE_FIFEGUI=ON \
+            -DBUILD_PYTHON_BINDINGS=ON \
+            -DBUILD_LIBRARY=ON \
+            -DCMAKE_PREFIX_PATH="${{ env.DEPS_DIR }}/install;${{ env.VCPKG_INSTALLLED_DIR }}/${{ env.TRIPLET }}" \
+            -DCMAKE_TOOLCHAIN_FILE=${{ env.VCPKG_ROOT }}/scripts/buildsystems/vcpkg.cmake \
+            -DVCPKG_MANIFEST_MODE=OFF \
+            -DVCPKG_TARGET_TRIPLET=${{ env.TRIPLET }} \
+            -DVCPKG_INSTALLED_DIR=${{ env.VCPKG_INSTALLLED_DIR }}
+
+      - name: "🙏 Build Fifengine (fife + SWIG bindings)"
+        working-directory: ${{ env.FIFE_DIR }}
+        run: cmake --build ${{ env.BUILD_DIR }} --target fife fife_swig fifechan_swig --parallel
+
+      # -----------------------------------------------------------------------------
+      # 2. FIFE runtime environment
+      #    This not needed once `libfife` is installed via PyPI.
+      # -----------------------------------------------------------------------------
+      - name: "🌐 Setup FIFE + headless environment"
+        run: |
+          # Discover directories containing the native FIFE libraries.
+          FENGINE_LIB_DIR="$(dirname "$(find "$BUILD_DIR" -name 'libfifengine.so*' -print -quit)")"
+          FIFECHAN_LIB_DIR="$(dirname "$(find "$DEPS_DIR" "$VCPKG_INSTALLLED_DIR" -name 'libfifechan*.so*' -print -quit)")"
+          echo "fifengine lib dir : ${FENGINE_LIB_DIR:-<not found>}"
+          echo "fifechan  lib dir : ${FIFECHAN_LIB_DIR:-<not found>}"
+          {
+            echo "PYTHONPATH=$BUILD_DIR"
+            echo "LD_LIBRARY_PATH=${FENGINE_LIB_DIR}:${FIFECHAN_LIB_DIR}:${VCPKG_INSTALLLED_DIR}/${TRIPLET}/lib"
+            # Headless rendering (mirrors Fifengine CI).
+            echo "SDL_VIDEODRIVER=x11"
+            echo "SDL_AUDIODRIVER=dummy"
+            echo "LIBGL_ALWAYS_SOFTWARE=1"
+            echo "GALLIUM_DRIVER=llvmpipe"
+            echo "MESA_GL_VERSION_OVERRIDE=3.3"
+          } >> "$GITHUB_ENV"
+
+      - name: "🔎 Verify FIFE import"
+        run: python3 -c "from fife import fife; print('FIFEngine', fife.get_major(), fife.get_minor(), fife.get_patch())"
+
+      # -----------------------------------------------------------------------------
+      # 3. Unknown Horizons dependencies + i18n
+      # -----------------------------------------------------------------------------
+      - name: "🛠 Setup uv"
+        uses: astral-sh/setup-uv@v6 # https://github.com/astral-sh/setup-uv
+
+      # Install UH dependencies (runtime + dev/test groups) WITHOUT building or
+      # installing the project itself (it is run from source via run_uh.py).
+      - name: "🥍 Install UH dependencies (uv sync)"
+        run: uv sync --no-install-project --group test
+
+      - name: "🌍 Build i18n (gettext)"
+        run: ./setup.py build_i18n
+
+      # -----------------------------------------------------------------------------
+      # 4. Tests
+      # -----------------------------------------------------------------------------
+      - name: "🧹 Lint (isort / pycodestyle)"
+        run: |
+          python3 -m isort --check-only --diff horizons tests || true
+          python3 -m pycodestyle horizons tests || true
+
+      # Primary smoke gate: boots the full engine + loads a map (headless).
+      # This is the suite verified against FIFE 0.5 (see todo/uh/plan.md).
+      - name: "🧪 Engine smoke test (headless, xvfb)"
+        run: |
+          xvfb-run \
+            --auto-servernum \
+            --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
+          python3 run_uh.py --gui-test tests.gui.test_example.test_example
+
+      # Full non-GUI pytest suite. Blocking: the suite runs green on modern
+      # pytest/Python 3.13 (tests/conftest.py no longer relies on the removed
+      # `pytest_namespace` hook). Coverage goes to a separate data file so it
+      # can be combined with the GUI run below.
+      - name: "🧹 Unit tests (pytest, non-GUI)"
+        env:
+          COVERAGE_FILE: .coverage.nongui
+        run: python3 -m pytest -v -rs --cov --cov-report=
+
+      # GUI tests re-launch the real game in a subprocess per test (~25 min for
+      # the whole suite), so they report status without gating PRs.
+      - name: "🕹️ GUI tests (pytest --gui-tests, non-blocking)"
+        continue-on-error: true
+        env:
+          COVERAGE_FILE: .coverage.gui
+        run: |
+          xvfb-run \
+            --auto-servernum \
+            --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
+            python3 -m pytest --gui-tests tests/gui -v -rs --cov --cov-report=
+
+      # -----------------------------------------------------------------------------
+      # 5. Coverage
+      # -----------------------------------------------------------------------------
+      # [tool.coverage.run] sets parallel = true, so each run above leaves its own
+      # data file; merge them into a single report (mirrors the old Travis setup).
+      - name: "📊 Combine coverage reports"
+        if: always()
+        run: |
+          python3 -m coverage combine
+          python3 -m coverage report
+          python3 -m coverage xml
+
+      # coveralls-python reads the token from $GITHUB_TOKEN, which GitHub
+      # provides automatically to every job -- no extra secret to configure.
+      - name: "📈 Publish coverage to Coveralls"
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 -m coveralls --service=github
+
+      # -----------------------------------------------------------------------------
+      # 6. Artifacts
+      # -----------------------------------------------------------------------------
+      - name: "📦 Upload test artifacts"
+        if: always()
+        uses: actions/upload-artifact@v7 # https://github.com/actions/upload-artifact
+        with:
+          name: uh-test-logs
+          path: |
+            **/*.log
+            .coverage*
+            coverage.xml
+          retention-days: 14
+          if-no-files-found: ignore

@@ -1,0 +1,136 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2008 - 2026 The Unknown Horizons Team
+#
+# Build and tooling configuration for Unknown Horizons (pure Python, setuptools).
+
+[project]
+name = "UnknownHorizons"
+dynamic = ["version"]  # git-describe, supplied by setup.py
+description = "Realtime Economy Simulation and Strategy Game"
+readme = "README.md"
+requires-python = ">=3.13"
+license = "GPL-2.0-or-later"
+license-files = ["doc/LICENSE"]
+authors = [
+  { name = "The Unknown Horizons Team", email = "team@unknown-horizons.org" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Operating System :: OS Independent",
+  "Intended Audience :: End Users/Desktop",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Games/Entertainment :: Real Time Strategy",
+]
+# No runtime dependencies: the engine is consumed externally (system package
+# or PYTHONPATH). Add "libfife" here once it is on PyPI.
+dependencies = []
+
+[project.urls]
+Homepage = "https://www.unknown-horizons.org"
+Repository = "https://github.com/unknown-horizons/unknown-horizons"
+Tracker = "https://github.com/unknown-horizons/unknown-horizons/issues"
+
+[build-system]
+requires = [
+  "setuptools>=61",
+  "distro",  # setup.py imports it at build time to pick the install prefix
+]
+build-backend = "setuptools.build_meta"
+
+# Runtime dependencies live in requirements.txt; they move into
+# [project].dependencies once the engine (libfife) is on PyPI.
+[dependency-groups]
+dev = [
+  "ruff",
+  "mypy",
+  "isort",
+  "pycodestyle",
+]
+test = [
+  "pytest",
+  "pytest-cov",
+  "pytest-mock",   # provides the `mocker` fixture used across the suite
+  "coveralls",     # publishes the combined coverage report from CI
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+extend-exclude = [
+  "build",
+  "out",
+  "content/gfx",                  # generated atlases
+  "horizons/gui/translations.py", # generated
+]
+
+[tool.ruff.format]
+indent-style = "tab"
+quote-style = "double"
+
+[tool.ruff.lint]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "I",    # isort
+  "UP",   # pyupgrade
+  "B",    # flake8-bugbear
+  "C4",   # flake8-comprehensions
+  "SIM",  # flake8-simplify
+]
+ignore = [
+  "W191",  # tab-indentation: .editorconfig intentionally uses tabs
+  "E101",  # mixed-spaces-and-tabs
+  "E501",  # line-too-long: not in pycodestyle's select list either
+]
+
+[tool.ruff.lint.per-file-ignores]
+"horizons/constants.py" = ["E501"]
+"horizons/ext/*" = ["F401", "F403", "F405"]  # re-export modules
+"horizons/gui/translations.py" = ["F401"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["horizons", "tests"]
+known-third-party = ["fife", "pytest"]
+combine-as-imports = true
+
+# TODO: the codebase is not type-clean yet
+[tool.mypy]
+python_version = "3.13"
+ignore_missing_imports = true
+follow_imports = "skip"
+warn_no_return = false
+
+[tool.isort]
+line_length = 100
+known_third_party = ["fife", "pytest"]
+known_standard_library = ["typing", "unittests"]
+known_first_party = ["horizons", "tests"]
+multi_line_output = 4
+indent = "\t"
+combine_as_imports = true
+
+[tool.pycodestyle]
+# Inert: pycodestyle does not read pyproject.toml (only setup.cfg/tox.ini/
+# .pycodestyle). The live copy lives in setup.cfg; ruff below is the primary
+# linter and reads its own config from this file.
+exclude = "horizons/ext/, horizons/gui/translations.py, horizons/constants.py"
+count = true
+select = "W2, W3, W6, E111, E112, E113, E114, E116, E125, E13, E20, E21, E22, E23, E242, E25, E27, E301, E302, E303, E304, E305, E70, E713"
+ignore = "E101, W191, W503, E241"
+max-line-length = 100
+
+[tool.coverage.run]
+branch = true
+parallel = true  # On CI the GUI and non-GUI runs are combined into one report
+source = ["horizons"]
+include = ["horizons/*", "run_uh.py", "run_server.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+  "long: mark test as long-running (only with --long-tests)",
+  "gui_test: mark test as a GUI test (only with --gui-tests)",
+]

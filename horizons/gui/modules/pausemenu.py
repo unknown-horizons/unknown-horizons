@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 from horizons.command.game import PauseCommand, UnPauseCommand
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 from horizons.gui.modules.select_savegame import SelectSavegameDialog
@@ -28,6 +27,12 @@ from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
 from horizons.i18n import gettext as T
 from horizons.util.startgameoptions import StartGameOptions
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 
 
 class PauseMenu(Window):
@@ -110,5 +115,5 @@ class PauseMenu(Window):
 				return
 
 			options = StartGameOptions(saved_game)
-			horizons.main.start_singleplayer(options)
+			_get_horizons_main().start_singleplayer(options)
 			return True

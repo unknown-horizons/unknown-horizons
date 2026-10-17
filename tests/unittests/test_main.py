@@ -39,7 +39,13 @@ def basic_mocks(mocker):
 
 @pytest.fixture(autouse=True)
 def mock_fife(mocker):
-	return mocker.patch('horizons.engine.Fife')
+	fife = mocker.patch('horizons.engine.Fife')
+	# The tile/action set loaders branch on this flag to decide between the
+	# generated content/*.json atlases and scanning the graphics directories.
+	# A bare MagicMock attribute is truthy, which would force the (unavailable,
+	# generated) atlas path; default to the non-atlas behaviour of GFX.USE_ATLASES.
+	fife.return_value.use_atlases = False
+	return fife
 
 
 def start_game(*args):

@@ -29,5 +29,15 @@ content/atlas.sql
 content/actionsets.json
 content/tilesets.json
 
+# Tool caches (the first two also self-ignore, but be explicit)
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Packaging / profiling artifacts
+*.egg-info/
+dist/
+*.profraw
+
 # vscode settings
 .vscode

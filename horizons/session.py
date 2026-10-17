@@ -29,7 +29,10 @@ from random import Random
 
 import horizons.globals
 import horizons.main
-from horizons.ai.aiplayer import AIPlayer
+# AIPlayer is imported lazily to avoid circular import with world.player -> session
+# from horizons.ai.aiplayer import AIPlayer
+# IngameGui is imported lazily to avoid circular import with gui.modules -> session
+# from horizons.gui.ingamegui import IngameGui
 from horizons.command.building import Tear
 from horizons.command.unit import RemoveUnit
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -38,7 +41,6 @@ from horizons.component.selectablecomponent import SelectableBuildingComponent
 from horizons.constants import GAME_SPEED
 from horizons.entities import Entities
 from horizons.extscheduler import ExtScheduler
-from horizons.gui.ingamegui import IngameGui
 from horizons.i18n import gettext as T
 from horizons.messaging import LoadingProgress, MessageBus, SettingChanged, SpeedChanged
 from horizons.messaging.queuingmessagebus import QueuingMessageBus
@@ -51,7 +53,8 @@ from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.worldobject import WorldObject
 from horizons.view import View
-from horizons.world import World
+# World is imported lazily to avoid circular import with world -> session
+# from horizons.world import World
 
 
 class Session(LivingObject):
@@ -89,7 +92,10 @@ class Session(LivingObject):
 
 	log = logging.getLogger('session')
 
-	def __init__(self, db, rng_seed=None, ingame_gui_class=IngameGui):
+	def __init__(self, db, rng_seed=None, ingame_gui_class=None):
+		if ingame_gui_class is None:
+			from horizons.gui.ingamegui import IngameGui  # lazy import to avoid circular import
+			ingame_gui_class = IngameGui
 		super().__init__()
 		assert isinstance(db, horizons.util.uhdbaccessor.UhDbAccessor)
 		self.log.debug("Initing session")
@@ -159,6 +165,7 @@ class Session(LivingObject):
 		"""Clear all data caches in global namespace related to a session"""
 		WorldObject.reset()
 		NamedComponent.reset()
+		from horizons.ai.aiplayer import AIPlayer  # lazy import to avoid circular import
 		AIPlayer.clear_caches()
 		SelectableBuildingComponent.reset()
 
@@ -252,6 +259,7 @@ class Session(LivingObject):
 			self.random.setstate(rng_state_tuple)
 
 		LoadingProgress.broadcast(self, 'session_create_world')
+		from horizons.world import World  # lazy import to avoid circular import
 		self.world = World(self) # Load horizons.world module (check horizons/world/__init__.py)
 		self.world._init(savegame_db, options.force_player_id, disasters_enabled=options.disasters_enabled)
 		self.view.load(savegame_db, self.world) # load view

@@ -23,7 +23,9 @@
 import os
 import shutil
 import tempfile
+from contextlib import ExitStack
 from unittest import TestCase
+from unittest.mock import patch
 
 from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
@@ -44,28 +46,31 @@ class TestPaths(TestCase):
 		inner = str(os.path.join(outer, self.__class__.odd_characters))
 		inner2 = str(os.path.join(outer, self.__class__.odd_characters + "2"))
 
-		PATHS.USER_DATA_DIR = inner
-		PATHS.LOG_DIR = os.path.join(inner, "log")
-		PATHS.USER_MAPS_DIR = os.path.join(inner, "maps")
-		PATHS.SCREENSHOT_DIR = os.path.join(inner, "screenshots")
-		PATHS.SAVEGAME_DIR = os.path.join(inner, "save")
+		# These are class attributes read by later tests, so redirect them via
+		# patch to have them restored once this test finishes.
+		with ExitStack() as stack:
+			stack.enter_context(patch.object(PATHS, 'USER_DATA_DIR', inner))
+			stack.enter_context(patch.object(PATHS, 'LOG_DIR', os.path.join(inner, "log")))
+			stack.enter_context(patch.object(PATHS, 'USER_MAPS_DIR', os.path.join(inner, "maps")))
+			stack.enter_context(patch.object(PATHS, 'SCREENSHOT_DIR', os.path.join(inner, "screenshots")))
+			stack.enter_context(patch.object(PATHS, 'SAVEGAME_DIR', os.path.join(inner, "save")))
+			stack.enter_context(patch.object(SavegameManager, 'autosave_dir', inner2))
 
-		create_user_dirs(migrate=False)
+			create_user_dirs(migrate=False)
 
-		scenario_file = os.listdir(SavegameManager.scenarios_dir)[0]
-		shutil.copy(os.path.join(SavegameManager.scenarios_dir, scenario_file),
-		            inner)
+			scenario_file = os.listdir(SavegameManager.scenarios_dir)[0]
+			shutil.copy(os.path.join(SavegameManager.scenarios_dir, scenario_file),
+			            inner)
 
-		SavegameManager.scenarios_dir = inner
-		SavegameManager.autosave_dir = inner2
-		SavegameManager.init()
+			stack.enter_context(patch.object(SavegameManager, 'scenarios_dir', inner))
+			SavegameManager.init()
 
-		# try to read scenario files
-		SavegameManager.get_available_scenarios()
+			# try to read scenario files
+			SavegameManager.get_available_scenarios()
 
-		os.remove(os.path.join(inner, scenario_file))
+			os.remove(os.path.join(inner, scenario_file))
 
-		SavegameManager.create_autosave_filename()
+			SavegameManager.create_autosave_filename()
 
 		for dirpath, _dirnames, _filenames in os.walk(inner, topdown=False):
 			os.rmdir(dirpath)

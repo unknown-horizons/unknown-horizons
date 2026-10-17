@@ -62,12 +62,19 @@ class Fife:
 		Load the settings from a python file and load them into the engine.
 		Called in the ApplicationBase constructor.
 		"""
+		import os
 		# get finalSetting (from the xml file, or if absent the default value)
 		self._finalSetting = self._setting.get_module_settings("FIFE")
 
 		self.engine_settings = self.engine.getSettings()
 
-		self.engine_settings.setDefaultFontPath(self._finalSetting['Font'])
+		# Font settings - new FontManager API (FIFE 0.5+)
+		# Font paths must be set BEFORE engine.init() for FilesystemAssetProvider
+		font_paths = self._finalSetting.get('FontPaths', ['content/fonts'])
+		# Convert to absolute paths for reliable font loading
+		font_paths = [os.path.abspath(p) for p in font_paths]
+		self.engine_settings.setFontPaths(font_paths)
+
 		self.engine_settings.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
 		self.engine_settings.setInitialVolume(self._finalSetting['InitialVolume'])
 		self.engine_settings.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
@@ -151,6 +158,13 @@ class Fife:
 		"""Second initialization stage of engine"""
 		self.engine.init()
 
+		# Load font manifest for FontManager (FIFE 0.5+)
+		self._load_font_manifest()
+
+		# Initialize ExtScheduler early so sound module can use it
+		from horizons.extscheduler import ExtScheduler
+		ExtScheduler.create_instance(self.pump)
+
 		# Init stuff.
 		self.eventmanager = self.engine.getEventManager()
 		self.sound = Sound(self)
@@ -181,6 +195,90 @@ class Fife:
 		self._setting.apply()
 
 		self._got_inited = True
+
+	def _load_font_manifest(self):
+		"""Load font manifest for FontManager (FIFE 0.5+)."""
+		import os
+		# Get font directory for absolute paths in manifest
+		font_dirs = self.engine_settings.getFontPaths()
+		if not font_dirs:
+			font_dirs = [os.path.abspath('content/fonts')]
+
+		# Use first font directory for manifest paths
+		font_dir = font_dirs[0] if font_dirs else os.path.abspath('content/fonts')
+
+		# Get default font ID from settings
+		default_font_id = self._finalSetting.get('DefaultFontId', 'LinLibertine')
+
+		# Build comprehensive font manifest with absolute paths
+		# Includes base LinLibertine family + all UH named fonts
+		# NOTE: FontDefinitionLoader uses family/weight as ID, so each face needs unique weight
+		# We use weight variations for style variants (italic/bold) due to loader limitation
+		manifest_lines = [
+			'<?xml version="1.0"?>',
+			'<fonts version="1">',
+			# Base LinLibertine family for engine default font
+			f'  <family id="{default_font_id}">',
+			f'    <face weight="400">{os.path.join(font_dir, "LinLibertine.ttf")}</face>',
+			f'    <face weight="700">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
+			f'    <face weight="500" italic="true">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
+			f'    <face weight="600" italic="true">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="300" style="caps">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
+			'  </family>',
+			# UH named fonts (from libertine.xml) - each as separate family
+			# pickbelt: bold, size 13
+			f'  <family id="pickbelt">',
+			f'    <face weight="700" size="13">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
+			'  </family>',
+			# default: italic, size 15
+			f'  <family id="default">',
+			f'    <face weight="500" style="italic" size="15">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
+			'  </family>',
+			# default_bold: bold italic, size 15
+			f'  <family id="default_bold">',
+			f'    <face weight="600" style="italic" size="15">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			'  </family>',
+			# default_load: bold italic, size 15, different color (handled by widget)
+			f'  <family id="default_load">',
+			f'    <face weight="600" style="italic" size="15">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			'  </family>',
+			# message: bold, size 15
+			f'  <family id="message">',
+			f'    <face weight="700" size="15">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
+			'  </family>',
+			# resourcebar: bold italic, size 16
+			f'  <family id="resourcebar">',
+			f'    <face weight="600" style="italic" size="16">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			'  </family>',
+			# unifont: regular, size 16
+			f'  <family id="unifont">',
+			f'    <face weight="400" size="16">{os.path.join(font_dir, "Unifont.ttf")}</face>',
+			'  </family>',
+			# headline: caps, size 18
+			f'  <family id="headline">',
+			f'    <face weight="400" style="caps" size="18">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
+			'  </family>',
+			# headline_light: caps, size 18, different color
+			f'  <family id="headline_light">',
+			f'    <face weight="400" style="caps" size="18">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
+			'  </family>',
+			# mainmenu: bold italic, size 22
+			f'  <family id="mainmenu">',
+			f'    <face weight="600" style="italic" size="22">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			'  </family>',
+			# large_load: bold italic, size 34
+			f'  <family id="large_load">',
+			f'    <face weight="600" style="italic" size="34">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			'  </family>',
+			'</fonts>'
+		]
+		manifest = '\n'.join(manifest_lines)
+
+		try:
+			self.engine.loadFontManifestFromString(manifest)
+			self.log.info(f"Loaded font manifest with {len(manifest_lines)} lines")
+		except Exception as e:
+			self.log.warning(f"Failed to load font manifest: {e}")
 
 	def init_animation_loader(self, use_atlases):
 		# this method should not be called from init to catch any bugs caused by the loader changing after it.

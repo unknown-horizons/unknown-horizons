@@ -1,0 +1,123 @@
+#
+# .github/workflows/qa.yml
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+# SPDX-FileCopyrightText: 2008 - 2026 The Unknown Horizons Team
+# This file is part of unknown-horizons/unknown-horizons.
+
+
+# -----------------------------------------------------------------------------
+# Python QA and static analysis for Unknown Horizons.
+# -----------------------------------------------------------------------------
+
+name: QA
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Cancel outdated runs for the same branch.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+
+# ---------------------------------------------------------------------------------------
+
+  python-quality:
+
+# ---------------------------------------------------------------------------------------
+
+    name: Python quality
+    runs-on: ubuntu-24.04
+    steps:
+      - name: "🤘 Checkout Code"
+        uses: actions/checkout@v7
+
+      - name: "🔽 Setup UV and Python"
+        uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: latest
+          python-version: "3.13"
+
+      # ~106 files have pre-existing import-order violations. Fixing them is a
+      # mechanical but large, unrelated diff, so this reports rather than gates
+      # until that cleanup happens in its own commit.
+      - name: "📋 Check import order (isort, informational)"
+        continue-on-error: true
+        run: uv tool run isort --check-only --diff horizons tests *.py
+
+      # F821 (undefined name) is the only rule that reliably indicates a real
+      # bug rather than style; it is clean, so it gates. The full rule set has
+      # ~1200 legacy findings and is reported informationally below.
+      - name: "🛠️ Lint for undefined names (ruff, gating)"
+        run: uv tool run ruff check --select F821 horizons tests
+
+      - name: "📋 Full lint report (ruff, informational)"
+        continue-on-error: true
+        run: uv tool run ruff check horizons tests
+
+      # NOTE: no black. UH is tab-indented by convention (.editorconfig) and
+      # black normalises to spaces, so it would rewrite the whole tree.
+      # 26 pre-existing findings; tighten once cleared.
+      - name: "📋 Style check (pycodestyle, informational)"
+        continue-on-error: true
+        run: uv tool run pycodestyle horizons tests development
+
+      - name: "📋 Type checking (mypy, informational)"
+        continue-on-error: true
+        run: uv tool run mypy horizons
+
+# ---------------------------------------------------------------------------------------
+
+  shellcheck:
+
+# ---------------------------------------------------------------------------------------
+
+    name: ShellCheck
+    runs-on: ubuntu-24.04
+    steps:
+      - name: "🤘 Checkout Code"
+        uses: actions/checkout@v7
+
+      - name: "🔽 Install ShellCheck"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: "🛠️ Run ShellCheck (errors gate)"
+        run: find . -type f -name "*.sh" -not -path "./.git/*" -print0 | xargs -0 shellcheck -S error
+
+      - name: "📋 Run ShellCheck (full report, informational)"
+        continue-on-error: true
+        run: find . -type f -name "*.sh" -not -path "./.git/*" -print0 | xargs -0 shellcheck
+
+# ---------------------------------------------------------------------------------------
+
+  comments-check:
+
+# ---------------------------------------------------------------------------------------
+
+    name: Comments check
+    runs-on: ubuntu-24.04
+    steps:
+      - name: "🤘 Checkout Code"
+        uses: actions/checkout@v7
+
+      - name: "🔽 Install ripgrep"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+
+      - name: "📋 Check for TODO, FIXME comments"
+        continue-on-error: true
+        run: rg -i '\b(?:TODO|FIXME)\b' horizons
+
+      - name: "📋 Check for MAYBE, PROBABLY, BROKEN, WORKAROUND comments"
+        continue-on-error: true
+        run: rg -i '\b(?:MAYBE|PROBABLY|BROKEN|WORKAROUND)\b' horizons

@@ -39,6 +39,10 @@ class Dummy:
 				class C(Dummy):
 					ATTRIBUTES = Dummy()
 				return C
+			elif attr == 'get_locale':
+				# change_language() calls fife.get_locale(); a generic Dummy is
+				# falsy and breaks locale/font lookup, so return a real code.
+				return lambda: 'en'
 			return super(self.__class__, self).__getattr__(attr)
 		except AttributeError:
 			if attr in ('__base__', '__bases__', '__basicsize__',
