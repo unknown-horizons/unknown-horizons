@@ -37,6 +37,7 @@ env:
   FIFE_DIR: ${{ github.workspace }}/fifengine
   DEPS_DIR: ${{ github.workspace }}/fifengine/out/fife-dependencies
   BUILD_DIR: ${{ github.workspace }}/fifengine/out/build/ci
+  INSTALL_DIR: ${{ github.workspace }}/fife-install
 
   # vcpkg
   VCPKG_ROOT: /usr/local/share/vcpkg
@@ -181,6 +182,9 @@ jobs:
         working-directory: ${{ env.FIFE_DIR }}
         run: cmake --build ${{ env.BUILD_DIR }} --target fife fife_swig fifechan_swig --parallel
 
+      - name: "📦 Install Fifengine (python package layout)"
+        run: cmake --install ${{ env.BUILD_DIR }} --prefix ${{ env.INSTALL_DIR }}
+
       # -----------------------------------------------------------------------------
       # 2. FIFE runtime environment
       #    This not needed once `libfife` is installed via PyPI.
@@ -193,7 +197,8 @@ jobs:
           echo "fifengine lib dir : ${FENGINE_LIB_DIR:-<not found>}"
           echo "fifechan  lib dir : ${FIFECHAN_LIB_DIR:-<not found>}"
           {
-            echo "PYTHONPATH=$BUILD_DIR"
+            echo "FIFE_PY_SITE=$(python3 -c "import sysconfig; print(sysconfig.get_path('purelib', vars={'base': '$INSTALL_DIR', 'platbase': '$INSTALL_DIR'}))")"
+            echo "PYTHONPATH=$FIFE_PY_SITE"
             echo "LD_LIBRARY_PATH=${FENGINE_LIB_DIR}:${FIFECHAN_LIB_DIR}:${VCPKG_INSTALLLED_DIR}/${TRIPLET}/lib"
             # Headless rendering (mirrors Fifengine CI).
             echo "SDL_VIDEODRIVER=x11"
