@@ -196,8 +196,10 @@ jobs:
           FIFECHAN_LIB_DIR="$(dirname "$(find "$DEPS_DIR" "$VCPKG_INSTALLLED_DIR" -name 'libfifechan*.so*' -print -quit)")"
           echo "fifengine lib dir : ${FENGINE_LIB_DIR:-<not found>}"
           echo "fifechan  lib dir : ${FIFECHAN_LIB_DIR:-<not found>}"
+          FIFE_PY_DIR="$(dirname "$(find "$INSTALL_DIR" -path '*/fife/__init__.py' -print -quit)")"
+          FIFE_PY_SITE="$(dirname "$FIFE_PY_DIR")"
+          echo "fife python site  : ${FIFE_PY_SITE:-<not found>}"
           {
-            echo "FIFE_PY_SITE=$(python3 -c "import sysconfig; print(sysconfig.get_path('purelib', vars={'base': '$INSTALL_DIR', 'platbase': '$INSTALL_DIR'}))")"
             echo "PYTHONPATH=$FIFE_PY_SITE"
             echo "LD_LIBRARY_PATH=${FENGINE_LIB_DIR}:${FIFECHAN_LIB_DIR}:${VCPKG_INSTALLLED_DIR}/${TRIPLET}/lib"
             # Headless rendering (mirrors Fifengine CI).
