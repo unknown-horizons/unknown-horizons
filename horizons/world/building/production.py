@@ -75,17 +75,17 @@ class Fisher(BuildingResourceHandler, BuildableSingleOnCoast, BasicBuilding):
 
 
 class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
-	def __init__(self, inventory, deposit_class:int, *args, **kwargs):
+	def __init__(self, inventory, deposit_class: int, *args, **kwargs):
 		"""
 		@param inventory: inventory dump of deposit (collected by get_prebuild_data())
 		@param deposit_class: class num of deposit for later reconstruction (collected by get_prebuild_data())
 		"""
 		# needs to be inited before super(), since that will call the _on_production_changed hook
 		super().__init__(*args, **kwargs)
-		self.__inventory:dict[int, int] = inventory
-		self.__deposit_class:int = deposit_class
+		self.__inventory: dict[int, int] = inventory
+		self.__deposit_class: int = deposit_class
 
-	def initialize(self, deposit_class:int, inventory:dict[int, int], **kwargs):
+	def initialize(self, deposit_class: int, inventory: dict[int, int], **kwargs):
 		super().initialize(**kwargs)
 		self.__init(deposit_class=deposit_class)
 		for res, amount in inventory.items():
@@ -107,7 +107,7 @@ class Mine(BuildingResourceHandler, BuildableSingleOnDeposit, BasicBuilding):
 		else:
 			return pos
 
-	def __init(self, deposit_class:int):
+	def __init(self, deposit_class: int):
 		self.__deposit_class = deposit_class
 
 		# setup loading area

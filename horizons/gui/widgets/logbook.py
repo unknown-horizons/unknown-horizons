@@ -200,7 +200,6 @@ class LogBook(PickBeltWidget, Window):
 			self.forward_button.set_inactive()
 		self._gui.adaptLayout()
 
-
 ########
 #        LOGBOOK  SUBWIDGET
 ########
@@ -413,7 +412,6 @@ class LogBook(PickBeltWidget, Window):
 			# we don't care which one is shown currently (if any), just hide all of them
 			statswidget.hide()
 		self.stats_visible = None
-
 
 ########
 #        MESSAGE  AND  CHAT  HISTORY  SUBWIDGET

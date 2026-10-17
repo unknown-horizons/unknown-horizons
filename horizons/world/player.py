@@ -30,6 +30,8 @@ def _get_horizons_main():
     """Lazy import to avoid circular dependency."""
     import horizons.main
     return horizons.main
+
+
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import PLAYER

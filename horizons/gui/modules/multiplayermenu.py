@@ -31,6 +31,8 @@ def _get_horizons_main():
     """Lazy import to avoid circular dependency."""
     import horizons.main
     return horizons.main
+
+
 import horizons.globals
 from horizons.constants import MULTIPLAYER
 from horizons.extscheduler import ExtScheduler
