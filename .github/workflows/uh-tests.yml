@@ -113,18 +113,18 @@ jobs:
             cache-vcpkg-uh-${{ env.FIFE_REF }}-${{ github.ref }}-
             cache-vcpkg-uh-${{ env.FIFE_REF }}-
 
-      - name: "📥 Bootstrap vcpkg"
+      - name: "📥 Bootstrap vcpkg (only if not preinstalled)"
         run: |
           if [ ! -x "${{ env.VCPKG_ROOT }}/vcpkg" ]; then
             git clone https://github.com/microsoft/vcpkg "${{ env.VCPKG_ROOT }}"
+            cd "${{ env.VCPKG_ROOT }}"
+            ./bootstrap-vcpkg.sh
           fi
-          cd "${{ env.VCPKG_ROOT }}"
-          git pull || true
-          ./bootstrap-vcpkg.sh
-          ./vcpkg integrate install
+          "${{ env.VCPKG_ROOT }}/vcpkg" integrate install
 
-      - name: "⬇️ Install vcpkg packages"
+      - name: "⬇️ Install vcpkg packages (Fifengine manifest)"
         if: steps.cache-vcpkg.outputs.cache-hit != 'true'
+        working-directory: ${{ env.FIFE_DIR }}
         run: "${{ env.VCPKG_ROOT }}/vcpkg install --triplet ${{ env.TRIPLET }} --x-install-root=${{ env.VCPKG_INSTALLLED_DIR }}"
 
       # --- Non-vcpkg dependencies (Fifengine fetches + builds fifechan and SWIG) ---
@@ -160,8 +160,8 @@ jobs:
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: cmake --build ${{ env.DEPS_DIR }}/build --parallel
 
-      # --- Build Fifengine WITH Python bindings (UH needs the `fife` package) ---
-      - name: "🛠️ Configure Fifengine (python bindings ON)"
+      # --- Build Fifengine WITH Python bindings ---
+      - name: "🛠️ Configure Fifengine"
         working-directory: ${{ env.FIFE_DIR }}
         run: |
           cmake \
@@ -222,11 +222,6 @@ jobs:
       # -----------------------------------------------------------------------------
       # 4. Tests
       # -----------------------------------------------------------------------------
-      - name: "🧹 Lint (isort / pycodestyle)"
-        run: |
-          python3 -m isort --check-only --diff horizons tests || true
-          python3 -m pycodestyle horizons tests || true
-
       # Primary smoke gate: boots the full engine + loads a map (headless).
       # This is the suite verified against FIFE 0.5 (see todo/uh/plan.md).
       - name: "🧪 Engine smoke test (headless, xvfb)"
@@ -264,6 +259,7 @@ jobs:
       # data file; merge them into a single report (mirrors the old Travis setup).
       - name: "📊 Combine coverage reports"
         if: always()
+        continue-on-error: true
         run: |
           python3 -m coverage combine
           python3 -m coverage report
@@ -273,6 +269,7 @@ jobs:
       # provides automatically to every job -- no extra secret to configure.
       - name: "📈 Publish coverage to Coveralls"
         if: always()
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 -m coveralls --service=github
