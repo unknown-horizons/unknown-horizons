@@ -164,6 +164,7 @@ jobs:
       - name: "🛠️ Configure Fifengine"
         working-directory: ${{ env.FIFE_DIR }}
         run: |
+          export PATH="${{ env.DEPS_DIR }}/build-tools/swig/bin:$PATH"
           cmake \
             --preset ${{ env.FIFE_BUILD_PRESET }} \
             -B ${{ env.BUILD_DIR }} \
