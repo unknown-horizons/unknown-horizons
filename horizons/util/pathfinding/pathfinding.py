@@ -21,7 +21,6 @@
 
 import logging
 
-
 """
 This file contains only the pathfinding algorithm. It is implemented in a callable class
 called FindPath. You should never ever use this class directly, just through the Pather
@@ -149,7 +148,7 @@ class FindPath:
 		if not dest_coords_set:
 			return None
 
-		from heapq import heappush, heappop
+		from heapq import heappop, heappush
 		heap = []
 		for coords, data in to_check.items():
 			heappush(heap, (data[2], coords))

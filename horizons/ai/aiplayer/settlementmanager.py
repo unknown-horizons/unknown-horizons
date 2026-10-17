@@ -24,18 +24,37 @@ import logging
 from horizons.ai.aiplayer.goal.boatbuilder import BoatBuilderGoal
 from horizons.ai.aiplayer.goal.combatship import CombatShipGoal
 from horizons.ai.aiplayer.goal.depositcoverage import (
-	ClayDepositCoverageGoal, MountainCoverageGoal, StoneDepositCoverageGoal)
+	ClayDepositCoverageGoal,
+	MountainCoverageGoal,
+	StoneDepositCoverageGoal,
+)
 from horizons.ai.aiplayer.goal.doctor import DoctorGoal
 from horizons.ai.aiplayer.goal.enlargecollectorarea import EnlargeCollectorAreaGoal
 from horizons.ai.aiplayer.goal.feederchaingoal import (
-	FeederFoodGoal, FeederLiquorGoal, FeederMedicalProductsGoal, FeederSaltGoal, FeederTextileGoal,
-	FeederTobaccoProductsGoal)
+	FeederFoodGoal,
+	FeederLiquorGoal,
+	FeederMedicalProductsGoal,
+	FeederSaltGoal,
+	FeederTextileGoal,
+	FeederTobaccoProductsGoal,
+)
 from horizons.ai.aiplayer.goal.firestation import FireStationGoal
 from horizons.ai.aiplayer.goal.foundfeederisland import FoundFeederIslandGoal
 from horizons.ai.aiplayer.goal.improvecollectorcoverage import ImproveCollectorCoverageGoal
 from horizons.ai.aiplayer.goal.productionchaingoal import (
-	BoardsGoal, BricksGoal, CommunityGoal, EducationGoal, FaithGoal, FoodGoal, GetTogetherGoal,
-	MedicalHerbsProductsGoal, SaltGoal, TextileGoal, TobaccoProductsGoal, ToolsGoal)
+	BoardsGoal,
+	BricksGoal,
+	CommunityGoal,
+	EducationGoal,
+	FaithGoal,
+	FoodGoal,
+	GetTogetherGoal,
+	MedicalHerbsProductsGoal,
+	SaltGoal,
+	TextileGoal,
+	TobaccoProductsGoal,
+	ToolsGoal,
+)
 from horizons.ai.aiplayer.goal.signalfire import SignalFireGoal
 from horizons.ai.aiplayer.goal.storagespace import StorageSpaceGoal
 from horizons.ai.aiplayer.goal.tent import TentGoal

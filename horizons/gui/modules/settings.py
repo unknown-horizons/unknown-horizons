@@ -31,8 +31,12 @@ from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.i18n import (
-	change_language, find_available_languages, get_language_translation_stats, gettext as T,
-	gettext_lazy as LazyT)
+	change_language,
+	find_available_languages,
+	get_language_translation_stats,
+	gettext as T,
+	gettext_lazy as LazyT,
+)
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback

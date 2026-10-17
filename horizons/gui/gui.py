@@ -29,7 +29,13 @@ import horizons.globals
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.modules import (
-	HelpDialog, LoadingScreen, MultiplayerMenu, SelectSavegameDialog, SettingsDialog, SingleplayerMenu)
+	HelpDialog,
+	LoadingScreen,
+	MultiplayerMenu,
+	SelectSavegameDialog,
+	SettingsDialog,
+	SingleplayerMenu,
+)
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.fpsdisplay import FPSDisplay

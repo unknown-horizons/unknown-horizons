@@ -29,14 +29,23 @@ from horizons.component.fieldbuilder import FieldBuilder
 from horizons.component.healthcomponent import HealthComponent
 from horizons.component.inventoryoverlaycomponent import InventoryOverlayComponent
 from horizons.component.namedcomponent import (
-	InhabitantNameComponent, NamedComponent, PirateShipNameComponent, SettlementNameComponent,
-	ShipNameComponent, SoldierNameComponent)
+	InhabitantNameComponent,
+	NamedComponent,
+	PirateShipNameComponent,
+	SettlementNameComponent,
+	ShipNameComponent,
+	SoldierNameComponent,
+)
 from horizons.component.restrictedpickup import RestrictedPickup
 from horizons.component.selectablecomponent import SelectableComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.world.production.producer import (
-	GroundUnitProducer, Producer, QueueProducer, ShipProducer)
+	GroundUnitProducer,
+	Producer,
+	QueueProducer,
+	ShipProducer,
+)
 
 
 class ComponentHolder:

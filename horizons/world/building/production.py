@@ -26,7 +26,11 @@ from horizons.constants import BUILDINGS, PRODUCTION
 from horizons.scheduler import Scheduler
 from horizons.util.shapes import RadiusRect, Rect
 from horizons.world.building.buildable import (
-	BuildableSingle, BuildableSingleOnCoast, BuildableSingleOnDeposit, BuildableSingleOnOcean)
+	BuildableSingle,
+	BuildableSingleOnCoast,
+	BuildableSingleOnDeposit,
+	BuildableSingleOnOcean,
+)
 from horizons.world.building.building import BasicBuilding
 from horizons.world.building.buildingresourcehandler import BuildingResourceHandler
 from horizons.world.building.nature import Field

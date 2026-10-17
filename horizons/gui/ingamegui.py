@@ -44,8 +44,18 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.i18n import gettext as T
 from horizons.messaging import (
-	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
-	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)
+	GuiAction,
+	GuiCancelAction,
+	GuiHover,
+	LanguageChanged,
+	MineEmpty,
+	NewDisaster,
+	NewSettlement,
+	PlayerLevelUpgrade,
+	SpeedChanged,
+	TabWidgetChanged,
+	ZoomChanged,
+)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.python.callback import Callback

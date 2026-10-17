@@ -27,7 +27,6 @@ from typing import Optional
 import horizons.globals
 from horizons.constants import PATHS
 
-
 """
 Internationalization for speech|voice files
 """

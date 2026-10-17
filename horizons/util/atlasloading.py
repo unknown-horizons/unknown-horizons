@@ -35,6 +35,7 @@ def generate_atlases():
 	"""
 	try:
 		import tkinter
+
 		from PIL import Image, ImageTk
 	except ImportError:
 		# tkinter or PIL may be missing, abort

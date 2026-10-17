@@ -24,8 +24,15 @@ import sys
 from .barrackstabs import BarracksConfirmTab, BarracksSelectTab, BarracksSwordmanTab, BarracksTab
 from .barriertab import BarrierOverviewTab
 from .boatbuildertabs import (
-	BoatbuilderConfirmTab, BoatbuilderFisherTab, BoatbuilderTab, BoatbuilderTradeTab,
-	BoatbuilderWar1Tab, BoatbuilderWar2Tab, ProducerOverviewTabBase, UnitbuilderTabBase)
+	BoatbuilderConfirmTab,
+	BoatbuilderFisherTab,
+	BoatbuilderTab,
+	BoatbuilderTradeTab,
+	BoatbuilderWar1Tab,
+	BoatbuilderWar2Tab,
+	ProducerOverviewTabBase,
+	UnitbuilderTabBase,
+)
 from .buildingtabs import ResourceDepositOverviewTab, SignalFireOverviewTab, TowerOverviewTab
 from .buildrelatedtab import BuildRelatedTab
 from .buildtabs import BuildTab
@@ -34,15 +41,25 @@ from .diplomacytab import DiplomacyTab
 from .enemybuildingtabs import EnemyBuildingOverviewTab, EnemyWarehouseOverviewTab
 from .inventorytab import InventoryTab
 from .mainsquaretabs import (
-	AccountTab, MainSquareCitizensTab, MainSquareMerchantsTab, MainSquareOverviewTab,
-	MainSquarePioneersTab, MainSquareSailorsTab, MainSquareSettlersTab)
+	AccountTab,
+	MainSquareCitizensTab,
+	MainSquareMerchantsTab,
+	MainSquareOverviewTab,
+	MainSquarePioneersTab,
+	MainSquareSailorsTab,
+	MainSquareSettlersTab,
+)
 from .overviewtab import GenericOverviewTab, GroundUnitOverviewTab, OverviewTab
 from .productiontabs import LumberjackOverviewTab, ProductionOverviewTab, SmallProductionOverviewTab
 from .residentialtabs import SettlerOverviewTab
 from .selectmultitab import SelectMultiTab
 from .shiptabs import (
-	EnemyShipOverviewTab, FightingShipOverviewTab, ShipOverviewTab, TraderShipOverviewTab,
-	TradeShipOverviewTab)
+	EnemyShipOverviewTab,
+	FightingShipOverviewTab,
+	ShipOverviewTab,
+	TraderShipOverviewTab,
+	TradeShipOverviewTab,
+)
 from .tabwidget import TabWidget
 from .tradetab import TradeTab
 

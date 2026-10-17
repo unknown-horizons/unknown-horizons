@@ -33,6 +33,10 @@ import distro
 from setuptools import Command, setup
 from setuptools.command.build import build
 
+# setuptools exec()s this file without the project root on sys.path, so the
+# imports below only resolve when it is added explicitly.
+sys.path.insert(0, os.path.realpath(os.path.dirname(__file__)))
+
 import horizons
 from horizons.constants import VERSION
 from horizons.ext import polib

@@ -102,8 +102,9 @@ def _setup_fife_dummy():
 	if FIFE_MOCK_INSTALLED:
 		return
 
-	import horizons.globals
 	import fife
+
+	import horizons.globals
 	horizons.globals.fife = fife.fife
 
 	from horizons.util import create_user_dirs

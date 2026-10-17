@@ -37,7 +37,11 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget
 from horizons.i18n import gettext as T
 from horizons.messaging import (
-	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
+	PlayerInventoryUpdated,
+	SettlementInventoryUpdated,
+	SettlementRangeChanged,
+	WorldObjectDeleted,
+)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject

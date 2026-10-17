@@ -102,15 +102,6 @@ ignore_missing_imports = true
 follow_imports = "skip"
 warn_no_return = false
 
-[tool.isort]
-line_length = 100
-known_third_party = ["fife", "pytest"]
-known_standard_library = ["typing", "unittests"]
-known_first_party = ["horizons", "tests"]
-multi_line_output = 4
-indent = "\t"
-combine_as_imports = true
-
 [tool.pycodestyle]
 # Inert: pycodestyle does not read pyproject.toml (only setup.cfg/tox.ini/
 # .pycodestyle). The live copy lives in setup.cfg; ruff below is the primary

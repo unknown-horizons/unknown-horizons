@@ -27,7 +27,6 @@ from horizons.util.pathfinding import PathBlockedError
 from horizons.util.pathfinding.pathfinding import FindPath
 from horizons.util.shapes import Point
 
-
 """
 In this file, you will find an interface to the pathfinding algorithm.
 We just call this interface Pather. It is used by unit to hide implementation details

@@ -29,6 +29,7 @@ from random import Random
 
 import horizons.globals
 import horizons.main
+
 # AIPlayer is imported lazily to avoid circular import with world.player -> session
 # from horizons.ai.aiplayer import AIPlayer
 # IngameGui is imported lazily to avoid circular import with gui.modules -> session
@@ -53,6 +54,7 @@ from horizons.util.savegameaccessor import SavegameAccessor
 from horizons.util.uhdbaccessor import read_savegame_template
 from horizons.util.worldobject import WorldObject
 from horizons.view import View
+
 # World is imported lazily to avoid circular import with world -> session
 # from horizons.world import World
 

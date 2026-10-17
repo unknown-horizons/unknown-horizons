@@ -28,7 +28,6 @@ import horizons.globals
 from horizons.ext.enum import Enum
 from horizons.util.python.singleton import Singleton
 
-
 # Some key names changed spelling in the Fifengine key enum. Older settings files
 # (and older templates) may still carry the legacy/alternate spellings, so map
 # them onto the names the current fife.Key enum exposes. Without this, bindings

@@ -39,6 +39,7 @@ from horizons.world.units.fightingship import FightingShip
 from horizons.world.units.weaponholder import MovingWeaponHolder
 
 from .basicbuilder import BasicBuilder
+
 # all subclasses of AbstractBuilding have to be imported here to register the available buildings
 from .building import AbstractBuilding
 from .building.boatbuilder import AbstractBoatBuilder

@@ -29,8 +29,12 @@ from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import BUILDINGS, GAME, RES, TIER
 from horizons.gui.tabs import SettlerOverviewTab
 from horizons.messaging import (
-	AddStatusIcon, RemoveStatusIcon, SettlerInhabitantsChanged, SettlerUpdate,
-	UpgradePermissionsChanged)
+	AddStatusIcon,
+	RemoveStatusIcon,
+	SettlerInhabitantsChanged,
+	SettlerUpdate,
+	UpgradePermissionsChanged,
+)
 from horizons.scheduler import Scheduler
 from horizons.util.pathfinding.pather import StaticPather
 from horizons.util.python.callback import Callback

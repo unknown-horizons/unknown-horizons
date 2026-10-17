@@ -31,7 +31,6 @@ from typing import List, Optional
 from horizons.ext.enum import Enum
 from horizons.util.platform import get_old_user_game_directory, get_user_game_directories
 
-
 """This file keeps track of the constants that are used in Unknown Horizons.
 NOTE: Using magic constants in code is generally a bad style, so avoid where
 possible and instead import the proper classes of this file.

@@ -23,7 +23,11 @@ import logging
 import math
 
 from horizons.component.stancecomponent import (
-	AggressiveStance, FleeStance, HoldGroundStance, NoneStance)
+	AggressiveStance,
+	FleeStance,
+	HoldGroundStance,
+	NoneStance,
+)
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import GAME_SPEED
 from horizons.i18n import gettext as T

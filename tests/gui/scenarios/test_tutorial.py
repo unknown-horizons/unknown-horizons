@@ -23,7 +23,12 @@ from horizons.constants import RES, TIER
 from tests.gui import gui_test
 from tests.gui.helper import get_player_ship, move_ship, saveload
 from tests.gui.scenarios.helper import (
-	assert_win, settlement_res_stored_greater, settler_level_greater, var_eq, wait_and_close_logbook)
+	assert_win,
+	settlement_res_stored_greater,
+	settler_level_greater,
+	var_eq,
+	wait_and_close_logbook,
+)
 
 
 @gui_test(use_scenario='content/scenarios/tutorial_en', timeout=7 * 60)

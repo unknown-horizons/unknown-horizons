@@ -34,7 +34,6 @@ from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
 
-
 """
 This is used for random features required by world,
 that aren't delicate but need to occupy space somewhere.

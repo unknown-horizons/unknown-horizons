@@ -28,7 +28,11 @@ from horizons.constants import BUILDINGS, RES
 from horizons.messaging import AddStatusIcon
 from horizons.world.production.producer import Producer
 from horizons.world.status import (
-	DecommissionedStatus, InventoryFullStatus, ProductivityLowStatus, SettlerUnhappyStatus)
+	DecommissionedStatus,
+	InventoryFullStatus,
+	ProductivityLowStatus,
+	SettlerUnhappyStatus,
+)
 from tests.game import game_test, settle
 
 
