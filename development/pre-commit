@@ -24,8 +24,9 @@
 """
 INFORMATION:
 This is the pre-commit hook used on the unknown horizons team. It checks the
-staged files using pyflakes and checks for added print statements. It gives you
-the choice to cancel a commit if errors are found.
+staged files using pycodestyle and ruff (import order), and checks for added
+print statements. It gives you the choice to cancel a commit if errors are
+found.
 
 = Installation =
 
@@ -118,15 +119,17 @@ def check_debug_statements(filename):
 		return True
 
 
-def check_isort(filename):
-	output('Checking isort on {}: '.format(filename), end='')
+def check_imports(filename):
+	"""Check import order with ruff I001 (was isort; I001 only, like qa.yml)."""
+	output('Checking import order (ruff I001) on {}: '.format(filename), end='')
 
-	exit_code, stdout, stderr = run('isort -c {}'.format(filename))
-	errors = stdout + stderr
-	if errors:
+	# Judge by exit code: ruff prints "All checks passed!" on stderr.
+	exit_code, stdout, stderr = run('uv tool run ruff check --no-cache --select I001 {}'.format(filename))
+	if exit_code != 0:
 		output(crayons.red('FAILED!'))
-		for line in errors:
-			output("\t", line)
+		for line in stdout + stderr:
+			if line.strip():
+				output("\t", line)
 
 		return False
 	else:
@@ -146,7 +149,7 @@ def main():
 			if not check_debug_statements(fname):
 				found_problems = True
 
-			if not check_isort(fname):
+			if not check_imports(fname):
 				found_problems = True
 
 	if found_problems:

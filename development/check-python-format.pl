@@ -1,5 +1,8 @@
 #!/usr/bin/perl
 
+# Probably dead code, left over from before the transition to Weblate: nothing
+# references it, and it only checks $ARGV[0]. TODO: remove this file.
+
 use strict;
 use warnings;
 
