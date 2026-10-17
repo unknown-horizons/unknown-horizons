@@ -21,6 +21,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+# TODO: still Python 2 (`except X, e:`) and therefore probably bit-rot. Port to
+# Python 3 or delete -- 2to3 cannot help, as lib2to3 fails to parse the file.
+
 
 import getopt
 import glob

@@ -42,7 +42,7 @@ class PassThroughOptionParser(OptionParser):
 		while rargs:
 			try:
 				OptionParser._process_args(self, largs, rargs, values)
-			except (AmbiguousOptionError, BadOptionError), e:
+			except (AmbiguousOptionError, BadOptionError) as e:
 				largs.append(e.opt_str)
 
 
