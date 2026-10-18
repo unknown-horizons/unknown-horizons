@@ -24,7 +24,6 @@
 import pstats
 import sys
 
-
 if not sys.argv:
 	print('profile_output.py file [ sortstats [ ( callees | callers ) ] ]')
 	sys.exit(1)

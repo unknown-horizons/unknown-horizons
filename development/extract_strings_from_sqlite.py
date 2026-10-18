@@ -35,19 +35,19 @@
 ###############################################################################
 
 import os
-import sqlalchemy
-import sqlalchemy.orm
-import sqlalchemy.ext.declarative
 import sqlite3
 import sys
 import tempfile
 from collections import defaultdict
 
+import sqlalchemy
+import sqlalchemy.ext.declarative
+import sqlalchemy.orm
+
 sys.path.append(".")
 sys.path.append("./horizons")
 
 from horizons.constants import PATHS
-
 
 # sqlalchemy doesn't support importing sql files,
 # therefore we work around this by using sqlite3

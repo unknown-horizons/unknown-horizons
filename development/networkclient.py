@@ -23,17 +23,17 @@
 
 
 import getopt
-import os
-import sys
-import platform
-import signal
 import logging
 import logging.config
 import logging.handlers
+import os
+import platform
+import signal
+import sys
 
 sys.path.append(os.getcwd())
-from horizons.network.client import Client, ClientMode
 import horizons.network
+from horizons.network.client import Client, ClientMode
 
 #-------------------------------------------------------------------------------
 
@@ -50,7 +50,7 @@ def nbrawinput(prompt='', timeout=1):
 	signal.signal(signal.SIGALRM, alarmhandler)
 	signal.alarm(timeout)
 	try:
-		text = raw_input(prompt)
+		text = input(prompt)
 		signal.alarm(0)
 		return text
 	except AlarmException:
@@ -102,7 +102,7 @@ def oncreate(*args):
 		return
 	try:
 		maxplayers = int(args[1])
-		game = client.creategame(unicode(args[0]), maxplayers, unicode(args[2]))
+		game = client.creategame(str(args[0]), maxplayers, str(args[2]))
 		print("[GAME] [{}] mapname={} maxplayers={:d} playercnt={:d}"
 		      .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
 		for player in game.players:
@@ -117,7 +117,7 @@ def onjoin(*args):
 		print("Syntax: join <uuid>")
 		return
 	try:
-		game = client.joingame(unicode(args[0]))
+		game = client.joingame(str(args[0]))
 		print("[GAME] [{}] mapname={} maxplayers={:d} playercnt={:d}"
 		      .format(game.uuid, game.mapname, game.maxplayers, game.playercnt))
 		for player in game.players:
@@ -175,7 +175,7 @@ def onauto(*args):
 	gamename = u"mygame"
 	maxplayers = 4
 	if len(args) >= 1:
-		mapname = unicode(args[0])
+		mapname = str(args[0])
 	if len(args) >= 2:
 		try:
 			maxplayers = int(args[1])
@@ -207,9 +207,9 @@ def onname(*args):
 	global name, client
 	if len(args) == 1:
 		# see documentation for client.changename() why this code is like that
-		if not client.changename(unicode(args[0])):
+		if not client.changename(str(args[0])):
 			return
-		name = unicode(args[0])
+		name = str(args[0])
 	print("[NAME] My name is {}".format(name))
 
 

@@ -25,6 +25,7 @@ import os
 import re
 import subprocess
 import sys
+
 import yaml
 
 # Where to find initial untranslated scenario (with language `en`) and,
@@ -130,7 +131,7 @@ def write_translated_yaml(fileish, where, metadata, generator):
 	"""
 
 	def translate(string):
-		return _(string.rstrip('\n'))
+		return _(string.rstrip('\n')) # noqa: F821  (`_` comes from gettext install())
 
 	def preprint(yamlish, new_anchor, just_copy=True):
 		"""Prepare untranslated .yaml input *yamlish* for translation

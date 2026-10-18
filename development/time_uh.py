@@ -26,7 +26,6 @@ import os.path
 import subprocess
 import sys
 import time
-
 from optparse import AmbiguousOptionError, BadOptionError, OptionParser
 
 # make this script work both when started inside development and in the uh root dir

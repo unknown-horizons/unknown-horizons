@@ -20,12 +20,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+import inspect
+import os
 import re
 import subprocess
-import os
 import sys
-import inspect
-
 from collections import defaultdict
 from glob import glob
 
@@ -35,7 +34,6 @@ if cmd_folder not in sys.path:
     sys.path.insert(0, cmd_folder)
 
 from horizons.constants import LANGUAGENAMES
-
 
 LANG_RE = re.compile(r'.*/(.*).po')
 SCENARIO_LANG_RE = re.compile(r'.*/(.*)/[^/]*.po')

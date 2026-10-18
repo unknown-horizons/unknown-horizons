@@ -46,13 +46,13 @@ jobs:
           python-version: "3.13"
 
       - name: "🛠️ Check import order (ruff I001, gating)"
-        run: uv tool run ruff check --select I001 horizons tests
+        run: uv tool run ruff check --select I001 horizons tests development
 
       # F821 (undefined name) is the only rule that reliably indicates a real
       # bug rather than style; it is clean, so it gates. The full rule set has
       # ~1200 legacy findings and is reported informationally below.
       - name: "🛠️ Lint for undefined names (ruff, gating)"
-        run: uv tool run ruff check --select F821 horizons tests
+        run: uv tool run ruff check --select F821 horizons tests development
 
       - name: "📋 Full lint report (ruff, informational)"
         continue-on-error: true

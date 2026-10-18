@@ -31,6 +31,7 @@ Usage:
 """
 
 import sys
+
 import pylab
 
 sys.path.append(".")
@@ -45,12 +46,12 @@ except ImportError as e:
 	sys.exit(1)
 
 from run_uh import init_environment
+
 init_environment(False)
 
 import horizons.main
-
-from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 from horizons.ai.aiplayer.behavior.behaviorcomponents import BehaviorDiplomatic
+from horizons.ai.aiplayer.behavior.diplomacysettings import DiplomacySettings
 
 _move_f = BehaviorDiplomatic._move_f
 _get_quadratic_function = BehaviorDiplomatic._get_quadratic_function
@@ -100,7 +101,7 @@ def diplomacy_graph():
 			functions.append((get_neutral_function(**parameters['neutral']), 'b'))
 
 		for f, c in functions:
-			gen = [(x / 10.0, f(x / 10.0)) for x in xrange(-100, 100)]
+			gen = [(x / 10.0, f(x / 10.0)) for x in range(-100, 100)]
 			x = [item[0] for item in gen]
 			y = [item[1] for item in gen]
 			pylab.plot(x, y, color=c, marker=None)
