@@ -44,7 +44,6 @@ build-backend = "setuptools.build_meta"
 dev = [
   "ruff",
   "mypy",
-  "isort",
   "pycodestyle",
 ]
 test = [

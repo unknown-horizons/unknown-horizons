@@ -64,13 +64,14 @@ class DummyFife:
 #      See https://github.com/python/typeshed/commit/08ac3b7742f1fd55f801ac66d7517cf60aa471d6
 
 
-import horizons.globals # isort:skip
+import horizons.globals
+
 horizons.globals.fife = DummyFife() # type: ignore
 
-from horizons.constants import PATHS # isort:skip
-from horizons.util.dbreader import DbReader # isort:skip
-from horizons.util.loaders.actionsetloader import ActionSetLoader # isort:skip
-from horizons.util.loaders.tilesetloader import TileSetLoader # isort:skip
+from horizons.constants import PATHS
+from horizons.util.dbreader import DbReader
+from horizons.util.loaders.actionsetloader import ActionSetLoader
+from horizons.util.loaders.tilesetloader import TileSetLoader
 
 
 class AtlasEntry:

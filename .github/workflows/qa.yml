@@ -45,12 +45,8 @@ jobs:
           version: latest
           python-version: "3.13"
 
-      # ~106 files have pre-existing import-order violations. Fixing them is a
-      # mechanical but large, unrelated diff, so this reports rather than gates
-      # until that cleanup happens in its own commit.
-      - name: "📋 Check import order (isort, informational)"
-        continue-on-error: true
-        run: uv tool run isort --check-only --diff horizons tests *.py
+      - name: "🛠️ Check import order (ruff I001, gating)"
+        run: uv tool run ruff check --select I001 horizons tests
 
       # F821 (undefined name) is the only rule that reliably indicates a real
       # bug rather than style; it is clean, so it gates. The full rule set has
