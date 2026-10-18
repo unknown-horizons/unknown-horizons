@@ -227,6 +227,7 @@ jobs:
         run: |
           uv sync --no-install-project --group test
           uv pip install -r requirements.txt
+          echo "${{ github.workspace }}/.venv/bin" >> "$GITHUB_PATH"
 
       - name: "🌍 Build i18n (gettext)"
         run: ./setup.py build_i18n
