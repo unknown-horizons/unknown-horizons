@@ -219,12 +219,14 @@ jobs:
       # 3. Unknown Horizons dependencies + i18n
       # -----------------------------------------------------------------------------
       - name: "🛠 Setup uv"
-        uses: astral-sh/setup-uv@v6 # https://github.com/astral-sh/setup-uv
+        uses: astral-sh/setup-uv@v10.3.0 # https://github.com/astral-sh/setup-uv
 
       # Install UH dependencies (runtime + dev/test groups) WITHOUT building or
       # installing the project itself (it is run from source via run_uh.py).
       - name: "🥍 Install UH dependencies (uv sync)"
-        run: uv sync --no-install-project --group test
+        run: |
+          uv sync --no-install-project --group test
+          uv pip install -r requirements.txt
 
       - name: "🌍 Build i18n (gettext)"
         run: ./setup.py build_i18n
