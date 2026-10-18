@@ -48,6 +48,16 @@ def test_example(gui):
 
 	# Hopefully we're ingame now
 	assert gui.active_widgets
+
+	# How long the HUD takes to appear varies a lot with the renderer; under
+	# software GL in CI it is noticeably later than on a desktop. Poll instead
+	# of assuming it is already populated.
+	for _ in range(30):
+		gold_label = gui.find(name='gold_available')
+		if gold_label.text:
+			break
+		gui.run(seconds=1)
+
 	gold_label = gui.find(name='gold_available')
 	assert gold_label.text == '30000', gold_label.text
 
@@ -93,3 +103,33 @@ def test_example(gui):
 
     # TODO not yet supported, use gui.run(2**10)
 	#return 1
+
+
+@gui_test(timeout=60)
+def test_gold_label_initialized_immediately(gui):
+	"""
+	Regression test: gold label populated immediately after load; throttle preserved.
+
+	Verifies both:
+	1. The initial gold value is written synchronously during ResourceOverviewBar.load(),
+	   without waiting for the deferred ExtScheduler callback (0.3s wall-clock).
+	2. The 0.3s throttle still suppresses rapid subsequent updates.
+	"""
+	gui.disable_autoscroll()
+
+	# Main menu -> in-game.  ResourceOverviewBar.load() runs during load.
+	gui.trigger('menu/single_button')
+	gui.trigger('singleplayermenu/okay')
+
+	assert gui.active_widgets
+
+	res_overview = gui.session.ingame_gui.resource_overview
+
+	# 1. No polling, no gui.run(), no sleep: check immediately after load.
+	gold_label = gui.find(name='gold_available')
+	assert gold_label.text == '30000', gold_label.text
+
+	# 2. Throttle preserved: rapid _update_gold() calls must not rewrite immediately.
+	res_overview._update_gold()  # force=False -> schedules, sets flag, returns without writing
+	res_overview._update_gold()  # force=False -> flag set, returns without writing
+	assert gold_label.text == '30000', gold_label.text

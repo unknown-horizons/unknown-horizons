@@ -180,7 +180,7 @@ class ResourceOverviewBar:
 		inv = self.session.world.player.get_component(StorageComponent).inventory
 		inv.add_change_listener(self._update_gold, call_listener_now=True)
 		self.gold_gui.show()
-		self._update_gold() # call once more to make pychan happy
+		self._update_gold(force=True) # write gold immediately instead of waiting for the deferred callback
 
 		self.set_inventory_instance(
 		  LastActivePlayerSettlementManager().get(get_current_pos=True))
@@ -342,8 +342,9 @@ class ResourceOverviewBar:
 		scheduled_attr = "_gold_upate_scheduled"
 		if not hasattr(self, scheduled_attr):
 			setattr(self, scheduled_attr, True)
-			ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.3)
-			return
+			if not force:
+				ExtScheduler().add_new_object(Callback(self._update_gold, force=True), self, run_in=0.3)
+				return          # first call only schedules; text written 0.3s later
 		elif not force:
 			return # these calls we want to suppress, wait for scheduled call
 
