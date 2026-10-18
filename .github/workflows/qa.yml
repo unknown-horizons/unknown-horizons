@@ -58,13 +58,6 @@ jobs:
         continue-on-error: true
         run: uv tool run ruff check horizons tests
 
-      # NOTE: no black. UH is tab-indented by convention (.editorconfig) and
-      # black normalises to spaces, so it would rewrite the whole tree.
-      # 26 pre-existing findings; tighten once cleared.
-      - name: "📋 Style check (pycodestyle, informational)"
-        continue-on-error: true
-        run: uv tool run pycodestyle horizons tests development
-
       - name: "📋 Type checking (mypy, informational)"
         continue-on-error: true
         run: uv tool run mypy horizons

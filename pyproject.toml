@@ -44,7 +44,6 @@ build-backend = "setuptools.build_meta"
 dev = [
   "ruff",
   "mypy",
-  "pycodestyle",
 ]
 test = [
   "pytest",
@@ -81,7 +80,7 @@ select = [
 ignore = [
   "W191",  # tab-indentation: .editorconfig intentionally uses tabs
   "E101",  # mixed-spaces-and-tabs
-  "E501",  # line-too-long: not in pycodestyle's select list either
+  "E501",  # line-too-long: not enforced; the codebase has long data tables
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -100,16 +99,6 @@ python_version = "3.13"
 ignore_missing_imports = true
 follow_imports = "skip"
 warn_no_return = false
-
-[tool.pycodestyle]
-# Inert: pycodestyle does not read pyproject.toml (only setup.cfg/tox.ini/
-# .pycodestyle). The live copy lives in setup.cfg; ruff below is the primary
-# linter and reads its own config from this file.
-exclude = "horizons/ext/, horizons/gui/translations.py, horizons/constants.py"
-count = true
-select = "W2, W3, W6, E111, E112, E113, E114, E116, E125, E13, E20, E21, E22, E23, E242, E25, E27, E301, E302, E303, E304, E305, E70, E713"
-ignore = "E101, W191, W503, E241"
-max-line-length = 100
 
 [tool.coverage.run]
 branch = true

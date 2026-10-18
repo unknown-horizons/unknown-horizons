@@ -24,9 +24,9 @@
 """
 INFORMATION:
 This is the pre-commit hook used on the unknown horizons team. It checks the
-staged files using pycodestyle and ruff (import order), and checks for added
-print statements. It gives you the choice to cancel a commit if errors are
-found.
+staged files using ruff (syntax/undefined names and import order), and checks
+for added print statements. It gives you the choice to cancel a commit if
+errors are found.
 
 = Installation =
 
@@ -69,11 +69,14 @@ def output(*args, **kwargs):
 
 
 def check_syntax(filename):
-	syntax_checker = "pycodestyle"
+	"""Catch syntax errors and undefined names (was pycodestyle, now ruff)."""
 	output('Checking syntax on {}: '.format(filename), end='')
 
-	exit_code, stdout, stderr = run('{} {}'.format(syntax_checker, filename))
-	errors = stdout + stderr
+	# F821 also fails on unparseable files, so this covers syntax errors too.
+	exit_code, stdout, stderr = run(
+		'uv tool run ruff check --no-cache --select F821 {}'.format(filename))
+	# Judge by exit code: ruff reports "All checks passed!" on stderr.
+	errors = [] if exit_code == 0 else [l for l in stdout + stderr if l.strip()]
 	if errors:
 		output(crayons.red('FAILED!'))
 		for line in errors[:-1]:
