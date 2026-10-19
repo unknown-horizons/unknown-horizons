@@ -49,48 +49,48 @@ def test_get_user_game_directory_unix(tmpdir):
 def test_xdg_config_home_overrides_config_dir(tmpdir):
 	"""XDG_CONFIG_HOME overrides config dir, joined with UH suffix."""
 	tmpdir = str(tmpdir)
-	env = {'XDG_CONFIG_HOME': '/custom/config'}
+	env = {'XDG_CONFIG_HOME': tmpdir}
 	config_dir, _, _ = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-	assert config_dir == '/custom/config/unknown-horizons'
+	assert config_dir == os.path.join(tmpdir, 'unknown-horizons')
 
 
 def test_xdg_data_home_overrides_data_dir(tmpdir):
 	"""XDG_DATA_HOME overrides data dir, joined with UH suffix."""
 	tmpdir = str(tmpdir)
-	env = {'XDG_DATA_HOME': '/custom/data'}
+	env = {'XDG_DATA_HOME': tmpdir}
 	_, data_dir, _ = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-	assert data_dir == '/custom/data/unknown-horizons'
+	assert data_dir == os.path.join(tmpdir, 'unknown-horizons')
 
 
 def test_xdg_cache_home_overrides_cache_dir(tmpdir):
 	"""XDG_CACHE_HOME overrides cache dir, joined with UH suffix."""
 	tmpdir = str(tmpdir)
-	env = {'XDG_CACHE_HOME': '/custom/cache'}
+	env = {'XDG_CACHE_HOME': tmpdir}
 	_, _, cache_dir = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-	assert cache_dir == '/custom/cache/unknown-horizons'
+	assert cache_dir == os.path.join(tmpdir, 'unknown-horizons')
 
 
 def test_uh_user_dir_overrides_config_dir(tmpdir):
-	"""UH_USER_DIR overrides XDG_CONFIG_HOME for config_dir."""
+	"""UH_USER_DIR overrides config dir directly (no UH suffix)."""
 	tmpdir = str(tmpdir)
 	env = {'XDG_CONFIG_HOME': '/custom/config',
-	       'UH_USER_DIR': '/custom/user'}
+	       'UH_USER_DIR': tmpdir}
 	config_dir, _, _ = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-	assert config_dir == '/custom/user'
+	assert config_dir == tmpdir
 
 
 def test_uh_user_config_dir_wins_over_uh_user_dir(tmpdir):
 	"""UH_USER_CONFIG_DIR has highest priority for config_dir."""
 	tmpdir = str(tmpdir)
-	env = {'UH_USER_DIR': '/custom/user',
-	       'UH_USER_CONFIG_DIR': '/explicit/config'}
+	env = {'UH_USER_DIR': tmpdir,
+	       'UH_USER_CONFIG_DIR': os.path.join(tmpdir, 'explicit/config')}
 	config_dir, _, _ = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-	assert config_dir == '/explicit/config'
+	assert config_dir == os.path.join(tmpdir, 'explicit/config')
 
 
 def test_env_missing_uses_defaults(tmpdir):
@@ -108,18 +108,17 @@ def test_env_missing_uses_defaults(tmpdir):
 def test_cache_dir_uses_user_dir_cache_suffix(tmpdir):
 	"""UH_USER_DIR is joined with 'cache' for cache_dir."""
 	tmpdir = str(tmpdir)
-	env = {'UH_USER_DIR': '/custom/user'}
+	env = {'UH_USER_DIR': tmpdir}
 	_, _, cache_dir = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-
-	assert cache_dir == '/custom/user/cache'
+	assert cache_dir == os.path.join(tmpdir, 'cache')
 
 
 def test_uh_user_dir_overrides_xdg_data_home(tmpdir):
-	"""UH_USER_DIR overrides XDG_DATA_HOME for data_dir."""
+	"""UH_USER_DIR overrides XDG_DATA_HOME for data_dir (direct value)."""
 	tmpdir = str(tmpdir)
 	env = {'XDG_DATA_HOME': '/custom/data',
-	       'UH_USER_DIR': '/custom/user'}
+	       'UH_USER_DIR': tmpdir}
 	_, data_dir, _ = get_user_game_directories(
 		home_directory=tmpdir, env=env)
-	assert data_dir == '/custom/user'
+	assert data_dir == tmpdir
