@@ -139,7 +139,7 @@ def get_user_game_directories(home_directory=None, env=None):
 		'cache_dir': cache_dir,
 	}
 
-	resolved = _resolve_directories_with_env(defaults, env or os.environ)
+	resolved = _resolve_directories_with_env(defaults, env if env is not None else os.environ)
 
 	config_dir = resolved['config_dir']
 	data_dir = resolved['data_dir']
