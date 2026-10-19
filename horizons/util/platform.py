@@ -25,10 +25,12 @@ import platform
 CSIDL_PERSONAL = 5 # 'My documents' folder for win32 API
 
 
-def get_home_directory():
+def get_home_directory(home=None):
 	"""
 	Returns the home directory of the user running UH.
 	"""
+	if home is not None:
+		return home
 	if platform.system() != "Windows":
 		return os.path.expanduser('~')
 	else:
@@ -70,14 +72,55 @@ def _try_directories(paths, default=None):
 	return default
 
 
-def get_user_game_directories():
+# Mapping of (target_dir_key, env_var_name, suffix_or_None).
+# Applied in order; later entries override earlier ones, so highest-priority
+# overrides come last.
+_ENV_VAR_OVERRIDES = (
+    # config_dir overrides (lowest to highest priority)
+    ('config_dir', 'XDG_CONFIG_HOME', UH),
+    ('config_dir', 'UH_USER_DIR', None),
+    ('config_dir', 'UH_USER_CONFIG_DIR', None),
+    # data_dir overrides
+    ('data_dir', 'XDG_DATA_HOME', UH),
+    ('data_dir', 'UH_USER_DIR', None),
+    ('data_dir', 'UH_USER_DATA_DIR', None),
+    # cache_dir overrides
+    ('cache_dir', 'XDG_CACHE_HOME', UH),
+    ('cache_dir', 'UH_USER_DIR', 'cache'),
+    ('cache_dir', 'UH_USER_CACHE_DIR', None),
+)
+
+
+def _resolve_directories_with_env(defaults: dict, env: dict) -> dict:
+	"""
+	Pure function: applies environment variable overrides to default directory
+	paths. No global state is read — everything comes from ``env``.
+
+	Returns a new dict; ``defaults`` is not modified.
+	"""
+	resolved = dict(defaults)
+	for key, env_var, suffix in _ENV_VAR_OVERRIDES:
+		value = env.get(env_var)
+		if value:
+			if suffix is not None:
+				resolved[key] = os.path.join(value, suffix)
+			else:
+				resolved[key] = value
+	return resolved
+
+
+def get_user_game_directories(home_directory=None, env=None):
 	"""
 	Returns a triplet of directories for game-related data.
 	The first value is the directory for configuration files (settings.xml)
 	The second is the directory for game data (saves, maps, screenshots, logs)
 	The third is the directory for cache (atlas-metadata.cache, yamldata.cache)
+
+	``home_directory`` and ``env`` are explicit parameters, making this
+	function fully testable without mocking ``os.environ`` or
+	``platform.system``.
 	"""
-	home_directory = get_home_directory()
+	home_directory = home_directory or get_home_directory()
 
 	# these are the default directories
 	if platform.system() == "Windows":
@@ -90,33 +133,23 @@ def get_user_game_directories():
 		data_dir = os.path.join(home_directory, ".local", "share", UH)
 		cache_dir = os.path.join(home_directory, ".cache", UH)
 
-	# for each of the directories, try the paths with environment variables in this order
-	# if one of the environment variables exists, use that path
-	# otherwise, keep using the default dir
+	defaults = {
+		'config_dir': config_dir,
+		'data_dir': data_dir,
+		'cache_dir': cache_dir,
+	}
 
-	config_dir = _try_directories([
-		(os.environ.get("UH_USER_CONFIG_DIR"),),
-		(os.environ.get("UH_USER_DIR"),),
-		(os.environ.get("XDG_CONFIG_HOME"), UH)],
-		config_dir)
+	resolved = _resolve_directories_with_env(defaults, env or os.environ)
+
+	config_dir = resolved['config_dir']
+	data_dir = resolved['data_dir']
+	cache_dir = resolved['cache_dir']
 
 	if not os.path.exists(config_dir):
 		os.makedirs(config_dir)
 
-	data_dir = _try_directories([
-		(os.environ.get("UH_USER_DATA_DIR"),),
-		(os.environ.get("UH_USER_DIR"),),
-		(os.environ.get("XDG_DATA_HOME"), UH)],
-		data_dir)
-
 	if not os.path.exists(data_dir):
 		os.makedirs(data_dir)
-
-	cache_dir = _try_directories([
-		(os.environ.get("UH_USER_CACHE_DIR"),),
-		(os.environ.get("UH_USER_DIR"), "cache"),
-		(os.environ.get("XDG_CACHE_HOME"), UH)],
-		cache_dir)
 
 	if not os.path.exists(cache_dir):
 		os.makedirs(cache_dir)
