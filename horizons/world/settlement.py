@@ -170,6 +170,12 @@ class Settlement(ComponentHolder, WorldObject, ChangeListener, ResourceHandler):
 		for level, allowed, tax in db("SELECT level, upgrading_allowed, tax_setting FROM settlement_level_properties WHERE settlement = ?", worldid):
 			upgrade_permissions[level] = allowed
 			tax_settings[level] = tax
+		# savegames from before tier5 lack rows for newer tiers, fill defaults
+		for level in range(TIER.CURRENT_MAX + 1):
+			if level not in upgrade_permissions:
+				upgrade_permissions[level] = level != TIER.CURRENT_MAX
+			if level not in tax_settings:
+				tax_settings[level] = 1.0
 		self.__init(session, WorldObject.get_object_by_id(owner), upgrade_permissions, tax_settings)
 
 		# load the settlement tile map

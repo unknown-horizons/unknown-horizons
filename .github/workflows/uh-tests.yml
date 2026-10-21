@@ -20,6 +20,9 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    # Nightly long-running suite (full GUI + fast tutorial).
+    - cron: "0 3 * * *"
 
 # Cancel outdated runs for the same branch.
 concurrency:
@@ -244,17 +247,28 @@ jobs:
             --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
           python3 run_uh.py --gui-test tests.gui.test_example.test_example
 
-      # Full non-GUI pytest suite. Blocking: the suite runs green on modern
-      # pytest/Python 3.13 (tests/conftest.py no longer relies on the removed
-      # `pytest_namespace` hook). Coverage goes to a separate data file so it
-      # can be combined with the GUI run below.
+      # Full non-GUI pytest suite (blocking). Includes the headless tutorial
+      # regression tests (tests/game/test_scenario_tutorial.py).
+      #
+      # Coverage goes to its own data file so it can be combined with the GUI run.
       - name: "🧹 Unit tests (pytest, non-GUI)"
         env:
           COVERAGE_FILE: .coverage.nongui
         run: python3 -m pytest -v -rs --cov --cov-report=
 
-      # GUI tests re-launch the real game in a subprocess per test (~25 min for
-      # the whole suite), so they report status without gating PRs.
+      # Blocking end-to-end check for the goal 34 (boards/tents) and goal
+      # 43 -> 46 cascade fixes; much cheaper than the full scenario.
+      - name: "⏩ Fast tutorial subset (headless, blocking)"
+        env:
+          COVERAGE_FILE: .coverage.gui
+        run: |
+          xvfb-run \
+            --auto-servernum \
+            --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
+            python3 -m pytest --gui-tests tests/gui/scenarios/test_tutorial_fast.py::test_tutorial_fast_short -v -rs
+
+      # GUI tests relaunch the game per test (~25 min total), so they report
+      # status without gating PRs.
       - name: "🕹️ GUI tests (pytest --gui-tests, non-blocking)"
         continue-on-error: true
         env:
@@ -264,6 +278,21 @@ jobs:
             --auto-servernum \
             --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
             python3 -m pytest --gui-tests tests/gui -v -rs --cov --cov-report=
+
+      # Nightly/manual: full fast-forwarded tutorial (all goals) plus the slow
+      # real-time tutorial. Too slow for every PR.
+      - name: "🌙 Long tests (full tutorial, nightly)"
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        env:
+          COVERAGE_FILE: .coverage.gui
+        run: |
+          xvfb-run \
+            --auto-servernum \
+            --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
+            python3 -m pytest --gui-tests --long-tests \
+              tests/gui/scenarios/test_tutorial_fast.py tests/gui/scenarios/test_tutorial.py \
+              -v -rs
 
       # -----------------------------------------------------------------------------
       # 5. Coverage

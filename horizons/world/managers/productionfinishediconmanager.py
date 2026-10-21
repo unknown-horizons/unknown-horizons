@@ -47,6 +47,7 @@ class ProductionFinishedIconManager:
 		self.animation_duration = 20 # The duration how long the image moves up
 		self.animation_steps = 1 # The steps that the image makes every run
 		self.background = "content/gui/images/background/produced_notification.png"
+		self._font = None
 
 		if bool(horizons.globals.fife.get_uh_setting("ShowResourceIcons")):
 			self.enable()
@@ -136,11 +137,17 @@ class ProductionFinishedIconManager:
 
 		bg_image = horizons.globals.fife.imagemanager.load(self.background)
 		res_icon = horizons.globals.fife.imagemanager.load(get_res_icon_path(res))
-		font = horizons.globals.fife.pychan.manager.getFont('mainmenu')
+		font = self._get_font()
 
 		self.renderer.addImage(group, bg_node, bg_image)
 		self.renderer.resizeImage(group, node, res_icon, 24, 24)
 		self.renderer.addText(group, node, font, ' ' * 9 + '{amount:>2d}'.format(amount=amount))
+
+	def _get_font(self):
+		"""Amount text font; FontManager.getFont returns IFont for renderers."""
+		if self._font is None:
+			self._font = horizons.globals.fife.engine.getFontManager().getFont('mainmenu', 0)
+		return self._font
 
 	def remove_icon(self, group):
 		""" Remove the icon after the animation finished

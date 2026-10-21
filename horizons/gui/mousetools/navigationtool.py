@@ -247,7 +247,8 @@ class NavigationTool(CursorTool):
 
 		hover_instances = []
 		for i in all_instances:
-			id = i.getId()
+			# FIFE 0.5: Instance::getId() is the engine counter; the string id is getName()
+			id = i.getName()
 			# Check id, can be '' if instance is created and clicked on before
 			# actual game representation class is created (network play)
 			if id == '':

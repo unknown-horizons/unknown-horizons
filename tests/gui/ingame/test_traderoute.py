@@ -83,7 +83,10 @@ def test_traderoute(gui):
 	# Set the resources to be loaded from settlement on the left and the amount
 	gui.trigger('configure_route/container_1/slot_0/button', mouse='left') # Select the second warehouse's first slot
 	gui.trigger('configure_route/resources/resource_{:d}'.format(RES.FOOD))
-	gui.find('configure_route/container_1/slot_0/slider').slide(120)
+	# the amount is capped per trade slot (STORAGE.ITEMS_PER_TRADE_SLOT)
+	slider = gui.find('configure_route/container_1/slot_0/slider')
+	amount = int(slider.scale_end)
+	slider.slide(amount)
 
 	# Check if the ship obeys the state of "Wait at load" and "Wait at unload"
 	gui.trigger('configure_route/wait_options/wait_at_load')
@@ -94,7 +97,7 @@ def test_traderoute(gui):
 	assert len(ship.route.waypoints) == 2
 	assert Point(38, 39) in ship.route.waypoints[0]['warehouse'].position
 	assert Point(18, 28) in ship.route.waypoints[1]['warehouse'].position
-	assert ship.route.waypoints[1]['resource_list'] == {RES.FOOD: 120}
+	assert ship.route.waypoints[1]['resource_list'] == {RES.FOOD: amount}
 
 	# Since this test is rather complex, we test bug #2525 as well
 
