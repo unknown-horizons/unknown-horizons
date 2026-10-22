@@ -14,6 +14,7 @@
 		<Setting name="Font" type="str"> content/fonts/LinLibertine.ttf </Setting>
 		<Setting name="FontPaths" type="list"> content/fonts </Setting>
 		<Setting name="DefaultFontId" type="str"> LinLibertine </Setting>
+		<Setting name="DefaultFontSize" type="int"> 15 </Setting>
 		<Setting name="LogModules" type="list"> all </Setting>
 		<Setting name="PychanDebug" type="bool"> False </Setting>
 		<Setting name="LogToPrompt" type="bool"> False </Setting>

@@ -50,6 +50,8 @@ class PickBeltWidget:
 				pickbelt.name = '{}_{}'.format(name, side)
 				pickbelt.path = 'images/background/pickbelt_{}'.format(side)
 				pickbelt.font = "pickbelt"
+				from fife.fifechan import Color
+				pickbelt.foreground_color = Color(255, 255, 255)
 
 				pickbelt.capture(Callback(self.update_view, i), event_name="mouseClicked")
 

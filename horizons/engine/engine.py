@@ -75,6 +75,10 @@ class Fife:
 		font_paths = [os.path.abspath(p) for p in font_paths]
 		self.engine_settings.setFontPaths(font_paths)
 
+		# Default GUI font (used by widgets without an explicit font attribute)
+		self.engine_settings.setDefaultFontId(self._finalSetting.get('DefaultFontId', 'LinLibertine'))
+		self.engine_settings.setDefaultFontSize(int(self._finalSetting.get('DefaultFontSize', 15) or 15))
+
 		self.engine_settings.setBitsPerPixel(self._finalSetting['BitsPerPixel'])
 		self.engine_settings.setInitialVolume(self._finalSetting['InitialVolume'])
 		self.engine_settings.setSDLRemoveFakeAlpha(self._finalSetting['SDLRemoveFakeAlpha'])
@@ -219,56 +223,57 @@ class Fife:
 			'<fonts version="1">',
 			# Base LinLibertine family for engine default font
 			f'  <family id="{default_font_id}">',
-			f'    <face weight="400">{os.path.join(font_dir, "LinLibertine.ttf")}</face>',
-			f'    <face weight="700">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
-			f'    <face weight="500" italic="true">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
-			f'    <face weight="600" italic="true">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
-			f'    <face weight="300" style="caps">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
+			# UH's dialog font (pychan "default") is the italic face
+			f'    <face weight="400" color="68,42,2">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
+			f'    <face weight="700" color="68,42,2">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="500" italic="true" color="68,42,2">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
+			f'    <face weight="600" italic="true" color="68,42,2">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="300" style="caps" color="68,42,2">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
 			'  </family>',
 			# UH named fonts (from libertine.xml) - each as separate family
 			# pickbelt: bold, size 13
 			f'  <family id="pickbelt">',
-			f'    <face weight="700" size="13">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
+			f'    <face weight="700" size="13" color="255,255,255">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
 			'  </family>',
 			# default: italic, size 15
 			f'  <family id="default">',
-			f'    <face weight="500" style="italic" size="15">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
+			f'    <face weight="500" style="italic" size="15" color="68,42,2">{os.path.join(font_dir, "LinLibertineI.ttf")}</face>',
 			'  </family>',
 			# default_bold: bold italic, size 15
 			f'  <family id="default_bold">',
-			f'    <face weight="600" style="italic" size="15">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="600" style="italic" size="15" color="68,42,2">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
 			'  </family>',
 			# default_load: bold italic, size 15, different color (handled by widget)
 			f'  <family id="default_load">',
-			f'    <face weight="600" style="italic" size="15">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="600" style="italic" size="15" color="188,154,114">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
 			'  </family>',
 			# message: bold, size 15
 			f'  <family id="message">',
-			f'    <face weight="700" size="15">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
+			f'    <face weight="700" size="15" color="255,255,255">{os.path.join(font_dir, "LinLibertineB.ttf")}</face>',
 			'  </family>',
 			# resourcebar: bold italic, size 16
 			f'  <family id="resourcebar">',
-			f'    <face weight="600" style="italic" size="16">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="600" style="italic" size="16" color="68,42,2">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
 			'  </family>',
 			# unifont: regular, size 16
 			f'  <family id="unifont">',
-			f'    <face weight="400" size="16">{os.path.join(font_dir, "Unifont.ttf")}</face>',
+			f'    <face weight="400" size="16" color="68,42,2">{os.path.join(font_dir, "Unifont.ttf")}</face>',
 			'  </family>',
 			# headline: caps, size 18
 			f'  <family id="headline">',
-			f'    <face weight="400" style="caps" size="18">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
+			f'    <face weight="400" style="caps" size="18" color="68,42,2">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
 			'  </family>',
 			# headline_light: caps, size 18, different color
 			f'  <family id="headline_light">',
-			f'    <face weight="400" style="caps" size="18">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
+			f'    <face weight="400" style="caps" size="18" color="188,154,114">{os.path.join(font_dir, "LinLibertineC.ttf")}</face>',
 			'  </family>',
 			# mainmenu: bold italic, size 22
 			f'  <family id="mainmenu">',
-			f'    <face weight="600" style="italic" size="22">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="600" style="italic" size="22" color="255,255,255">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
 			'  </family>',
 			# large_load: bold italic, size 34
 			f'  <family id="large_load">',
-			f'    <face weight="600" style="italic" size="34">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
+			f'    <face weight="600" style="italic" size="34" color="120,100,65">{os.path.join(font_dir, "LinLibertineBI.ttf")}</face>',
 			'  </family>',
 			'</fonts>'
 		]
