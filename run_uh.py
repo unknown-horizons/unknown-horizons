@@ -178,6 +178,8 @@ def excepthook_creator(outfilename):
 	def excepthook(exception_type, value, tb):
 		from horizons.i18n import gettext as T
 		with open(outfilename, 'a') as f:
+			# Add timestamp for easier diagnosis of multiple crash reports
+			f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] Unknown Horizons crash report:\n")
 			traceback.print_exception(exception_type, value, tb, file=f)
 		traceback.print_exception(exception_type, value, tb)
 		print('\n', T('Unknown Horizons has crashed.'), '\n')
