@@ -34,7 +34,7 @@ Tracker = "https://github.com/unknown-horizons/unknown-horizons/issues"
 [build-system]
 requires = [
   "setuptools>=61",
-  "distro",  # setup.py imports it at build time to pick the install prefix
+  "distro>=1.9.0",  # setup.py imports it at build time to pick the install prefix
 ]
 build-backend = "setuptools.build_meta"
 
@@ -42,14 +42,15 @@ build-backend = "setuptools.build_meta"
 # [project].dependencies once the engine (libfife) is on PyPI.
 [dependency-groups]
 dev = [
-  "ruff",
-  "mypy",
+  "ruff>=0.11.0",
+  "mypy>=1.10",
 ]
 test = [
-  "pytest",
-  "pytest-cov",
-  "pytest-mock",   # provides the `mocker` fixture used across the suite
-  "coveralls",     # publishes the combined coverage report from CI
+  "coverage>=7.6",
+  "pytest>=8.3",
+  "pytest-cov>=5.0",
+  "pytest-mock>=3.14",   # provides the `mocker` fixture used across the suite
+  "coveralls>=3.3",      # publishes the combined coverage report from CI
 ]
 
 [tool.ruff]

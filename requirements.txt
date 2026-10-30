@@ -1,9 +1,10 @@
 # Runtime dependencies for Unknown Horizons.
 # Development/test tooling lives in pyproject.toml [dependency-groups]
 # (install with: uv sync, or pip install -r requirements.txt for runtime only).
-crayons
-distro
-greenlet
-Pillow
-polib
-pyyaml
+# Version specifiers ensure Python 3.10+ compatibility and security fixes.
+crayons>=0.4.0
+distro>=1.9.0
+greenlet>=3.0.3
+Pillow>=11.0.0
+polib>=1.2.0
+pyyaml>=6.0.2
