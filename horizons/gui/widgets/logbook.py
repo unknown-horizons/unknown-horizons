@@ -27,10 +27,10 @@ from fife import fife
 from fife.extensions.pychan.exceptions import InitializationError
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
-from horizons.command.game import UnPauseCommand
-from horizons.command.misc import Chat
 import horizons.globals
 import horizons.i18n
+from horizons.command.game import UnPauseCommand
+from horizons.command.misc import Chat
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
