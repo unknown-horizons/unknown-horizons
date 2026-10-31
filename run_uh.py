@@ -121,11 +121,13 @@ def main():
 	# Start UH.
 	ret = horizons.main.start(options)
 
-	if logfile:
-		logfile.close()
 	if ret:
 		print(T('Thank you for using Unknown Horizons!'))
-	else:
+
+	if logfile:
+		logfile.close()
+
+	if not ret:
 		# Game didn't end successfully
 		sys.exit(1)
 
@@ -194,10 +196,11 @@ def exithandler(exitcode, signum, frame):
 	"""Handles a kill quietly"""
 	signal.signal(signal.SIGINT, signal.SIG_IGN)
 	signal.signal(signal.SIGTERM, signal.SIG_IGN)
-	print('\nOh my god! They killed UH. \nYou bastards!')
+	logfile_open = logfile is not None
 	if logfile:
 		logfile.close()
-	else:
+	print('\nOh my god! They killed UH. \nYou bastards!')
+	if not logfile_open:
 		sys.tracebacklimit = 0 # hack for issue #1974 - silence "dirty" SIGINT traceback
 	sys.exit(exitcode)
 
@@ -254,10 +257,22 @@ def setup_debugging(options):
 			def write(self, line):
 				line = str(line)
 				sys.__stdout__.write(line)
-				logfile.write(line)
+				# Safely write to logfile only if it's still open
+				try:
+					if logfile is not None and not logfile.closed:
+						logfile.write(line)
+				except ValueError:
+					# File may have been closed, ignore write errors
+					pass
 			def flush(self):
 				sys.__stdout__.flush()
-				logfile.flush()
+				# Safely flush logfile only if it's still open
+				try:
+					if logfile is not None and not logfile.closed:
+						logfile.flush()
+				except ValueError:
+					# File may have been closed, ignore flush errors
+					pass
 		sys.stdout = StdOutDuplicator()
 
 		# add a handler to stderr too _but_ only if logfile isn't already a tty
