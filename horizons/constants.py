@@ -37,58 +37,63 @@ possible and instead import the proper classes of this file.
 """
 
 
+# Default version as fallback for installer distributions
+# This is used when git/gitversion.txt is not available (e.g., Windows installer)
+DEFAULT_VERSION = "2017.2.158"
+
+
 def get_git_version():
-	"""Function gets latest revision of the working copy.
-	It only works in git repositories, and is actually a hack.
+	"""Function gets the game version.
+	Uses git describe in development, gitversion.txt in installed packages,
+	or DEFAULT_VERSION as final fallback for Windows installer distributions.
 	"""
 	try:
 		from run_uh import get_content_dir_parent_path
 		uh_path = get_content_dir_parent_path()
 	except ImportError:
 		# An installed game does not ship run_uh as an importable module.
-		# The git lookups below need it, but gitversion.txt does not.
 		uh_path = None
 
+	# Try git describe (only in git repos, requires run_uh importable)
 	if uh_path is not None:
-		# Try git describe
 		try:
-			git = "git"
-			if platform.system() == "Windows":
-				git = "git.exe"
-
-			# Note that this uses glob patterns, not regular expressions.
+			git = "git" if platform.system() != "Windows" else "git.exe"
 			TAG_STRUCTURE = "20[0-9][0-9].[0-9]*"
 			describe = [git, "describe", "--tags", "--match", TAG_STRUCTURE]
-			git_string = subprocess.check_output(describe, cwd=uh_path, universal_newlines=True).rstrip('\n')
-			return git_string
+			return subprocess.check_output(describe, cwd=uh_path, universal_newlines=True).rstrip('\n')
 		except (subprocess.CalledProcessError, OSError, RuntimeError):
 			pass
 
-		# Read current HEAD out of .git manually
+		# Read current HEAD out of .git manually (fallback for git repos without tags)
 		try:
 			git_head_path = Path(uh_path, '.git', 'HEAD')
 			if git_head_path.exists():
 				with git_head_path.open() as f:
 					head = f.readline().strip().partition(' ')
-				if head[2]:
-					head_file = Path(uh_path, '.git', head[2])
-				else:
-					head_file = git_head_path
-
+				head_file = Path(uh_path, '.git', head[2]) if head[2] else git_head_path
 				if head_file.exists():
 					with head_file.open() as f:
 						return str(f.readline().strip()[0:7])
-		except ImportError:
+		except (OSError, TypeError):
 			pass
 
-	# Try gitversion.txt
-	try:
-		with open(os.path.join("content", "packages", "gitversion.txt")) as f:
-			return f.read()
-	except IOError:
-		pass
+	# Try to read version from gitversion.txt file
+	# Search order:
+	# 1. pip/Windows installer: content/packages/gitversion.txt (relative to horizons package)
+	# 2. development: content/gitversion.txt
+	gitversion_paths = [
+		os.path.join(os.path.dirname(__file__), "..", "..", "content", "packages", "gitversion.txt"),
+		os.path.join("content", "gitversion.txt"),
+	]
 
-	return "<unknown>"
+	for gitversion_path in gitversion_paths:
+		gitversion_path = os.path.normpath(gitversion_path)
+		if os.path.isfile(gitversion_path):
+			with open(gitversion_path) as f:
+				return f.read().strip()
+
+	# Fall back to hardcoded default version for installer distributions
+	return DEFAULT_VERSION
 
 
 ##Versioning
