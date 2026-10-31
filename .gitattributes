@@ -1,1 +1,64 @@
+# ==============================================================================
+# 1. Global Line Endings
+# ==============================================================================
+# Auto-detect text files and enforce LF line endings.
+# 'text=auto' prevents Git from treating binary files as text and corrupting them.
+* text=auto eol=lf
+
+# ==============================================================================
+# 2. Explicit Text Files
+# ==============================================================================
+# Explicitly declare text files to ensure they are normalized on checkout
+# and forced to LF on commit.
+*.py text eol=lf
+*.pyi text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.lock text eol=lf
+*.md text eol=lf
+*.rst text eol=lf
+*.txt text eol=lf
+*.cfg text eol=lf
+*.ini text eol=lf
+*.sh text eol=lf
+*.svg text eol=lf
+
+# Windows batch files require CRLF to execute properly
+*.bat text eol=crlf
+
+# ==============================================================================
+# 3. Binary Files
+# ==============================================================================
+# Denote files that are truly binary so Git doesn't try to diff or normalize them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.tar.gz binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+
+# ==============================================================================
+# 4. Python Specific Binaries (compiled files and packages)
+# ==============================================================================
+*.pyc binary
+*.pyo binary
+*.so binary
+*.dll binary
+*.whl binary
+*.egg binary
+
+# ==============================================================================
+# 5. Databases & Data Science
+# ==============================================================================
+# SQLite databases (custom diff driver setup)
 *.sqlite diff=sqlite

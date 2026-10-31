@@ -206,7 +206,8 @@ class MultiplayerMenu(Window):
 		@return bool, whether refresh worked
 		"""
 		if play_sound:
-			AmbientSoundComponent.play_special('refresh')
+			if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+				AmbientSoundComponent.play_special('refresh')
 
 		self._games = NetworkInterface().get_active_games()
 		if self._games is None:
@@ -245,7 +246,8 @@ class MultiplayerMenu(Window):
 			return
 
 		if game.uuid == -1: # -1 signals no game
-			AmbientSoundComponent.play_special('error')
+			if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+				AmbientSoundComponent.play_special('error')
 			return
 
 		if game.version != NetworkInterface().get_clientversion():

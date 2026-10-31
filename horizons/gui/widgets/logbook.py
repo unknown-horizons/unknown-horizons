@@ -29,6 +29,8 @@ from fife.extensions.pychan.widgets import HBox, Icon, Label
 
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
+import horizons.globals
+import horizons.i18n
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
@@ -345,7 +347,8 @@ class LogBook(PickBeltWidget, Window):
 		if new_cur < 0 or new_cur >= len(self._parameters):
 			return # invalid scroll
 		self._cur_entry = new_cur
-		AmbientSoundComponent.play_special('flippage')
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('flippage')
 		self._redraw_captainslog()
 
 	def show_logbookwidget(self):

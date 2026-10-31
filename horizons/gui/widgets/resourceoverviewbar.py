@@ -490,7 +490,8 @@ class ResourceOverviewBar:
 		horizons.globals.fife.set_uh_setting("ResourceOverviewBarConfiguration", config)
 		horizons.globals.fife.save_settings()
 		self._update_default_configuration()
-		AmbientSoundComponent.play_special("success")
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special("success")
 		if reset: # in the other case, it's already set
 			self.redraw()
 

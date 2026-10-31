@@ -27,6 +27,9 @@ changelog date: 11th Apr 2026
 
 ### Codebase
 
+Features:
+ - Added "Mute UI Sounds" setting to disable interface hover/click sounds while keeping other sound effects (music, ambient, game events) enabled. The setting is available in the Sound section of the Settings dialog. Default: disabled (UI sounds enabled). (#2911)
+
 Bugfixes:
  - #2905 Crash (fix ValueError in Goal.__str__ by changing format from {:d} to {:.2f}. this will handle int and float values.)
 

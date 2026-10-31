@@ -39,6 +39,7 @@
 		<Setting name="AIPlayers" type="int">1</Setting>
 		<Setting name="VolumeMusic" type="float">0.20</Setting>
 		<Setting name="VolumeEffects" type="float">0.5</Setting>
+		<Setting name="MuteUISounds" type="bool">False</Setting>
 		<Setting name="AutosaveInterval" type="float">10.0</Setting>
 		<Setting name="AutosaveMaxCount" type="float">10.0</Setting>
 		<Setting name="QuicksaveMaxCount" type="float">10.0</Setting>

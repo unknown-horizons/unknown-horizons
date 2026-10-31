@@ -68,6 +68,11 @@
 				<Label name="sound_enable_opt_text" text="Enable sound:" min_size="256,0"/>
 				<CheckBox min_size="24,24" name="enable_sound" />
 			</HBox>
+			<HBox>
+				<Label name="mute_ui_sounds_label" text="Mute UI sounds:" min_size="256,0"
+					helptext="Mute interface hover and click sounds while keeping other sound effects" />
+				<CheckBox min_size="24,24" name="mute_ui_sounds" />
+			</HBox>
 		</VBox>
 
 		<VBox name="mouse_settings">

@@ -160,7 +160,10 @@ class CityInfo:
 			helptext = T("Click to change the name of your settlement")
 			city_name_label.enable_cursor_change_on_hover()
 		else: # no name changes
-			cb = lambda: AmbientSoundComponent.play_special('error')
+			if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+				cb = lambda: AmbientSoundComponent.play_special('error')
+			else:
+				cb = lambda: None
 			helptext = ""
 			city_name_label.disable_cursor_change_on_hover()
 

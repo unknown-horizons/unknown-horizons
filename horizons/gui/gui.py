@@ -230,15 +230,18 @@ class Gui:
 
 	def _on_gui_click_action(self, msg):
 		"""Make a sound when a button is clicked"""
-		AmbientSoundComponent.play_special('click', gain=10)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('click', gain=10)
 
 	def _on_gui_cancel_action(self, msg):
 		"""Make a sound when a cancelButton is clicked"""
-		AmbientSoundComponent.play_special('success', gain=10)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('success', gain=10)
 
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
-		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('refresh', position=None, gain=1)
 
 	def show_editor_start_menu(self):
 		editor_start_menu = EditorStartMenu(self.windows)
