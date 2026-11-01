@@ -10,53 +10,72 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
-from unittest import TestCase
 from unittest.mock import Mock
+
+import pytest
 
 from horizons.component.healthcomponent import HealthComponent
 from tests.dummy import Dummy
 
 
-class TestHealthComponent(TestCase):
+@pytest.fixture
+def component():
+    instance = Mock()
+    instance.session = Dummy()
 
-	def setUp(self):
-		self.instance = Mock()
-		self.instance.session = Dummy()
+    component = HealthComponent(20)
+    component.instance = instance
+    component.initialize()
 
-		self.component = HealthComponent(20)
-		self.component.instance = self.instance
-		self.component.initialize()
+    return component, instance
 
-	def test_trivial(self):
-		self.assertEqual(self.component.health, 20)
-		self.assertEqual(self.component.max_health, 20)
 
-	def test_maxhealth_required(self):
-		self.assertRaises(AssertionError, HealthComponent, None)
+def test_trivial(component):
+    component, _ = component
 
-	def test_damage(self):
-		self.component.deal_damage(1, 19)
-		self.assertEqual(self.component.health, 1)
-		self.assertEqual(self.component.max_health, 20)
-		self.assertFalse(self.instance.remove.called)
+    assert component.health == 20
+    assert component.max_health == 20
 
-	def test_damage_zero_health(self):
-		self.component.deal_damage(1, 20)
-		self.assertEqual(self.component.health, 0)
-		self.assertEqual(self.component.max_health, 20)
-		self.assertTrue(self.instance.remove.called)
 
-	def test_huge_damage(self):
-		self.component.deal_damage(1, 300)
-		self.assertEqual(self.component.health, 0)
-		self.assertEqual(self.component.max_health, 20)
-		self.assertTrue(self.instance.remove.called)
+def test_maxhealth_required():
+    with pytest.raises(AssertionError):
+        HealthComponent(None)
+
+
+def test_damage(component):
+    component, instance = component
+
+    component.deal_damage(1, 19)
+
+    assert component.health == 1
+    assert component.max_health == 20
+    assert not instance.remove.called
+
+
+def test_damage_zero_health(component):
+    component, instance = component
+
+    component.deal_damage(1, 20)
+
+    assert component.health == 0
+    assert component.max_health == 20
+    assert instance.remove.called
+
+
+def test_huge_damage(component):
+    component, instance = component
+
+    component.deal_damage(1, 300)
+
+    assert component.health == 0
+    assert component.max_health == 20
+    assert instance.remove.called

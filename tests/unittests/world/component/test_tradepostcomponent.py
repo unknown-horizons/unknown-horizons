@@ -10,18 +10,16 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
-
 from typing import Optional
-from unittest import TestCase
 
 from horizons.component.tradepostcomponent import TradePostComponent
 from horizons.constants import RES
@@ -29,89 +27,104 @@ from horizons.scheduler import Scheduler
 from horizons.world.storage import GenericStorage
 
 
-class TestTradePostComponent(TestCase):
-	"""
-	TODO: buy_resource, sell_resource (needs ships and player concept)
-	"""
+class TestTradePostComponent:
+    """
+    TODO: buy_resource, sell_resource (needs ships and player concept)
+    """
 
-	def setUp(self):
-		self.inventory = GenericStorage()
-		self.owner_inventory = GenericStorage()
+    def setup_method(self):
+        self.inventory = GenericStorage()
+        self.owner_inventory = GenericStorage()
 
-		class Instance:
-			def __init__(self, comp):
-				self.comp = comp
-				self.owner = None # type: Optional[Instance]
+        class Instance:
+            def __init__(self, comp):
+                self.comp = comp
+                self.owner = None  # type: Optional["Instance"]
 
-			def get_component(self, x):
-				class Comp:
-					inventory = self.comp
-				return Comp()
+            def get_component(self, _):
+                class Comp:
+                    inventory = self.comp
 
-		self.tradepost = TradePostComponent()
-		self.tradepost.instance = Instance(self.inventory)
-		self.tradepost.instance.owner = Instance(self.owner_inventory)
-		self.tradepost.initialize()
+                return Comp()
 
-		class Timer:
-			def add_call(self, x):
-				pass
+        self.tradepost = TradePostComponent()
+        self.tradepost.instance = Instance(self.inventory)
+        self.tradepost.instance.owner = Instance(self.owner_inventory)
+        self.tradepost.initialize()
 
-			def get_ticks(self, x):
-				return 100
-		Scheduler.create_instance(timer=Timer())
+        class Timer:
+            def add_call(self, _):
+                pass
 
-	def tearDown(self):
-		Scheduler.destroy_instance()
+            def get_ticks(self, _):
+                return 100
 
-	def test_buy(self):
-		self.owner_inventory.alter(RES.GOLD, 1)
-		self.assertFalse(self.tradepost.buy(1, 1, 1, 100))
-		self.tradepost.set_slot(0, 1, False, 2)
-		self.assertTrue(self.tradepost.buy(1, 1, 1, 100))
-		self.assertEqual(self.tradepost.buy_expenses, 1)
+        Scheduler.create_instance(timer=Timer())
 
-		Scheduler().cur_tick += 1
+    def teardown_method(self):
+        Scheduler.destroy_instance()
 
-		# ran out of money
-		self.assertFalse(self.tradepost.buy(1, 1, 1, 100))
+    def test_buy(self):
+        self.owner_inventory.alter(RES.GOLD, 1)
 
-		self.owner_inventory.alter(RES.GOLD, 2)
-		self.assertTrue(self.tradepost.buy(1, 1, 1, 100))
+        assert not self.tradepost.buy(1, 1, 1, 100)
 
-		Scheduler().cur_tick += 1
+        self.tradepost.set_slot(0, 1, False, 2)
 
-		# only wanted to buy 2
-		self.assertFalse(self.tradepost.buy(1, 1, 1, 100))
+        assert self.tradepost.buy(1, 1, 1, 100)
+        assert self.tradepost.buy_expenses == 1
 
-		self.inventory.alter(1, -2)
-		self.assertTrue(self.tradepost.buy(1, 1, 1, 100))
+        Scheduler().cur_tick += 1
 
-		self.tradepost.clear_slot(0, True)
-		# not buying any more
-		self.assertFalse(self.tradepost.buy(1, 1, 1, 100))
-		self.assertEqual(self.tradepost.buy_expenses, 3)
-		self.assertEqual(self.tradepost.total_expenses, 3)
+        # ran out of money
+        assert not self.tradepost.buy(1, 1, 1, 100)
 
-	def test_sell(self):
-		self.inventory.alter(1, 1)
-		self.assertFalse(self.tradepost.sell(1, 1, 1, 100))
-		self.tradepost.set_slot(0, 1, True, 0) # sell until 0
-		self.assertTrue(self.tradepost.sell(1, 1, 1, 100))
-		self.assertEqual(self.tradepost.sell_income, 1)
+        self.owner_inventory.alter(RES.GOLD, 2)
 
-		Scheduler().cur_tick += 1
+        assert self.tradepost.buy(1, 1, 1, 100)
 
-		# ran out of res
-		self.assertFalse(self.tradepost.sell(1, 1, 1, 100))
+        Scheduler().cur_tick += 1
 
-		Scheduler().cur_tick += 1
+        # only wanted to buy 2
+        assert not self.tradepost.buy(1, 1, 1, 100)
 
-		self.inventory.alter(1, 1)
-		self.assertTrue(self.tradepost.sell(1, 1, 1, 100))
+        self.inventory.alter(1, -2)
 
-		self.tradepost.clear_slot(0, True)
-		# not selling any more
-		self.assertFalse(self.tradepost.sell(1, 1, 1, 100))
-		self.assertEqual(self.tradepost.sell_income, 2)
-		self.assertEqual(self.tradepost.total_earnings, 2)
+        assert self.tradepost.buy(1, 1, 1, 100)
+
+        self.tradepost.clear_slot(0, True)
+
+        # not buying any more
+        assert not self.tradepost.buy(1, 1, 1, 100)
+
+        assert self.tradepost.buy_expenses == 3
+        assert self.tradepost.total_expenses == 3
+
+    def test_sell(self):
+        self.inventory.alter(1, 1)
+
+        assert not self.tradepost.sell(1, 1, 1, 100)
+
+        self.tradepost.set_slot(0, 1, True, 0)  # sell until 0
+
+        assert self.tradepost.sell(1, 1, 1, 100)
+        assert self.tradepost.sell_income == 1
+
+        Scheduler().cur_tick += 1
+
+        # ran out of resources
+        assert not self.tradepost.sell(1, 1, 1, 100)
+
+        Scheduler().cur_tick += 1
+
+        self.inventory.alter(1, 1)
+
+        assert self.tradepost.sell(1, 1, 1, 100)
+
+        self.tradepost.clear_slot(0, True)
+
+        # not selling any more
+        assert not self.tradepost.sell(1, 1, 1, 100)
+
+        assert self.tradepost.sell_income == 2
+        assert self.tradepost.total_earnings == 2

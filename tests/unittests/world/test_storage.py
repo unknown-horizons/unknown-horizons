@@ -10,180 +10,221 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
 import sys
-from unittest import TestCase
 
 from horizons.world.storage import (
-	GenericStorage,
-	GlobalLimitStorage,
-	PositiveSizedNumSlotStorage,
-	PositiveSizedSlotStorage,
-	PositiveStorage,
-	PositiveTotalStorage,
-	SizedSpecializedStorage,
-	SpecializedStorage,
-	TotalStorage,
+    GenericStorage,
+    GlobalLimitStorage,
+    PositiveSizedNumSlotStorage,
+    PositiveSizedSlotStorage,
+    PositiveStorage,
+    PositiveTotalStorage,
+    SizedSpecializedStorage,
+    SpecializedStorage,
+    TotalStorage,
 )
 
 
-class TestGenericStorage(TestCase):
+class TestGenericStorage:
+    def test_alter(self):
+        s = GenericStorage()
 
-	def test_alter(self):
-		s = GenericStorage()
-		self.assertEqual(s.alter(1, 5), 0)
-		self.assertEqual(s.alter(2, 3), 0)
-		self.assertEqual(s[1], 5)
-		self.assertEqual(s[2], 3)
+        assert s.alter(1, 5) == 0
+        assert s.alter(2, 3) == 0
+        assert s[1] == 5
+        assert s[2] == 3
 
-		self.assertEqual(s.alter(1, 10), 0)
-		self.assertEqual(s[1], 15)
+        assert s.alter(1, 10) == 0
+        assert s[1] == 15
 
-	def test_reset(self):
-		s = GenericStorage()
-		s.alter(1, 5)
-		s.alter(2, 3)
-		s.reset(1)
-		self.assertEqual(s[1], 0)
-		self.assertEqual(s[2], 3)
+    def test_reset(self):
+        s = GenericStorage()
 
-	def test_reset_all(self):
-		s = GenericStorage()
-		s.alter(1, 5)
-		s.alter(2, 3)
-		s.reset_all()
-		self.assertEqual(s[1], 0)
-		self.assertEqual(s[2], 0)
+        s.alter(1, 5)
+        s.alter(2, 3)
 
-	def test_limit(self):
-		s = GenericStorage()
-		self.assertEqual(s.get_limit(), sys.maxsize)
-		self.assertEqual(s.get_limit(1), sys.maxsize)
+        s.reset(1)
 
-	def test_sum_of_stored_resources(self):
-		s = GenericStorage()
-		s.alter(1, 5)
-		s.alter(2, 3)
-		self.assertEqual(s.get_sum_of_stored_resources(), 8)
+        assert s[1] == 0
+        assert s[2] == 3
 
-	def test_get_item(self):
-		s = GenericStorage()
-		s.alter(1, 5)
-		self.assertEqual(s[1], 5)
-		self.assertEqual(s[2], 0)
+    def test_reset_all(self):
+        s = GenericStorage()
 
+        s.alter(1, 5)
+        s.alter(2, 3)
 
-class TestSpecializedStorages(TestCase):
+        s.reset_all()
 
-	def test_specialized(self):
-		s = SpecializedStorage()
+        assert s[1] == 0
+        assert s[2] == 0
 
-		self.assertEqual(s.alter(1, 3), 3)
-		self.assertEqual(s.alter(1, -3), -3)
+    def test_limit(self):
+        s = GenericStorage()
 
-		self.assertFalse(s.has_resource_slot(1))
-		s.add_resource_slot(1)
-		self.assertTrue(s.has_resource_slot(1))
+        assert s.get_limit() == sys.maxsize
+        assert s.get_limit(1) == sys.maxsize
 
-		self.assertEqual(s.alter(1, 3), 0)
-		self.assertEqual(s.alter(1, -3), 0)
+    def test_sum_of_stored_resources(self):
+        s = GenericStorage()
 
-	def test_sized_specialized(self):
-		s = SizedSpecializedStorage()
+        s.alter(1, 5)
+        s.alter(2, 3)
 
-		self.assertEqual(s.alter(1, 3), 3)
-		self.assertEqual(s.alter(1, -3), -3)
-		self.assertEqual(s.get_limit(1), 0)
+        assert s.get_sum_of_stored_resources() == 8
 
-		self.assertFalse(s.has_resource_slot(1))
-		s.add_resource_slot(1, 10)
-		self.assertTrue(s.has_resource_slot(1))
-		self.assertEqual(s.get_limit(1), 10)
+    def test_get_item(self):
+        s = GenericStorage()
 
-		self.assertEqual(s.get_free_space_for(1), 10)
-		self.assertEqual(s.alter(1, 3), 0)
-		self.assertEqual(s.get_free_space_for(1), 7)
-		self.assertEqual(s.alter(1, -3), 0)
-		self.assertEqual(s.get_free_space_for(1), 10)
+        s.alter(1, 5)
 
-		self.assertEqual(s.alter(1, 12), 2)
+        assert s[1] == 5
+        assert s[2] == 0
 
 
-class TestGlobalLimitStorage(TestCase):
+class TestSpecializedStorages:
+    def test_specialized(self):
+        s = SpecializedStorage()
 
-	def test_adjust_limit(self):
-		s = GlobalLimitStorage(10)
-		self.assertEqual(s.get_limit(), 10)
+        assert s.alter(1, 3) == 3
+        assert s.alter(1, -3) == -3
 
-		s.alter(1, 10)
-		self.assertEqual(s[1], 10)
-		s.adjust_limit(-5)
-		self.assertEqual(s.get_limit(), 5)
-		self.assertEqual(s[1], 5)
+        assert not s.has_resource_slot(1)
 
-		s.adjust_limit(-10)
-		self.assertEqual(s.get_limit(), 0)
+        s.add_resource_slot(1)
+
+        assert s.has_resource_slot(1)
+
+        assert s.alter(1, 3) == 0
+        assert s.alter(1, -3) == 0
+
+    def test_sized_specialized(self):
+        s = SizedSpecializedStorage()
+
+        assert s.alter(1, 3) == 3
+        assert s.alter(1, -3) == -3
+        assert s.get_limit(1) == 0
+
+        assert not s.has_resource_slot(1)
+
+        s.add_resource_slot(1, 10)
+
+        assert s.has_resource_slot(1)
+        assert s.get_limit(1) == 10
+
+        assert s.get_free_space_for(1) == 10
+
+        assert s.alter(1, 3) == 0
+        assert s.get_free_space_for(1) == 7
+
+        assert s.alter(1, -3) == 0
+        assert s.get_free_space_for(1) == 10
+
+        assert s.alter(1, 12) == 2
 
 
-class TestOtherStorages(TestCase):
+class TestGlobalLimitStorage:
+    def test_adjust_limit(self):
+        s = GlobalLimitStorage(10)
 
-	def test_total(self, s=TotalStorage(10)):
+        assert s.get_limit() == 10
 
-		self.assertEqual(s.get_limit(), 10)
-		self.assertEqual(s.get_limit(1), 10)
-		self.assertEqual(s.get_free_space_for(1), 10)
-		self.assertEqual(s.get_free_space_for(2), 10)
+        s.alter(1, 10)
 
-		self.assertEqual(s.alter(2, 2), 0)
+        assert s[1] == 10
 
-		self.assertEqual(s.get_limit(), 10)
-		self.assertEqual(s.get_limit(1), 10)
-		self.assertEqual(s.get_free_space_for(1), 8)
-		self.assertEqual(s.get_free_space_for(2), 8)
+        s.adjust_limit(-5)
 
-		self.assertEqual(s.alter(2, 10), 2)
+        assert s.get_limit() == 5
+        assert s[1] == 5
 
-		self.assertEqual(s.get_free_space_for(1), 0)
-		self.assertEqual(s.get_free_space_for(2), 0)
+        s.adjust_limit(-10)
 
-	def test_positive(self, s=PositiveStorage()):
+        assert s.get_limit() == 0
 
-		self.assertEqual(s.alter(1, -2), -2)
-		self.assertEqual(s.alter(1, 2), 0)
-		self.assertEqual(s.alter(1, -2), 0)
-		self.assertEqual(s.alter(1, -1), -1)
 
-	def test_positive_total(self):
-		s = PositiveTotalStorage(10)
-		self.test_positive(s)
-		self.test_total(s)
+class TestOtherStorages:
+    def test_total(self):
+        s = TotalStorage(10)
 
-	def test_sized_slotted(self):
-		s = PositiveSizedSlotStorage(10)
+        assert s.get_limit() == 10
+        assert s.get_limit(1) == 10
+        assert s.get_free_space_for(1) == 10
+        assert s.get_free_space_for(2) == 10
 
-		self.assertEqual(s.alter(1, 6), 0)
-		self.assertEqual(s.alter(1, 6), 2)
-		self.assertEqual(s.alter(1, -20), -10)
+        assert s.alter(2, 2) == 0
 
-	def test_positive_sized_num_slot(self):
-		s = PositiveSizedNumSlotStorage(10, 3)
-		self.assertEqual(s.get_limit(), 10)
-		self.assertEqual(s.get_limit(1), 10)
+        assert s.get_limit() == 10
+        assert s.get_limit(1) == 10
+        assert s.get_free_space_for(1) == 8
+        assert s.get_free_space_for(2) == 8
 
-		self.assertEqual(s.alter(1, 10), 0)
-		self.assertEqual(s.alter(1, 2), 2)
+        assert s.alter(2, 10) == 2
 
-		self.assertEqual(s.alter(2, 0), 0)
+        assert s.get_free_space_for(1) == 0
+        assert s.get_free_space_for(2) == 0
 
-		self.assertEqual(s.alter(2, 5), 0)
-		self.assertEqual(s.alter(3, 5), 0)
+    def test_positive(self):
+        s = PositiveStorage()
 
-		self.assertEqual(s.alter(4, 1), 1)
+        assert s.alter(1, -2) == -2
+        assert s.alter(1, 2) == 0
+        assert s.alter(1, -2) == 0
+        assert s.alter(1, -1) == -1
+
+    def test_positive_total(self):
+        s = PositiveTotalStorage(10)
+
+        assert s.alter(1, -2) == -2
+        assert s.alter(1, 2) == 0
+        assert s.alter(1, -2) == 0
+        assert s.alter(1, -1) == -1
+
+        assert s.get_limit() == 10
+        assert s.get_limit(1) == 10
+        assert s.get_free_space_for(1) == 10
+        assert s.get_free_space_for(2) == 10
+
+        assert s.alter(2, 2) == 0
+
+        assert s.get_limit() == 10
+        assert s.get_limit(1) == 10
+        assert s.get_free_space_for(1) == 8
+        assert s.get_free_space_for(2) == 8
+
+        assert s.alter(2, 10) == 2
+
+        assert s.get_free_space_for(1) == 0
+        assert s.get_free_space_for(2) == 0
+
+    def test_sized_slotted(self):
+        s = PositiveSizedSlotStorage(10)
+
+        assert s.alter(1, 6) == 0
+        assert s.alter(1, 6) == 2
+        assert s.alter(1, -20) == -10
+
+    def test_positive_sized_num_slot(self):
+        s = PositiveSizedNumSlotStorage(10, 3)
+
+        assert s.get_limit() == 10
+        assert s.get_limit(1) == 10
+
+        assert s.alter(1, 10) == 0
+        assert s.alter(1, 2) == 2
+
+        assert s.alter(2, 0) == 0
+
+        assert s.alter(2, 5) == 0
+        assert s.alter(3, 5) == 0
+
+        assert s.alter(4, 1) == 1
