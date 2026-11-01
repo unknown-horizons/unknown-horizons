@@ -44,3 +44,4 @@ dist/
 
 # vscode settings
 .vscode
+.venv
