@@ -19,7 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import pytest
 
 from horizons.util.shapes import Circle, Point, Rect
 

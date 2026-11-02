@@ -31,7 +31,6 @@ from horizons.constants import PATHS
 from horizons.savegamemanager import SavegameManager
 from horizons.util import create_user_dirs
 
-
 ODD_CHARACTERS = "u\xfc\xdf\xfau"
 
 
