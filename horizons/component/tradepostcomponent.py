@@ -234,7 +234,10 @@ class TradePostComponent(ChangeListener, Component):
 		self.sell_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_income += total_price
 		self._changed()
-		return amount if not add_error_type else amount, TRADE_ERROR_TYPE.NO_ERROR
+		return amount if not add_error_type else (
+			amount,
+			TRADE_ERROR_TYPE.NO_ERROR,
+		)
 
 	def buy_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought
@@ -279,7 +282,10 @@ class TradePostComponent(ChangeListener, Component):
 		self.buy_history[Scheduler().cur_tick] = (resource_id, amount, total_price)
 		self.total_expenses += total_price
 		self._changed()
-		return amount if not add_error_type else amount, TRADE_ERROR_TYPE.TEMPORARY
+		return amount if not add_error_type else (
+			amount,
+			TRADE_ERROR_TYPE.TEMPORARY,
+		)
 
 	@property
 	def sell_income(self):
