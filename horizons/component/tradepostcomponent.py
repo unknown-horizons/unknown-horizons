@@ -127,7 +127,7 @@ class TradePostComponent(ChangeListener, Component):
 	def get_inventory(self):
 		return self.instance.get_component(StorageComponent).inventory
 
-	def buy(self, res, amount, price, player_id):
+	def buy(self, res: int, amount: int, price: int, player_id: int) -> bool:
 		"""Buy from the free trader.
 		@param res:
 		@param amount:
@@ -136,26 +136,32 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did buy it"""
 		assert price >= 0, "the price must be POSITIVE"
 		assert amount >= 0, "the amount must be POSITIVE"
-		if res not in self.buy_list or \
-				self.get_owner_inventory()[RES.GOLD] < price or \
-				self.get_inventory().get_free_space_for(res) < amount or \
-				amount + self.get_inventory()[res] > self.slots[self.buy_list[res]].limit:
+
+		if (
+			res not in self.buy_list
+			or self.get_owner_inventory()[RES.GOLD] < price
+			or self.get_inventory().get_free_space_for(res) < amount
+			or amount + self.get_inventory()[res]
+			> self.slots[self.buy_list[res]].limit
+		):
 			self._changed()
 			return False
 
-		else:
-			remnant = self.get_owner_inventory().alter(RES.GOLD, -price)
-			assert remnant == 0
-			remnant = self.get_inventory().alter(res, amount)
-			assert remnant == 0
-			self.trade_history.append((Scheduler().cur_tick, player_id, res, amount, -price))
-			self.buy_history[Scheduler().cur_tick] = (res, amount, price)
-			self.total_expenses += price
-			self._changed()
-			return True
-		assert False
+		remnant = self.get_owner_inventory().alter(RES.GOLD, -price)
+		assert remnant == 0
 
-	def sell(self, res, amount, price, player_id):
+		remnant = self.get_inventory().alter(res, amount)
+		assert remnant == 0
+
+		self.trade_history.append(
+			(Scheduler().cur_tick, player_id, res, amount, -price)
+		)
+		self.buy_history[Scheduler().cur_tick] = (res, amount, price)
+		self.total_expenses += price
+		self._changed()
+		return True
+
+	def sell(self, res: int, amount: int, price: int, player_id: int) -> bool:
 		"""Sell to the free trader.
 		@param res:
 		@param amount:
@@ -164,23 +170,29 @@ class TradePostComponent(ChangeListener, Component):
 		@return bool, whether we did sell it"""
 		assert price >= 0, "the price must be POSITIVE"
 		assert amount >= 0, "the amount must be POSITIVE"
-		if res not in self.sell_list or \
-				self.get_inventory()[res] < amount or \
-				self.get_inventory()[res] - amount < self.slots[self.sell_list[res]].limit:
+
+		if (
+			res not in self.sell_list
+			or self.get_inventory()[res] < amount
+			or self.get_inventory()[res] - amount
+			< self.slots[self.sell_list[res]].limit
+		):
 			self._changed()
 			return False
 
-		else:
-			remnant = self.get_owner_inventory().alter(RES.GOLD, price)
-			assert remnant == 0
-			remnant = self.get_inventory().alter(res, -amount)
-			assert remnant == 0
-			self.trade_history.append((Scheduler().cur_tick, player_id, res, -amount, price))
-			self.sell_history[Scheduler().cur_tick] = (res, amount, price)
-			self.total_income += price
-			self._changed()
-			return True
-		assert False
+		remnant = self.get_owner_inventory().alter(RES.GOLD, price)
+		assert remnant == 0
+
+		remnant = self.get_inventory().alter(res, -amount)
+		assert remnant == 0
+
+		self.trade_history.append(
+			(Scheduler().cur_tick, player_id, res, -amount, price)
+		)
+		self.sell_history[Scheduler().cur_tick] = (res, amount, price)
+		self.total_income += price
+		self._changed()
+		return True
 
 	def sell_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold.
