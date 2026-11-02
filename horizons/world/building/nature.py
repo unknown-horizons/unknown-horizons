@@ -80,7 +80,7 @@ class ResourceDeposit(NatureBuilding):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 
-	def initialize(self, inventory:dict=None, **kwargs):
+	def initialize(self, inventory: dict = None, **kwargs):
 		super().initialize(**kwargs)
 
 		# If we have an inventory, then we are rebuilding a deposit after destructing a mine on top of it
@@ -89,7 +89,6 @@ class ResourceDeposit(NatureBuilding):
 				# Set the number of resources available in the deposit to the amount we retrieved from the mine
 				self.get_component(StorageComponent).inventory.reset(res)
 				self.get_component(StorageComponent).inventory.alter(res, amount)
-
 
 
 class Fish(BuildableSingleEverywhere, BuildingResourceHandler, BasicBuilding):

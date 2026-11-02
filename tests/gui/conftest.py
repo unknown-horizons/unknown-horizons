@@ -47,7 +47,7 @@ def pytest_pyfunc_call(pyfuncitem):
 	Tests marked with gui_test will, instead of executing the test function, start a new
 	process with the game and run the test function code inside that process.
 	"""
-	info = pyfuncitem.get_marker('gui_test')
+	info = pyfuncitem.get_closest_marker('gui_test')
 	if not info:
 		return
 

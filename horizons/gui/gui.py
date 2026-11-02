@@ -26,11 +26,16 @@ from collections import deque
 from fife.extensions.pychan.widgets import Container, Icon
 
 import horizons.globals
-import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.gui.keylisteners import MainListener
 from horizons.gui.modules import (
-	HelpDialog, LoadingScreen, MultiplayerMenu, SelectSavegameDialog, SettingsDialog, SingleplayerMenu)
+	HelpDialog,
+	LoadingScreen,
+	MultiplayerMenu,
+	SelectSavegameDialog,
+	SettingsDialog,
+	SingleplayerMenu,
+)
 from horizons.gui.modules.editorstartmenu import EditorStartMenu
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.fpsdisplay import FPSDisplay
@@ -85,6 +90,7 @@ class MainMenu(Window):
 		"""Shows the quit dialog. Closes the game unless the dialog is cancelled."""
 		message = T("Are you sure you want to quit Unknown Horizons?")
 		if self._windows.open_popup(T("Quit Game"), message, show_cancel_button=True):
+			import horizons.main
 			horizons.main.quit()
 
 	def mouse_entered_changebackground(self):
@@ -192,6 +198,7 @@ class Gui:
 			return False # user aborted dialog
 
 		options = StartGameOptions(saved_game)
+		import horizons.main
 		horizons.main.start_singleplayer(options)
 		return True
 
@@ -223,15 +230,18 @@ class Gui:
 
 	def _on_gui_click_action(self, msg):
 		"""Make a sound when a button is clicked"""
-		AmbientSoundComponent.play_special('click', gain=10)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('click', gain=10)
 
 	def _on_gui_cancel_action(self, msg):
 		"""Make a sound when a cancelButton is clicked"""
-		AmbientSoundComponent.play_special('success', gain=10)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('success', gain=10)
 
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
-		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('refresh', position=None, gain=1)
 
 	def show_editor_start_menu(self):
 		editor_start_menu = EditorStartMenu(self.windows)

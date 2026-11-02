@@ -31,7 +31,6 @@ Change `where` below to anything else as you see fit.
 import os
 import os.path
 
-
 # All gui images and icons
 where = 'content/gui/'
 

@@ -23,7 +23,6 @@ import operator
 
 from horizons.i18n import gettext as T, gettext_lazy as LazyT
 
-
 """Classes used for StatusIcon.
 
 Code design note:

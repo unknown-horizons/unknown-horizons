@@ -54,6 +54,9 @@ def test_check_for_updates_json_data(json_data, result, mocker):
 	"""
 	mocker.patch('horizons.constants.VERSION.RELEASE_VERSION',
 			new_callable=mock.PropertyMock, return_value='2017.1')
+	# Development builds short-circuit the check before any request is made;
+	# this test exercises the JSON parsing, so pretend we are a release build.
+	mocker.patch('horizons.constants.VERSION.IS_DEV_VERSION', False)
 	mocker.patch('platform.system', return_value='Windows')
 	urlopen = mocker.patch.object(urllib.request, 'urlopen')
 

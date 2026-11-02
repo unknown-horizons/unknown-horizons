@@ -143,8 +143,11 @@ class TabWidget:
 		# show before drawing so that position_technique properly sets
 		# button positions (which we want to draw our tabs relative to)
 		self.widget.show()
-		self._draw_widget()
+		# load and show the tab before refresh(): Widget.show() re-registers
+		# all children with pychan, refresh() then hides what should not be found
+		self.current_tab.ensure_loaded()
 		self.current_tab.show()
+		self._draw_widget()
 		self.ingame_gui.minimap_to_front()
 
 	def hide(self, caller=None):

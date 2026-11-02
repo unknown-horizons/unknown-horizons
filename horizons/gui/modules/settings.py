@@ -31,8 +31,12 @@ from horizons.gui.modules.loadingscreen import QUOTES_SETTINGS
 from horizons.gui.widgets.pickbeltwidget import PickBeltWidget
 from horizons.gui.windows import Window
 from horizons.i18n import (
-	change_language, find_available_languages, get_language_translation_stats, gettext as T,
-	gettext_lazy as LazyT)
+	change_language,
+	find_available_languages,
+	get_language_translation_stats,
+	gettext as T,
+	gettext_lazy as LazyT,
+)
 from horizons.network.networkinterface import NetworkInterface
 from horizons.util.python import parse_port
 from horizons.util.python.callback import Callback
@@ -96,6 +100,7 @@ class SettingsDialog(PickBeltWidget, Window):
 			Setting(UH, 'VolumeEffects', 'volume_effects', callback=self._apply_VolumeEffects,
 				on_change=self._on_slider_changed),
 			Setting(FIFE, 'PlaySounds', 'enable_sound', callback=self._apply_PlaySounds),
+			Setting(UH, 'MuteUISounds', 'mute_ui_sounds', callback=self._apply_MuteUISounds),
 			Setting(UH, 'EdgeScrolling', 'edgescrolling'),
 			Setting(UH, 'CursorCenteredZoom', 'cursor_centered_zoom'),
 			Setting(UH, 'MiddleMousePan', 'middle_mouse_pan'),
@@ -241,6 +246,11 @@ class SettingsDialog(PickBeltWidget, Window):
 
 	def _apply_PlaySounds(self, old, new):
 		horizons.globals.fife.sound.setup_sound()
+
+	def _apply_MuteUISounds(self, old, new):
+		# Mute UI sounds is applied by checking the setting in gui.py
+		# when playing hover/click sounds
+		pass
 
 	def _apply_VolumeMusic(self, old, new):
 		horizons.globals.fife.sound.set_volume_bgmusic(new)

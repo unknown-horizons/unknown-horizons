@@ -21,8 +21,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import os
 import glob
+import os
 
 if os.path.basename(os.getcwd()) != 'development':
 	print('Please run the script from the "development" directory!')

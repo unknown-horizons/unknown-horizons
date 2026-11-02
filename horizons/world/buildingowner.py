@@ -22,7 +22,6 @@
 from horizons.util.shapes import Point, RadiusRect
 from horizons.world.providerhandler import ProviderHandler
 
-
 """
 Simple building management functionality.
 Inherited mainly by Island, but also by World for buildings at sea such as fish.

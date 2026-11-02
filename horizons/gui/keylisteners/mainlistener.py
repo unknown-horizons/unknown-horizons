@@ -28,11 +28,16 @@ import tempfile
 from fife import fife
 
 import horizons.globals
-import horizons.main
 from horizons.constants import PATHS
 from horizons.util.living import LivingObject
 
 from .keyconfig import KeyConfig
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 
 
 class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
@@ -62,7 +67,7 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 		if action == _Actions.ESCAPE:
 			self.gui.on_escape()
-		elif keyval == fife.Key.ENTER:
+		elif keyval == fife.Key.RETURN:
 			self.gui.on_return()
 		elif action == _Actions.CONSOLE:
 			self.gui.fps_display.toggle()
@@ -81,12 +86,13 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 
 			# ingame message if there is a session and it is fully initialized:
 			# pressing S on loading screen finds a session but no gui usually.
-			session = horizons.main.session
+			main_module = _get_horizons_main()
+			session = main_module.session
 			if session is not None and session.ingame_gui is not None:
 				session.ingame_gui.message_widget.add('SCREENSHOT',
 				                                      message_dict={'file': final_path})
 		elif action == _Actions.QUICKLOAD:
-			horizons.main._load_last_quicksave()
+			_get_horizons_main()._load_last_quicksave()
 		else:
 			key_event_handled = False # nope, nothing triggered
 
@@ -101,5 +107,5 @@ class MainListener(fife.IKeyListener, fife.ICommandListener, LivingObject):
 			# NOTE Sometimes we get two quit events from FIFE, ignore the second
 			#      if we are already shutting down the game
 			if not horizons.globals.fife.quit_requested:
-				horizons.main.quit()
+				_get_horizons_main().quit()
 			command.consume()

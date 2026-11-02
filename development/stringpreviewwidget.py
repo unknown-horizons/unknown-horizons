@@ -20,12 +20,12 @@
 # ###################################################
 
 from horizons.gui.util import load_uh_widget
-from horizons.util.yamlcache import YamlCache
-from horizons.savegamemanager import SavegameManager
 from horizons.gui.widgets.imagebutton import OkButton
 from horizons.gui.widgets.logbook import LogBook
 from horizons.gui.windows import Window, WindowManager
+from horizons.savegamemanager import SavegameManager
 from horizons.scheduler import Scheduler
+from horizons.util.yamlcache import YamlCache
 
 
 class StringPreviewWidget(Window):

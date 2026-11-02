@@ -21,6 +21,11 @@
 
 from .animalcollector import AnimalCollector, HunterCollector
 from .buildingcollector import (
-	BuildingCollector, DisasterRecoveryCollector, FieldCollector, FisherShipCollector,
-	SettlerCollector, StorageCollector)
+	BuildingCollector,
+	DisasterRecoveryCollector,
+	FieldCollector,
+	FisherShipCollector,
+	SettlerCollector,
+	StorageCollector,
+)
 from .collector import Collector, Job, JobList

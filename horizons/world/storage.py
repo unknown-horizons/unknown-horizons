@@ -50,6 +50,7 @@ type ResourceId = int
 type ResourceAmount = int
 type InternalInventory = dict[ResourceId, ResourceAmount]
 
+
 class GenericStorage(ChangeListener):
 	"""The GenericStorage represents a storage for buildings/units/players/etc. for storing
 	resources. The GenericStorage is the general form and is mostly used as baseclass to
@@ -59,7 +60,7 @@ class GenericStorage(ChangeListener):
 
 	def __init__(self):
 		super().__init__()
-		self._storage:InternalInventory = defaultdict(int)
+		self._storage: InternalInventory = defaultdict(int)
 
 	def save(self, db, ownerid):
 		for slot in self._storage.items():
@@ -115,7 +116,7 @@ class GenericStorage(ChangeListener):
 		"""Returns a dump of the inventory as dict"""
 		return copy.deepcopy(self._storage)
 
-	def __getitem__(self, res:ResourceId) -> ResourceAmount:
+	def __getitem__(self, res: ResourceId) -> ResourceAmount:
 		return self._storage.get(res, 0)
 
 	def iterslots(self) -> Iterator[ResourceId]:

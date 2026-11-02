@@ -111,7 +111,7 @@ class GroundClass(type):
 		self.classes = ['ground[' + str(id) + ']']
 		for (name,) in db("SELECT class FROM ground_class WHERE ground = ?", id):
 			self.classes.append(name)
-		if id != -1	:
+		if id != -1:
 			self._loadObject(db)
 
 	def __new__(self, db, id, shape):

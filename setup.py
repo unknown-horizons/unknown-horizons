@@ -33,6 +33,10 @@ import distro
 from setuptools import Command, setup
 from setuptools.command.build import build
 
+# setuptools exec()s this file without the project root on sys.path, so the
+# imports below only resolve when it is added explicitly.
+sys.path.insert(0, os.path.realpath(os.path.dirname(__file__)))
+
 import horizons
 from horizons.constants import VERSION
 from horizons.ext import polib
@@ -255,18 +259,21 @@ cmdclass = {
 def _get_pep440_compliant_version(git_describe_output):
 	pattern = r'(20[\d]{2}\.[\d]+)(?:-([\d]+)-g[0-f]+)?'
 	if '-g' in git_describe_output:
-		return re.sub(pattern, r'\1.dev\2', git_describe_output)  # git revision count since tag
+		version = re.sub(pattern, r'\1.dev\2', git_describe_output)  # git revision count since tag
 	else:
-		return re.sub(pattern, r'\1', git_describe_output)  # just the tag itself, no suffix
+		version = re.sub(pattern, r'\1', git_describe_output)  # just the tag itself, no suffix
+	if not re.match(r'20[\d]{2}\.\d+', version):
+		local = re.sub(r'[^0-9a-zA-Z]+', '.', git_describe_output).strip('.') or 'unknown'
+		version = '0.0.0+g' + local
+	return version
 
 
 setup(
-	name='UnknownHorizons',
+	# Core metadata (name, description, authors, url, requires-python, ...)
+	# now lives in pyproject.toml [project]. setup.py keeps only the dynamic
+	# version (git-describe, PEP 440) and the packaging extras that are not
+	# [project] fields: packages, package_data, data_files and cmdclass.
 	version=_get_pep440_compliant_version(VERSION.RELEASE_VERSION),
-	description='Realtime Economy Simulation and Strategy Game',
-	author='The Unknown Horizons Team',
-	author_email='team@unknown-horizons.org',
-	url='http://www.unknown-horizons.org',
 	packages=packages,
 	package_data=package_data,
 	data_files=data,

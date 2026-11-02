@@ -30,10 +30,15 @@ import time
 from collections import defaultdict
 
 import horizons.globals
-import horizons.main
 from horizons.constants import PATHS, VERSION
 from horizons.util.dbreader import DbReader
 from horizons.util.yamlcache import YamlCache
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 
 
 class SavegameManager:
@@ -258,7 +263,8 @@ class SavegameManager:
 
 		# hide whatever dialog we have
 		dialog_hidden = False
-		windows = horizons.main.session.ingame_gui.windows
+		main_module = _get_horizons_main()
+		windows = main_module.session.ingame_gui.windows
 		if windows.visible:
 			dialog_hidden = True
 			windows.hide_all()

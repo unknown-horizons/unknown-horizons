@@ -69,7 +69,8 @@ class SelectionTool(NavigationTool):
 
 	def fife_instance_to_uh_instance(self, instance):
 		"""Visual fife instance to uh game logic object or None"""
-		i_id = instance.getId()
+		# FIFE 0.5: Instance::getId() is the engine counter; the string id is getName()
+		i_id = instance.getName()
 		if i_id == '':
 			return None
 		try:

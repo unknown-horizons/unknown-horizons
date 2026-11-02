@@ -154,6 +154,7 @@ def distance_annulus_tuple(annulus, coord_tuple):
 # DEBUG
 if __name__ == '__main__':
 	import itertools
+
 	from . import distances
 	shapes = ('rect', 'point', 'tuple', 'circle', 'annulus')
 	for s1, s2 in itertools.product(shapes, shapes):

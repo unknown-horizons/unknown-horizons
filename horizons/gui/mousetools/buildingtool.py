@@ -37,7 +37,11 @@ from horizons.gui.mousetools.navigationtool import NavigationTool
 from horizons.gui.util import load_uh_widget
 from horizons.i18n import gettext as T
 from horizons.messaging import (
-	PlayerInventoryUpdated, SettlementInventoryUpdated, SettlementRangeChanged, WorldObjectDeleted)
+	PlayerInventoryUpdated,
+	SettlementInventoryUpdated,
+	SettlementRangeChanged,
+	WorldObjectDeleted,
+)
 from horizons.util.loaders.actionsetloader import ActionSetLoader
 from horizons.util.shapes import Point
 from horizons.util.worldobject import WorldObject
@@ -221,7 +225,7 @@ class BuildingTool(NavigationTool):
 		self._related_buildings.discard(message.sender)
 		self._transparencified_instances = \
 		  set(i for i in self._transparencified_instances if
-		      i() is not None and int(i().getId()) != message.worldid)
+		      i() is not None and int(i().getName()) != message.worldid)
 		check_building = lambda b: b.worldid != message.worldid
 		self._highlighted_buildings = set(tup for tup in self._highlighted_buildings if check_building(tup[0]))
 		self._related_buildings = set(filter(check_building, self._related_buildings))

@@ -96,7 +96,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 			self.position.y + self.position.y - self.last_position.y, 0))
 
 		facing_loc = self._instance.getFacingLocation()
-		if action.getId().startswith('move_'):
+		if action.getName().startswith('move_'):
 			# Remember: this means we *ended* a "move" action just now!
 			facing_loc = location
 

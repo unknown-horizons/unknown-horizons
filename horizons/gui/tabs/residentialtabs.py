@@ -107,8 +107,8 @@ class SettlerOverviewTab(OverviewTab):
 
 def setup_tax_slider(slider, val_label, settlement, level):
 	"""Set up a slider to work as tax slider"""
-	step_count = int((SETTLER.TAX_SETTINGS_MAX - SETTLER.TAX_SETTINGS_MIN) / SETTLER.TAX_SETTINGS_STEP)
-	slider.steps = [SETTLER.TAX_SETTINGS_MIN + SETTLER.TAX_SETTINGS_STEP * i for i in
+	step_count = int(round((SETTLER.TAX_SETTINGS_MAX - SETTLER.TAX_SETTINGS_MIN) / SETTLER.TAX_SETTINGS_STEP)) + 1
+	slider.steps = [round(SETTLER.TAX_SETTINGS_MIN + SETTLER.TAX_SETTINGS_STEP * i, 10) for i in
 			range(step_count)]
 	slider.value = settlement.tax_settings[level]
 	def on_slider_change():

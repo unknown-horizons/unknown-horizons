@@ -25,7 +25,11 @@ from fife.extensions.pychan.widgets import Icon
 import horizons.globals
 from horizons.gui.mousetools import NavigationTool
 from horizons.messaging import (
-	AddStatusIcon, HoverInstancesChanged, RemoveStatusIcon, WorldObjectDeleted)
+	AddStatusIcon,
+	HoverInstancesChanged,
+	RemoveStatusIcon,
+	WorldObjectDeleted,
+)
 from horizons.world.status import StatusIcon
 
 

@@ -58,8 +58,8 @@ from horizons.util.startgameoptions import StartGameOptions
 from horizons.util.uhdbaccessor import UhDbAccessor
 
 if TYPE_CHECKING:
-	from horizons.session import Session
 	from development.stringpreviewwidget import StringPreviewWidget
+	from horizons.session import Session
 
 """
 Following are a list of global variables. Their scope is this module.
@@ -337,7 +337,7 @@ def start_singleplayer(options):
 	# start new session
 	session = session_class(horizons.globals.db)
 
-	from horizons.scenario import InvalidScenarioFileFormat # would create import loop at top
+	from horizons.scenario import InvalidScenarioFileFormat  # would create import loop at top
 	from horizons.util.savegameaccessor import MapFileNotFound
 	from horizons.util.savegameupgrader import SavegameTooOld
 	try:

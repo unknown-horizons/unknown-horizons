@@ -70,16 +70,22 @@ def init_pychan():
 	ImageProperty.__set__ = patch_imageproperty(ImageProperty.__set__)
 
 	# register custom widgets
-	from horizons.gui.widgets.inventory import Inventory
 	from horizons.gui.widgets.buysellinventory import BuySellInventory
-	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
-	from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
-	# additionally, ImageButton is imported from widgets.imagebutton above
-	from horizons.gui.widgets.imagebutton import CancelButton, DeleteButton, MainmenuButton, OkButton
 	from horizons.gui.widgets.icongroup import TabBG, TilingHBox, hr
+
+	# additionally, ImageButton is imported from widgets.imagebutton above
+	from horizons.gui.widgets.imagebutton import (
+		CancelButton,
+		DeleteButton,
+		MainmenuButton,
+		OkButton,
+	)
+	from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
+	from horizons.gui.widgets.inventory import Inventory
+	from horizons.gui.widgets.progressbar import ProgressBar, TilingProgressBar
 	from horizons.gui.widgets.stepslider import StepSlider
-	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 	from horizons.gui.widgets.tooltip import _Tooltip
+	from horizons.gui.widgets.unitoverview import HealthWidget, StanceWidget, WeaponStorageWidget
 
 	widgets = [OkButton, CancelButton, DeleteButton, MainmenuButton,
 	           Inventory, BuySellInventory, ImageFillStatusButton,

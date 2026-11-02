@@ -25,7 +25,10 @@ from fife.extensions.pychan.widgets.common import BoolAttr, IntAttr
 from horizons.gui.widgets.imagefillstatusbutton import ImageFillStatusButton
 from horizons.i18n import gettext as T
 from horizons.world.storage import (
-	PositiveSizedSlotStorage, PositiveTotalNumSlotsStorage, TotalStorage)
+	PositiveSizedSlotStorage,
+	PositiveTotalNumSlotsStorage,
+	TotalStorage,
+)
 
 
 class Inventory(Container):

@@ -38,7 +38,6 @@ import os
 import sys
 from xml.dom import minidom
 
-
 if len(sys.argv) != 2:
 	print('Error: Provide a file to write strings to as argument. Exiting.')
 	sys.exit(1)

@@ -27,6 +27,8 @@ from fife import fife
 from fife.extensions.pychan.exceptions import InitializationError
 from fife.extensions.pychan.widgets import HBox, Icon, Label
 
+import horizons.globals
+import horizons.i18n
 from horizons.command.game import UnPauseCommand
 from horizons.command.misc import Chat
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
@@ -200,7 +202,6 @@ class LogBook(PickBeltWidget, Window):
 			self.forward_button.set_inactive()
 		self._gui.adaptLayout()
 
-
 ########
 #        LOGBOOK  SUBWIDGET
 ########
@@ -346,7 +347,8 @@ class LogBook(PickBeltWidget, Window):
 		if new_cur < 0 or new_cur >= len(self._parameters):
 			return # invalid scroll
 		self._cur_entry = new_cur
-		AmbientSoundComponent.play_special('flippage')
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('flippage')
 		self._redraw_captainslog()
 
 	def show_logbookwidget(self):
@@ -413,7 +415,6 @@ class LogBook(PickBeltWidget, Window):
 			# we don't care which one is shown currently (if any), just hide all of them
 			statswidget.hide()
 		self.stats_visible = None
-
 
 ########
 #        MESSAGE  AND  CHAT  HISTORY  SUBWIDGET

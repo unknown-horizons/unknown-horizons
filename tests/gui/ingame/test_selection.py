@@ -33,7 +33,7 @@ def test_select_ship(gui):
 
 	assert gui.find('overview_trade_ship')
 
-	gui.press_key(gui.Key.NUM_0)
+	gui.press_key(gui.Key._0)
 	assert gui.find('tab_base') is None
 
 	# Find player's ship
@@ -49,7 +49,7 @@ def test_selectmultitab(gui):
 	Select two frigates and delete them.
 	"""
 
-	gui.press_key(gui.Key.NUM_0)
+	gui.press_key(gui.Key._0)
 	assert gui.find('tab_base') is None
 
 	player = gui.session.world.player
@@ -86,13 +86,13 @@ def test_selection_groups(gui):
 	gui.select([ship])
 
 	# make first group
-	gui.press_key(gui.Key.NUM_2, ctrl=True)
+	gui.press_key(gui.Key._2, ctrl=True)
 
 	gui.select([])
 	assert not gui.session.selected_instances
 
 	# check group
-	gui.press_key(gui.Key.NUM_2)
+	gui.press_key(gui.Key._2)
 	assert next(iter(gui.session.selected_instances)) is ship
 
 	gui.cursor_click(59, 1, 'right')
@@ -109,23 +109,23 @@ def test_selection_groups(gui):
 	wh = gui.session.world.player.settlements[0].warehouse
 
 	gui.select([wh])
-	gui.press_key(gui.Key.NUM_3, ctrl=True)
+	gui.press_key(gui.Key._3, ctrl=True)
 
 	# check group again
-	gui.press_key(gui.Key.NUM_2)
+	gui.press_key(gui.Key._2)
 	assert len(gui.session.selected_instances) == 1
 	assert next(iter(gui.session.selected_instances)) is ship
 
 	# now other one
-	gui.press_key(gui.Key.NUM_3)
+	gui.press_key(gui.Key._3)
 	assert len(gui.session.selected_instances) == 1
 	assert next(iter(gui.session.selected_instances)) is wh
 
 	# check group still once again
-	gui.press_key(gui.Key.NUM_2)
+	gui.press_key(gui.Key._2)
 	assert len(gui.session.selected_instances) == 1
 	assert next(iter(gui.session.selected_instances)) is ship
 
 	# no group
-	gui.press_key(gui.Key.NUM_0)
+	gui.press_key(gui.Key._0)
 	assert not gui.session.selected_instances

@@ -29,5 +29,19 @@ content/atlas.sql
 content/actionsets.json
 content/tilesets.json
 
+# Tool caches (the first two also self-ignore, but be explicit)
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+
+# Written by setup.py at build time
+content/packages/gitversion.txt
+
+# Packaging / profiling artifacts
+*.egg-info/
+dist/
+*.profraw
+
 # vscode settings
 .vscode
+.venv

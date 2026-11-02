@@ -34,7 +34,6 @@ from horizons.util.dbreader import DbReader
 from horizons.util.shapes import Point
 from horizons.util.uhdbaccessor import read_savegame_template
 
-
 """
 This is used for random features required by world,
 that aren't delicate but need to occupy space somewhere.
@@ -289,6 +288,7 @@ def add_nature_objects(world, natural_resource_multiplier):
 	# TODO HACK BAD THING revert hack so trees don't start finished
 	Tree.component_templates[1]['ProducerComponent']['start_finished'] = False
 
+
 def has_adjacent_trees(world, x, y, tile, fish_directions):
 	"""Returns true if there are trees adjacent to the given position."""
 	for (dx, dy) in fish_directions:
@@ -299,6 +299,7 @@ def has_adjacent_trees(world, x, y, tile, fish_directions):
 			0, 2) == 0:
 			return True
 	return False
+
 
 def tile_suitable_for_tree(world, position, tile):
 	"""

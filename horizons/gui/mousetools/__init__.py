@@ -26,5 +26,6 @@ from .navigationtool import NavigationTool
 from .pipettetool import PipetteTool
 from .selectiontool import SelectionTool
 from .tearingtool import TearingTool
+
 # Editor tools
 from .tilelayingtool import TileLayingTool

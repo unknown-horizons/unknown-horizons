@@ -174,5 +174,5 @@ def unserialize(data, validate=False, protocol=0):
 #-------------------------------------------------------------------------------
 
 
-import horizons.network.packets.server # isort:skip
-import horizons.network.packets.client # isort:skip
+import horizons.network.packets.client
+import horizons.network.packets.server

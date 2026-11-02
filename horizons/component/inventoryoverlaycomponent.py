@@ -56,7 +56,8 @@ class InventoryOverlayComponent(Component):
 	@property
 	def identifier(self):
 		"""E.g. 'idle_as_lumberjack_barrack0' """
-		return self.fife_instance.getCurrentAction().getId()
+		# FIFE 0.5: Action.getId() returns the numeric fifeid; getName() is the string
+		return self.fife_instance.getCurrentAction().getName()
 
 	def initialize(self):
 		super().initialize()

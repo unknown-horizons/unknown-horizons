@@ -142,7 +142,7 @@ class SPTestSession(SPSession):
 
 
 # import helper functions here, so tests can import from tests.game directly
-from tests.game.utils import create_map, new_settlement, settle # isort:skip
+from tests.game.utils import create_map, new_settlement, settle
 
 
 def new_session(mapgen=create_map, rng_seed=RANDOM_SEED, human_player=True, ai_players=0):

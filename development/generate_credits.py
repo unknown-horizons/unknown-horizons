@@ -23,7 +23,6 @@
 
 from collections import OrderedDict
 
-
 sections = ['UH-Team_New', 'UH-Team_Old', 'Patchers', 'Translators', 'Packagers', 'Special Thanks']
 section_widgets = {s: 'credits_' + s.lower() for s in sections}
 section_widgets.update({

@@ -26,7 +26,6 @@ import os.path
 import subprocess
 import sys
 import time
-
 from optparse import AmbiguousOptionError, BadOptionError, OptionParser
 
 # make this script work both when started inside development and in the uh root dir
@@ -42,7 +41,7 @@ class PassThroughOptionParser(OptionParser):
 		while rargs:
 			try:
 				OptionParser._process_args(self, largs, rargs, values)
-			except (AmbiguousOptionError, BadOptionError), e:
+			except (AmbiguousOptionError, BadOptionError) as e:
 				largs.append(e.opt_str)
 
 

@@ -24,8 +24,16 @@ import textwrap
 
 from fife.extensions.pychan.widgets import HBox, Label, TextField
 
-import horizons.main
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
+
+
+import horizons.globals
 from horizons.constants import MULTIPLAYER
 from horizons.extscheduler import ExtScheduler
 from horizons.gui.util import load_uh_widget
@@ -198,7 +206,8 @@ class MultiplayerMenu(Window):
 		@return bool, whether refresh worked
 		"""
 		if play_sound:
-			AmbientSoundComponent.play_special('refresh')
+			if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+				AmbientSoundComponent.play_special('refresh')
 
 		self._games = NetworkInterface().get_active_games()
 		if self._games is None:
@@ -237,7 +246,8 @@ class MultiplayerMenu(Window):
 			return
 
 		if game.uuid == -1: # -1 signals no game
-			AmbientSoundComponent.play_special('error')
+			if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+				AmbientSoundComponent.play_special('error')
 			return
 
 		if game.version != NetworkInterface().get_clientversion():
@@ -480,7 +490,7 @@ class GameLobby(Window):
 			self._windows.close()
 
 	def _prepare_game(self, game):
-		horizons.main.prepare_multiplayer(game)
+		_get_horizons_main().prepare_multiplayer(game)
 
 	def _update_game_details(self):
 		"""Set map name and other misc data"""

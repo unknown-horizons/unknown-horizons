@@ -30,7 +30,10 @@ from horizons.world.production.producer import Producer, QueueProducer
 from horizons.world.production.utilization import FieldUtilization
 from tests.game import game_test, new_session, saveload, settle
 from tests.game.test_buildings import (
-	_build_farm, test_brick_production_chain, test_tool_production_chain)
+	_build_farm,
+	test_brick_production_chain,
+	test_tool_production_chain,
+)
 
 
 @game_test()

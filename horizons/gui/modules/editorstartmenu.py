@@ -19,13 +19,18 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-import horizons.main
 from horizons.gui.util import load_uh_widget
 from horizons.gui.windows import Window
 from horizons.i18n import gettext as T
 from horizons.savegamemanager import SavegameManager
 from horizons.util.python.callback import Callback
 from horizons.util.startgameoptions import StartGameOptions
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 
 
 class EditorStartMenu(Window):
@@ -104,7 +109,7 @@ class EditorCreateMapWidget:
 				# the empty list is interpreted as the empty list of random map island strings
 				options = StartGameOptions.create_editor_load([])
 				options.map_padding = size // 2
-				horizons.main.start_singleplayer(options)
+				_get_horizons_main().start_singleplayer(options)
 				return
 
 
@@ -128,7 +133,7 @@ class EditorSelectMapWidget:
 			self._gui.distributeData({'map_list': 0})
 
 		self._windows.close()
-		horizons.main.edit_map(self._map_data[0][selected_map_index])
+		_get_horizons_main().edit_map(self._map_data[0][selected_map_index])
 
 
 class EditorSelectSavedGameWidget:
@@ -156,4 +161,4 @@ class EditorSelectSavedGameWidget:
 			self._gui.distributeData({'saved_game_list': 0})
 
 		self._windows.close()
-		horizons.main.edit_game_map(self._saved_game_data[0][selection_index])
+		_get_horizons_main().edit_game_map(self._saved_game_data[0][selection_index])

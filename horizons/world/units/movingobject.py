@@ -238,7 +238,7 @@ class MovingObject(ComponentHolder, ConcreteObject):
 		self.act(self._move_action)
 		diagonal = self._next_target.x != self.position.x and self._next_target.y != self.position.y
 		speed = float(self.session.timer.get_ticks(1)) / move_time[0]
-		action = self._instance.getCurrentAction().getId()
+		action = self._instance.getCurrentAction().getName()
 		self._instance.follow(action, self._route, speed)
 
 		#self.log.debug("%s registering move tick in %s ticks", self, move_time[int(diagonal)])

@@ -30,9 +30,9 @@ from horizons.constants import BUILDINGS, PATHS, RES, TIER, UNITS
 from horizons.util.yamlcachestorage import YamlCacheStorage
 
 try:
-	from yaml import CSafeLoader as SafeLoader # type: ignore
+	from yaml import CSafeLoader as SafeLoader  # type: ignore
 except ImportError:
-	from yaml import SafeLoader # type: ignore
+	from yaml import SafeLoader  # type: ignore
 
 
 # make SafeLoader allow unicode

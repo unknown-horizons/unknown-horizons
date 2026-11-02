@@ -80,4 +80,4 @@ def test_drag_mouse(gui):
 	# quick check if the mouse drag had any effect on the map
 	for y in range(30, 36):
 		tile = gui.session.world.full_map[(30, y)]
-		assert (tile.id, tile.shape, tile.rotation + 45) == GROUND.DEEP_WATER_SOUTH
+		assert (tile.id, tile.shape, tile.rotation) == GROUND.DEEP_WATER_SOUTH

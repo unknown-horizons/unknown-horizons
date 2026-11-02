@@ -22,10 +22,15 @@
 import logging
 from collections import deque
 
-import horizons.main
 from horizons.constants import GAME
 from horizons.util.living import LivingObject
 from horizons.util.python.singleton import ManualConstructionSingleton
+
+
+def _get_horizons_main():
+    """Lazy import to avoid circular dependency."""
+    import horizons.main
+    return horizons.main
 
 
 class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
@@ -73,7 +78,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		self.cur_tick = tick_id
 
 		if GAME.MAX_TICKS is not None and tick_id >= GAME.MAX_TICKS:
-			horizons.main.quit()
+			_get_horizons_main().quit()
 			return
 
 		if self.cur_tick in self.schedule:

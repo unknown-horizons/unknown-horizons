@@ -44,8 +44,18 @@ from horizons.gui.widgets.resourceoverviewbar import ResourceOverviewBar
 from horizons.gui.windows import WindowManager
 from horizons.i18n import gettext as T
 from horizons.messaging import (
-	GuiAction, GuiCancelAction, GuiHover, LanguageChanged, MineEmpty, NewDisaster, NewSettlement,
-	PlayerLevelUpgrade, SpeedChanged, TabWidgetChanged, ZoomChanged)
+	GuiAction,
+	GuiCancelAction,
+	GuiHover,
+	LanguageChanged,
+	MineEmpty,
+	NewDisaster,
+	NewSettlement,
+	PlayerLevelUpgrade,
+	SpeedChanged,
+	TabWidgetChanged,
+	ZoomChanged,
+)
 from horizons.util.lastactiveplayersettlementmanager import LastActivePlayerSettlementManager
 from horizons.util.living import LivingObject, livingProperty
 from horizons.util.python.callback import Callback
@@ -463,7 +473,7 @@ class IngameGui(LivingObject):
 
 		if action == _Actions.ESCAPE:
 			return self.on_escape()
-		elif keyval == fife.Key.ENTER:
+		elif keyval == fife.Key.RETURN:
 			return self.on_return()
 
 		if action == _Actions.GRID:
@@ -523,8 +533,8 @@ class IngameGui(LivingObject):
 			self.session.world.toggle_translucency()
 		elif action == _Actions.TILE_OWNER_HIGHLIGHT:
 			self.session.world.toggle_owner_highlight()
-		elif fife.Key.NUM_0 <= keyval <= fife.Key.NUM_9:
-			num = int(keyval - fife.Key.NUM_0)
+		elif fife.Key._0 <= keyval <= fife.Key._9:
+			num = int(keyval - fife.Key._0)
 			self.handle_selection_group(num, evt.isControlPressed())
 		elif action == _Actions.QUICKSAVE:
 			self.session.quicksave()
@@ -664,15 +674,18 @@ class IngameGui(LivingObject):
 
 	def _on_gui_click_action(self, msg):
 		"""Make a sound when a button is clicked"""
-		AmbientSoundComponent.play_special('click', gain=10)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('click', gain=10)
 
 	def _on_gui_cancel_action(self, msg):
 		"""Make a sound when a cancelButton is clicked"""
-		AmbientSoundComponent.play_special('success', gain=10)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('success', gain=10)
 
 	def _on_gui_hover_action(self, msg):
 		"""Make a sound when the mouse hovers over a button"""
-		AmbientSoundComponent.play_special('refresh', position=None, gain=1)
+		if not horizons.globals.fife.get_uh_setting("MuteUISounds"):
+			AmbientSoundComponent.play_special('refresh', position=None, gain=1)
 
 	def _replace_hotkeys_in_widgets(self):
 		"""Replaces the `{key}` in the (translated) widget helptext with the actual hotkey"""
