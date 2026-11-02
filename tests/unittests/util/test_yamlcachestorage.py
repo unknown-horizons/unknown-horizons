@@ -10,36 +10,38 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
 import os
 import tempfile
-import unittest
+
+import pytest
 
 from horizons.util.yamlcachestorage import YamlCacheStorage
 
 
-class YamlCacheStorageTest(unittest.TestCase):
+@pytest.fixture
+def tmp_cache_file():
+    tmp_file = tempfile.NamedTemporaryFile(delete=False)
+    tmp_file.close()
 
-	def setUp(self):
-		super().setUp()
-		self.tmp_file = tempfile.NamedTemporaryFile(delete=False)
+    yield tmp_file.name
 
-	def tearDown(self):
-		os.unlink(self.tmp_file.name)
-		super().tearDown()
+    os.unlink(tmp_file.name)
 
-	def test_save_and_reopen(self):
-		cache = YamlCacheStorage(self.tmp_file.name)
-		cache['foo'] = 'bar'
-		cache.sync()
 
-		new_cache = YamlCacheStorage.open(self.tmp_file.name)
-		self.assertEqual(new_cache['foo'], 'bar')
+def test_save_and_reopen(tmp_cache_file):
+    cache = YamlCacheStorage(tmp_cache_file)
+    cache["foo"] = "bar"
+    cache.sync()
+
+    new_cache = YamlCacheStorage.open(tmp_cache_file)
+
+    assert new_cache["foo"] == "bar"
