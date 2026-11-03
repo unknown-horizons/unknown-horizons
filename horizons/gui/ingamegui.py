@@ -281,6 +281,32 @@ class IngameGui(LivingObject):
 											active_tab=BuildTab.last_active_build_tab)
 		self.show_menu(tab)
 
+	def show_build_related_menu(self):
+		"""Show the build-related menu for the selected building if it has related buildings.
+		@return: True if build-related menu was shown, False otherwise.
+		"""
+		# Only show build-related menu when exactly one instance is selected
+		if len(self.session.selected_instances) != 1:
+			return False
+
+		instance = next(iter(self.session.selected_instances))
+		selectable = instance.get_component(SelectableComponent)
+		if selectable is None:
+			return False
+
+		# Check if BuildRelatedTab is available for this instance
+		from horizons.gui.tabs import BuildRelatedTab
+		tablist = selectable.tabs if instance.owner.is_local_player else selectable.enemy_tabs
+		tabclasses = [tc for tc in tablist if tc.shown_for(instance)]
+
+		has_build_related = any(issubclass(tc, BuildRelatedTab) for tc in tabclasses)
+		if not has_build_related:
+			return False
+
+		# Show menu and jump to BuildRelatedTab
+		selectable.show_menu(jump_to_tabclass=BuildRelatedTab)
+		return True
+
 	def deselect_all(self):
 		for instance in self.session.selected_instances:
 			instance.get_component(SelectableComponent).deselect()
@@ -513,7 +539,10 @@ class IngameGui(LivingObject):
 			import pdb
 			pdb.set_trace()
 		elif action == _Actions.BUILD_TOOL:
-			self.show_build_menu()
+			# Try to show build-related menu first (e.g. for lumberjack -> trees);
+			# fall back to general build menu if no related buildings exist.
+			if not self.show_build_related_menu():
+				self.show_build_menu()
 		elif action == _Actions.ROTATE_RIGHT:
 			if hasattr(self.cursor, "rotate_right"):
 				# used in e.g. build preview to rotate building instead of map

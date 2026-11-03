@@ -26,6 +26,7 @@ from horizons.entities import Entities
 from horizons.gui.util import load_uh_widget
 from horizons.gui.widgets.imagebutton import ImageButton
 from horizons.i18n import gettext_lazy as LazyT
+from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
 
 from .overviewtab import OverviewTab
@@ -55,11 +56,12 @@ class BuildRelatedTab(OverviewTab):
 		# load all related buildings from DB
 		building_ids = self.instance.session.db.get_related_building_ids_for_menu(self.instance.id)
 		sorted_ids = sorted([(b, Entities.buildings[b].settler_level) for b in building_ids], key=lambda x: x[1])
-		container = self.__get_new_container()
-		for i, (building_id, level) in enumerate(sorted_ids):
-			if level > self.instance.owner.settler_level:
-				break
 
+		# Filter to only buildable buildings (at or below current settler level)
+		buildable_ids = [(b, lvl) for (b, lvl) in sorted_ids if lvl <= self.instance.owner.settler_level]
+
+		container = self.__get_new_container()
+		for i, (building_id, _level) in enumerate(buildable_ids):
 			button = self._create_build_buttons(building_id, container)
 			# check whether to start new line (currently only 4 fit per line)
 			if i and i % 4 == 0:
@@ -70,6 +72,13 @@ class BuildRelatedTab(OverviewTab):
 			container.findChild(name="build_button_bg_container").addChild(button_bg)
 		# Still need to add last container
 		parent_container.addChild(container)
+
+		# Auto-select if only one buildable related building exists
+		if len(buildable_ids) == 1:
+			building_id = buildable_ids[0][0]
+			# Small delay to let the tab show first
+			Scheduler().add_new_object(Callback(self.build_related, building_id), self, run_in=1)
+
 		super().refresh()
 
 	def __get_new_container(self):
@@ -82,8 +91,8 @@ class BuildRelatedTab(OverviewTab):
 	def _create_build_buttons(self, building_id, container):
 		# {{mode}} in double braces because it is replaced as a second step
 		building_type = Entities.buildings[building_id]
-		build_button = ImageButton(name="build{id}".format(id=building_id), helptext=building_type.get_tooltip())
-		build_button.path = "icons/buildmenu/{id:03d}".format(id=building_id)
+		build_button = ImageButton(name=f"build{building_id}", helptext=building_type.get_tooltip())
+		build_button.path = f"icons/buildmenu/{building_id:03d}"
 		build_button.capture(Callback(self.build_related, building_id))
 		return build_button
 
