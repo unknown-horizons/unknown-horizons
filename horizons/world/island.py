@@ -26,6 +26,7 @@ from horizons.command.building import Tear
 from horizons.constants import BUILDINGS, RES, UNITS
 from horizons.entities import Entities
 from horizons.gui.widgets.minimap import Minimap
+from horizons.i18n import gettext as T, ngettext as NT
 from horizons.messaging import NewSettlement, SettlementRangeChanged
 from horizons.scenario import CONDITIONS
 from horizons.scheduler import Scheduler
@@ -298,6 +299,12 @@ class Island(BuildingOwner, WorldObject):
 		settlement = building.settlement
 		buildings_to_abandon, settlement_coords_to_change = Tear.additional_removals_after_tear(building)
 		assert building not in buildings_to_abandon
+
+		# Confirm with user before abandoning buildings
+		if buildings_to_abandon:
+			if not self.confirm_dialog_to_abandon_buildings(buildings_to_abandon):
+				return  # User cancelled - don't abandon buildings, don't remove settlement range
+
 		self.abandon_buildings(buildings_to_abandon)
 
 		flat_land_set = self.terrain_cache.cache[TerrainRequirement.LAND][(1, 1)]
@@ -326,6 +333,22 @@ class Island(BuildingOwner, WorldObject):
 			settlement.buildability_cache.modify_area(clean_coords)
 
 		SettlementRangeChanged.broadcast(settlement, settlement_tiles_changed)
+
+	def confirm_dialog_to_abandon_buildings(self, buildings_to_abandon):
+		"""Show confirmation dialog before abandoning buildings outside settlement range.
+		@param buildings_to_abandon: list of buildings that would be abandoned
+		@return: True if user confirms, False if user cancels
+		"""
+		count = len(buildings_to_abandon)
+		title = T("Abandon buildings")
+		msg = T("Removing this building will reduce the settlement range.")
+		msg += "\n\n"
+		msg += T("Buildings that fall outside the new range will be abandoned.")
+		msg += "\n\n"
+		msg += NT("%s building will be abandoned.",
+		          "%s buildings will be abandoned",
+		          count) % count
+		return self.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
 
 	def add_building(self, building, player, load=False):
 		"""Adds a building to the island at the position x, y with player as the owner.

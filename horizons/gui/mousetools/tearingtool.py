@@ -107,18 +107,9 @@ class TearingTool(NavigationTool):
 			evt.consume()
 
 	def confirm_ranged_delete(self, building):
-			buildings_to_destroy = len(Tear.additional_removals_after_tear(building)[0])
-			if buildings_to_destroy == 0:
-				return True
-
-			title = T("Destroy all buildings")
-			msg = T("This will destroy all the buildings that fall outside of"
-		            " the settlement range.")
-			msg += "\n\n"
-			msg += NT("%s additional building will be destroyed.",
-		              "%s additional buildings will be destroyed",
-		              buildings_to_destroy) % buildings_to_destroy
-			return building.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
+		# Confirmation is now handled centrally in Island.remove_settlement()
+		# to cover all code paths (tear tool, AI, multiplayer sync, scenarios)
+		return True
 
 	def mousePressed(self, evt):
 		if evt.getButton() == fife.MouseEvent.RIGHT:
