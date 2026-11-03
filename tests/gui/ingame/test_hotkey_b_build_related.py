@@ -43,6 +43,7 @@ def test_hotkey_b_opens_build_related_menu_for_lumberjack(gui):
 
     # Select lumberjack
     gui.cursor_click(52, 7, 'left')
+    gui.run()  # Ensure selection is processed
 
     # Press 'b' key - should open build related menu (not general build menu)
     gui.press_key(gui.Key.B)
@@ -66,6 +67,7 @@ def test_hotkey_b_falls_back_to_general_build_menu_for_warehouse(gui):
 
     # Select warehouse (warehouse doesn't have build related buildings)
     gui.cursor_click(56, 3, 'left')
+    gui.run()  # Ensure selection is processed
 
     # Press 'b' key - should open general build menu
     gui.press_key(gui.Key.B)
@@ -94,6 +96,7 @@ def test_hotkey_b_falls_back_to_general_build_menu_for_multiple_selection(gui):
 
     # Select both warehouse and lumberjack (multi-select)
     gui.cursor_drag((54, 2), (58, 8), 'left')
+    gui.run()  # Ensure selection is processed
 
     # Press 'b' key - should open general build menu (or multi-select tab)
     gui.press_key(gui.Key.B)
@@ -120,6 +123,7 @@ def test_hotkey_b_auto_selects_single_related_building(gui):
 
     # Select lumberjack
     gui.cursor_click(52, 7, 'left')
+    gui.run()  # Ensure selection is processed
 
     # Press 'b' key - should open build related menu and auto-select tree
     gui.press_key(gui.Key.B)
