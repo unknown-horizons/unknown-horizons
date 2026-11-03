@@ -19,6 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from collections.abc import Callable
+
 from horizons.component import Component
 from horizons.scheduler import Scheduler
 from horizons.util.python.callback import Callback
@@ -40,90 +42,90 @@ class StanceComponent(Component):
 	"""
 
 	# Store the name of this component
-	NAME = 'stance'
+	NAME: str = "stance"
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
-		self.state = 'idle'
-		self.action = {
-		    'idle': self.act_idle,
-		    'user_attack': self.act_user_attack,
-		    'user_move': self.act_user_move,
-		    'move_back': self.act_move_back,
-		    'auto_attack': self.act_auto_attack,
-		    'flee': self.act_flee,
+		self.state: str = "idle"
+		self.action: dict[str, Callable[[], None]] = {
+			"idle": self.act_idle,
+			"user_attack": self.act_user_attack,
+			"user_move": self.act_user_move,
+			"move_back": self.act_move_back,
+			"auto_attack": self.act_auto_attack,
+			"flee": self.act_flee,
 		}
 
-	def initialize(self):
+	def initialize(self) -> None:
 		# change state to 'user_attack' when the user issues attack via right click
-		self.instance.add_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
+		self.instance.add_user_attack_issued_listener(Callback(self.set_state, "user_attack"))
 		# change state to 'user_move' when the user issues movement via right click
 		try:
-			self.instance.add_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+			self.instance.add_user_move_issued_listener(Callback(self.set_state, "user_move"))
 		except AttributeError:
 			pass # temporary workaround to make it work for towers
 
-	def remove(self):
-		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, 'user_attack'))
+	def remove(self) -> None:
+		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, "user_attack"))
 		try:
-			self.instance.remove_user_move_issued_listener(Callback(self.set_state, 'user_move'))
+			self.instance.remove_user_move_issued_listener(Callback(self.set_state, "user_move"))
 		except AttributeError:
 			pass # temporary workaround to make it work for towers
 		super().remove()
 
-	def set_state(self, state):
+	def set_state(self, state: str) -> None:
 		self.state = state
 
-	def get_state(self):
+	def get_state(self) -> str:
 		return self.state
 
-	def act(self):
+	def act(self) -> None:
 		"""
 		Act according to current state
 		This is called every few second in the instance code
 		"""
 		self.action[self.state]()
 
-	def act_idle(self):
+	def act_idle(self) -> None:
 		"""
 		Method executed when the instance is idle
 		"""
 		pass
 
-	def act_user_attack(self):
+	def act_user_attack(self) -> None:
 		"""
 		Method executed when the instance is trying to attack a target selected by the user
 		"""
 		if not self.instance.is_attacking():
-			self.state = 'idle'
+			self.state = "idle"
 
-	def act_user_move(self):
+	def act_user_move(self) -> None:
 		"""
 		Method executed when the instance is moving to a location selected by the user
 		"""
 		if not self.instance.is_moving():
-			self.state = 'idle'
+			self.state = "idle"
 
-	def act_move_back(self):
+	def act_move_back(self) -> None:
 		"""
 		Method executed when the instance is moving back to it's default location
 		"""
 		self.instance.stop()
-		self.state = 'idle'
+		self.state = "idle"
 
-	def act_auto_attack(self):
+	def act_auto_attack(self) -> None:
 		"""
 		Method executed when the instance has auto acquired target
 		"""
 		self.instance.stop_attack()
-		self.state = 'idle'
+		self.state = "idle"
 
-	def act_flee(self):
+	def act_flee(self) -> None:
 		"""
 		Method executed when the instance is trying to evade an attack
 		"""
 		self.instance.stop()
-		self.state = 'idle'
+		self.state = "idle"
 
 
 class LimitedMoveStance(StanceComponent):
@@ -136,55 +138,55 @@ class LimitedMoveStance(StanceComponent):
 	It also keeps track of the return position in which the unit should return when stopped attacking
 	"""
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
 		#TODO get range from db
-		self.stance_radius = 0
-		self.move_range = 0
+		self.stance_radius: int = 0
+		self.move_range: int = 0
 		# get instance data after it was inited
 		Scheduler().add_new_object(self.get_instance_data, self, run_in=0)
 
-	def get_instance_data(self):
+	def get_instance_data(self) -> None:
 		# get a copy of the center Point object
 		self.return_position = self.instance.position.center.copy()
 
-	def act_idle(self):
+	def act_idle(self) -> None:
 		"""
 		Find target in range then attack it
 		"""
 		target = self.get_target(self.stance_radius + self.instance._max_range)
 		if target:
 			self.instance.attack(target)
-			self.state = 'auto_attack'
+			self.state = "auto_attack"
 
-	def act_user_move(self):
+	def act_user_move(self) -> None:
 		"""
 		At the end of user move change the returning position
 		"""
 		if not self.instance.is_moving():
-			self.state = 'idle'
+			self.state = "idle"
 			self.return_position = self.instance.position.center.copy()
 
-	def act_user_attack(self):
+	def act_user_attack(self) -> None:
 		"""
 		If attack ends, update the returning position
 		"""
 		if not self.instance.is_attacking():
-			self.state = 'idle'
+			self.state = "idle"
 			self.return_position = self.instance.position.center.copy()
 
-	def act_move_back(self):
+	def act_move_back(self) -> None:
 		"""
 		When moving back try to find target. If found, attack it and drop movement
 		"""
 		target = self.get_target(self.stance_radius + self.instance._max_range)
 		if target:
 			self.instance.attack(target)
-			self.state = 'auto_attack'
+			self.state = "auto_attack"
 		elif self.instance.position.center == self.return_position:
-			self.state = 'idle'
+			self.state = "idle"
 
-	def act_auto_attack(self):
+	def act_auto_attack(self) -> None:
 		"""
 		Check if target still exists or if unit exited the hold ground area
 		"""
@@ -194,9 +196,9 @@ class LimitedMoveStance(StanceComponent):
 				self.instance.move(self.return_position)
 			except MoveNotPossible:
 				self.instance.move(Circle(self.return_position, self.stance_radius))
-			self.state = 'move_back'
+			self.state = "move_back"
 
-	def get_target(self, radius):
+	def get_target(self, radius: int | float):
 		"""
 		Returns closest attackable unit in radius
 		"""
@@ -214,15 +216,15 @@ class AggressiveStance(LimitedMoveStance):
 	Stance that attacks units in close range when doing movement
 	"""
 
-	NAME = 'aggressive_stance'
+	NAME: str = "aggressive_stance"
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
 		#TODO get range from db
-		self.stance_radius = 15
-		self.move_range = 25
+		self.stance_radius: int = 15
+		self.move_range: int = 25
 
-	def act_user_move(self):
+	def act_user_move(self) -> None:
 		"""
 		Check if it can attack while moving
 		"""
@@ -231,7 +233,7 @@ class AggressiveStance(LimitedMoveStance):
 		if target:
 			self.instance.fire_all_weapons(target.position.center)
 
-	def act_user_attack(self):
+	def act_user_attack(self) -> None:
 		"""
 		Check if can attack while moving to another attack
 		"""
@@ -245,18 +247,18 @@ class HoldGroundStance(LimitedMoveStance):
 	"""Stance in radius and not attacks units in close range
 	"""
 
-	NAME = 'hold_ground_stance'
+	NAME: str = "hold_ground_stance"
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
-		self.stance_radius = 5
-		self.move_range = 15
+		self.stance_radius: int = 5
+		self.move_range: int = 15
 
 
 class NoneStance(StanceComponent):
 	"""No settings for stance
 	"""
-	NAME = 'none_stance'
+	NAME: str = "none_stance"
 
 
 class FleeStance(StanceComponent):
@@ -264,13 +266,13 @@ class FleeStance(StanceComponent):
 	Move away from any approaching units
 	"""
 
-	NAME = 'flee_stance'
+	NAME: str = "flee_stance"
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
-		self.lookout_distance = 20
+		self.lookout_distance: int = 20
 
-	def act_idle(self):
+	def act_idle(self) -> None:
 		"""
 		If an enemy unit approaches move away from it
 		"""
@@ -279,16 +281,16 @@ class FleeStance(StanceComponent):
 			try:
 				distance = unit._max_range + self.lookout_distance
 				self.instance.move(Annulus(unit.position.center, distance, distance + 2))
-				self.state = 'flee'
+				self.state = "flee"
 			except MoveNotPossible:
 				pass
 
-	def act_flee(self):
+	def act_flee(self) -> None:
 		"""
 		If movemen stops, switch to idle
 		"""
 		if not self.instance.is_moving():
-			self.state = 'idle'
+			self.state = "idle"
 			# check again for target and move
 			self.act_idle()
 
@@ -297,7 +299,7 @@ class FleeStance(StanceComponent):
 		Gets the closest unit that can fire to instance
 		"""
 		enemies = [u for u in self.session.world.get_health_instances(self.instance.position.center, self.lookout_distance)
-		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, '_max_range')]
+		           if self.session.world.diplomacy.are_enemies(u.owner, self.instance.owner) and hasattr(u, "_max_range")]
 
 		if not enemies:
 			return None
