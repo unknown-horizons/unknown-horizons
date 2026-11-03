@@ -348,6 +348,9 @@ class Island(BuildingOwner, WorldObject):
 		msg += NT("%s building will be abandoned.",
 		          "%s buildings will be abandoned",
 		          count) % count
+		# auto-accept the confirmation in headless mode (no GUI)
+		if self.session.ingame_gui is None:
+			return True
 		return self.session.ingame_gui.open_popup(title, msg, show_cancel_button=True)
 
 	def add_building(self, building, player, load=False):
