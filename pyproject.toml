@@ -22,9 +22,19 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Topic :: Games/Entertainment :: Real Time Strategy",
 ]
-# No runtime dependencies: the engine is consumed externally (system package
-# or PYTHONPATH). Add "libfife" here once it is on PyPI.
-dependencies = []
+dependencies = [
+  "crayons>=0.4.0",
+  "distro>=1.9.0",
+  "greenlet>=3.0.3",
+  "Pillow>=11.0.0",
+  "polib>=1.2.0",
+  "pyyaml>=6.0.2",
+  # TODO: add "libfife>=<version>" once libfife is published to PyPI
+]
+
+# TODO: declare entry points?
+#[project.scripts]
+#unknown-horizons = "run_uh:main"
 
 [project.urls]
 Homepage = "https://www.unknown-horizons.org"
@@ -38,8 +48,6 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
-# Runtime dependencies live in requirements.txt; they move into
-# [project].dependencies once the engine (libfife) is on PyPI.
 [dependency-groups]
 dev = [
   "ruff>=0.11.0",
@@ -51,6 +59,7 @@ test = [
   "pytest-cov>=5.0",
   "pytest-mock>=3.14",   # provides the `mocker` fixture used across the suite
   "coveralls>=3.3",      # publishes the combined coverage report from CI
+  "setuptools>=61",      # required by setup.py build_i18n
 ]
 
 [tool.ruff]
