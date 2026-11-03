@@ -114,7 +114,7 @@ def test_alive_after_partial_damage(component):
 def test_negative_damage_rejected(component):
     component, _ = component
 
-    with pytest.raises(AssertionError):
+    with pytest.raises(ValueError):
         component.deal_damage(1, -10)
 
 
@@ -182,8 +182,8 @@ def test_redraw_health_selected_instance(component):
 
     instance.draw_health = Mock()
 
-    component.session = Mock()
-    component.session.selected_instances = [instance]
+    instance.session = Mock()
+    instance.session.selected_instances = [instance]
 
     component.redraw_health()
 
@@ -195,8 +195,8 @@ def test_redraw_health_unselected_instance(component):
 
     instance.draw_health = Mock()
 
-    component.session = Mock()
-    component.session.selected_instances = []
+    instance.session = Mock()
+    instance.session.selected_instances = []
 
     component.redraw_health()
 

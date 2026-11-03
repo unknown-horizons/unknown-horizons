@@ -33,45 +33,52 @@ class HealthComponent(Component):
 	log = logging.getLogger("component.health")
 
 	# Store the name of this component
-	NAME = 'health'
+	NAME: str = "health"
 
-	def __init__(self, maxhealth):
-		super(HealthComponent, self).__init__()
+	def __init__(self, maxhealth: int | float) -> None:
+		super().__init__()
 		assert maxhealth is not None, "Can not add HealthComponent without maxhealth!"
-		self.max_health = float(maxhealth) if maxhealth is not None else None
+		self.max_health = float(maxhealth)
 
-	def initialize(self):
+	def initialize(self) -> None:
 		self.health = float(self.max_health)
 		self._add_listeners()
 
-	def _add_listeners(self):
+	def _add_listeners(self) -> None:
 		self.add_damage_dealt_listener(self.check_if_alive)
 		self.add_damage_dealt_listener(self.redraw_health)
 
-	def save(self, db):
+	def save(self, db) -> None:
 		db("INSERT INTO unit_health(owner_id, health) VALUES(?, ?)", self.instance.worldid, self.health)
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		self.health = db.get_health(worldid)
 		self._add_listeners()
 
-	def deal_damage(self, weapon_id, damage):
-		#TODO retrieve modifiers from database by owner_id/weapon_id
-		#scaling factor multiplies the damage taken by the unit
+	def deal_damage(self, weapon_id: int, damage: int | float) -> None:
+		# TODO: retrieve modifiers from database by owner_id/weapon_id
+		# Scaling factor multiplies the damage taken by the unit.
+		if damage < 0:
+			raise ValueError("Damage must be non-negative")
 		scaling_factor = 1
 		self.health -= scaling_factor * damage
 		self.health = max(self.health, 0.0) # don't go below 0
-		self.log.debug("dealing damage %s to %s; new health: %s", scaling_factor * damage, self.instance, self.health)
+		self.log.debug(
+			"dealing damage %s to %s; new health: %s",
+			scaling_factor * damage,
+			self.instance,
+			self.health,
+		)
 		self.on_damage_dealt()
 
-	def check_if_alive(self, caller=None):
+	def check_if_alive(self, caller=None) -> None:
 		if self.health <= 0:
 			self.log.debug("Unit %s dies, health: %s", self.instance, self.health)
 			self.instance.remove()
 
-	def redraw_health(self, caller=None):
+	def redraw_health(self, caller=None) -> None:
 		if not self.instance:
 			return
 		if self.instance in self.session.selected_instances:
-			if hasattr(self.instance, 'draw_health'):
+			if hasattr(self.instance, "draw_health"):
 				self.instance.draw_health()
