@@ -186,7 +186,7 @@ class Trader(GenericAI):
 				self.allured_by_signal_fire.add(ship)
 
 				# HACK: remove allured flag in a few ticks
-				def rem_allured(self, ship):
+				def rem_allured(self, ship: Ship) -> None:
 					self.allured_by_signal_fire.discard(ship)
 				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))
 				self.send_ship_random_warehouse(ship, house)
