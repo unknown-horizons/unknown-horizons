@@ -36,7 +36,7 @@ class TRADE_ERROR_TYPE:
 
 
 class TradeSlotInfo:
-	def __init__(self, resource_id, selling, limit):
+	def __init__(self, resource_id: int, selling: bool, limit: int) -> None:
 		self.resource_id = resource_id
 		self.selling = selling
 		self.limit = limit
@@ -46,13 +46,13 @@ class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
 	"""
-	NAME = 'tradepostcomponent'
-	yaml_tag = '!TradePostComponent'
+	NAME: str = "tradepostcomponent"
+	yaml_tag: str = "!TradePostComponent"
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
 
-	def initialize(self):
+	def initialize(self) -> None:
 		self.slots = [None, None, None] # [TradeSlotInfo, ...]
 		self.buy_list = {} # dict of resources that are to be bought. {resource_id: slot_id, ...}
 		self.sell_list = {} # dict of resources that are to be sold.  {resource_id: slot_id, ...}
@@ -62,7 +62,7 @@ class TradePostComponent(ChangeListener, Component):
 		self.total_income = 0
 		self.total_expenses = 0
 
-	def set_slot(self, slot_id, resource_id, selling, limit):
+	def set_slot(self, slot_id: int, resource_id: int, selling: bool, limit: int) -> None:
 		self.clear_slot(slot_id, False)
 		self.slots[slot_id] = TradeSlotInfo(resource_id, selling, limit)
 		if selling:
@@ -71,7 +71,7 @@ class TradePostComponent(ChangeListener, Component):
 			self.buy_list[resource_id] = slot_id
 		self._changed()
 
-	def clear_slot(self, slot_id, trigger_changed):
+	def clear_slot(self, slot_id: int, trigger_changed: bool) -> None:
 		if self.slots[slot_id] is not None:
 			old_resource_id = self.slots[slot_id].resource_id
 			if self.slots[slot_id].selling:
@@ -83,7 +83,7 @@ class TradePostComponent(ChangeListener, Component):
 		if trigger_changed:
 			self._changed()
 
-	def get_free_slot(self, resource_id):
+	def get_free_slot(self, resource_id: int) -> int | None:
 		if resource_id in self.buy_list:
 			return self.buy_list[resource_id]
 		if resource_id in self.sell_list:
@@ -93,7 +93,7 @@ class TradePostComponent(ChangeListener, Component):
 				return i
 		return None
 
-	def save(self, db):
+	def save(self, db) -> None:
 		super().save(db)
 
 		for slot_id in range(len(self.slots)):
@@ -109,7 +109,7 @@ class TradePostComponent(ChangeListener, Component):
 			db("INSERT INTO trade_history(settlement, tick, player, resource_id, amount, gold) VALUES(?, ?, ?, ?, ?, ?)",
 				self.instance.worldid, translated_tick, row[1], row[2], row[3], row[4])
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
 		self.initialize()
 
@@ -194,7 +194,14 @@ class TradePostComponent(ChangeListener, Component):
 		self._changed()
 		return True
 
-	def sell_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
+	def sell_resource(
+	    self,
+	    ship_worldid: int,
+	    resource_id: int,
+	    amount: int,
+	    add_error_type: bool = False,
+	    suppress_messages: bool = False,
+	):
 		""" Attempt to sell the given amount of resource to the ship, returns the amount sold.
 		@param add_error_type: if True, return tuple where second item is ERROR_TYPE"""
 		ship = WorldObject.get_object_by_id(ship_worldid)
@@ -239,7 +246,14 @@ class TradePostComponent(ChangeListener, Component):
 			TRADE_ERROR_TYPE.NO_ERROR,
 		)
 
-	def buy_resource(self, ship_worldid, resource_id, amount, add_error_type=False, suppress_messages=False):
+	def buy_resource(
+	    self,
+	    ship_worldid: int,
+	    resource_id: int,
+	    amount: int,
+	    add_error_type: bool = False,
+	    suppress_messages: bool = False,
+	):
 		""" Attempt to buy the given amount of resource from the ship, return the amount bought
 		@param add_error_type: if True, return tuple where second item is ERROR_TYPE"""
 		ship = WorldObject.get_object_by_id(ship_worldid)
@@ -288,7 +302,7 @@ class TradePostComponent(ChangeListener, Component):
 		)
 
 	@property
-	def sell_income(self):
+	def sell_income(self) -> int:
 		"""Returns sell income of last month.
 		Deletes older entries of the sell list."""
 		income = 0
@@ -305,7 +319,7 @@ class TradePostComponent(ChangeListener, Component):
 		return income
 
 	@property
-	def buy_expenses(self):
+	def buy_expenses(self) -> int:
 		"""Returns last months buy expenses.
 		Deletes older entries of the buy list."""
 		expenses = 0
@@ -322,7 +336,7 @@ class TradePostComponent(ChangeListener, Component):
 		return expenses
 
 	@property
-	def total_earnings(self):
+	def total_earnings(self) -> int:
 		"""Returns the entire earning of this settlement
 		total_earnings = sell_income - buy_expenses"""
 		return self.total_income - self.total_expenses
