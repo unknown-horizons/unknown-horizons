@@ -26,7 +26,6 @@ import pytest
 import horizons.main
 from horizons.util.cmdlineoptions import get_option_parser
 from horizons.util.random_map import generate_map_from_seed
-from tests.unittests import TestCase
 
 skip_todo = pytest.mark.skip(reason='Not implemented yet')
 

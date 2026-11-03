@@ -10,215 +10,294 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the
 # Free Software Foundation, Inc.,
-# 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+# 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
-import unittest
-from typing import Optional, Set
+from typing import Optional
 from unittest import mock
+
+import pytest
 
 from tests.gui.helper import GuiHelper
 
 
 class Widget:
-	"""
-	Fake widget with a name, children and possible a parent. All children of this widget will
-	get their parent attribute set to this widget.
-	"""
-	def __init__(self, name, children=None):
-		self.name = name
-		self.parent = None # type: Optional[Widget]
-		self.children = children or []
-		for c in self.children:
-			c.parent = self
+    """
+    Fake widget with a name, children and possible a parent. All children of
+    this widget will get their parent attribute set to this widget.
+    """
 
-	def __repr__(self):
-		return self.name
+    def __init__(self, name, children=None):
+        self.name = name
+        self.parent = None  # type: Optional["Widget"]
+        self.children = children or []
 
-	def __hash__(self):
-		return id(self)
+        for child in self.children:
+            child.parent = self
+
+    def __repr__(self):
+        return self.name
+
+    def __hash__(self):
+        return id(self)
 
 
-class FindWidgetTest(unittest.TestCase):
-	"""
-	Tests about finding widgets in pychan's internal lists.
-	"""
-	def setUp(self):
-		self.widgets = set() # type: Set[Widget]
+@pytest.fixture
+def widgets():
+    return set()
 
-		def w(name, children=None):
-			widget = Widget(name, children)
-			self.widgets.add(widget)
-			return widget
 
-		self.w = w
+@pytest.fixture
+def widget_factory(widgets):
+    def create(name, children=None):
+        widget = Widget(name, children)
+        widgets.add(widget)
+        return widget
 
-		helper = GuiHelper(mock.Mock(), mock.Mock())
-		self.find = lambda x: helper._find(self.widgets, x)
+    return create
 
-	def test_simple(self):
-		"""
-		Single widget in the global list.
-		"""
-		target = self.w('target')
-		self.assertEqual(self.find('target'), target)
 
-	def test_parent(self):
-		"""
-		Single widget with a child.
-		"""
-		target = self.w('target')
-		self.w('foobar', [
-			target
-		])
+@pytest.fixture
+def find(widgets):
+    helper = GuiHelper(mock.Mock(), mock.Mock())
+    return lambda path: helper._find(widgets, path)
 
-		self.assertEqual(self.find('target'), target)
 
-	def test_hierarchy(self):
-		"""
-		Target widget with multiple parents and another widget with the same name, but
-		without parent.
-		"""
-		target = self.w('target')
+def test_simple(widget_factory, find):
+    """Single widget in the global list."""
+    target = widget_factory("target")
 
-		self.w('bla', [
-			self.w('baz', [
-				target
-			])
-		])
-		self.w('foobar')
-		self.w('target')
+    assert find("target") == target
 
-		self.assertEqual(self.find('bla/baz/target'), target)
 
-	def test_hierarchy_incomplete_path(self):
-		"""
-		Target with multiple parents, select it while omitting one parent in the search
-		path.
-		"""
-		target = self.w('target')
+def test_parent(widget_factory, find):
+    """Single widget with a child."""
+    target = widget_factory("target")
 
-		self.w('bla', [
-			self.w('baz', [
-				target
-			])
-		])
-		self.w('foobar')
-		self.w('target')
+    widget_factory(
+        "foobar",
+        [
+            target,
+        ],
+    )
 
-		self.assertEqual(self.find('bla/target'), target)
+    assert find("target") == target
 
-	def test_hierarchy_returns_widget_with_best_matching_path(self):
-		"""
-		If we have multiple matches for a path, return the one that fits most closely,
-		i.e. the one with the shortest path of names.
-		"""
-		target1 = self.w('target')
-		target2 = self.w('target')
 
-		self.w('bla', [
-			self.w('baz', [
-				target1
-			])
-		])
-		self.w('bla', [
-			target2
-		])
+def test_hierarchy(widget_factory, find):
+    """
+    Target widget with multiple parents and another widget with the same name,
+    but without parent.
+    """
+    target = widget_factory("target")
 
-		self.assertEqual(self.find('bla/target'), target2)
+    widget_factory(
+        "bla",
+        [
+            widget_factory(
+                "baz",
+                [
+                    target,
+                ],
+            )
+        ],
+    )
 
-	def test_ambigious_error(self):
-		"""
-		If a single best match can't be found, an error is raised instead.
-		"""
-		target1 = self.w('target')
-		target2 = self.w('target')
+    widget_factory("foobar")
+    widget_factory("target")
 
-		self.w('bla', [
-			target1
-		])
-		self.w('bla', [
-			target2
-		])
+    assert find("bla/baz/target") == target
 
-		try:
-			self.find('bla/target')
-		except Exception as e:
-			self.assertEqual(str(e), 'Ambigious specification bla/target, found 2 matches')
-		else:
-			self.fail('No exception raised')
 
-	def test_hierarchy_not_absolute_path(self):
-		"""
-		Target with multiple parents, select it without specifing the top-most widget.
-		"""
-		target = self.w('target')
+def test_hierarchy_incomplete_path(widget_factory, find):
+    """
+    Target with multiple parents, select it while omitting one parent in the
+    search path.
+    """
+    target = widget_factory("target")
 
-		self.w('bla', [
-			self.w('baz', [
-				target
-			])
-		])
-		self.w('foobar')
-		self.w('target')
+    widget_factory(
+        "bla",
+        [
+            widget_factory(
+                "baz",
+                [
+                    target,
+                ],
+            )
+        ],
+    )
 
-		self.assertEqual(self.find('baz/target'), target)
+    widget_factory("foobar")
+    widget_factory("target")
 
-	def test_wrong_search_path(self):
-		"""
-		A previous implementation had a bug where the code would go in a dead end when one
-		part of the path matches, but children below won't. Make sure this doesn't happen
-		again.
-		"""
-		target = self.w('target')
+    assert find("bla/target") == target
 
-		self.w('wrongpath', [
-			self.w('foobar')
-		])
-		self.w('foobar', [
-			target
-		])
 
-		self.assertEqual(self.find('foobar/target'), target)
+def test_hierarchy_returns_widget_with_best_matching_path(
+    widget_factory,
+    find,
+):
+    """
+    If we have multiple matches for a path, return the one that fits most
+    closely, i.e. the one with the shortest path of names.
+    """
+    target1 = widget_factory("target")
+    target2 = widget_factory("target")
 
-	def test_multiple_siblings(self):
-		"""
-		Target widget with multiple parents and multiple siblings.
-		"""
-		target = self.w('target')
+    widget_factory(
+        "bla",
+        [
+            widget_factory(
+                "baz",
+                [
+                    target1,
+                ],
+            )
+        ],
+    )
 
-		self.w('bla', [
-			self.w('baz', [
-				self.w('sibling1'),
-				target,
-				self.w('sibling2'),
-				self.w('sibling3'),
-			])
-		])
+    widget_factory(
+        "bla",
+        [
+            target2,
+        ],
+    )
 
-		self.assertEqual(self.find('bla/baz/target'), target)
+    assert find("bla/target") == target2
 
-	def test_target_with_childrens(self):
-		"""
-		Make sure that the target is still found even if it has children itself.
-		"""
-		target = self.w('target', [
-			self.w('baz'),
-			self.w('foo', [
-				self.w('bar')
-			]),
-		])
 
-		self.w('bla', [
-			self.w('baz', [
-				target
-			])
-		])
+def test_ambigious_error(widget_factory, find):
+    """
+    If a single best match can't be found, an error is raised instead.
+    """
+    target1 = widget_factory("target")
+    target2 = widget_factory("target")
 
-		self.assertEqual(self.find('bla/baz/target'), target)
+    widget_factory(
+        "bla",
+        [
+            target1,
+        ],
+    )
+
+    widget_factory(
+        "bla",
+        [
+            target2,
+        ],
+    )
+
+    with pytest.raises(Exception, match=r"Ambigious specification bla/target, found 2 matches"):
+        find("bla/target")
+
+
+def test_hierarchy_not_absolute_path(widget_factory, find):
+    """
+    Target with multiple parents, select it without specifing the top-most
+    widget.
+    """
+    target = widget_factory("target")
+
+    widget_factory(
+        "bla",
+        [
+            widget_factory(
+                "baz",
+                [
+                    target,
+                ],
+            )
+        ],
+    )
+
+    widget_factory("foobar")
+    widget_factory("target")
+
+    assert find("baz/target") == target
+
+
+def test_wrong_search_path(widget_factory, find):
+    """
+    A previous implementation had a bug where the code would go in a dead end
+    when one part of the path matches, but children below won't.
+    """
+    target = widget_factory("target")
+
+    widget_factory(
+        "wrongpath",
+        [
+            widget_factory("foobar"),
+        ],
+    )
+
+    widget_factory(
+        "foobar",
+        [
+            target,
+        ],
+    )
+
+    assert find("foobar/target") == target
+
+
+def test_multiple_siblings(widget_factory, find):
+    """
+    Target widget with multiple parents and multiple siblings.
+    """
+    target = widget_factory("target")
+
+    widget_factory(
+        "bla",
+        [
+            widget_factory(
+                "baz",
+                [
+                    widget_factory("sibling1"),
+                    target,
+                    widget_factory("sibling2"),
+                    widget_factory("sibling3"),
+                ],
+            )
+        ],
+    )
+
+    assert find("bla/baz/target") == target
+
+
+def test_target_with_childrens(widget_factory, find):
+    """
+    Make sure that the target is still found even if it has children itself.
+    """
+    target = widget_factory(
+        "target",
+        [
+            widget_factory("baz"),
+            widget_factory(
+                "foo",
+                [
+                    widget_factory("bar"),
+                ],
+            ),
+        ],
+    )
+
+    widget_factory(
+        "bla",
+        [
+            widget_factory(
+                "baz",
+                [
+                    target,
+                ],
+            )
+        ],
+    )
+
+    assert find("bla/baz/target") == target

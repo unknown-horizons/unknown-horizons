@@ -34,7 +34,7 @@ def db():
 
 	# Truncate all tables. We don't want to rely on existing data.
 	for (table_name, ) in db("SELECT name FROM sqlite_master WHERE type = 'table'"):
-		db('DELETE FROM {}'.format(table_name))
+		db(f'DELETE FROM {table_name}')
 
 	horizons.globals.db = db
 
