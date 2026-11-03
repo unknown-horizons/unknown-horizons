@@ -22,6 +22,7 @@
 
 import locale
 import logging
+import os
 
 from fife import fife
 from fife.extensions import fifelog, pychan
@@ -42,6 +43,9 @@ class Fife:
 
 	def __init__(self):
 		self.pump = []
+
+		# Detect first run BEFORE creating Settings (which would create the file)
+		self._is_first_run = not os.path.exists(PATHS.USER_CONFIG_FILE)
 
 		self._setting = Settings(PATHS.USER_CONFIG_FILE, PATHS.SETTINGS_TEMPLATE_FILE)
 		self.engine = fife.Engine()
@@ -162,6 +166,10 @@ class Fife:
 		"""Second initialization stage of engine"""
 		self.engine.init()
 
+		# Auto-detect resolution on first run
+		if self._is_first_run:
+			self._auto_detect_resolution()
+
 		# Load font manifest for FontManager (FIFE 0.5+)
 		self._load_font_manifest()
 
@@ -199,6 +207,34 @@ class Fife:
 		self._setting.apply()
 
 		self._got_inited = True
+
+	def _auto_detect_resolution(self):
+		"""Auto-detect desktop resolution on first run."""
+		try:
+			device_caps = fife.DeviceCaps()
+			device_caps.fillDeviceCaps()
+
+			if device_caps.getDisplayCount() > 0:
+				width = device_caps.getDesktopWidth(0)
+				height = device_caps.getDesktopHeight(0)
+
+				# Only use detected resolution if it's reasonable
+				if width >= 800 and height >= 600:
+					self.log.info(f"First run detected: auto-setting resolution to {width}x{height}")
+
+					# Update engine settings
+					self.engine_settings.setScreenWidth(width)
+					self.engine_settings.setScreenHeight(height)
+
+					# Update our settings object and save
+					self._setting.set("FIFE", "ScreenResolution", f"{width}x{height}")
+					self._setting.save()
+				else:
+					self.log.warning(f"Detected desktop resolution {width}x{height} is too small, using default")
+			else:
+				self.log.warning("No displays detected, using default resolution")
+		except Exception as e:
+			self.log.warning(f"Failed to auto-detect resolution: {e}")
 
 	def _load_font_manifest(self):
 		"""Load font manifest for FontManager (FIFE 0.5+)."""
