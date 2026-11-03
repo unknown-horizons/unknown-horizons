@@ -24,6 +24,11 @@ from unittest import mock
 import pytest
 
 from horizons.component.namedcomponent import NamedComponent
+from horizons.util.changelistener import ChangeListener
+
+
+class DummyChangeListener(ChangeListener):
+    pass
 
 
 @pytest.fixture(autouse=True)
@@ -48,17 +53,6 @@ def make_component(name=None):
     component.initialize()
 
     return component
-
-
-def test_new_default_name():
-    component = make_component()
-    assert component.name == "Test"
-
-    component2 = make_component()
-    assert component2.name == "Test 2"
-
-    component3 = make_component()
-    assert component3.name == "Test 3"
 
 
 def test_duplicates():
@@ -122,3 +116,76 @@ def test_reset():
 
     assert NamedComponent.names_used == []
     assert make_component().name == "Test"
+
+
+def test_save():
+    component = make_component()
+
+    component.instance.worldid = 42
+
+    db = mock.Mock()
+
+    component.save(db)
+
+    db.assert_called_once_with(
+        "INSERT INTO name (rowid, name) VALUES(?, ?)",
+        42,
+        component.name,
+    )
+
+
+def test_load():
+    db = mock.Mock()
+    db.return_value = [("Loaded name",)]
+
+    component = NamedComponent()
+    component.instance = mock.Mock()
+
+    component.load(db, 7)
+
+    assert component.name == "Loaded name"
+    db.assert_called_once_with(
+        "SELECT name FROM name WHERE rowid = ?",
+        7,
+    )
+
+
+def test_many_default_names():
+    components = [make_component() for _ in range(5)]
+
+    assert [c.name for c in components] == [
+        "Test",
+        "Test 2",
+        "Test 3",
+        "Test 4",
+        "Test 5",
+    ]
+
+
+def test_old_name_becomes_available_again():
+    component = make_component()
+
+    assert component.name == "Test"
+
+    component.set_name("Custom")
+
+    component2 = make_component()
+
+    assert component2.name == "Test"
+
+
+def test_set_name_notifies_listener():
+    instance = DummyChangeListener()
+    instance._changed = mock.Mock()
+
+    instance.session = mock.Mock()
+    instance.session.random.choice = lambda seq: seq[0]
+
+    component = NamedComponent()
+    component.instance = instance
+
+    component.initialize()
+    instance._changed.assert_called_once()
+
+    component.set_name("Renamed")
+    assert instance._changed.call_count == 2
