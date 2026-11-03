@@ -185,5 +185,7 @@ def test_set_name_notifies_listener():
     component.instance = instance
 
     component.initialize()
-
     instance._changed.assert_called_once()
+
+    component.set_name("Renamed")
+    assert instance._changed.call_count == 2
