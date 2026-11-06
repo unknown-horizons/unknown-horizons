@@ -19,20 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from typing import Any, ClassVar
+
 from horizons.component import Component
 from horizons.component.storagecomponent import StorageComponent
 from horizons.util.python.decorators import cachedmethod
 
 
 class DepositComponent(Component):
-	NAME = 'resource_deposit'
-	DEPENDENCIES = ['StorageComponent']
+	NAME: ClassVar[str] = "resource_deposit"
+	DEPENDENCIES: ClassVar[list[str]] = ["StorageComponent"]
 
-	def __init__(self, resources):
+	def __init__(self, resources: dict[str, Any]) -> None:
 		super().__init__()
-		self.resources = resources
+		self.resources: dict[str, Any] = resources
 
-	def initialize(self, inventory=None):
+	def initialize(self, inventory=None) -> None:
 		if inventory:
 			iterator = inventory.itercontents
 		else:

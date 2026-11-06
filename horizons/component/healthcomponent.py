@@ -20,6 +20,7 @@
 # ###################################################
 
 import logging
+from typing import Any, ClassVar
 
 from horizons.component import Component
 from horizons.util.changelistener import metaChangeListenerDecorator
@@ -33,11 +34,10 @@ class HealthComponent(Component):
 	log = logging.getLogger("component.health")
 
 	# Store the name of this component
-	NAME: str = "health"
+	NAME: ClassVar[str] = "health"
 
 	def __init__(self, maxhealth: int | float) -> None:
 		super().__init__()
-		assert maxhealth is not None, "Can not add HealthComponent without maxhealth!"
 		self.max_health = float(maxhealth)
 
 	def initialize(self) -> None:
@@ -71,12 +71,12 @@ class HealthComponent(Component):
 		)
 		self.on_damage_dealt()
 
-	def check_if_alive(self, caller=None) -> None:
+	def check_if_alive(self, caller: Any = None) -> None:
 		if self.health <= 0:
 			self.log.debug("Unit %s dies, health: %s", self.instance, self.health)
 			self.instance.remove()
 
-	def redraw_health(self, caller=None) -> None:
+	def redraw_health(self, caller: Any = None) -> None:
 		if not self.instance:
 			return
 		if self.instance in self.session.selected_instances:

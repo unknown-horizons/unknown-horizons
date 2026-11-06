@@ -19,7 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from typing import List
+from __future__ import annotations
+
+from typing import Any, ClassVar
 
 
 class Component:
@@ -37,12 +39,12 @@ class Component:
 	"""
 
 	#  Store the name of this component. This has to be overwritten in subclasses
-	NAME = None # type: str
+	NAME: ClassVar[str]
 
 	# Store dependencies to other components here
-	DEPENDENCIES = [] # type: List[str]
+	DEPENDENCIES: ClassVar[list[str]] = []
 
-	def __init__(self):
+	def __init__(self) -> None:
 		"""
 		Used for initialization code that does not require any other components.
 		This is always called first, on construction and on load."""
@@ -53,7 +55,7 @@ class Component:
 	def session(self):
 		return self.instance.session
 
-	def initialize(self):
+	def initialize(self) -> None:
 		"""
 		This is called by the ComponentHolder after it set the instance.
 		Use this to initialize any needed infrastructure.
@@ -63,19 +65,19 @@ class Component:
 		"""
 		pass
 
-	def remove(self):
+	def remove(self) -> None:
 		"""
 		Removes component and reference to instance
 		"""
 		self.instance = None
 
-	def save(self, db):
+	def save(self, db) -> None:
 		"""
 		Will do nothing, but will be always called in componentholder code, even if not implemented.
 		"""
 		pass
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		"""
 		This does on load what __init() and initalize() together do on constructions at runtime.
 		Has to set up everything that is not setup in __init__(). Note that on loading
@@ -86,7 +88,7 @@ class Component:
 		pass
 
 	@classmethod
-	def get_instance(cls, arguments=None):
+	def get_instance(cls, arguments: dict[str, Any] | None = None) -> Component:
 		"""
 		This function is used to instantiate classes from yaml data. Override this if
 		the component has more than just a basic constructor with primitive types
@@ -95,8 +97,8 @@ class Component:
 		arguments = arguments or {}
 		return cls(**arguments)
 
-	def __gt__(self, other):
+	def __gt__(self, other: object) -> bool:
 		return other.__class__ in self.DEPENDENCIES
 
-	def __lt__(self, other):
+	def __lt__(self, other: object) -> bool:
 		return not self.__gt__(other)

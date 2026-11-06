@@ -19,6 +19,9 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from typing import Any, ClassVar
 
 from horizons import entities
 from horizons.component import Component
@@ -35,38 +38,38 @@ class CollectingComponent(Component):
 	Base class for most producing/collecting buildings.
 	"""
 
-	NAME = 'CollectingComponent'
+	NAME: ClassVar[str] = "CollectingComponent"
 
 	## INIT/DESTRUCT
-	def __init__(self, collectors):
+	def __init__(self, collectors: dict[str, int]) -> None:
 		super().__init__()
-		self.__collector_templates = collectors
+		self.__collector_templates: dict[str, int] = collectors
 
-	def initialize(self):
-		self.__init()
+	def initialize(self) -> None:
+		self._init_state()
 		self.create_collector(self.__collector_templates)
 
-	def __init(self):
+	def _init_state(self) -> None:
 		"""Part of initiation that __init__() and load() share"""
 		# list that holds the collectors that belong to this building.
-		self.__collectors = []
+		self.__collectors: list[Any] = []
 
 		self.path_nodes = ConsumerBuildingPathNodes(self.instance)
 
-	def create_collector(self, collectors):
+	def create_collector(self, collectors: dict[str, int]) -> None:
 		"""Creates collectors for building according to db."""
 		for collector_class, count in collectors.items():
-			for i in range(0, count):
+			for _ in range(count):
 				self.add_collector(collector_class)
 
-	def add_collector(self, collector_class):
+	def add_collector(self, collector_class) -> None:
 		"""Creates a collector and adds it to this building.
 		@param collector_class: unit class of collector to create
 		"""
 		collector = entities.Entities.units[collector_class](self.instance, session=self.session, owner=self.instance.owner)
 		collector.initialize()
 
-	def remove(self):
+	def remove(self) -> None:
 		# remove every non-ship collectors (those are independent)
 		for collector in self.__collectors[:]:
 			if not collector.is_ship:
@@ -80,7 +83,7 @@ class CollectingComponent(Component):
 		self.__collectors = None
 		self.path_nodes = None
 
-	def save(self, db):
+	def save(self, db) -> None:
 		super().save(db)
 		for collector in self.__collectors:
 			# collectors, that are ship (e.g. fisher ship) are viewed as independent
@@ -90,17 +93,17 @@ class CollectingComponent(Component):
 			if not collector.is_ship:
 				collector.save(db)
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
-		self.__init()
+		self._init_state()
 
 	## INTERFACE
-	def add_local_collector(self, collector):
+	def add_local_collector(self, collector) -> None:
 		assert collector not in self.__collectors
 		self.__collectors.append(collector)
 
-	def remove_local_collector(self, collector):
+	def remove_local_collector(self, collector) -> None:
 		self.__collectors.remove(collector)
 
-	def get_local_collectors(self):
+	def get_local_collectors(self) -> list[Any]:
 		return self.__collectors

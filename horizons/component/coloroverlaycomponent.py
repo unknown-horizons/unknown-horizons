@@ -19,9 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import logging
 from collections import defaultdict
 from operator import attrgetter
+from typing import Any, ClassVar
 
 from fife import fife
 
@@ -78,16 +81,16 @@ class ColorOverlayComponent(Component):
 	#		# also color some other teal area in blue (needs animation overlay at order 2)
 	#		- [2, color2_idle, [0, 255, 255], [0, 0, 255, 128]]
 	"""
-	NAME = "coloroverlay"
-	log = logging.getLogger('component.overlays')
+	NAME: ClassVar[str] = "coloroverlay"
+	log = logging.getLogger("component.overlays")
 
-	def __init__(self, overlays=None):
+	def __init__(self, overlays: dict[str, Any] | None = None) -> None:
 		super().__init__()
-		self.overlays = overlays or {}
+		self.overlays: dict[str, Any] = overlays or {}
 		self.current_overlays = defaultdict(dict)
 
 	@property
-	def action_set(self):
+	def action_set(self) -> str:
 		"""E.g. 'as_lumberjack_barrack0' """
 		return self.instance._action_set_id
 
@@ -96,17 +99,17 @@ class ColorOverlayComponent(Component):
 		return self.instance._instance
 
 	@property
-	def identifier(self):
+	def identifier(self) -> str:
 		"""E.g. 'idle_as_lumberjack_barrack0' """
 		# FIFE 0.5: Action.getId() renamed to getName()
 		return self.fife_instance.getCurrentAction().getName()
 
-	def initialize(self):
+	def initialize(self) -> None:
 		super().initialize()
 		ActionChanged.subscribe(self.update_overlay, self.instance)
 		ActionChanged.broadcast(self.instance, self.instance._action)
 
-	def update_overlay(self, message):
+	def update_overlay(self, message) -> None:
 		#TODO Tracking is broken: remove all data stored for old action
 		# Ultimately it would be great to have current_overlays working...
 		self.current_overlays.clear()
@@ -131,12 +134,12 @@ class ColorOverlayComponent(Component):
 				if isinstance(color, UtilColor) or isinstance(color, fife.Color):
 					fife_to = fife.Color(color.r, color.g, color.b, alpha)
 				else:
-					raise TypeError('Unknown color `{}` as attribute `{}`: '
+					raise TypeError(f'Unknown color `{color}` as attribute `{to_color}`: '
 						'Expected either fife.Color or horizons.util.Color.'
-						.format(color, to_color))
+						)
 			self.change_color(z_order, fife_from, fife_to)
 
-	def add_overlay(self, overlay_name, z_order):
+	def add_overlay(self, overlay_name, z_order) -> None:
 		"""Creates color overlay recoloring the area defined in *overlay_set*
 
 		and adds it to fife instance. Note that a color overlay on *z_order*
@@ -159,7 +162,7 @@ class ColorOverlayComponent(Component):
 		animationmanager = horizons.globals.fife.animationmanager
 		self.current_overlays[z_order] = overlay_set
 		for rotation, frames in overlay_set.items():
-			id = '{}+{}'.format(self.identifier, rotation)
+			id = f'{self.identifier}+{rotation}'
 			if animationmanager.exists(id):
 				ov_anim = animationmanager.getPtr(id)
 			else:
@@ -176,7 +179,7 @@ class ColorOverlayComponent(Component):
 			overlay = fife.OverlayColors(ov_anim)
 			self.fife_instance.addColorOverlay(self.identifier, rotation, z_order, overlay)
 
-	def change_color(self, z_order, from_color, to_color):
+	def change_color(self, z_order, from_color, to_color) -> None:
 		"""Changes color of *from_color*ed area to *to_color*.
 
 		color parameters: fife.Color objects
@@ -185,18 +188,18 @@ class ColorOverlayComponent(Component):
 			overlay = self.fife_instance.getColorOverlay(self.identifier, rotation, z_order)
 			overlay.changeColor(from_color, to_color)
 
-	def remove_overlay(self):
+	def remove_overlay(self) -> None:
 		"""Removes color overlay recoloring the *color*-colored area from fife instance.
 		"""
 		for z_order, overlay_set in self.current_overlays.items():
 			for rotation in overlay_set:
 				self.fife_instance.removeColorOverlay(self.identifier, rotation, z_order)
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
 
-	def remove(self):
+	def remove(self) -> None:
 		"""Removes all color overlays from the fife instance. """
 		self.remove_overlay()
 		super().remove()

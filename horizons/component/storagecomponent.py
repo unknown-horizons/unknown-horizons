@@ -40,7 +40,7 @@ class StorageComponent(Component):
 	Basically it just adds an inventory, nothing more, nothing less.
 	"""
 
-	NAME: str = "storagecomponent"
+	NAME: ClassVar[str] = "storagecomponent"
 
 	storage_mapping: ClassVar[dict[str, type]] = {
 	    "PositiveStorage": PositiveStorage,

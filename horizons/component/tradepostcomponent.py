@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from typing import ClassVar
+
 from horizons.component import Component
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES, TRADER
@@ -46,8 +50,8 @@ class TradePostComponent(ChangeListener, Component):
 	"""This Class has to be inherited by every class that wishes to use BuySellTab and trade with
 	the free trader.
 	"""
-	NAME: str = "tradepostcomponent"
-	yaml_tag: str = "!TradePostComponent"
+	NAME: ClassVar[str] = "tradepostcomponent"
+	yaml_tag: ClassVar[str] = "!TradePostComponent"
 
 	def __init__(self) -> None:
 		super().__init__()

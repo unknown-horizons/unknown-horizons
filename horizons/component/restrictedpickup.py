@@ -19,20 +19,24 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from typing import Any, ClassVar
+
 from horizons.component import Component
 
 
 class RestrictedPickup(Component):
-	""" Handles pickup location restrictions per whitelist.
-	Treats something as allowed (not restricted) if contained
-	in the whitelist *allowed*. If this is specified but empty,
-	everything is considered forbidden.
-	"""
-	NAME = 'restricted'
+    """Handles pickup location restrictions per whitelist.
+    Treats something as allowed (not restricted) if contained
+    in the whitelist *allowed*. If this is specified but empty,
+    everything is considered forbidden.
+    """
+    NAME: ClassVar[str] = "restricted"
 
-	def __init__(self, allowed=None):
-		super().__init__()
-		self.allowed = allowed or []
+    def __init__(self, allowed: list[Any] | None = None) -> None:
+        super().__init__()
+        self.allowed = allowed or []
 
-	def pickup_allowed_at(self, target_class):
-		return target_class in self.allowed
+    def pickup_allowed_at(self, target_class: Any) -> bool:
+        return target_class in self.allowed

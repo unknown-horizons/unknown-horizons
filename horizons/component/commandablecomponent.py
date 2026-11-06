@@ -19,7 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import logging
+from typing import ClassVar
 
 from horizons.component import Component
 from horizons.util.shapes import Circle, Point
@@ -33,12 +36,12 @@ class CommandableComponent(Component):
 	log = logging.getLogger("component.commandable")
 
 	# Store the name of this component
-	NAME = 'commandable'
+	NAME: ClassVar[str] = "commandable"
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
 
-	def go(self, x, y):
+	def go(self, x: float, y: float) -> None:
 		"""Moves the unit.
 		This is called when a unit is selected and the right mouse button is pressed outside the unit"""
 		x = int(round(x))
