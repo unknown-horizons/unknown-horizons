@@ -19,15 +19,21 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from unittest.mock import Mock
+
 import pytest
 
 from horizons.component.namedcomponent import NamedComponent
 from horizons.component.storagecomponent import StorageComponent
 from horizons.constants import RES
+from horizons.world.traderoute import TradeRoute
 from tests.game import game_test
 
 
-@pytest.mark.xfail(strict=True)
+@pytest.mark.xfail(
+    reason="traderoute.sqlite fixture savegamerev=52 is older than supported minimum revision 76",
+    strict=True,
+)
 @game_test(use_fixture='traderoute')
 def test_traderoute_basic(s):
 	"""

@@ -29,13 +29,12 @@ import horizons.globals
 from horizons.constants import GAME_SPEED, LAYERS, VIEW
 from horizons.messaging import ZoomChanged
 from horizons.util.changelistener import ChangeListener
-from horizons.util.shapes import Rect
 
 
 class View(ChangeListener):
 	"""Class that takes care of all the camera and rendering stuff."""
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
 		self.world = None
 		self.logbook = None
@@ -98,12 +97,12 @@ class View(ChangeListener):
 		self._autoscroll = [0, 0]
 		self._autoscroll_keys = [0, 0]
 
-	def end(self):
+	def end(self) -> None:
 		horizons.globals.fife.pump.remove(self.do_autoscroll)
 		self.model.deleteMaps()
 		super().end()
 
-	def center(self, x, y):
+	def center(self, x: float, y: float) -> None:
 		"""Sets the camera position
 		@param center: tuple with x and y coordinate (float or int) of tile to center
 		"""
@@ -115,16 +114,16 @@ class View(ChangeListener):
 		self.cam.refresh()
 		self._changed()
 
-	def autoscroll(self, x, y):
+	def autoscroll(self, x: float, y: float) -> None:
 		"""Scrolling via mouse (reaching edge of screen)"""
 		if horizons.globals.fife.get_uh_setting('EdgeScrolling'):
 			self._autoscroll = [x, y]
 
-	def autoscroll_keys(self, x, y):
+	def autoscroll_keys(self, x: float, y: float) -> None:
 		"""Scrolling via keyboard keys"""
 		self._autoscroll_keys = [x, y]
 
-	def do_autoscroll(self):
+	def do_autoscroll(self) -> None:
 		if self._autoscroll == [0, 0] and self._autoscroll_keys == [0, 0]:
 			self.time_last_autoscroll = time.time()
 			return
@@ -135,7 +134,7 @@ class View(ChangeListener):
 		self.time_last_autoscroll = t
 		self._changed()
 
-	def scroll(self, x, y):
+	def scroll(self, x: float, y: float) -> None:
 		"""Moves the camera across the screen
 		@param x: int representing the amount of pixels to scroll in x direction
 		@param y: int representing the amount of pixels to scroll in y direction
@@ -174,7 +173,7 @@ class View(ChangeListener):
 			horizons.globals.fife.sound.soundmanager.setListenerPosition(AudioSpaceCoordinate(pos.x, pos.y, 1))
 		self._changed()
 
-	def _prepare_zoom_to_cursor(self, zoom):
+	def _prepare_zoom_to_cursor(self, zoom) -> None:
 		"""Change the camera's position to accommodation zooming to the specified setting."""
 		def middle(click_coord, scale, length):
 			mid = length / 2.0
@@ -188,11 +187,11 @@ class View(ChangeListener):
 		map_point = self.cam.toMapCoordinates(screen_point, False)
 		self.center(map_point.x, map_point.y)
 
-	def SetLogBook(self, logbook):
+	def SetLogBook(self, logbook) -> None:
 		if self.logbook is None:
 			self.logbook = logbook
 
-	def zoom_out(self, track_cursor=False):
+	def zoom_out(self, track_cursor: bool = False) -> None:
 		if self.logbook is not None:
 			if not self.logbook.is_visible():
 				zoom = self.cam.getZoom() * VIEW.ZOOM_LEVELS_FACTOR
@@ -209,7 +208,7 @@ class View(ChangeListener):
 				self._prepare_zoom_to_cursor(zoom)
 			self.zoom = zoom
 
-	def zoom_in(self, track_cursor=False):
+	def zoom_in(self, track_cursor: bool = False) -> None:
 		if self.logbook is not None:
 			if not self.logbook.is_visible():
 				zoom = self.cam.getZoom() / VIEW.ZOOM_LEVELS_FACTOR
@@ -227,25 +226,25 @@ class View(ChangeListener):
 			self.zoom = zoom
 
 	@property
-	def zoom(self):
+	def zoom(self) -> float:
 		return self.cam.getZoom()
 
 	@zoom.setter
-	def zoom(self, value):
+	def zoom(self, value: float) -> None:
 		self.cam.setZoom(value)
 		ZoomChanged.broadcast(self, value)
 
-	def rotate_right(self):
+	def rotate_right(self) -> None:
 		self.cam.setRotation((self.cam.getRotation() - 90) % 360)
 
-	def rotate_left(self):
+	def rotate_left(self) -> None:
 		self.cam.setRotation((self.cam.getRotation() + 90) % 360)
 
-	def set_rotation(self, rotation):
+	def set_rotation(self, rotation: int) -> None:
 		self.cam.setRotation(rotation)
 		self._changed()
 
-	def get_displayed_area(self):
+	def get_displayed_area(self) -> list[tuple[float, float]]:
 		"""
 		Returns the coords (clockwise, beginning in the top-left corner) of what is
 		displayed on the screen.
@@ -263,12 +262,12 @@ class View(ChangeListener):
 			points.append((map_point.x, map_point.y))
 		return points
 
-	def save(self, db):
+	def save(self, db) -> None:
 		loc = self.cam.getLocation().getExactLayerCoordinates()
 		db("INSERT INTO view(zoom, rotation, location_x, location_y) VALUES(?, ?, ?, ?)",
 			 self.cam.getZoom(), self.cam.getRotation(), loc.x, loc.y)
 
-	def load(self, db, world):
+	def load(self, db, world) -> None:
 		# NOTE: this is no class function, since view is initiated before loading
 		self.world = world
 		res = db("SELECT zoom, rotation, location_x, location_y FROM view")
@@ -280,7 +279,7 @@ class View(ChangeListener):
 		self.set_rotation(rotation)
 		self.center(loc_x, loc_y)
 
-	def resize_layers(self, db):
+	def resize_layers(self, db) -> None:
 		"""Resize layers to the size required by the entire map."""
 		min_x, min_y, max_x, max_y = db("SELECT min(x), min(y), max(x), max(y) FROM ground")[0]
 		if min_x is None:

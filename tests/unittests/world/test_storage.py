@@ -90,6 +90,53 @@ class TestGenericStorage:
         assert s[1] == 5
         assert s[2] == 0
 
+    def test_get_dump_returns_copy(self):
+        s = GenericStorage()
+
+        s.alter(1, 5)
+
+        dump = s.get_dump()
+        dump[1] = 999
+
+        assert s[1] == 5
+
+    def test_iterslots(self):
+        s = GenericStorage()
+
+        s.alter(1, 5)
+        s.alter(2, 3)
+
+        assert set(s.iterslots()) == {1, 2}
+
+    def test_itercontents(self):
+        s = GenericStorage()
+
+        s.alter(1, 5)
+        s.alter(2, 3)
+
+        assert dict(s.itercontents()) == {1: 5, 2: 3}
+
+    def test_reset_missing_resource(self):
+        s = GenericStorage()
+
+        s.reset(999)
+
+        assert s[999] == 0
+
+    def test_alter_triggers_change_listener(self):
+        s = GenericStorage()
+
+        called = []
+
+        def listener():
+            called.append(True)
+
+        s.add_change_listener(listener)
+
+        s.alter(1, 5)
+
+        assert called == [True]
+
 
 class TestSpecializedStorages:
     def test_specialized(self):
@@ -130,6 +177,14 @@ class TestSpecializedStorages:
         assert s.get_free_space_for(1) == 10
 
         assert s.alter(1, 12) == 2
+
+    def test_add_resource_slot_twice(self):
+        s = SpecializedStorage()
+
+        s.add_resource_slot(1)
+        s.add_resource_slot(1)
+
+        assert s.has_resource_slot(1)
 
 
 class TestGlobalLimitStorage:
