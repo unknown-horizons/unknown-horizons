@@ -42,6 +42,7 @@ from horizons.world.units.pirateship import PirateShip
 from horizons.world.units.ship import TradeShip
 
 if TYPE_CHECKING:
+    from horizons.session import Session
     from horizons.util.color import Color
     from horizons.world.units.ship import Ship
 
@@ -58,15 +59,13 @@ class Pirate(GenericAI):
 
 	caught_ship_radius: int  = 5
 	home_radius: int  = 2
-
 	ship_count: int = 1
-
 	tick_interval: int  = 32
 	tick_long_interval: int  = 128
 
 	def __init__(
 		self,
-		session,
+		session: Session,
 		id: int,
 		name: str,
 		color: Color,
@@ -80,7 +79,6 @@ class Pirate(GenericAI):
 		if not self.home_point:
 			self.home_point = self.session.world.get_random_possible_ship_position()
 		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
-		self._init_state()
 
 		# create a ship and place it randomly (temporary hack)
 		for _ in range(self.ship_count):
@@ -90,6 +88,7 @@ class Pirate(GenericAI):
 		Scheduler().add_new_object(Callback(self.tick_long), self, 1, -1, self.tick_long_interval)
 
 	def _init_state(self) -> None:
+		super()._init_state()
 		self.world = self.session.world
 		self.unit_manager = UnitManager(self)
 		self.combat_manager = PirateCombatManager(self)
@@ -128,7 +127,7 @@ class Pirate(GenericAI):
 		self.combat_manager.add_new_unit(ship)
 
 	def maintain_ship_count(self) -> None:
-		if len(list(self.ships.keys())) < self.ship_count:
+		if len(self.ships) < self.ship_count:
 			self.create_ship_at_random_position()
 
 	def save(self, db) -> None:
@@ -149,8 +148,7 @@ class Pirate(GenericAI):
 		db("INSERT INTO ai_pirate(rowid, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?)", self.worldid,
 			remaining_ticks, remaining_ticks_long)
 
-		for ship in self.ships:
-			ship_state = self.ships[ship]
+		for ship, ship_state in self.ships.items():
 			db("INSERT INTO pirate_ships(rowid, state) VALUES(?, ?)",
 				ship.worldid, ship_state.index)
 
@@ -168,7 +166,6 @@ class Pirate(GenericAI):
 
 	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
-		self._init_state()
 
 		remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks, -1, self.tick_interval)

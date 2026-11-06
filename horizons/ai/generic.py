@@ -32,6 +32,7 @@ from horizons.world.player import Player
 from horizons.world.units.unitexeptions import MoveNotPossible
 
 if TYPE_CHECKING:
+    from horizons.session import Session
     from horizons.util.color import Color
     from horizons.world.units.ship import Ship
 
@@ -43,7 +44,7 @@ class GenericAI(Player):
 
 	def __init__(
 		self,
-		session,
+		session: Session,
 		id: int,
 		name: str,
 		color: Color,

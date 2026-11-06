@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import logging
 from collections import defaultdict
+from typing import TYPE_CHECKING, Any
 
 from horizons.ai.aiplayer.behavior import BehaviorManager
 from horizons.ai.aiplayer.behavior.profile import BehaviorProfileManager
@@ -84,26 +87,38 @@ from .settlementmanager import SettlementManager
 from .specialdomestictrademanager import SpecialDomesticTradeManager
 from .unitbuilder import UnitBuilder
 
+if TYPE_CHECKING:
+    from horizons.session import Session
+    from horizons.util.color import Color
+
 
 class AIPlayer(GenericAI):
 	"""This is the AI that builds settlements."""
 
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'on_a_mission',)
+	shipStates = Enum.get_extended(GenericAI.shipStates, "on_a_mission",)
 
 	log = logging.getLogger("ai.aiplayer")
-	tick_interval = 32
-	tick_long_interval = 128
+	tick_interval: int = 32
+	tick_long_interval: int = 128
 
-	def __init__(self, session, id, name, color, clientid, difficulty_level, **kwargs):
+	def __init__(
+        self,
+		session: Session,
+		id: int,
+		name: str,
+		color: Color,
+		clientid: int | None,
+		difficulty_level: int | None,
+		**kwargs: Any,
+    ) -> None:
 		super().__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
 		self.need_more_ships = False
 		self.need_more_combat_ships = True
 		self.need_feeder_island = False
 		self.personality_manager = PersonalityManager(self)
-		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in=0)
 
-	def start(self):
+	def start(self) -> None:
 		""" Start the AI tick process. Try to space out their ticks evenly. """
 		ai_players = 0
 		position = None
@@ -117,12 +132,12 @@ class AIPlayer(GenericAI):
 		run_in = self.tick_long_interval * position // ai_players + 1
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=run_in)
 
-	def finish_init(self):
+	def finish_init(self) -> None:
 		# initialize the things that couldn't be initialized before because of the loading order
 		self.refresh_ships()
 		self.start()
 
-	def refresh_ships(self):
+	def refresh_ships(self) -> None:
 		""" called when a new ship is added to the fleet """
 		for ship in self.world.ships:
 			if ship.owner == self and ship.has_component(SelectableComponent) and ship not in self.ships:
@@ -135,7 +150,8 @@ class AIPlayer(GenericAI):
 		self.need_more_ships = False
 		self.need_more_combat_ships = False
 
-	def __init(self):
+	def _init_state(self) -> None:
+		super()._init_state()
 		self._enabled = True  # whether this player is enabled (currently disabled at the end of the game)
 		self.world = self.session.world
 		self.islands = {}
@@ -160,12 +176,12 @@ class AIPlayer(GenericAI):
 	def get_random_profile(self, token):
 		return BehaviorProfileManager.get_random_player_profile(self, token)
 
-	def start_mission(self, mission):
+	def start_mission(self, mission) -> None:
 		self.ships[mission.ship] = self.shipStates.on_a_mission
 		self.missions.add(mission)
 		mission.start()
 
-	def report_success(self, mission, msg):
+	def report_success(self, mission, msg) -> None:
 		if not self._enabled:
 			return
 
@@ -182,7 +198,7 @@ class AIPlayer(GenericAI):
 		elif isinstance(mission, PrepareFoundationShip):
 			self.settlement_founder.tick()
 
-	def report_failure(self, mission, msg):
+	def report_failure(self, mission, msg) -> None:
 		if not self._enabled:
 			return
 
@@ -192,7 +208,7 @@ class AIPlayer(GenericAI):
 		if isinstance(mission, FoundSettlement):
 			del self.islands[mission.land_manager.island.worldid]
 
-	def save(self, db):
+	def save(self, db) -> None:
 		super().save(db)
 
 		# save the player
@@ -200,12 +216,12 @@ class AIPlayer(GenericAI):
 
 		current_callback = Callback(self.tick)
 		calls = Scheduler().get_classinst_calls(self, current_callback)
-		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback, calls)
+		assert len(calls) == 1, f"got {len(calls)!s} calls for saving {current_callback!s}: {calls!s}"
 		remaining_ticks = max(list(calls.values())[0], 1)
 
 		current_callback_long = Callback(self.tick_long)
 		calls = Scheduler().get_classinst_calls(self, current_callback_long)
-		assert len(calls) == 1, "got {0!s} calls for saving {1!s}: {2!s}".format(len(calls), current_callback_long, calls)
+		assert len(calls) == 1, f"got {len(calls)!s} calls for saving {current_callback_long!s}: {calls!s}"
 		remaining_ticks_long = max(list(calls.values())[0], 1)
 
 		db("INSERT INTO ai_player(rowid, need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long) VALUES(?, ?, ?, ?, ?, ?)",
@@ -242,17 +258,16 @@ class AIPlayer(GenericAI):
 		# save the behavior manager
 		self.behavior_manager.save(db)
 
-	def _load(self, db, worldid):
+	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
-		self.__init()
 
 		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
 			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, run_in=remaining_ticks)
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=remaining_ticks_long)
 
-	def finish_loading(self, db):
+	def finish_loading(self, db) -> None:
 		""" This is called separately because most objects are loaded after the player. """
 
 		# load the ships
@@ -311,7 +326,7 @@ class AIPlayer(GenericAI):
 			for (mission_id,) in db_result:
 				self.missions.add(InternationalTrade.load(db, mission_id, self.report_success, self.report_failure))
 
-	def tick(self):
+	def tick(self) -> None:
 		Scheduler().add_new_object(Callback(self.tick), self, run_in=self.tick_interval)
 		self.settlement_founder.tick()
 		self.handle_enemy_expansions()
@@ -321,14 +336,14 @@ class AIPlayer(GenericAI):
 		self.unit_manager.tick()
 		self.combat_manager.tick()
 
-	def tick_long(self):
+	def tick_long(self) -> None:
 		"""
 		Same as above but used for reasoning that is not required to be called as often (such as diplomacy, strategy etc.)
 		"""
 		Scheduler().add_new_object(Callback(self.tick_long), self, run_in=self.tick_long_interval)
 		self.strategy_manager.tick()
 
-	def handle_settlements(self):
+	def handle_settlements(self) -> None:
 		goals = []
 		for goal in self.goals:
 			if goal.can_be_activated:
@@ -364,27 +379,27 @@ class AIPlayer(GenericAI):
 		for settlement_manager in self.settlement_managers:
 			settlement_manager.refresh_taxes_and_upgrade_permissions()
 
-	def request_ship(self):
+	def request_ship(self) -> None:
 		self.log.info('%s received request for more ships', self)
 		self.need_more_ships = True
 
-	def request_combat_ship(self):
+	def request_combat_ship(self) -> None:
 		self.log.info('%s received request for combat ships', self)
 		self.need_more_combat_ships = True
 
-	def add_building(self, building):
+	def add_building(self, building) -> None:
 		assert self._enabled
 		# if the settlement id is not present then this is a new settlement that has to be handled separately
 		if building.settlement.worldid in self._settlement_manager_by_settlement_id:
 			self._settlement_manager_by_settlement_id[building.settlement.worldid].add_building(building)
 
-	def remove_building(self, building):
+	def remove_building(self, building) -> None:
 		if not self._enabled:
 			return
 
 		self._settlement_manager_by_settlement_id[building.settlement.worldid].remove_building(building)
 
-	def remove_unit(self, unit):
+	def remove_unit(self, unit) -> None:
 		if not self._enabled:
 			return
 
@@ -393,21 +408,21 @@ class AIPlayer(GenericAI):
 		self.combat_manager.remove_unit(unit)
 		self.unit_manager.remove_unit(unit)
 
-	def count_buildings(self, building_id):
+	def count_buildings(self, building_id) -> int:
 		return sum(settlement_manager.settlement.count_buildings(building_id) for settlement_manager in self.settlement_managers)
 
-	def notify_mine_empty(self, message):
+	def notify_mine_empty(self, message) -> None:
 		"""The Mine calls this function to let the player know that the mine is empty."""
 		settlement = message.mine.settlement
 		if settlement.owner is self:
 			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.handle_mine_empty(message.mine)
 
-	def notify_new_disaster(self, message):
+	def notify_new_disaster(self, message) -> None:
 		settlement = message.building.settlement
 		if settlement.owner is self:
 			Scheduler().add_new_object(Callback(self._settlement_manager_by_settlement_id[settlement.worldid].handle_disaster, message), self, run_in=0)
 
-	def _on_settlement_range_changed(self, message):
+	def _on_settlement_range_changed(self, message) -> None:
 		"""Stores the ownership changes in a list for later processing."""
 		our_new_coords_list = []
 		settlement = message.sender
@@ -422,7 +437,7 @@ class AIPlayer(GenericAI):
 		if our_new_coords_list and settlement.worldid in self._settlement_manager_by_settlement_id:
 			self._settlement_manager_by_settlement_id[settlement.worldid].production_builder.road_connectivity_cache.modify_area(our_new_coords_list)
 
-	def handle_enemy_expansions(self):
+	def handle_enemy_expansions(self) -> None:
 		if not self.settlement_expansions:
 			return  # no changes in land ownership
 
@@ -458,7 +473,7 @@ class AIPlayer(GenericAI):
 				# we already have a settlement there
 				settlement_manager.handle_lost_area(changed_coords)
 
-	def handle_enemy_settling_on_our_chosen_island(self, island_id):
+	def handle_enemy_settling_on_our_chosen_island(self, island_id) -> None:
 		mission = None
 		for a_mission in self.missions:
 			if isinstance(a_mission, FoundSettlement) and a_mission.land_manager.island.worldid == island_id:
@@ -469,11 +484,11 @@ class AIPlayer(GenericAI):
 		self.settlement_founder.tick()
 
 	@classmethod
-	def load_abstract_buildings(cls, db):
+	def load_abstract_buildings(cls, db) -> None:
 		AbstractBuilding.load_all(db)
 
 	@classmethod
-	def clear_caches(cls):
+	def clear_caches(cls) -> None:
 		BasicBuilder.clear_cache()
 		AbstractFarm.clear_cache()
 
@@ -481,7 +496,7 @@ class AIPlayer(GenericAI):
 		return 'AI({0!s}/{1!s})'.format(getattr(self, 'name', 'unknown'),
 			getattr(self, 'worldid', 'none'))
 
-	def early_end(self):
+	def early_end(self) -> None:
 		"""Called to speed up session destruction."""
 		assert self._enabled
 		self._enabled = False
@@ -489,7 +504,7 @@ class AIPlayer(GenericAI):
 		NewDisaster.unsubscribe(self.notify_new_disaster)
 		MineEmpty.unsubscribe(self.notify_mine_empty)
 
-	def end(self):
+	def end(self) -> None:
 		assert not self._enabled
 		self.personality_manager = None
 		self.world = None
