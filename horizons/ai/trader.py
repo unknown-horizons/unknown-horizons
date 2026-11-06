@@ -19,7 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import logging
+from typing import TYPE_CHECKING, Any
 
 from horizons.ai.generic import GenericAI
 from horizons.command.unit import CreateUnit
@@ -34,6 +37,11 @@ from horizons.util.worldobject import WorldObject
 from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.world.units.unitexeptions import MoveNotPossible
 
+if TYPE_CHECKING:
+    from horizons.util.color import Color
+    from horizons.world.building.storages import Warehouse
+    from horizons.world.units.ship import Ship
+
 
 class Trader(GenericAI):
 	"""A trader represents the free trader that travels around the map with its trading ship(s) and
@@ -44,20 +52,27 @@ class Trader(GenericAI):
 	@param name: Traders name, also needed for the Player class.
 	@param color: util.Color instance with the traders banner color, also needed for the Player class"""
 
-	shipStates = Enum.get_extended(GenericAI.shipStates, 'moving_to_warehouse', 'reached_warehouse')
+	shipStates = Enum.get_extended(GenericAI.shipStates, "moving_to_warehouse", "reached_warehouse")
 
 	log = logging.getLogger("ai.trader")
-	regular_player = False
+	regular_player: bool = False
 
-	def __init__(self, session, id, name, color, **kwargs):
+	def __init__(
+		self,
+		session,
+		id: int,
+		name: str,
+		color: Color,
+		**kwargs: Any,
+	) -> None:
 		super().__init__(session, id, name, color, **kwargs)
-		self.__init()
+		self._init_state()
 		map_size = self.session.world.map_dimensions.width
 		while map_size > 0:
 			self.create_ship()
 			map_size -= TRADER.TILES_PER_TRADER
 
-	def create_ship(self):
+	def create_ship(self) -> None:
 		"""Create a ship and place it randomly"""
 		self.log.debug("Trader %s: creating new ship", self.worldid)
 		point = self.session.world.get_random_possible_ship_position()
@@ -65,18 +80,18 @@ class Trader(GenericAI):
 		self.ships[ship] = self.shipStates.reached_warehouse
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
-	def __init(self):
-		self.warehouse = {} # { ship.worldid : warehouse }. stores the warehouse the ship is currently heading to
-		self.allured_by_signal_fire = {} # bool, used to get away from a signal fire (and not be allured again immediately)
+	def _init_state(self) -> None:
+		self.warehouse: dict[int, Warehouse] = {} # stores the warehouse the ship is currently heading to
+		self.allured_by_signal_fire: set[Ship] = set() # used to get away from a signal fire (and not be allured again immediately)
 
 		NewSettlement.subscribe(self._on_new_settlement)
 
-	def _on_new_settlement(self, msg):
+	def _on_new_settlement(self, msg: NewSettlement) -> None:
 		# make sure there's a trader ship for SETTLEMENTS_PER_SHIP settlements
 		if len(self.session.world.settlements) > self.get_ship_count() * TRADER.SETTLEMENTS_PER_SHIP:
 			self.create_ship()
 
-	def save(self, db):
+	def save(self, db) -> None:
 		super().save(db)
 
 		# mark self as a trader
@@ -95,8 +110,7 @@ class Trader(GenericAI):
 			if current_callback is not None:
 				# current state has a callback
 				calls = Scheduler().get_classinst_calls(self, current_callback)
-				assert len(calls) == 1, "got {} calls for saving {}: {}".format(
-					len(calls), current_callback, calls)
+				assert len(calls) == 1, f"got {len(calls)} calls for saving {current_callback}: {calls}"
 				remaining_ticks = max(list(calls.values())[0], 1)
 
 			targeted_warehouse = None if ship.worldid not in self.warehouse else self.warehouse[ship.worldid].worldid
@@ -105,11 +119,11 @@ class Trader(GenericAI):
 			db("INSERT INTO trader_ships(rowid, state, remaining_ticks, targeted_warehouse) \
 			   VALUES(?, ?, ?, ?)", ship.worldid, ship_state.index, remaining_ticks, targeted_warehouse)
 
-	def _load(self, db, worldid):
+	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
-		self.__init()
+		self._init_state()
 
-	def load_ship_states(self, db):
+	def load_ship_states(self, db) -> None:
 		# load ships one by one from db (ship instances themselves are loaded already, but
 		# we have to use them here)
 		for ship_id, state_id, remaining_ticks, targeted_warehouse in \
@@ -130,31 +144,38 @@ class Trader(GenericAI):
 				Scheduler().add_new_object(
 					Callback(self.ship_idle, ship), self, remaining_ticks)
 
-	def get_ship_count(self):
+	def get_ship_count(self) -> int:
 		"""Returns number of ships"""
 		return len(self.ships)
 
-	def send_ship_random(self, ship):
+	def send_ship_random(self, ship: Ship) -> None:
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
 		super().send_ship_random(ship)
 		ship.add_conditional_callback(Callback(self._check_for_signal_fire_in_ship_range, ship),
 		                              callback=Callback(self._ship_found_signal_fire, ship))
 
-	def _check_for_signal_fire_in_ship_range(self, ship):
-		"""Returns the signal fire instance, if there is one in the ships range, else False"""
-		if ship in self.allured_by_signal_fire and self.allured_by_signal_fire[ship]:
-			return False # don't visit signal fire again
+	def _check_for_signal_fire_in_ship_range(
+		self,
+		ship: Ship,
+	):
+		"""Returns the signal fire instance, if there is one in the ships range, else None"""
+		if ship in self.allured_by_signal_fire:
+			return None  # don't visit signal fire again
 		for tile in self.session.world.get_tiles_in_radius(ship.position, ship.radius):
 			try:
 				if tile.object.id == BUILDINGS.SIGNAL_FIRE:
 					return tile.object
 			except AttributeError:
 				pass # tile has no object or object has no id
-		return False
+		return None
 
-	def _ship_found_signal_fire(self, ship):
+	def _ship_found_signal_fire(self, ship: Ship) -> None:
 		signal_fire = self._check_for_signal_fire_in_ship_range(ship)
+
+		if signal_fire is None:
+			return
+
 		self.log.debug("Trader %s ship %s found signal fire %s", self.worldid, ship.worldid, signal_fire)
 		# search a warehouse in the range of the signal fire and move to it
 		warehouses = self.session.world.get_warehouses()
@@ -162,17 +183,21 @@ class Trader(GenericAI):
 			if house.position.distance(signal_fire.position) <= signal_fire.radius and \
 			   house.owner == signal_fire.owner:
 				self.log.debug("Trader %s moving to house %s", self.worldid, house)
-				self.allured_by_signal_fire[ship] = True
+				self.allured_by_signal_fire.add(ship)
 
 				# HACK: remove allured flag in a few ticks
-				def rem_allured(self, ship):
-					self.allured_by_signal_fire[ship] = False
+				def rem_allured(self, ship: Ship) -> None:
+					self.allured_by_signal_fire.discard(ship)
 				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))
 				self.send_ship_random_warehouse(ship, house)
 				return
 		self.log.debug("Trader can't find warehouse in range of signal fire")
 
-	def send_ship_random_warehouse(self, ship, warehouse=None):
+	def send_ship_random_warehouse(
+		self,
+		ship: Ship,
+		warehouse: Warehouse | None = None,
+	) -> None:
 		"""Sends a ship to a random warehouse on the map
 		@param ship: Ship instance that is to be used
 		@param warehouse: warehouse instance to move to. Random one is selected on None."""
@@ -195,11 +220,11 @@ class Trader(GenericAI):
 			except MoveNotPossible:
 				self.send_ship_random(ship)
 
-	def is_warehouse_safe(self, warehouse):
+	def is_warehouse_safe(self, warehouse: Warehouse) -> bool:
 		"""Checkes whether a warehouse is safe to visit"""
 		return not isinstance(self.session.world.disaster_manager.get_disaster(warehouse.settlement), BlackDeathDisaster)
 
-	def reached_warehouse(self, ship):
+	def reached_warehouse(self, ship: Ship) -> None:
 		"""Actions that need to be taken when reaching a warehouse:
 		Sell demanded res, buy offered res, simulate load/unload, continue route.
 		@param ship: ship instance"""
@@ -236,7 +261,7 @@ class Trader(GenericAI):
 		                           Scheduler().get_ticks(TRADER.TRADING_DURATION))
 		self.ships[ship] = self.shipStates.reached_warehouse
 
-	def ship_idle(self, ship):
+	def ship_idle(self, ship: Ship) -> None:
 		"""Called if a ship is idle. Sends ship to either a random place or warehouse.
 		Probability for 'random warehouse' in percent: TRADER.BUSINESS_SENSE.
 		@param ship: ship instance"""
@@ -248,6 +273,6 @@ class Trader(GenericAI):
 			self.log.debug("Trader %s ship %s: idle, moving to random location", self.worldid, ship.worldid)
 			Scheduler().add_new_object(Callback(self.send_ship_random, ship), self, run_in=0)
 
-	def end(self):
+	def end(self) -> None:
 		super().end()
 		NewSettlement.unsubscribe(self._on_new_settlement)

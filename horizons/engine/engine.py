@@ -22,6 +22,7 @@
 
 import locale
 import logging
+import os
 
 from fife import fife
 from fife.extensions import fifelog, pychan
@@ -42,6 +43,9 @@ class Fife:
 
 	def __init__(self):
 		self.pump = []
+
+		# Detect first run BEFORE creating Settings (which would create the file)
+		self._is_first_run = not os.path.exists(PATHS.USER_CONFIG_FILE)
 
 		self._setting = Settings(PATHS.USER_CONFIG_FILE, PATHS.SETTINGS_TEMPLATE_FILE)
 		self.engine = fife.Engine()
@@ -103,6 +107,7 @@ class Fife:
 		(width, height) = self._finalSetting['ScreenResolution'].split('x')
 		self.engine_settings.setScreenWidth(int(width))
 		self.engine_settings.setScreenHeight(int(height))
+		self.engine_settings.setDisplay(int(self._finalSetting.get('Display', 0)))
 		self.engine_settings.setRenderBackend(self._finalSetting['RenderBackend'])
 		self.engine_settings.setFullScreen(self._finalSetting['FullScreen'])
 		self.engine_settings.setLightingModel(self._finalSetting['Lighting'])
@@ -162,6 +167,10 @@ class Fife:
 		"""Second initialization stage of engine"""
 		self.engine.init()
 
+		# Auto-detect resolution on first run
+		if self._is_first_run:
+			self._auto_detect_resolution()
+
 		# Load font manifest for FontManager (FIFE 0.5+)
 		self._load_font_manifest()
 
@@ -198,7 +207,98 @@ class Fife:
 		init_pychan()
 		self._setting.apply()
 
+		# Add engine change listener to update PyChan hook on window resize/fullscreen toggle
+		self._setup_engine_change_listener()
+
 		self._got_inited = True
+
+	def _setup_engine_change_listener(self):
+		"""Set up an engine change listener to update PyChan hook on window resize/fullscreen changes.
+		
+		This ensures that the PyChan GUI system's screen_width and screen_height values
+		are updated when the user toggles fullscreen mode or resizes the window,
+		preventing UI elements like the minimap from rendering at incorrect positions.
+		"""
+		from fife import fife
+		
+		# Capture self for use in listener
+		fife_instance = self
+		pychan_module = self.pychan
+		logger = self.log
+		
+		class _EngineChangeListener(fife.IEngineChangeListener):
+			def __init__(self):
+				super().__init__()
+			
+			def onWindowResized(self, width, height):
+				"""Called when the window is resized."""
+				_update_pychan_screen_size(width, height)
+			
+			def onWindowModeChanged(self, fullscreen):
+				"""Called when fullscreen mode changes."""
+				# Get the actual window size after the mode change
+				win = fife_instance.engine.getWindow()
+				if win:
+					_update_pychan_screen_size(win.getWidthInPoints(), win.getHeightInPoints())
+		
+		def _update_pychan_screen_size(width, height):
+			"""Update PyChan hook's screen dimensions and reposition auto-positioned widgets."""
+			try:
+				if pychan_module.manager and pychan_module.manager.hook:
+					hook = pychan_module.manager.hook
+					# Only update if size actually changed
+					if hook.screen_width != width or hook.screen_height != height:
+						hook.screen_width = width
+						hook.screen_height = height
+						logger.debug(f"Updated PyChan hook screen size to {width}x{height}")
+						
+						# Reposition all auto-positioned top-level widgets
+						from fife.extensions.pychan.autoposition import placeWidget
+						for widget in list(pychan_module.manager.allTopHierachyWidgets.keys()):
+							if hasattr(widget, 'position_technique') and widget.position_technique != "explicit":
+								placeWidget(widget, widget.position_technique)
+			except Exception as e:
+				logger.warning(f"Failed to update PyChan screen size: {e}")
+		
+		# Create and register listener
+		listener = _EngineChangeListener()
+		self.engine.addChangeListener(listener)
+		# Store reference to prevent garbage collection
+		self._engine_change_listener = listener
+
+	def _auto_detect_resolution(self):
+		"""Auto-detect desktop resolution on first run."""
+		try:
+			device_caps = fife.DeviceCaps()
+			device_caps.fillDeviceCaps()
+
+			if device_caps.getDisplayCount() > 0:
+				# Use the display index from settings (default 0)
+				display_index = int(self._finalSetting.get('Display', 0))
+				# Clamp to valid range
+				if display_index >= device_caps.getDisplayCount():
+					display_index = 0
+				
+				width = device_caps.getDesktopWidth(display_index)
+				height = device_caps.getDesktopHeight(display_index)
+
+				# Only use detected resolution if it's reasonable
+				if width >= 800 and height >= 600:
+					self.log.info(f"First run detected: auto-setting resolution to {width}x{height} on display {display_index}")
+
+					# Update engine settings
+					self.engine_settings.setScreenWidth(width)
+					self.engine_settings.setScreenHeight(height)
+
+					# Update our settings object and save
+					self._setting.set("FIFE", "ScreenResolution", f"{width}x{height}")
+					self._setting.save()
+				else:
+					self.log.warning(f"Detected desktop resolution {width}x{height} is too small, using default")
+			else:
+				self.log.warning("No displays detected, using default resolution")
+		except Exception as e:
+			self.log.warning(f"Failed to auto-detect resolution: {e}")
 
 	def _load_font_manifest(self):
 		"""Load font manifest for FontManager (FIFE 0.5+)."""
@@ -403,6 +503,14 @@ class Fife:
 
 	def __kill_engine(self):
 		"""Called when the engine is quit"""
+		# Remove engine change listener if it exists
+		if hasattr(self, '_engine_change_listener') and self._engine_change_listener:
+			try:
+				self.engine.removeChangeListener(self._engine_change_listener)
+			except Exception:
+				pass
+			self._engine_change_listener = None
+		
 		# A hack to get the system cursor back:
 		self.cursor.set(fife.CURSOR_NATIVE)
 		self.engine.destroy()
