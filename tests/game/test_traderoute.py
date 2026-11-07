@@ -30,10 +30,8 @@ from horizons.world.traderoute import TradeRoute
 from tests.game import game_test
 
 
-@pytest.mark.xfail(
-    reason="traderoute.sqlite fixture savegamerev=52 is older than supported minimum revision 76",
-    strict=True,
-)
+# TODO update fixture "traderoute" savegame
+@pytest.mark.xfail(strict=True, reason="Fixture 'traderoute' savegame revision 52 is too old.")
 @game_test(use_fixture='traderoute')
 def test_traderoute_basic(s):
 	"""
