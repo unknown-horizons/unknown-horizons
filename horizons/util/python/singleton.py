@@ -21,39 +21,39 @@
 
 '''
 Warning:
-	A Singleton is to some extend the OOP-version of a global variable.
+	A Singleton is to some extent the OOP-version of a global variable.
 	The Singleton pattern has many downsides.
 	Please make sure that this is really the best solution before using this code!
 '''
 
-from typing import Any, Optional
+from typing import Any
 
 
 class Singleton(type):
 	"""Traditional Singleton design pattern.
 
 	USAGE:
-	class MyClass:
-		__metaclass__ = Singleton
+	class MyClass(metaclass=Singleton):
+		pass
 	"""
-	def __init__(self, name, bases, dict):
-		super().__init__(name, bases, dict)
-		self.instance = None # type: Optional[Any]
+	def __init__(cls, name: str, bases: tuple[type, ...], dct: dict[str, Any]) -> None:
+		super().__init__(name, bases, dct)
+		cls.instance: Any | None = None
 
-	def __call__(self, *args, **kwargs):
-		if self.instance is None:
-			self.instance = super().__call__(*args, **kwargs)
-		return self.instance
+	def __call__(cls, *args: Any, **kwargs: Any) -> Any:
+		if cls.instance is None:
+			cls.instance = super().__call__(*args, **kwargs)
+		return cls.instance
 
-	def destroy_instance(self):
-		self.instance = None
+	def destroy_instance(cls) -> None:
+		cls.instance = None
 
 
 class ManualConstructionSingleton(Singleton):
 	"""Same as Singleton, but Class() never creates an instance.
 	Only create_instance() does."""
-	def __call__(self):
-		return self.instance
+	def __call__(cls) -> Any:
+		return cls.instance
 
-	def create_instance(self, *args, **kwargs):
-		self.instance = super().__call__(*args, **kwargs)
+	def create_instance(cls, *args: Any, **kwargs: Any) -> Any:
+		cls.instance = super().__call__(*args, **kwargs)
