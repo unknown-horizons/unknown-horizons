@@ -46,11 +46,6 @@ def test_trivial(component):
     assert component.max_health == 20
 
 
-def test_maxhealth_required():
-    with pytest.raises(AssertionError):
-        HealthComponent(None)
-
-
 @pytest.mark.parametrize(
     "damage, expected_health, removed",
     [

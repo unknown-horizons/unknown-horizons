@@ -86,7 +86,7 @@ class FightingGroundUnit(MovingWeaponHolder, GroundUnit):
 		# We need unicode strings as the name is displayed on screen.
 		self.name = [str(x[0], 'utf-8') for x in names]
 
-	def go(self, x, y):
+	def go(self, x: float, y: float) -> None:
 		self.get_component(SelectableComponent).go(x, y)
 		self.stop_attack()
 

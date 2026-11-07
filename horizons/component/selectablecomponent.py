@@ -19,9 +19,12 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import copy
 import itertools
 import operator
+from typing import Any, ClassVar
 
 from fife import fife
 
@@ -45,10 +48,13 @@ class SelectableComponent(Component):
 	The definitions must contain type, tabs and enemy_tabs.
 	"""
 
-	NAME = "selectablecomponent"
+	NAME: ClassVar[str] = "selectablecomponent"
 
 	@classmethod
-	def get_instance(cls, arguments):
+	def get_instance(
+	    cls,
+	    arguments: dict[str, Any],
+	) -> SelectableComponent:
 		# this can't be class variable because the classes aren't defined when
 		# it would be parsed
 		TYPES = {'building': SelectableBuildingComponent,
@@ -59,7 +65,12 @@ class SelectableComponent(Component):
 		t = arguments.pop('type')
 		return TYPES[t](**arguments)
 
-	def __init__(self, tabs, enemy_tabs, active_tab=None):
+	def __init__(
+	    self,
+	    tabs,
+	    enemy_tabs,
+	    active_tab=None,
+	) -> None:
 		super().__init__()
 		# resolve tab
 		from horizons.gui.tabs import resolve_tab
@@ -68,7 +79,7 @@ class SelectableComponent(Component):
 		self.active_tab = resolve_tab(active_tab) if active_tab is not None else None
 		self._selected = False
 
-	def show_menu(self, jump_to_tabclass=None):
+	def show_menu(self, jump_to_tabclass=None) -> None:
 		"""Shows tabwidget tabs of this instance.
 
 		Opens the first such tab unless jump_to_tabclass specifies otherwise.
@@ -99,19 +110,19 @@ class SelectableComponent(Component):
 					break
 		self.session.ingame_gui.show_menu(tabwidget)
 
-	def select(self, reset_cam=False):
+	def select(self, reset_cam: bool = False) -> None:
 		self._selected = True
 		if reset_cam:
 			self.session.view.center(*self.instance.position.center.to_tuple())
 
-	def deselect(self):
+	def deselect(self) -> None:
 		self._selected = False
 
 	@property
-	def selected(self):
+	def selected(self) -> bool:
 		return self._selected
 
-	def remove(self):
+	def remove(self) -> None:
 		if self.instance in self.session.selected_instances:
 			self.session.selected_instances.remove(self.instance)
 		for group in self.session.selection_groups:
@@ -123,12 +134,12 @@ class SelectableComponent(Component):
 
 class SelectableBuildingComponent(SelectableComponent):
 
-	selection_color = (255, 255, 32, 192)
+	selection_color: ClassVar[tuple[int, int, int, int]] = (255, 255, 32, 192)
 
 	# these smell like instance attributes, but sometimes have to be used in non-instance
 	# contexts (e.g. building tool).
 	class ListHolder:
-		def __init__(self):
+		def __init__(self) -> None:
 			self.l = []
 
 	# read/write on class variables is somewhat borked in python, so
@@ -136,7 +147,7 @@ class SelectableBuildingComponent(SelectableComponent):
 	_selected_fake_tiles = ListHolder() # fake tiles create over ocean to select (can't select ocean directly)
 
 	@classmethod
-	def reset(cls):
+	def reset(cls) -> None:
 		"""Called on session end to get rid of static data and init variables"""
 		cls._selected_tiles.l = []
 		cls._selected_fake_tiles.l = []
@@ -145,17 +156,17 @@ class SelectableBuildingComponent(SelectableComponent):
 		super().__init__(tabs, enemy_tabs, active_tab=active_tab)
 		self.range_applies_only_on_island = range_applies_only_on_island
 
-	def initialize(self):
+	def initialize(self) -> None:
 		# check for related buildings (defined in db, not yaml)
 		related_buildings = self.session.db.get_related_building_ids_for_menu(self.instance.id)
 		if related_buildings:
 			from horizons.gui.tabs import BuildRelatedTab
 			self.tabs += (BuildRelatedTab,)
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		self.initialize()
 
-	def select(self, reset_cam=False):
+	def select(self, reset_cam: bool = False) -> None:
 		"""Runs necessary steps to select the building."""
 		super().select(reset_cam)
 		self.set_selection_outline()
@@ -165,7 +176,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		self._do_select(renderer, self.instance.position, self.session.world,
 		                self.instance.settlement, self.instance.radius, self.range_applies_only_on_island)
 
-	def set_selection_outline(self):
+	def set_selection_outline(self) -> None:
 		"""Only set the selection outline.
 		Useful when it has been removed by some kind of interference"""
 		renderer = self.session.view.renderer['InstanceRenderer']
@@ -173,7 +184,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		                     self.selection_color[2], GFX.BUILDING_OUTLINE_WIDTH,
 		                     GFX.BUILDING_OUTLINE_THRESHOLD)
 
-	def deselect(self):
+	def deselect(self) -> None:
 		"""Runs neccassary steps to deselect the building.
 		Only deselects if this building has been selected."""
 		if self._selected:
@@ -241,10 +252,9 @@ class SelectableBuildingComponent(SelectableComponent):
 
 			for coord in coords:
 				tile = settlement.ground_map.get(coord)
-				if tile:
-					if ('constructible' in tile.classes or 'coastline' in tile.classes):
-						cls._add_selected_tile(tile, renderer)
-						selected_tiles.append(tile)
+				if tile and ('constructible' in tile.classes or 'coastline' in tile.classes):
+					cls._add_selected_tile(tile, renderer)
+					selected_tiles.append(tile)
 		return selected_tiles
 
 	@classmethod
@@ -255,11 +265,7 @@ class SelectableBuildingComponent(SelectableComponent):
 			return # preview isn't on island, and therefore invalid
 
 		if range_applies_only_on_island:
-			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
-			if settlement is None:
-				ground_holder = island
-			else:
-				ground_holder = settlement
+			ground_holder = island if settlement is None else settlement
 
 			for tile in ground_holder.get_tiles_in_radius(position, radius, include_self=False):
 				if 'constructible' in tile.classes or 'coastline' in tile.classes:
@@ -282,7 +288,7 @@ class SelectableBuildingComponent(SelectableComponent):
 					cls._add_fake_tile(tup[0], tup[1], layer, renderer)
 
 	@classmethod
-	def _init_fake_tile(cls):
+	def _init_fake_tile(cls) -> None:
 		"""Sets the _fake_tile_obj class variable with a ready to use fife object.
 
 		To create a new fake tile, use _add_fake_tile()."""
@@ -299,7 +305,7 @@ class SelectableBuildingComponent(SelectableComponent):
 				SelectableBuildingComponent._fake_tile_obj.get2dGfxVisual().addStaticImage(rotation, img.getHandle())
 
 	@classmethod
-	def _add_fake_tile(cls, x, y, layer, renderer):
+	def _add_fake_tile(cls, x, y, layer, renderer) -> None:
 		"""Adds a fake tile to the position. Requires 'cls._fake_tile_obj' to be set."""
 		inst = layer.createInstance(SelectableBuildingComponent._fake_tile_obj,
 	                                fife.ModelCoordinate(x, y, 0), "")
@@ -308,7 +314,7 @@ class SelectableBuildingComponent(SelectableComponent):
 		renderer.addColored(inst, *cls.selection_color)
 
 	@classmethod
-	def _add_selected_tile(cls, tile, renderer, remember=True):
+	def _add_selected_tile(cls, tile, renderer, remember: bool = True) -> None:
 		"""
 		@param remember: whether to keep track of this tile. Set to False on recolorings.
 		"""
@@ -323,14 +329,14 @@ class SelectableBuildingComponent(SelectableComponent):
 
 class SelectableUnitComponent(SelectableComponent):
 
-	def select(self, reset_cam=False):
+	def select(self, reset_cam: bool = False) -> None:
 		"""Runs necessary steps to select the unit."""
 		super().select(reset_cam)
 		self.session.view.renderer['InstanceRenderer'].addOutlined(self.instance._instance, 255, 255, 255, GFX.UNIT_OUTLINE_WIDTH, GFX.UNIT_OUTLINE_THRESHOLD)
 		self.instance.draw_health()
 		self.session.view.add_change_listener(self.instance.draw_health)
 
-	def deselect(self):
+	def deselect(self) -> None:
 		"""Runs necessary steps to deselect the unit."""
 		if not self._selected:
 			return
@@ -343,7 +349,7 @@ class SelectableUnitComponent(SelectableComponent):
 
 class SelectableShipComponent(SelectableUnitComponent):
 
-	def select(self, reset_cam=False):
+	def select(self, reset_cam: bool = False) -> None:
 		"""Runs necessary steps to select the ship."""
 		super().select(reset_cam=reset_cam)
 
@@ -352,7 +358,7 @@ class SelectableShipComponent(SelectableUnitComponent):
 			self.instance._update_buoy()
 			self.session.ingame_gui.minimap.show_unit_path(self.instance)
 
-	def deselect(self):
+	def deselect(self) -> None:
 		"""Runs necessary steps to deselect the ship."""
 		if self._selected:
 			super().deselect()

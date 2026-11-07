@@ -226,7 +226,7 @@ class Unit(MovingObject, ResourceTransferHandler):
 				return (possible_target, path)
 		return (None, None)
 
-	def go(self, x, y):
+	def go(self, x: float, y: float) -> None:
 		self.get_component(CommandableComponent).go(x, y)
 
 	@property

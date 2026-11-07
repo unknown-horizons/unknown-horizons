@@ -19,8 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import logging
 from collections import defaultdict
+from typing import Any, ClassVar
 
 import horizons.globals
 from horizons.component import Component
@@ -33,19 +36,22 @@ class InventoryOverlayComponent(Component):
 	"""Display different additional graphics ("animation overlays" in FIFE terminology)
 	depending on inventory status of a building or unit.
 	"""
-	NAME = "inventoryoverlay"
-	DEPENDENCIES = ['StorageComponent']
-	log = logging.getLogger('component.overlays')
+	NAME: ClassVar[str] = "inventoryoverlay"
+	DEPENDENCIES: ClassVar[list[str]] = ["StorageComponent"]
+	log = logging.getLogger("component.overlays")
 
-	def __init__(self, overlays=None):
+	def __init__(
+	    self,
+	    overlays: dict[str, Any] | None = None,
+	) -> None:
 		super().__init__()
-		self.overlays = overlays or {}
+		self.overlays: dict[str, Any] = overlays or {}
 
 		# Stores {resource_id: amount that is currently used as overlay, or None if no overlay}
 		self.current_overlays = defaultdict(lambda: None)
 
 	@property
-	def action_set(self):
+	def action_set(self) -> str:
 		"""E.g. 'as_lumberjack_barrack0' """
 		return self.instance._action_set_id
 
@@ -54,16 +60,20 @@ class InventoryOverlayComponent(Component):
 		return self.instance._instance
 
 	@property
-	def identifier(self):
+	def identifier(self) -> str:
 		"""E.g. 'idle_as_lumberjack_barrack0' """
 		# FIFE 0.5: Action.getId() returns the numeric fifeid; getName() is the string
 		return self.fife_instance.getCurrentAction().getName()
 
-	def initialize(self):
+	def initialize(self) -> None:
 		super().initialize()
 		InstanceInventoryUpdated.subscribe(self.inventory_changed, sender=self.instance)
 
-	def add_overlay(self, overlay_set, z_order=10):
+	def add_overlay(
+	    self,
+	    overlay_set,
+	    z_order: int = 10,
+	) -> None:
 		"""Creates animation overlay from action set *overlay_set* and adds it to fife instance.
 
 		@param overlay_set: action set with images to be used as animation overlay
@@ -75,11 +85,11 @@ class InventoryOverlayComponent(Component):
 
 		animationmanager = horizons.globals.fife.animationmanager
 		for rotation, frames in overlay_set.items():
-			id = '{}+{}'.format(self.identifier, rotation)
-			if animationmanager.exists(id):
-				ov_anim = animationmanager.getPtr(id)
+			overlay_id = f"{self.identifier}+{rotation}"
+			if animationmanager.exists(overlay_id):
+				ov_anim = animationmanager.getPtr(overlay_id)
 			else:
-				ov_anim = animationmanager.create(id)
+				ov_anim = animationmanager.create(overlay_id)
 				for frame_img, frame_data in frames.items():
 					try:
 						frame_length = frame_data[0]
@@ -91,7 +101,7 @@ class InventoryOverlayComponent(Component):
 					ov_anim.addFrame(pic, frame_milliseconds)
 			self.fife_instance.addAnimationOverlay(self.identifier, rotation, z_order, ov_anim)
 
-	def remove_overlay(self, res_id):
+	def remove_overlay(self, res_id) -> None:
 		"""Removes animation overlay associated with resource *res_id* from fife instance.
 
 		We use *res_id* as z-order identifier, which removeAnimationOverlay actually asks for.
@@ -101,7 +111,7 @@ class InventoryOverlayComponent(Component):
 		for rotation in range(45, 360, 90):
 			self.fife_instance.removeAnimationOverlay(self.identifier, rotation, res_id)
 
-	def inventory_changed(self, message):
+	def inventory_changed(self, message) -> None:
 		"""A changelistener notified the StorageComponent of this instance.
 
 		Because it did not tell us which resources were added or removed, we
@@ -110,7 +120,7 @@ class InventoryOverlayComponent(Component):
 		for res_id, new_amount in message.inventory.items():
 			self.update_overlay(res_id, new_amount)
 
-	def update_overlay(self, res_id, new_amount):
+	def update_overlay(self, res_id, new_amount) -> None:
 		"""Called when inventory amount of one resource changes.
 
 		Looks for a fitting animation overlay based on the new inventory amount for that resource.
@@ -164,11 +174,11 @@ class InventoryOverlayComponent(Component):
 			self.current_overlays[res_id] = amount
 			return
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
 		Scheduler().add_new_object(self.initialize, self, run_in=0)
 
-	def remove(self):
+	def remove(self) -> None:
 		"""Removes all animation overlays from the fife instance.
 
 		Also converts the animation overlay on drawing order 0 (i.e. the old base image)
