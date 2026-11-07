@@ -49,12 +49,20 @@ from horizons.world.playerstats import PlayerStats
 class Player(ComponentHolder, WorldObject):
 	"""Class representing a player"""
 
-	STATS_UPDATE_INTERVAL = 3 # seconds
+	STATS_UPDATE_INTERVAL: int = 3 # seconds
 
 	regular_player = True # either a human player or a normal AI player (not trader or pirate)
 	component_templates = ({'StorageComponent': {'PositiveStorage': {}}},) # type: Sequence[Union[str, Dict[str, Any]]]
 
-	def __init__(self, session, worldid, name, color, clientid=None, difficulty_level=None):
+	def __init__(
+		self,
+		session: Session,
+		worldid: int,
+		name: str,
+		color: Color,
+		clientid: int | None = None,
+		difficulty_level: int | None = None,
+	) -> None:
 		"""
 		@type session: Session
 		@param session: Session instance

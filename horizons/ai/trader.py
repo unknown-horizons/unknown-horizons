@@ -38,6 +38,7 @@ from horizons.world.disaster.blackdeathdisaster import BlackDeathDisaster
 from horizons.world.units.unitexeptions import MoveNotPossible
 
 if TYPE_CHECKING:
+    from horizons.session import Session
     from horizons.util.color import Color
     from horizons.world.building.storages import Warehouse
     from horizons.world.units.ship import Ship
@@ -59,14 +60,14 @@ class Trader(GenericAI):
 
 	def __init__(
 		self,
-		session,
+		session: Session,
 		id: int,
 		name: str,
 		color: Color,
 		**kwargs: Any,
 	) -> None:
 		super().__init__(session, id, name, color, **kwargs)
-		self._init_state()
+		self.__init()
 		map_size = self.session.world.map_dimensions.width
 		while map_size > 0:
 			self.create_ship()
@@ -80,7 +81,7 @@ class Trader(GenericAI):
 		self.ships[ship] = self.shipStates.reached_warehouse
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
-	def _init_state(self) -> None:
+	def __init(self) -> None:
 		self.warehouse: dict[int, Warehouse] = {} # stores the warehouse the ship is currently heading to
 		self.allured_by_signal_fire: set[Ship] = set() # used to get away from a signal fire (and not be allured again immediately)
 
@@ -97,10 +98,7 @@ class Trader(GenericAI):
 		# mark self as a trader
 		db("UPDATE player SET is_trader = 1 WHERE rowid = ?", self.worldid)
 
-		for ship in self.ships:
-			# prepare values
-			ship_state = self.ships[ship]
-
+		for ship, ship_state in self.ships.items():
 			remaining_ticks = None
 			# get current callback in scheduler, according to ship state, to retrieve
 			# the number of ticks, when the call will actually be done
@@ -121,7 +119,7 @@ class Trader(GenericAI):
 
 	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
-		self._init_state()
+		self.__init()
 
 	def load_ship_states(self, db) -> None:
 		# load ships one by one from db (ship instances themselves are loaded already, but
