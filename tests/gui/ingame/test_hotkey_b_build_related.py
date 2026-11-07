@@ -72,9 +72,11 @@ def test_hotkey_b_falls_back_to_general_build_menu_for_warehouse(gui):
     # Press 'b' key - should open general build menu
     gui.press_key(gui.Key.B)
 
-    # Verify general build menu is open
-    build_menu = gui.find(name='build_menu_tab_widget')
-    assert build_menu is not None, "General build menu should be open when warehouse is selected and 'b' is pressed"
+    # Verify general build menu is open. The menu's pychan widget is named
+    # 'tab_base'; 'build_menu_tab_widget' is the name of the TabWidget wrapper.
+    menu = gui.session.ingame_gui.get_cur_menu()
+    assert getattr(menu, 'name', None) == 'build_menu_tab_widget', \
+        "General build menu should be open when warehouse is selected and 'b' is pressed"
 
     # Verify build related tab is NOT open
     build_related_tab = gui.find(name='overview_buildrelated')
@@ -128,13 +130,18 @@ def test_hotkey_b_auto_selects_single_related_building(gui):
     # Press 'b' key - should open build related menu and auto-select tree
     gui.press_key(gui.Key.B)
 
-    # Verify build related tab is open
+    # Verify build related tab is open before the scheduled auto-select runs.
     build_related_tab = gui.find(name='overview_buildrelated')
     assert build_related_tab is not None, "Build related tab should be open"
 
-    # The auto-select should have triggered building mode for tree
-    # Check if cursor is in building mode for tree
-    cursor = gui.cursor
+    # The auto-select is scheduled on the next game tick. It closes the
+    # build-related tab, so wait for the cursor to switch to building mode.
     from horizons.gui.mousetools.buildingtool import BuildingTool
+    for _ in range(60):
+        if isinstance(gui.cursor, BuildingTool):
+            break
+        gui.run()
+
+    cursor = gui.cursor
     assert isinstance(cursor, BuildingTool), "Cursor should be in building mode after auto-select"
     assert cursor._class.id == BUILDINGS.TREE, "Cursor should be set to build tree"

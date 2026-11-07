@@ -23,7 +23,14 @@ import polib
 import pytest
 
 import horizons.i18n
-from horizons.i18n import change_language, disable_translations, gettext as T, gettext_lazy as LazyT
+from horizons.i18n import (
+	change_language,
+	disable_translations,
+	gettext as T,
+	gettext_lazy as LazyT,
+	ngettext as NT,
+	reset_language,
+)
 
 
 @pytest.fixture(autouse=True)
@@ -65,8 +72,12 @@ def test_null_translations():
 	"""
 	Without active language, the message will be returned untranslated.
 	"""
+	reset_language()
 	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
 		'McAvoy or Stewart? These timelines are confusing.'
+	assert NT("one item", "many items", 1) == "one item"
+	assert NT("one item", "many items", 2) == "many items"
+	assert NT("one item", "many items", 0) == "many items"
 
 
 def test_active_translation():
@@ -90,12 +101,31 @@ def test_gettext_lazy():
 
 def test_disable_translations():
 	change_language('de')
-	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
-		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
+	mcavoy = 'McAvoy or Stewart? These timelines are confusing.'
+	translated = T(mcavoy)
+	assert translated != mcavoy  # fixture provides a German rendering
 
 	with disable_translations():
-		assert T('McAvoy or Stewart? These timelines are confusing.') ==\
-			 'McAvoy or Stewart? These timelines are confusing.'
+		assert T(mcavoy) == mcavoy
+		assert NT("one item", "many items", 1) == "one item"
+		assert NT("one item", "many items", 2) == "many items"
 
-	assert T('McAvoy or Stewart? These timelines are confusing.') ==\
-		 'McAvoy oder Stewart? Diese Zeitlinien sind verwirrend.'
+	# Translations are restored after exiting the context
+	assert T(mcavoy) == translated
+
+
+def test_disable_translations_restores_after_exception():
+	"""An exception inside the context must not permanently disable translations."""
+	change_language('de')
+	mcavoy = 'McAvoy or Stewart? These timelines are confusing.'
+	original_trans = horizons.i18n._trans
+	translated = T(mcavoy)
+	assert translated != mcavoy
+
+	with pytest.raises(RuntimeError), disable_translations():
+		raise RuntimeError("simulated failure")
+
+	# Identity: the exact same translator object is restored
+	assert horizons.i18n._trans is original_trans
+	# Behavior: translations actually work again
+	assert T(mcavoy) == translated

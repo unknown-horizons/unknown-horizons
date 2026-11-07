@@ -27,7 +27,8 @@ from horizons.constants import RES
 from tests.game import game_test
 
 
-@pytest.mark.xfail(strict=True)
+# TODO update fixture "traderoute" savegame
+@pytest.mark.xfail(strict=True, reason="Fixture 'traderoute' savegame revision 52 is too old.")
 @game_test(use_fixture='traderoute')
 def test_traderoute_basic(s):
 	"""
