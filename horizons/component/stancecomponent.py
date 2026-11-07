@@ -20,7 +20,8 @@
 # ###################################################
 
 from collections.abc import Callable
-from typing import ClassVar
+from contextlib import suppress
+from typing import Any, ClassVar
 
 from horizons.component import Component
 from horizons.scheduler import Scheduler
@@ -61,17 +62,13 @@ class StanceComponent(Component):
 		# change state to 'user_attack' when the user issues attack via right click
 		self.instance.add_user_attack_issued_listener(Callback(self.set_state, "user_attack"))
 		# change state to 'user_move' when the user issues movement via right click
-		try:
+		with suppress(AttributeError):
 			self.instance.add_user_move_issued_listener(Callback(self.set_state, "user_move"))
-		except AttributeError:
-			pass # temporary workaround to make it work for towers
 
 	def remove(self) -> None:
 		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, "user_attack"))
-		try:
+		with suppress(AttributeError):
 			self.instance.remove_user_move_issued_listener(Callback(self.set_state, "user_move"))
-		except AttributeError:
-			pass # temporary workaround to make it work for towers
 		super().remove()
 
 	def set_state(self, state: str) -> None:
@@ -305,7 +302,9 @@ class FleeStance(StanceComponent):
 		if not enemies:
 			return None
 
-		sort_order = lambda e: self.instance.position.distance(e.position) + e._max_range
+		def sort_order(e: Any) -> Any:
+			return self.instance.position.distance(e.position) + e._max_range
+
 		return min(enemies, key=sort_order)
 
 

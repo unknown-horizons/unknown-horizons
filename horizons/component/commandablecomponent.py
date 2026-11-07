@@ -28,6 +28,8 @@ from horizons.component import Component
 from horizons.util.shapes import Circle, Point
 from horizons.world.units.unitexeptions import MoveNotPossible
 
+MAX_FALLBACK_RADIUS: int = 4
+
 
 class CommandableComponent(Component):
 	"""
@@ -50,8 +52,8 @@ class CommandableComponent(Component):
 		try:
 			self.instance.move(move_target)
 		except MoveNotPossible:
-			# Try nearby circles with radii 1 through 4.
-			for radius in range(1, 5):
+			# Try nearby circles with increasing radii.
+			for radius in range(1, MAX_FALLBACK_RADIUS + 1):
 				try:
 					self.instance.move(Circle(move_target, radius=radius))
 				except MoveNotPossible:
@@ -71,9 +73,9 @@ class CommandableComponent(Component):
 			if not self.instance.owner.is_local_player:
 				return
 
-			if self.session.world.get_tile(Point(x, y)) is None:
+			if self.session.world.get_tile(Point(x, y)) is None: # Not even in world
 				string_id = "MOVE_OUTSIDE_OF_WORLD"
-			else:
+			else: # In world, but still unreachable
 				string_id = "MOVE_INVALID_LOCATION"
 
 			self.session.ingame_gui.message_widget.add(

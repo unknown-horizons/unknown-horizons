@@ -252,10 +252,9 @@ class SelectableBuildingComponent(SelectableComponent):
 
 			for coord in coords:
 				tile = settlement.ground_map.get(coord)
-				if tile:
-					if ('constructible' in tile.classes or 'coastline' in tile.classes):
-						cls._add_selected_tile(tile, renderer)
-						selected_tiles.append(tile)
+				if tile and ('constructible' in tile.classes or 'coastline' in tile.classes):
+					cls._add_selected_tile(tile, renderer)
+					selected_tiles.append(tile)
 		return selected_tiles
 
 	@classmethod
@@ -266,11 +265,7 @@ class SelectableBuildingComponent(SelectableComponent):
 			return # preview isn't on island, and therefore invalid
 
 		if range_applies_only_on_island:
-			ground_holder = None # use settlement or island as tile provider (prefer settlement, since it contains fewer tiles)
-			if settlement is None:
-				ground_holder = island
-			else:
-				ground_holder = settlement
+			ground_holder = island if settlement is None else settlement
 
 			for tile in ground_holder.get_tiles_in_radius(position, radius, include_self=False):
 				if 'constructible' in tile.classes or 'coastline' in tile.classes:

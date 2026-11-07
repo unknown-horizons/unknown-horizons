@@ -45,9 +45,9 @@ class AmbientSoundComponent(Component):
 		"""
 		super().__init__()
 		self.soundfiles: list[str] = soundfiles or []
-		self._init_state()
+		self.__init()
 
-	def _init_state(self) -> None:
+	def __init(self) -> None:
 		self.__emitter = None # only create it when really needed
 
 	def __create_emitter(self, gain: float) -> None:
@@ -68,7 +68,7 @@ class AmbientSoundComponent(Component):
 
 	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
-		self._init_state()
+		self.__init()
 		# don't start playing all at once
 
 		interval = (0, self.__class__.AMBIENT_SOUND_INTERVAL +

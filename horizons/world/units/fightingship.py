@@ -39,11 +39,11 @@ class FightingShip(MovingWeaponHolder, Ship):
 			self.add_weapon_to_storage(WEAPONS.CANNON)
 		print("Ship created and weapons loaded.")
 
-	def go(self, x, y):
+	def go(self, x: float, y: float) -> None:
 		self.get_component(CommandableComponent).go(x, y)
-		print("Ship moved to coordinates: ({}, {})".format(x, y))
+		print(f"Ship moved to coordinates: ({x}, {y})")
 		self.stop_attack()
-		print("Moving ship to ({},{}).".format(x, y))
+		print(f"Moving ship to: ({x}, {y})")
 
 	def fire_all_weapons(self, dest, rotate=True):
 		"""

@@ -46,10 +46,10 @@ class CollectingComponent(Component):
 		self.__collector_templates: dict[str, int] = collectors
 
 	def initialize(self) -> None:
-		self._init_state()
+		self.__init()
 		self.create_collector(self.__collector_templates)
 
-	def _init_state(self) -> None:
+	def __init(self) -> None:
 		"""Part of initiation that __init__() and load() share"""
 		# list that holds the collectors that belong to this building.
 		self.__collectors: list[Any] = []
@@ -78,7 +78,7 @@ class CollectingComponent(Component):
 				collector.decouple_from_home_building()
 				#TODO remove the remove call() #2123
 				collector.remove()
-		assert not [c for c in self.__collectors]
+		assert not self.__collectors
 		super().remove()
 		self.__collectors = None
 		self.path_nodes = None
@@ -95,7 +95,7 @@ class CollectingComponent(Component):
 
 	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
-		self._init_state()
+		self.__init()
 
 	## INTERFACE
 	def add_local_collector(self, collector) -> None:

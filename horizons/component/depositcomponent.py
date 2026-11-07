@@ -37,10 +37,7 @@ class DepositComponent(Component):
 		self.resources: dict[str, Any] = resources
 
 	def initialize(self, inventory=None) -> None:
-		if inventory:
-			iterator = inventory.itercontents
-		else:
-			iterator = self.get_random_res_amounts
+		iterator = inventory.itercontents if inventory else self.get_random_res_amounts
 		for res, amount in iterator():
 			self.instance.get_component(StorageComponent).inventory.alter(res, amount)
 
