@@ -2,7 +2,7 @@
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
-
+#
 # Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
@@ -19,7 +19,8 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from typing import Tuple
+from collections.abc import Callable
+from typing import Any, ClassVar, Self
 
 from horizons.messaging.messagebus import MessageBus
 from horizons.messaging.queuingmessagebus import QueuingMessageBus
@@ -34,20 +35,25 @@ class Message:
 	additional expected arguments are defined on the class-level attribute `arguments`,
 	these will be stored on the instance.
 	"""
-	arguments = tuple() # type: Tuple[str, ...]
-	bus = MessageBus
+	arguments: ClassVar[tuple[str, ...]] = ()
+	bus: ClassVar[type[MessageBus]] = MessageBus
 
-	def __init__(self, sender, *args):
+	def __init__(self, sender: object, *args: Any) -> None:
 		self.sender = sender
 		if len(self.arguments) != len(args):
-			raise Exception('Unexpected number of arguments. Expected {:d}, received {:d}'.format(
-				len(self.arguments), len(args)))
+			raise ValueError(
+				f'Unexpected number of arguments. Expected {len(self.arguments):d}, received {len(args):d}'
+				)
 
-		for arg, value in zip(self.arguments, args):
+		for arg, value in zip(self.arguments, args, strict=False):
 			setattr(self, arg, value)
 
 	@classmethod
-	def subscribe(cls, callback, sender=None):
+	def subscribe(
+        cls,
+        callback: Callable[[Self], object],
+        sender: object | None = None,
+    ) -> None:
 		"""Register a callback to be called whenever a message of this type is send.
 
 		callback - Callable that receives an instance of a message as only argument.
@@ -63,13 +69,17 @@ class Message:
 			>>> MessageClass.subscribe(cb)	# Global
 			>>> MessageClass.subscribe(cb, sender=foo) # Specific sender
 		"""
-		if sender:
+		if sender is not None:
 			cls.bus().subscribe_locally(cls, sender, callback)
 		else:
 			cls.bus().subscribe_globally(cls, callback)
 
 	@classmethod
-	def unsubscribe(cls, callback, sender=None):
+	def unsubscribe(
+        cls,
+        callback: Callable[[Self], object],
+        sender: object | None = None,
+    ) -> None:
 		"""Stop your subscription of this message type for the specified callback.
 
 		callback -	Callable that receives an instance of a message as only argument.
@@ -88,23 +98,27 @@ class Message:
 			>>> MessageClass.unsubscribe(cb)
 			>>> MessageClass.broadcast('sender')
 		"""
-		if sender:
+		if sender is not None:
 			cls.bus().unsubscribe_locally(cls, sender, callback)
 		else:
 			cls.bus().unsubscribe_globally(cls, callback)
 
 	@classmethod
-	def discard(cls, callback, sender=None):
+	def discard(
+        cls,
+        callback: Callable[[Self], object],
+        sender: object | None = None,
+    ) -> None:
 		"""Similar to `Message.unsubscribe`, but does not raise an error if the
 		callback has not been registered before.
 		"""
-		if sender:
+		if sender is not None:
 			cls.bus().discard_locally(cls, sender, callback)
 		else:
 			cls.bus().discard_globally(cls, callback)
 
 	@classmethod
-	def broadcast(cls, *args):
+	def broadcast(cls, *args: Any) -> None:
 		"""Send a message that is initialized with `args`.
 
 		The first argument is always a sender, the number of arguments has to be
@@ -127,13 +141,13 @@ class QueuingMessage(Message):
 	bus = QueuingMessageBus
 
 	@classmethod
-	def clear(cls, *args):
+	def clear(cls, *args: Any) -> None:
 		"""Empty the message queue for this Message class
 		"""
 		cls.bus().clear(cls)
 
 	@classmethod
-	def queue_len(cls, *args):
+	def queue_len(cls, *args: Any) -> int:
 		"""Get the length the message queue for this Message class
 		"""
 		return cls.bus().queue_len(cls)

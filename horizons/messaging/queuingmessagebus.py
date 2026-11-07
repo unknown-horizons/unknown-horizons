@@ -2,7 +2,7 @@
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
-
+#
 # Unknown Horizons is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
@@ -20,7 +20,7 @@
 # ###################################################
 
 from collections import defaultdict, deque
-from typing import DefaultDict
+from typing import Any
 
 from horizons.messaging.messagebus import MessageBus
 
@@ -30,26 +30,27 @@ class QueuingMessageBus(MessageBus):
 	one or multiple recipients, with the additional property that messages will
 	be saved to a queue if no callback is subscribed at the time they are sent."""
 
-	def __init__(self):
+	def __init__(self) -> None:
 		MessageBus.__init__(self)
 		# Queue up messages if there is no registered subscriber
-		self.message_queue = defaultdict(deque) # type: DefaultDict[str, deque]
+		self.message_queue: defaultdict[type[Any], deque[Any]] = defaultdict(deque)
 
-	def subscribe_globally(self, messagetype, callback):
+	def subscribe_globally(self, messagetype: type[Any], callback: Any) -> None:
 		MessageBus.subscribe_globally(self, messagetype, callback)
 
 		while self.message_queue[messagetype]:
 			self.broadcast(self.message_queue[messagetype].popleft())
 
-	def subscribe_locally(self, messagetype, instance, callback):
+	def subscribe_locally(self, messagetype: type[Any], instance: Any, callback: Any) -> None:
 		MessageBus.subscribe_locally(self, messagetype, instance, callback)
 
-		for message in self.message_queue[messagetype]:
-			if (message, message.sender) == (messagetype, instance):
+		# Iterate over a list copy of the queue to avoid RuntimeError when removing items
+		for message in list(self.message_queue[messagetype]):
+			if (type(message), message.sender) == (messagetype, instance):
 				self.broadcast(message)
 				self.message_queue[messagetype].remove(message)
 
-	def broadcast(self, message):
+	def broadcast(self, message: Any) -> None:
 		messagetype = message.__class__
 		pair = (messagetype, message.sender)
 
@@ -59,12 +60,12 @@ class QueuingMessageBus(MessageBus):
 		else:
 			MessageBus.broadcast(self, message)
 
-	def clear(self, messagetype):
+	def clear(self, messagetype: type[Any]) -> None:
 		self.message_queue[messagetype].clear()
 
-	def queue_len(self, messagetype):
+	def queue_len(self, messagetype: type[Any]) -> int:
 		return len(self.message_queue[messagetype])
 
-	def reset(self):
+	def reset(self) -> None:
 		self.message_queue.clear()
 		super().reset()
