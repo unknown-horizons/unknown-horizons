@@ -38,7 +38,6 @@ import logging
 import os
 import platform
 from contextlib import contextmanager
-from typing import Dict, Optional, Text
 
 import horizons.globals
 from horizons.constants import FONTDEFS, LANGUAGENAMES
@@ -48,24 +47,28 @@ from horizons.messaging import LanguageChanged
 log = logging.getLogger("i18n")
 
 
+# Sentinel for when no language is loaded or translations are disabled.
+# Using NullTranslations means gettext, ngettext, and lazy gettext all behave
+# correctly without special-casing None, and English/fallback is the same
+# concept as "no active translation".
+_NULL_TRANSLATIONS = gettext_module.NullTranslations()
+
 # currently active translation object
-_trans = None # type: Optional[gettext_module.NullTranslations]
+_trans: gettext_module.NullTranslations = _NULL_TRANSLATIONS
 
 
-def gettext(message: Text) -> Text:
-	if not _trans:
-		return message
+def gettext(message: str) -> str:
 	return _trans.gettext(message)
 
 
 gettext_lazy = make_lazy_gettext(lambda: gettext)
 
 
-def ngettext(message1: Text, message2: Text, count: int) -> Text:
+def ngettext(message1: str, message2: str, count: int) -> str:
 	return _trans.ngettext(message1, message2, count)
 
 
-LANGCACHE = {} # type: Dict[str, str]
+LANGCACHE: dict[str, str] = {}
 
 
 @contextmanager
@@ -75,18 +78,20 @@ def disable_translations():
 	"""
 	global _trans
 	original_translation = _trans
-	_trans = None
-	yield
-	_trans = original_translation
+	_trans = _NULL_TRANSLATIONS
+	try:
+		yield
+	finally:
+		_trans = original_translation
 
 
-def reset_language():
+def reset_language() -> None:
 	"""
 	Reset global state to initial.
 	"""
 	global _trans
 	global LANGCACHE
-	_trans = None
+	_trans = _NULL_TRANSLATIONS
 	LANGCACHE = {}
 
 
@@ -109,7 +114,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 	LANGCACHE = {}
 
 	for i in alternatives:
-		for j in glob.glob('%s/*/*/%s.mo' % (i, domain)):
+		for j in glob.glob(f'{i}/*/*/{domain}.mo'):
 			splited = j.split(os.sep)
 			key = splited[-3]
 			if key not in LANGCACHE:
@@ -125,7 +130,7 @@ def find_available_languages(domain='unknown-horizons', update=False):
 def get_fontdef_for_locale(locale):
 	"""Returns path to the fontdef file for a locale. Unifont is default."""
 	fontdef_file = FONTDEFS.get(locale, 'unifont')
-	return os.path.join('content', 'fonts', '{0}.xml'.format(fontdef_file))
+	return os.path.join('content', 'fonts', f'{fontdef_file}.xml')
 
 
 def change_language(language=None):
@@ -143,7 +148,7 @@ def change_language(language=None):
 			trans = gettext_module.translation('unknown-horizons', find_available_languages()[language],
 			                                   languages=[language], fallback=fallback)
 			_trans = trans
-		except (IOError, KeyError, ValueError) as err:
+		except (OSError, KeyError, ValueError) as err:
 			# KeyError can happen with a settings file written to by more than one UH
 			# installation (one that has compiled language files and one that hasn't)
 			# ValueError can be raised by gettext if for instance the plural forms are
@@ -173,7 +178,7 @@ def get_language_translation_stats(language_code: str) -> int:
 	Return percentage of translated strings for given language.
 	"""
 	if language_code not in LANGCACHE:
-		raise Exception('Unknown language "{}"'.format(language_code))
+		raise Exception(f'Unknown language "{language_code}"')
 
 	try:
 		with open(os.path.join('content', 'lang', 'stats.json')) as f:
