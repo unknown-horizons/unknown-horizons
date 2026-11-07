@@ -67,6 +67,7 @@ class Trader(GenericAI):
 		**kwargs: Any,
 	) -> None:
 		super().__init__(session, id, name, color, **kwargs)
+		self.__init()
 		map_size = self.session.world.map_dimensions.width
 		while map_size > 0:
 			self.create_ship()
@@ -80,8 +81,7 @@ class Trader(GenericAI):
 		self.ships[ship] = self.shipStates.reached_warehouse
 		Scheduler().add_new_object(Callback(self.ship_idle, ship), self, run_in=0)
 
-	def _init_state(self) -> None:
-		super()._init_state()
+	def __init(self) -> None:
 		self.warehouse: dict[int, Warehouse] = {} # stores the warehouse the ship is currently heading to
 		self.allured_by_signal_fire: set[Ship] = set() # used to get away from a signal fire (and not be allured again immediately)
 
@@ -119,6 +119,7 @@ class Trader(GenericAI):
 
 	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
+		self.__init()
 
 	def load_ship_states(self, db) -> None:
 		# load ships one by one from db (ship instances themselves are loaded already, but

@@ -112,10 +112,11 @@ class AIPlayer(GenericAI):
 		**kwargs: Any,
     ) -> None:
 		super().__init__(session, id, name, color, clientid, difficulty_level, **kwargs)
-		self.need_more_ships = False
-		self.need_more_combat_ships = True
-		self.need_feeder_island = False
+		self.need_more_ships: bool = False
+		self.need_more_combat_ships: bool = True
+		self.need_feeder_island: bool = False
 		self.personality_manager = PersonalityManager(self)
+		self.__init()
 		Scheduler().add_new_object(Callback(self.finish_init), self, run_in=0)
 
 	def start(self) -> None:
@@ -150,8 +151,7 @@ class AIPlayer(GenericAI):
 		self.need_more_ships = False
 		self.need_more_combat_ships = False
 
-	def _init_state(self) -> None:
-		super()._init_state()
+	def __init(self) -> None:
 		self._enabled = True  # whether this player is enabled (currently disabled at the end of the game)
 		self.world = self.session.world
 		self.islands = {}
@@ -261,6 +261,7 @@ class AIPlayer(GenericAI):
 	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
 		self.personality_manager = PersonalityManager.load(db, self)
+		self.__init()
 
 		self.need_more_ships, self.need_more_combat_ships, self.need_feeder_island, remaining_ticks, remaining_ticks_long = \
 			db("SELECT need_more_ships, need_more_combat_ships, need_feeder_island, remaining_ticks, remaining_ticks_long FROM ai_player WHERE rowid = ?", worldid)[0]

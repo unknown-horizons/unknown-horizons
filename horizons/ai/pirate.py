@@ -80,6 +80,7 @@ class Pirate(GenericAI):
 			self.home_point = self.session.world.get_random_possible_ship_position()
 		self.log.debug("Pirate: home at (%d, %d), radius %d", self.home_point.x, self.home_point.y, self.home_radius)
 
+		self.__init()
 		# create a ship and place it randomly (temporary hack)
 		for _ in range(self.ship_count):
 			self.create_ship_at_random_position()
@@ -87,8 +88,7 @@ class Pirate(GenericAI):
 		Scheduler().add_new_object(Callback(self.tick), self, 1, -1, self.tick_interval)
 		Scheduler().add_new_object(Callback(self.tick_long), self, 1, -1, self.tick_long_interval)
 
-	def _init_state(self) -> None:
-		super()._init_state()
+	def __init(self) -> None:
 		self.world = self.session.world
 		self.unit_manager = UnitManager(self)
 		self.combat_manager = PirateCombatManager(self)
@@ -166,6 +166,8 @@ class Pirate(GenericAI):
 
 	def _load(self, db, worldid: int) -> None:
 		super()._load(db, worldid)
+
+		self.__init()
 
 		remaining_ticks, = db("SELECT remaining_ticks FROM ai_pirate WHERE rowid = ?", worldid)[0]
 		Scheduler().add_new_object(Callback(self.tick), self, remaining_ticks, -1, self.tick_interval)

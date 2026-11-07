@@ -32,8 +32,6 @@ from horizons.world.player import Player
 from horizons.world.units.unitexeptions import MoveNotPossible
 
 if TYPE_CHECKING:
-    from horizons.session import Session
-    from horizons.util.color import Color
     from horizons.world.units.ship import Ship
 
 
@@ -42,23 +40,16 @@ class GenericAI(Player):
 
 	shipStates = Enum('idle', 'moving_random')
 
-	def __init__(
-		self,
-		session: Session,
-		id: int,
-		name: str,
-		color: Color,
-		**kwargs: Any,
-	) -> None:
-		super().__init__(session, id, name, color, **kwargs)
-		self._init_state()
+	def __init__(self, *args: Any, **kwargs: Any) -> None:
+	    super().__init__(*args, **kwargs)
+	    self.__init()
 
-	def _init_state(self) -> None:
+	def __init(self) -> None:
 		self.ships = weakref.WeakValueDictionary() # {ship : state}. used as list of ships and structure to know their state
 
 	def _load(self, db, worldid: int) -> None:
-		super()._load(db, worldid)
-		self._init_state()
+	    super()._load(db, worldid)
+	    self.__init()
 
 	def send_ship(self, ship: Ship) -> None:
 		self.send_ship_random(ship)
