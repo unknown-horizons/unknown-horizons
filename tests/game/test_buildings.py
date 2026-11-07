@@ -636,7 +636,7 @@ def test_weaponsmith_production_chain(s, p):
 	assert weaponsmith.get_component(StorageComponent).inventory[RES.SWORD]
 
 
-@pytest.mark.xfail(strict=True)
+@pytest.mark.xfail(strict=True, reason="Not implemented yet: The barracks production chain does not produce a swordsman.")
 @game_test()
 def test_barracks_production_chain(s, p):
 	"""
