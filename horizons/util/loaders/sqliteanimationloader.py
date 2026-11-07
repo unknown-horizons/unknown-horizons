@@ -51,7 +51,7 @@ class SQLiteAnimationLoader:
 		for f in sorted(loader.get_sets()[actionset][action][int(rotation)].keys()):
 			frame_end = loader.get_sets()[actionset][action][int(rotation)][f]
 			img = horizons.globals.fife.imagemanager.load(f)
-			img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2))
+			img.setYShift(img.getWidth() // 4 - img.getHeight() // 2)
 			ani.addFrame(img, max(1, int((float(frame_end) - frame_start) * 1000)))
 			frame_start = float(frame_end)
 		# currently unused. would trigger onInstanceActionFrame of

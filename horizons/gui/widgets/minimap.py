@@ -21,6 +21,7 @@
 
 import itertools
 import math
+import operator
 from math import cos, sin
 from typing import List
 
@@ -607,7 +608,7 @@ class Minimap:
 		if size_tuple is None:
 			ratio = sum(self.transform.world_to_minimap_ratio) / 2.0
 			ratio = max(1.0, ratio)
-			size_tuple = int(img.getWidth() / ratio), int(img.getHeight() / ratio)
+			size_tuple = operator.trunc(img.getWidth() / ratio), operator.trunc(img.getHeight() / ratio)
 			self._image_size_cache[img_path] = size_tuple
 		new_width, new_height = size_tuple
 		p = self.__class__._dummy_fife_point
