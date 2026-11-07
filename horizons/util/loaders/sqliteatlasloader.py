@@ -87,7 +87,7 @@ class SQLiteAtlasLoader:
 				region = fife.Rect(xpos, ypos, width, height)
 				img.useSharedImage(self.atlaslib[entry[1]], region)
 
-			img.setYShift(int(img.getWidth() / 4 - img.getHeight() / 2))
+			img.setYShift(img.getWidth() // 4 - img.getHeight() // 2)
 			frame_end = entry[0]
 			ani.addFrame(img, max(1, int((frame_end - frame_start) * 1000)))
 			frame_start = frame_end
