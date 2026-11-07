@@ -41,9 +41,9 @@ class ChangeListener:
 
 	def __init__(self, *args: Any, **kwargs: Any) -> None:
 		super().__init__()
-		self._init_state()
+		self.__init()
 
-	def _init_state(self) -> None:
+	def __init(self) -> None:
 		self.__listeners = WeakMethodList()
 		self.__remove_listeners = WeakMethodList()
 		# number of event calls
@@ -141,7 +141,7 @@ class ChangeListener:
 			self.remove_remove_listener(listener)
 
 	def load(self, db, world_id: int) -> None:
-		self._init_state()
+		self.__init()
 
 	def remove(self) -> None:
 		self.__call_listeners(self.__remove_listeners)
