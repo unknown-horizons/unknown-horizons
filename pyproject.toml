@@ -109,6 +109,7 @@ python_version = "3.13"
 ignore_missing_imports = true
 follow_imports = "skip"
 warn_no_return = false
+check_untyped_defs = false # Enable after fixing existing errors
 
 [tool.coverage.run]
 branch = true
