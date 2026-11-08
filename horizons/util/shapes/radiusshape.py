@@ -1,4 +1,4 @@
-# ###################################################
+###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -19,7 +19,13 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from .rect import Rect
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+	from . import Shape
+	from .rect import Rect
 
 
 class RadiusShape:
@@ -29,13 +35,19 @@ class RadiusShape:
 	The center can by any other shape.
 	If the center is a point, it's actually a circle.
 	"""
-	def __init__(self, center, radius):
+
+	center: Shape
+	radius: int | float
+
+	def __init__(self, center: Shape, radius: int | float) -> None:
 		self.center = center
 		self.radius = radius
 
 
 class RadiusRect(RadiusShape):
 	"""Specialization of RadiusShape with a Rect as center"""
-	def __init__(self, center, radius):
-		assert isinstance(center, Rect)
+
+	center: Rect
+
+	def __init__(self, center: Rect, radius: int | float) -> None:
 		super().__init__(center, radius)

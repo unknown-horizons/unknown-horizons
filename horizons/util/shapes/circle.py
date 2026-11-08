@@ -1,4 +1,4 @@
-# ###################################################
+###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -19,14 +19,26 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from collections.abc import Iterator
+from typing import TYPE_CHECKING
+
 from . import Shape
 from .point import Point
+
+if TYPE_CHECKING:
+    from .rect import Rect
 
 
 class Circle(Shape):
 	"""Class for the shape of a circle
 	You can access center and radius of the circle as public members."""
-	def __init__(self, center, radius):
+
+	center: Point
+	radius: int
+
+	def __init__(self, center: Point, radius: int) -> None:
 		"""
 		@param center: Point
 		@param radius: int
@@ -35,31 +47,31 @@ class Circle(Shape):
 		self.center = center
 		self.radius = radius
 
-	def contains(self, point):
+	def contains(self, point: Point) -> bool:
 		assert isinstance(point, Point)
 		dx = point.x - self.center.x
 		dy = point.y - self.center.y
 		return dx * dx + dy * dy <= self.radius * self.radius
 
-	def intersects_rect(self, rect):
+	def intersects_rect(self, rect: Rect) -> bool:
 		return rect.distance(self.center) > self.radius
 
-	def __str__(self):
-		return "Circle(center={},radius={})".format(self.center, self.radius)
+	def __str__(self) -> str:
+		return f"Circle(center={self.center},radius={self.radius})"
 
-	def __eq__(self, other):
+	def __eq__(self, other: object) -> bool:
 		try:
 			return self.center == other.center and self.radius == other.radius
 		except AttributeError:
 			return False
 
-	def __ne__(self, other):
+	def __ne__(self, other: object) -> bool:
 		return not self.__eq__(other)
 
-	def __hash__(self):
+	def __hash__(self) -> int:
 		return hash((self.center, self.radius))
 
-	def tuple_iter(self):
+	def tuple_iter(self) -> Iterator[tuple[int, int]]:
 		"""Iterate through all coords in the circle as tuples."""
 		cx = self.center.x
 		cy = self.center.y
@@ -72,7 +84,7 @@ class Circle(Shape):
 				if dist_sq <= radius_sq:
 					yield (x, y)
 
-	def get_border_coordinates(self, bordersize=1):
+	def get_border_coordinates(self, bordersize: int = 1) -> Iterator[tuple[int, int]]:
 		"""Returns only coordinates at the border. Very naive implementation"""
 		for x in range(self.center.x - self.radius, self.center.x + self.radius + 1):
 			for y in range(self.center.y - self.radius, self.center.y + self.radius + 1):

@@ -1,4 +1,4 @@
-# ###################################################
+###################################################
 # Copyright (C) 2008-2017 The Unknown Horizons Team
 # team@unknown-horizons.org
 # This file is part of Unknown Horizons.
@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from collections.abc import Iterator
+
 from . import Shape
 from .point import Point
 
@@ -26,7 +30,12 @@ from .point import Point
 class Annulus(Shape):
 	"""Class for the shape of an annulus
 	You can access center and radius of the annulus as public members."""
-	def __init__(self, center, min_radius, max_radius):
+
+	center: Point
+	min_radius: int
+	max_radius: int
+
+	def __init__(self, center: Point, min_radius: int, max_radius: int) -> None:
 		"""
 		@param center: Point
 		@param min_radius: int
@@ -37,29 +46,30 @@ class Annulus(Shape):
 		self.min_radius = min_radius
 		self.max_radius = max_radius
 
-	def contains(self, point):
+	def contains(self, point: Point) -> bool:
 		assert isinstance(point, Point)
 		return self.min_radius <= point.distance(self.center) <= self.max_radius
 
-	def __str__(self):
-		return ("Annulus(center={},min_radius={},max_radius={})"
-				.format(self.center, self.min_radius, self.max_radius))
+	def __str__(self) -> str:
+		return f"Annulus(center={self.center},min_radius={self.min_radius},max_radius={self.max_radius})"
 
-	def __eq__(self, other):
+	def __eq__(self, other: object) -> bool:
 		try:
-			return self.center == other.center and \
-			       self.min_radius == other.min_radius and \
-			       self.max_radius == other.max_radius
+			return (
+				self.center == other.center
+				and self.min_radius == other.min_radius
+				and self.max_radius == other.max_radius
+			)
 		except AttributeError:
 			return False
 
-	def __ne__(self, other):
+	def __ne__(self, other: object) -> bool:
 		return not self.__eq__(other)
 
-	def __hash__(self):
+	def __hash__(self) -> int:
 		return hash((self.center, self.min_radius, self.max_radius))
 
-	def tuple_iter(self):
+	def tuple_iter(self) -> Iterator[tuple[int, int]]:
 		for x in range(self.center.x - self.max_radius, self.center.x + self.max_radius + 1):
 			for y in range(self.center.y - self.max_radius, self.center.y + self.max_radius + 1):
 				if self.min_radius <= self.center.distance((x, y)) <= self.max_radius:
