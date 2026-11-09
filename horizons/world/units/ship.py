@@ -65,7 +65,7 @@ class Ship(Unit):
 		# if ship did not have route configured, do not add attribute
 		if TradeRoute.has_route(db, worldid):
 			self.create_route()
-			self.route.load(db)
+			self.route.load(db, worldid)
 
 	def __init(self):
 		# register ship in world

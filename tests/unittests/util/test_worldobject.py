@@ -67,6 +67,8 @@ def test_explicit_worldid_updates_next_id():
 def test_duplicate_worldid_raises():
     first = WorldObject(worldid=5)
 
+    assert first.worldid == 5
+
     with pytest.raises(AssertionError):
         WorldObject(worldid=5)
 
@@ -184,7 +186,8 @@ def test_remove_twice_is_not_supported():
 
     obj.remove()
 
-    with pytest.raises(Exception):
+    # ChangeListener.end() clears the listener lists, so the second remove fails.
+    with pytest.raises(TypeError):
         obj.remove()
 
 

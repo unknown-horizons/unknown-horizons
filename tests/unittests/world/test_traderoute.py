@@ -31,7 +31,7 @@ def test_current_transfer_initially_not_waiting():
 
     route = TradeRoute(ship)
 
-    assert route.current_transfer in ({}, None)
+    assert route.current_transfer == {}
 
 
 def test_traderoute_can_enable_requires_distinct_warehouses():
