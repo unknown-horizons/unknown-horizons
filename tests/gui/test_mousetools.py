@@ -19,72 +19,108 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from horizons.constants import BUILDINGS
 from tests.gui import gui_test
 from tests.gui.helper import found_settlement
 
 
 @gui_test(use_dev_map=True)
 def test_tearing(gui):
-	found_settlement(gui, (11, 1), (11, 6))
+	settlement = found_settlement(gui, (11, 1), (11, 6))
+	world = gui.session.world
 
-	# remove some trees
+	def tree_ids():
+		return {building.worldid for building in world.get_all_buildings()
+		        if building.id == BUILDINGS.TREE}
+
+	# Tear down some trees with the destroy tool.
+	trees_before = tree_ids()
 	gui.trigger('mainhud/destroy_tool')
 	gui.cursor_drag((5, 7), (11, 16), 'left')
+	trees_after_first_tear = tree_ids()
+	assert len(trees_after_first_tear) < len(trees_before)
 
-	# build 4 tents
+	# Build 4 residential tents.
 	gui.trigger('mainhud/build')
 	gui.trigger('tab/button_01')
 	gui.cursor_drag((7, 9), (10, 12), 'left')
+	assert len(settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]) == 4
 
-	# try to remove an area that includes the tents, some trees and
-	# the warehouse
+	# Tear down an area that includes the tents, some trees and the warehouse.
+	# The warehouse is not tearable, so it has to survive.
+	warehouse = settlement.buildings_by_id[BUILDINGS.WAREHOUSE][0]
 	gui.trigger('mainhud/destroy_tool')
 	gui.cursor_drag((5, 15), (15, 3), 'left')
+
+	assert not settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
+	assert settlement.buildings_by_id[BUILDINGS.WAREHOUSE] == [warehouse]
+
+
+def _build_storage_tent(gui, x, y):
+	"""Build a storage tent and return it.
+
+	A storage tent is used because it is an EXPAND_RANGE building (so removing it
+	can shrink the settlement range) and, unlike the warehouse, it is tearable.
+	"""
+	gui.trigger('tab/button_11')  # storage tent
+	gui.cursor_click(x, y, 'left')
+	gui.run(seconds=0.1)
+	return next(b for b in gui.session.world.player.settlements[-1].buildings
+	            if b.id == BUILDINGS.STORAGE)
+
+
+def _build_residential_tents(gui, start, end):
+	"""Build a row of residential tents and return them."""
+	gui.trigger('tab/button_01')  # residential tents
+	gui.cursor_drag(start, end, 'left')
+	gui.run(seconds=0.1)
+	return list(gui.session.world.player.settlements[-1].buildings_by_id[BUILDINGS.RESIDENTIAL])
+
+
+def _tear_with_confirmation(gui, building, button):
+	"""Tear down `building` with the destroy tool and answer the popup."""
+	xs = [coord[0] for coord in building.position.tuple_iter()]
+	ys = [coord[1] for coord in building.position.tuple_iter()]
+	start = (min(xs), min(ys))
+	end = (max(xs), max(ys))
+
+	def answer_popup():
+		# The popup is opened from mouseReleased, which runs after the handler
+		# greenlet has already been scheduled, so wait until it is visible.
+		for _ in range(1000):
+			if gui.find('popup_window') is not None:
+				break
+			gui.run()
+		else:
+			raise AssertionError("confirmation popup did not appear")
+		assert gui.find('popup_window/headline').text == 'Abandon buildings'
+		gui.trigger('popup_window/' + button)
+
+	with gui.handler(answer_popup):
+		gui.trigger('mainhud/destroy_tool')
+		gui.cursor_drag(start, end, 'left')
 
 
 @gui_test(use_dev_map=True, timeout=60)
 def test_tearing_confirmation_accept(gui):
 	"""
-	Test that tearing down a warehouse with outlying buildings shows confirmation
+	Test that tearing down a storage tent with outlying buildings shows confirmation
 	and accepting it abandons the buildings.
 	"""
-	found_settlement(gui, (11, 1), (11, 6))
+	settlement = found_settlement(gui, (11, 1), (11, 6))
 
-	# Build some tents outside warehouse range but within a market's range
-	# First build a market to extend range
+	# The storage tent extends the settlement range far enough to build tents
+	# that the warehouse alone would not cover.
 	gui.trigger('mainhud/build')
-	gui.trigger('tab/button_01')  # residential/tents
-	gui.cursor_drag((7, 9), (10, 12), 'left')
+	storage_tent = _build_storage_tent(gui, 30, 6)
+	tents = _build_residential_tents(gui, (38, 6), (40, 7))
+	assert tents, "residential tents should have been built"
 
-	# Build a market to extend range further
-	gui.trigger('mainhud/build')
-	# Find market button (assuming it's available)
-	# For simplicity, we'll just test with warehouse
+	_tear_with_confirmation(gui, storage_tent, 'okButton')
 
-	# Now tear down the warehouse - this should show confirmation
-	# since the tents will be outside the new range
-	def accept_popup():
-		assert gui.find('popup_window') is not None, "Confirmation popup should appear"
-		# Verify popup title/message
-		popup = gui.find('popup_window')
-		assert popup is not None
-		gui.trigger('popup_window/okButton')
-
-	with gui.handler(accept_popup):
-		gui.trigger('mainhud/destroy_tool')
-		# Click on warehouse to select it
-		gui.cursor_click(11, 1, 'left')
-		# Click again to confirm tear (release)
-		gui.cursor_click(11, 1, 'left')
-
-	# Verify warehouse is gone and tents are abandoned
-	warehouse = gui.session.world.get_building((11, 1))
-	assert warehouse is None or warehouse.id != 1, "Warehouse should be torn down"
-
-	# Check that tents were abandoned (they were outside new range)
-	# This is harder to verify in GUI test without knowing exact positions
-	# At minimum verify the tear action completed
-	gui.run(seconds=0.5)
+	assert gui.session.world.get_building(storage_tent.position.origin.to_tuple()) is None
+	assert not settlement.buildings_by_id[BUILDINGS.STORAGE]
+	assert not settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 
 
 @gui_test(use_dev_map=True, timeout=60)
@@ -92,29 +128,19 @@ def test_tearing_confirmation_cancel(gui):
 	"""
 	Test that cancelling the confirmation preserves outlying buildings.
 	"""
-	found_settlement(gui, (11, 1), (11, 6))
+	settlement = found_settlement(gui, (11, 1), (11, 6))
 
-	# Build some tents
 	gui.trigger('mainhud/build')
-	gui.trigger('tab/button_01')
-	gui.cursor_drag((7, 9), (10, 12), 'left')
+	storage_tent = _build_storage_tent(gui, 30, 6)
+	tents = _build_residential_tents(gui, (38, 6), (40, 7))
+	assert tents, "residential tents should have been built"
 
-	# Tear down warehouse but cancel the confirmation
-	def cancel_popup():
-		assert gui.find('popup_window') is not None, "Confirmation popup should appear"
-		gui.trigger('popup_window/cancelButton')
+	_tear_with_confirmation(gui, storage_tent, 'cancelButton')
 
-	with gui.handler(cancel_popup):
-		gui.trigger('mainhud/destroy_tool')
-		gui.cursor_click(11, 1, 'left')
-		gui.cursor_click(11, 1, 'left')
-
-	# Verify warehouse is still torn down (direct target) but tents preserved
-	# Note: The warehouse itself is always torn down, only outlying buildings are preserved
-	warehouse = gui.session.world.get_building((11, 1))
-	# Warehouse is the direct target so it should be gone
-	# But outlying buildings should remain
-	gui.run(seconds=0.5)
+	# The building that was torn down is gone, but the outlying tents survive.
+	assert gui.session.world.get_building(storage_tent.position.origin.to_tuple()) is None
+	assert not settlement.buildings_by_id[BUILDINGS.STORAGE]
+	assert settlement.buildings_by_id[BUILDINGS.RESIDENTIAL] == tents
 
 
 @gui_test(use_dev_map=True)
