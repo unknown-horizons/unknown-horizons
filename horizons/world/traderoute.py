@@ -192,7 +192,7 @@ class TradeRoute(ChangeListener):
 		class TransferStatus:
 			def __init__(self) -> None:
 				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
-				self.remaining_transfers = {}
+				self.remaining_transfers: dict[int, int] = {}
 
 		status = TransferStatus()
 		status.remaining_transfers = copy.copy(resource_list)
@@ -329,20 +329,20 @@ class TradeRoute(ChangeListener):
 		"""Check if a savegame contains route information for a certain ship"""
 		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 
-	def load(self, db) -> None:
+	def load(self, db, world_id: int) -> None:
 		enabled, self.current_waypoint, wait_at_load, wait_at_unload = \
 			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload "
-			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
+			   "FROM ship_route WHERE ship_id = ?", world_id)[0]
 		self.set_wait_at_load(wait_at_load)
 		self.set_wait_at_unload(wait_at_unload)
 
 		query = "SELECT warehouse_id FROM ship_route_waypoint WHERE ship_id = ? ORDER BY waypoint_index"
-		offices_id = db(query, self.ship.worldid)
+		offices_id = db(query, world_id)
 
 		for office_id, in offices_id:
 			warehouse = WorldObject.get_object_by_id(office_id)
 			query = "SELECT res, amount FROM ship_route_resources WHERE ship_id = ? and waypoint_index = ?"
-			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
+			resource_list = dict(db(query, world_id, len(self.waypoints)))
 
 			self.waypoints.append({
 				"warehouse": warehouse,
@@ -350,9 +350,12 @@ class TradeRoute(ChangeListener):
 			})
 
 		waiting = False
-		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", self.ship.worldid):
+		current_transfer = self.current_transfer
+		if current_transfer is None:
+			current_transfer = self.current_transfer = {}
+		for res, amount in db("SELECT res, amount FROM ship_route_current_transfer WHERE ship_id = ?", world_id):
 			waiting = True
-			self.current_transfer[res] = amount
+			current_transfer[res] = amount
 			Scheduler().add_new_object(self.on_route_warehouse_reached, self, GAME_SPEED.TICKS_PER_SECOND)
 
 		if enabled and not waiting:
