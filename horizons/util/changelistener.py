@@ -21,6 +21,8 @@
 
 import logging
 import traceback
+from collections.abc import Callable
+from typing import Any
 
 from horizons.util.python.callback import Callback
 from horizons.util.python.weakmethodlist import WeakMethodList
@@ -37,11 +39,11 @@ class ChangeListener:
 
 	log = logging.getLogger('changelistener')
 
-	def __init__(self, *args, **kwargs):
-		super().__init__() #TODO: check if this call is needed
+	def __init__(self, *args: Any, **kwargs: Any) -> None:
+		super().__init__()
 		self.__init()
 
-	def __init(self):
+	def __init(self) -> None:
 		self.__listeners = WeakMethodList()
 		self.__remove_listeners = WeakMethodList()
 		# number of event calls
@@ -50,7 +52,11 @@ class ChangeListener:
 		self.__event_call_number = 0
 		self.__hard_remove = True
 
-	def __remove_listener(self, listener_list, listener):
+	def __remove_listener(
+		self,
+		listener_list,
+		listener: Callable,
+	) -> None:
 		# check if the listener should be hard removed
 		# if so switch it in the list to None
 		try:
@@ -63,7 +69,7 @@ class ChangeListener:
 			                 "\nTried to remove: " + str(listener) + "\nat " + str(self) +
 			                 "\nList: " + str([str(i) for i in listener_list]))
 
-	def __call_listeners(self, listener_list):
+	def __call_listeners(self, listener_list) -> None:
 		# instead of removing from list, switch the listener in position to None
 		# this way, iteration won't be affected while listeners may modify the list
 		self.__hard_remove = False
@@ -85,58 +91,63 @@ class ChangeListener:
 			listener_list[:] = [l for l in listener_list if l]
 
 	## Normal change listener
-	def add_change_listener(self, listener, call_listener_now=False, no_duplicates=False):
+	def add_change_listener(
+		self,
+		listener: Callable,
+		call_listener_now: bool = False,
+		no_duplicates: bool = False,
+	) -> None:
 		assert callable(listener)
 		if not no_duplicates or listener not in self.__listeners:
 			self.__listeners.append(listener)
 		if call_listener_now: # also call if duplicate is added
 			listener()
 
-	def remove_change_listener(self, listener):
+	def remove_change_listener(self, listener: Callable) -> None:
 		self.__remove_listener(self.__listeners, listener)
 
-	def has_change_listener(self, listener):
-		return (listener in self.__listeners)
+	def has_change_listener(self, listener: Callable) -> bool:
+		return listener in self.__listeners
 
-	def discard_change_listener(self, listener):
+	def discard_change_listener(self, listener: Callable) -> None:
 		"""Remove listener if it's there"""
 		if self.has_change_listener(listener):
 			self.remove_change_listener(listener)
 
-	def clear_change_listeners(self):
+	def clear_change_listeners(self) -> None:
 		"""Removes all change listeners"""
 		self.__listeners = WeakMethodList()
 
-	def _changed(self):
+	def _changed(self) -> None:
 		"""Calls every listener when an object changed"""
 		self.__call_listeners(self.__listeners)
 
 	## Removal change listener
-	def add_remove_listener(self, listener, no_duplicates=False):
+	def add_remove_listener(self, listener: Callable, no_duplicates: bool = False) -> None:
 		"""A listener that listens for removal of the object"""
 		assert callable(listener)
 		if no_duplicates and listener in self.__remove_listeners:
 			return # don't allow duplicate entries
 		self.__remove_listeners.append(listener)
 
-	def remove_remove_listener(self, listener):
+	def remove_remove_listener(self, listener: Callable) -> None:
 		self.__remove_listener(self.__remove_listeners, listener)
 
-	def has_remove_listener(self, listener):
-		return (listener in self.__remove_listeners)
+	def has_remove_listener(self, listener: Callable) -> bool:
+		return listener in self.__remove_listeners
 
-	def discard_remove_listener(self, listener):
+	def discard_remove_listener(self, listener: Callable) -> None:
 		if self.has_remove_listener(listener):
 			self.remove_remove_listener(listener)
 
-	def load(self, db, world_id):
+	def load(self, db, world_id: int) -> None:
 		self.__init()
 
-	def remove(self):
+	def remove(self) -> None:
 		self.__call_listeners(self.__remove_listeners)
 		self.end()
 
-	def end(self):
+	def end(self) -> None:
 		self.__listeners = None
 		self.__remove_listeners = None
 
@@ -159,66 +170,81 @@ production_finished listener.
 """
 
 
-def metaChangeListenerDecorator(event_name):
-	def decorator(clas):
-		list_name = "__" + event_name + "_listeners"
-		event_call_number = "__" + event_name + "call_number"
-		hard_remove_event = "__hard_remove" + event_name
+def metaChangeListenerDecorator(event_name: str):
+    def decorator(clas):
+        list_name = f"__{event_name}_listeners"
+        event_call_number = f"__{event_name}call_number"
+        hard_remove_event = f"__hard_remove{event_name}"
 
-		# trivial changelistener operations
-		def add(self, listener):
-			assert callable(listener)
-			getattr(self, list_name).append(listener)
+        # trivial changelistener operations
+        def add(self, listener: Callable[..., Any]) -> None:
+            assert callable(listener)
+            listeners = getattr(self, list_name)
+            listeners.append(listener)
 
-		def rem(self, listener):
-			if getattr(self, hard_remove_event):
-				getattr(self, list_name).remove(listener)
-			else:
-				listener_list = getattr(self, list_name)
-				listener_list[listener_list.index(listener)] = None
+        def rem(self, listener: Callable[..., Any]) -> None:
+            listeners = getattr(self, list_name)
 
-		def has(self, listener):
-			return listener in getattr(self, list_name)
+            if getattr(self, hard_remove_event):
+                listeners.remove(listener)
+            else:
+                listeners[listeners.index(listener)] = None
 
-		def on(self, *args, **kwargs):
-			setattr(self, hard_remove_event, False)
-			call_number = getattr(self, event_call_number) + 1
-			setattr(self, event_call_number, call_number)
-			for f in getattr(self, list_name):
-				if f:
-					# workaround for encapsuled arguments
-					if isinstance(f, Callback):
-						f()
-					else:
-						f(self, *args, **kwargs)
+        def has(self, listener: Callable[..., Any]) -> bool:
+            listeners = getattr(self, list_name)
+            return listener in listeners
 
-			call_number = getattr(self, event_call_number) - 1
-			setattr(self, event_call_number, call_number)
-			if getattr(self, event_call_number) == 0:
-				setattr(self, hard_remove_event, True)
-				setattr(self, list_name, [l for l in getattr(self, list_name) if l])
+        def on(self, *args: Any, **kwargs: Any) -> None:
+            setattr(self, hard_remove_event, False)
 
-		# add methods to class
-		setattr(clas, "add_" + event_name + "_listener", add)
-		setattr(clas, "remove_" + event_name + "_listener", rem)
-		setattr(clas, "has_" + event_name + "_listener", has)
-		setattr(clas, "on_" + event_name, on)
+            call_number = getattr(self, event_call_number) + 1
+            setattr(self, event_call_number, call_number)
 
-		# use black __new__ magic to add the methods to the instances
-		# think of it as being executed in __init__
-		old_new = clas.__new__
+            listeners = getattr(self, list_name)
 
-		def new(cls, *args, **kwargs):
-			# this is a proposed way of calling the "old" new:
-			#obj = super(cls, cls).__new__(cls)
-			# which results in endless recursion, if you construct an instance of a class,
-			# that inherits from a base class on which the decorator has been applied.
-			# therefore, this workaround is used:
-			obj = old_new(cls)
-			setattr(obj, list_name, [])
-			setattr(obj, event_call_number, 0)
-			setattr(obj, hard_remove_event, True)
-			return obj
-		clas.__new__ = staticmethod(new)
-		return clas
-	return decorator
+            for listener in listeners:
+                if listener:
+                    # workaround for encapsuled arguments
+                    if isinstance(listener, Callback):
+                        listener()
+                    else:
+                        listener(self, *args, **kwargs)
+
+            call_number = getattr(self, event_call_number) - 1
+            setattr(self, event_call_number, call_number)
+
+            if getattr(self, event_call_number) == 0:
+                setattr(self, hard_remove_event, True)
+                setattr(
+                    self,
+                    list_name,
+                    [listener for listener in listeners if listener],
+                )
+
+        setattr(clas, f"add_{event_name}_listener", add)
+        setattr(clas, f"remove_{event_name}_listener", rem)
+        setattr(clas, f"has_{event_name}_listener", has)
+        setattr(clas, f"on_{event_name}", on)
+
+        # use black __new__ magic to add the methods to the instances
+        # think of it as being executed in __init__
+        old_new = clas.__new__
+
+        def new(cls, *args: Any, **kwargs: Any):
+            # this is a proposed way of calling the "old" new:
+            #obj = super(cls, cls).__new__(cls)
+            # which results in endless recursion, if you construct an instance of a class,
+            # that inherits from a base class on which the decorator has been applied.
+            # therefore, this workaround is used:
+            obj = old_new(cls)
+
+            setattr(obj, list_name, [])
+            setattr(obj, event_call_number, 0)
+            setattr(obj, hard_remove_event, True)
+
+            return obj
+
+        clas.__new__ = staticmethod(new)
+        return clas
+
+    return decorator

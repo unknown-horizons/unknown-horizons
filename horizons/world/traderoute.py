@@ -19,7 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
 import copy
+from typing import TYPE_CHECKING, Any, TypedDict
 
 from horizons.component.storagecomponent import StorageComponent
 from horizons.component.tradepostcomponent import TRADE_ERROR_TYPE, TradePostComponent
@@ -30,6 +33,15 @@ from horizons.util.changelistener import ChangeListener
 from horizons.util.shapes import Circle
 from horizons.util.worldobject import WorldObject
 from horizons.world.units.unitexeptions import MoveNotPossible
+
+if TYPE_CHECKING:
+    from horizons.world.building.storages import Warehouse
+    from horizons.world.units.ship import Ship
+
+class TradeRouteWaypoint(TypedDict):
+    """A stop in a trade route."""
+    warehouse: Warehouse
+    resource_list: dict[int, int]
 
 
 class TradeRoute(ChangeListener):
@@ -43,56 +55,64 @@ class TradeRoute(ChangeListener):
 	Change notifications mainly notify about changes of enable.
 	"""
 
-	def __init__(self, ship):
+	def __init__(self, ship: Ship) -> None:
 		super().__init__()
 		self.ship = ship
-		self.waypoints = []
-		self.current_waypoint = -1
-		self.enabled = False
+		self.waypoints: list[TradeRouteWaypoint] = []
+		self.current_waypoint: int = -1
+		self.enabled: bool = False
 
-		self.wait_at_load = False # wait until every res has been loaded
-		self.wait_at_unload = False #  wait until every res could be unloaded
+		self.wait_at_load: bool = False # wait until every res has been loaded
+		self.wait_at_unload: bool = False #  wait until every res could be unloaded
 
-		self.current_transfer = {} # used for partial unloading in combination with waiting
+		self.current_transfer: dict[int, int] | None = {} # used for partial unloading in combination with waiting
 
-	def append(self, warehouse_worldid):
+	def append(self, warehouse_worldid: int) -> None:
 		warehouse = WorldObject.get_object_by_id(warehouse_worldid)
 		self.waypoints.append({
-			'warehouse': warehouse,
-			'resource_list': {},
+			"warehouse": warehouse,
+			"resource_list": {},
 		})
 
-	def set_wait_at_load(self, flag):
+	def set_wait_at_load(self, flag: object) -> None:
 		"""Method for commands, and some type checking. See #2287 for details."""
 		self.wait_at_load = bool(flag)
 
-	def set_wait_at_unload(self, flag):
+	def set_wait_at_unload(self, flag: object) -> None:
 		"""Method for commands, and some type checking. See #2287 for details."""
 		self.wait_at_unload = bool(flag)
 
-	def move_waypoint(self, position, direction):
+	def move_waypoint(
+		self,
+		position: int,
+		direction: str,
+	) -> None:
 		# Error sounds for invalid move actions are triggered in
 		# gui.widgets.routeconfig, not here.
 		was_enabled = self.enabled
 		if was_enabled:
 			self.disable()
 
-		if position == len(self.waypoints) and direction == 'down' or \
-		   position == 0 and direction == 'up':
+		if (
+			(position == len(self.waypoints) and direction == "down")
+			or (position == 0 and direction == "up")
+		):
 			return
-		if direction == 'up':
+		if direction == "up":
 			new_pos = position - 1
-		elif direction == 'down':
+		elif direction == "down":
 			new_pos = position + 1
 		else:
-			assert False, 'Direction is neither "up" nor "down".'
+			raise ValueError(
+				'Direction must be "up" or "down"'
+			)
 
 		self.waypoints.insert(new_pos, self.waypoints.pop(position))
 
 		if was_enabled:
 			self.enable()
 
-	def remove_waypoint(self, position):
+	def remove_waypoint(self, position: int) -> None:
 		was_enabled = self.enabled
 		if was_enabled:
 			self.disable()
@@ -108,25 +128,38 @@ class TradeRoute(ChangeListener):
 
 		self._changed()
 
-	def toggle_load_unload(self, position, res_id):
-		self.waypoints[position]['resource_list'][res_id] *= -1
+	def toggle_load_unload(
+		self,
+		position: int,
+		res_id: int,
+	) -> None:
+		self.waypoints[position]["resource_list"][res_id] *= -1
 
-	def add_to_resource_list(self, position, res_id, amount):
-		self.waypoints[position]['resource_list'][res_id] = amount
+	def add_to_resource_list(
+		self,
+		position: int,
+		res_id: int,
+		amount: int,
+	) -> None:
+		self.waypoints[position]["resource_list"][res_id] = amount
 
-	def remove_from_resource_list(self, position, res_id):
-		self.waypoints[position]['resource_list'].pop(res_id)
+	def remove_from_resource_list(
+		self,
+		position: int,
+		res_id: int,
+	) -> None:
+		self.waypoints[position]["resource_list"].pop(res_id)
 
-	def on_route_warehouse_reached(self):
+	def on_route_warehouse_reached(self) -> None:
 		"""Transfer resources, wait if necessary and move to next warehouse when possible"""
-		warehouse = self.get_location()['warehouse']
-		resource_list = self.current_transfer or self.get_location()['resource_list']
+		warehouse = self.get_location()["warehouse"]
+		resource_list = self.current_transfer or self.get_location()["resource_list"]
 		suppress_messages = self.current_transfer is not None # no messages from second try on
 
 		if self.current_transfer is not None:
 			for res, current in self.current_transfer.copy().items():
 				# make sure we don't keep trying to (un)load something when the decision about that resource has changed
-				trade_stock = self.get_location()['resource_list'].get(res, 0)
+				trade_stock = self.get_location()["resource_list"].get(res, 0)
 				if current == 0 or trade_stock == 0 or (current < 0) != (trade_stock < 0):
 					#If unload/load has changed, (based on signs)
 					del self.current_transfer[res]
@@ -147,12 +180,17 @@ class TradeRoute(ChangeListener):
 			self.current_transfer = None
 			self.move_to_next_route_warehouse()
 
-	def _transfer_resources(self, settlement, resource_list, suppress_messages=False):
+	def _transfer_resources(
+		self,
+		settlement,
+		resource_list,
+		suppress_messages: bool = False,
+	):
 		"""Transfers resources to/from settlement according to list.
 		@return: TransferStatus instance
 		"""
 		class TransferStatus:
-			def __init__(self):
+			def __init__(self) -> None:
 				self.settlement_provides_enough_res = self.settlement_has_enough_space_to_take_res = True
 				self.remaining_transfers = {}
 
@@ -176,8 +214,8 @@ class TradeRoute(ChangeListener):
 					# If due to previous trading there is a certain amount of this resource
 					# still left on the ship, don't overload: The ship only picks up enough
 					# to reach the amount defined in the route config in that case.
-					if ship_inv[res] + amount > self.get_location()['resource_list'][res]:
-						amount = self.get_location()['resource_list'][res] - ship_inv[res]
+					if ship_inv[res] + amount > self.get_location()["resource_list"][res]:
+						amount = self.get_location()["resource_list"][res] - ship_inv[res]
 					# The check if our ship has enough space is handled implicitly below.
 					amount_transferred = settlement.transfer_to_storageholder(amount, res, self.ship)
 				else:
@@ -189,7 +227,7 @@ class TradeRoute(ChangeListener):
 
 				if amount_transferred < status.remaining_transfers[res] and \
 				   ship_inv.get_free_space_for(res) > 0 and \
-				   ship_inv[res] < self.get_location()['resource_list'][res]:
+				   ship_inv[res] < self.get_location()["resource_list"][res]:
 					status.settlement_provides_enough_res = False
 				status.remaining_transfers[res] -= amount_transferred
 			else:
@@ -218,16 +256,19 @@ class TradeRoute(ChangeListener):
 
 		return status
 
-	def on_ship_blocked(self):
+	def on_ship_blocked(self) -> None:
 		# the ship was blocked while it was already moving so try again
 		self.move_to_next_route_warehouse(advance_waypoint=False)
 
-	def move_to_next_route_warehouse(self, advance_waypoint=True):
+	def move_to_next_route_warehouse(
+		self,
+		advance_waypoint: bool = True,
+	) -> None:
 		next_destination = self.get_next_destination(advance_waypoint)
 		if next_destination is None:
 			return
 
-		warehouse = next_destination['warehouse']
+		warehouse = next_destination["warehouse"]
 		if self.ship.position.distance(warehouse.position.center) <= self.ship.radius:
 			self.on_route_warehouse_reached()
 			return
@@ -239,7 +280,10 @@ class TradeRoute(ChangeListener):
 			# retry in 5 seconds
 			Scheduler().add_new_object(self.on_ship_blocked, self, GAME_SPEED.TICKS_PER_SECOND * 5)
 
-	def get_next_destination(self, advance_waypoint):
+	def get_next_destination(
+		self,
+		advance_waypoint: bool,
+	) -> TradeRouteWaypoint | None:
 		if not self.enabled:
 			return None
 		if len(self.waypoints) < 2:
@@ -250,16 +294,16 @@ class TradeRoute(ChangeListener):
 			self.current_waypoint %= len(self.waypoints)
 		return self.waypoints[self.current_waypoint]
 
-	def get_location(self):
+	def get_location(self) -> TradeRouteWaypoint:
 		return self.waypoints[self.current_waypoint]
 
-	def can_enable(self):
+	def can_enable(self) -> bool:
 		warehouses = set()
 		for waypoint in self.waypoints:
-			warehouses.add(waypoint['warehouse'])
+			warehouses.add(waypoint["warehouse"])
 		return len(warehouses) > 1
 
-	def enable(self):
+	def enable(self) -> bool:
 		if not self.can_enable():
 			return False
 		self.enabled = True
@@ -267,21 +311,25 @@ class TradeRoute(ChangeListener):
 		self._changed()
 		return True
 
-	def disable(self):
+	def disable(self) -> None:
 		self.enabled = False
 		self.ship.stop()
 		self._changed()
 
-	def clear(self):
+	def clear(self) -> None:
 		self.waypoints = []
 		self.current_waypoint = -1
 
 	@classmethod
-	def has_route(cls, db, worldid):
+	def has_route(
+		cls,
+		db,
+		worldid: int,
+	) -> bool:
 		"""Check if a savegame contains route information for a certain ship"""
 		return len(db("SELECT * FROM ship_route WHERE ship_id = ?", worldid)) != 0
 
-	def load(self, db):
+	def load(self, db) -> None:
 		enabled, self.current_waypoint, wait_at_load, wait_at_unload = \
 			db("SELECT enabled, current_waypoint, wait_at_load, wait_at_unload "
 			   "FROM ship_route WHERE ship_id = ?", self.ship.worldid)[0]
@@ -297,8 +345,8 @@ class TradeRoute(ChangeListener):
 			resource_list = dict(db(query, self.ship.worldid, len(self.waypoints)))
 
 			self.waypoints.append({
-				'warehouse': warehouse,
-				'resource_list': resource_list
+				"warehouse": warehouse,
+				"resource_list": resource_list
 			})
 
 		waiting = False
@@ -311,7 +359,7 @@ class TradeRoute(ChangeListener):
 			self.current_waypoint -= 1
 			self.enable()
 
-	def save(self, db):
+	def save(self, db) -> None:
 		worldid = self.ship.worldid
 
 		db("INSERT INTO ship_route(ship_id, enabled, current_waypoint, wait_at_load, wait_at_unload) VALUES(?, ?, ?, ?, ?)",
@@ -325,18 +373,18 @@ class TradeRoute(ChangeListener):
 		for entry in self.waypoints:
 			index = self.waypoints.index(entry)
 			db("INSERT INTO ship_route_waypoint(ship_id, warehouse_id, waypoint_index) VALUES(?, ?, ?)",
-			   worldid, entry['warehouse'].worldid, index)
-			for res in entry['resource_list']:
+			   worldid, entry["warehouse"].worldid, index)
+			for res in entry["resource_list"]:
 				db("INSERT INTO ship_route_resources(ship_id, waypoint_index, res, amount) VALUES(?, ?, ?, ?)",
-				   worldid, index, res, entry['resource_list'][res])
+				   worldid, index, res, entry["resource_list"][res])
 
-	def get_ship_status(self):
+	def get_ship_status(self) -> tuple[str, Any]:
 		"""Return the current status of the ship."""
 		if self.ship.is_moving():
 			location = self.ship.get_location_based_status(self.ship.get_move_target())
-			status_msg = T('Trade route: going to {location}').format(location=location)
+			status_msg = T("Trade route: going to {location}").format(location=location)
 			return (status_msg, self.ship.get_move_target())
 		else:
 			position = self.ship.get_location_based_status(self.ship.position)
-			status_msg = T('Trade route: waiting at {position}').format(position=position)
+			status_msg = T("Trade route: waiting at {position}").format(position=position)
 			return (status_msg, self.ship.position)

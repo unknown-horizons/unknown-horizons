@@ -92,7 +92,7 @@ class Ship(Unit):
 		ShipDestroyed.broadcast(self)
 		super().remove()
 
-	def create_route(self):
+	def create_route(self) -> None:
 		self.route = TradeRoute(self)
 
 	def _move_tick(self, resume=False):

@@ -42,7 +42,7 @@ Combinations:
 import copy
 import sys
 from collections import defaultdict
-from typing import Iterator
+from collections.abc import Iterator
 
 from horizons.util.changelistener import ChangeListener
 
@@ -58,16 +58,16 @@ class GenericStorage(ChangeListener):
 	use the GenericStorage. Rather use a specialized version that is suitable for the job.
 	"""
 
-	def __init__(self):
+	def __init__(self) -> None:
 		super().__init__()
 		self._storage: InternalInventory = defaultdict(int)
 
-	def save(self, db, ownerid):
+	def save(self, db, ownerid: int) -> None:
 		for slot in self._storage.items():
 			db("INSERT INTO storage (object, resource, amount) VALUES (?, ?, ?) ",
 				ownerid, slot[0], slot[1])
 
-	def load(self, db, ownerid):
+	def load(self, db, ownerid: int) -> None:
 		for (res, amount) in db.get_storage_rowids_by_ownerid(ownerid):
 			self.alter(res, amount)
 
@@ -84,13 +84,13 @@ class GenericStorage(ChangeListener):
 		self._changed()
 		return 0
 
-	def reset(self, res: ResourceId):
+	def reset(self, res: ResourceId) -> None:
 		"""Resets a resource slot to zero, removing all its contents."""
 		if res in self._storage:
 			self._storage[res] = 0
 			self._changed()
 
-	def reset_all(self):
+	def reset_all(self) -> None:
 		"""Removes every resource from this inventory"""
 		for res in self._storage:
 			self._storage[res] = 0
@@ -125,7 +125,7 @@ class GenericStorage(ChangeListener):
 	def itercontents(self) -> Iterator[tuple[ResourceId, ResourceAmount]]:
 		return iter(self._storage.items())
 
-	def __str__(self):
+	def __str__(self) -> str:
 		return "{}({})".format(self.__class__, self._storage if hasattr(self, "_storage") else None)
 
 
@@ -138,20 +138,20 @@ class SpecializedStorage(GenericStorage):
 		else:
 			return amount # we couldn't store any of this
 
-	def add_resource_slot(self, res: ResourceId):
+	def add_resource_slot(self, res: ResourceId) -> None:
 		"""Creates a slot for res. Does nothing if the slot exists."""
 		super().alter(res, 0)
 		self._changed()
 
 	def has_resource_slot(self, res: ResourceId) -> bool:
-		return (res in self._storage)
+		return res in self._storage
 
 
 class SizedSpecializedStorage(SpecializedStorage):
 	"""Just like SpecializedStorage, but each res has an own limit.
 	Can take a dict {res: size, res2: size2, ...} to init slots
 	"""
-	def __init__(self, slot_sizes: dict[ResourceId, ResourceAmount] | None = None):
+	def __init__(self, slot_sizes: dict[ResourceId, ResourceAmount] | None = None) -> None:
 		super().__init__()
 		slot_sizes = slot_sizes or {}
 		self.__slot_limits: dict[ResourceId, ResourceAmount] = {}
@@ -177,7 +177,7 @@ class SizedSpecializedStorage(SpecializedStorage):
 			return 0
 		return self.__slot_limits.get(res, 0)
 
-	def add_resource_slot(self, res: ResourceId, size: ResourceAmount):
+	def add_resource_slot(self, res: ResourceId, size: ResourceAmount) -> None:
 		"""Add a resource slot for res that can hold at most *size* units.
 		If the slot already exists, just update its size to *size*.
 		NOTE: THIS IS NOT SAVE/LOADED HERE. It must be restored manually."""
@@ -185,11 +185,11 @@ class SizedSpecializedStorage(SpecializedStorage):
 		assert size >= 0
 		self.__slot_limits[res] = size
 
-	def save(self, db, ownerid):
+	def save(self, db, ownerid: int) -> None:
 		super().save(db, ownerid)
 		assert len(self._storage) == len(self.__slot_limits) # we have to have limits for each res
 
-	def load(self, db, ownerid):
+	def load(self, db, ownerid: int) -> None:
 		super().load(db, ownerid)
 
 
@@ -197,19 +197,19 @@ class GlobalLimitStorage(GenericStorage):
 	"""Storage with some kind of global limit. This limit has to be
 	interpreted in the subclass, it has no predefined meaning here.
 	This class is used for infrastructure, such as save/load for the limit."""
-	def __init__(self, limit: ResourceAmount):
+	def __init__(self, limit: ResourceAmount) -> None:
 		super().__init__()
 		self.limit = limit
 
-	def save(self, db, ownerid):
+	def save(self, db, ownerid: int) -> None:
 		super().save(db, ownerid)
 		db("INSERT INTO storage_global_limit(object, value) VALUES(?, ?)", ownerid, self.limit)
 
-	def load(self, db, ownerid):
+	def load(self, db, ownerid: int) -> None:
 		self.limit = db.get_storage_global_limit(ownerid)
 		super().load(db, ownerid)
 
-	def adjust_limit(self, amount: ResourceAmount):
+	def adjust_limit(self, amount: ResourceAmount) -> None:
 		"""Adjusts the limit of the storage by amount.
 		If the limit is reduced, every resource that doesn't fit in the storage anymore is dropped!
 		@param amount: int, difference to current limit (positive or negative)
@@ -235,7 +235,7 @@ class TotalStorage(GlobalLimitStorage):
 
 	NOTE: Negative values will increase storage size, so consider using PositiveTotalStorage.
 	"""
-	def __init__(self, limit: ResourceAmount):
+	def __init__(self, limit: ResourceAmount) -> None:
 		super().__init__(limit)
 
 	def alter(self, res: ResourceId, amount: ResourceAmount) -> ResourceAmount:
@@ -270,7 +270,7 @@ class PositiveTotalStorage(PositiveStorage, TotalStorage):
 class PositiveTotalNumSlotsStorage(PositiveStorage, TotalStorage):
 	"""A combination of the Total and Positive storage which only has a limited number of slots.
 	Used to set a limit and ensure there are no negative amounts in the storage."""
-	def __init__(self, limit: ResourceAmount, slotnum: int):
+	def __init__(self, limit: ResourceAmount, slotnum: int) -> None:
 		super().__init__(limit)
 		self.slotnum = slotnum
 
@@ -296,7 +296,7 @@ class PositiveSizedSlotStorage(GlobalLimitStorage, PositiveStorage):
 	"""A storage consisting of a slot for each resource, all slots have the same size 'limit'
 	Used by the warehouse for example. So with a limit of 30 you could have a max of
 	30 from each resource."""
-	def __init__(self, limit: ResourceAmount = 0):
+	def __init__(self, limit: ResourceAmount = 0) -> None:
 		super().__init__(limit)
 
 	def alter(self, res: ResourceId, amount: ResourceAmount) -> ResourceAmount:
@@ -315,7 +315,7 @@ class PositiveSizedNumSlotStorage(PositiveSizedSlotStorage):
 	"""A storage consisting of a number of slots, all slots have the same size 'limit'.
 	Used by ships for example. With a limit of 50 and a slot num of 4, you
 	could have a max of 50 from each resource and only slotnum resources."""
-	def __init__(self, limit: ResourceAmount, slotnum: int):
+	def __init__(self, limit: ResourceAmount, slotnum: int) -> None:
 		super().__init__(limit)
 		self.slotnum = slotnum
 
