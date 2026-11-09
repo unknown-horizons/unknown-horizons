@@ -260,7 +260,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		@return int or possbile None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
 		if assert_present:
-			assert len(calls) == 1, 'got {:i} calls for {} {}: {}'\
+			assert len(calls) == 1, 'got {:d} calls for {} {}: {}'\
 				.format(len(calls), instance, callback, [str(i) for i in calls])
 			return next(iter(calls.values()))
 		else:
