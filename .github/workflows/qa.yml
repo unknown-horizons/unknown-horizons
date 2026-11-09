@@ -62,6 +62,14 @@ jobs:
         continue-on-error: true
         run: uv tool run mypy horizons
 
+      - name: "🔽 Install ripgrep"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep
+
+      - name: "❌ Forbidden code 'from __future__ import annotations'"
+        run: rg -i 'from __future__ import annotations' horizons
+
 # ---------------------------------------------------------------------------------------
 
   shellcheck:
