@@ -78,6 +78,12 @@ class Dummy:
 	def __trunc__(self):
 		return 0
 
+	def __int__(self):
+		return 0
+
+	def __float__(self):
+		return 0.0
+
 	def __ge__(self, other):
 		return 0
 
