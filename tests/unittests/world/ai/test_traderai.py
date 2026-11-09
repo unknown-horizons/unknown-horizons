@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
+import weakref
 from unittest.mock import Mock, patch
 
 import pytest
@@ -667,3 +668,37 @@ def test_save_persists_ship_state_index(trader):
         if isinstance(call.args[0], str)
         and "INSERT INTO trader_ships" in call.args[0]
     )
+
+
+def test_constructor_initializes_generic_and_trader_state():
+    """Exercise the real constructor chain, including the private __init calls."""
+    session = Mock()
+    session.world = Mock()
+    session.world.map_dimensions.width = TRADER.TILES_PER_TRADER
+    session.world.get_random_possible_ship_position.return_value = Point(1, 2)
+
+    color = Mock()
+    color.is_default_color = True
+
+    ship = Mock()
+
+    with (
+        patch("horizons.world.player.Session", Mock),
+        patch("horizons.world.player.Color", Mock),
+        patch("horizons.ai.trader.Scheduler"),
+        patch("horizons.ai.trader.NewSettlement"),
+        patch("horizons.ai.trader.CreateUnit") as create_unit,
+    ):
+        create_unit.return_value.return_value = ship
+        trader = Trader(session, 990003, "Trader", color)
+
+    # GenericAI.__init__ must have run.
+    assert isinstance(trader.ships, weakref.WeakValueDictionary)
+
+    # Trader.__init__ must have run, including __init().
+    assert trader.warehouse == {}
+    assert trader.allured_by_signal_fire == set()
+
+    # The constructor must have created the initial ship through the real path.
+    assert len(trader.ships) == 1
+    assert trader.ships[ship] == Trader.shipStates.reached_warehouse

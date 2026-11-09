@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
+import weakref
 from unittest.mock import Mock, patch
 
 import pytest
@@ -417,3 +418,71 @@ def test_finish_loading_restores_managers(
     assert pirate.combat_manager is combat_manager
     assert pirate.strategy_manager is strategy_manager
     assert pirate.behavior_manager is behavior_manager
+
+
+def test_constructor_initializes_generic_and_pirate_state():
+    """Exercise the real constructor chain, including the private __init calls."""
+    session = Mock()
+    session.world = Mock()
+    session.world.player = Mock()
+    session.world.get_random_possible_coastal_ship_position.return_value = Point(3, 4)
+    session.world.get_random_possible_ship_position.return_value = Point(5, 6)
+
+    color = Mock()
+    color.is_default_color = True
+
+    ship = Mock()
+
+    with (
+        patch("horizons.world.player.Session", Mock),
+        patch("horizons.world.player.Color", Mock),
+        patch("horizons.ai.pirate.Scheduler"),
+        patch("horizons.ai.pirate.UnitManager") as unit_manager,
+        patch("horizons.ai.pirate.PirateCombatManager") as combat_manager,
+        patch("horizons.ai.pirate.PirateStrategyManager") as strategy_manager,
+        patch("horizons.ai.pirate.BehaviorManager") as behavior_manager,
+        patch("horizons.ai.pirate.CreateUnit") as create_unit,
+    ):
+        create_unit.return_value.return_value = ship
+        pirate = Pirate(session, 990002, "Pirate", color)
+
+    # GenericAI.__init__ must have run.
+    assert isinstance(pirate.ships, weakref.WeakValueDictionary)
+
+    # Pirate.__init__ must have run, including home point and __init().
+    assert pirate.home_point == Point(3, 4)
+    assert pirate.unit_manager is unit_manager.return_value
+    assert pirate.combat_manager is combat_manager.return_value
+    assert pirate.strategy_manager is strategy_manager.return_value
+    assert pirate.behavior_manager is behavior_manager.return_value
+
+    # The constructor must have created the initial ship through the real path.
+    assert len(pirate.ships) == 1
+    assert pirate.ships[ship] == Pirate.shipStates.idle
+    pirate.combat_manager.add_new_unit.assert_called_once_with(ship)
+
+
+def test_load_schedules_tick_long_with_long_interval(pirate):
+    """The restored tick_long callback must use tick_long_interval, not tick_interval."""
+    db = Mock(
+        side_effect=[
+            [(5,)],    # remaining_ticks
+            [(10,)],   # remaining_ticks_long
+            [(3, 4)],  # pirate_home_point
+        ]
+    )
+
+    with (
+        patch.object(GenericAI, "_load"),
+        patch.object(Pirate, "_Pirate__init"),
+        patch("horizons.ai.pirate.Scheduler") as scheduler,
+    ):
+        pirate._load(db, 1)
+
+    calls = scheduler.return_value.add_new_object.call_args_list
+
+    assert len(calls) == 2
+    assert calls[0].args[2] == 5
+    assert calls[0].args[4] == Pirate.tick_interval
+    assert calls[1].args[2] == 10
+    assert calls[1].args[4] == Pirate.tick_long_interval

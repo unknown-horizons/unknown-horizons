@@ -19,6 +19,7 @@
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 # ###################################################
 
+import weakref
 from unittest.mock import Mock, patch
 
 import pytest
@@ -280,3 +281,63 @@ def test_refresh_ships_does_not_duplicate_ships(ai_player):
     ai_player.refresh_ships()
 
     assert len(ai_player.ships) == 1
+
+
+def test_constructor_initializes_generic_and_aiplayer_state():
+    """Exercise the real constructor chain, including the private __init calls."""
+    session = Mock()
+    session.world = Mock()
+
+    color = Mock()
+    color.is_default_color = True
+
+    with (
+        patch("horizons.world.player.Session", Mock),
+        patch("horizons.world.player.Color", Mock),
+        patch("horizons.world.player.SettlerUpdate"),
+        patch("horizons.ai.aiplayer.Scheduler"),
+        patch("horizons.ai.aiplayer.PersonalityManager") as personality_manager,
+        patch("horizons.ai.aiplayer.SettlementFounder") as settlement_founder,
+        patch("horizons.ai.aiplayer.UnitBuilder") as unit_builder,
+        patch("horizons.ai.aiplayer.UnitManager") as unit_manager,
+        patch("horizons.ai.aiplayer.CombatManager") as combat_manager,
+        patch("horizons.ai.aiplayer.StrategyManager") as strategy_manager,
+        patch("horizons.ai.aiplayer.BehaviorManager") as behavior_manager,
+        patch(
+            "horizons.ai.aiplayer.SpecialDomesticTradeManager"
+        ) as special_domestic_trade_manager,
+        patch(
+            "horizons.ai.aiplayer.InternationalTradeManager"
+        ) as international_trade_manager,
+        patch("horizons.ai.aiplayer.DoNothingGoal") as do_nothing_goal,
+        patch("horizons.ai.aiplayer.SettlementRangeChanged"),
+        patch("horizons.ai.aiplayer.NewDisaster"),
+        patch("horizons.ai.aiplayer.MineEmpty"),
+    ):
+        ai_player = AIPlayer(session, 990001, "AI", color, None, None)
+
+    # GenericAI.__init__ must have run.
+    assert isinstance(ai_player.ships, weakref.WeakValueDictionary)
+
+    # AIPlayer.__init__ must have run, including PersonalityManager and __init().
+    assert ai_player.personality_manager is personality_manager.return_value
+    assert ai_player._enabled is True
+    assert ai_player.world is session.world
+    assert ai_player.settlement_founder is settlement_founder.return_value
+    assert ai_player.unit_builder is unit_builder.return_value
+    assert ai_player.unit_manager is unit_manager.return_value
+    assert ai_player.combat_manager is combat_manager.return_value
+    assert ai_player.strategy_manager is strategy_manager.return_value
+    assert ai_player.behavior_manager is behavior_manager.return_value
+    assert (
+        ai_player.special_domestic_trade_manager
+        is special_domestic_trade_manager.return_value
+    )
+    assert (
+        ai_player.international_trade_manager
+        is international_trade_manager.return_value
+    )
+    assert ai_player.goals == [do_nothing_goal.return_value]
+    assert ai_player.need_more_ships is False
+    assert ai_player.need_more_combat_ships is True
+    assert ai_player.need_feeder_island is False
