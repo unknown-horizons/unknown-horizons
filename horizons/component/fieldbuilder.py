@@ -19,6 +19,11 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from collections.abc import Iterator
+from typing import ClassVar
+
 from horizons.command.building import Build
 from horizons.component import Component
 from horizons.entities import Entities
@@ -35,25 +40,25 @@ class FieldBuilder(Component):
 	- total resource cost
 	- whether the build is affordable right now.
 	"""
-	NAME = 'FieldBuilder'
+	NAME: ClassVar[str] = "FieldBuilder"
 
-	def __init__(self, field):
+	def __init__(self, field: str) -> None:
 		super().__init__()
 		self.field = Entities.buildings[field]
 
 	@property
-	def how_many(self):
+	def how_many(self) -> int:
 		return len(list(self.coords_in_range()))
 
 	@property
-	def total_cost(self):
+	def total_cost(self) -> dict[int, int]:
 		return {res: amount * self.how_many for res, amount in self.field.costs.items()}
 
 	def check_resources(self):
 		return Build.check_resources({}, self.total_cost, self.instance.owner,
 		                             [self.instance.settlement])
 
-	def coords_in_range(self):
+	def coords_in_range(self) -> Iterator[tuple[int, int]]:
 		where = self.instance.position.get_radius_coordinates(self.instance.radius)
 		for coords in where:
 			tile = self.instance.island.get_tile_tuple(coords)
@@ -63,7 +68,7 @@ class FieldBuilder(Component):
 				continue
 			yield coords
 
-	def fill_range(self):
+	def fill_range(self) -> None:
 		for (x, y) in self.coords_in_range():
 			cmd = Build(self.field, x, y, self.instance.island)
 			cmd.execute(self.instance.session)

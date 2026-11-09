@@ -20,6 +20,8 @@
 # ###################################################
 
 from collections.abc import Callable
+from contextlib import suppress
+from typing import Any, ClassVar
 
 from horizons.component import Component
 from horizons.scheduler import Scheduler
@@ -42,7 +44,7 @@ class StanceComponent(Component):
 	"""
 
 	# Store the name of this component
-	NAME: str = "stance"
+	NAME: ClassVar[str] = "stance"
 
 	def __init__(self) -> None:
 		super().__init__()
@@ -60,17 +62,13 @@ class StanceComponent(Component):
 		# change state to 'user_attack' when the user issues attack via right click
 		self.instance.add_user_attack_issued_listener(Callback(self.set_state, "user_attack"))
 		# change state to 'user_move' when the user issues movement via right click
-		try:
+		with suppress(AttributeError):
 			self.instance.add_user_move_issued_listener(Callback(self.set_state, "user_move"))
-		except AttributeError:
-			pass # temporary workaround to make it work for towers
 
 	def remove(self) -> None:
 		self.instance.remove_user_attack_issued_listener(Callback(self.set_state, "user_attack"))
-		try:
+		with suppress(AttributeError):
 			self.instance.remove_user_move_issued_listener(Callback(self.set_state, "user_move"))
-		except AttributeError:
-			pass # temporary workaround to make it work for towers
 		super().remove()
 
 	def set_state(self, state: str) -> None:
@@ -216,7 +214,7 @@ class AggressiveStance(LimitedMoveStance):
 	Stance that attacks units in close range when doing movement
 	"""
 
-	NAME: str = "aggressive_stance"
+	NAME: ClassVar[str] = "aggressive_stance"
 
 	def __init__(self) -> None:
 		super().__init__()
@@ -247,7 +245,7 @@ class HoldGroundStance(LimitedMoveStance):
 	"""Stance in radius and not attacks units in close range
 	"""
 
-	NAME: str = "hold_ground_stance"
+	NAME: ClassVar[str] = "hold_ground_stance"
 
 	def __init__(self) -> None:
 		super().__init__()
@@ -258,7 +256,7 @@ class HoldGroundStance(LimitedMoveStance):
 class NoneStance(StanceComponent):
 	"""No settings for stance
 	"""
-	NAME: str = "none_stance"
+	NAME: ClassVar[str] = "none_stance"
 
 
 class FleeStance(StanceComponent):
@@ -266,7 +264,7 @@ class FleeStance(StanceComponent):
 	Move away from any approaching units
 	"""
 
-	NAME: str = "flee_stance"
+	NAME: ClassVar[str] = "flee_stance"
 
 	def __init__(self) -> None:
 		super().__init__()
@@ -304,7 +302,9 @@ class FleeStance(StanceComponent):
 		if not enemies:
 			return None
 
-		sort_order = lambda e: self.instance.position.distance(e.position) + e._max_range
+		def sort_order(e: Any) -> Any:
+			return self.instance.position.distance(e.position) + e._max_range
+
 		return min(enemies, key=sort_order)
 
 

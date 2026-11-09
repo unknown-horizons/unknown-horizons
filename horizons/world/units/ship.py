@@ -130,9 +130,9 @@ class Ship(Unit):
 					del self.session.world.ship_map[self._next_target.to_tuple()]
 		super()._movement_finished()
 
-	def go(self, x, y):
-		# Disable trade route, direct commands overwrite automated ones.
-		if hasattr(self, 'route'):
+	def go(self, x: float, y: float) -> None:
+		# Disable trade route; direct commands overwrite automated ones.
+		if hasattr(self, "route"):
 			self.route.disable()
 		if self.get_component(CommandableComponent).go(x, y) is None:
 			self._update_buoy()

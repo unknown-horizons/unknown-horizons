@@ -19,6 +19,10 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
+from __future__ import annotations
+
+from typing import Any, ClassVar
+
 from horizons.component import Component
 from horizons.component.ambientsoundcomponent import AmbientSoundComponent
 from horizons.component.collectingcomponent import CollectingComponent
@@ -73,7 +77,7 @@ class ComponentHolder:
 	Check out the actual component class in horizons/component/__init__.py.
 	"""
 
-	class_mapping = {
+	class_mapping: ClassVar[dict[str, type[Component]]] = {
 	    'AmbientSoundComponent': AmbientSoundComponent,
 	    'CommandableComponent': CommandableComponent,
 	    'CollectingComponent': CollectingComponent,
@@ -98,11 +102,11 @@ class ComponentHolder:
 	    'GroundUnitProducerComponent': GroundUnitProducer,
 	}
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self, *args: Any, **kwargs: Any) -> None:
 		super().__init__(*args, **kwargs) # TODO: check if this line is needed
-		self.components = {}
+		self.components: dict[str, Component] = {}
 
-	def initialize(self, **kwargs):
+	def initialize(self, **kwargs: Any) -> None:
 		"""Has to be called every time a componentholder is created. This is not
 		in __init__() because we need to make sure that all other sub/parent classes
 		have been inited, for example the ConcreteObject class. This is to ensure
@@ -112,7 +116,7 @@ class ComponentHolder:
 		for component in self.__create_components():
 			self.add_component(component)
 
-	def __create_components(self):
+	def __create_components(self) -> list[Component]:
 		tmp_comp = []
 		if hasattr(self, 'component_templates'):
 			for entry in self.component_templates:
@@ -130,12 +134,12 @@ class ComponentHolder:
 		tmp_comp.sort()
 		return tmp_comp
 
-	def remove(self):
+	def remove(self) -> None:
 		for component in list(self.components.values()):
 			component.remove()
 		super().remove()
 
-	def load(self, db, worldid):
+	def load(self, db, worldid: int) -> None:
 		super().load(db, worldid)
 		self.components = {}
 		for component in self.__create_components():
@@ -143,25 +147,23 @@ class ComponentHolder:
 			component.load(db, worldid)
 			self.components[component.NAME] = component
 
-	def save(self, db):
+	def save(self, db) -> None:
 		super().save(db)
 		for component in self.components.values():
 			component.save(db)
 
-	def add_component(self, component):
+	def add_component(self, component: Component) -> None:
 		"""
 		Adds new component to holder and sets the instance attribute on the component
 		@param component: a component instance that is to be added
 			all components will have the init only with instance attribute
 		"""
-		if not isinstance(component, Component):
-			print(component, type(component), component.__class__)
 		assert isinstance(component, Component)
 		component.instance = self
 		self.components[component.NAME] = component
 		component.initialize()
 
-	def remove_component(self, component_class):
+	def remove_component(self, component_class) -> None:
 		"""
 		Removes component from holder.
 		"""
@@ -169,24 +171,24 @@ class ComponentHolder:
 			self.components[component_class.NAME].remove()
 			del self.components[component_class.NAME]
 
-	def has_component(self, component_class):
+	def has_component(self, component_class) -> bool:
 		"""
 		Check if holder has component with component name
 		"""
 		return component_class.NAME in self.components
 
-	def get_component(self, component):
+	def get_component(self, component) -> Component | None:
 		return self.components.get(component.NAME)
 
-	def get_component_by_name(self, name):
+	def get_component_by_name(self, name: str) -> Component | None:
 		return self.components.get(name)
 
 	@classmethod
-	def get_component_template(cls, component):
+	def get_component_template(cls, component: str):
 		"""Returns the component template data given a component NAME"""
 		for entry in cls.component_templates:
 			if isinstance(entry, dict):
 				for key, value in entry.items():
 					if cls.class_mapping[key] == component or key == component:
 						return value
-		raise KeyError("This class does not contain a component with name: {0}".format(component))
+		raise KeyError(f"This class does not contain a component with name: {component}")
