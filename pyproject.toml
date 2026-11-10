@@ -124,3 +124,24 @@ markers = [
   "long: mark test as long-running (only with --long-tests)",
   "gui_test: mark test as a GUI test (only with --gui-tests)",
 ]
+
+[tool.codespell]
+check-hidden = true
+check-filenames = true
+skip = [
+    "__pycache__",
+    ".*_cache",
+    "./development/extract_strings_from_objects.py",
+    "./development/pre-commit",
+    ".codespellrc",
+    ".git",
+    ".github",
+    ".venv",
+    "*.pdf",
+    "build",
+    "content",
+    "dist",
+    "install",
+    "po",
+]
+ignore-words-list = "indx,unparseable,ore"

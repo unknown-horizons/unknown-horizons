@@ -72,7 +72,7 @@ jobs:
       #    once `libfife` is on PyPI.
       # -----------------------------------------------------------------------------
       - name: "🤘 Checkout Fifengine (${{ env.FIFE_REF }})"
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7 # https://github.com/actions/checkout
         with:
           repository: fifengine/fifengine
           ref: ${{ env.FIFE_REF }}
@@ -192,7 +192,7 @@ jobs:
 
       # -----------------------------------------------------------------------------
       # 2. FIFE runtime environment
-      #    This not needed once `libfife` is installed via PyPI.
+      #    TODO: This not needed once `libfife` is installed via PyPI.
       # -----------------------------------------------------------------------------
       - name: "🌐 Setup FIFE + headless environment"
         run: |
@@ -237,8 +237,8 @@ jobs:
       # -----------------------------------------------------------------------------
       # 4. Tests
       # -----------------------------------------------------------------------------
-      # Primary smoke gate: boots the full engine + loads a map (headless).
-      # This is the suite verified against FIFE 0.5 (see todo/uh/plan.md).
+      
+      # Primary smoke gate: boots the full engine and loads a map in headless mode.
       - name: "🧪 Engine smoke test (headless, xvfb)"
         run: |
           xvfb-run \
@@ -248,7 +248,6 @@ jobs:
 
       # Full non-GUI pytest suite (blocking). Includes the headless tutorial
       # regression tests (tests/game/test_scenario_tutorial.py).
-      #
       # Coverage goes to its own data file so it can be combined with the GUI run.
       - name: "🧹 Unit tests (pytest, non-GUI)"
         env:
@@ -256,7 +255,8 @@ jobs:
         run: python3 -m pytest -v -rs --cov --cov-report=
 
       # Blocking end-to-end check for the goal 34 (boards/tents) and goal
-      # 43 -> 46 cascade fixes; much cheaper than the full scenario.
+      # 43 -> 46 cascade fixes; faster than the full scenario.
+      # Coverage goes to its own data file so it can be combined with the non-GUI run.
       - name: "⏩ Fast tutorial subset (headless, blocking)"
         env:
           COVERAGE_FILE: .coverage.gui
@@ -266,8 +266,6 @@ jobs:
             --server-args="-screen 0 1280x1024x24 +extension GLX +render -noreset" \
             python3 -m pytest --gui-tests tests/gui/scenarios/test_tutorial_fast.py::test_tutorial_fast_short -v -rs
 
-      # GUI tests relaunch the game per test (~25 min total), so they report
-      # status without gating PRs.
       - name: "🕹️ GUI tests (pytest --gui-tests, non-blocking)"
         continue-on-error: true
         env:
@@ -297,7 +295,7 @@ jobs:
       # 5. Coverage
       # -----------------------------------------------------------------------------
       # [tool.coverage.run] sets parallel = true, so each run above leaves its own
-      # data file; merge them into a single report (mirrors the old Travis setup).
+      # data file; GUI and non-GUI run data are merged into a single report.
       - name: "📊 Combine coverage reports"
         if: always()
         continue-on-error: true

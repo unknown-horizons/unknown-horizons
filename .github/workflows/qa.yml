@@ -33,17 +33,21 @@ jobs:
 
 # ---------------------------------------------------------------------------------------
 
-    name: Python quality
+    name: Python Quality
     runs-on: ubuntu-24.04
     steps:
       - name: "🤘 Checkout Code"
         uses: actions/checkout@v7
 
       - name: "🔽 Setup UV and Python"
-        uses: astral-sh/setup-uv@v10.3.3
+        uses: astral-sh/setup-uv@v10.3.3 # https://github.com/astral-sh/setup-uv
         with:
           version: latest
           python-version: "3.13"
+
+      - name: "📋 Detect the minimum Python version needed to run the code"
+        run: |
+          uv tool run vermin --no-parse-comments --eval-annotations --backport argparse --backport importlib --backport typing .
 
       - name: "🛠️ Check import order (ruff I001, gating)"
         run: uv tool run ruff check --select I001 horizons tests development
@@ -80,7 +84,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: "🤘 Checkout Code"
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7 # http://github.com/actions/checkout
 
       - name: "🔽 Install ShellCheck"
         run: |
@@ -104,7 +108,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: "🤘 Checkout Code"
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7 # http://github.com/actions/checkout
 
       - name: "🔽 Install ripgrep"
         run: |
@@ -118,3 +122,25 @@ jobs:
       - name: "📋 Check for MAYBE, PROBABLY, BROKEN, WORKAROUND comments"
         continue-on-error: true
         run: rg -i '\b(?:MAYBE|PROBABLY|BROKEN|WORKAROUND)\b' horizons
+
+# ---------------------------------------------------------------------------------------
+
+  spell-check:
+
+# ---------------------------------------------------------------------------------------
+
+    name: Spell check
+    runs-on: ubuntu-24.04
+    steps:
+      - name: "🤘 Checkout Code"
+        uses: actions/checkout@v7 # http://github.com/actions/checkout
+
+      - name: "🔽 Setup UV and Python"
+        uses: astral-sh/setup-uv@v10.3.3 # https://github.com/astral-sh/setup-uv
+        with:
+          version: latest
+          python-version: "3.13"
+
+      - name: "Spellchecking (codespell, informational)"
+        continue-on-error: true
+        run: uv tool run codespell
