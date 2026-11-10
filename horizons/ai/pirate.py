@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING, Any
 
@@ -65,10 +63,10 @@ class Pirate(GenericAI):
 
 	def __init__(
 		self,
-		session: Session,
+		session: "Session",
 		id: int,
 		name: str,
-		color: Color,
+		color: "Color",
 		**kwargs: Any,
 	) -> None:
 		super().__init__(session, id, name, color, **kwargs)
@@ -96,7 +94,7 @@ class Pirate(GenericAI):
 		self.behavior_manager = BehaviorManager(self)
 
 	@staticmethod
-	def get_nearest_player_ship(base_ship: Ship) -> Ship | None:
+	def get_nearest_player_ship(base_ship: "Ship") -> "Ship | None":
 		lowest_distance = None
 		nearest_ship = None
 		for ship in base_ship.find_nearby_ships():
@@ -201,7 +199,7 @@ class Pirate(GenericAI):
 		# load BehaviorManager
 		self.behavior_manager = BehaviorManager.load(db, self)
 
-	def remove_unit(self, unit: Ship) -> None:
+	def remove_unit(self, unit: "Ship") -> None:
 		"""Called when a ship which is owned by the pirate is removed or killed."""
 		del self.ships[unit]
 		self.combat_manager.remove_unit(unit)

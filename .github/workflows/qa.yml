@@ -71,8 +71,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ripgrep
 
-      - name: "❌ Forbidden code 'from __future__ import annotations'"
-        run: rg -i 'from __future__ import annotations' horizons
+      - name: "❌ Forbidden code 'from __future__ import annotations' (gating)"
+        run: |
+          ! rg -i 'from __future__ import annotations' horizons
 
 # ---------------------------------------------------------------------------------------
 

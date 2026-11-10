@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 import logging
 from collections import defaultdict
 from typing import TYPE_CHECKING, Any
@@ -103,10 +101,10 @@ class AIPlayer(GenericAI):
 
 	def __init__(
         self,
-		session: Session,
+		session: "Session",
 		id: int,
 		name: str,
-		color: Color,
+		color: "Color",
 		clientid: int | None,
 		difficulty_level: int | None,
 		**kwargs: Any,

@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING, Any
 
@@ -60,10 +58,10 @@ class Trader(GenericAI):
 
 	def __init__(
 		self,
-		session: Session,
+		session: "Session",
 		id: int,
 		name: str,
-		color: Color,
+		color: "Color",
 		**kwargs: Any,
 	) -> None:
 		super().__init__(session, id, name, color, **kwargs)
@@ -146,7 +144,7 @@ class Trader(GenericAI):
 		"""Returns number of ships"""
 		return len(self.ships)
 
-	def send_ship_random(self, ship: Ship) -> None:
+	def send_ship_random(self, ship: "Ship") -> None:
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used"""
 		super().send_ship_random(ship)
@@ -155,7 +153,7 @@ class Trader(GenericAI):
 
 	def _check_for_signal_fire_in_ship_range(
 		self,
-		ship: Ship,
+		ship: "Ship",
 	):
 		"""Returns the signal fire instance, if there is one in the ships range, else None"""
 		if ship in self.allured_by_signal_fire:
@@ -168,7 +166,7 @@ class Trader(GenericAI):
 				pass # tile has no object or object has no id
 		return None
 
-	def _ship_found_signal_fire(self, ship: Ship) -> None:
+	def _ship_found_signal_fire(self, ship: "Ship") -> None:
 		signal_fire = self._check_for_signal_fire_in_ship_range(ship)
 
 		if signal_fire is None:
@@ -184,7 +182,7 @@ class Trader(GenericAI):
 				self.allured_by_signal_fire.add(ship)
 
 				# HACK: remove allured flag in a few ticks
-				def rem_allured(self, ship: Ship) -> None:
+				def rem_allured(self, ship: "Ship") -> None:
 					self.allured_by_signal_fire.discard(ship)
 				Scheduler().add_new_object(Callback(rem_allured, self, ship), self, Scheduler().get_ticks(60))
 				self.send_ship_random_warehouse(ship, house)
@@ -193,8 +191,8 @@ class Trader(GenericAI):
 
 	def send_ship_random_warehouse(
 		self,
-		ship: Ship,
-		warehouse: Warehouse | None = None,
+		ship: "Ship",
+		warehouse: "Warehouse | None" = None,
 	) -> None:
 		"""Sends a ship to a random warehouse on the map
 		@param ship: Ship instance that is to be used
@@ -218,11 +216,11 @@ class Trader(GenericAI):
 			except MoveNotPossible:
 				self.send_ship_random(ship)
 
-	def is_warehouse_safe(self, warehouse: Warehouse) -> bool:
+	def is_warehouse_safe(self, warehouse: "Warehouse") -> bool:
 		"""Checkes whether a warehouse is safe to visit"""
 		return not isinstance(self.session.world.disaster_manager.get_disaster(warehouse.settlement), BlackDeathDisaster)
 
-	def reached_warehouse(self, ship: Ship) -> None:
+	def reached_warehouse(self, ship: "Ship") -> None:
 		"""Actions that need to be taken when reaching a warehouse:
 		Sell demanded res, buy offered res, simulate load/unload, continue route.
 		@param ship: ship instance"""
@@ -259,7 +257,7 @@ class Trader(GenericAI):
 		                           Scheduler().get_ticks(TRADER.TRADING_DURATION))
 		self.ships[ship] = self.shipStates.reached_warehouse
 
-	def ship_idle(self, ship: Ship) -> None:
+	def ship_idle(self, ship: "Ship") -> None:
 		"""Called if a ship is idle. Sends ship to either a random place or warehouse.
 		Probability for 'random warehouse' in percent: TRADER.BUSINESS_SENSE.
 		@param ship: ship instance"""

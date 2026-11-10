@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 import copy
 from typing import TYPE_CHECKING, Any, TypedDict
 
@@ -40,7 +38,7 @@ if TYPE_CHECKING:
 
 class TradeRouteWaypoint(TypedDict):
     """A stop in a trade route."""
-    warehouse: Warehouse
+    warehouse: "Warehouse"
     resource_list: dict[int, int]
 
 
@@ -55,7 +53,7 @@ class TradeRoute(ChangeListener):
 	Change notifications mainly notify about changes of enable.
 	"""
 
-	def __init__(self, ship: Ship) -> None:
+	def __init__(self, ship: "Ship") -> None:
 		super().__init__()
 		self.ship = ship
 		self.waypoints: list[TradeRouteWaypoint] = []

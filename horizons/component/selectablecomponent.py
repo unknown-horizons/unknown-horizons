@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 import copy
 import itertools
 import operator
@@ -54,7 +52,7 @@ class SelectableComponent(Component):
 	def get_instance(
 	    cls,
 	    arguments: dict[str, Any],
-	) -> SelectableComponent:
+	) -> "SelectableComponent":
 		# this can't be class variable because the classes aren't defined when
 		# it would be parsed
 		TYPES = {'building': SelectableBuildingComponent,

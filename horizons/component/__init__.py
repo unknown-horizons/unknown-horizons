@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 from typing import Any, ClassVar
 
 
@@ -88,7 +86,7 @@ class Component:
 		pass
 
 	@classmethod
-	def get_instance(cls, arguments: dict[str, Any] | None = None) -> Component:
+	def get_instance(cls, arguments: dict[str, Any] | None = None) -> "Component":
 		"""
 		This function is used to instantiate classes from yaml data. Override this if
 		the component has more than just a basic constructor with primitive types

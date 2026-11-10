@@ -19,8 +19,6 @@
 # 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 # ###################################################
 
-from __future__ import annotations
-
 import weakref
 from typing import TYPE_CHECKING, Any
 
@@ -51,10 +49,10 @@ class GenericAI(Player):
 	    super()._load(db, worldid)
 	    self.__init()
 
-	def send_ship(self, ship: Ship) -> None:
+	def send_ship(self, ship: "Ship") -> None:
 		self.send_ship_random(ship)
 
-	def send_ship_random(self, ship: Ship) -> None:
+	def send_ship_random(self, ship: "Ship") -> None:
 		"""Sends a ship to a random position on the map.
 		@param ship: Ship instance that is to be used."""
 		# find random position
@@ -71,7 +69,7 @@ class GenericAI(Player):
 			return
 		self.ships[ship] = self.shipStates.moving_random
 
-	def ship_idle(self, ship: Ship) -> None:
+	def ship_idle(self, ship: "Ship") -> None:
 		"""Called if a ship is idle. Sends ship to a random place.
 		@param ship: ship instance"""
 		self.log.debug("%s %s: idle, moving to random location", self.__class__.__name__, self.worldid)

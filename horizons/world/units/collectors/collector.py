@@ -20,8 +20,6 @@
 # ###################################################
 
 
-from __future__ import annotations
-
 import logging
 import operator
 from collections import namedtuple
@@ -304,7 +302,7 @@ class Collector(Unit):
 		# create a new data line.
 		return Job.ResListEntry(res, possible_res_amount, target_inventory_full)
 
-	def get_best_possible_job(self, jobs: JobList):
+	def get_best_possible_job(self, jobs: "JobList"):
 		"""Return best possible job from jobs.
 		"Best" means that the job is highest when the job list was sorted.
 		"Possible" means that we can find a path there.
