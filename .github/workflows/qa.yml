@@ -144,3 +144,74 @@ jobs:
       - name: "Spellchecking (codespell, informational)"
         continue-on-error: true
         run: uv tool run codespell
+
+# ---------------------------------------------------------------------------------------
+
+  data-quality:
+
+# ---------------------------------------------------------------------------------------
+
+    name: Data file quality
+    runs-on: ubuntu-24.04
+    steps:
+      - name: "🤘 Checkout Code"
+        uses: actions/checkout@v7 # http://github.com/actions/checkout
+
+      - name: "🔽 Setup UV and Python"
+        uses: astral-sh/setup-uv@v10.3.3 # https://github.com/astral-sh/setup-uv
+        with:
+          version: latest
+          python-version: "3.13"
+
+      - name: "🔽 Install data-file validators"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils sqlite3 gettext
+
+      # The YAML check covers all YAML, including Weblate-generated scenarios.
+      - name: "🛠️ YAML syntax and duplicate keys (gating)"
+        run: |
+          find . -type f \( -name '*.yaml' -o -name '*.yml' \) -print0 \
+            | xargs -0 -r uv tool run yamllint \
+                -d '{rules: {key-duplicates: enable}}' --format parsable
+
+      - name: "🛠️ XML syntax check (gating)"
+        run: |
+          find . -type f -name '*.xml' -print0 \
+            | xargs -0 -r xmllint --noout --nonet
+
+      - name: "🛠️ SQL scripts execute against SQLite (gating)"
+        run: |
+          find . -type f -name '*.sql' -print0 \
+            | while IFS= read -r -d '' f; do
+                sqlite3 -batch -bail :memory: < "$f" || { echo "Failed: $f"; exit 1; }
+              done
+
+      - name: "🛠️ SQLite database integrity (gating)"
+        run: |
+          find . -type f -name '*.sqlite' -print0 \
+            | while IFS= read -r -d '' f; do
+                result=$(sqlite3 "file:$f?mode=ro" 'PRAGMA quick_check;')
+                if [ "$result" != "ok" ]; then
+                  echo "Failed: $f -> $result"
+                  exit 1
+                fi
+              done
+
+      # We use msgfmt to check that translation files are parseable and have no syntax errors,
+      # but we don't generate a .mo file and use /dev/null as the output.
+      - name: "🛠️ PO/POT translation files parse (gating)"
+        run: |
+          find . -type f \( -name '*.po' -o -name '*.pot' \) -print0 \
+            | while IFS= read -r -d '' f; do
+                msgfmt --check-format -o /dev/null "$f" || exit 1
+              done
+
+      # Pure informational run of msgfmt to get additional information about the translation files.
+      - name: "📋 Translation statistics (informational)"
+        continue-on-error: true
+        run: |
+          find . -type f \( -name '*.po' -o -name '*.pot' \) -print0 \
+            | while IFS= read -r -d '' f; do
+                msgfmt --verbose --statistics -o /dev/null "$f"
+              done
