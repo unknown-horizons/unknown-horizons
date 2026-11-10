@@ -133,6 +133,7 @@ skip = [
     ".*_cache",
     "./development/extract_strings_from_objects.py",
     "./development/pre-commit",
+    "./doc/licenses",
     ".codespellrc",
     ".git",
     ".github",

@@ -52,11 +52,28 @@ jobs:
       - name: "🛠️ Check import order (ruff I001, gating)"
         run: uv tool run ruff check --select I001 horizons tests development
 
-      # F821 (undefined name) is the only rule that reliably indicates a real
-      # bug rather than style; it is clean, so it gates. The full rule set has
-      # ~1200 legacy findings and is reported informationally below.
-      - name: "🛠️ Lint for undefined names (ruff, gating)"
+      - name: "🛠️ Lint for undefined names (ruff F821, gating)"
         run: uv tool run ruff check --select F821 horizons tests development
+
+      # The Ruff F821/I001 checks above only cover horizons, tests, and development.
+      # TODO: stage_build_mac.py is excluded because it still uses Python 2 syntax.
+      - name: "🛠️ Lint root scripts (ruff F821/I001, gating)"
+        run: |
+          uv tool run ruff check --select F821,I001 \
+            run_server.py run_uh.py setup_mac.py setup.py
+
+      # T10 catches debugger statements and breakpoints
+      # (pdb, ipdb, pudb, set_trace, breakpoint()).
+      # The only intentional use is in "horizons/gui/ingamegui.py" and
+      # annotated with noqa: T100 (dev-only hotkey).
+      - name: "🛠️ Lint for debugger statements (ruff T10, gating)"
+        run: uv tool run ruff check --select T10 horizons tests development
+
+      # T20 reports print() usage. There are many findings.
+      # Many are intentional CLI/error output, so this stays informational.
+      - name: "📋 Print statement report (ruff T20, informational)"
+        continue-on-error: true
+        run: uv tool run ruff check --select T20 horizons tests development
 
       - name: "📋 Full lint report (ruff, informational)"
         continue-on-error: true
