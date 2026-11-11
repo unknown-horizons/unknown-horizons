@@ -173,7 +173,7 @@ def test_hierarchy_returns_widget_with_best_matching_path(
     assert find("bla/target") == target2
 
 
-def test_ambigious_error(widget_factory, find):
+def test_ambiguous_error(widget_factory, find):
     """
     If a single best match can't be found, an error is raised instead.
     """

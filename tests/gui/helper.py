@@ -231,7 +231,7 @@ class GuiHelper:
 			best_matches = [c[0] for c in candidates if len(c[1]) == len(candidates[0][1])]
 
 			if len(best_matches) > 1:
-				raise Exception('Ambigious specification {}, found {} matches'.format(
+				raise Exception('Ambiguous specification {}, found {} matches'.format(
 					name, len(best_matches)))
 			else:
 				return best_matches[0]
