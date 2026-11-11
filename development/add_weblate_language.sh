@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ "$#" -ne 1 ]]; then
 	echo "Usage: $0 locale_code  (e.g. fi)"
 	exit 1
@@ -10,7 +12,9 @@ while ! [ -d "${PO_DIR}" ]; do
 	PO_DIR="../${PO_DIR}"
 done
 
-cd "${PO_DIR}"
+cd "${PO_DIR}" || exit
+
+created_files=()
 
 create_po_from_pot(){
 	l="${1}"
@@ -18,6 +22,7 @@ create_po_from_pot(){
 	o="${3}"
 	msginit --locale "${l}" --input "${f}" --no-translator --output-file "${o}"
 	git add "${o}"
+	created_files+=("${o}")
 }
 
 create_po_from_pot "${1}" "uh/unknown-horizons.pot" "uh/${1}.po"
@@ -31,6 +36,11 @@ for s in scenarios/templates/*.pot; do
 	create_po_from_pot "${1}" "${s}" "${o}"
 done
 
-git commit -m "Add $1 translation files"
+if git diff --cached --quiet -- "${created_files[@]}"; then
+	echo "No translation file changes to commit."
+else
+	# Commit only the files created above, not unrelated staged changes.
+	git commit -m "Add $1 translation files" -- "${created_files[@]}"
+fi
 
 echo "Remember to add the respective horizons.constants LANGUAGENAMES entries!"

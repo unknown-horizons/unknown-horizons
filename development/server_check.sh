@@ -2,8 +2,8 @@
 
 arg_help="Usage: $0 [ quiet ] < crontab | check | start | stop | restart | gitupdate >"
 
-self="$(readlink -f $0)"
-uh_path="$(dirname $0)/.."
+self="$(readlink -f "$0")"
+uh_path="$(dirname "$0")/.."
 uh_exec="run_server.py"
 uh_pidfile="server.pid"
 set -o noglob
@@ -13,17 +13,26 @@ set +o noglob
 function do_crontab
 {
   tmpfile=tmpcron
-  crontab -l > $tmpfile 2>/dev/null
-  echo "*/1 * * * * $self quiet check" >> $tmpfile && \
-  crontab $tmpfile
-  rm -f $tmpfile
-  echo "Added crontab successfully..."
+  crontab -l 2>/dev/null | grep -vF "*/1 * * * * $self quiet check" > "$tmpfile" || true
+  echo "*/1 * * * * $self quiet check" >> "$tmpfile"
+
+  if crontab "$tmpfile"; then
+    echo "Added crontab successfully..."
+  else
+    echo "Failed to install crontab." >&2
+    rm -f "$tmpfile"
+    return 1
+  fi
+  rm -f "$tmpfile"
 }
 
 function do_git_update
 {
   # pull updates
-  git pull origin master
+  if ! git pull origin master; then
+    echo "git pull failed; aborting update." >&2
+    return 1
+  fi
 
   # build gettext objects
   langdir="content/lang"
@@ -45,20 +54,21 @@ function do_git_update
     lang="${pofile%%.*}"
     mkdir -p "$langdir/$lang/LC_MESSAGES/"
     msgfmt "$file" -o "$langdir/$lang/LC_MESSAGES/unknown-horizons-server.mo"
-    unset oldlangs[$lang]
+    # shellcheck disable=SC2184
+unset oldlangs["$lang"]
   done
 
   # house keeping
   for i in "${!oldlangs[@]}"
   do
-    rm -rf "$langdir/$i"
+    rm -rf "${langdir:?}/$i"
   done
   echo "done"
 }
 
 function debug
 {
-  [ -n "$DEBUG" ] && echo $*
+  [ -n "$DEBUG" ] && echo "$@"
 }
 
 function get_pid
@@ -70,7 +80,8 @@ function get_pid
     debug "Pid file ($_pidfile) doesn't exist. Process not running?"
     return
   fi
-  read pid < $_pidfile
+  read -r pid < "$_pidfile"
+  pid=${pid:-0}
 
   if [ "$pid" -le 0 ]
   then
@@ -78,7 +89,8 @@ function get_pid
     return
   fi
 
-  local _proc=$(ps -ww -o pid= -p $pid 2>/dev/null)
+  local _proc
+_proc=$(ps -ww -o pid= -p "$pid" 2>/dev/null)
   if [ -z "$_proc" ]
   then
     _echo "Process isn't running any more. Maybe died?"
@@ -93,14 +105,14 @@ then
 fi
 function _echo
 {
-  [ -z "$SILENT" ] && echo $*
+  [ -z "$SILENT" ] && echo "$@"
 }
 
 function start
 {
   _echo -n "Starting server..."
   set -o noglob
-  ./${uh_exec} ${uh_args}
+  ./"${uh_exec}" "${uh_args}"
   set +o noglob
   _echo "done"
 }
@@ -111,13 +123,13 @@ function stop
   if [ "$pid" -gt 0 ]
   then
     _echo -n "Stopping server (pid=$pid)"
-    kill -TERM $pid
+    kill -TERM "$pid"
     _echo "...done"
   fi
-  [ -f "$uh_pidfile" ] && rm -f $uh_pidfile
+  rm -f "$uh_pidfile"
 }
 
-cd "$uh_path"
+cd "$uh_path" || exit
 case "$1" in
   crontab)
     do_crontab
@@ -143,10 +155,10 @@ case "$1" in
     ;;
   gitupdate)
     stop
-    do_git_update
+    do_git_update || exit 1
     start
     ;;
   *)
-    echo $arg_help
+    echo "$arg_help"
     ;;
 esac

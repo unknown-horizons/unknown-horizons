@@ -9,9 +9,9 @@
 # (else they are added more than once to the respective databases)
 #
 # example invocation: ./insert_names.sh namefile ship trader
-cat $1 | while read line; do
-	echo "INSERT INTO $2names (name,for_$3) VALUES ('$line','1');"
-done
+while IFS= read -r line || [[ -n "$line" ]]; do
+    echo "INSERT INTO ${2}names (name,for_${3}) VALUES ('${line}','1');"
+done < "$1"
 
 
 

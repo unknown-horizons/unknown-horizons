@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # == I18N CHEATSHEET ==
 #
@@ -29,6 +29,19 @@ set -e
 # script assumes working dir to be our base directory
 cd "$(dirname "$0")"/..
 
+for tool in python3 itstool xgettext; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    echo "create_pot.sh requires $tool." >&2
+    exit 1
+  fi
+done
+
+if ! python3 -c 'import sqlalchemy' >/dev/null 2>&1; then
+  echo "create_pot.sh requires SQLAlchemy." >&2
+  echo "Run 'uv sync --group translation' or use 'uv run --group translation development/create_pot.sh'." >&2
+  exit 1
+fi
+
 VERSION=$(python3 -c 'from horizons.constants import VERSION;print("%s" % VERSION.RELEASE_VERSION)')
 
 RESULT_FILE=po/uh/unknown-horizons.pot
@@ -37,13 +50,13 @@ XML_PY_FILE=horizons/gui/translations.py
 YAML_PY_FILE=horizons/i18n/objecttranslations.py
 SQL_POT_FILE=po/sqltranslations.pot
 
-function strip_itstool()
+strip_itstool()
 {
   # Remove lines containing comments like these ones:
   #. (itstool) path: Container/Label@text
   #. (itstool) comment: Container/Label@text
-  sed -i '/^#\. (itstool) /d' $1
-  sed -i '/^#\. noi18n_\(help\)\?text$/d' $1
+  sed -i '/^#\. (itstool) /d' "$1"
+  sed -i '/^#\. noi18n_\(help\)\?text$/d' "$1"
   # Now do more complicated magic that we need python's polib for:
   # Fixup extracted python {format} strings from xml files (add right flag)
   python3 << END
@@ -60,7 +73,7 @@ po.save('$1')
 END
 }
 
-function reset_if_empty()
+reset_if_empty()
 {
   # See whether anything except version and date changed in header (2+ 2-)
   # If so, reset file to previous version in git (no update necessary)
@@ -74,7 +87,7 @@ function reset_if_empty()
 # XML files
 python3 development/extract_strings_from_xml.py "$XML_PY_FILE"
 echo "   * Regenerated xml translation file at $XML_PY_FILE."
-find content/gui/xml/{editor,ingame,mainmenu} -name "*.xml" | xargs \
+find content/gui/xml/editor content/gui/xml/ingame content/gui/xml/mainmenu -name "*.xml" -print0 | xargs -0 \
   itstool -i development/its-rule-pychan.xml \
           -i development/its-rule-uh.xml \
           -o "$RESULT_FILE"
@@ -110,6 +123,7 @@ xgettext --output="$RESULT_FILE" \
          --join-existing \
          --omit-header \
          "$SQL_POT_FILE"
+rm -f "$SQL_POT_FILE"
 
 # Some make-up
 strip_itstool "$RESULT_FILE"

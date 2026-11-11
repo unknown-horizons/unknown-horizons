@@ -2,10 +2,13 @@
 
 # Wrapper around mypy to ignore files that have issues with mypy
 
+# Keep mypy's exit status even though its output is filtered below.
+set -o pipefail
+
 if [ $# -gt 0 ]; then
-	args=$@
+	args=("$@")
 else
-	args=horizons
+	args=(horizons)
 fi
 
 # These files produce errors we can't silence/fix for now
@@ -13,7 +16,7 @@ fi
 #   https://github.com/python/mypy/issues/2377
 #   https://github.com/python/mypy/issues/1237
 
-mypy $args | grep -v -e horizons/world/building/storages.py \
+mypy "${args[@]}" | grep -v -e horizons/world/building/storages.py \
                      -e horizons/world/building/path.py \
                      -e horizons/world/building/unitproduction.py \
                      -e horizons/world/building/war.py \
