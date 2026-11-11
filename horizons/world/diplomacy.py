@@ -31,7 +31,7 @@ class Diplomacy:
 		allies: set of (a, b) tuples of player instances meaning a and b are allies
 		         for making the relationship symmetrical a has a lower worldid than b
 		enemies: set of (a, b) tuples of player instances meaning a and b are enemies
-		if to players are not allies nore enemies, they are neutral
+		if to players are not allies nor enemies, they are neutral
 
 		for listeners that are not Callback instances, the arguments must be:
 			caller, old_state, new_state, a, b

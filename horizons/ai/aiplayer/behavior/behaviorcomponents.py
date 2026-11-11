@@ -326,7 +326,7 @@ class BehaviorRegular(BehaviorComponent):
 
 	def hostile_player(self, **environment):
 		"""
-		Arrage an attack for hostile ships.
+		Arrange an attack for hostile ships.
 		"""
 		enemy_player = environment['player']
 		idle_ships = environment['idle_ships']

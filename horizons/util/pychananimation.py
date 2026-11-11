@@ -43,7 +43,7 @@ class PychanAnimation:
 	def start(self, interval, loops):
 		"""Starts the animation.
 		@param interval: seconds
-		@param loops: number of loops or -1 for infininte
+		@param loops: number of loops or -1 for infinite
 		"""
 		self.interval = interval
 		self._next()

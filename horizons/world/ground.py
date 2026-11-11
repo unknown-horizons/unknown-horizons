@@ -50,7 +50,7 @@ class SurfaceTile:
 		self._tile_set_id = horizons.globals.db.get_random_tile_set(self.id)
 
 		layer = session.view.layers[self.layer]
-		# actualy this should be x + 0.5, y + 0.5, since that's the center of the tile area
+		# TODO actually this should be x + 0.5, y + 0.5, since that's the center of the tile area
 		# however, other code depends on the current alignment.
 		# it this is changed, it should also be changed for buildings and units
 		self._instance = layer.createInstance(self._fife_objects[self._tile_set_id],

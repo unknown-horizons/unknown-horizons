@@ -348,7 +348,7 @@ class ResourceManager(WorldObject):
 class SingleResourceManager(WorldObject):
 	"""An object of this class keeps track of the production capacity of a single resource/building type pair of a settlement."""
 
-	epsilon = 1e-7 # epsilon for avoiding problems with miniscule values
+	epsilon = 1e-7 # epsilon for avoiding problems with minuscule values
 	virtual_resources = {RES.FISH, RES.RAW_CLAY, RES.RAW_IRON} # resources that are not actually produced by player owned buildings
 	virtual_production = 9999 # pretend that virtual resources are always produced in this amount (should be larger than actually needed)
 
@@ -452,7 +452,7 @@ class SingleResourceManager(WorldObject):
 		amount = max(amount, 0.0)
 
 		if abs(amount - self.quotas[quota_holder][0]) < self.epsilon:
-			pass # ignore miniscule change requests
+			pass # ignore minuscule change requests
 		elif amount < self.quotas[quota_holder][0]:
 			# lower the amount of reserved production
 			change = self.quotas[quota_holder][0] - amount

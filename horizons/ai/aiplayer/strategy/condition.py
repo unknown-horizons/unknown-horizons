@@ -45,7 +45,7 @@ class Condition:
 
 	def check(self, **environment):
 		"""
-		Based on information contained in **environment, determine wheter given condition occurs.
+		Based on information contained in **environment, determine whether given condition occurs.
 		@return: If the condition occurs: dictionary, else: None
 		"""
 		raise NotImplementedError("This is an abstract class")

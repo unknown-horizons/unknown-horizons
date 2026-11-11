@@ -34,7 +34,7 @@ from horizons.world.status import StatusIcon
 
 
 class StatusIconManager:
-	"""Manager class that manages all status icons. It listenes to AddStatusIcon
+	"""Manager class that manages all status icons. It listens to AddStatusIcon
 	and RemoveStatusIcon messages on the main message bus"""
 
 	def __init__(self, renderer, layer):

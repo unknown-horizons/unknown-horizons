@@ -36,7 +36,7 @@ from horizons.i18n import (
 @pytest.fixture(autouse=True)
 def i18n(tmpdir, mocker):
 	"""
-	Create temporary MO files, so we don't have to rely on them beeing build outside of tests,
+	Create temporary MO files, so we don't have to rely on them being build outside of tests,
 	or have to build all of them by running setup.py build_i18n
 	"""
 	horizons.i18n.reset_language()

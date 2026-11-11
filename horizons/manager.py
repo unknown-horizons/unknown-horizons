@@ -95,7 +95,7 @@ class MPManager(LivingObject):
 
 	def can_tick(self, tick):
 		"""Checks if we can execute this tick via return value"""
-		# get new packages fom networkinteface
+		# get new packages from networkinteface
 		packets_received = None
 		try:
 			packets_received = self.networkinterface.receive_all()
@@ -315,7 +315,7 @@ class MPPacket:
 	def allow_network(cls, klass):
 		"""
 		NOTE: this is a security related method and may lead to
-		execution of arbritary code if used in a wrong way
+		execution of arbitrary code if used in a wrong way
 		see documentation inside horizons.network.packets.SafeUnpickler
 		"""
 		packets.SafeUnpickler.add('server', klass)

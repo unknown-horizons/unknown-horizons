@@ -23,7 +23,7 @@ from tests.gui import gui_test
 
 
 # The `gui_test` decorator is needed to identify gui tests. You can use it
-# without argument, but is has to be `@gui_test()` (notice the parantheses).
+# without argument, but is has to be `@gui_test()` (notice the parentheses).
 #
 # It accepts either one of these arguments:
 #

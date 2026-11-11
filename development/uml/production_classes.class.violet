@@ -661,7 +661,7 @@ Production</string>
    <object id="NoteNode7" class="com.horstmann.violet.NoteNode">
     <void property="text">
      <void property="text">
-      <string>Production listenes for changes on the inventory
+      <string>Production listens for changes on the inventory
 and controls production according to available res.</string>
      </void>
     </void>

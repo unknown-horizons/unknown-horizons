@@ -621,5 +621,5 @@ def set_debug_log(enabled, startup=False):
 
 	else: #disable logging
 		logging.getLogger().setLevel(logging.WARNING)
-		# keep debug flag in options so to not reenable it fully twice
-		# on reenable, only the level will be reset
+		# keep debug flag in options so to not re-enable it fully twice
+		# on re-enable, only the level will be reset

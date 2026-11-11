@@ -47,7 +47,7 @@ class _CopyDocFromParentClass(type):
 class WeakList(list, metaclass=_CopyDocFromParentClass):
 	"""
     A Weak_list can store objects but without keeping them
-    alive with references couting incrementation.
+    alive with references counting incrementation.
 
     When objects are deleted or garbage_collected, they disappear from
     the list.

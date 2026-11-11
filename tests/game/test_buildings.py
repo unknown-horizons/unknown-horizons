@@ -507,7 +507,7 @@ def test_doctor_curing_chain(s, p):
 	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS] == 0
 	assert doctor.get_component(StorageComponent).inventory[RES.BLACKDEATH] == 0
 
-	# simulate a Black Death occurence
+	# Simulate a Black Death occurrence
 	doctor.get_component(StorageComponent).inventory.alter(RES.BLACKDEATH, 1)
 	s.run(seconds=120) # 2x 30s herbary, 60s doctor
 	assert doctor.get_component(StorageComponent).inventory[RES.MEDICAL_HERBS]

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!--
-	 Special resource overview bar protoype for gold.
+	 Special resource overview bar prototype for gold.
 -->
 
 <ABox name="resbar_gold_container" position="10,10">

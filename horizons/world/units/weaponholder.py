@@ -301,7 +301,7 @@ class WeaponHolder:
 
 	def user_attack(self, targetid):
 		"""
-		Called when the user triggeres the attack, executes the user_attack_issued callbacks
+		Called when the user triggers the attack, executes the user_attack_issued callbacks
 		@param targetid: world id of the unit that is to be attacked
 		"""
 		self.attack(WorldObject.get_object_by_id(targetid))
@@ -318,7 +318,7 @@ class WeaponHolder:
 		Removes reference from target,
 		this happens when the attack is stopped or the target is dead
 		either way the refs are checked using gc module
-		this is used because after unit death it's possbile that it still has refs
+		this is used because after unit death it's possible that it still has refs
 		"""
 		self._target = None
 

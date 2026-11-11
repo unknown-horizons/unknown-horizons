@@ -256,7 +256,7 @@ logbook-data: # contains all logbook messages. Invoke &ANCHOR with {type: logboo
 
     Such residential upgrades cost resources and can thus be restricted at the Main Square.'
   - There also are upgrades of buildings without costs, as you will see with the lumberjack. In this case, only the graphics change.
-  - Upgraded housing accomodates more inhabitants, and pioneers pay more taxes than sailors, too.
+  - Upgraded housing accommodates more inhabitants, and pioneers pay more taxes than sailors, too.
   - As you may have figured out already, the downside is that pioneers demand additional goods which sailors do not need - so you will need to spend this extra money to make them happy as well.
   - ''
   - [BoldLabel, 'Task: Set the tax level to Low (left end) and wait for sailors to upgrade.']

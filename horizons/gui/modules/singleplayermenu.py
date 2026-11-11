@@ -631,7 +631,7 @@ def generate_random_minimap(size, parameters):
 	if not VERSION.IS_DEV_VERSION:
 		# Hack enable atlases.
 		# Usually the minimap generator uses single tile files, but in release
-		# mode these are not available. Therefor we have to hackenable atlases
+		# mode these are not available. Therefore we have to hackenable atlases
 		# for the minimap generation in this case. This forces the game to use
 		# the correct imageloader
 		# In normal dev mode + enabled atlases we ignore this and just continue

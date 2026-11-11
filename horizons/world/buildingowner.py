@@ -106,7 +106,7 @@ class BuildingOwner:
 
 	def get_providers_in_range(self, radiusrect, res=None, reslist=None, player=None):
 		"""Returns all instances of provider within the specified shape.
-		NOTE: Specifing the res parameter is usually a huge speed gain.
+		NOTE: Specifying the res parameter is usually a huge speed gain.
 		@param radiusrect: instance of RadiusShape
 		@param res: optional; only return providers that provide res.  conflicts with reslist
 		@param reslist: optionally; list of res to search providers for. conflicts with res

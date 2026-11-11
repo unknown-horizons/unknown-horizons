@@ -58,7 +58,7 @@ class Component:
 		This is called by the ComponentHolder after it set the instance.
 		Use this to initialize any needed infrastructure.
 		When this is called, it is guaranteed that all other components this one
-		has a dependency on have been added, but initalize may not have been called
+		has a dependency on have been added, but initialize may not have been called
 		on them, only __init__. It is only called after construction, not on load().
 		"""
 		pass
@@ -77,7 +77,7 @@ class Component:
 
 	def load(self, db, worldid: int) -> None:
 		"""
-		This does on load what __init() and initalize() together do on constructions at runtime.
+		This does on load what __init() and initialize() together do on constructions at runtime.
 		Has to set up everything that is not setup in __init__(). Note that on loading
 		__init__() is called with the data needed by the component through get_instance(),
 		but initialize() is not, so any work needed for loading as well should be moved

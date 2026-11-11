@@ -106,7 +106,7 @@ class TileLayingTool(NavigationTool):
 			super().mouseClicked(evt)
 
 	def mouseDragged(self, evt):
-		"""Allow placing tiles continusly while moving the mouse."""
+		"""Allow placing tiles continuously while moving the mouse."""
 		if evt.getButton() == fife.MouseEvent.LEFT:
 			coords = self.get_world_location(evt).to_tuple()
 			self._place_tile(coords)

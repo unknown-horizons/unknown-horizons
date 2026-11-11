@@ -233,7 +233,7 @@ class BasicBuilding(ComponentHolder, ConcreteObject):
 
 		width, length = cls.size
 		if rotation == 135 or rotation == 315:
-			# if you look at a non-square builing from a 45 degree angle it looks
+			# if you look at a non-square building from a 45 degree angle it looks
 			# different than from a 135 degree angle
 			# when you rotate it the width becomes the length and the length becomes the width
 			width, length = length, width

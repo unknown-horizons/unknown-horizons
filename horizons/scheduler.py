@@ -150,7 +150,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 				self.schedule[tick_key] = deque()
 			callback_obj.tick = tick_key
 			self.schedule[tick_key].append(callback_obj)
-			if not readd:  # readded calls haven't been removed here
+			if not readd:  # re-added calls haven't been removed here
 				if callback_obj.class_instance not in self.calls_by_instance:
 					self.calls_by_instance[callback_obj.class_instance] = []
 				self.calls_by_instance[callback_obj.class_instance].append(callback_obj)
@@ -257,7 +257,7 @@ class Scheduler(LivingObject, metaclass=ManualConstructionSingleton):
 		"""Returns in how many ticks a callback is executed. You must specify 1 single call.
 		@param *: just like get_classinst_calls
 		@param assert_present: assert that there must be sucha call
-		@return int or possbile None if not assert_present"""
+		@return int or possible None if not assert_present"""
 		calls = self.get_classinst_calls(instance, callback)
 		if assert_present:
 			assert len(calls) == 1, 'got {:d} calls for {} {}: {}'\

@@ -236,7 +236,7 @@ class UnitManager:
 	@classmethod
 	def calculate_ship_dispersion(cls, ship_group):
 		"""
-		There are many solutions to solve the problem of caculating ship_group dispersion efficiently.
+		There are many solutions to solve the problem of calculating ship_group dispersion efficiently.
 		We generally care about computing that in linear time, rather than having accurate numbers in O(n^2).
 		We settle for a diagonal of a bounding box for the whole group.
 		@return: dispersion factor

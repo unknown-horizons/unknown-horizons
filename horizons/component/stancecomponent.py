@@ -130,9 +130,9 @@ class LimitedMoveStance(StanceComponent):
 	"""
 	Stance that attacks any unit in stance range and follows it with limited move space
 	This is inherited by Aggressive and Hold Ground stances
-	In adition to StanceComponent it has the following attributes:
-		stance_radius - int with the radius in which instance shold look for target
-		move_range - int with the radius in which instance shold move when attacking it
+	In addition to StanceComponent it has the following attributes:
+		stance_radius - int with the radius in which instanceshould look for target
+		move_range - int with the radius in which instance should move when attacking it
 	It also keeps track of the return position in which the unit should return when stopped attacking
 	"""
 

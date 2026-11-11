@@ -107,7 +107,7 @@ def test_upgrade_disallowed_with_fire(s):
 
 	assert settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]
 
-	# Fullfil all needs to level up
+	# Fulfill all needs to level up
 	for settler in settlement.buildings_by_id[BUILDINGS.RESIDENTIAL]:
 		happiness = s.db("SELECT value FROM balance_values WHERE name = "
 						 "'happiness_level_up_requirement'")[0][0]

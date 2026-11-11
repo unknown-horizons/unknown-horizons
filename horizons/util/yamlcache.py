@@ -99,7 +99,7 @@ class YamlCache:
 
 	@classmethod
 	def load_yaml_data(cls, string_or_stream):
-		"""Use this instead of yaml.load everywhere in uh in case get_file isn't useable"""
+		"""Use this instead of yaml.load everywhere in uh in case get_file isn't usable"""
 		return yaml.load(string_or_stream, Loader=SafeLoader)
 
 	@classmethod

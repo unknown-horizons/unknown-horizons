@@ -217,7 +217,7 @@ class Trader(GenericAI):
 				self.send_ship_random(ship)
 
 	def is_warehouse_safe(self, warehouse: "Warehouse") -> bool:
-		"""Checkes whether a warehouse is safe to visit"""
+		"""Checks whether a warehouse is safe to visit"""
 		return not isinstance(self.session.world.disaster_manager.get_disaster(warehouse.settlement), BlackDeathDisaster)
 
 	def reached_warehouse(self, ship: "Ship") -> None:

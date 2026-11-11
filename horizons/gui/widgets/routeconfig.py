@@ -45,7 +45,7 @@ from horizons.util.shapes import Point
 
 class RouteConfig(Window):
 	"""
-	Widget that allows configurating a ship's trading route
+	Widget that allows configuring a ship's trading route
 	"""
 	dummy_icon_path = "content/gui/icons/resources/none_gray.png"
 	buy_button_path = "content/gui/images/tabwidget/warehouse_to_ship.png"

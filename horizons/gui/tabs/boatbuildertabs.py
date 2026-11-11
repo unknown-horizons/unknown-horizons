@@ -43,7 +43,7 @@ class ProducerOverviewTabBase(OverviewTab):
 
 	@property
 	def producer(self):
-		"""The current instance's Producer compontent."""
+		"""The current instance's Producer component."""
 		return self.instance.get_component(Producer)
 
 

@@ -151,7 +151,7 @@ class ResourceOverviewBar:
 		TabWidgetChanged.unsubscribe(self._on_tab_widget_changed)
 
 	def _update_default_configuration(self):
-		# user defined variante of DEFAULT_RESOURCES (will be preferred)
+		# user defined variant of DEFAULT_RESOURCES (will be preferred)
 		self._custom_default_resources = None
 		setting = horizons.globals.fife.get_uh_setting("ResourceOverviewBarConfiguration")
 		if setting: # parse it if there is something
@@ -336,7 +336,7 @@ class ResourceOverviewBar:
 				del entry.cost_gui
 
 	def _update_gold(self, force=False):
-		"""Changelistener to upate player gold"""
+		"""Changelistener to update player gold"""
 		# can be called pretty often (e.g. if there's an settlement.inventory.alter() in a loop)
 		# only update every 0.3 sec at most
 		scheduled_attr = "_gold_upate_scheduled"

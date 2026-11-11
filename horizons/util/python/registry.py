@@ -47,7 +47,7 @@ class Registry:
 
 	def register(self, **kwargs):
 		"""Returns a decorator to register functions, all arguments are passed through
-		to `register_function`. You can use that to allow registeration under a different name
+		to `register_function`. You can use that to allow registration under a different name
 		for example.
 		"""
 		def deco(func):

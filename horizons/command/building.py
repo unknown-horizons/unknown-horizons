@@ -216,7 +216,7 @@ class Tear(Command):
 	def additional_removals_after_tear(cls, building_to_remove):
 		"""
 		Calculate which buildings need to be removed when removing the building from its settlement
-		@return tupel(buildings_to_remove, obsolete_settlement_coords)
+		@return tuple(buildings_to_remove, obsolete_settlement_coords)
 		"""
 		settlement = building_to_remove.settlement
 		position = building_to_remove.position

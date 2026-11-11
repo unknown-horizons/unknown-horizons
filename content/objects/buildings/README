@@ -4,7 +4,7 @@
 # random but unique id
 id: 1234
 
-# for names, there are two possiblities:
+# for names, there are two possibilities:
 # just an ordinary name:
 # (the "_ " must be present so that the game knows it has to translate the string, just leave it there and you'll be fine)
 name: _ MyAwesomeBuilding
@@ -20,7 +20,7 @@ name:
 baseclass: production.Lumberjack
 
 # then some boring data
-radius: 8 # area of influnce of building
+radius: 8 # area of influence of building
 cost: 5 # running costs in gold per month
 costs_inactive: 0 # running costs when it's turned off
 size_x: 2 # building width (should match its graphics)

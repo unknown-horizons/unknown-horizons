@@ -27,9 +27,9 @@ from horizons.i18n import gettext as T, gettext_lazy as LazyT
 
 Code design note:
 The conditions for the statuses could also have been placed here,
-for more modularity and flexiblity.
+for more modularity and flexibility.
 This way, we'd need to touch the objects' privates sometimes though,
-and we'd lose some direct interaction flexiblity. Therefore, the objects
+and we'd lose some direct interaction flexibility. Therefore, the objects
 now contain all the logic, this module just covers the data.
 
 Priority:

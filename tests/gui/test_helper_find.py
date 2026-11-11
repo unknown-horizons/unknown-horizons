@@ -194,13 +194,13 @@ def test_ambigious_error(widget_factory, find):
         ],
     )
 
-    with pytest.raises(Exception, match=r"Ambigious specification bla/target, found 2 matches"):
+    with pytest.raises(Exception, match=r"Ambiguous specification bla/target, found 2 matches"):
         find("bla/target")
 
 
 def test_hierarchy_not_absolute_path(widget_factory, find):
     """
-    Target with multiple parents, select it without specifing the top-most
+    Target with multiple parents, select it without specifying the top-most
     widget.
     """
     target = widget_factory("target")

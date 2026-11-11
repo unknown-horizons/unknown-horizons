@@ -113,7 +113,7 @@ class VillageBuilder(AreaBuilder):
 		* the plan is stitched together and other village buildings are by replacing some
 			of the residences
 		"""
-		# Sets of coordinates used for calulate the width and height
+		# Sets of coordinates used for calculate the width and height
 		xs = {x for (x, _) in self.land_manager.village}
 		ys = {y for (_, y) in self.land_manager.village}
 

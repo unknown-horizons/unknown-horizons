@@ -41,7 +41,7 @@ class Timer(LivingObject):
 		"""
 		NOTE: timer will not start until activate() is called
 		@param tick_next_id: int next tick id
-		@param freeze_protection: whether to check for tick delay and strech time in case (breaks mp)
+		@param freeze_protection: whether to check for tick delay and stretch time in case (breaks mp)
 		"""
 		super().__init__()
 		self._freeze_protection = freeze_protection

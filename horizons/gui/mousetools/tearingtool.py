@@ -123,7 +123,7 @@ class TearingTool(NavigationTool):
 		evt.consume()
 
 	def _mark(self, *edges):
-		"""Highights building instances and keeps self.selected up to date."""
+		"""Highlights building instances and keeps self.selected up to date."""
 		self._restore_transparent_instances()
 		self.log.debug("TearingTool: mark")
 		if len(edges) == 1:

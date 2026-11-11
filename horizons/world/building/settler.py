@@ -118,7 +118,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 
 		self._upgrade_production = self.get_component(Producer)._get_production(upgrade_material_prodline)
 
-		# readd the res we already had, they can't be loaded since storage slot limits for
+		# re-add the res we already had, they can't be loaded since storage slot limits for
 		# the special resources aren't saved
 		resources = {}
 		for resource, amount in db.get_storage_rowids_by_ownerid(self.worldid):
@@ -214,7 +214,7 @@ class Settler(BuildableRect, BuildingResourceHandler, BasicBuilding):
 			# only do it when something has actually change
 
 			# TODO: this probably also isn't necessary on loading, but it's
-			# not touched before the relase (2012.1)
+			# not touched before the release (2012.1)
 			self.update_action_set_level(self.level)
 
 	def run(self, remaining_ticks=None):

@@ -600,7 +600,7 @@ class BuildingTool(NavigationTool):
 							)
 				cmd.execute(self.session)
 			else:
-				if len(self.buildings) == 1: # only give messages for single bulds
+				if len(self.buildings) == 1: # only give messages for single builds
 					# first, buildable reasons such as grounds
 					# second, resources
 

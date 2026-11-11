@@ -41,7 +41,7 @@ that aren't delicate but need to occupy space somewhere.
 
 
 def toggle_health_for_all_health_instances(world):
-	"""Show health bar of every instance with an health component, which isnt selected already"""
+	"""Show health bar of every instance with an health component, which isn't selected already"""
 	world.health_visible_for_all_health_instances = not world.health_visible_for_all_health_instances
 	if world.health_visible_for_all_health_instances:
 		for instance in world.get_health_instances():

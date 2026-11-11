@@ -214,7 +214,7 @@ class Producer(Component):
 			self._productions[production.get_production_line_id()] = production
 		production.add_production_finished_listener(self._production_finished)
 		# This would be called multiple times during init, just add it later this tick.
-		# It also ensures that the changelistener would stick, we used to readd
+		# It also ensures that the changelistener would stick, we used to re-add
 		# the listener in load(), which was explained by this comment:
 		# Listener has been removed in the productions.load(), because the
 		# changelistener's load is called

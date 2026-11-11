@@ -93,7 +93,7 @@ class DisasterManager:
 
 	def end_disaster(self, settlement):
 		# End the disaster
-		self.log.debug("ending desaster in %s", settlement)
+		self.log.debug("ending disaster in %s", settlement)
 		self._active_disaster[settlement].end()
 		del self._active_disaster[settlement]
 

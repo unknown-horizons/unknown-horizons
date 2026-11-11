@@ -151,7 +151,7 @@ class Buildable:
 		"""Checks out a line on the map for build possibilities.
 		The line usually is a draw of the mouse.
 		@param point1, point2: Point instance, start and end of the line
-		@param rotation: prefered rotation
+		@param rotation: preferred rotation
 		@param ship: ship instance if building from ship
 		@return list of _BuildPositions
 		"""

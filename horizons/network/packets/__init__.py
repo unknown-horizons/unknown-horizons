@@ -41,11 +41,11 @@ PICKLE_SAFE = {
 class SafeUnpickler:
 	"""
 	NOTE: this is a security related method and may lead to
-	execution of arbritary code if used in a wrong way
+	execution of arbitrary code if used in a wrong way
 
 	pickle encodes modules and classes using their name. during "unpickling"
 	pickle imports the modules and creates instances of these classes again.
-	knowing this an attacker could easily create a paket "tricking" pickle
+	knowing this an attacker could easily create a packet "tricking" pickle
 	to load and execute an instance of dangerous classes/methods/commands.
 	this is not an exploit but by design!
 	e.g. python -c 'import pickle; pickle.loads("cos\nsystem\n(S\"ls ~\"\ntR.")'

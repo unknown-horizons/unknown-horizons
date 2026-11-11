@@ -49,13 +49,13 @@ Port:
 
 Bugfixes:
  - Random segfaults when moving mouse over menu buttons
- - #661 objects and buildings drawn in wrong order; further building shown infront of a closer building
- - #2542 Don't place tress on sand tiles
+ - #661 objects and buildings drawn in wrong order; further building shown in front of a closer building
+ - #2542 Don't place trees on sand tiles
  - #2717 Tooltips on the wrong side of the cursor (offscreen)
  - #2753 Horizontal scrolling crashing UH
  - #2156 Numpad keys not working
  - #1379 Ships drawn with wrong offsets
- 
+
 
 2017-02-07: Milestone 2017.2
 ----------------------------
@@ -69,11 +69,11 @@ Bug fixes:
  - #2416 Cursor isn't changed back to normal when TextWidget is hidden
  - #2606 cacaofield bm icon have wrong grey icon
  - Fix small `get_res_icon_path()` widget leak
- 
+
 Changes for Engine update:
  - Adapt loading of animations to current fife interface
  - Don't set an ActionFrame on animations
- 
+
 2017-01-16: Milestone 2017.1
 ----------------------------
 changelog date: 16th Jan 2017
@@ -84,10 +84,10 @@ New features
  - #986  Add a button to discard all resources from a tradeship.
  - #1821 gameplay tips
  - #2353 Add a barrier building
- 
+
 ### Media Content
 
-Grafic:
+Graphic:
  - added winery
  - added blender building
  - added cocoafield
@@ -102,21 +102,21 @@ Grafic:
  - added citizens warehouse
  - added new mainsquare for tier4
  - added happiness resource icon
- - added grass ressource icon
- - added fire actionset and ressource icon
+ - added grass resource icon
+ - added fire actionset and resource icon
  - added pigsty
  - added pastry shop
  - added stone pit ,stone deposit and stone mason
  - added new sheep pasture
- - replaced windmill grafic with new one
- - replaced sailors tent grafic with new ones
- - replaced pirate ship grafic with new one
+ - replaced windmill graphic with new one
+ - replaced sailors tent graphic with new ones
+ - replaced pirate ship graphic with new one
  - add new inhabitants for all tiers
- - Icons: replaced alot placeholder icons
+ - Icons: replaced a lot placeholder icons
  - added shiny new female gfx
  - Animate fire of market place and tent1
  - added second residential house for tier 3
- - Changes to the main menu background grafics
+ - Changes to the main menu background graphics
  - replaced settlers residential house with new one
  - added third residential house for tier 3
  - replaced brewery buildmenu icon (placeholder) with a new icon
@@ -126,8 +126,8 @@ Sound:
 
  - added menu sound from Ollo
  - added market, smith, windmill, toolmaker and tavern sounds (Ollo)
- 
- 
+
+
 ### User Interface
 
 Fixed bugs and usability problems
@@ -136,7 +136,7 @@ Fixed bugs and usability problems
  - small clean up on build menu
  - #2373 Farm Second Tab line 3 not work correctly
  - #2313 Button/Icon to represent discarding all resources currently loaded
- 
+
 ### Codebase
 
 New functionalities
@@ -144,7 +144,7 @@ New functionalities
  - menü sounds (Gladius1)
  - #2434 Button to restart game after adjusting Settings when restart required?
  - #986  Need a way to discard resources
- 
+
 Modified structures
  - 1761cef Add abstraction layer above boat builder tab. Preparation for general Unitproduction tabs.
  - #2086 Only load savegames which have an higher revision than the related value stored in the constants.
@@ -156,7 +156,7 @@ Modified structures
  - #2398 Use contextmanager when opening a file
  - #2346 Remove old sheep code
  - #2314 Check which savegamerevisions are upgradeable
- 
+
 Fixed crashes and inconsistencies and bugs
  - 405c514 Use animationloader instead of imagemanager to retrieve images.
    The imagemanager isn't necessarily aware of the files available as animations.
@@ -166,7 +166,7 @@ Fixed crashes and inconsistencies and bugs
  - #2349 Click on Main Square cause a crash
  - #2350 Fixed bug where keyboard scrolling hanged from time to time
  - #2352 Fix crash on missing thumbnails in unit queue
- - #2388 Settler stages grafic´s dont show up ingame
+ - #2388 Settler stages graphic´s dont show up ingame
  - #2399 Allow different collector unit graphics per tier
  - #2358 Game Crashes when i click on: Cancel game
  - #2349 Click on Main Square cause a crash
@@ -181,8 +181,8 @@ Fixed crashes and inconsistencies and bugs
  - #2305 Setting the same keystroke should not show overwrite confirmation popup
  - #2310 fix some select memory leak bugs, partly resolve issue #2308
  - #708  Loading allows to press F1, P and so on. Crashes the game
- 
- 
+
+
 ### Translation and Text fixes
  - #2433 Some English text little errors
  - #2438 Corrected some errors and ambiguities from the english text in the tutorial
@@ -191,7 +191,7 @@ Fixed crashes and inconsistencies and bugs
  - #2427 Update translations files. Fix translations scripts
  - #2426 add folder to sys.path
  - #2242 Fix #2242 (Trade Tutorial Confusing)
- 
+
 New team members with this release, Annotations
  - Accepting bounties via bountysource now
  - We accepted pull requests or patches by:
@@ -205,7 +205,7 @@ New team members with this release, Annotations
      Teemperor
  - Translators that joined our teams and contributed several strings:
    Please refer to the credits!
-   
+
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 2014-12-31: Milestone 2014.1
@@ -226,8 +226,8 @@ Modifications and changes
  - 9411220 Add running costs for warehouse, storage tent, lookout
  - e80ea85 Remove bullets from the attack sequence
  - 56ef8f5 A Pastures starting image depends on its rotation (Rao)
- - #1259 Create inital amount trader ship in ratio to world size
- 
+ - #1259 Create initial amount trader ship in ratio to world size
+
 Fixed bugs and problems
  - #1824 Salt ponds could be created at fresh water lakes
 
@@ -242,7 +242,7 @@ New files and features
  - ddf6129 Restore warehouse ambient sound
  - #2219 Modified "load from ship", "unload from ship" icons
  - #1788 Spice field
- 
+
 Brush-ups and modification
  - #2168 Fix "known incorrect sRGB profile" libpng warnings
  - ee375da Pirate ship flag graphics now consistent with wind direction
@@ -253,7 +253,7 @@ Brush-ups and modification
 Additions and new features
  - #2176 Store (and reload) currently selected tab in savegames
  - #2171 Show resource icons in build menu toolips
- - #2185 Ship pre-selected and in hotkeygroup 1 when starting new game
+ - #2185 Ship preselected and in hotkeygroup 1 when starting new game
  - #1387 Status icon for inhabitants without main square connection
  - #2153 Confirmation for pressing Del with unit/building selected (Zappaman)
  - beabc8b Add new key actions for zooming: PgUp / PgDn
@@ -261,7 +261,7 @@ Additions and new features
  - #2245 Add weaponsmith buildmenu icon
  - #2133 Add simple GUI for atlas generation
  - #2138 Add disaster message icons
- 
+
 Repositioning and modifications
  - e6d5239 Rotate mainmenu background images instead of randomizing
  - 3fd3c85 "Iron Mine" is now simply called "Mine"
@@ -291,7 +291,7 @@ New functionalities
  - #2173 Manpage generation with custom optparse formatter
  - #2229 Add the ability to set a default build menu style (Zappaman)
  - 5038c59 Cache XML read from the harddrive
- 
+
 Modified structures
  - #2175 Tabwidget code refactoring
  - #2174 Save/load helpers for game tests and gui tests
@@ -313,7 +313,7 @@ Fixed crashes and inconsistencies
  - #2289 Multiple PEP8 changes (MarkusHackspacher)
  - #2113 Fix trade route handling in multiplayer games
 
- 
+
 ### User-Contributed Content
 
 Translations
@@ -363,7 +363,7 @@ New files and features
  - #1791: indication that a scenario task has been completed
 
 Brush-ups and modification
- - 
+ -
 
 ### User Interface
 
@@ -434,7 +434,7 @@ Translations
  - 3c32538: Replace some `python-format` with `python-brace-format`
 
 Campaigns, scenarios and maps
- - 
+ -
 
 New team members with this release, Annotations
  - Push access was granted to:
@@ -475,7 +475,7 @@ New files and features
 
 Additions and new features
  - allow multiselect combinations of units and buildings
- - start savegames with doubleclick - #2036 (ThePawnBreak)
+ - start savegames with double-click - #2036 (ThePawnBreak)
  - support for different buy and sell prices (ThePawnBreak)
  - information about price in tooltip in Select Resources widget (ThePawnBreak)
  - necessary resources tooltip to build menu - #1886 (ThePawnBreak)
@@ -1143,7 +1143,7 @@ Fixed crashes and inconsistencies
  - problem with utf-8 in filenames on the windows console
  - no yaml cache if utf8 characters in windows username (bsddb bug in python)
  - crash related to FIFE console evaluations overwriting gettext `_`
- - crash on compaign startup
+ - crash on campaign startup
  - UnitProduction endless loop fixed
  - Ships sailing on land
  - StorageCollector endless loop fixed
@@ -1324,7 +1324,7 @@ Modified structures
  - not store hard references to any gui file anymore
  - new changelog formatting
  - moved fife path setup into own function, run_tests uses this now
- - doubled speed of get_random_location by seldomly finding invalid positions
+ - doubled speed of get_random_location by seldom finding invalid positions
  - only try random jobs for animals
 
 Fixed crashes and inconsistencies
@@ -1417,7 +1417,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
             line interface (`--start-map` `--start-campaign` `--load-map`)
   - Change: Capitalized resource names
   - Change: Renamed runin to run_in
-  - Change: Renamed all occurences of 'campaign' to 'scenario'
+  - Change: Renamed all occurrences of 'campaign' to 'scenario'
   - Change: Separated popup creation and display in show_popup
   - Change: show_popup is used everywhere in our code now
   - Change: Improvements to the buildtool
@@ -1595,7 +1595,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - New: Game will now create a settings.xml file on first program launch
          containing the new settings, it's now used instead of the old sqlite
          database
-  - New: Added community ressource as requirement for settlers
+  - New: Added community resource as requirement for settlers
   - New: Marketplace now produces the community resource
   - New: add `--mp-master` commandline option. Syntax:
          `--mp-master=ip:port` or `--mp-master=ip (+ default port)`
@@ -1648,7 +1648,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
          `/usr/games`
   - Fix: The attached patch avoids that boats are created at the same place
   - Fix: Stupid hack to make UH work with umlauts in the user dir on windows
-  - Fix: FIXED by FIFE :D  (Doubleclick in menu to confirm)
+  - Fix: FIXED by FIFE :D  (double-click in menu to confirm)
   - Fix: Game autoscrolls into corner
   - Fix: crash by removing storage tent
   - Fix: Don't crash when loading corrupted save files. Instead give a nice
@@ -1671,7 +1671,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - New: Added new player emblems
   - New: Trader got an own overview tab
   - New: add global storage display to the ships inventory
-  - Change: Credits are now splitted into multiple pages with tabs
+  - Change: Credits are now split into multiple pages with tabs
   - Change: Logbook now flips pages like a real book
   - Change: New boat builder tab
   - Change: Replaced as_pirate0 with new gfx set (armed sloop)
@@ -1726,7 +1726,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - New: Added account tab for main square which shows the financial overview
          of the settlement
   - New: Fade out nearby buildings and trees while building
-  - New: System for settlers happieness, consumation and taxation
+  - New: System for settlers happieness, consummation and taxation
   - Change: The game uses bigger water-tiles now to improve the performance
   - Change: Completely changed the farm system: There is only one farm building
             which can cultivate any kind of field including sheep-runs
@@ -1756,7 +1756,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - Change: Changed some other GUI menus
   - Change: Added a production line with a button to disable production
   - Change: Changed buttons for selecting quantity in exchange menu
-  - Change: Unused required ressource icons in ressource bar are now hidden
+  - Change: Unused required resource icons in resource bar are now hidden
 
 * Sound
   - New: Added ambient sounds for chapel and fisher
@@ -1784,7 +1784,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - New: Random start position for playership
   - New: add commandline arguments `--start-map` and `--enable-unstable-features`
   - New: Add logging system
-  - New: Add debug modul option for commandline `--debug-module`
+  - New: Add debug module option for commandline `--debug-module`
   - New: debug messages are now only shown by using `./run_uh.py -d`
   - New: Add new tabwidget
   - New: Ship radius when building is now updated on the fly if the ship moves
@@ -1803,7 +1803,7 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - Fix: Main menu doesn't disappear when loading a game
 
 * Graphics and GUI
-  - New: Completly new ingame GUI
+  - New: Completely new ingame GUI
   - New: Graphics for boat builder
   - New: Graphics for hunter
   - New: Two new variations for inhabitants
@@ -1840,8 +1840,8 @@ changelog date: APR 16; rev: 3e0151a23dbd0de8b4ac6c697099963eeb59abc7
   - Fix: Collectors use tents as path
   - Fix: Crash in Destruction mode - mouse drag
   - Fix: Trees being build over existing sreets and trees autotearing them down
-  - Fix: Herder goes backwards and his sheeps are all at the same place
-  - Fix: Turning menu: picture and building are asynchron
+  - Fix: Herder goes backwards and his sheep are all at the same place
+  - Fix: Turning menu: picture and building are asynchronous
   - Fix: Stock don't increase after building a storage tent
   - Fix: Weaver steal in other weaver's tent
   - Fix: Resource transfer crashes game when out of range

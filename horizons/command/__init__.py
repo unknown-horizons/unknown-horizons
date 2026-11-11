@@ -34,7 +34,7 @@ class Command:
 	def allow_network(cls, klass):
 		"""
 		NOTE: this is a security related method and may lead to
-		execution of arbritary code if used in a wrong way
+		execution of arbitrary code if used in a wrong way
 		see documentation inside horizons.network.packets.SafeUnpickler
 		"""
 		SafeUnpickler.add('server', klass)
