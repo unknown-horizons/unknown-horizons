@@ -29,7 +29,7 @@ if os.path.basename(os.getcwd()) != 'development':
 	quit()
 
 if not os.path.isdir('../po/uh/'):
-	print('The translations directory does not exist! Quiting..')
+	print('The translations directory does not exist! Quitting..')
 	quit()
 
 os.chdir('..')

@@ -23,7 +23,7 @@
 
 '''
 Generate html output for a page displaying all images currently available
-in the repository and in a certain directory. Does not wite anything to a
+in the repository and in a certain directory. Does not write anything to a
 file, you will need to redirect output.
 Change `where` below to anything else as you see fit.
 '''
