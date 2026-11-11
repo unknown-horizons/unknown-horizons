@@ -536,8 +536,8 @@ class IngameGui(LivingObject):
 		elif action == _Actions.LOGBOOK:
 			self.windows.toggle(self.logbook)
 		elif action == _Actions.DEBUG and VERSION.IS_DEV_VERSION:
-			import pdb
-			pdb.set_trace()
+			import pdb  # noqa: T100 -- intentional dev-only hotkey
+			pdb.set_trace()  # noqa: T100 -- intentional dev-only hotkey
 		elif action == _Actions.BUILD_TOOL:
 			# Try to show build-related menu first (e.g. for lumberjack -> trees);
 			# fall back to general build menu if no related buildings exist.
